@@ -1,0 +1,28 @@
+experiment_id: SG-EXP-005
+name: frozen_event_gated_residual_correction
+status: ready_after_SG-EXP-002_checkpoint
+model: event_residual
+gate:
+  type: validation_frozen
+  enabled: true
+formula: final_prediction = base_prediction + gate * clipped_local_residual
+purpose: 仅在事件窗口内利用站内相关节点和历史相似模式修正残差
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+model_params:
+  hidden_dim: 32
+  levels: 3
+  dropout: 0.1
+  residual_hidden_dim: 32
+  residual_bound: 0.5
+  freeze_base: true
+training:
+  epochs: 40
+  patience: 6
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+graph:
+  relation: fused
+  top_k: 5
+  smoothing: 0.5

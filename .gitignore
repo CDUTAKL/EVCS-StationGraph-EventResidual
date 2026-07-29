@@ -1,0 +1,41 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+.pytest_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# 本地环境与敏感信息
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# 编辑器与临时文件
+.vscode/
+.idea/
+*.swp
+*.tmp
+*.log
+
+# 原始、中间及正式数据不进入 Git；仅保留目录骨架与轻量清单
+data/external/*
+data/interim/*
+data/processed/*
+!data/external/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+
+# 模型检查点、张量与预测工件由实验归档管理
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.npz
+
+# 实验输出不进入 Git
+outputs/*
+!outputs/.gitkeep

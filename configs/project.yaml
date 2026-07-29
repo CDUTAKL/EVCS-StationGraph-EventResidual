@@ -1,0 +1,72 @@
+project:
+  id: EVCS-StationGraph-EventResidual
+  title_zh: 基于站内充电单元行为交互图与事件残差修正的短期负荷预测
+  time_resolution_minutes: 15
+  history_steps: 96
+  forecast_steps: 4
+  experiment_namespace: SG-EXP
+
+data:
+  source_type: charging_session_records
+  target_type: reconstructed_node_proxy_load
+  upstream_read_only_root: /Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit
+  primary_raw_csv: /Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit/data/raw/acn_sessions.csv
+  site_field: siteID
+  # 时间片数据与冻结节点清单均以 spaceID（CA-xxx）为节点标识。
+  canonical_node_field: spaceID
+  alias_fields:
+    - EVSEID
+
+splits:
+  type: chronological
+  test_information_may_not_affect:
+    - preprocessing_fit
+    - graph_construction
+    - event_thresholds
+    - route_mapping
+    - residual_bounds
+
+model:
+  default_temporal_path: TCN
+  graph_path: station_internal_interaction_graph
+  event_gate: validation_frozen_rule
+  residual_correction: bounded_local_residual
+
+reporting:
+  seeds: [2024, 2025, 2026]
+  required_scopes:
+    - global
+    - event_window
+    - stable_window
+    - node
+    - forecast_horizon
+
+runtime:
+  device: auto
+  output_root: outputs/experiments
+  max_samples_per_split:
+
+paths:
+  upstream_timeslice_csv: /Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit/data/processed/evcs_timeslice.csv
+  upstream_timeslice_manifest: /Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit/data/processed/evcs_timeslice_manifest.json
+  primary_node_list: data/processed/SG-DATA-003-primary-node-list.csv
+  sensitivity_node_list: data/processed/SG-DATA-004-sensitivity-node-list.csv
+  dataset_artifact: data/processed/SG-DATA-005-primary-tensor.npz
+  dataset_metadata: data/manifests/SG-DATA-005-primary-tensor.json
+
+dataset:
+  feature_columns:
+    - load
+    - access_count
+    - departure_count
+    - active_count
+    - occupancy_rate
+    - demand_intensity
+    - load_jump_flag
+  target_column: load
+  split_manifest: data/manifests/SG-DATA-002-node-screening.json
+  normalization: train_zscore
+  event:
+    # 真实事件标签只用于评价；规则触发阈值由验证集冻结。
+    label_columns: [access_count, departure_count, load_jump_flag]
+    trigger_quantile: 0.95

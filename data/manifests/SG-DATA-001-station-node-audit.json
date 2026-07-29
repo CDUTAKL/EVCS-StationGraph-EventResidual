@@ -1,0 +1,84 @@
+{
+  "audit_id": "SG-DATA-001",
+  "generated_at": "2026-07-29T13:13:07.003594+00:00",
+  "input": {
+    "path": "/Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit/data/raw/acn_sessions.csv",
+    "sha256": "4a2545fd7e344c00b356c1b3e10ca859c47d5d3a9ab0498b5582bb3f8ca4b5c0",
+    "rows_scanned": 31424,
+    "columns": [
+      "sessionID",
+      "siteID",
+      "stationID",
+      "EVSEID",
+      "spaceID",
+      "connectionTime",
+      "disconnectTime",
+      "doneChargingTime",
+      "kWhDelivered",
+      "has_time_series",
+      "source"
+    ]
+  },
+  "identifier_summary": {
+    "unique_counts": {
+      "siteID": 1,
+      "stationID": 55,
+      "EVSEID": 55,
+      "spaceID": 55
+    },
+    "missing_counts": {},
+    "equality_rates": {
+      "stationID==EVSEID": 1.0,
+      "stationID==spaceID": 0.0,
+      "EVSEID==spaceID": 0.0
+    },
+    "mapping_summary": {
+      "stationID->EVSEID": {
+        "one_to_one": true,
+        "left_values_with_multiple_right_values": 0,
+        "right_values_with_multiple_left_values": 0
+      },
+      "stationID->spaceID": {
+        "one_to_one": true,
+        "left_values_with_multiple_right_values": 0,
+        "right_values_with_multiple_left_values": 0
+      },
+      "EVSEID->spaceID": {
+        "one_to_one": true,
+        "left_values_with_multiple_right_values": 0,
+        "right_values_with_multiple_left_values": 0
+      }
+    },
+    "nodes_per_site": {
+      "2": 55
+    }
+  },
+  "coverage_summary": {
+    "node_count": 55,
+    "sessions_per_node_min": 8,
+    "sessions_per_node_median": 565,
+    "sessions_per_node_max": 1808
+  },
+  "time_summary": {
+    "connectionTime": {
+      "parsed_count": 31424,
+      "min": "2018-04-25T11:08:04",
+      "max": "2021-09-14T01:52:37"
+    },
+    "disconnectTime": {
+      "parsed_count": 31424,
+      "min": "2018-04-25T13:20:10",
+      "max": "2021-09-14T03:05:10"
+    },
+    "doneChargingTime": {
+      "parsed_count": 29369,
+      "min": "2018-04-25T13:21:10",
+      "max": "2021-09-14T00:28:06"
+    }
+  },
+  "preliminary_findings": [
+    "stationID and EVSEID must be treated as aliases if equality rate is 1.0",
+    "spaceID may be used only after one-to-one and temporal stability checks",
+    "the target remains reconstructed proxy load rather than meter power"
+  ]
+}

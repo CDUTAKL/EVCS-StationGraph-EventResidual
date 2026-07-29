@@ -1,0 +1,23 @@
+experiment_id: SG-EXP-003
+name: static_station_interaction_graph
+status: ready_for_formal_run
+model: TCN_GCN
+purpose: 检验固定站内交互图是否提供跨充电单元增益
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+model_params:
+  hidden_dim: 32
+  levels: 3
+  dropout: 0.1
+training:
+  epochs: 60
+  patience: 8
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+graph:
+  scope: within_site
+  construction: train_only_statistical_relation
+  relation: fused
+  top_k: 5
+  smoothing: 0.5

@@ -1,0 +1,47 @@
+experiment_id: SG-EXP-001
+name: station_node_data_feasibility
+status: completed_data_gate
+purpose: 验证站内多节点标识、覆盖率、时序稳定性和可建图性
+inputs:
+  raw_sessions: /Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit/data/raw/acn_sessions.csv
+  proxy_timeslice: /Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit/data/processed/evcs_timeslice.csv
+  split_indices: /Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit/data/processed/splits/chronological_70_15_15_optimized.json
+compatibility:
+  upstream_experiment: EXP-111
+  split: chronological_70_15_15
+  history_steps: 96
+  horizon_steps: 4
+  interval_minutes: 15
+  node_field: spaceID
+  target: reconstructed_proxy_load
+outputs:
+  identifier_audit: data/manifests/SG-DATA-001-station-node-audit.json
+  node_metrics: data/processed/SG-DATA-002-node-coverage-stability.csv
+  primary_nodes: data/processed/SG-DATA-003-primary-node-list.csv
+  sensitivity_nodes: data/processed/SG-DATA-004-sensitivity-node-list.csv
+  screening_manifest: data/manifests/SG-DATA-002-node-screening.json
+  report: docs/thesis/SG-EXP-001-node-screening-report.md
+screening:
+  # 所有纳入判断仅使用训练集与验证集；测试集只报告可评价性。
+  primary:
+    train_min_access_events: 100
+    validation_min_access_events: 10
+    train_min_nonzero_load_bins: 200
+    train_min_active_month_ratio: 0.50
+    validation_min_active_month_ratio: 0.50
+    train_max_monthly_energy_cv: 2.50
+  sensitivity:
+    train_min_access_events: 40
+    validation_min_access_events: 5
+    train_min_nonzero_load_bins: 80
+    train_min_active_month_ratio: 0.25
+    validation_min_active_month_ratio: 0.25
+    train_max_monthly_energy_cv: 3.50
+  test_evaluable_flag:
+    min_access_events: 5
+    min_nonzero_load_bins: 20
+gates:
+  - node identifiers are stable and non-duplicated
+  - sufficient active coverage per node
+  - chronological split has adequate node coverage
+  - no post-origin information enters model inputs

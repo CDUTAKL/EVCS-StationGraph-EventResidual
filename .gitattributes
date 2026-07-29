@@ -1,0 +1,13 @@
+* text=auto
+*.py text eol=lf
+*.sh text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+
+# 若未来确需登记二进制证据，只记录其清单与校验和，不直接合并二进制内容。
+*.png binary
+*.pdf binary
+*.docx binary
+*.pptx binary

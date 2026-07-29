@@ -1,0 +1,51 @@
+{
+  "artifact_id": "SG-DATA-005",
+  "description": "15分钟节点代理负荷张量与冻结预测起点",
+  "feature_names": [
+    "load",
+    "access_count",
+    "departure_count",
+    "active_count",
+    "occupancy_rate",
+    "demand_intensity",
+    "load_jump_flag"
+  ],
+  "formal_data": true,
+  "node_ids": [
+    "CA-303",
+    "CA-304",
+    "CA-305",
+    "CA-307",
+    "CA-311",
+    "CA-315",
+    "CA-317",
+    "CA-321",
+    "CA-327",
+    "CA-489"
+  ],
+  "node_list": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/data/processed/SG-DATA-003-primary-node-list.csv",
+  "node_list_sha256": "aa1ae0c3f9b371dfdf7d6ba74253cca51b41ede06fc13fd0ab7c5f47a0540419",
+  "normalization": {
+    "feature": "global_zscore_by_feature",
+    "fit_scope": "train_only",
+    "target": "per_node_zscore"
+  },
+  "semantic_boundary": "load 为会话记录按15分钟重构的节点代理负荷，单位为 kWh/15min，不得表述为在线电表实测功率",
+  "shape": {
+    "features": 7,
+    "nodes": 10,
+    "time_steps": 118818
+  },
+  "source_csv": "/Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit/data/processed/evcs_timeslice.csv",
+  "source_sha256": "5d16b117eb69aa87f4e7d4547babc298b5b8689dfc900dc76a1c07d43e3f001a",
+  "split_manifest": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/data/manifests/SG-DATA-002-node-screening.json",
+  "split_manifest_sha256": "00f590b1d47a2770edfd4df3ef393d68ad57228c8d190dcc54d3245184b0138f",
+  "split_origin_counts": {
+    "test": 17809,
+    "train": 83103,
+    "validation": 17807
+  },
+  "target_name": "load",
+  "time_end": "2021-09-14T03:15:00.000000000",
+  "time_start": "2018-04-25T11:00:00.000000000"
+}

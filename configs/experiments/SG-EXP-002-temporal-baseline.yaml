@@ -1,0 +1,21 @@
+experiment_id: SG-EXP-002
+name: temporal_default_path
+status: ready_for_formal_run
+model: TCN
+purpose: 建立不使用跨节点图关系的默认时间预测路径
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+model_params:
+  hidden_dim: 32
+  levels: 3
+  dropout: 0.1
+training:
+  epochs: 60
+  patience: 8
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+graph:
+  relation: fused
+  top_k: 5
+  smoothing: 0.5

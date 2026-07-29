@@ -1,0 +1,31 @@
+experiment_id: SG-EXP-006
+name: ablation_sensitivity_and_four_cell_diagnostics
+status: ready_after_SG-EXP-002_checkpoint
+base_experiment_config: configs/experiments/SG-EXP-005-event-residual.yaml
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+ablations:
+  no_graph:
+    experiment.model: TCN
+  static_graph_only:
+    experiment.model: TCN_GCN
+  adaptive_graph_only:
+    experiment.model: adaptive_graph
+  no_event_gate:
+    experiment.gate.enabled: false
+  no_residual_bound:
+    experiment.model_params.residual_bound: 1000000.0
+relations:
+  - current_event
+  - historical_event
+  - load_correlation
+  - temporal_profile
+  - fused
+sensitivity:
+  top_k: [3, 5, 7]
+  graph_smoothing: [0.3, 0.5, 0.7]
+required_diagnostics:
+  - target_event_x_rule_trigger_four_cells
+  - weighted_global_metric_reconstruction
+  - event_and_stable_window_results
+  - node_and_horizon_results

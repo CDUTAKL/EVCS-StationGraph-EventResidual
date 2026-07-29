@@ -1,0 +1,24 @@
+experiment_id: SG-EXP-004
+name: adaptive_station_interaction_graph
+status: ready_for_formal_run
+model: adaptive_graph
+purpose: 在数据支持时检验自适应站内关系学习
+restriction: 若节点覆盖不足或结果不稳定，则不得保留动态图优越性结论
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+model_params:
+  hidden_dim: 32
+  levels: 3
+  dropout: 0.1
+  embedding_dim: 12
+  fixed_weight: 0.2
+training:
+  epochs: 60
+  patience: 8
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+graph:
+  relation: fused
+  top_k: 5
+  smoothing: 0.5
