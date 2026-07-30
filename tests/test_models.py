@@ -14,6 +14,7 @@ from evcs_station_graph.models import (
     TemporalConvNet,
 )
 from evcs_station_graph.models.graph import StationGraphForecast
+from evcs_station_graph.training.factory import build_model
 
 
 def test_all_model_output_shapes() -> None:
@@ -310,3 +311,184 @@ def test_static_graph_two_hop() -> None:
     assert diff_full > 1e-6, (
         f"完整编码后节点 0 应受节点 2 影响，但 mean|diff|={diff_full:.8f}"
     )
+
+
+# ---------------------------------------------------------------------------
+# 关系 dropout（relation_dropout）验证
+# ---------------------------------------------------------------------------
+# 设计背景：SG-EXP-006 的 relation_dropout 敏感性实验（0.0/0.2/0.4）
+# 必须真实改变模型计算，否则三个取值得到相同模型、实验无效。
+# 以下测试覆盖"配置 → 工厂 → 模型属性 → 前向行为"的完整闭环。
+
+
+def _make_dropout_static_model(relation_dropout: float) -> StaticGraphForecast:
+    """构造无特征 dropout、仅含指定 relation_dropout 的固定图模型。
+
+    dropout=0.0 排除 nn.Dropout 的干扰——此时 train 模式下前向的
+    唯一随机源就是 relation_dropout 的关系屏蔽采样。
+    """
+    return StaticGraphForecast(
+        7, 4, 4, [np.eye(4, dtype=np.float32)] * 3,
+        hidden_dim=8, levels=2, dropout=0.0,
+        relation_dropout=relation_dropout,
+    )
+
+
+def test_relation_dropout_changes_training_output() -> None:
+    """relation_dropout>0 时训练模式前向具有随机性，eval 模式保持确定。
+
+    单次前向碰巧采到相同关系掩码的概率不可忽略（R=3 时掩码组合有限），
+    因此收集 16 次前向结果：16 次全部采到同一掩码的概率约 1e-9 量级，
+    测试实际上不会抖动。
+    """
+    model = _make_dropout_static_model(0.4)
+    x = torch.randn(2, 96, 4, 7)
+
+    model.train()
+    outputs = [model(x).prediction for _ in range(16)]
+    assert any(not torch.allclose(outputs[0], other) for other in outputs[1:]), (
+        "relation_dropout=0.4 的 train 模式 16 次前向输出全部相同，"
+        "关系屏蔽未生效"
+    )
+
+    # eval 模式不采样关系掩码，推理必须完全确定
+    model.eval()
+    torch.testing.assert_close(model(x).prediction, model(x).prediction)
+
+
+def test_relation_dropout_disabled_when_zero() -> None:
+    """relation_dropout=0.0（默认）时 train 模式前向必须确定。
+
+    保证未配置该机制的实验（SG-EXP-002～005 正式路径）行为与
+    引入该机制之前完全一致——这是"默认关闭不改变既有行为"的回归保护。
+    """
+    model = _make_dropout_static_model(0.0)
+    x = torch.randn(2, 96, 4, 7)
+    model.train()
+    torch.testing.assert_close(model(x).prediction, model(x).prediction)
+
+
+def test_relation_dropout_extreme_rate_stays_finite() -> None:
+    """极端丢弃率下"至少保留一类关系"的保护必须生效，前向不产生 NaN/Inf。
+
+    p=0.999 时几乎每次前向只保留强制位上的一个关系；若保护缺失，
+    β 全零会导致归一化除零，输出 NaN。
+    """
+    model = _make_dropout_static_model(0.999)
+    model.train()
+    x = torch.randn(2, 96, 4, 7)
+    for _ in range(4):
+        output = model(x).prediction
+        assert torch.isfinite(output).all(), (
+            "relation_dropout=0.999 下前向出现非有限值，"
+            "至少保留一类关系的保护失效"
+        )
+
+
+def test_residual_relation_dropout_changes_training_output() -> None:
+    """EventResidualCorrection 的关系 dropout 在训练模式生效、eval 模式确定。
+
+    SG-EXP-006 的 sensitivity 变体以 event_residual 为基础模型，
+    其关系聚合是邻居均值而非 GCN 的 β 融合——两处都必须支持
+    relation_dropout，否则敏感性实验在默认路径上无效。
+    基模型冻结（freeze_base=True 且强制 eval），因此 train 模式的
+    唯一随机源是残差修正器自身的关系屏蔽采样。
+
+    注意：三类邻接矩阵必须互不相同——残差修正器对关系消息取均值，
+    若三类关系矩阵相同（如同为单位阵），任意保留子集的均值都相等，
+    关系屏蔽不产生可观测的输出差异。
+    """
+    feature_names = (
+        "load", "access_count", "departure_count", "active_count",
+        "occupancy_rate", "demand_intensity", "load_jump_flag",
+    )
+    # 三类互不相同的关系结构：成对块、交错连接、全连接
+    distinct_adjacencies = [
+        normalize_adjacency(np.array(
+            [[1, 1, 0, 0], [1, 1, 0, 0], [0, 0, 1, 1], [0, 0, 1, 1]],
+            dtype=np.float32,
+        )),
+        normalize_adjacency(np.array(
+            [[1, 0, 1, 0], [0, 1, 0, 1], [1, 0, 1, 0], [0, 1, 0, 1]],
+            dtype=np.float32,
+        )),
+        normalize_adjacency(np.ones((4, 4), dtype=np.float32)),
+    ]
+    base = TemporalConvNet(7, 4, hidden_dim=8, levels=2, dropout=0.0)
+    model = EventResidualCorrection(
+        base,
+        distinct_adjacencies,
+        horizon=4,
+        hidden_dim=8,
+        freeze_base=True,
+        feature_names=feature_names,
+        relation_dropout=0.4,
+    )
+    x = torch.randn(2, 96, 4, 7)
+    trigger = torch.ones(2, 4, dtype=torch.bool)
+
+    model.train()
+    outputs = [model(x, rule_trigger=trigger).prediction for _ in range(16)]
+    assert any(not torch.allclose(outputs[0], other) for other in outputs[1:]), (
+        "EventResidualCorrection relation_dropout=0.4 的 train 模式 "
+        "16 次前向输出全部相同，关系屏蔽未生效"
+    )
+
+    model.eval()
+    torch.testing.assert_close(
+        model(x, rule_trigger=trigger).prediction,
+        model(x, rule_trigger=trigger).prediction,
+    )
+
+
+def test_factory_passes_relation_dropout_to_model() -> None:
+    """experiment.graph.relation_dropout 必须经 build_model 进入模型属性。
+
+    这是"配置看似生效、实际未改变模型"问题的回归测试：
+    mechanism.py 将敏感性取值写入 config["experiment"]["graph"]["relation_dropout"]，
+    工厂必须读取并写入 GCN 层与残差修正器的 relation_dropout 属性，
+    否则 0.0/0.2/0.4 三个敏感性变体会训练出相同模型。
+    """
+    adjacencies = [np.eye(4, dtype=np.float32)] * 3
+    base_experiment = {
+        "experiment": {
+            "model": "TCN_GCN",
+            "model_params": {"hidden_dim": 8, "levels": 2, "dropout": 0.0},
+            "graph": {"relation_dropout": 0.4},
+        }
+    }
+
+    static_model = build_model(
+        base_experiment, input_dim=7, horizon=4, num_nodes=4,
+        adjacencies=adjacencies,
+    )
+    assert isinstance(static_model, StaticGraphForecast)
+    assert static_model.gcn1.relation_dropout == 0.4
+    assert static_model.gcn2.relation_dropout == 0.4
+
+    residual_experiment = {
+        "experiment": {
+            "model": "event_residual",
+            "model_params": {"hidden_dim": 8, "levels": 2, "dropout": 0.0},
+            "graph": {"relation_dropout": 0.2},
+        }
+    }
+    residual_model = build_model(
+        residual_experiment, input_dim=7, horizon=4, num_nodes=4,
+        adjacencies=adjacencies,
+    )
+    assert isinstance(residual_model, EventResidualCorrection)
+    assert residual_model.relation_dropout == 0.2
+
+    # 未配置时默认关闭——既有实验配置行为不变
+    default_experiment = {
+        "experiment": {
+            "model": "TCN_GCN",
+            "model_params": {"hidden_dim": 8, "levels": 2, "dropout": 0.0},
+        }
+    }
+    default_model = build_model(
+        default_experiment, input_dim=7, horizon=4, num_nodes=4,
+        adjacencies=adjacencies,
+    )
+    assert default_model.gcn1.relation_dropout == 0.0

@@ -24,4 +24,3 @@ training:
   weight_decay: 0.0001
 graph:
   top_k: 5
-  smoothing: 0.5

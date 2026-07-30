@@ -338,7 +338,6 @@ def _build_relations(config: dict[str, Any], bundle: TensorBundle) -> RelationSe
         bundle.targets[: train_end + 1],
         bundle.feature_names,
         top_k=int(graph.get("top_k", 5)),
-        smoothing=float(graph.get("smoothing", 0.5)),
     )
 
 

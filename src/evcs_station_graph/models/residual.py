@@ -26,7 +26,11 @@ import numpy as np
 import torch
 from torch import nn
 
-from evcs_station_graph.models.common import ForecastModel, ForecastOutput
+from evcs_station_graph.models.common import (
+    ForecastModel,
+    ForecastOutput,
+    sample_relation_keep_mask,
+)
 
 
 class EventResidualCorrection(nn.Module):
@@ -61,6 +65,7 @@ class EventResidualCorrection(nn.Module):
         freeze_base: bool = True,
         feature_names: tuple[str, ...] | None = None,
         base_model_type: str = "temporal",
+        relation_dropout: float = 0.0,
     ) -> None:
         super().__init__()
         self.base_model = base_model
@@ -73,6 +78,10 @@ class EventResidualCorrection(nn.Module):
         self._num_adj = len(adjacencies)
         self.residual_bound = float(residual_bound)
         self.freeze_base = bool(freeze_base)
+        # 关系 dropout：训练时以概率 p 随机屏蔽整类关系后聚合邻居
+        # （SG-EXP-006 敏感性实验，与 MultiRelationGatedGCN 语义一致）。
+        # 0.0（默认）表示关闭，未配置该参数的实验行为与此前完全一致。
+        self.relation_dropout = float(relation_dropout)
         # 事件特征索引：通过 feature_names 查找默认事件特征列
         # 默认查找 ["access_count", "departure_count", "active_count", "load_jump_flag"]
         # 找不到的特征静默跳过；全部找不到则报错
@@ -136,7 +145,17 @@ class EventResidualCorrection(nn.Module):
         neighbor_parts = []
         for adj in adjs:
             neighbor_parts.append(torch.einsum("nm,bmd->bnd", adj, base_latent))
-        M = torch.stack(neighbor_parts).mean(dim=0)  # [B, N, D] 平均多关系邻居信息
+        # 关系 dropout（仅训练模式）：随机屏蔽整类关系，用保留子集聚合，
+        # 与 MultiRelationGatedGCN 的语义一致（SG-EXP-006 敏感性实验
+        # 在 event_residual 模型上的实际作用点）。eval/测试模式不采样。
+        if self.training and self.relation_dropout > 0.0:
+            keep = sample_relation_keep_mask(
+                len(neighbor_parts), self.relation_dropout, base_latent.device,
+            )
+            stacked = torch.stack(neighbor_parts) * keep[:, None, None, None]
+            M = stacked.sum(dim=0) / keep.sum().clamp(min=1.0)
+        else:
+            M = torch.stack(neighbor_parts).mean(dim=0)  # [B, N, D] 平均多关系邻居信息
 
         # ---- 第三步：提取可见事件特征 E ----
         # 取预测起点（最后一个时间步）的事件相关特征

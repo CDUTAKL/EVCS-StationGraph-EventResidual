@@ -21,5 +21,4 @@ graph:
   description: 三类独立关系均参与多关系消息传递，可学习权重 β 融合
   relations: [load, event, pattern]
   top_k: 5
-  smoothing: 0.5
   layer_count: 2

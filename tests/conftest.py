@@ -131,7 +131,6 @@ def smoke_config(tmp_path) -> dict:
             },
             "graph": {
                 "top_k": 2,
-                "smoothing": 0.5,
             },
             "gate": {
                 "enabled": True,

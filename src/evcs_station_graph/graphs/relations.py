@@ -38,7 +38,6 @@ def build_relation_set(
     feature_names: tuple[str, ...],
     *,
     top_k: int = 5,
-    smoothing: float = 0.5,  # 保留兼容，不再用于融合
 ) -> RelationSet:
     """构建三类训练期候选关系矩阵，每类独立处理不预先融合。
 

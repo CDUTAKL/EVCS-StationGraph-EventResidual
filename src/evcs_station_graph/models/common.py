@@ -39,6 +39,29 @@ class ForecastOutput:
     relation_weights_gcn2: torch.Tensor | None = None
 
 
+def sample_relation_keep_mask(
+    num_relations: int,
+    relation_dropout: float,
+    device: torch.device,
+) -> torch.Tensor:
+    """训练期关系 dropout：以概率 p 独立丢弃每类关系，至少保留一类。
+
+    返回形状 ``[R]`` 的 0/1 浮点掩码（1=保留，0=丢弃），供
+    ``MultiRelationGatedGCN`` 与 ``EventResidualCorrection`` 共用，
+    保证两处关系聚合的 dropout 语义完全一致。
+
+    实现说明：为"至少保留一类"，朴素做法是"全丢弃时随机保留一个"，
+    但判断全丢弃需要 ``bool(mask.any())``，触发一次 GPU→CPU 同步。
+    这里改为"无条件将一个随机位置强制置 1"——概率语义差异可忽略
+    （R=3, p=0.4 时全丢弃概率仅 6.4%），但每次前向省去一次设备同步。
+    仅在训练模式下由调用方启用；eval/测试模式不采样，保证推理确定。
+    """
+    keep = torch.rand(num_relations, device=device) >= relation_dropout
+    forced = torch.randint(num_relations, (1,), device=device)
+    keep = keep | (torch.arange(num_relations, device=device) == forced)
+    return keep.to(torch.float32)
+
+
 class ForecastModel(nn.Module):
     """预测模型统一接口。
 

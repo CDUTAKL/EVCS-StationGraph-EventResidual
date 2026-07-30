@@ -65,6 +65,11 @@ def test_mechanism_suite_builds_expected_variants() -> None:
     assert no_graph[2] is False
     assert no_event[2] is True
 
+    # relation_dropout 敏感性取值必须写入派生配置的 graph 段——
+    # 工厂从 experiment.graph.relation_dropout 读取该值并传入模型
+    dropout_variant = next(item for item in variants if item[0] == "dropout-0p2")
+    assert dropout_variant[1]["experiment"]["graph"]["relation_dropout"] == 0.2
+
 
 def test_orchestration_applies_dataset_override_before_loading(tmp_path: Path) -> None:
     """编排命令应先应用覆盖项，再决定加载哪个节点张量。"""

@@ -19,7 +19,11 @@ import numpy as np
 import torch
 from torch import nn
 
-from evcs_station_graph.models.common import ForecastModel, ForecastOutput
+from evcs_station_graph.models.common import (
+    ForecastModel,
+    ForecastOutput,
+    sample_relation_keep_mask,
+)
 from evcs_station_graph.models.tcn import TemporalConvNet
 
 
@@ -43,6 +47,7 @@ class MultiRelationGatedGCN(nn.Module):
         hidden_dim: int,
         num_relations: int,
         dropout: float = 0.1,
+        relation_dropout: float = 0.0,
     ) -> None:
         super().__init__()
         # 每类关系独立的变换矩阵（无 bias，保持消息的线性组合性）
@@ -54,6 +59,9 @@ class MultiRelationGatedGCN(nn.Module):
         self.W_gate = nn.Linear(hidden_dim * 2, hidden_dim)
         self.norm = nn.LayerNorm(hidden_dim)
         self.dropout = nn.Dropout(dropout)
+        # 关系 dropout：训练时以概率 p 随机屏蔽整类关系（SG-EXP-006 敏感性实验）。
+        # 0.0（默认）表示关闭，未配置该参数的实验行为与此前完全一致。
+        self.relation_dropout = float(relation_dropout)
 
     def forward(
         self,
@@ -73,6 +81,18 @@ class MultiRelationGatedGCN(nn.Module):
             原始关系权重（未归一化），将被 Softmax 归一化。
         """
         beta = torch.softmax(relation_weights, dim=0)  # [R]
+
+        # ---- 关系 dropout（仅训练模式生效） ----
+        # 随机屏蔽部分关系后对 β 重新归一化：被丢弃的关系本次前向贡献为 0，
+        # 保留关系按比例分摊全部权重。这迫使模型不过度依赖单一关系，
+        # 是 SG-EXP-006 relation_dropout 敏感性实验的实际作用点。
+        # eval/测试模式下不采样，保证推理结果确定。
+        if self.training and self.relation_dropout > 0.0:
+            keep = sample_relation_keep_mask(
+                beta.numel(), self.relation_dropout, beta.device,
+            )
+            beta = beta * keep
+            beta = beta / beta.sum().clamp(min=1e-12)
 
         # 多关系消息聚合
         M = torch.zeros_like(H)
@@ -125,6 +145,7 @@ class StationGraphForecast(ForecastModel):
         hidden_dim: int = 32,
         levels: int = 3,
         dropout: float = 0.1,
+        relation_dropout: float = 0.0,
         relation_weights_gcn1: torch.Tensor | None = None,
         relation_weights_gcn2: torch.Tensor | None = None,
     ) -> None:
@@ -135,8 +156,8 @@ class StationGraphForecast(ForecastModel):
             hidden_dim=hidden_dim, levels=levels, dropout=dropout,
         )
         # 两层独立的门控图卷积（不同跳数，不同参数）
-        self.gcn1 = MultiRelationGatedGCN(hidden_dim, num_relations, dropout)
-        self.gcn2 = MultiRelationGatedGCN(hidden_dim, num_relations, dropout)
+        self.gcn1 = MultiRelationGatedGCN(hidden_dim, num_relations, dropout, relation_dropout)
+        self.gcn2 = MultiRelationGatedGCN(hidden_dim, num_relations, dropout, relation_dropout)
         # 图特征MLP精炼：残差MLP做节点特征的非线性变换
         # 重要：这不是第二个时序卷积模块。TCN1 已将时间维压缩到节点向量，
         # 此处仅做节点特征的非线性精炼（残差 MLP），无时序卷积操作。
@@ -229,11 +250,13 @@ class StaticGraphForecast(StationGraphForecast):
         hidden_dim: int = 32,
         levels: int = 3,
         dropout: float = 0.1,
+        relation_dropout: float = 0.0,
     ) -> None:
         num_relations = len(adjacencies)
         super().__init__(
             input_dim, horizon, num_nodes, num_relations,
             hidden_dim=hidden_dim, levels=levels, dropout=dropout,
+            relation_dropout=relation_dropout,
         )
         # 将三类固定邻接矩阵注册为 buffer（不参与梯度更新）
         for r, adj in enumerate(adjacencies):
@@ -286,12 +309,14 @@ class AdaptiveGraphForecast(StationGraphForecast):
         dropout: float = 0.1,
         fixed_weight: float = 0.3,
         top_k: int = 5,
+        relation_dropout: float = 0.0,
     ) -> None:
         # 4 类关系：load, event, pattern + adaptive
         num_relations = len(adjacencies) + 1
         super().__init__(
             input_dim, horizon, num_nodes, num_relations,
             hidden_dim=hidden_dim, levels=levels, dropout=dropout,
+            relation_dropout=relation_dropout,
         )
         # 固定邻接矩阵
         for r, adj in enumerate(adjacencies):

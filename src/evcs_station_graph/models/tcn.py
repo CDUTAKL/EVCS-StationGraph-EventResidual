@@ -37,18 +37,19 @@ class CausalConvBlock(nn.Module):
     ) -> None:
         super().__init__()
         padding = (kernel_size - 1) * dilation
-        self.padding = padding
+        self.padding = padding  # 记录 padding 以便 forward 时裁剪右侧
         self.conv = nn.Conv1d(
+            # Conv1d 输入形状 [B, C_in, T]，输出形状 [B, C_out, T+padding]
             in_channels,
             out_channels,
-            kernel_size=kernel_size,
-            dilation=dilation,
-            padding=padding,
+            kernel_size=kernel_size,  # 卷积核大小
+            dilation=dilation,        # 扩张因子
+            padding=padding,          # 左侧填充，保证输出长度 = 输入长度 + padding
         )
-        self.norm = nn.GroupNorm(1, out_channels)
-        self.activation = nn.GELU()
-        self.dropout = nn.Dropout(dropout)
-        self.residual = (
+        self.norm = nn.GroupNorm(1, out_channels)  # 组数=1 等价于 LayerNorm，适合小 batch 训练
+        self.activation = nn.GELU()                # GELU 激活函数，平滑非线性
+        self.dropout = nn.Dropout(dropout)         # 随机失活，防止过拟合
+        self.residual = (                          # 残差连接：若输入输出通道数相同，则直接相加，否则通过 1x1 卷积调整通道数
             nn.Identity()
             if in_channels == out_channels
             else nn.Conv1d(in_channels, out_channels, kernel_size=1)

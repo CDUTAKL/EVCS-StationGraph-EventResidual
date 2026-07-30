@@ -22,6 +22,9 @@ relations:
   - all
 sensitivity:
   top_k: [3, 5, 7]
+  # 关系 dropout：训练时以概率 p 随机屏蔽整类关系（至少保留一类），
+  # 作用于 MultiRelationGatedGCN 的 β 融合与 EventResidualCorrection 的
+  # 邻居聚合；eval/测试模式不启用。未配置时默认 0.0（关闭）。
   relation_dropout: [0.0, 0.2, 0.4]
 required_diagnostics:
   - target_event_x_rule_trigger_four_cells
