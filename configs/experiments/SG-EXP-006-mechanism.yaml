@@ -16,11 +16,9 @@ ablations:
   no_residual_bound:
     experiment.model_params.residual_bound: 1000000.0
 relations:
-  - current_event
-  - historical_event
-  - load_correlation
-  - temporal_profile
-  - fused
+  - load
+  - event
+  - pattern
 sensitivity:
   top_k: [3, 5, 7]
   graph_smoothing: [0.3, 0.5, 0.7]

@@ -130,7 +130,6 @@ def smoke_config(tmp_path) -> dict:
                 "weight_decay": 0.0,
             },
             "graph": {
-                "relation": "fused",
                 "top_k": 2,
                 "smoothing": 0.5,
             },

@@ -103,6 +103,7 @@ def _build_variants(
         model_name = str(config["experiment"]["model"])
         variants.append((f"ablation-{name}", config, model_name not in model_without_checkpoint))
 
+    # 关系消融：通过覆盖 graph.ablated_relations 选择部分关系
     for relation in suite.get("relations", []):
         config = copy.deepcopy(base)
         config["experiment"]["graph"]["relation"] = relation

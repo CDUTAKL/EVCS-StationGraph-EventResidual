@@ -16,26 +16,17 @@ from evcs_station_graph.models import (
 def test_all_model_output_shapes() -> None:
     """所有模型必须遵守统一的 [B,H,N] 输出约定。"""
     x = torch.randn(2, 96, 4, 7)
-    adjacency = np.eye(4, dtype=np.float32)
+    # 三类关系邻接矩阵（测试用单位阵模拟）
+    adjacencies = [np.eye(4, dtype=np.float32)] * 3
     models = (
         TemporalConvNet(7, 4, hidden_dim=8, levels=2, dropout=0.0),
         StaticGraphForecast(
-            7,
-            4,
-            adjacency,
-            hidden_dim=8,
-            levels=2,
-            dropout=0.0,
+            7, 4, 4, adjacencies,
+            hidden_dim=8, levels=2, dropout=0.0,
         ),
         AdaptiveGraphForecast(
-            7,
-            4,
-            4,
-            hidden_dim=8,
-            embedding_dim=4,
-            levels=2,
-            dropout=0.0,
-            fixed_adjacency=adjacency,
+            7, 4, 4, adjacencies,
+            hidden_dim=8, embedding_dim=4, levels=2, dropout=0.0,
         ),
     )
     for model in models:
@@ -50,7 +41,7 @@ def test_residual_correction_obeys_gate_and_bound() -> None:
     base = TemporalConvNet(7, 4, hidden_dim=8, levels=2, dropout=0.0)
     model = EventResidualCorrection(
         base,
-        np.eye(4, dtype=np.float32),
+        [np.eye(4, dtype=np.float32)] * 3,  # 三类关系
         horizon=4,
         hidden_dim=8,
         residual_bound=0.25,

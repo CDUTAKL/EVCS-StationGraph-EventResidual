@@ -13,22 +13,23 @@ import numpy as np
 
 @dataclass(frozen=True)
 class RelationSet:
-    """五类候选统计关系及其融合矩阵。"""
+    """三类站内充电桩行为交互关系矩阵。
 
-    current_event: np.ndarray
-    historical_event: np.ndarray
-    load_correlation: np.ndarray
-    temporal_profile: np.ndarray
-    fused: np.ndarray
+    所有矩阵仅使用训练期数据构建，验证/测试集不参与计算。
+    每类图独立完成 top-k 稀疏化和对称归一化，不预先融合——
+    图模型通过可学习权重 β_r 在消息传递阶段融合多关系信息。
+    """
+
+    load: np.ndarray       # A_load：历史负荷相关性（max(corr, 0)）
+    event: np.ndarray      # A_event：充电行为共现（接入/离站/活跃变化余弦相似度）
+    pattern: np.ndarray    # A_pattern：时间模式相似度（日内平均轮廓距离）
 
     def as_dict(self) -> dict[str, np.ndarray]:
-        return {
-            "current_event": self.current_event,
-            "historical_event": self.historical_event,
-            "load_correlation": self.load_correlation,
-            "temporal_profile": self.temporal_profile,
-            "fused": self.fused,
-        }
+        return {"load": self.load, "event": self.event, "pattern": self.pattern}
+
+    def as_list(self) -> list[np.ndarray]:
+        """返回固定顺序的三类关系矩阵列表，供模型逐关系消息传递。"""
+        return [self.load, self.event, self.pattern]
 
 
 def build_relation_set(
@@ -37,9 +38,9 @@ def build_relation_set(
     feature_names: tuple[str, ...],
     *,
     top_k: int = 5,
-    smoothing: float = 0.5,
+    smoothing: float = 0.5,  # 保留兼容，不再用于融合
 ) -> RelationSet:
-    """构建五类训练期候选关系。
+    """构建三类训练期候选关系矩阵，每类独立处理不预先融合。
 
     参数
     ----
@@ -47,15 +48,13 @@ def build_relation_set(
         形状为 ``[T, N, F]``。
     train_targets:
         形状为 ``[T, N]``。
-    smoothing:
-        融合图中负荷相关关系的权重，其余权重分配给事件和时间轮廓关系。
+    top_k:
+        每节点保留的最强邻居数。
     """
     if train_features.ndim != 3 or train_targets.ndim != 2:
         raise ValueError("训练特征或目标维度不正确")
     if train_features.shape[:2] != train_targets.shape:
         raise ValueError("训练特征与目标的时间、节点维不一致")
-    if not 0.0 <= smoothing <= 1.0:
-        raise ValueError("smoothing 必须位于 [0, 1]")
 
     feature_index = {name: index for index, name in enumerate(feature_names)}
     needed = {"access_count", "departure_count", "active_count"}
@@ -66,33 +65,31 @@ def build_relation_set(
     access = train_features[:, :, feature_index["access_count"]]
     departure = train_features[:, :, feature_index["departure_count"]]
     active = train_features[:, :, feature_index["active_count"]]
-    event_signal = access + departure
 
-    # 当前事件关系：同一时间片内接入/离站事件的共现强度。
-    current_event = _cosine_columns(event_signal)
-    # 历史事件关系：活跃会话变化及事件历史的联合相关性。
-    active_delta = np.diff(active, axis=0, prepend=active[[0]])
-    historical_event = _safe_abs_corr(event_signal + np.abs(active_delta))
-    # 历史负荷相关关系：训练期代理负荷的线性同步性。
-    load_correlation = _safe_abs_corr(train_targets)
-    # 时间轮廓关系：比较节点日内平均负荷曲线，而非逐点瞬时相关。
-    temporal_profile = _profile_similarity(train_targets)
+    # ---- 关系 1：历史负荷相关（max(corr, 0)）----
+    # 比较不同节点代理负荷变化的线性同步性。
+    # 取 max(corr, 0) 删除负相关边——图模型不区分正负相关方向。
+    A_load = _safe_abs_corr(train_targets)
+    A_load = sparsify_top_k(A_load, top_k)
+    A_load = normalize_adjacency(A_load)
 
-    current_event = sparsify_top_k(current_event, top_k)
-    historical_event = sparsify_top_k(historical_event, top_k)
-    load_correlation = sparsify_top_k(load_correlation, top_k)
-    temporal_profile = sparsify_top_k(temporal_profile, top_k)
+    # ---- 关系 2：充电行为共现（余弦相似度）----
+    # 行为向量 = 接入数 + 离站数 + |活跃会话变化|，捕捉节点间
+    # "是否在相近时段出现相似的充放电活动模式"。
+    active_delta = np.abs(np.diff(active, axis=0, prepend=active[[0]]))
+    event_signal = access + departure + active_delta
+    A_event = _cosine_columns(event_signal)
+    A_event = sparsify_top_k(A_event, top_k)
+    A_event = normalize_adjacency(A_event)
 
-    auxiliary = (current_event + historical_event + temporal_profile) / 3.0
-    fused = smoothing * load_correlation + (1.0 - smoothing) * auxiliary
-    fused = sparsify_top_k(fused, top_k)
-    return RelationSet(
-        current_event=normalize_adjacency(current_event),
-        historical_event=normalize_adjacency(historical_event),
-        load_correlation=normalize_adjacency(load_correlation),
-        temporal_profile=normalize_adjacency(temporal_profile),
-        fused=normalize_adjacency(fused),
-    )
+    # ---- 关系 3：时间模式相似度（指数核距离）----
+    # 比较节点日内平均负荷轮廓的形状相似性，而非逐点瞬时相关。
+    # 捕捉"节点 A 和节点 B 在一天中是否具有相似的负荷形状"。
+    A_pattern = _profile_similarity(train_targets)
+    A_pattern = sparsify_top_k(A_pattern, top_k)
+    A_pattern = normalize_adjacency(A_pattern)
+
+    return RelationSet(load=A_load, event=A_event, pattern=A_pattern)
 
 
 def normalize_adjacency(adjacency: np.ndarray) -> np.ndarray:

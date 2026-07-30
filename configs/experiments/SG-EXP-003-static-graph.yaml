@@ -18,6 +18,7 @@ training:
 graph:
   scope: within_site
   construction: train_only_statistical_relation
-  relation: fused
+  description: 三类独立关系（load/event/pattern）均参与消息传递，可学习权重 β 融合
   top_k: 5
   smoothing: 0.5
+  layer_count: 2

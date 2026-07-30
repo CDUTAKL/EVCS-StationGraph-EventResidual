@@ -28,10 +28,14 @@ def build_model(
     input_dim: int,
     horizon: int,
     num_nodes: int,
-    adjacency: np.ndarray,
+    adjacencies: list[np.ndarray],
     base_checkpoint: str | Path | None = None,
 ) -> torch.nn.Module:
-    """根据解析后的实验配置创建模型。"""
+    """根据解析后的实验配置创建模型。
+
+    ``adjacencies`` 为三类关系矩阵列表 [A_load, A_event, A_pattern]。
+    仅 TCN 不使用该参数。
+    """
     experiment = config["experiment"]
     params = experiment.get("model_params", {})
     model_name = str(experiment.get("model", experiment.get("model_family", ["TCN"])[0]))
@@ -43,18 +47,21 @@ def build_model(
 
     if model_name in {"TCN", "temporal"}:
         return TemporalConvNet(input_dim, horizon, **common)
+
     if model_name in {"TCN_GCN", "static_graph"}:
-        return StaticGraphForecast(input_dim, horizon, adjacency, **common)
+        return StaticGraphForecast(
+            input_dim, horizon, num_nodes, adjacencies, **common,
+        )
+
     if model_name in {"GraphWaveNet_style", "AGCRN_style", "adaptive_graph"}:
         return AdaptiveGraphForecast(
-            input_dim,
-            horizon,
-            num_nodes,
+            input_dim, horizon, num_nodes, adjacencies,
             embedding_dim=int(params.get("embedding_dim", 12)),
-            fixed_adjacency=adjacency,
-            fixed_weight=float(params.get("fixed_weight", 0.2)),
+            fixed_weight=float(params.get("fixed_weight", 0.3)),
+            top_k=int(params.get("top_k", 5)),
             **common,
         )
+
     if model_name in {"event_residual", "frozen_event_gated_residual_correction"}:
         freeze_base = bool(params.get("freeze_base", base_checkpoint is not None))
         if freeze_base and base_checkpoint is None:
@@ -68,7 +75,7 @@ def build_model(
             base.load_state_dict(_extract_base_state(state), strict=True)
         return EventResidualCorrection(
             base,
-            adjacency,
+            adjacencies,
             horizon,
             hidden_dim=int(params.get("residual_hidden_dim", 32)),
             residual_bound=float(params.get("residual_bound", 0.5)),

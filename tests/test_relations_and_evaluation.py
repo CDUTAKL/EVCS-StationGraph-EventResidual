@@ -15,28 +15,20 @@ from evcs_station_graph.graphs import build_relation_set
 def test_relation_matrices_are_finite_and_symmetrically_normalized(
     synthetic_bundle,
 ) -> None:
-    """五类候选关系都必须可计算，并满足对称归一化图的基本性质。"""
+    """三类关系矩阵必须可计算，并满足对称归一化图的基本性质。"""
     train_end = int(synthetic_bundle.split_origins["train"][-1])
     relations = build_relation_set(
         synthetic_bundle.features[: train_end + 1],
         synthetic_bundle.targets[: train_end + 1],
         synthetic_bundle.feature_names,
         top_k=2,
-        smoothing=0.5,
     )
-    assert set(relations.as_dict()) == {
-        "current_event",
-        "historical_event",
-        "load_correlation",
-        "temporal_profile",
-        "fused",
-    }
+    assert set(relations.as_dict()) == {"load", "event", "pattern"}
     for matrix in relations.as_dict().values():
         assert matrix.shape == (4, 4)
         assert np.isfinite(matrix).all()
         np.testing.assert_allclose(matrix, matrix.T, atol=1e-6)
         assert np.all(np.diag(matrix) > 0.0)
-        # 对称归一化邻接矩阵的谱半径不应超过 1；它不要求逐行和为 1。
         assert float(np.abs(np.linalg.eigvalsh(matrix)).max()) <= 1.0 + 1e-5
 
 

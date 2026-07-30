@@ -24,16 +24,24 @@ from evcs_station_graph.models.common import ForecastModel, ForecastOutput
 
 
 class EventResidualCorrection(nn.Module):
-    """仅在规则触发位置叠加有界局部残差。
+    """仅在规则触发位置叠加有界局部残差（SG-EXP-005）。
 
-    该模块不改变默认路径结构，也不把触发规则学习成分类器。规则阈值在验证集
-    上确定后冻结，测试阶段只执行既定分流。
+    修正 MLP 使用三类信息：
+      H：当前节点隐状态（基模型编码输出）
+      M：邻居聚合结果（多关系消息传递）
+      E：预测起点的可见事件特征（接入/离站/活跃/负荷跳变）
+
+    公式：
+      ΔŶ = r_max · tanh(MLP([H, M, E]))
+      Ŷ = Ŷ_base + m_t · ΔŶ
+
+    ``adjacencies`` 支持多关系图——与 graph.py 的消息传递保持结构一致。
     """
 
     def __init__(
         self,
         base_model: ForecastModel,
-        adjacency: np.ndarray | torch.Tensor,
+        adjacencies: np.ndarray | torch.Tensor | list,
         horizon: int,
         *,
         hidden_dim: int = 32,
@@ -42,12 +50,20 @@ class EventResidualCorrection(nn.Module):
     ) -> None:
         super().__init__()
         self.base_model = base_model
-        matrix = torch.as_tensor(adjacency, dtype=torch.float32)
-        self.register_buffer("adjacency", matrix)
+        # 支持单个邻接矩阵或多关系矩阵列表
+        if isinstance(adjacencies, (np.ndarray, torch.Tensor)):
+            adjacencies = [adjacencies]
+        for r, adj in enumerate(adjacencies):
+            self.register_buffer(f"adj_{r}", torch.as_tensor(adj, dtype=torch.float32))
+        self._num_adj = len(adjacencies)
         self.residual_bound = float(residual_bound)
         self.freeze_base = bool(freeze_base)
+        # 事件特征索引（接入/离站/活跃/负荷跳变）——与 feature_columns 顺序一致
+        self._event_feat_indices = [1, 2, 3, 6]  # access, departure, active, load_jump
+        n_event_feats = len(self._event_feat_indices)
+        # 修正 MLP：[H, M, E] → hidden → horizon → tanh
         self.corrector = nn.Sequential(
-            nn.Linear(base_model.latent_dim * 2, hidden_dim),
+            nn.Linear(base_model.latent_dim * 2 + n_event_feats, hidden_dim),
             nn.GELU(),
             nn.Linear(hidden_dim, horizon),
             nn.Tanh(),
@@ -76,34 +92,38 @@ class EventResidualCorrection(nn.Module):
         **_: torch.Tensor,
     ) -> ForecastOutput:
         # ---- 第一步：默认路径预测（冻结，不计算梯度） ----
-        # 选择 no_grad 或 null_context 取决于 freeze_base 设置
         context = torch.no_grad() if self.freeze_base else _null_context()
         with context:
             base_latent = self.base_model.encode(x)       # [B, N, D]
             base_prediction = self.base_model.forecast_from_latent(base_latent)  # [B, H, N]
 
-        # ---- 第二步：构造修正 MLP 的输入 ----
-        # 邻居聚合：与 graph.py 相同的消息传递逻辑
-        neighbor = torch.einsum("nm,bmd->bnd", self.adjacency, base_latent)
-        # 关键设计：输入 = [自身隐表示, 邻居与自身的差异]
-        # 差异量捕捉了"图信息告诉你的、时间信息没告诉你的"部分——
-        # 如果邻居信息与自身信息一致，差异→0，correction→0
-        correction_input = torch.cat([base_latent, neighbor - base_latent], dim=-1)
+        # ---- 第二步：多关系邻居聚合 ----
+        # 对每类关系独立做消息传递后取平均——与 graph.py 的 GCN 保持一致结构
+        adjs = [getattr(self, f"adj_{r}") for r in range(self._num_adj)]
+        neighbor_parts = []
+        for adj in adjs:
+            neighbor_parts.append(torch.einsum("nm,bmd->bnd", adj, base_latent))
+        M = torch.stack(neighbor_parts).mean(dim=0)  # [B, N, D] 平均多关系邻居信息
 
-        # ---- 第三步：有界残差生成 ----
-        # correction MLP 输出经过 Tanh → [-1, 1] → 乘以 residual_bound
-        # 这保证每条修正的幅度不超过 residual_bound（单位：标准化后负荷）
+        # ---- 第三步：提取可见事件特征 E ----
+        # 取预测起点（最后一个时间步）的事件相关特征
+        # 这些特征在事件规则中用于计算分数，在此为修正 MLP 提供上下文
+        E = x[:, -1, :, self._event_feat_indices]  # [B, N, F_event]
+
+        # ---- 第四步：修正 MLP 输入 = [H, M - H, E] ----
+        # M-H：邻居与自身的差异，捕捉图信息独有的增量
+        # E：预测起点的可见事件特征，提供触发上下文
+        correction_input = torch.cat([base_latent, M - base_latent, E], dim=-1)
+
+        # ---- 第五步：有界残差生成 ----
         residual = self.corrector(correction_input).permute(0, 2, 1).contiguous()
         residual = residual * self.residual_bound
 
-        # ---- 第四步：事件门控 ----
+        # ---- 第六步：事件门控 ----
         if rule_trigger is None:
-            # 无门控消融模式：所有样本均进入修正路径
             gate = torch.ones_like(residual)
         else:
             gate = rule_trigger.to(dtype=residual.dtype)
-            # 维度自适应：rule_trigger 可以是 [B, N]（per-node 门控）
-            # 或 [B, H, N]（per-node-per-horizon 门控）
             if gate.ndim == 2:
                 gate = gate[:, None, :].expand_as(residual)
             if gate.shape != residual.shape:
@@ -112,9 +132,9 @@ class EventResidualCorrection(nn.Module):
         final_prediction = base_prediction + gate * residual
         return ForecastOutput(
             prediction=final_prediction,
-            base_prediction=base_prediction,       # 保留默认预测用于量化修正幅度
-            residual=gate * residual,               # 仅报告实际施加的残差
-            adjacency=self.adjacency,
+            base_prediction=base_prediction,
+            residual=gate * residual,
+            adjacency=adjs[0] if adjs else None,
         )
 
 

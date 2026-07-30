@@ -140,16 +140,15 @@ def train_single_seed(
         "test": _make_loader(datasets["test"], batch_size, False, seed),
     }
     # ========== 阶段 2：模型创建与冻结事件规则拟合 ==========
-    relation_name = config["experiment"].get("graph", {}).get("relation", "fused")
-    if relation_name not in relation_set.as_dict():
-        raise ValueError(f"未知候选关系：{relation_name}")
-    adjacency = relation_set.as_dict()[relation_name]
+    # 所有图模型接收三类关系矩阵列表——不再通过 config 选单个关系
+    # SG-EXP-006 的候选关系消融通过 config 控制传入哪些矩阵
+    adjacencies = relation_set.as_list()  # [A_load, A_event, A_pattern]
     model = build_model(
         config,
         input_dim=len(bundle.feature_names),
         horizon=spec.forecast_steps,
         num_nodes=len(bundle.node_ids),
-        adjacency=adjacency,
+        adjacencies=adjacencies,
         base_checkpoint=base_checkpoint,
     )
     device = _select_device(str(runtime.get("device", "auto")))
