@@ -29,7 +29,7 @@ class WindowSpec:
     forecast_steps: int
 
 
-class NodeWindowDataset(Dataset[dict[str, torch.Tensor]]):
+class NodeWindowDataset(Dataset):  # type: ignore[type-arg]
     """按预测起点惰性切片，避免在磁盘上复制大量重叠窗口。
 
     设计决策：不在构建时预标准化 features/targets，而是在 __getitem__ 中
