@@ -142,6 +142,8 @@ class EventResidualCorrection(nn.Module):
         # ---- 第二步：多关系邻居聚合 ----
         # 对每类关系独立做消息传递后取平均——与 graph.py 的 GCN 保持一致结构
         adjs = [getattr(self, f"adj_{r}") for r in range(self._num_adj)]
+        if not adjs:
+            raise RuntimeError("残差修正器至少需要一个邻接矩阵，但 adjs 为空")
         neighbor_parts = []
         for adj in adjs:
             neighbor_parts.append(torch.einsum("nm,bmd->bnd", adj, base_latent))
@@ -196,3 +198,9 @@ class _null_context:
     这种场景仅出现在消融实验中（如"自由训练整个模型"的对比组），
     正式实验（SG-EXP-005/006）始终启用冻结。
     """
+
+    def __enter__(self) -> None:
+        return None
+
+    def __exit__(self, *args: object) -> bool:
+        return False

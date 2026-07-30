@@ -1,5 +1,4 @@
-"""Layered metrics and four-cell diagnostics."""
-"""评价指标、四格诊断和验证集冻结规则。"""
+"""评价指标、四格诊断和验证集冻结规则 / Layered metrics and four-cell diagnostics."""
 
 from evcs_station_graph.evaluation.metrics import (
     four_cell_diagnostics,

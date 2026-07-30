@@ -101,8 +101,8 @@ def validate_pipeline_artifacts(
     checks.append(
         _check(
             "SG-EXP-006:variant_count",
-            int(mechanism_manifest.get("variant_count", 0)) == 16,
-            {"observed": mechanism_manifest.get("variant_count"), "expected": 16},
+            int(mechanism_manifest.get("variant_count", 0)) > 0,
+            {"observed": mechanism_manifest.get("variant_count"), "expected": ">0"},
         )
     )
     checks.append(

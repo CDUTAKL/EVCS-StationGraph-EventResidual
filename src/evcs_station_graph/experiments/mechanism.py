@@ -170,7 +170,12 @@ def _read_json(path: Path) -> dict[str, Any]:
 
 
 def _set_dotted(config: dict[str, Any], dotted_key: str, value: Any) -> None:
+    """按点分键设置嵌套字典值，自动创建不存在的中间键。"""
     cursor = config
-    for part in dotted_key.split(".")[:-1]:
-        cursor = cursor[part]
-    cursor[dotted_key.split(".")[-1]] = value
+    parts = dotted_key.split(".")
+    for part in parts[:-1]:
+        child = cursor.setdefault(part, {})
+        if not isinstance(child, dict):
+            raise ValueError(f"无法覆盖非映射配置项：{dotted_key}（{part} 不是字典）")
+        cursor = child
+    cursor[parts[-1]] = value

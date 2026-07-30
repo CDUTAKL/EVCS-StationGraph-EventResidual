@@ -133,10 +133,10 @@ artifact_validation_report.json (formal_ready=true 方可进入论文)
 | **SG-EXP-005** | EventResidual | 仅在事件窗口内有界局部修正是否改善突变场景预测？ |
 | **SG-EXP-006** | 机制诊断 | 收益来自图？事件门控？哪类关系？对 top_k 和平滑参数敏感吗？ |
 
-SG-EXP-006 的具体子变体（共 16 个）：
+SG-EXP-006 的具体子变体（根据当前配置文件 `SG-EXP-006-mechanism.yaml` 自动展开）：
 - **消融 5 项**: no_graph(TCM), static_graph_only, adaptive_graph_only, no_event_gate, no_residual_bound
-- **候选关系 5 项**: current_event, historical_event, load_correlation, temporal_profile, fused
-- **敏感性 6 项**: top_k∈{3,5,7}, smoothing∈{0.3,0.5,0.7}
+- **候选关系 4 项**: load, event, pattern, all（含自适应图模型阶段）
+- **敏感性**: top_k∈{3,5,7}, relation_dropout∈{0.0,0.2,0.4}
 
 ---
 
@@ -293,15 +293,11 @@ scores = visible_event_scores(bundle, bundle.split_origins["validation"])
 - **影响**：在 GPU 训练时数据加载可能成为瓶颈。不过由于节点数仅 10 个、模型参数量 ~10K，实际训练速度瓶颈在模型计算而非数据加载。对于当前规模影响有限
 - **建议**：可保留，但若在 GPU 上训练明显慢于预期，优先调整这两个参数
 
-**ISSUE-005: TCN 配置中存在无用的 graph 段**
+**ISSUE-005: 已修复——TCN 配置中 graph 段已删除**
 
-`[configs/experiments/SG-EXP-002-temporal-baseline.yaml:18-21]`：
-```yaml
-graph:
-  relation: fused
-  top_k: 5
-  smoothing: 0.5
-```
+原来的 `SG-EXP-002-temporal-baseline.yaml` 包含无效的 `graph` 段
+（TCN 不使用图关系），在 `dcf4e80`→ 后续提交中已删除。
+修复后配置仅含 TCN 直接使用的字段（model_params、training）。
 - TCN 不使用图，但配置中仍有 graph 段
 - 代码中 `_build_relations` 仍会运行并保存 `relation_matrices.npz`（对 TCN 无用但不影响结果）
 - **建议**：从 TCN 配置中删除 graph 段以避免混淆，或添加注释说明"此段在 TCN 模型中不使用"
@@ -412,10 +408,10 @@ score = access + departure + |Δactive| + |Δload| / load_std
 | batch_size=256 | 所有模型 | 训练集 83K 样本，每 epoch ~325 步。合理 |
 | patience=8 | 所有模型 | 合理 |
 | top_k=5 | 图模型 | 10 个节点中保留 5 个邻居，相当于全连接的一半。合理 |
-| smoothing=0.5 | fused 图 | 负荷相关和事件/轮廓关系各半权重。合理 |
+| top_k=5 | 图模型 | 10 节点中每节点保留 5 个最强边。合理 |
 | residual_bound=0.5 | 残差修正 | 将修正量限制在 ±0.5×标准化单位。合理但论文需报告该值的敏感性 |
 | embedding_dim=12 | 自适应图 | 对 10 节点稍大（接近节点数），但可接受 |
-| fixed_weight=0.2 | 自适应图 | 固定图仅占 20% 权重，学习图占主导。合理 |
+| fixed_weight 初值=0.3 | 自适应图 | sigmoid(fixed_weight)=sigmoid(0.3)≈0.574；将在训练中学习。合理 |
 | trigger_quantile=0.95 | 事件规则 | ⚠️ 导致阈值全为零，需要修复（见 ISSUE-001） |
 
 **关于 levels=3 的特别说明**：3 层 TCN（dilation=1,2,4）的接受域仅 7 个时间步（~1.75 小时），远小于 96 步（24 小时）的历史窗口。这一设计使模型主要依赖近期模式，而非完整的日周期。如果实验结果显示 TCN 在稳定窗口表现较弱，增加 levels 到 5（接受域 31 步≈7.75 小时）或 6（接受域 63 步≈15.75 小时）可能改善长期依赖捕获。
@@ -496,7 +492,7 @@ src/evcs_station_graph/
 │   ├── graph.py             # StaticGraphForecast + AdaptiveGraphForecast
 │   └── residual.py          # EventResidualCorrection
 ├── graphs/
-│   └── relations.py         # 五类候选关系构建 + top_k 稀疏化 + 归一化
+│   └── relations.py         # 三类固定关系构建（load/event/pattern）+ top_k 稀疏化 + 归一化
 ├── evaluation/
 │   ├── metrics.py           # MAE/RMSE/WAPE + 分层 + 四格诊断
 │   └── rules.py             # 验证集冻结事件规则 (fit + apply)

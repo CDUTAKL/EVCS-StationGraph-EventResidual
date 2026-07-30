@@ -418,6 +418,8 @@ def _validation_loss(
         origin_index = batch["origin_index"].numpy()
         trigger = torch.from_numpy(trigger_by_origin[origin_index]).to(device)
         loss = criterion(model(x, rule_trigger=trigger).prediction, y)
+        if not torch.isfinite(loss):
+            raise FloatingPointError("验证损失出现非有限值")
         total_loss += float(loss) * batch_size
         total_count += batch_size
     if total_count == 0:

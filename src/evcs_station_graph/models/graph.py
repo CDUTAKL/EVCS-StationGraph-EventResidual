@@ -290,8 +290,8 @@ class AdaptiveGraphForecast(StationGraphForecast):
       随后保留每行 top-k 个最强邻居，其余归零。
       A_mix = α · A_fixed + (1-α) · A_adp
 
-    其中 α（fixed_weight）只能通过验证集选择，测试阶段冻结。
-    自适应嵌入仅在训练时通过损失函数更新，验证/测试时不重构。
+    其中 α（fixed_weight）是可学习参数（nn.Parameter），通过训练时梯度更新，
+    与自适应嵌入一同优化；测试阶段随模型冻结。
 
     关键设计决策：
     - 自适应图是三类固定图之外的**第四类关系**，而非替换固定图
@@ -335,9 +335,9 @@ class AdaptiveGraphForecast(StationGraphForecast):
         self._embed_dim = embedding_dim
         self._top_k = int(top_k)
 
-        # 固定图融合权重（可学习，训练后冻结）
-        # 注：relation_weights_gcn1/gcn2 已在基类中创建为 nn.Parameter，
-        # fixed_weight 通过 sigmoid 在 _build_adaptive_adjacency 中参与 alpha 计算
+        # 固定图融合权重（可学习 nn.Parameter，训练时通过梯度更新）。
+        # sigmoid 将其压缩到 (0,1) 后作为 α 参与 A_mix = α·A_fixed + (1-α)·A_adp。
+        # 关系权重 relation_weights_gcn1/gcn2 已在基类中创建。
         self.fixed_weight = nn.Parameter(torch.tensor(float(fixed_weight)))
 
     def _build_adaptive_adjacency(self) -> torch.Tensor:
