@@ -1,4 +1,9 @@
-"""模型工厂，保证训练入口不包含分散的模型分支逻辑。"""
+"""模型工厂，保证训练入口不包含分散的模型分支逻辑。
+
+所有实验配置通过 ``model`` 字段选择模型类型，工厂负责创建对应的模块实例。
+模型名的别名（如 "TCN"="temporal"、"GraphWaveNet_style"="adaptive_graph"）
+是为了兼容不同论文和框架的命名习惯，逻辑上完全等价。
+"""
 
 from __future__ import annotations
 
@@ -73,7 +78,17 @@ def build_model(
 
 
 def _extract_base_state(state: dict[str, torch.Tensor]) -> dict[str, torch.Tensor]:
-    """兼容默认模型检查点与残差模型检查点。"""
+    """兼容两种检查点格式，提取基模型（TCN）的权重。
+
+    格式 1（SG-EXP-002 检查点）：键名如 ``network.0.conv.weight``
+      → 直接返回全量 state_dict，因为整个检查点就是 TCN
+
+    格式 2（SG-EXP-005 检查点）：键名如 ``base_model.network.0.conv.weight``
+      → 需要去掉 ``base_model.`` 前缀，因为 EventResidualCorrection
+        将 TCN 包装在 self.base_model 属性中
+
+    通过检测任意键是否以 ``base_model.`` 开头来区分两种格式。
+    """
     if any(key.startswith("base_model.") for key in state):
         return {
             key.removeprefix("base_model."): value

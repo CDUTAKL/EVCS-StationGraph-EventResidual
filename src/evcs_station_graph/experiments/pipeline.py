@@ -19,6 +19,9 @@ from evcs_station_graph.reproducibility import write_json
 from evcs_station_graph.training import train_experiment
 
 
+# 前三个实验（002-004）独立运行，不依赖前置检查点。
+# SG-EXP-005/006 在流水线中单独处理，因为它们需要加载 SG-EXP-002 的
+# 每种子检查点作为默认预测路径。这种拆分避免了配置文件中的循环依赖。
 DEFAULT_EXPERIMENTS = (
     "configs/experiments/SG-EXP-002-temporal-baseline.yaml",
     "configs/experiments/SG-EXP-003-static-graph.yaml",

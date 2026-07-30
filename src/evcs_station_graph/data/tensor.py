@@ -19,7 +19,25 @@ from evcs_station_graph.reproducibility import sha256_file, write_json
 
 @dataclass(frozen=True)
 class TensorBundle:
-    """内存中的节点时序张量及其元数据。"""
+    """内存中的节点时序张量及其元数据。
+
+    本对象是研究管线的统一数据契约——所有模型训练和评价都从这里读取
+    标准化后的特征、目标、事件标签和切分信息，不直接访问上游 CSV。
+
+    各字段含义：
+    - ``timestamps_ns``：形状 ``[T]`` 的 int64 纳秒时间戳
+    - ``node_ids``：形状 ``[N]`` 的节点标识（spaceID 格式，如 CA-303）
+    - ``feature_names``：特征名称元组，长度 ``F``，决定 ``features`` 的第三维语义
+    - ``features``：形状 ``[T, N, F]`` 的**原始**特征（未标准化），用于事件分数计算和图构建
+    - ``targets``：形状 ``[T, N]`` 的**原始**目标负荷（kWh/15min）
+    - ``event_labels``：形状 ``[T, N]`` 的布尔事件标签，仅用于评价，不参与训练
+    - ``split_origins``：三个切分的有效预测起点索引数组
+    - ``feature_mean/std``：全局特征标准化参数（训练集拟合），形状 ``[F]``
+    - ``target_mean/std``：per-node 目标标准化参数（训练集拟合），形状 ``[N]``
+
+    设计决策：features/targets 保持原始值而不预标准化，是为了让事件分数计算
+    和图构建直接使用物理量纲，而 NodeWindowDataset 在切片时动态标准化。
+    """
 
     timestamps_ns: np.ndarray
     node_ids: np.ndarray
@@ -57,10 +75,19 @@ def build_tensor_artifact(
     *,
     max_time_steps: int | None = None,
 ) -> tuple[Path, Path]:
-    """从上游长表生成节点负荷张量。
+    """从上游长表生成节点负荷张量并保存为 .npz 工件。
+
+    处理流程：
+    1. 从上游 CSV 按冻结节点清单过滤数据
+    2. 验证时间×节点的笛卡尔积完整性（缺失值会导致后续窗口切片错误）
+    3. 构建 ``[T, N, F]`` 特征张量和 ``[T, N]`` 目标/事件标签
+    4. 仅使用训练集（前 train_end+1 个时间步）计算 z-score 标准化参数
+    5. 保存张量、元数据和标准化参数到 .npz，并写出数据清单
 
     ``max_time_steps`` 仅供自动化测试和本地冒烟验证使用；正式数据构建必须为
     ``None``，以免把截断数据误当成正式实验输入。
+
+    返回 (张量工件路径, 数据清单路径)。
     """
     paths = config["paths"]
     dataset = config["dataset"]
@@ -128,6 +155,13 @@ def build_tensor_artifact(
         forecast_steps=int(project["forecast_steps"]),
         truncated=max_time_steps is not None,
     )
+    # ---- 归一化参数：仅使用训练集拟合 ----
+    # 特征使用全局（跨时间、跨节点）z-score，目标使用 per-node z-score。
+    # 这样设计的理由是：
+    # - 特征全局标准化保留了不同节点的相对差异（节点 A 的系统性高负荷不会
+    #   被 per-node 标准化抹平，图关系可以从这种差异中提取信息）
+    # - 目标 per-node 标准化避免了负荷量级大的节点主导损失函数，使模型
+    #   公平对待每个充电单元
     train_last = int(split_origins["train"][-1])
     fit_slice = slice(0, train_last + 1)
     feature_mean = features[fit_slice].mean(axis=(0, 1), dtype=np.float64).astype(np.float32)
@@ -220,7 +254,16 @@ def _load_split_origins(
     forecast_steps: int,
     truncated: bool,
 ) -> dict[str, np.ndarray]:
-    """读取冻结切分；截断模式下生成无重叠的测试用切分。"""
+    """读取冻结切分清单或生成冒烟测试用切分。
+
+    正式模式（truncated=False）：
+        从 SG-DATA-002-node-screening.json 读取预定义的时间切分边界，
+        确保所有实验使用完全相同的训练/验证/测试起源索引。
+
+    截断模式（truncated=True）：
+        在截断数据上按 60/20/20 比例划分，仅用于自动化测试。
+        截断模式的切分与正式数据无关，结果标记为 implementation_smoke_only。
+    """
     if truncated:
         valid = np.arange(history_steps - 1, total_steps - forecast_steps, dtype=np.int64)
         if len(valid) < 12:

@@ -1,4 +1,15 @@
-"""统一误差指标与分层统计。"""
+"""统一误差指标与分层统计。
+
+本模块计算三个核心回归指标（MAE、RMSE、WAPE），并在四个层次上分层报告：
+1. 全局 + 非零负荷子集 — 区分"预测零负荷"和"预测实际充电活动"的能力
+2. 事件窗口 vs 稳定窗口 — 量化事件残差修正的局部收益
+3. 按预测步长（horizon 1-4）— 观察预测不确定性随步长的增长
+4. 按节点 — 检查模型在不同充电单元上的表现均衡性
+
+四格诊断（four_cell_diagnostics）是核心审计工具：
+  target_event × rule_trigger → 四个互斥单元格
+  加权重建的 MAE 必须等于全局 MAE（容差 ≤ 1e-9），否则不得解释事件收益来源。
+"""
 
 from __future__ import annotations
 
@@ -45,8 +56,12 @@ def stratified_metrics(
     """生成全局、事件/稳定、节点和预测步长指标。"""
     if truth.ndim != 3:
         raise ValueError("分层评价输入必须为 [样本, 步长, 节点]")
+    # 非零负荷子集：仅包含真实负荷 > 1e-8 kWh/15min 的样本
+    # 1e-8 ≈ 0 的工程近似，用于滤除充电单元空闲时段（占全部样本的 ~78%）
+    nonzero_load = truth > 1e-8
     output: dict[str, Any] = {
         "global": regression_metrics(truth, prediction),
+        "nonzero_load": regression_metrics(truth, prediction, nonzero_load),
         "event_window": regression_metrics(truth, prediction, target_event),
         "stable_window": regression_metrics(truth, prediction, ~target_event),
         "by_horizon": {},
@@ -77,6 +92,11 @@ def four_cell_diagnostics(
         rule_trigger = np.broadcast_to(rule_trigger[:, None, :], truth.shape)
     if not (truth.shape == prediction.shape == target_event.shape == rule_trigger.shape):
         raise ValueError("四格诊断数组形状不一致")
+    # 四个互斥单元格的业务语义：
+    # 1. target_event_triggered：事件发生 + 规则触发 → 修正生效的场景（期望受益）
+    # 2. target_event_not_triggered：事件发生 + 规则未触发 → 漏检（规则 Recall 问题）
+    # 3. stable_triggered：稳定时段 + 规则误触发 → 误报（规则 Precision 问题）
+    # 4. stable_not_triggered：稳定时段 + 规则未触发 → 默认路径正常运作
     definitions = {
         "target_event_triggered": target_event & rule_trigger,
         "target_event_not_triggered": target_event & ~rule_trigger,

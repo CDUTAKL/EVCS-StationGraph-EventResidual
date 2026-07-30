@@ -129,7 +129,12 @@ def sparsify_top_k(similarity: np.ndarray, top_k: int) -> np.ndarray:
 
 
 def _safe_abs_corr(values: np.ndarray) -> np.ndarray:
-    """计算列之间绝对相关系数，并处理常数列。"""
+    """计算列之间的绝对皮尔逊相关系数，安全处理常数列。
+
+    使用中心化矩阵乘法 corr = (X-μ)ᵀ(X-μ) / (σ_i * σ_j) 计算相关系数。
+    当某列为常数（σ→0）时，分母为零，在 where 条件中将其相关设为 0，
+    避免 NaN 传播。最后取绝对值使所有关系非负（图模型不区分正负相关）。
+    """
     centered = values - values.mean(axis=0, keepdims=True)
     scale = np.sqrt(np.square(centered).sum(axis=0))
     denominator = scale[:, None] * scale[None, :]
@@ -141,6 +146,12 @@ def _safe_abs_corr(values: np.ndarray) -> np.ndarray:
 
 
 def _cosine_columns(values: np.ndarray) -> np.ndarray:
+    """计算列之间的余弦相似度矩阵。
+
+    similarity = XᵀX / (‖col_i‖ * ‖col_j‖)，其中分母为零时设为 0。
+    余弦相似度度量的是时序波形的形状相似性（方向一致），不受幅值影响——
+    这意味着"两个节点的事件模式形状相似"即可获得高相似度，即使事件量级不同。
+    """
     norms = np.linalg.norm(values, axis=0)
     denominator = norms[:, None] * norms[None, :]
     similarity = values.T @ values
@@ -155,7 +166,17 @@ def _cosine_columns(values: np.ndarray) -> np.ndarray:
 
 
 def _profile_similarity(values: np.ndarray, periods_per_day: int = 96) -> np.ndarray:
-    """根据训练期日内平均轮廓构建相似度。"""
+    """根据训练期日内平均轮廓构建相似度矩阵。
+
+    方法：
+    1. 将训练期数据按天切分（每天 96 个 15 分钟片），取日内平均值曲线
+    2. 计算节点之间平均轮廓的欧氏距离
+    3. 用指数核 exp(-distance/median_distance) 将距离转为相似度
+
+    与 load_correlation 的区别：temporal_profile 捕捉的是"节点 A 和节点 B
+    在一天中是否具有相似的负荷形状"（结构性），而非逐点瞬时同步（波动性）。
+    因此互补——一个节点对可能瞬时相关弱但日轮廓相似（或反之）。
+    """
     usable = (len(values) // periods_per_day) * periods_per_day
     if usable < periods_per_day:
         return _safe_abs_corr(values)

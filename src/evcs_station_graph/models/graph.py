@@ -1,4 +1,17 @@
-"""SG-EXP-003/004：固定图与自适应图预测模型。"""
+"""SG-EXP-003/004：固定图与自适应图预测模型。
+
+两个模型共享 TCN 编码 + 图消息传递的架构，区别在于邻接矩阵的来源：
+
+- ``StaticGraphForecast`` (SG-EXP-003)：使用训练期构建的固定统计关系矩阵，
+  验证与测试阶段不更新。量化"引入固定站内关系"的收益。
+- ``AdaptiveGraphForecast`` (SG-EXP-004)：通过可学习的节点嵌入动态生成邻接矩阵，
+  与固定先验按 ``fixed_weight`` 融合。仅在训练时更新嵌入，测试时不重构。
+
+消息传递（两者相同）：
+  h_i' = self_linear(h_i) + neighbor_linear(Σ_j A_ij * h_j)
+  即节点更新 = 自身变换 + 邻居聚合，保留每个节点的独立表征同时引入
+  图结构信息。
+"""
 
 from __future__ import annotations
 
@@ -42,8 +55,11 @@ class StaticGraphForecast(ForecastModel):
         self.latent_dim = hidden_dim
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
-        temporal = self.temporal.encode(x)
+        temporal = self.temporal.encode(x)  # [B, N, D] TCN 独立编码
+        # 消息传递：einsum("nm,bmd->bnd") = 对每个 batch 样本，
+        # 邻接矩阵 A[n,m] 作为权重聚合来自节点 m 的隐表示 h_m
         neighbor = torch.einsum("nm,bmd->bnd", self.adjacency, temporal)
+        # 节点更新 = 自身变换 + 邻居聚合（残差式设计，保留独立表征）
         value = self.self_linear(temporal) + self.neighbor_linear(neighbor)
         return self.dropout(self.activation(self.norm(value)))
 
@@ -102,8 +118,23 @@ class AdaptiveGraphForecast(ForecastModel):
         self.latent_dim = hidden_dim
 
     def learned_adjacency(self) -> torch.Tensor:
+        """由节点嵌入动态生成自适应邻接矩阵。
+
+        实现原理：
+        1. ``source_embedding @ target_embedding.T`` 计算节点间的非对称亲和度，
+           其中 source_embedding[n] 表示"节点 n 作为信息接收者"的角色，
+           target_embedding[m] 表示"节点 m 作为信息发送者"的角色
+        2. ``relu`` 截断负亲和度，使关系稀疏化（负值→零边）
+        3. ``softmax(dim=-1)`` 将每行的出边权重归一化为概率分布，
+           保证消息传递的数值稳定性
+        4. 与固定先验按 ``fixed_weight`` 融合，避免学习过程中
+           图结构完全偏离统计先验
+        """
+        # 非对称亲和度：source 接收来自 target 的信息
         logits = torch.relu(self.source_embedding @ self.target_embedding.T)
+        # 逐行 softmax：每个节点对其所有邻居的注意力之和为 1
         learned = torch.softmax(logits, dim=-1)
+        # 加权融合：fixed_weight 控制对统计先验的依赖程度
         return self.fixed_weight * self.fixed_adjacency + (1.0 - self.fixed_weight) * learned
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
