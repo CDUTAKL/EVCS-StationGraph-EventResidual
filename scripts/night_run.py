@@ -155,6 +155,8 @@ def _train_b6_model(model_factory, label: str) -> dict:
                 ev_sum += float((err * gate).sum()); ev_cnt += float(gate.sum())
         val_mae = val_sum / max(val_cnt, 1)
         ev_mae = ev_sum / max(ev_cnt, 1)
+        dt = time.perf_counter() - t0
+        print(f"    epoch {epoch:2d}: val_mae={val_mae:.5f} event_mae={ev_mae:.5f} ({dt:.0f}s)", flush=True)
         if val_mae < best_val - 1e-8:
             best_val, best_ev = val_mae, ev_mae
             best_state = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
@@ -170,64 +172,87 @@ def _train_b6_model(model_factory, label: str) -> dict:
             "epochs": epoch, "_best_state": best_state}
 
 
+def _train_base_model(model_factory, label: str) -> dict:
+    """先训练底座模型（30 epochs），返回 best_state + 验证指标。
+
+    底座必须独立训练后再冻入 EventResidualCorrection——
+    随机初始化的底座 ≈ 噪声，修正器 MLP（仅 ~2,340 参数）无力扭转。
+    """
+    return _train_b6_model(model_factory, label)
+
+
 def run_b6() -> str:
-    """运行 B6 三底座对照，返回最优底座类型名。"""
+    """运行 B6 三底座对照：先训练底座，再冻入 EventResidual 测修正收益。"""
     print("=" * 60, flush=True)
-    print("B6：三底座 EventResidual 对照", flush=True)
+    print("B6：三底座 EventResidual 对照（先训练底座 → 冻入 → 训修正器）", flush=True)
 
-    results = {}
-    # TCN base：复用 B4 实测结果
-    tcn_b4 = {"label": "temporal", "val_mae": 0.05947, "event_mae": 0.97450}
-    results["temporal"] = tcn_b4
-    print(f"  temporal (复用 B4): val_mae={tcn_b4['val_mae']:.5f} "
-          f"event_mae={tcn_b4['event_mae']:.5f}", flush=True)
+    results: dict[str, dict] = {}
+    # TCN base：复用 B4 实测结果（B4 已用 B1 训练好的 TCN base）
+    results["temporal"] = {"val_mae": 0.05947, "event_mae": 0.97450,
+                           "label": "temporal"}
+    print(f"  temporal (复用 B4): val_mae={results['temporal']['val_mae']:.5f} "
+          f"event_mae={results['temporal']['event_mae']:.5f}", flush=True)
 
-    # StaticGraph base
-    print("  ▶ static_graph base ...", flush=True)
-    sg_base = StaticGraphForecast(
+    # ── StaticGraph base：先训练底座 → 冻入修正器 ──
+    print("  ▶ 训练 static_graph 底座 ...", flush=True)
+    sg_factory = lambda: StaticGraphForecast(
         INPUT_DIM, SPEC.forecast_steps, NUM_NODES, FIXED_ADJS,
-        hidden_dim=B1_BEST["hidden_dim"], levels=B1_BEST["levels"], dropout=0.1,
-    )
-    rec_sg = _train_b6_model(
-        lambda: EventResidualCorrection(
-            sg_base, FIXED_ADJS, SPEC.forecast_steps,
-            hidden_dim=B4_BEST["residual_hidden_dim"],
-            residual_bound=B4_BEST["residual_bound"],
-            freeze_base=True, feature_names=bundle.feature_names,
-            base_model_type="static_graph",
-        ),
-        "static_graph",
-    )
-    results["static_graph"] = rec_sg
+        hidden_dim=B1_BEST["hidden_dim"], levels=B1_BEST["levels"], dropout=0.1)
+    sg_base_result = _train_base_model(sg_factory, "static_graph_base")
+    sg_best = sg_base_result.pop("_best_state", None)
+    if sg_best is None:
+        print("  ✗ static_graph 底座训练失败，跳过", flush=True)
+    else:
+        print(f"    static_graph 底座: val_mae={sg_base_result['val_mae']:.5f} "
+              f"event_mae={sg_base_result['event_mae']:.5f}", flush=True)
+        print("  ▶ static_graph + EventResidual ...", flush=True)
+        def sg_res_factory():
+            base = sg_factory()
+            base.load_state_dict(sg_best)
+            return EventResidualCorrection(
+                base, FIXED_ADJS, SPEC.forecast_steps,
+                hidden_dim=B4_BEST["residual_hidden_dim"],
+                residual_bound=B4_BEST["residual_bound"],
+                freeze_base=True, feature_names=bundle.feature_names,
+                base_model_type="static_graph")
+        results["static_graph"] = _train_b6_model(sg_res_factory, "static_graph")
 
-    # AdaptiveGraph base
-    print("  ▶ adaptive_graph base ...", flush=True)
-    ag_base = AdaptiveGraphForecast(
+    # ── AdaptiveGraph base：先训练底座 → 冻入修正器 ──
+    print("  ▶ 训练 adaptive_graph 底座 ...", flush=True)
+    ag_factory = lambda: AdaptiveGraphForecast(
         INPUT_DIM, SPEC.forecast_steps, NUM_NODES, FIXED_ADJS,
         hidden_dim=B1_BEST["hidden_dim"], embedding_dim=B3_BEST["embedding_dim"],
         levels=B1_BEST["levels"], dropout=0.1,
-        fixed_weight=B3_BEST["fixed_weight"], top_k=5,
-    )
-    rec_ag = _train_b6_model(
-        lambda: EventResidualCorrection(
-            ag_base, FIXED_ADJS, SPEC.forecast_steps,
-            hidden_dim=B4_BEST["residual_hidden_dim"],
-            residual_bound=B4_BEST["residual_bound"],
-            freeze_base=True, feature_names=bundle.feature_names,
-            base_model_type="adaptive_graph",
-        ),
-        "adaptive_graph",
-    )
-    results["adaptive_graph"] = rec_ag
+        fixed_weight=B3_BEST["fixed_weight"], top_k=5)
+    ag_base_result = _train_base_model(ag_factory, "adaptive_graph_base")
+    ag_best = ag_base_result.pop("_best_state", None)
+    if ag_best is None:
+        print("  ✗ adaptive_graph 底座训练失败，跳过", flush=True)
+    else:
+        print(f"    adaptive_graph 底座: val_mae={ag_base_result['val_mae']:.5f} "
+              f"event_mae={ag_base_result['event_mae']:.5f}", flush=True)
+        print("  ▶ adaptive_graph + EventResidual ...", flush=True)
+        def ag_res_factory():
+            base = ag_factory()
+            base.load_state_dict(ag_best)
+            return EventResidualCorrection(
+                base, FIXED_ADJS, SPEC.forecast_steps,
+                hidden_dim=B4_BEST["residual_hidden_dim"],
+                residual_bound=B4_BEST["residual_bound"],
+                freeze_base=True, feature_names=bundle.feature_names,
+                base_model_type="adaptive_graph")
+        results["adaptive_graph"] = _train_b6_model(ag_res_factory, "adaptive_graph")
 
     # 选择 event_window MAE 最低者
-    valid = {k: v for k, v in results.items() if v.get("event_mae", float("inf")) < float("inf")}
+    valid = {k: v for k, v in results.items()
+             if isinstance(v.get("event_mae"), (int, float)) and v["event_mae"] < float("inf")}
     winner = min(valid, key=lambda k: valid[k]["event_mae"])
     print(f"  → B6 最优底座: {winner} (event_mae={valid[winner]['event_mae']:.5f})", flush=True)
 
     write_json({
-        "stage": "B6", "results": {k: {kk: vv for kk, vv in v.items() if kk != "_best_state"}
-                                   for k, v in results.items()},
+        "stage": "B6",
+        "results": {k: {kk: vv for kk, vv in v.items() if kk != "_best_state"}
+                     for k, v in results.items()},
         "winner": winner,
     }, NIGHT_ROOT / "b6_results.json")
     return winner

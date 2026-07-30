@@ -36,6 +36,7 @@ from evcs_station_graph.evaluation import (
     fit_frozen_event_rule,
     four_cell_diagnostics,
     stratified_metrics,
+    visible_event_scores,
 )
 from evcs_station_graph.graphs import RelationSet, build_relation_set
 from evcs_station_graph.reproducibility import (
@@ -45,6 +46,7 @@ from evcs_station_graph.reproducibility import (
     write_json,
 )
 from evcs_station_graph.training.factory import build_model
+from evcs_station_graph.training.losses import WeightedL1Loss
 
 
 def train_experiment(
@@ -169,7 +171,17 @@ def train_single_seed(
         lr=float(training.get("learning_rate", 1e-3)),
         weight_decay=float(training.get("weight_decay", 1e-4)),
     )
-    criterion: nn.Module = nn.L1Loss()
+    # 损失函数：若配置了 loss 段则使用加权损失，否则回退到标准 L1
+    loss_cfg = training.get("loss", {})
+    use_weighted_loss = bool(loss_cfg)
+    if use_weighted_loss:
+        criterion: nn.Module = WeightedL1Loss(
+            lambda_=float(loss_cfg.get("lambda", 3.0)),
+            mode=str(loss_cfg.get("mode", "binary")),
+            normalize_intensity=bool(loss_cfg.get("normalize_intensity", True)),
+        )
+    else:
+        criterion = nn.L1Loss()
 
     # ---- 冻结事件规则拟合（仅使用验证集） ----
     # 阈值和窗口扩展参数在此确定后，后续训练和测试阶段绝不重新计算
@@ -183,16 +195,32 @@ def train_single_seed(
         (len(bundle.timestamps_ns), len(bundle.node_ids)),
         dtype=np.bool_,
     )
-    for dataset in datasets.values():
-        trigger_by_origin[dataset.origins] = apply_frozen_event_rule(
+    for ds in datasets.values():
+        trigger_by_origin[ds.origins] = apply_frozen_event_rule(
             bundle,
-            dataset.origins,
+            ds.origins,
             rule,
         )
     if not bool(config["experiment"].get("gate", {}).get("enabled", True)):
         # 无门控消融：保留修正模型结构，但所有样本均进入修正路径
         # 用于量化"门控本身是否有价值"——对比门控+修正 vs 全量修正
         trigger_by_origin[:] = True
+
+    # 事件强度分数 [T, N]：仅在使用加权损失时计算，避免非必要的 I/O
+    scores_by_origin: np.ndarray | None = None
+    if use_weighted_loss:
+        score_stats_np = {
+            key: np.asarray(value, dtype=np.float32)
+            for key, value in rule.score_stats.items()
+        }
+        scores_by_origin = np.zeros(
+            (len(bundle.timestamps_ns), len(bundle.node_ids)),
+            dtype=np.float32,
+        )
+        for ds in datasets.values():
+            scores_by_origin[ds.origins] = visible_event_scores(
+                bundle, ds.origins, score_stats=score_stats_np,
+            )
 
     # ========== 阶段 3：训练循环（早停） ==========
     # 使用验证集 MAE 做早停：在 patience 轮内未改善则终止
@@ -212,13 +240,16 @@ def train_single_seed(
             criterion,
             device,
             trigger_by_origin,
+            scores_by_origin,
         )
+        # 早停始终基于标准 L1（不加权），因为泛化能力的评价应在原始分布上进行
         validation_loss = _validation_loss(
             model,
             loaders["validation"],
-            criterion,
+            nn.L1Loss(),
             device,
             trigger_by_origin,
+            None,  # 早停不使用加权损失
         )
         log_rows.append(
             {"epoch": epoch, "train_mae_scaled": train_loss, "validation_mae_scaled": validation_loss}
@@ -366,11 +397,16 @@ def _train_epoch(
     criterion: nn.Module,
     device: torch.device,
     trigger_by_origin: np.ndarray,
+    scores_by_origin: np.ndarray | None = None,
 ) -> float:
     """执行一个训练轮次，返回该轮的平均训练损失（缩放后尺度）。
 
     梯度裁剪 max_norm=5.0 防止事件窗口内的极端残差导致梯度爆炸。
     触发矩阵 ``trigger_by_origin`` 在训练中控制哪些样本进入修正路径。
+
+    当 ``criterion`` 为 ``WeightedL1Loss`` 时，根据其 mode 选择事件信号：
+    - binary：使用 trigger 的二值掩码
+    - intensity：使用 ``scores_by_origin`` 的连续事件分数
     """
     model.train()
     total_loss = 0.0
@@ -383,7 +419,23 @@ def _train_epoch(
         trigger = torch.from_numpy(trigger_by_origin[origin_index]).to(device)
         optimizer.zero_grad(set_to_none=True)
         output = model(x, rule_trigger=trigger)
-        loss = criterion(output.prediction, y)
+
+        if isinstance(criterion, WeightedL1Loss):
+            # 根据权重模式选择事件信号
+            if criterion.mode == "binary":
+                event_signal = trigger.to(torch.float32)
+            else:
+                if scores_by_origin is None:
+                    raise RuntimeError(
+                        "intensity 模式下 scores_by_origin 不能为 None"
+                    )
+                event_signal = torch.from_numpy(
+                    scores_by_origin[origin_index]
+                ).to(device)
+            loss = criterion(output.prediction, y, event_signal=event_signal)
+        else:
+            loss = criterion(output.prediction, y)
+
         if not torch.isfinite(loss):
             raise FloatingPointError("训练损失出现非有限值")
         loss.backward()
@@ -403,10 +455,12 @@ def _validation_loss(
     criterion: nn.Module,
     device: torch.device,
     trigger_by_origin: np.ndarray,
+    scores_by_origin: np.ndarray | None = None,  # pylint: disable=unused-argument
 ) -> float:
     """计算验证集平均损失（不更新参数），用于早停判断。
 
     ``@torch.no_grad()`` 确保验证期间不计算梯度，节省显存。
+    早停始终使用标准 L1Loss——泛化能力应在原始分布上评价。
     """
     model.eval()
     total_loss = 0.0

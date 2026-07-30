@@ -12,5 +12,6 @@
 
 from evcs_station_graph.training.engine import train_experiment, train_single_seed
 from evcs_station_graph.training.factory import build_model
+from evcs_station_graph.training.losses import WeightedL1Loss
 
-__all__ = ["build_model", "train_experiment", "train_single_seed"]
+__all__ = ["WeightedL1Loss", "build_model", "train_experiment", "train_single_seed"]

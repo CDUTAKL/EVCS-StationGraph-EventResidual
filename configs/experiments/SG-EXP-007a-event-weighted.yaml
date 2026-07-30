@@ -1,0 +1,48 @@
+# SG-EXP-007a：事件窗口二值加权损失筛选
+#
+# 目的：验证事件窗口加权损失能否在不损害稳定窗口的前提下，
+#       显著降低事件窗口 MAE（目标 >10% 相对改善）。
+#
+# 方案：使用 B3 阶段调优的 AdaptiveGraph 作为统一底座，
+#       仅改动训练损失函数——对 event window 样本施加 λ 倍额外权重。
+#
+# 根因：事件样本占全部样本 ~0.1%，标准 L1Loss 下事件样本的梯度贡献
+#       被稳定窗口完全主导。加权损失重新分配优化注意力。
+#
+# 筛选范围：λ ∈ {2, 3, 5}，mode=binary
+#   权重公式：weight = 1.0 + λ × rule_trigger
+#   事件样本梯度贡献从 ~1% 提升到 13%（λ=2）~23%（λ=5）
+#
+# 停止条件：
+#   - 稳定窗口 MAE 上升 >5%
+#   - 三种子配对 bootstrap p > 0.05
+#   - 四格诊断显示收益主要来自 stable_triggered（误报）而非 target_event_triggered
+
+experiment_id: SG-EXP-007a
+name: event_weighted_loss_binary_screening
+status: formal_candidate
+model: adaptive_graph
+purpose: 事件窗口二值加权损失筛选——在 AdaptiveGraph 底座上测试不同 λ 对事件窗口 MAE 的改善
+restriction: 若稳定窗口退化超过 5% 或统计不显著，则拒绝加权损失方案
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+model_params:
+  hidden_dim: 32
+  levels: 6
+  dropout: 0.1
+  embedding_dim: 12
+  fixed_weight: 0.5
+  top_k: 5
+training:
+  epochs: 60
+  patience: 8
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  # 事件加权损失配置（新增字段）
+  loss:
+    lambda: 3        # 事件权重系数（需在脚本中覆盖为 2/3/5）
+    mode: binary      # 二值权重：trigger=1 → weight=1+λ
+graph:
+  top_k: 3
+  enabled_relations: [load, event, pattern]

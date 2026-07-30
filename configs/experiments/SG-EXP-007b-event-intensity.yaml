@@ -1,0 +1,42 @@
+# SG-EXP-007b：事件强度连续加权损失
+#
+# 目的：在 007a 确定最优 λ 后，验证连续事件强度加权是否优于二值加权。
+#
+# 与 007a 的区别：
+#   - 007a: weight = 1.0 + λ × rule_trigger（二值，事件窗口内等权）
+#   - 007b: weight = 1.0 + λ × event_score_norm（连续，高分事件更重）
+#
+# 强度分数来源：visible_event_scores（access + departure + active_delta + load_delta）
+# 归一化：per-batch 除以最大值，使 λ 语义稳定
+#
+# 预期：如果事件窗口内的改善主要来自少数极端事件，则 intensity 模式
+#       应优于 binary；若来自窗口内所有样本的均匀改善，则两者相近。
+
+experiment_id: SG-EXP-007b
+name: event_weighted_loss_intensity
+status: formal_candidate
+model: adaptive_graph
+purpose: 在 AdaptiveGraph 底座上测试连续事件强度加权是否优于二值加权
+restriction: 仅在 007a 确定最优 λ 后运行；若 intensity 不优于 binary，回退到 binary
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+model_params:
+  hidden_dim: 32
+  levels: 6
+  dropout: 0.1
+  embedding_dim: 12
+  fixed_weight: 0.5
+  top_k: 5
+training:
+  epochs: 60
+  patience: 8
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  loss:
+    lambda: 3              # 使用 007a 筛选出的最优 λ
+    mode: intensity         # 连续事件强度权重
+    normalize_intensity: true  # per-batch 归一化到 [0,1]
+graph:
+  top_k: 3
+  enabled_relations: [load, event, pattern]
