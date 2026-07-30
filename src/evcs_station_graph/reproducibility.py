@@ -16,15 +16,20 @@ import numpy as np
 import torch
 
 
-def set_global_seed(seed: int, deterministic: bool = True) -> None:
+def set_global_seed(seed: int, deterministic: bool = False) -> None:
     """设置 Python、NumPy 与 PyTorch 随机种子，确保实验可复现。
 
-    确定性模式（deterministic=True）：
-    - 启用 PyTorch 确定性算法，牺牲少量性能换取 bitwise 可复现
-    - ``CUBLAS_WORKSPACE_CONFIG=:4096:8`` 是 cuBLAS 确定性模式必需的
-      环境变量：4096 表示最大工作空间（字节），8 表示启用确定性模式
-    - ``warn_only=True``：遇到无法确定化的算子时仅警告而非崩溃，
-      因为当前实验不依赖那些算子的 bitwise 复现
+    确定性模式（deterministic=True，默认关闭）：
+    - 启用 PyTorch 确定性算法可换取部分算子的 bitwise 可复现，
+      但实测代价极高：对本项目的小通道 Conv1d（[B·N, 7, 96]），
+      cuDNN 被迫选择朴素确定性算法，训练步耗时 12.6ms → 1789.9ms
+      （慢 142 倍，T1/T2 受控对照，2026-07-30 服务器实测）
+    - 且 ``warn_only=True`` 模式下 CuBLAS GEMM 仍然非确定性
+      （torch 自身警告），即"既慢 142 倍又未达成 bitwise 复现"
+    - 因此默认关闭：同机、同种子、同 torch/CUDA 版本下，默认算法
+      路径在实践中逐位一致；跨版本复现以 environment_snapshot
+      记录的版本信息为准
+    - ``CUBLAS_WORKSPACE_CONFIG=:4096:8`` 仅在显式开启时设置
     """
     random.seed(seed)
     np.random.seed(seed)
