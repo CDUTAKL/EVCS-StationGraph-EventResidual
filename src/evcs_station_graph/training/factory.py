@@ -142,9 +142,10 @@ def _extract_base_state(state: dict[str, torch.Tensor]) -> dict[str, torch.Tenso
     通过检测任意键是否以 ``base_model.`` 开头来区分两种格式。
     """
     if any(key.startswith("base_model.") for key in state):
+        prefix = "base_model."
         return {
-            key.removeprefix("base_model."): value
+            key[len(prefix):]: value
             for key, value in state.items()
-            if key.startswith("base_model.")
+            if key.startswith(prefix)
         }
     return state
