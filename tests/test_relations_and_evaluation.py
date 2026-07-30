@@ -124,3 +124,48 @@ def test_symmetric_windows_cover_both_directions(synthetic_bundle) -> None:
     assert symmetric_count >= causal_count, (
         f"对称窗口触发数 ({symmetric_count}) 应 ≥ 因果窗口触发数 ({causal_count})"
     )
+
+
+def test_enabled_relations_subset(synthetic_bundle) -> None:
+    """从全量关系集中仅启用 "load" 关系时，邻接矩阵数量应为 1。
+
+    验证 build_relation_set + as_dict 的键过滤机制可正确按需选择关系子集，
+    确保在消融实验（仅使用单一关系类型）中不会混入其他关系矩阵。
+    """
+    train_end = int(synthetic_bundle.split_origins["train"][-1])
+    relations = build_relation_set(
+        synthetic_bundle.features[: train_end + 1],
+        synthetic_bundle.targets[: train_end + 1],
+        synthetic_bundle.feature_names,
+        top_k=2,
+    )
+    all_matrices = relations.as_dict()
+    enabled = ["load"]
+    subset = {k: v for k, v in all_matrices.items() if k in enabled}
+    assert len(subset) == 1
+    assert "load" in subset
+    assert subset["load"].shape == (4, 4)
+    assert np.isfinite(subset["load"]).all()
+
+
+def test_relation_names_recorded(synthetic_bundle) -> None:
+    """RelationSet.as_dict() 必须返回完整且正确的三类关系键。
+
+    键名对应训练阶段构建的三类统计关系图，任何键名缺失或拼写错误
+    都会导致下游模型的消息传递逻辑错误。
+    """
+    train_end = int(synthetic_bundle.split_origins["train"][-1])
+    relations = build_relation_set(
+        synthetic_bundle.features[: train_end + 1],
+        synthetic_bundle.targets[: train_end + 1],
+        synthetic_bundle.feature_names,
+        top_k=2,
+    )
+    d = relations.as_dict()
+    assert set(d.keys()) == {"load", "event", "pattern"}
+    # 验证每个键对应的矩阵是非零方阵
+    for key in ("load", "event", "pattern"):
+        matrix = d[key]
+        assert matrix.shape == (4, 4)
+        assert np.isfinite(matrix).all()
+        assert np.count_nonzero(matrix) > 0, f"关系 '{key}' 的矩阵全为零"

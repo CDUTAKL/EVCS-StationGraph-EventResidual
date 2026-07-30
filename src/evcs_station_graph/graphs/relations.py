@@ -20,7 +20,7 @@ class RelationSet:
     图模型通过可学习权重 β_r 在消息传递阶段融合多关系信息。
     """
 
-    load: np.ndarray       # A_load：历史负荷相关性（max(corr, 0)）
+    load: np.ndarray       # A_load：负荷耦合强度关系（abs(corr)，不区分正负方向）
     event: np.ndarray      # A_event：充电行为共现（接入/离站/活跃变化余弦相似度）
     pattern: np.ndarray    # A_pattern：时间模式相似度（日内平均轮廓距离）
 
@@ -66,9 +66,10 @@ def build_relation_set(
     departure = train_features[:, :, feature_index["departure_count"]]
     active = train_features[:, :, feature_index["active_count"]]
 
-    # ---- 关系 1：历史负荷相关（max(corr, 0)）----
-    # 比较不同节点代理负荷变化的线性同步性。
-    # 取 max(corr, 0) 删除负相关边——图模型不区分正负相关方向。
+    # ---- 关系 1：负荷耦合强度关系（abs(corr)）----
+    # 比较不同节点代理负荷变化的线性同步强度，度量耦合紧密度。
+    # 取绝对值确保所有关系为非负——图模型通过消息聚合捕获耦合强度，
+    # 不区分正负方向。负荷耦合强度关系不声称"正相关"或"同向相似性"。
     A_load = _safe_abs_corr(train_targets)
     A_load = sparsify_top_k(A_load, top_k)
     A_load = normalize_adjacency(A_load)
@@ -126,11 +127,12 @@ def sparsify_top_k(similarity: np.ndarray, top_k: int) -> np.ndarray:
 
 
 def _safe_abs_corr(values: np.ndarray) -> np.ndarray:
-    """计算列之间的绝对皮尔逊相关系数，安全处理常数列。
+    """计算列之间的绝对皮尔逊相关系数（负荷耦合强度），安全处理常数列。
 
     使用中心化矩阵乘法 corr = (X-μ)ᵀ(X-μ) / (σ_i * σ_j) 计算相关系数。
     当某列为常数（σ→0）时，分母为零，在 where 条件中将其相关设为 0，
-    避免 NaN 传播。最后取绝对值使所有关系非负（图模型不区分正负相关）。
+    避免 NaN 传播。取绝对值将相关系数转化为耦合强度（不区分正负方向），
+    因为图消息传递以耦合强度而非相关性方向聚合邻居信息。
     """
     centered = values - values.mean(axis=0, keepdims=True)
     scale = np.sqrt(np.square(centered).sum(axis=0))

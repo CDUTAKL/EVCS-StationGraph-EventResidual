@@ -57,7 +57,7 @@ def test_frozen_residual_requires_base_checkpoint(
     smoke_config["experiment"]["experiment_id"] = "SG-TEST-RESIDUAL"
     smoke_config["experiment"]["model"] = "event_residual"
     smoke_config["experiment"]["model_params"]["freeze_base"] = True
-    with pytest.raises(ValueError, match="SG-EXP-002"):
+    with pytest.raises(ValueError, match="冻结默认路径"):
         train_experiment(
             smoke_config,
             synthetic_bundle,

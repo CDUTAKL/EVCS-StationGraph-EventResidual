@@ -142,7 +142,7 @@ def train_single_seed(
     # ========== 阶段 2：模型创建与冻结事件规则拟合 ==========
     # 默认使用全部三类关系；SG-EXP-006 的关系消融通过 config 指定子集
     graph_cfg = config["experiment"].get("graph", {})
-    relation_names = graph_cfg.get("relations", ["load", "event", "pattern"])
+    relation_names = graph_cfg.get("enabled_relations", ["load", "event", "pattern"])
     unknown = set(relation_names) - set(relation_set.as_dict())
     if unknown:
         raise ValueError(f"未知候选关系：{sorted(unknown)}")
@@ -154,6 +154,7 @@ def train_single_seed(
         num_nodes=len(bundle.node_ids),
         adjacencies=adjacencies,
         base_checkpoint=base_checkpoint,
+        feature_names=bundle.feature_names,
     )
     device = _select_device(str(runtime.get("device", "auto")))
     model.to(device)

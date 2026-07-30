@@ -25,12 +25,18 @@ class ForecastOutput:
     - ``residual``：实际施加的残差（含门控和限幅后），
       ``prediction = base_prediction + residual``
     - ``adjacency``：图模型使用的邻接矩阵，用于可解释性分析
+    - ``relation_weights_gcn1``：GCN1 的关系权重 β_r（Softmax 归一化前），
+      反映一阶邻居传播时各类关系的混合比例偏好
+    - ``relation_weights_gcn2``：GCN2 的关系权重 β_r（Softmax 归一化前），
+      反映二阶传播时各类关系的混合比例偏好
     """
 
     prediction: torch.Tensor
     base_prediction: torch.Tensor | None = None
     residual: torch.Tensor | None = None
     adjacency: torch.Tensor | None = None
+    relation_weights_gcn1: torch.Tensor | None = None
+    relation_weights_gcn2: torch.Tensor | None = None
 
 
 class ForecastModel(nn.Module):

@@ -34,7 +34,7 @@ def test_mechanism_suite_builds_expected_variants() -> None:
             "model": "event_residual",
             "model_params": {"residual_bound": 0.5},
             "gate": {"enabled": True},
-            "graph": {"relation": "fused", "top_k": 5, "smoothing": 0.5},
+            "graph": {"top_k": 5, "enabled_relations": ["load", "event", "pattern"]},
         }
     }
     suite = {
@@ -42,8 +42,8 @@ def test_mechanism_suite_builds_expected_variants() -> None:
             "no_graph": {"experiment.model": "TCN"},
             "no_event_gate": {"experiment.gate.enabled": False},
         },
-        "relations": ["current_event", "fused"],
-        "sensitivity": {"top_k": [3, 7], "graph_smoothing": [0.3]},
+        "relations": ["load", "event", "pattern", "all"],
+        "sensitivity": {"top_k": [3, 7], "relation_dropout": [0.2]},
     }
 
     variants = _build_variants(base, suite)
@@ -52,11 +52,13 @@ def test_mechanism_suite_builds_expected_variants() -> None:
     assert names == [
         "ablation-no_graph",
         "ablation-no_event_gate",
-        "relation-current_event",
-        "relation-fused",
+        "relation-load",
+        "relation-event",
+        "relation-pattern",
+        "relation-all",
         "topk-3",
         "topk-7",
-        "smoothing-0p3",
+        "dropout-0p2",
     ]
     no_graph = next(item for item in variants if item[0] == "ablation-no_graph")
     no_event = next(item for item in variants if item[0] == "ablation-no_event_gate")

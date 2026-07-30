@@ -1,8 +1,12 @@
 """SG-EXP-003/004：两层多关系门控图卷积 + TCN 交错预测模型。
 
 架构（SG-EXP-003 固定图）：
-  TCN1 → GatedGCN1（一阶邻居）→ TCN2 → GatedGCN2（二阶传播）
+  TCN时间编码 → GCN1 → 图特征MLP精炼 → GCN2 → 跨层融合
+  即 TCN1 → GatedGCN1（一阶邻居）→ GraphMLPRefine → GatedGCN2（二阶传播）
   → Skip Fusion(H0,H1,H2) → Head
+
+注：图特征MLP精炼不是第二个时间卷积模块，因为时间维在TCN编码后已被压缩至
+节点向量，MLP仅做节点特征的非线性变换（残差MLP），不含时序卷积操作。
 
 架构（SG-EXP-004 自适应图）：
   在三类固定关系基础上增加节点嵌入学习的自适应关系，
@@ -91,16 +95,20 @@ class MultiRelationGatedGCN(nn.Module):
 # ========== 站内图时空预测模型基类 ==========
 
 class StationGraphForecast(ForecastModel):
-    """TCN-GCN 交错的两层多关系图时空预测模型（SG-EXP-003）。
+    """TCN时间编码 → GCN1 → 图特征MLP精炼 → GCN2 → 跨层融合 预测模型（SG-EXP-003）。
 
     架构：
-      TCN1 → GatedGCN1（一阶邻居）→ TCN2（图增强时序精炼）
+      TCN1 → GatedGCN1（一阶邻居）→ GraphMLPRefine（特征精炼）
       → GatedGCN2（二阶传播）→ Skip Fusion(H0,H1,H2) → Head
 
     关键设计决策：
-    - TCN1 和 TCN2 共享权重（同一 TemporalConvNet 实例），
-      因为两者的输入格式相同、任务相同——从时序中提取节点隐表示。
-      独立权重会导致参数量翻倍而无明显收益。
+    - TCN1 编码时间序列，将 ``[B,T,N,F]`` 压缩为 ``[B,N,D]`` 节点隐表示，
+      此后时间维消失，后续模块均操作 ``[B,N,D]`` 张量。
+    - GraphMLPRefine（即原 tcn2_refine）是一个残差MLP，做节点特征的非线性
+      精炼，而非时序卷积——因为 TCN 编码后已无时间维度。
+      不要将其误解为"第二个TCN模块"。
+    - GCN1 和 GCN2 使用独立的关系权重参数（β_r 分别学习），
+      因为一阶邻居与二阶传播后的信息需要不同的关系混合策略。
     - GCN1 和 GCN2 权重独立，因为它们处于不同跳数，
       一阶邻居信息与二阶传播后的信息需要不同的变换参数。
     - Skip Fusion 将 H0（纯时序）、H1（一阶空间）、H2（二阶空间）
@@ -117,6 +125,8 @@ class StationGraphForecast(ForecastModel):
         hidden_dim: int = 32,
         levels: int = 3,
         dropout: float = 0.1,
+        relation_weights_gcn1: torch.Tensor | None = None,
+        relation_weights_gcn2: torch.Tensor | None = None,
     ) -> None:
         super().__init__()
         # 共享 TCN 编码器
@@ -127,8 +137,10 @@ class StationGraphForecast(ForecastModel):
         # 两层独立的门控图卷积（不同跳数，不同参数）
         self.gcn1 = MultiRelationGatedGCN(hidden_dim, num_relations, dropout)
         self.gcn2 = MultiRelationGatedGCN(hidden_dim, num_relations, dropout)
-        # TCN2：轻量时序精炼（MLP 而非完整 TCN——时序信息已由 TCN1 提取）
-        self.tcn2_refine = nn.Sequential(
+        # 图特征MLP精炼：残差MLP做节点特征的非线性变换
+        # 重要：这不是第二个时序卷积模块。TCN1 已将时间维压缩到节点向量，
+        # 此处仅做节点特征的非线性精炼（残差 MLP），无时序卷积操作。
+        self.graph_mlp_refine = nn.Sequential(
             nn.Linear(hidden_dim, hidden_dim),
             nn.GELU(),
             nn.Dropout(dropout),
@@ -143,28 +155,33 @@ class StationGraphForecast(ForecastModel):
         self.head = nn.Linear(hidden_dim, horizon)
         self.latent_dim = hidden_dim
         self.horizon = horizon
+        # 独立关系权重：GCN1 和 GCN2 各自学习关系混合比例 β_r
+        # 两层权重均可独立获取梯度，不共享
+        init_rw1 = relation_weights_gcn1 if relation_weights_gcn1 is not None else torch.zeros(num_relations)
+        init_rw2 = relation_weights_gcn2 if relation_weights_gcn2 is not None else torch.zeros(num_relations)
+        self.relation_weights_gcn1 = nn.Parameter(init_rw1)
+        self.relation_weights_gcn2 = nn.Parameter(init_rw2)
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
-        """Temporal-Spatial交错编码：TCN1→GCN1→TCN2→GCN2→Skip→[B,N,D]。
+        """交错编码：TCN1→GCN1→GraphMLPRefine→GCN2→Skip→[B,N,D]。
 
-        调用方通过 ``self.relation_weights`` 和 ``self._get_adjacencies()``
-        提供关系权重与邻接矩阵，子类可覆写以支持自适应图。
+        调用方通过 ``_get_relation_weights_gcn1()`` / ``_get_relation_weights_gcn2()``
+        提供两套独立的关系权重，子类可覆写以支持不同的初始化策略。
         """
         # ---- TCN1：纯时序编码（各节点独立） ----
         h0 = self.tcn.encode(x)  # [B, N, D]
 
         adjacencies = self._get_adjacencies()
-        rw = self._get_relation_weights()
 
-        # ---- GCN1：一阶邻居空间聚合 ----
-        h1 = self.gcn1(h0, adjacencies, rw)  # [B, N, D]
+        # ---- GCN1：一阶邻居空间聚合（使用 GCN1 独立关系权重） ----
+        h1 = self.gcn1(h0, adjacencies, self._get_relation_weights_gcn1())  # [B, N, D]
 
-        # ---- TCN2：图增强时序精炼 ----
+        # ---- GraphMLPRefine：图增强特征精炼 ----
         # 残差连接保证即使图信息无帮助，模型仍可回退到纯时序
-        h1_refined = h1 + self.tcn2_refine(h1)
+        h1_refined = h1 + self.graph_mlp_refine(h1)
 
-        # ---- GCN2：二阶空间传播 ----
-        h2 = self.gcn2(h1_refined, adjacencies, rw)  # [B, N, D]
+        # ---- GCN2：二阶空间传播（使用 GCN2 独立关系权重） ----
+        h2 = self.gcn2(h1_refined, adjacencies, self._get_relation_weights_gcn2())  # [B, N, D]
 
         # ---- Skip Fusion：H0(时序) + H1(一阶空间) + H2(二阶空间) ----
         h_fused = self.skip_fusion(torch.cat([h0, h1, h2], dim=-1))
@@ -178,9 +195,13 @@ class StationGraphForecast(ForecastModel):
         """返回参与消息传递的邻接矩阵列表。子类可覆写以追加自适应图。"""
         raise NotImplementedError
 
-    def _get_relation_weights(self) -> torch.Tensor:
-        """返回原始（未归一化）关系权重。"""
-        raise NotImplementedError
+    def _get_relation_weights_gcn1(self) -> torch.Tensor:
+        """返回 GCN1 层原始（未归一化）关系权重 β_r。"""
+        return self.relation_weights_gcn1
+
+    def _get_relation_weights_gcn2(self) -> torch.Tensor:
+        """返回 GCN2 层原始（未归一化）关系权重 β_r。"""
+        return self.relation_weights_gcn2
 
 
 # ========== 固定图预测模型 ==========
@@ -218,20 +239,18 @@ class StaticGraphForecast(StationGraphForecast):
         for r, adj in enumerate(adjacencies):
             self.register_buffer(f"adj_{r}", torch.as_tensor(adj, dtype=torch.float32))
         self._num_relations = num_relations
-        # 可学习关系权重（初始化为均匀分布）
-        self.relation_weights = nn.Parameter(torch.zeros(num_relations))
+        # 注：relation_weights_gcn1/gcn2 已在基类中创建为 nn.Parameter
 
     def _get_adjacencies(self) -> list[torch.Tensor]:
         return [getattr(self, f"adj_{r}") for r in range(self._num_relations)]
-
-    def _get_relation_weights(self) -> torch.Tensor:
-        return self.relation_weights
 
     def forward(self, x: torch.Tensor, **_: torch.Tensor) -> ForecastOutput:
         prediction = self.forecast_from_latent(self.encode(x))
         return ForecastOutput(
             prediction=prediction,
             adjacency=self._get_adjacencies()[0],  # 返回第一类图作为代表
+            relation_weights_gcn1=self.relation_weights_gcn1.detach(),
+            relation_weights_gcn2=self.relation_weights_gcn2.detach(),
         )
 
 
@@ -289,30 +308,46 @@ class AdaptiveGraphForecast(StationGraphForecast):
         self._top_k = int(top_k)
 
         # 固定图融合权重（可学习，训练后冻结）
+        # 注：relation_weights_gcn1/gcn2 已在基类中创建为 nn.Parameter，
+        # fixed_weight 通过 sigmoid 在 _build_adaptive_adjacency 中参与 alpha 计算
         self.fixed_weight = nn.Parameter(torch.tensor(float(fixed_weight)))
-
-        # 4 类关系的可学习权重（含自适应关系）
-        self.relation_weights = nn.Parameter(torch.zeros(num_relations))
 
     def _build_adaptive_adjacency(self) -> torch.Tensor:
         """由节点嵌入动态生成自适应邻接矩阵。
 
         仅在训练时更新（嵌入参与梯度），推理时使用当前冻结值。
+        返回 A_mix = α·A_fixed_avg + (1-α)·A_adp，其中 α = sigmoid(fixed_weight)。
         """
         # 缩放点积注意力：E_s @ E_t^T / √d_e
         scale = self._embed_dim ** 0.5
         logits = self.source_embedding @ self.target_embedding.T / scale
         # ReLU 截断负亲和度 → Softmax 逐行归一化
         learned = torch.softmax(torch.relu(logits), dim=-1)
-        # top-k 稀疏化：每节点仅保留 k 个最强邻居
-        topk_vals, topk_idx = torch.topk(learned, k=min(self._top_k, self._num_nodes - 1), dim=-1)
+        # top-k 稀疏化：先屏蔽自身对角线（填充 -inf），
+        # 确保自身不占用 top-k 邻居名额，再选每节点仅保留 k 个最强邻居
+        learned = learned.fill_diagonal_(float("-inf"))
+        topk_vals, topk_idx = torch.topk(
+            learned, k=min(self._top_k, self._num_nodes - 1), dim=-1,
+        )
         sparse = torch.zeros_like(learned)
         sparse.scatter_(-1, topk_idx, topk_vals)
         # 对称化 + 自环 + 归一化
         sparse = (sparse + sparse.T) / 2.0
+        # top-k 完成后添加自环（之前已屏蔽，此处加回）
         sparse.fill_diagonal_(1.0)
         deg = sparse.sum(dim=-1).pow(-0.5).clamp(min=1e-12)
-        return deg.unsqueeze(-1) * sparse * deg.unsqueeze(-2)
+        adaptive = deg.unsqueeze(-1) * sparse * deg.unsqueeze(-2)
+
+        # 固定图与自适应图混合：α = sigmoid(fixed_weight) 将可学习标量压缩到 (0,1)
+        # 注释验证：self.fixed_weight 是 nn.Parameter，通过 torch.sigmoid 参与
+        # _build_adaptive_adjacency 的 alpha 计算，梯度可反向传播至 fixed_weight。
+        # 训练时 alpha 随 fixed_weight 更新；验证/测试时冻结 fixed_weight 即可固定 α。
+        alpha = torch.sigmoid(self.fixed_weight)
+        fixed_sum = torch.zeros_like(adaptive)
+        for r in range(self._num_fixed):
+            fixed_sum = fixed_sum + getattr(self, f"adj_{r}")
+        fixed_avg = fixed_sum / max(self._num_fixed, 1)
+        return alpha * fixed_avg + (1.0 - alpha) * adaptive
 
     def _get_adjacencies(self) -> list[torch.Tensor]:
         fixed = [getattr(self, f"adj_{r}") for r in range(self._num_fixed)]
@@ -321,12 +356,14 @@ class AdaptiveGraphForecast(StationGraphForecast):
         # 与三类固定关系并列，通过 β 权重在 GCN 中融合
         return fixed + [adaptive]
 
-    def _get_relation_weights(self) -> torch.Tensor:
-        return self.relation_weights
+    # 注：_get_relation_weights_gcn1/gcn2 继承自父类，
+    # 直接返回 self.relation_weights_gcn1/gcn2，无需覆写
 
     def forward(self, x: torch.Tensor, **_: torch.Tensor) -> ForecastOutput:
         prediction = self.forecast_from_latent(self.encode(x))
         return ForecastOutput(
             prediction=prediction,
             adjacency=self._build_adaptive_adjacency(),
+            relation_weights_gcn1=self.relation_weights_gcn1.detach(),
+            relation_weights_gcn2=self.relation_weights_gcn2.detach(),
         )

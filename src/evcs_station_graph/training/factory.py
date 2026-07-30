@@ -1,8 +1,15 @@
 """模型工厂，保证训练入口不包含分散的模型分支逻辑。
 
 所有实验配置通过 ``model`` 字段选择模型类型，工厂负责创建对应的模块实例。
-模型名的别名（如 "TCN"="temporal"、"GraphWaveNet_style"="adaptive_graph"）
-是为了兼容不同论文和框架的命名习惯，逻辑上完全等价。
+支持的模型名：
+  - ``"temporal"`` / ``"TCN"``：纯时序 TCN（SG-EXP-002 默认路径）
+  - ``"static_graph"`` / ``"TCN_GCN"``：固定图时空预测（SG-EXP-003）
+  - ``"adaptive_graph"``：自适应图时空预测（SG-EXP-004）
+  - ``"event_residual"``：事件门控残差修正（SG-EXP-005）。
+    通过 ``model_params.base_model_type`` 选择冻结基模型类型：
+    ``"temporal"``（默认）→ TCN；``"static_graph"`` → StaticGraphForecast；
+    ``"adaptive_graph"`` → AdaptiveGraphForecast。
+    非 temporal 基模型需通过 ``base_checkpoint`` 加载对应实验的检查点。
 """
 
 from __future__ import annotations
@@ -30,11 +37,16 @@ def build_model(
     num_nodes: int,
     adjacencies: list[np.ndarray],
     base_checkpoint: str | Path | None = None,
+    feature_names: tuple[str, ...] | None = None,
 ) -> torch.nn.Module:
     """根据解析后的实验配置创建模型。
 
-    ``adjacencies`` 为三类关系矩阵列表 [A_load, A_event, A_pattern]。
+    ``adjacencies`` 为多类关系矩阵列表。
     仅 TCN 不使用该参数。
+
+    ``feature_names`` 是特征列的顺序名称元组，用于
+    EventResidualCorrection 自动查找事件特征列索引。
+    非 event_residual 模型忽略此参数。
     """
     experiment = config["experiment"]
     params = experiment.get("model_params", {})
@@ -53,7 +65,7 @@ def build_model(
             input_dim, horizon, num_nodes, adjacencies, **common,
         )
 
-    if model_name in {"GraphWaveNet_style", "AGCRN_style", "adaptive_graph"}:
+    if model_name in {"adaptive_graph"}:
         return AdaptiveGraphForecast(
             input_dim, horizon, num_nodes, adjacencies,
             embedding_dim=int(params.get("embedding_dim", 12)),
@@ -63,12 +75,30 @@ def build_model(
         )
 
     if model_name in {"event_residual", "frozen_event_gated_residual_correction"}:
+        base_model_type = str(params.get("base_model_type", "temporal"))
         freeze_base = bool(params.get("freeze_base", base_checkpoint is not None))
         if freeze_base and base_checkpoint is None:
             raise ValueError(
-                "冻结默认路径时必须提供对应随机种子的 SG-EXP-002 检查点"
+                "冻结默认路径时必须提供对应随机种子的基模型检查点"
             )
-        base = TemporalConvNet(input_dim, horizon, **common)
+
+        if base_model_type == "temporal":
+            base: ForecastModel = TemporalConvNet(input_dim, horizon, **common)
+        elif base_model_type == "static_graph":
+            base = StaticGraphForecast(
+                input_dim, horizon, num_nodes, adjacencies, **common,
+            )
+        elif base_model_type == "adaptive_graph":
+            base = AdaptiveGraphForecast(
+                input_dim, horizon, num_nodes, adjacencies,
+                embedding_dim=int(params.get("embedding_dim", 12)),
+                fixed_weight=float(params.get("fixed_weight", 0.3)),
+                top_k=int(params.get("top_k", 5)),
+                **common,
+            )
+        else:
+            raise ValueError(f"不支持的基模型类型：{base_model_type}")
+
         if base_checkpoint is not None:
             payload = torch.load(base_checkpoint, map_location="cpu", weights_only=True)
             state = payload.get("model_state", payload)
@@ -80,19 +110,21 @@ def build_model(
             hidden_dim=int(params.get("residual_hidden_dim", 32)),
             residual_bound=float(params.get("residual_bound", 0.5)),
             freeze_base=freeze_base,
+            feature_names=feature_names,
+            base_model_type=base_model_type,
         )
     raise ValueError(f"不支持的模型：{model_name}")
 
 
 def _extract_base_state(state: dict[str, torch.Tensor]) -> dict[str, torch.Tensor]:
-    """兼容两种检查点格式，提取基模型（TCN）的权重。
+    """兼容两种检查点格式，提取基模型的权重。
 
-    格式 1（SG-EXP-002 检查点）：键名如 ``network.0.conv.weight``
-      → 直接返回全量 state_dict，因为整个检查点就是 TCN
+    格式 1（直接检查点）：键名如 ``network.0.conv.weight``
+      → 直接返回全量 state_dict，因为整个检查点就是基模型
 
-    格式 2（SG-EXP-005 检查点）：键名如 ``base_model.network.0.conv.weight``
-      → 需要去掉 ``base_model.`` 前缀，因为 EventResidualCorrection
-        将 TCN 包装在 self.base_model 属性中
+    格式 2（EventResidualCorrection 检查点）：键名如 ``base_model.network.0.conv.weight``
+      → 去掉 ``base_model.`` 前缀，因为 EventResidualCorrection
+        将基模型包装在 self.base_model 属性中
 
     通过检测任意键是否以 ``base_model.`` 开头来区分两种格式。
     """

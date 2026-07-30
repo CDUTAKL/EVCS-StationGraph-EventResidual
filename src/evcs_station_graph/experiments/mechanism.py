@@ -93,8 +93,19 @@ def _build_variants(
     base: dict[str, Any],
     suite: dict[str, Any],
 ) -> list[tuple[str, dict[str, Any], bool]]:
-    variants: list[tuple[str, dict[str, Any], bool]] = []
+    """根据实验套件配置构建所有机制子实验变体。
+
+    从套件配置中读取三类实验：
+    1. 消融实验（ablations）：通过点分键路径覆盖配置值，如禁用门控、移除图等
+    2. 关系消融实验（relations）：将 enabled_relations 设置为单个关系名以消融到单关系，
+       特殊值 "all" 启用全部三种关系（load/event/pattern）
+    3. 敏感性实验（sensitivity）：包括 top_k 和 relation_dropout 的参数扫描
+
+    Returns:
+        三元组列表，每项为 (变体名称, 派生配置, 是否需要默认模型检查点)。
+    """
     model_without_checkpoint = {"TCN", "TCN_GCN", "adaptive_graph"}
+    variants: list[tuple[str, dict[str, Any], bool]] = []
 
     for name, override_map in suite.get("ablations", {}).items():
         config = copy.deepcopy(base)
@@ -103,22 +114,25 @@ def _build_variants(
         model_name = str(config["experiment"]["model"])
         variants.append((f"ablation-{name}", config, model_name not in model_without_checkpoint))
 
-    # 关系消融：指定 graph.relations（单个关系名）来消融到单关系
-    for relation in suite.get("relations", []):
+    # 关系消融：指定 graph.enabled_relations（单个关系名）来消融到单关系
+    for relation_name in suite.get("relations", []):
         config = copy.deepcopy(base)
-        config["experiment"]["graph"]["relations"] = [relation]
-        variants.append((f"relation-{relation}", config, True))
+        if relation_name == "all":
+            config["experiment"]["graph"]["enabled_relations"] = ["load", "event", "pattern"]
+        else:
+            config["experiment"]["graph"]["enabled_relations"] = [relation_name]
+        variants.append((f"relation-{relation_name}", config, True))
 
     sensitivity = suite.get("sensitivity", {})
     for top_k in sensitivity.get("top_k", []):
         config = copy.deepcopy(base)
         config["experiment"]["graph"]["top_k"] = int(top_k)
         variants.append((f"topk-{top_k}", config, True))
-    for smoothing in sensitivity.get("graph_smoothing", []):
+    for dropout in sensitivity.get("relation_dropout", []):
         config = copy.deepcopy(base)
-        config["experiment"]["graph"]["smoothing"] = float(smoothing)
-        label = str(smoothing).replace(".", "p")
-        variants.append((f"smoothing-{label}", config, True))
+        config["experiment"]["graph"]["relation_dropout"] = float(dropout)
+        label = str(dropout).replace(".", "p")
+        variants.append((f"dropout-{label}", config, True))
     return variants
 
 

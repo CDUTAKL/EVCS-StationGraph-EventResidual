@@ -3,8 +3,14 @@
 本模块实现"冻结默认路径 + 事件门控 + 有界局部残差"的三段式修正架构。
 
 三段式架构：
-1. **默认路径（冻结）**：复用 SG-EXP-002 的 TCN，不更新参数。
-   保证非事件窗口内的预测与基线完全一致。
+1. **默认路径（冻结）**：复用前置实验的基模型，不更新参数。
+   支持三种基模型类型（由 ``base_model_type`` 指定）：
+   - ``"temporal"``：TCN（SG-EXP-002），仅依赖节点自身历史
+   - ``"static_graph"``：StaticGraphForecast（SG-EXP-003），
+     包含训练期固定的多关系图卷积编码
+   - ``"adaptive_graph"``：AdaptiveGraphForecast（SG-EXP-004），
+     在三类固定关系基础上增加节点嵌入学习的自适应图
+   保证非事件窗口内的预测与基模型完全一致。
 2. **修正 MLP（可训练）**：以节点自身隐表示和"邻居与自身的差异"
    （neighbor - self）作为输入，输出有界残差。差异量捕捉了
    "图信息告诉你的、时间信息没告诉你的"部分。
@@ -26,16 +32,22 @@ from evcs_station_graph.models.common import ForecastModel, ForecastOutput
 class EventResidualCorrection(nn.Module):
     """仅在规则触发位置叠加有界局部残差（SG-EXP-005）。
 
+    支持三种冻结基模型类型（通过 ``base_model_type`` 指定）：
+      - ``"temporal"``（默认）：TCN 纯时序编码器
+      - ``"static_graph"``：StaticGraphForecast 固定图编码器
+      - ``"adaptive_graph"``：AdaptiveGraphForecast 自适应图编码器
+
     修正 MLP 使用三类信息：
       H：当前节点隐状态（基模型编码输出）
       M：邻居聚合结果（多关系消息传递）
       E：预测起点的可见事件特征（接入/离站/活跃/负荷跳变）
 
     公式：
-      ΔŶ = r_max · tanh(MLP([H, M, E]))
+      ΔŶ = r_max · tanh(MLP([H, M-H, E]))
       Ŷ = Ŷ_base + m_t · ΔŶ
 
     ``adjacencies`` 支持多关系图——与 graph.py 的消息传递保持结构一致。
+    ``feature_names`` 用于自动查找事件特征列索引，替代硬编码的 event_feat_indices。
     """
 
     def __init__(
@@ -47,10 +59,12 @@ class EventResidualCorrection(nn.Module):
         hidden_dim: int = 32,
         residual_bound: float = 0.5,
         freeze_base: bool = True,
-        event_feat_indices: list[int] | None = None,
+        feature_names: tuple[str, ...] | None = None,
+        base_model_type: str = "temporal",
     ) -> None:
         super().__init__()
         self.base_model = base_model
+        self._base_type = base_model_type
         # 支持单个邻接矩阵或多关系矩阵列表
         if isinstance(adjacencies, (np.ndarray, torch.Tensor)):
             adjacencies = [adjacencies]
@@ -59,13 +73,28 @@ class EventResidualCorrection(nn.Module):
         self._num_adj = len(adjacencies)
         self.residual_bound = float(residual_bound)
         self.freeze_base = bool(freeze_base)
-        # 事件特征索引：默认为 [access_count, departure_count, active_count, load_jump_flag]
-        # 对应 configs/project.yaml 中 feature_columns 的顺序
-        if event_feat_indices is None:
-            event_feat_indices = [1, 2, 3, 6]
-        self._event_feat_indices = list(event_feat_indices)
+        # 事件特征索引：通过 feature_names 查找默认事件特征列
+        # 默认查找 ["access_count", "departure_count", "active_count", "load_jump_flag"]
+        # 找不到的特征静默跳过；全部找不到则报错
+        if feature_names is not None:
+            name_to_idx = {name: idx for idx, name in enumerate(feature_names)}
+            found_indices: list[int] = []
+            for feat_name in ("access_count", "departure_count", "active_count", "load_jump_flag"):
+                idx = name_to_idx.get(feat_name)
+                if idx is not None:
+                    found_indices.append(idx)
+            if not found_indices:
+                raise ValueError(
+                    f"在 feature_names={feature_names} 中未找到任何默认事件特征 "
+                    f"(access_count, departure_count, active_count, load_jump_flag)"
+                )
+            self._event_feat_indices = found_indices
+        else:
+            # 向后兼容：未提供 feature_names 时使用硬编码索引
+            self._event_feat_indices = [1, 2, 3, 6]
         n_event_feats = len(self._event_feat_indices)
-        # 修正 MLP：[H, M, E] → hidden → horizon → tanh
+        # 修正 MLP：[H, M-H, E] → hidden → horizon → tanh
+        # correction_input 维度 = base_latent_dim * 2 + n_event_feats
         self.corrector = nn.Sequential(
             nn.Linear(base_model.latent_dim * 2 + n_event_feats, hidden_dim),
             nn.GELU(),
