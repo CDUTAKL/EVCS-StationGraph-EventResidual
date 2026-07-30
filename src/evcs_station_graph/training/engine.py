@@ -1,10 +1,20 @@
-"""统一训练、评价、模型保存与预测文件导出。"""
+"""统一训练、评价、模型保存与预测文件导出。
+
+本模块是实现不可变研究边界（代码样式协议 §2）的关键执行点：
+- 所有模型的训练循环完全相同，差异仅来自 config 字典
+- 事件规则在验证集拟合后冻结，测试集仅执行已冻结规则
+- 预测文件按 (split, origin_index, horizon, node_id) 四元组唯一标识
+- 每种子的工件（模型、指标、预测文件）独立保存，确保可追溯
+
+训练流程概览（``train_single_seed``）：
+  [构建数据集] → [创建模型] → [拟合冻结事件规则] → [训练循环]
+  → [测试集预测] → [分层评价+四格诊断] → [写出工件]
+"""
 
 from __future__ import annotations
 
 import csv
 import time
-from dataclasses import asdict
 from pathlib import Path
 from typing import Any
 
@@ -102,6 +112,7 @@ def train_single_seed(
     base_checkpoint: str | Path | None = None,
 ) -> dict[str, Any]:
     """训练一个随机种子并输出完整证据文件。"""
+    # ========== 阶段 1：数据集与数据加载器构建 ==========
     set_global_seed(seed)
     output_dir.mkdir(parents=True, exist_ok=True)
     runtime = config.get("runtime", {})
@@ -121,11 +132,14 @@ def train_single_seed(
         for split in ("train", "validation", "test")
     }
     batch_size = int(training.get("batch_size", 256))
+    # 训练集 shuffle=True 保证每轮遍历顺序不同；验证/测试集不 shuffle
+    # 以保持结果可复现（相同的 seed → 相同的验证/测试批次顺序）
     loaders = {
         "train": _make_loader(datasets["train"], batch_size, True, seed),
         "validation": _make_loader(datasets["validation"], batch_size, False, seed),
         "test": _make_loader(datasets["test"], batch_size, False, seed),
     }
+    # ========== 阶段 2：模型创建与冻结事件规则拟合 ==========
     relation_name = config["experiment"].get("graph", {}).get("relation", "fused")
     if relation_name not in relation_set.as_dict():
         raise ValueError(f"未知候选关系：{relation_name}")
@@ -140,19 +154,27 @@ def train_single_seed(
     )
     device = _select_device(str(runtime.get("device", "auto")))
     model.to(device)
+    # 只优化 requires_grad=True 的参数，冻结参数（如基模型权重）不受影响
     parameters = [parameter for parameter in model.parameters() if parameter.requires_grad]
     if not parameters:
         raise RuntimeError("当前配置没有可训练参数，请检查模型冻结设置")
+    # AdamW：带解耦权重衰减的 Adam，适合小规模时序预测任务
+    # L1Loss（MAE）：比 MSE 对异常负荷峰值更鲁棒，适合充电负荷的尖峰特性
     optimizer = torch.optim.AdamW(
         parameters,
         lr=float(training.get("learning_rate", 1e-3)),
         weight_decay=float(training.get("weight_decay", 1e-4)),
     )
     criterion: nn.Module = nn.L1Loss()
+
+    # ---- 冻结事件规则拟合（仅使用验证集） ----
+    # 阈值和窗口扩展参数在此确定后，后续训练和测试阶段绝不重新计算
     rule = fit_frozen_event_rule(
         bundle,
         quantile=float(config["dataset"]["event"].get("trigger_quantile", 0.95)),
+        window_extension=int(config["dataset"]["event"].get("window_extension", 2)),
     )
+    # 构建全时间轴的触发矩阵 [T, N]，训练时按 origin_index 索引
     trigger_by_origin = np.zeros(
         (len(bundle.timestamps_ns), len(bundle.node_ids)),
         dtype=np.bool_,
@@ -164,9 +186,13 @@ def train_single_seed(
             rule,
         )
     if not bool(config["experiment"].get("gate", {}).get("enabled", True)):
-        # 无门控消融：保留修正模型，但让所有样本均进入修正路径。
+        # 无门控消融：保留修正模型结构，但所有样本均进入修正路径
+        # 用于量化"门控本身是否有价值"——对比门控+修正 vs 全量修正
         trigger_by_origin[:] = True
 
+    # ========== 阶段 3：训练循环（早停） ==========
+    # 使用验证集 MAE 做早停：在 patience 轮内未改善则终止
+    # 早停阈值 1e-8 防止浮点误差导致的伪改善（如 0.100000001 < 0.1）
     best_state: dict[str, torch.Tensor] | None = None
     best_validation = float("inf")
     patience = int(training.get("patience", 8))
@@ -209,6 +235,9 @@ def train_single_seed(
     model.load_state_dict(best_state)
     elapsed = time.perf_counter() - started
 
+    # ========== 阶段 4：测试集一次性评价 ==========
+    # 注意：此阶段不调整模型参数、不更新阈值、不修改图关系
+    # 测试集仅用于计算最终指标，绝不参与任何拟合或选择
     predictions = _predict(
         model,
         loaders["test"],
@@ -238,10 +267,26 @@ def train_single_seed(
         "trainable_parameters": sum(parameter.numel() for parameter in parameters),
     }
     metrics["frozen_event_rule"] = {
-        **asdict(rule),
         "thresholds": rule.thresholds.tolist(),
+        "quantile": rule.quantile,
+        "score_definition": rule.score_definition,
+        "window_extension": rule.window_extension,
+        "trigger_point_fraction": (
+            rule.trigger_point_fraction.tolist()
+            if hasattr(rule.trigger_point_fraction, "tolist")
+            else list(rule.trigger_point_fraction)
+        ),
+        "event_window_fraction": (
+            rule.event_window_fraction.tolist()
+            if hasattr(rule.event_window_fraction, "tolist")
+            else list(rule.event_window_fraction)
+        ),
+        "score_stats": rule.score_stats,
     }
 
+    # ========== 阶段 5：工件写出 ==========
+    # 每种子的工件独立保存（模型、指标、预测文件、训练日志、清单）
+    # 确保任意单种子结果可独立审核和复现
     torch.save(
         {
             "model_state": best_state,
@@ -274,6 +319,7 @@ def train_single_seed(
     return {
         "seed": seed,
         "global": metrics["global"],
+        "nonzero_load": metrics["nonzero_load"],
         "event_window": metrics["event_window"],
         "stable_window": metrics["stable_window"],
         "four_cell_reconstruction_pass": four_cells["reconstruction_pass"],
@@ -318,6 +364,11 @@ def _train_epoch(
     device: torch.device,
     trigger_by_origin: np.ndarray,
 ) -> float:
+    """执行一个训练轮次，返回该轮的平均训练损失（缩放后尺度）。
+
+    梯度裁剪 max_norm=5.0 防止事件窗口内的极端残差导致梯度爆炸。
+    触发矩阵 ``trigger_by_origin`` 在训练中控制哪些样本进入修正路径。
+    """
     model.train()
     total_loss = 0.0
     total_count = 0
@@ -350,6 +401,10 @@ def _validation_loss(
     device: torch.device,
     trigger_by_origin: np.ndarray,
 ) -> float:
+    """计算验证集平均损失（不更新参数），用于早停判断。
+
+    ``@torch.no_grad()`` 确保验证期间不计算梯度，节省显存。
+    """
     model.eval()
     total_loss = 0.0
     total_count = 0
@@ -375,6 +430,17 @@ def _predict(
     trigger_by_origin: np.ndarray,
     bundle: TensorBundle,
 ) -> dict[str, np.ndarray]:
+    """在测试集上生成预测，返回反标准化后的真实值和预测值。
+
+    反标准化使用训练集拟合的 per-node 参数：
+      y_raw = y_scaled * target_std + target_mean
+    这使得指标具有物理量纲（kWh/15min），便于理解和比较。
+
+    返回的 dict 包含：
+    - truth/prediction：形状 [S, H, N] 的反标准化负荷
+    - target_event：真实事件标签（用于评价）
+    - rule_trigger：规则触发矩阵（用于评价）
+    """
     model.eval()
     truth_parts: list[np.ndarray] = []
     prediction_parts: list[np.ndarray] = []
@@ -414,6 +480,16 @@ def _write_predictions(
     arrays: dict[str, np.ndarray],
     path: Path,
 ) -> dict[str, Any]:
+    """将预测结果与预测键合并写入 gzip CSV，并验证键唯一性和数值有效性。
+
+    输出的 CSV 包含以下列：
+    - 标识列：split, origin_index, horizon, node_id
+    - 数值列：y_true（真实负荷）, y_pred（预测负荷）
+    - 诊断列：target_event（真实事件标签）, rule_trigger（规则触发）
+
+    rule_trigger 是 [S, N] 的，通过 broadcast_to 扩展为 [S, H, N]
+    以匹配 target_event 的形状，确保两者可直接比较（四格诊断需要）。
+    """
     keys = build_prediction_key_frame(
         bundle,
         "test",
@@ -444,6 +520,11 @@ def _write_predictions(
 
 
 def _write_training_log(rows: list[dict[str, Any]], path: Path) -> None:
+    """将逐轮训练指标写入 CSV，拒绝写出空日志。
+
+    空日志代表训练循环未执行任何 epoch，通常是配置错误（如 epochs=0）
+    或数据集为空——此时应立即终止而非静默产生不完整工件。
+    """
     if not rows:
         raise RuntimeError("训练日志为空，拒绝写出不完整实验工件")
     with path.open("w", encoding="utf-8", newline="") as handle:
@@ -453,6 +534,11 @@ def _write_training_log(rows: list[dict[str, Any]], path: Path) -> None:
 
 
 def _select_device(requested: str) -> torch.device:
+    """解析设备选择：'auto' 按 CUDA > MPS > CPU 优先级自动选择。
+
+    MPS（Apple Silicon GPU）支持受限于 PyTorch 版本——部分算子可能回退 CPU，
+    但不影响结果正确性，仅影响训练速度。
+    """
     if requested != "auto":
         return torch.device(requested)
     if torch.cuda.is_available():
@@ -486,7 +572,7 @@ def _aggregate_seed_metrics(rows: list[dict[str, Any]]) -> dict[str, Any]:
     if not rows:
         raise RuntimeError("随机种子结果为空，无法汇总实验")
     output: dict[str, Any] = {"seeds": [row["seed"] for row in rows], "scopes": {}}
-    for scope in ("global", "event_window", "stable_window"):
+    for scope in ("global", "nonzero_load", "event_window", "stable_window"):
         output["scopes"][scope] = {}
         for metric in ("mae", "rmse", "wape"):
             values = np.asarray([row[scope][metric] for row in rows], dtype=np.float64)

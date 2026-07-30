@@ -1,4 +1,19 @@
-"""SG-EXP-002：默认时间卷积预测模型。"""
+"""SG-EXP-002：默认时间卷积预测模型。
+
+本模块实现因果扩张时间卷积网络（Temporal Convolutional Network，TCN），
+作为所有后续实验的默认预测路径。TCN 对每个节点独立编码——不使用跨节点
+信息——因此可作为"不看邻居"的基线，用于量化图关系的增量收益。
+
+关键设计：
+- 因果卷积：padding 只加在左侧，forward 时裁剪右侧，保证时刻 t 的隐表示
+  仅依赖 ≤t 的信息
+- 扩张因子按 2^level 指数增长。感受野公式：
+  RF = 1 + Σ (kernel_size-1) × dilation[level]
+  对 levels=3、kernel=3，dilations=[1,2,4]：
+  RF = 1 + 2×1 + 2×2 + 2×4 = 1 + 2 + 4 + 8 = 15 个时间步（3.75 小时）
+  若需覆盖 96 步历史窗口，需 6 层：RF = 1 + 2×(1+2+4+8+16+32) = 127 步
+- GroupNorm(1, ...)：组数=1 等价于沿通道的 LayerNorm，适合小 batch 训练
+"""
 
 from __future__ import annotations
 
@@ -40,6 +55,9 @@ class CausalConvBlock(nn.Module):
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
+        # 因果卷积通过在左侧加 padding、前向时裁剪右侧来实现：
+        # conv(x) 的输出比输入长 padding 个时间步，其中前 padding 个位置
+        # 是"看到未来"的结果，因此裁剪掉右侧多余的 padding 个位置
         value = self.conv(x)
         if self.padding:
             value = value[..., :-self.padding]
@@ -86,11 +104,21 @@ class TemporalConvNet(ForecastModel):
         self.horizon = horizon
 
     def encode(self, x: torch.Tensor) -> torch.Tensor:
+        """将 [B, T, N, F] 输入编码为 [B, N, D] 节点隐表示。
+
+        维度变换说明：
+        - 输入形状 [B, T, N, F] → permute [B, N, F, T] → reshape [B*N, F, T]
+        - 这样每个节点的时间序列成为独立的 Conv1d 样本，共享 TCN 参数
+        - 最后取每个序列的最后一个时间步 [..., -1] 作为节点隐表示
+        - reshape 回 [B, N, D] 恢复节点维度
+        """
         if x.ndim != 4:
             raise ValueError("TCN 输入必须为 [B, T, N, F]")
         batch, time_steps, nodes, features = x.shape
+        # [B, T, N, F] → [B, N, F, T] → [B*N, F, T]
+        # 将每个节点的时序独立送入共享权重的 Conv1d
         value = x.permute(0, 2, 3, 1).reshape(batch * nodes, features, time_steps)
-        encoded = self.network(value)[..., -1]
+        encoded = self.network(value)[..., -1]  # 取最后一个时间步的隐表示
         return encoded.reshape(batch, nodes, self.latent_dim)
 
     def forecast_from_latent(self, latent: torch.Tensor) -> torch.Tensor:

@@ -9,6 +9,7 @@ from evcs_station_graph.evaluation.metrics import (
 from evcs_station_graph.evaluation.rules import (
     FrozenEventRule,
     apply_frozen_event_rule,
+    build_symmetric_event_windows,
     fit_frozen_event_rule,
     visible_event_scores,
 )
@@ -16,6 +17,7 @@ from evcs_station_graph.evaluation.rules import (
 __all__ = [
     "FrozenEventRule",
     "apply_frozen_event_rule",
+    "build_symmetric_event_windows",
     "fit_frozen_event_rule",
     "four_cell_diagnostics",
     "regression_metrics",

@@ -70,3 +70,6 @@ dataset:
     # 真实事件标签只用于评价；规则触发阈值由验证集冻结。
     label_columns: [access_count, departure_count, load_jump_flag]
     trigger_quantile: 0.95
+    # 触发点向前后扩展的时间片数（每个时间片=15分钟）。
+    # 扩展后的相邻/重叠窗口自动合并。0 表示不扩展。
+    window_extension: 2

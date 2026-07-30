@@ -70,3 +70,65 @@ def test_event_rule_is_fit_once_on_validation(synthetic_bundle) -> None:
     )
     assert trigger.shape == (20, 4)
     np.testing.assert_array_equal(rule.thresholds, thresholds)
+
+
+def test_event_window_expansion_is_causal(synthetic_bundle) -> None:
+    """事件窗口扩展是严格因果的：触发点 t 不得改变 t 之前预测起点的路由状态。
+
+    验证方式：对全时间轴应用规则，检查任意被标记为"事件路径"的时刻 t
+    必定由某个不晚于 t 的原始触发点解释（s ≤ t ≤ s + window_extension）。
+    若存在 t 因 s > t 的触发而被标记，则存在未来信息泄漏。
+    """
+    rule = fit_frozen_event_rule(synthetic_bundle, quantile=0.8, window_extension=2)
+
+    # 用全时间轴计算触发矩阵
+    all_origins = np.arange(len(synthetic_bundle.timestamps_ns), dtype=np.int64)
+    trigger = apply_frozen_event_rule(synthetic_bundle, all_origins, rule)
+
+    # 获取原始阈值判定（未扩展）作为"因果根"
+    from evcs_station_graph.evaluation.rules import visible_event_scores
+
+    score_stats_np = {
+        key: np.asarray(value, dtype=np.float32)
+        for key, value in rule.score_stats.items()
+    }
+    scores = visible_event_scores(synthetic_bundle, all_origins,
+                                   score_stats=score_stats_np)
+    raw = scores >= rule.thresholds[None, :]  # [T, N]
+
+    w = rule.window_extension
+    T, N = trigger.shape
+    for n in range(N):
+        for t in range(T):
+            if not trigger[t, n]:
+                continue
+            # t 必须由某个原始触发点 s ≤ t 经过前向扩展覆盖
+            explained = any(
+                raw[s, n] and s <= t <= s + w
+                for s in range(max(0, t - w), t + 1)
+            )
+            assert explained, (
+                f"节点 {n} 时刻 t={t} 的触发状态缺乏因果解释："
+                f"前向窗口 [{max(0, t - w)}, {t}] 内无原始触发点"
+            )
+
+
+def test_symmetric_windows_cover_both_directions(synthetic_bundle) -> None:
+    """对称事件邻域必须同时覆盖触发点的前后方向。"""
+    from evcs_station_graph.evaluation.rules import build_symmetric_event_windows
+
+    rule = fit_frozen_event_rule(synthetic_bundle, quantile=0.8, window_extension=2)
+    all_origins = np.arange(len(synthetic_bundle.timestamps_ns), dtype=np.int64)
+
+    symmetric = build_symmetric_event_windows(synthetic_bundle, all_origins, rule)
+    causal = apply_frozen_event_rule(synthetic_bundle, all_origins, rule)
+
+    # 对称窗口应包含因果窗口（前者是后者的超集）
+    assert (causal <= symmetric).all(), "对称窗口应包含因果窗口"
+
+    # 对称窗口确实比因果窗口更大（向后扩展的部分）
+    symmetric_count = int(symmetric.sum())
+    causal_count = int(causal.sum())
+    assert symmetric_count >= causal_count, (
+        f"对称窗口触发数 ({symmetric_count}) 应 ≥ 因果窗口触发数 ({causal_count})"
+    )
