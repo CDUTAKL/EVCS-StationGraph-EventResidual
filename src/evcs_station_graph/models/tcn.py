@@ -12,7 +12,11 @@
   对 levels=3、kernel=3，dilations=[1,2,4]：
   RF = 1 + 2×1 + 2×2 + 2×4 = 1 + 2 + 4 + 8 = 15 个时间步（3.75 小时）
   若需覆盖 96 步历史窗口，需 6 层：RF = 1 + 2×(1+2+4+8+16+32) = 127 步
-- GroupNorm(1, ...)：组数=1 等价于沿通道的 LayerNorm，适合小 batch 训练
+- 归一化采用逐时间步 LayerNorm：对每个时间步独立归一化通道维。
+  注意不能使用 GroupNorm(1, C)——其对 [B, C, T] 的归一化统计量
+  跨 (C×T) 计算，会把所有时间步（包括未来）耦合进每个输出位置，
+  既破坏逐点因果性，也使实际感受野退化为整个输入窗口（实测 96 步），
+  与上面 15 步的理论公式不符。
 """
 
 from __future__ import annotations
@@ -46,10 +50,10 @@ class CausalConvBlock(nn.Module):
             dilation=dilation,        # 扩张因子
             padding=padding,          # 左侧填充，保证输出长度 = 输入长度 + padding
         )
-        self.norm = nn.GroupNorm(1, out_channels)  # 组数=1 等价于 LayerNorm，适合小 batch 训练
-        self.activation = nn.GELU()                # GELU 激活函数，平滑非线性
-        self.dropout = nn.Dropout(dropout)         # 随机失活，防止过拟合
-        self.residual = (                          # 残差连接：若输入输出通道数相同，则直接相加，否则通过 1x1 卷积调整通道数
+        self.norm = nn.LayerNorm(out_channels)  # 逐时间步归一化通道维，不跨时间耦合
+        self.activation = nn.GELU()             # GELU 激活函数，平滑非线性
+        self.dropout = nn.Dropout(dropout)      # 随机失活，防止过拟合
+        self.residual = (                       # 残差连接：若输入输出通道数相同，则直接相加，否则通过 1x1 卷积调整通道数
             nn.Identity()
             if in_channels == out_channels
             else nn.Conv1d(in_channels, out_channels, kernel_size=1)
@@ -62,7 +66,10 @@ class CausalConvBlock(nn.Module):
         value = self.conv(x)
         if self.padding:
             value = value[..., :-self.padding]
-        value = self.dropout(self.activation(self.norm(value)))
+        # 逐时间步 LayerNorm：[B, C, T] → [B, T, C] → norm → [B, C, T]
+        # 每个时间步的统计量仅来自该步自身，保证逐点因果与理论感受野
+        value = self.norm(value.transpose(1, 2)).transpose(1, 2)
+        value = self.dropout(self.activation(value))
         return value + self.residual(x)
 
 

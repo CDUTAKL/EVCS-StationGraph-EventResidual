@@ -155,6 +155,9 @@ class StationGraphForecast(ForecastModel):
             input_dim, horizon,
             hidden_dim=hidden_dim, levels=levels, dropout=dropout,
         )
+        # 图模型只使用 tcn.encode（卷积编码），预测由外层 self.head 完成，
+        # tcn.head 从不参与前向——删除以避免死参数混入参数量统计与优化器状态
+        del self.tcn.head
         # 两层独立的门控图卷积（不同跳数，不同参数）
         self.gcn1 = MultiRelationGatedGCN(hidden_dim, num_relations, dropout, relation_dropout)
         self.gcn2 = MultiRelationGatedGCN(hidden_dim, num_relations, dropout, relation_dropout)
@@ -348,18 +351,22 @@ class AdaptiveGraphForecast(StationGraphForecast):
         logits = self.source_embedding @ self.target_embedding.T / scale
         # ReLU 截断负亲和度 → Softmax 逐行归一化
         learned = torch.softmax(torch.relu(logits), dim=-1)
-        # top-k 稀疏化：先屏蔽自身对角线（填充 -inf），
-        # 确保自身不占用 top-k 邻居名额，再选每节点仅保留 k 个最强邻居
-        learned = learned.fill_diagonal_(float("-inf"))
+        # top-k 稀疏化：先屏蔽自身对角线，确保自身不占用 top-k 邻居名额，
+        # 再选每节点仅保留 k 个最强邻居。
+        # 注意：必须使用 masked_fill（非 in-place）而非 fill_diagonal_——
+        # in-place 修改 softmax 输出会使反向传播崩溃（版本计数冲突），
+        # 且 in-place scatter 到无梯度零张量会截断嵌入的梯度流。
+        self_mask = torch.eye(self._num_nodes, device=learned.device, dtype=torch.bool)
+        learned = learned.masked_fill(self_mask, float("-inf"))
         topk_vals, topk_idx = torch.topk(
             learned, k=min(self._top_k, self._num_nodes - 1), dim=-1,
         )
-        sparse = torch.zeros_like(learned)
-        sparse.scatter_(-1, topk_idx, topk_vals)
+        # 非 in-place scatter：保持 topk_vals → learned → 嵌入的梯度通路完整
+        sparse = torch.zeros_like(learned).scatter(-1, topk_idx, topk_vals)
         # 对称化 + 自环 + 归一化
-        sparse = (sparse + sparse.T) / 2.0
-        # top-k 完成后添加自环（之前已屏蔽，此处加回）
-        sparse.fill_diagonal_(1.0)
+        sparse = (sparse + sparse.transpose(0, 1)) / 2.0
+        # top-k 完成后添加自环（之前已屏蔽，此处以非 in-place 方式加回）
+        sparse = sparse.masked_fill(self_mask, 1.0)
         deg = sparse.sum(dim=-1).pow(-0.5).clamp(min=1e-12)
         adaptive = deg.unsqueeze(-1) * sparse * deg.unsqueeze(-2)
 

@@ -313,6 +313,32 @@ def test_static_graph_two_hop() -> None:
     )
 
 
+def test_adaptive_graph_backward_reaches_embeddings() -> None:
+    """自适应图反向传播必须连通：嵌入与 fixed_weight 均收到非零梯度。
+
+    回归背景：_build_adaptive_adjacency 曾使用 in-place 的
+    fill_diagonal_ / scatter_——前者就地修改 softmax 输出导致 backward
+    崩溃（版本计数冲突），后者向无梯度零张量写入会截断
+    source_embedding / target_embedding 的梯度流，使自适应图名存实亡。
+    本测试锁定修复后的行为：反向传播畅通且梯度有限。
+    """
+    model = AdaptiveGraphForecast(
+        7, 4, 4, [np.eye(4, dtype=np.float32)] * 3,
+        hidden_dim=8, embedding_dim=4, levels=2, dropout=0.0,
+    )
+    model.train()
+    x = torch.randn(2, 96, 4, 7)
+    y = torch.randn(2, 4, 4)
+    loss = torch.nn.functional.l1_loss(model(x).prediction, y)
+    loss.backward()
+
+    for name in ("source_embedding", "target_embedding", "fixed_weight"):
+        param = getattr(model, name)
+        assert param.grad is not None, f"{name} 未收到梯度"
+        assert torch.isfinite(param.grad).all(), f"{name} 梯度含非有限值"
+        assert param.grad.abs().max() > 0, f"{name} 梯度全零，自适应图梯度流被截断"
+
+
 # ---------------------------------------------------------------------------
 # 关系 dropout（relation_dropout）验证
 # ---------------------------------------------------------------------------
@@ -492,3 +518,74 @@ def test_factory_passes_relation_dropout_to_model() -> None:
         adjacencies=adjacencies,
     )
     assert default_model.gcn1.relation_dropout == 0.0
+
+
+# ---------------------------------------------------------------------------
+# TCN 感受野与逐点因果验证（GroupNorm 时间耦合缺陷的回归测试）
+# ---------------------------------------------------------------------------
+
+
+def test_tcn_receptive_field_matches_theory() -> None:
+    """梯度法实测感受野必须等于理论值 RF = 1 + Σ(kernel-1)×dilation。
+
+    回归背景：归一化层曾使用 GroupNorm(1, C)，其统计量跨 (C×T) 计算，
+    使每个输出位置通过全局均值/方差依赖全部 96 个输入时间步，
+    实测感受野退化为整个输入窗口，与文档声称的 15 步不符。
+    逐时间步 LayerNorm 修复后，levels=3 的实测感受野必须回到 15 步。
+    """
+    model = TemporalConvNet(7, 4, hidden_dim=32, levels=3, dropout=0.0)
+    model.eval()
+    torch.manual_seed(3)
+    x = torch.randn(1, 96, 10, 7, requires_grad=True)
+    model.encode(x).sum().backward()
+    grad_per_step = x.grad.abs().amax(dim=(0, 2, 3))  # [T]
+    nonzero = torch.nonzero(grad_per_step > 0).flatten()
+    empirical_rf = 96 - int(nonzero[0])
+    assert empirical_rf == 15, (
+        f"levels=3 实测感受野 {empirical_rf} 步，理论值 15 步"
+    )
+    # 感受野之外的梯度必须严格为零
+    assert (grad_per_step[: int(nonzero[0])] == 0).all()
+
+
+def test_tcn_strictly_causal_per_timestep() -> None:
+    """扰动时刻 t 的输入不得影响 t 之前任意时间步的卷积输出。
+
+    逐点因果性是 TCN 作为历史编码器的结构前提。GroupNorm(1, C)
+    的跨时间统计量会让 t 之前的输出也随扰动改变（未来信息
+    通过归一化泄漏到过去），本测试锁定修复后的逐点因果行为。
+    """
+    model = TemporalConvNet(7, 4, hidden_dim=8, levels=2, dropout=0.0)
+    model.eval()
+    torch.manual_seed(5)
+    x = torch.randn(1, 96, 4, 7)
+    t = 60
+    x_perturbed = x.clone()
+    x_perturbed[:, t, :, :] += 100.0
+
+    def full_sequence_output(value: torch.Tensor) -> torch.Tensor:
+        # 复现 encode 的前半段：[B,T,N,F] → [B*N,F,T] → 全部时间步卷积输出
+        batch, steps, nodes, feats = value.shape
+        view = value.permute(0, 2, 3, 1).reshape(batch * nodes, feats, steps)
+        return model.network(view)  # [B*N, C, T]
+
+    with torch.no_grad():
+        out_a = full_sequence_output(x)
+        out_b = full_sequence_output(x_perturbed)
+    # t 之前的输出必须逐位一致（不依赖 t 及未来）
+    torch.testing.assert_close(out_a[..., :t], out_b[..., :t])
+    # t 及之后应发生变化（扰动确实进入了前向）
+    assert not torch.allclose(out_a[..., t:], out_b[..., t:])
+
+
+def test_graph_model_has_no_dead_tcn_head() -> None:
+    """图模型的 tcn 子模块不得保留从不参与前向的 head 参数。
+
+    StationGraphForecast 只调用 tcn.encode()，预测由外层 self.head 完成；
+    残留的 tcn.head 是死参数——无梯度、占用优化器状态、
+    并虚增"可训练参数量"统计。
+    """
+    adj = [np.eye(4, dtype=np.float32)] * 3
+    model = StaticGraphForecast(7, 4, 4, adj, hidden_dim=8, levels=2, dropout=0.0)
+    dead = [name for name, _ in model.named_parameters() if name.startswith("tcn.head")]
+    assert not dead, f"图模型中存在死参数：{dead}"
