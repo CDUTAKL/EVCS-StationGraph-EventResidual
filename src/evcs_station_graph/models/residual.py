@@ -47,6 +47,7 @@ class EventResidualCorrection(nn.Module):
         hidden_dim: int = 32,
         residual_bound: float = 0.5,
         freeze_base: bool = True,
+        event_feat_indices: list[int] | None = None,
     ) -> None:
         super().__init__()
         self.base_model = base_model
@@ -58,8 +59,11 @@ class EventResidualCorrection(nn.Module):
         self._num_adj = len(adjacencies)
         self.residual_bound = float(residual_bound)
         self.freeze_base = bool(freeze_base)
-        # 事件特征索引（接入/离站/活跃/负荷跳变）——与 feature_columns 顺序一致
-        self._event_feat_indices = [1, 2, 3, 6]  # access, departure, active, load_jump
+        # 事件特征索引：默认为 [access_count, departure_count, active_count, load_jump_flag]
+        # 对应 configs/project.yaml 中 feature_columns 的顺序
+        if event_feat_indices is None:
+            event_feat_indices = [1, 2, 3, 6]
+        self._event_feat_indices = list(event_feat_indices)
         n_event_feats = len(self._event_feat_indices)
         # 修正 MLP：[H, M, E] → hidden → horizon → tanh
         self.corrector = nn.Sequential(

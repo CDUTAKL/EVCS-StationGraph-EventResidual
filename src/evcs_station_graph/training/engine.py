@@ -140,9 +140,13 @@ def train_single_seed(
         "test": _make_loader(datasets["test"], batch_size, False, seed),
     }
     # ========== 阶段 2：模型创建与冻结事件规则拟合 ==========
-    # 所有图模型接收三类关系矩阵列表——不再通过 config 选单个关系
-    # SG-EXP-006 的候选关系消融通过 config 控制传入哪些矩阵
-    adjacencies = relation_set.as_list()  # [A_load, A_event, A_pattern]
+    # 默认使用全部三类关系；SG-EXP-006 的关系消融通过 config 指定子集
+    graph_cfg = config["experiment"].get("graph", {})
+    relation_names = graph_cfg.get("relations", ["load", "event", "pattern"])
+    unknown = set(relation_names) - set(relation_set.as_dict())
+    if unknown:
+        raise ValueError(f"未知候选关系：{sorted(unknown)}")
+    adjacencies = [relation_set.as_dict()[name] for name in relation_names]
     model = build_model(
         config,
         input_dim=len(bundle.feature_names),

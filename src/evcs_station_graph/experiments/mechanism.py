@@ -103,10 +103,10 @@ def _build_variants(
         model_name = str(config["experiment"]["model"])
         variants.append((f"ablation-{name}", config, model_name not in model_without_checkpoint))
 
-    # 关系消融：通过覆盖 graph.ablated_relations 选择部分关系
+    # 关系消融：指定 graph.relations（单个关系名）来消融到单关系
     for relation in suite.get("relations", []):
         config = copy.deepcopy(base)
-        config["experiment"]["graph"]["relation"] = relation
+        config["experiment"]["graph"]["relations"] = [relation]
         variants.append((f"relation-{relation}", config, True))
 
     sensitivity = suite.get("sensitivity", {})

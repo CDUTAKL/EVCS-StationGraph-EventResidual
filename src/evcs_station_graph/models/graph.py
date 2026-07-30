@@ -317,10 +317,9 @@ class AdaptiveGraphForecast(StationGraphForecast):
     def _get_adjacencies(self) -> list[torch.Tensor]:
         fixed = [getattr(self, f"adj_{r}") for r in range(self._num_fixed)]
         adaptive = self._build_adaptive_adjacency()
-        # 自适应图与固定图加权融合
-        alpha = torch.sigmoid(self.fixed_weight)  # 限制在 (0,1)
-        adaptive_mixed = alpha * fixed[-1] + (1.0 - alpha) * adaptive
-        return fixed[:-1] + [adaptive_mixed]
+        # 自适应图作为第四类独立关系参与消息传递，
+        # 与三类固定关系并列，通过 β 权重在 GCN 中融合
+        return fixed + [adaptive]
 
     def _get_relation_weights(self) -> torch.Tensor:
         return self.relation_weights
