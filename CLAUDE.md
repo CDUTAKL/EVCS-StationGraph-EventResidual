@@ -369,6 +369,28 @@ git status --short                                      # 确认无数据/权重
 git diff --check                                        # 无空白冲突
 ```
 
+## 图表绘制
+
+### 结果数据图
+
+**使用 scipilot-figure-skill**（路径：`~/.codex/skills/scipilot-figure-skill/`）：
+- 职责：数据剖析 → 推荐图型 → 拦截经典错误 → 绘制 → 视觉自检闭环
+- 适用图型：MAE/RMSE 对比柱状图、训练曲线、Bootstrap 置信区间、热力图、四格诊断、时序对比
+- 脚本：`profile_data.py` / `setup_style.py` / `export_figure.py` / `check_figure.py` / `visual_qa.py`
+- **DPI 要求：1200**（论文投稿级，不可降低）
+- 色盲安全配色 + 冗余编码 + 灰度预览 + AI 读图复核
+
+### 结果分析（数字 → 论文表述）
+
+**使用 research-results-analysis**（路径：`research-workflow-kit/skills/research-results-analysis/`）：
+- 职责：实验工件 → 可信摘要 → 保守论文结论
+- 核心原则：不编造结果、标注缺失基线、报告不确定性、区分主结果/消融/鲁棒性/误差分析
+- 关键文件：`autoresearch-results.tsv`、`benchmark-report-schema.md`
+
+### 模型架构图
+
+不在 Claude 职责范围内，不绘制。
+
 ## 工作流
 
 ### Scripts 地图
@@ -474,3 +496,14 @@ Step 0: 确认夜跑结果 → Step 1: P0 基线 → Step 2: SG-EXP-007a λ 筛�
 - [代码样式与修改协议](docs/development/code-style-and-change-protocol.md)
 - [Git 版本管理工作流](docs/development/git-workflow.md)
 - [GPT 沟通桥](docs/development/gpt-bridge.md) ← Claude ↔ GPT 异步对话（28 篇论文调研 + 4 个讨论问题）
+
+### 外部 Skills（路径引用，非项目文件）
+
+| Skill | 路径 | 用途 |
+|-------|------|------|
+| scipilot-figure-skill | `~/.codex/skills/scipilot-figure-skill/` | 结果数据图（MAE 对比/训练曲线/Bootstrap/热力图/四格诊断/时序），**1200 DPI** |
+| research-results-analysis | `research-workflow-kit/skills/research-results-analysis/` | 实验结果 → 保守论文结论 |
+| research-code-quality | `research-workflow-kit/skills/research-code-quality/` | 实验合同：config+seed+split+metric+output+registry+smoke |
+| research-data-availability | `research-workflow-kit/skills/research-data-availability/` | DATA-* 编号 + material-passport 材料护照 |
+| research-paper-writing | `research-workflow-kit/skills/research-paper-writing/` | 论文撰写（术语台账 + Nature 风格检查 + 段落模板） |
+| cdut-thesis-format | `~/.claude/skills/cdut-thesis-format/` | 论文 .docx 格式检查/修复（26 类检查） |
