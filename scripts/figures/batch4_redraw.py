@@ -257,179 +257,101 @@ def redraw_four_cell() -> None:
     final(fig, "fig4_4_four_cell", (5.0, 4.4))
 
 
-# ========== ⑦ fig5_3 方向不对称（重绘：素雅配色） ==========
+# ========== ⑦ fig5_3 方向不对称（重设计：45° 对称散点） ==========
 def redraw_asymmetry() -> None:
     te = json.load(open("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"))
-    pairs = te["asymmetry"]["top_asymmetric_pairs"][:5]
-    names = [f"{p['node_i'].split('-')[1]}→{p['node_j'].split('-')[1]}" for p in pairs]
-    te_ij = [p["te_i_to_j"] for p in pairs]
-    te_ji = [p["te_j_to_i"] for p in pairs]
-    asym = [p["asymmetry"] for p in pairs]
+    node_ids = list(BUNDLE.node_ids)
+    te_mat = np.array(te["te_matrix"])
+    # 显著有向边集合（用于着色）
+    sig_pairs = {(e["source"], e["target"]) for e in te["significant_edges"]}
+    # 45 个无向节点对（i<j），双向 TE
+    xs, ys, sigs, labels_top = [], [], [], []
+    for i in range(len(node_ids)):
+        for j in range(i + 1, len(node_ids)):
+            xs.append(te_mat[i, j])
+            ys.append(te_mat[j, i])
+            sigs.append((node_ids[i], node_ids[j]) in sig_pairs
+                        or (node_ids[j], node_ids[i]) in sig_pairs)
+    xs, ys = np.array(xs), np.array(ys)
+    sigs = np.array(sigs)
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.2, 3.2),
-                                   gridspec_kw={"width_ratios": [1.5, 1.0], "wspace": 0.28})
-    x = np.arange(len(names))
-    w = 0.34
-    ax1.bar(x - w / 2, te_ij, w, label="i→j", color=GRAY_L, edgecolor=GRAY_D, linewidth=0.5, zorder=3)
-    ax1.bar(x + w / 2, te_ji, w, label="j→i", color=BLUE, edgecolor=GRAY_D, linewidth=0.5, zorder=3)
-    for xi, (a, b) in enumerate(zip(te_ij, te_ji)):
-        ax1.text(xi, max(a, b) * 1.05 + 0.0001, f"{max(a, b) / max(min(a, b), 1e-9):.0f}×",
-                 ha="center", fontsize=7.5, color=GRAY_D)
-    ax1.set_xticks(x)
-    ax1.set_xticklabels(names, fontsize=8.5)
-    ax1.set_ylabel("传递熵（nats）", fontsize=8.5)
-    ax1.set_ylim(0, max(te_ji) * 1.35)
-    ax1.legend(fontsize=7.5, frameon=False, loc="upper left")
-    _clean_ax(ax1)
+    fig, ax = plt.subplots(figsize=(6.2, 5.2))
+    # 45° 对称参考线（完全对称 = 线上）
+    vmax = max(xs.max(), ys.max())
+    ax.plot([0, vmax * 1.1], [0, vmax * 1.1], color=GRAY_D, lw=1.0, ls="--", zorder=2)
+    # 显著对（深蓝实心）与非显著对（浅灰空心）
+    ax.scatter(xs[~sigs], ys[~sigs], s=55, facecolor="white", edgecolor=GRAY_L,
+               linewidth=1.0, zorder=3)
+    ax.scatter(xs[sigs], ys[sigs], s=75, facecolor=BLUE, edgecolor=GRAY_D,
+               linewidth=0.6, zorder=4)
+    # 高不对称对标注（top 3）
+    asym = te["asymmetry"]["top_asymmetric_pairs"][:3]
+    for p in asym:
+        i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
+        ax.annotate(f"{p['node_i'].split('-')[1]}↔{p['node_j'].split('-')[1]}",
+                    xy=(te_mat[i, j], te_mat[j, i]), xytext=(te_mat[i, j] + vmax * 0.06,
+                                                              te_mat[j, i] + vmax * 0.04),
+                    fontsize=7.5, color=GRAY_D,
+                    arrowprops=dict(arrowstyle="-", color=GRAY_M, lw=0.7))
+    # 不对称方向说明（必要说明文字）
+    ax.text(vmax * 0.62, vmax * 1.0, "j→i 主导", fontsize=8, color=BLUE)
+    ax.text(vmax * 0.08, vmax * 0.55, "i→j 主导", fontsize=8, color=BLUE)
+    ax.text(vmax * 0.52, vmax * 0.30, "对称线", fontsize=7.5, color=GRAY_M)
+    ax.set_xlabel("传递熵 TE(i → j)", fontsize=9)
+    ax.set_ylabel("传递熵 TE(j → i)", fontsize=9)
+    ax.set_xlim(0, vmax * 1.12)
+    ax.set_ylim(0, vmax * 1.12)
+    ax.tick_params(labelsize=8)
+    ax.spines[["top", "right"]].set_visible(False)
+    # 图例（显著/非显著）
+    ax.legend(handles=[plt.scatter([], [], s=75, facecolor=BLUE, edgecolor=GRAY_D,
+                                   label="显著边"),
+                       plt.scatter([], [], s=55, facecolor="white", edgecolor=GRAY_L,
+                                   label="非显著边")],
+              fontsize=8, frameon=False, loc="upper left")
+    final(fig, "fig5_3_asymmetry", (6.2, 5.2))
 
-    ax2.barh(np.arange(len(pairs)), asym, color=ORANGE, edgecolor=GRAY_D,
-             linewidth=0.5, height=0.6, zorder=3)
-    ax2.set_yticks(range(len(pairs)))
-    ax2.set_yticklabels(names, fontsize=8.5)
-    ax2.set_xlabel("不对称度", fontsize=8.5)
-    ax2.set_xlim(0, 1)
-    for xi, a in enumerate(asym):
-        ax2.text(a + 0.02, xi, f"{a:.2f}", va="center", fontsize=7.5, color=GRAY_D)
-    _clean_ax(ax2)
-    final(fig, "fig5_3_asymmetry", (7.2, 3.2))
 
-
-# ========== ⑧ fig5_4 覆盖率（重绘：舒展布局） ==========
+# ========== ⑧ fig5_4 覆盖率（重设计：哑铃图） ==========
 def redraw_coverage() -> None:
     c = json.load(open("outputs/analysis/conformal_prediction/conformal_summary.json"))
     groups = ["全局", "事件窗口", "稳定窗口"]
     std_v = [c["standard_overall_mean"], c["standard_event_mean"], c["standard_stable_mean"]]
     str_v = [c["stratified_overall_mean"], c["stratified_event_mean"], c["stratified_stable_mean"]]
 
-    fig, ax = plt.subplots(figsize=(6.2, 3.8))
-    x = np.arange(3)
-    w = 0.32
-    b1 = ax.bar(x - w / 2, std_v, w, label="标准共形", color=GRAY_L,
-                edgecolor=GRAY_D, linewidth=0.5, zorder=3)
-    b2 = ax.bar(x + w / 2, str_v, w, label="分层共形", color=BLUE,
-                edgecolor=GRAY_D, linewidth=0.5, zorder=3)
-    for bars, offset in ((b1, -w / 2), (b2, w / 2)):
-        for b in bars:
-            ax.text(b.get_x() + b.get_width() / 2, b.get_height() + 0.03,
-                    f"{b.get_height():.1%}", ha="center", fontsize=9, color=GRAY_D)
-    ax.axhline(0.9, color=GRAY_D, lw=1.1, ls="--", zorder=2)
-    ax.text(2.35, 0.93, "90% 目标", fontsize=8, color=GRAY_D, ha="right")
-    ax.set_xticks(x)
-    ax.set_xticklabels(groups, fontsize=9.5)
-    ax.set_ylabel("覆盖率（α = 0.1）", fontsize=9)
-    ax.set_ylim(0, 1.05)
-    ax.legend(fontsize=8, frameon=False, loc="lower right")
-    _clean_ax(ax)
-    final(fig, "fig5_4_coverage", (6.2, 3.8))
-
-
-# ========== ⑩ 第 5 章综合总览图（2×2 复杂大图，替代单图观感） ==========
-def redraw_ch5_overview() -> None:
-    te = json.load(open("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"))
-    con = json.load(open("outputs/analysis/conformal_prediction/conformal_summary.json"))
-    cat = json.load(open("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json"))
-
-    fig, axes = plt.subplots(2, 2, figsize=(7.4, 5.8),
-                             gridspec_kw={"hspace": 0.38, "wspace": 0.32})
-    (ax1, ax2), (ax3, ax4) = axes
-
-    # ---- (a) 传递熵有向信息流网络 ----
-    edges = te["significant_edges"]
-    nodes = sorted({e["source"] for e in edges} | {e["target"] for e in edges})
-    pos = {n: (np.cos(2 * np.pi * i / len(nodes)), np.sin(2 * np.pi * i / len(nodes)))
-           for i, n in enumerate(nodes)}
-    te_max = max(e["te"] for e in edges)
-    for e in edges:
-        s, t = pos[e["source"]], pos[e["target"]]
-        w = 0.4 + 2.6 * e["te"] / te_max
-        al = 0.30 + 0.6 * e["te"] / te_max
-        ax1.annotate("", xy=t, xytext=s,
-                     arrowprops=dict(arrowstyle="->", color=BLUE, lw=w, alpha=al,
-                                     shrinkA=13, shrinkB=13, connectionstyle="arc3,rad=0.10"))
-    for n, (x, y) in pos.items():
-        ax1.scatter(x, y, s=300, color="white", edgecolor=GRAY_D, lw=1.0, zorder=5)
-        ax1.text(x, y, n.split("-")[1], ha="center", va="center", fontsize=7, zorder=6)
-    ax1.set_xlim(-1.3, 1.3)
-    ax1.set_ylim(-1.3, 1.3)
-    ax1.set_aspect("equal")
-    ax1.axis("off")
-    ax1.text(0.02, 0.98, "a", transform=ax1.transAxes, fontsize=11, fontweight="bold",
-             color=GRAY_D, va="top")
-    ax1.text(0.98, 0.02, f"{te['overlap']['total_significant_edges']} 条显著边",
-             transform=ax1.transAxes, ha="right", fontsize=7.5, color=GRAY_M)
-
-    # ---- (b) 方向不对称 ----
-    pairs = te["asymmetry"]["top_asymmetric_pairs"][:4]
-    names = [f"{p['node_i'].split('-')[1]}→{p['node_j'].split('-')[1]}" for p in pairs]
-    te_ij = [p["te_i_to_j"] for p in pairs]
-    te_ji = [p["te_j_to_i"] for p in pairs]
-    x = np.arange(len(names))
-    w = 0.34
-    ax2.bar(x - w / 2, te_ij, w, label="正向", color=GRAY_L,
-            edgecolor=GRAY_D, linewidth=0.4, zorder=3)
-    ax2.bar(x + w / 2, te_ji, w, label="反向", color=BLUE,
-            edgecolor=GRAY_D, linewidth=0.4, zorder=3)
-    for xi, (a, b) in enumerate(zip(te_ij, te_ji)):
-        ax2.text(xi, max(a, b) * 1.06, f"{max(a, b) / max(min(a, b), 1e-9):.0f}×",
-                 ha="center", fontsize=7, color=GRAY_D)
-    ax2.set_xticks(x)
-    ax2.set_xticklabels(names, fontsize=7.5)
-    ax2.set_ylim(0, max(te_ji) * 1.3)
-    ax2.set_ylabel("传递熵", fontsize=8)
-    ax2.tick_params(labelsize=7)
-    ax2.spines[["top", "right"]].set_visible(False)
-    ax2.legend(fontsize=6.5, frameon=False, loc="upper left", ncol=2)
-    ax2.text(0.02, 0.98, "b", transform=ax2.transAxes, fontsize=11,
-             fontweight="bold", color=GRAY_D, va="top")
-
-    # ---- (c) 分层覆盖率 ----
-    groups = ["全局", "事件窗口", "稳定窗口"]
-    std_v = [con["standard_overall_mean"], con["standard_event_mean"], con["standard_stable_mean"]]
-    str_v = [con["stratified_overall_mean"], con["stratified_event_mean"], con["stratified_stable_mean"]]
-    x = np.arange(3)
-    ax3.bar(x - w / 2, std_v, w, label="标准", color=GRAY_L,
-            edgecolor=GRAY_D, linewidth=0.4, zorder=3)
-    ax3.bar(x + w / 2, str_v, w, label="分层", color=BLUE,
-            edgecolor=GRAY_D, linewidth=0.4, zorder=3)
-    for bars, off in ((std_v, -w / 2), (str_v, w / 2)):
-        for xi, v in enumerate(bars):
-            ax3.text(xi + off, v + 0.025, f"{v:.0%}", ha="center", fontsize=6.5,
-                     color=GRAY_D)
-    ax3.axhline(0.9, color=GRAY_D, lw=0.9, ls="--")
-    ax3.set_xticks(x)
-    ax3.set_xticklabels(groups, fontsize=8)
-    ax3.set_ylim(0, 1.05)
-    ax3.set_ylabel("覆盖率", fontsize=8)
-    ax3.tick_params(labelsize=7)
-    ax3.spines[["top", "right"]].set_visible(False)
-    ax3.legend(fontsize=6.5, frameon=False, loc="lower right")
-    ax3.text(0.02, 0.98, "c", transform=ax3.transAxes, fontsize=11,
-             fontweight="bold", color=GRAY_D, va="top")
-
-    # ---- (d) CATE 窗口条件效应 ----
-    iv = cat["interventions"]
-    names_cn = {"both_event": "全 event", "both_load": "全 load", "both_pattern": "全 pattern",
-                "equal": "等权 1/3", "g1_load_g2_learn": "GCN1=load",
-                "g1_learn_g2_pattern": "GCN2=pattern", "swapped": "交换两层"}
-    order = [k for k in iv if k in names_cn]
-    x = np.arange(len(order))
-    g_d = [iv[k]["global_delta"] for k in order]
-    s_d = [iv[k]["stable_delta"] for k in order]
-    e_d = [iv[k]["event_delta"] for k in order]
-    ax4.bar(x - 0.26, g_d, 0.24, label="全局", color=BLUE, edgecolor="black", linewidth=0.3)
-    ax4.bar(x, e_d, 0.24, label="事件", color=ORANGE, edgecolor="black", linewidth=0.3)
-    ax4.bar(x + 0.26, s_d, 0.24, label="稳定", color=GRAY_L, edgecolor="black", linewidth=0.3)
-    ax4.axhline(0, color=GRAY_D, lw=0.8)
-    ax4.set_xticks(x)
-    ax4.set_xticklabels([names_cn[k] for k in order], fontsize=6.5, rotation=25, ha="right")
-    ax4.set_ylabel("相对变化", fontsize=8)
-    ax4.tick_params(labelsize=7)
-    ax4.spines[["top", "right"]].set_visible(False)
-    ax4.legend(fontsize=6.5, frameon=False, loc="upper left", ncol=3)
-    ax4.text(0.02, 0.98, "d", transform=ax4.transAxes, fontsize=11,
-             fontweight="bold", color=GRAY_D, va="top")
-
-    final(fig, "fig5_1_ch5_overview", (7.4, 5.8))
+    fig, ax = plt.subplots(figsize=(6.4, 3.2))
+    y = np.arange(len(groups))
+    for yi, (s, v) in enumerate(zip(std_v, str_v)):
+        # 连接线（标准 → 分层）
+        ax.plot([s, v], [yi, yi], color=GRAY_L, lw=2.2, zorder=2)
+        # 标准点（灰圆）
+        ax.scatter([s], [yi], s=90, facecolor="white", edgecolor=GRAY_D,
+                   linewidth=1.4, zorder=3, label="标准共形" if yi == 0 else None)
+        # 分层点（深蓝圆）
+        ax.scatter([v], [yi], s=110, facecolor=BLUE, edgecolor=GRAY_D,
+                   linewidth=1.0, zorder=4, label="分层共形" if yi == 0 else None)
+        # 数值标签：标准在左、分层在右（事件窗口重点强调）
+        ax.text(s - 0.035, yi, f"{s:.1%}", ha="center", va="center",
+                fontsize=8.5, color=GRAY_M)
+        ax.text(v + 0.035, yi, f"{v:.1%}", ha="center", va="center",
+                fontsize=8.5, color=GRAY_D, fontweight="bold" if yi == 1 else "normal")
+    # 90% 目标线
+    ax.axvline(0.9, color=RED_S, lw=1.2, ls="--", zorder=1)
+    ax.text(0.905, 2.32, "90% 目标", fontsize=7.5, color=RED_S)
+    # 事件窗口提升强调
+    ax.annotate("", xy=(str_v[1], 1.25), xytext=(std_v[1], 1.25),
+                arrowprops=dict(arrowstyle="->", color=ORANGE, lw=1.6))
+    ax.text((std_v[1] + str_v[1]) / 2, 1.42, "1.9% → 86.1%", ha="center",
+            fontsize=8, color=ORANGE)
+    ax.set_yticks(y)
+    ax.set_yticklabels(groups, fontsize=9.5)
+    ax.set_xlabel("覆盖率（α = 0.1）", fontsize=9)
+    ax.set_xlim(0, 1.0)
+    ax.set_ylim(-0.55, 2.55)
+    ax.tick_params(labelsize=8)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.legend(fontsize=8, frameon=False, loc="lower left", ncol=2)
+    final(fig, "fig5_4_coverage", (6.4, 3.2))
 
 
 # ========== ⑨ fig5_5 分位数（重绘：舒展） ==========
@@ -465,5 +387,4 @@ if __name__ == "__main__":
     redraw_asymmetry()
     redraw_coverage()
     redraw_quantile()
-    redraw_ch5_overview()
     print("批次 4 完成")
