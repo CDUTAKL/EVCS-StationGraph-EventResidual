@@ -12,6 +12,9 @@
     非 temporal 基模型需通过 ``base_checkpoint`` 加载对应实验的检查点。
   - ``"mlp"``：全节点历史展平的无图基线（SG-EXP-009）。
     展平维度依赖 ``project.history_steps``，缺失时报错而非静默猜测。
+  - ``"agcrn"``：AGCRN 自适应图基线（SG-EXP-008，NeurIPS 2020）。
+  - ``"graph_wavenet"`` / ``"gwnet"``：Graph WaveNet 时空图基线
+    （SG-EXP-010，IJCAI 2019），使用三类固定关系均值作为预定义图。
 
 图相关公共参数：
   ``experiment.graph.relation_dropout``（默认 0.0，关闭）会传入
@@ -30,8 +33,10 @@ import torch
 
 from evcs_station_graph.models import (
     AdaptiveGraphForecast,
+    AGCRNForecast,
     EventResidualCorrection,
     ForecastModel,
+    GraphWaveNetForecast,
     MLPBaseline,
     StaticGraphForecast,
     TemporalConvNet,
@@ -65,6 +70,12 @@ def build_model(
         "levels": int(params.get("levels", 3)),
         "dropout": float(params.get("dropout", 0.1)),
     }
+    # 图基线模型共用的隐藏层/嵌入/dropout 参数
+    graph_kwargs = {
+        "hidden_dim": common["hidden_dim"],
+        "embedding_dim": int(params.get("embedding_dim", 12)),
+        "dropout": common["dropout"],
+    }
     # 关系 dropout（SG-EXP-006 敏感性实验）：从 experiment.graph 读取，
     # 与 mechanism.py 派生变体的写入位置保持一致；未配置时为 0.0（关闭），
     # 保证未启用该机制的实验行为完全不变。
@@ -97,6 +108,12 @@ def build_model(
             history_steps=raw_history,
             dropout=common["dropout"],
         )
+
+    if model_name in {"agcrn"}:
+        return AGCRNForecast(input_dim, horizon, num_nodes, adjacencies, **graph_kwargs)
+
+    if model_name in {"graph_wavenet", "gwnet"}:
+        return GraphWaveNetForecast(input_dim, horizon, num_nodes, adjacencies, **graph_kwargs)
 
     if model_name in {"TCN_GCN", "static_graph"}:
         return StaticGraphForecast(
