@@ -251,9 +251,17 @@ def train_single_seed(
             trigger_by_origin,
             None,  # 早停不使用加权损失
         )
-        log_rows.append(
-            {"epoch": epoch, "train_mae_scaled": train_loss, "validation_mae_scaled": validation_loss}
-        )
+        row: dict[str, float | int] = {
+            "epoch": epoch,
+            "train_mae_scaled": train_loss,
+            "validation_mae_scaled": validation_loss,
+        }
+        alpha = _adaptive_alpha(model)
+        if alpha is not None:
+            # 逐轮记录自适应图混合系数 α（SG-EXP-004 可视化用）；
+            # 仅自适应图类模型含此列，其余模型日志格式不变
+            row["adaptive_graph_alpha"] = alpha
+        log_rows.append(row)
         if validation_loss < best_validation - 1e-8:
             best_validation = validation_loss
             best_state = {
@@ -576,6 +584,20 @@ def _write_predictions(
         "prediction_key_unique": True,
         "prediction_rows": int(len(keys)),
     }
+
+
+def _adaptive_alpha(model: nn.Module) -> float | None:
+    """提取自适应图混合系数 α = sigmoid(fixed_weight)（若模型含有该参数）。
+
+    AdaptiveGraphForecast 直接持有 fixed_weight；EventResidualCorrection 包装时
+    该参数位于 model.base_model。非自适应图模型返回 None。
+    """
+    candidate = getattr(model, "fixed_weight", None)
+    if candidate is None and (base := getattr(model, "base_model", None)) is not None:
+        candidate = getattr(base, "fixed_weight", None)
+    if isinstance(candidate, nn.Parameter):
+        return float(torch.sigmoid(candidate.detach()))
+    return None
 
 
 def _write_training_log(rows: list[dict[str, Any]], path: Path) -> None:

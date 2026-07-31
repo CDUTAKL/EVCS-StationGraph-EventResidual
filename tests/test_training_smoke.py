@@ -63,3 +63,49 @@ def test_frozen_residual_requires_base_checkpoint(
             synthetic_bundle,
             tmp_path / "runs",
         )
+
+
+def test_adaptive_alpha_extraction() -> None:
+    """α 提取：自适应图直接持有、残差包装间接持有、其余模型为 None。
+
+    训练日志中的 adaptive_graph_alpha 列是 SG-EXP-004 可视化
+    （α 随 epoch 变化曲线）的唯一数据来源，提取路径必须覆盖
+    EventResidualCorrection 包装自适应图的情形（SG-EXP-006 关系变体）。
+    """
+    import torch
+
+    from evcs_station_graph.models import (
+        AdaptiveGraphForecast,
+        EventResidualCorrection,
+        StaticGraphForecast,
+        TemporalConvNet,
+    )
+    from evcs_station_graph.training.engine import _adaptive_alpha
+
+    adjacencies = [np.eye(4, dtype=np.float32)] * 3
+    adaptive = AdaptiveGraphForecast(
+        7, 4, 4, adjacencies,
+        hidden_dim=8, levels=2, dropout=0.0,
+        embedding_dim=4, fixed_weight=0.5,
+    )
+    expected = float(torch.sigmoid(torch.tensor(0.5)))
+    assert _adaptive_alpha(adaptive) == pytest.approx(expected)
+
+    assert _adaptive_alpha(TemporalConvNet(7, 4, hidden_dim=8, levels=2)) is None
+    assert _adaptive_alpha(
+        StaticGraphForecast(7, 4, 4, adjacencies, hidden_dim=8, levels=2)
+    ) is None
+
+    feature_names = (
+        "load", "access_count", "departure_count", "active_count",
+        "occupancy_rate", "demand_intensity", "load_jump_flag",
+    )
+    wrapped = EventResidualCorrection(
+        adaptive,
+        adjacencies,
+        horizon=4,
+        hidden_dim=8,
+        freeze_base=False,
+        feature_names=feature_names,
+    )
+    assert _adaptive_alpha(wrapped) == pytest.approx(expected)
