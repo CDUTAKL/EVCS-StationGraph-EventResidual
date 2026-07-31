@@ -194,10 +194,11 @@ def redraw_bootstrap() -> None:
     bars = ax.bar(x, diffs, width=0.58, color=colors,
                   edgecolor=GRAY_D, linewidth=0.5, zorder=3)
     for xi, (dd, p) in enumerate(zip(diffs, ps)):
-        star = "***" if p < 0.001 else ("**" if p < 0.01 else ("*" if p < 0.05 else "ns"))
+        # 直接标注 p 值（用户选定方案）：p<0.001 或具体数值
+        label = "p<0.001" if p < 0.001 else f"p={p:.3f}"
         offset = 0.0006 if dd >= 0 else -0.0016
-        ax.text(xi, dd + offset, star, ha="center", va="bottom" if dd >= 0 else "top",
-                fontsize=11, color=GRAY_D, fontweight="bold" if p < 0.05 else "normal")
+        ax.text(xi, dd + offset, label, ha="center", va="bottom" if dd >= 0 else "top",
+                fontsize=8.5, color=GRAY_D)
     ax.axhline(0, color=GRAY_D, lw=1.0, zorder=2)
     ax.set_xticks(x)
     ax.set_xticklabels(names, fontsize=8, rotation=18, ha="right")
