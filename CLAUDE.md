@@ -479,7 +479,8 @@ Step 0: 确认夜跑结果 → Step 1: P0 基线 → Step 2: SG-EXP-007a λ 筛�
 - [数据可用性](docs/thesis/data-availability.md) ← 原始数据审计结论
 - [风险登记表](docs/thesis/risk-register.md) ← 7 项风险及当前控制措施
 - [执行路线](docs/thesis/execution-roadmap.md) ← 四阶段路线图（数据→基线→残差→论文）
-- [大纲 v1](docs/thesis/new-route-thesis-outline-v1-2026-07-30.md) ← 论文大纲（28 篇调研修订版）
+- [大纲 v2](docs/thesis/new-route-thesis-outline-v2-2026-07-31.md) ← 当前大纲（对标李芳凝四段式重构）
+- [第 5 章架构](docs/thesis/chapter-5-architecture-2026-07-31.md) ← 因果增强与决策支持（D6 验证定稿，含素材状态/图表/回填门槛）
 - [SG-EXP-001 节点筛选报告](docs/thesis/SG-EXP-001-node-screening-report.md)
 - [ADR-001 独立项目与命名空间](docs/thesis/decisions/ADR-001-project-separation.md) ← 与旧论文项目的边界
 
