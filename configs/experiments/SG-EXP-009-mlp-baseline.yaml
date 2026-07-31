@@ -1,0 +1,20 @@
+experiment_id: SG-EXP-009
+name: mlp_flattened_baseline
+status: ready_for_formal_run
+model: mlp
+purpose: 检验无图结构归纳偏置时跨节点信息是否足以预测（图必要性对照）
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+# 设计说明：MLP 将全部节点历史展平后过三层全连接，能接触到与图模型
+# 完全相同的跨节点信息，但没有关系先验。成功判据：MLP 显著差于
+# StaticGraph（SG-EXP-003），证明增益来自图结构而非信息可得性。
+# 训练超参与 SG-EXP-003 完全一致，避免"调参不均"的混淆因素。
+model_params:
+  hidden_dim: 32
+  dropout: 0.1
+training:
+  epochs: 60
+  patience: 8
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001

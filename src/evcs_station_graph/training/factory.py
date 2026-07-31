@@ -10,6 +10,8 @@
     ``"temporal"``（默认）→ TCN；``"static_graph"`` → StaticGraphForecast；
     ``"adaptive_graph"`` → AdaptiveGraphForecast。
     非 temporal 基模型需通过 ``base_checkpoint`` 加载对应实验的检查点。
+  - ``"mlp"``：全节点历史展平的无图基线（SG-EXP-009）。
+    展平维度依赖 ``project.history_steps``，缺失时报错而非静默猜测。
 
 图相关公共参数：
   ``experiment.graph.relation_dropout``（默认 0.0，关闭）会传入
@@ -30,6 +32,7 @@ from evcs_station_graph.models import (
     AdaptiveGraphForecast,
     EventResidualCorrection,
     ForecastModel,
+    MLPBaseline,
     StaticGraphForecast,
     TemporalConvNet,
 )
@@ -69,6 +72,31 @@ def build_model(
 
     if model_name in {"TCN", "temporal"}:
         return TemporalConvNet(input_dim, horizon, **common)
+
+    if model_name in {"mlp", "mlp_baseline"}:
+        # MLP 展平维度依赖历史窗口长度，必须从项目配置显式读取；
+        # 缺失时报错而非默认猜测，避免与数据张量维度静默错位
+        raw_history = config.get("project", {}).get("history_steps", 0)
+        # bool 是 int 的子类，需先行排除；浮点（如 YAML 误写 96.0）
+        # 若用 int() 截断会静默改变第一层权重维度，故显式拒绝
+        if isinstance(raw_history, bool) or not isinstance(raw_history, int):
+            raise ValueError(
+                "MLP 基线要求 project.history_steps 为正整数，实际为 "
+                f"{type(raw_history).__name__}({raw_history!r})"
+            )
+        if raw_history <= 0:
+            raise ValueError(
+                "MLP 基线需要 project.history_steps 确定输入展平维度，"
+                "请在项目配置中提供"
+            )
+        return MLPBaseline(
+            input_dim,
+            horizon,
+            num_nodes,
+            hidden_dim=common["hidden_dim"],
+            history_steps=raw_history,
+            dropout=common["dropout"],
+        )
 
     if model_name in {"TCN_GCN", "static_graph"}:
         return StaticGraphForecast(
