@@ -66,8 +66,6 @@ def fig_transfer_entropy() -> None:
     ax1.set_ylim(-1.25, 1.25)
     ax1.set_aspect("equal")
     ax1.axis("off")
-    ax1.set_title(f"(a) 有向因果信息流（{te['overlap']['total_significant_edges']} 条显著边）",
-                  fontsize=9, pad=6)
 
     # (b) 统计图覆盖 vs 因果独有边
     ov = te["overlap"]
@@ -83,10 +81,7 @@ def fig_transfer_entropy() -> None:
     ax2.tick_params(axis="x", labelsize=8, rotation=12)
     ax2.tick_params(axis="y", labelsize=8)
     ax2.spines[["top", "right"]].set_visible(False)
-    ax2.set_title(f"(b) 与统计图重叠（Jaccard 0.38–0.49）", fontsize=9, pad=6)
 
-    fig.suptitle("传递熵方向性检验：76/90 显著边、44.4% 方向不对称",
-                 fontsize=10, y=1.02)
     final(fig, "fig5_2_transfer_entropy", (7.2, 3.6))
 
 
@@ -121,7 +116,6 @@ def fig_coverage() -> None:
     ax.tick_params(axis="y", labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, loc="lower right")
-    ax.set_title("分层共形：事件窗口覆盖率 1.9% → 86.1%", fontsize=10, pad=8)
     final(fig, "fig5_4_coverage", (5.8, 3.5))
 
 
@@ -155,7 +149,6 @@ def fig_cate() -> None:
     ax1.tick_params(axis="y", labelsize=7.5)
     ax1.spines[["top", "right"]].set_visible(False)
     ax1.legend(fontsize=7, frameon=False, loc="upper left")
-    ax1.set_title("(a) 窗口分层条件效应", fontsize=9, pad=6)
 
     # (b) 节点敏感度热力图（7 干预 × 10 节点，相对变化倍数）
     matrix = np.array([[iv[k]["node_deltas"][n] for n in nodes] for k in order])
@@ -172,11 +165,7 @@ def fig_cate() -> None:
     cbar = fig.colorbar(im, ax=ax2, fraction=0.046, pad=0.03)
     cbar.set_label("MAE 相对变化（×）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
-    ax2.set_title("(b) 节点敏感度（CA-303/317/304 最敏感 +409%/+361%/+350%）",
-                  fontsize=8.5, pad=6)
 
-    fig.suptitle("反事实分层归因：干预影响呈现窗口与节点条件效应",
-                 fontsize=10, y=1.04)
     final(fig, "fig5_8_cate", (7.2, 4.0))
 
 
@@ -205,7 +194,6 @@ def fig_mechanism_enhance() -> None:
     ax.tick_params(axis="x", labelsize=8)
     ax.tick_params(axis="y", labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
-    ax.set_title("机制增强：NAPL 与门控专业化对比", fontsize=9.5, pad=8)
     final(fig, "fig5_6_mechanism_enhance", (5.6, 3.4))
 
 

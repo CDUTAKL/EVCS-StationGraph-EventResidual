@@ -65,7 +65,6 @@ def fig_load_heatmap() -> None:
     cbar = fig.colorbar(im, ax=ax, fraction=0.03, pad=0.02)
     cbar.set_label("归一化负荷", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
-    ax.set_title("10 节点负荷热力图（4 周，行归一化）", fontsize=10, pad=8)
     final(fig, "fig2_3_load_heatmap", (7.2, 3.0))
 
 
@@ -85,7 +84,6 @@ def fig_weekly_curves() -> None:
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, ncol=3, loc="upper left")
-    ax.set_title("典型节点周负荷曲线（活跃度最高/最低/中等）", fontsize=10, pad=8)
     final(fig, "fig2_4_weekly_curves", (6.8, 3.0))
 
 
@@ -102,7 +100,6 @@ def fig_load_distribution() -> None:
     # 标注稀疏性
     ax.text(0.98, 0.95, f"全局非零率 21.59%\n峰均比 ≈ 38", transform=ax.transAxes,
             ha="right", va="top", fontsize=8.5, color="0.25")
-    ax.set_title("节点负荷分布：极端稀疏（78% 样本为零）", fontsize=10, pad=8)
     final(fig, "fig2_5_load_distribution", (6.2, 3.2))
 
 
@@ -131,7 +128,6 @@ def fig_event_timeline() -> None:
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=7.5, frameon=False, ncol=4, loc="upper right")
-    ax.set_title("事件分数 4 分量时间线（单日，CA-303）", fontsize=10, pad=8)
     final(fig, "fig2_6_event_timeline", (6.8, 3.0))
 
 
@@ -157,7 +153,6 @@ def fig_autocorrelation() -> None:
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, ncol=3, loc="upper right")
-    ax.set_title("负荷自相关：24h 与 168h 周期显著", fontsize=10, pad=8)
     final(fig, "fig2_3b_autocorrelation", (6.8, 3.0))
 
 
@@ -175,11 +170,9 @@ def fig_lre_matrices() -> None:
         ax.set_xticklabels([n.split("-")[1] for n in BUNDLE.node_ids], fontsize=6.5)
         ax.set_yticks(range(10))
         ax.set_yticklabels([n.split("-")[1] for n in BUNDLE.node_ids], fontsize=6.5)
-        ax.set_title(title, fontsize=8.5, pad=5)
     cbar = fig.colorbar(im, ax=axes, fraction=0.025, pad=0.03)
     cbar.set_label("邻接权重（对称归一化）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
-    fig.suptitle("LRE 三类关系图（top-k 稀疏化后）", fontsize=10, y=1.03)
     final(fig, "fig3_3_lre_matrices", (7.2, 2.9))
 
 
@@ -197,7 +190,6 @@ def fig_training_curve() -> None:
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, loc="upper right")
-    ax.set_title("验证损失收敛（早停 patience=8，~38 轮）", fontsize=10, pad=8)
     final(fig, "fig3_5_training_curve", (6.2, 3.2))
 
 
@@ -225,7 +217,6 @@ def fig_asymmetry() -> None:
     ax1.tick_params(axis="y", labelsize=7.5)
     ax1.spines[["top", "right"]].set_visible(False)
     ax1.legend(fontsize=7.5, frameon=False, loc="upper left")
-    ax1.set_title("(a) 前 5 不对称方向对", fontsize=9, pad=6)
 
     ax2.barh(np.arange(len(pairs)), asym, color=C3, edgecolor="black", linewidth=0.3)
     ax2.set_yticks(range(len(pairs)))
@@ -234,10 +225,7 @@ def fig_asymmetry() -> None:
     ax2.set_xlim(0, 1)
     ax2.tick_params(axis="x", labelsize=7.5)
     ax2.spines[["top", "right"]].set_visible(False)
-    ax2.set_title("(b) 不对称度（0.44–0.84）", fontsize=9, pad=6)
 
-    fig.suptitle("方向不对称性：信息流存在主导方向（44.4% 边不对称）",
-                 fontsize=10, y=1.05)
     final(fig, "fig5_3_asymmetry", (7.2, 3.2))
 
 
@@ -261,7 +249,6 @@ def fig_quantile_per_node() -> None:
     ax.tick_params(axis="y", labelsize=7.5)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=7.5, frameon=False, loc="upper left")
-    ax.set_title("事件层 vs 全局分位数（per-node，分层共形校准基础）", fontsize=9.5, pad=8)
     final(fig, "fig5_5_quantile_per_node", (6.2, 3.2))
 
 
