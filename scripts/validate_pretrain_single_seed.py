@@ -103,10 +103,15 @@ def _sample_masks(
     """
     r = rng.random((batch_size, history_steps))
     mask = (r < mask_ratio)
-    # 防止整窗全 mask（概率极低但需防御）：至少保留一个可见时间步
+    # 双向防御（审查发现：原注释与代码相反且只覆盖一半）：
+    # 1. 整窗全可见（mask 全 False，mask_ratio 极端小时）→ 强制遮住一步，
+    #    保证预训练确实有重建目标
+    # 2. 整窗全遮（mask 全 True）→ 强制留一步可见，保证重建有输入依据
     for i in range(batch_size):
         if not mask[i].any():
             mask[i, int(rng.integers(history_steps))] = True
+        elif mask[i].all():
+            mask[i, int(rng.integers(history_steps))] = False
     return torch.from_numpy(mask).to(device)
 
 

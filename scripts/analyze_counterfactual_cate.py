@@ -233,7 +233,14 @@ def main() -> None:
               f"稳定 {stable_delta:+.1%} | 事件-稳定差 {event_delta - stable_delta:+.1%}")
 
     # ---- 判定：是否存在窗口间/节点间系统性敏感度差异 ----
+    # 健壮性（审查发现）：全种子 checkpoint 缺失时 interventions 为空，
+    # 对空序列 max() 会崩溃且无提示——先显式报错
     gaps = [v["event_stable_gap"] for v in summary["interventions"].values()]
+    if not gaps:
+        raise RuntimeError(
+            "没有可用的干预结果（所有种子的 checkpoint 缺失？），"
+            "无法进行反事实分层归因判定"
+        )
     max_gap = max(abs(g) for g in gaps)
     node_spread = max(
         max(abs(v) for v in summary["interventions"][name]["node_deltas"].values())

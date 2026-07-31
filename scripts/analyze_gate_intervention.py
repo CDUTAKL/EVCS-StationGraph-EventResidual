@@ -56,18 +56,21 @@ from evcs_station_graph.training.engine import _make_loader, _predict, _select_d
 
 # 干预组合定义：(名字, GCN1 β, GCN2 β)，β 为未归一化的 logits（softmax 前）
 # "learned" 用 None 占位，运行时填学习值
+# 注意（审查后修复）：β 在模型 forward 中经 softmax 归一化——logits [1,0,0]
+# 实际只占 57.6% 权重而非"全 load"，故硬干预用 logits=10（softmax 后
+# ≈99.99%），确保干预语义与名称一致；等权 [1,1,1] 经 softmax 恰为 1/3 不变。
 INTERVENTIONS: list[dict[str, Any]] = [
     {"name": "learned", "gcn1": None, "gcn2": None,
      "desc": "学习值（基线对照）"},
-    {"name": "g1_load_g2_learn", "gcn1": [1.0, 0.0, 0.0], "gcn2": None,
+    {"name": "g1_load_g2_learn", "gcn1": [10.0, 0.0, 0.0], "gcn2": None,
      "desc": "GCN1 全 load + GCN2 学习值 → 验证第一层依赖 load"},
-    {"name": "g1_learn_g2_pattern", "gcn1": None, "gcn2": [0.0, 0.0, 1.0],
+    {"name": "g1_learn_g2_pattern", "gcn1": None, "gcn2": [0.0, 0.0, 10.0],
      "desc": "GCN1 学习值 + GCN2 全 pattern → 验证第二层依赖 pattern"},
-    {"name": "both_load", "gcn1": [1.0, 0.0, 0.0], "gcn2": [1.0, 0.0, 0.0],
+    {"name": "both_load", "gcn1": [10.0, 0.0, 0.0], "gcn2": [10.0, 0.0, 0.0],
      "desc": "两层全 load"},
-    {"name": "both_pattern", "gcn1": [0.0, 0.0, 1.0], "gcn2": [0.0, 0.0, 1.0],
+    {"name": "both_pattern", "gcn1": [0.0, 0.0, 10.0], "gcn2": [0.0, 0.0, 10.0],
      "desc": "两层全 pattern"},
-    {"name": "both_event", "gcn1": [0.0, 1.0, 0.0], "gcn2": [0.0, 1.0, 0.0],
+    {"name": "both_event", "gcn1": [0.0, 10.0, 0.0], "gcn2": [0.0, 10.0, 0.0],
      "desc": "两层全 event → 验证 event 关系贡献微弱"},
     {"name": "equal", "gcn1": [1.0, 1.0, 1.0], "gcn2": [1.0, 1.0, 1.0],
      "desc": "等权 1/3 → 门控价值对照"},
@@ -85,6 +88,7 @@ def _load_model(
     """加载 StaticGraph 模型（与 D5-1/KD 脚本同口径）。"""
     payload = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
     state = payload.get("model_state", payload)
+    params = config["experiment"].get("model_params", {})
 
     # 从 checkpoint 推断输入维（Conv1d 权重形状 [out, in, kernel]）
     conv_key = "tcn.network.0.conv.weight"
@@ -103,7 +107,6 @@ def _load_model(
         bundle.feature_names, top_k=int(graph_cfg.get("top_k", 3)),
     ).as_list()
 
-    params = config["experiment"].get("model_params", {})
     model = StaticGraphForecast(
         input_dim=inferred_input_dim,
         horizon=int(config["project"]["forecast_steps"]),
@@ -172,7 +175,9 @@ def _run_intervention(
         "global_rmse": metrics["global"]["rmse"],
         "event_mae": metrics["event_window"]["mae"],
         "stable_mae": metrics["stable_window"]["mae"],
-        "four_cell_reconstruction_error": four.get("reconstruction_error"),
+        # 键名修复（审查发现）：four_cell_diagnostics 返回 reconstruction_pass
+        # 布尔（Σ加权 MAE ≡ 全局 MAE 是否通过 1e-9 容差），不是 reconstruction_error
+        "four_cell_reconstruction_pass": four.get("reconstruction_pass"),
     }
 
 

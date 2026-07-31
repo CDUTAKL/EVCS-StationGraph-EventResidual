@@ -277,6 +277,13 @@ def main() -> None:
               f"稳定窗口={report_stratified['coverage_stable_window']:.3f}", flush=True)
 
     # ---- 聚合与判定 ----
+    # 健壮性（审查发现）：全部种子 checkpoint 缺失时 per_seed 为空，
+    # np.mean([]) 产生 NaN 覆盖率并给出"未通过"误导判定——先显式报错
+    if not per_seed:
+        raise RuntimeError(
+            f"没有可用的种子结果（{root} 下 seed-*/model.pt 均缺失？），"
+            "无法进行共形校准判定"
+        )
     agg = {
         "seeds": seeds,
         "alpha": args.alpha,
