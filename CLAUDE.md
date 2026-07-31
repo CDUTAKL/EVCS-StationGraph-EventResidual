@@ -387,6 +387,17 @@ git diff --check                                        # 无空白冲突
 - 核心原则：不编造结果、标注缺失基线、报告不确定性、区分主结果/消融/鲁棒性/误差分析
 - 关键文件：`autoresearch-results.tsv`、`benchmark-report-schema.md`
 
+### 其他 Skills 触发时机
+
+| Skill | 何时使用 |
+|-------|---------|
+| research-code-quality | 创建/修改实验代码、实验配置、smoke 测试、输出工件结构时——先按实验合同检查再动代码 |
+| research-data-availability | 论文数据可用性章节、数据来源/哈希/可复现性审计（DATA-* 编号 + 材料护照） |
+| research-paper-writing | 撰写/改写/润色论文任何章节时（术语台账 + Nature 风格检查 + 段落模板） |
+| cdut-professional-master-thesis-format | 生成 .docx 或提交前——对照学校模板做格式检查/修复（封面/声明/目录/页眉页码/图表编号/GB/T 7714 引文） |
+
+> 上述 skills 均为**本地目录**（`~/.claude/skills/`），直接以 Skill 工具调用；"模型架构图"不在职责范围（见下）。
+
 ### 模型架构图
 
 不在 Claude 职责范围内，不绘制。
@@ -507,4 +518,4 @@ Step 0: 确认夜跑结果 → Step 1: P0 基线 → Step 2: SG-EXP-007a λ 筛�
 | research-code-quality | `~/.claude/skills/research-code-quality/` | 实验合同：config+seed+split+metric+output+registry+smoke |
 | research-data-availability | `~/.claude/skills/research-data-availability/` | DATA-* 编号 + material-passport 材料护照 |
 | research-paper-writing | `~/.claude/skills/research-paper-writing/` | 论文撰写（术语台账 + Nature 风格检查 + 段落模板） |
-| cdut-thesis-format | `~/.claude/skills/cdut-thesis-format/` | 论文 .docx 格式检查/修复（26 类检查） |
+| cdut-professional-master-thesis-format | `~/.claude/skills/cdut-professional-master-thesis-format/` | 论文 .docx 格式检查/修复（对照学校 2023-09-05 模板） |
