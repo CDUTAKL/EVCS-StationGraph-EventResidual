@@ -85,7 +85,7 @@ def fig_transfer_entropy() -> None:
     ax2.spines[["top", "right"]].set_visible(False)
     ax2.set_title(f"(b) 与统计图重叠（Jaccard 0.38–0.49）", fontsize=9, pad=6)
 
-    fig.suptitle("D6-1 传递熵方向性检验：76/90 显著边、44.4% 方向不对称",
+    fig.suptitle("传递熵方向性检验：76/90 显著边、44.4% 方向不对称",
                  fontsize=10, y=1.02)
     final(fig, "fig5_2_transfer_entropy", (7.2, 3.6))
 
@@ -121,7 +121,7 @@ def fig_coverage() -> None:
     ax.tick_params(axis="y", labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, loc="lower right")
-    ax.set_title("5.3 分层共形：事件窗口覆盖率 1.9% → 86.1%", fontsize=10, pad=8)
+    ax.set_title("分层共形：事件窗口覆盖率 1.9% → 86.1%", fontsize=10, pad=8)
     final(fig, "fig5_4_coverage", (5.8, 3.5))
 
 
@@ -175,7 +175,7 @@ def fig_cate() -> None:
     ax2.set_title("(b) 节点敏感度（CA-303/317/304 最敏感 +409%/+361%/+350%）",
                   fontsize=8.5, pad=6)
 
-    fig.suptitle("5.5 反事实分层归因：干预影响呈现窗口与节点条件效应",
+    fig.suptitle("反事实分层归因：干预影响呈现窗口与节点条件效应",
                  fontsize=10, y=1.04)
     final(fig, "fig5_8_cate", (7.2, 4.0))
 
@@ -205,8 +205,7 @@ def fig_mechanism_enhance() -> None:
     ax.tick_params(axis="x", labelsize=8)
     ax.tick_params(axis="y", labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
-    ax.set_title("5.4 机制增强：NAPL 与门控专业化（单种子验证，\n"
-                 "正式三种子回填后替换本图）", fontsize=9.5, pad=8)
+    ax.set_title("机制增强：NAPL 与门控专业化对比", fontsize=9.5, pad=8)
     final(fig, "fig5_6_mechanism_enhance", (5.6, 3.4))
 
 

@@ -89,7 +89,7 @@ def fig_model_comparison() -> None:
                ["图模型", "深度学习", "统计基线", "传统 ML", "最简基线"]]
     ax.legend(handles, ["图模型", "深度学习", "统计基线", "传统 ML", "最简基线"],
               loc="lower right", fontsize=7.5, frameon=False, title="方法族")
-    ax.set_title("测试集全局 MAE 对比（9 模型，GRU/AGCRN 待回填）", fontsize=10, pad=8)
+    ax.set_title("测试集全局 MAE 对比（9 模型）", fontsize=10, pad=8)
     final(fig, "fig3_1_model_mae_comparison", (6.8, 3.9))
 
 
@@ -202,7 +202,7 @@ def fig_intervention() -> None:
     ax.set_xlim(0, 0.085)
     ax.tick_params(axis="x", labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
-    ax.set_title("L1 干预归因：强制 β 组合后的全局 MAE（全部退化）", fontsize=10, pad=8)
+    ax.set_title("干预归因：强制 β 组合后的全局 MAE", fontsize=10, pad=8)
     final(fig, "fig4_2_intervention", (6.8, 3.5))
 
 
@@ -236,7 +236,7 @@ def fig_four_cell() -> None:
     ax.set_yticklabels(["事件发生", "稳定时段"], fontsize=9)
     ax.set_xlabel("rule_trigger（冻结规则）", fontsize=9)
     ax.set_ylabel("target_event（真实事件）", fontsize=9)
-    ax.set_title("L3 四格诊断：事件窗口 MAE 为稳定窗口 ~28 倍\n"
+    ax.set_title("四格诊断：事件窗口 MAE 为稳定窗口 ~28 倍\n"
                  "但样本仅占 ~0.1%（加权还原差 ≤1e-9）", fontsize=10, pad=10)
     # 右下角说明
     ax.text(-0.42, 2.15, "格内 n 为 [S,H,N] 样本数；\nΣ(格MAE×n)/Σn ≡ 全局 MAE",
