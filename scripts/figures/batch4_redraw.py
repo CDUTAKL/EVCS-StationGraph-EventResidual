@@ -107,7 +107,7 @@ def redraw_distribution() -> None:
     final(fig, "fig2_5_load_distribution", (6.2, 3.4))
 
 
-# ========== ③ fig2_6 事件时间线（简约：单面板 4 折线） ==========
+# ========== ③ fig2_6 事件时间线（精致：4 行 stem 竖线子图） ==========
 def redraw_event_timeline() -> None:
     f = BUNDLE.features
     comps = {
@@ -115,17 +115,30 @@ def redraw_event_timeline() -> None:
         "active_delta": np.abs(np.diff(f[:, 0, 3], prepend=f[0, 0, 3])),
         "load_delta": f[:, 0, 6].astype(float),
     }
+    names_cn = {"access": "接入数", "departure": "离站数",
+                "active_delta": "活跃变化", "load_delta": "负荷跳变"}
     t0, t1 = 96 * 20, 96 * 21
-    fig, ax = plt.subplots(figsize=(6.8, 3.2))
-    x = np.arange(t1 - t0) / 4.0
-    styles = [(BLUE, "-"), (ORANGE, "--"), (GRAY_D, "-."), (RED_S, ":")]
-    for (name, seg), (c, ls) in zip(comps.items(), styles):
-        ax.plot(x, seg[t0:t1], color=c, ls=ls, lw=1.1, label=name.replace("_", " "))
-    ax.set_xlabel("时间（小时）", fontsize=9)
-    ax.set_ylabel("计数 / 标志值", fontsize=9)
-    ax.legend(fontsize=7.5, frameon=False, ncol=4, loc="upper right")
-    _clean_ax(ax)
-    final(fig, "fig2_6_event_timeline", (6.8, 3.2))
+    x = np.arange(t1 - t0) / 4.0  # 小时
+
+    fig, axes = plt.subplots(4, 1, figsize=(7.0, 4.4), sharex=True,
+                             gridspec_kw={"hspace": 0.05})
+    for ax, (key, seg) in zip(axes, comps.items()):
+        v = seg[t0:t1]
+        vmax = v.max()
+        # vlines 竖线：仅事件时刻（v>0）画脉冲，无零值噪声
+        ax.vlines(x[v > 0], 0, v[v > 0], color=BLUE, lw=1.3, zorder=3)
+        ax.set_ylim(0, vmax + 0.5 if vmax > 0 else 1.0)
+        ax.set_yticks(np.arange(0, vmax + 1, 1) if vmax >= 1 else [0, 1])
+        ax.set_ylabel(names_cn[key], fontsize=8, rotation=0, ha="right",
+                      va="center", color=GRAY_D)
+        ax.tick_params(labelsize=7.5)
+        ax.spines[["top", "right"]].set_visible(False)
+        ax.grid(axis="y", color=GRAY_L, lw=0.4, alpha=0.5)
+        ax.tick_params(axis="y", length=2.5)
+    axes[-1].set_xlabel("时间（小时）", fontsize=9)
+    axes[-1].set_xticks(range(0, 25, 4))
+    axes[-1].tick_params(axis="x", labelsize=8)
+    final(fig, "fig2_6_event_timeline", (7.0, 4.4))
 
 
 # ========== ④ fig3_1 误差棒加强（重绘） ==========
