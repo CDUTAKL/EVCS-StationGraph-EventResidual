@@ -166,51 +166,49 @@ def redraw_model_comparison() -> None:
     final(fig, "fig3_1_model_mae_comparison", (6.8, 4.0))
 
 
-# ========== ⑤ fig3_6 Bootstrap（重绘） ==========
+# ========== ⑤ fig3_6 Bootstrap 森林图（重设计，用 pooled 正确合并） ==========
 def redraw_bootstrap() -> None:
     d = json.load(open("outputs/analysis/bootstrap_significance.json"))
+    # 标签 = "提议模型 vs 基线"（diff = MAE(基线) − MAE(提议)，正值 = 提议更优）
     labels = {
-        "TCN - StaticGraph": "TCN → StaticGraph",
-        "StaticGraph - AdaptiveGraph": "StaticGraph → AdaptiveGraph",
-        "AdaptiveGraph - EventResidual": "AdaptiveGraph → EventResidual",
-        "StaticGraph - MLP": "StaticGraph → MLP",
-        "TCN - MLP": "TCN → MLP",
-        "AdaptiveGraph - no_event_gate": "AdaptiveGraph → no-event-gate",
+        "TCN - StaticGraph": "StaticGraph vs TCN",
+        "StaticGraph - AdaptiveGraph": "AdaptiveGraph vs StaticGraph",
+        "AdaptiveGraph - EventResidual": "EventResidual vs AdaptiveGraph",
+        "StaticGraph - MLP": "MLP vs StaticGraph",
+        "TCN - MLP": "MLP vs TCN",
+        "AdaptiveGraph - no_event_gate": "no-event-gate vs AdaptiveGraph",
     }
-    names, means, lows, highs, ps = [], [], [], [], []
+    names, means, lows, highs, ps, wins = [], [], [], [], [], []
     for c in d["comparisons"]:
-        keys0 = list(c["per_seed"].keys())
-        win = "global" if "global" in c["per_seed"][keys0[0]] else "event_window"
-        diffs = [c["per_seed"][s][win]["observed_diff"] for s in keys0]
-        cis = [(c["per_seed"][s][win]["ci_lower"], c["per_seed"][s][win]["ci_upper"])
-               for s in keys0]
-        name = labels.get(c["name"], c["name"])
-        if win == "event_window":
-            name += "（事件窗口）"
-        names.append(name)
-        means.append(float(np.mean(diffs)))
-        lows.append(float(min(l[0] for l in cis)))
-        highs.append(float(max(l[1] for l in cis)))
-        ps.append(min(c["per_seed"][s][win]["p_value_one_sided"] for s in keys0))
+        # 用 pooled（三种子正确合并）而非 per-seed 平均（修复：原实现
+        # 取 per-seed 平均 + CI 并集 + min p，统计上不成立且 p 值错误）
+        p = c["pooled"]
+        win = "global" if "global" in p else "event_window"
+        names.append(labels.get(c["name"], c["name"]) + ("（事件窗口）" if win == "event_window" else ""))
+        means.append(p[win]["observed_diff"])
+        lows.append(p[win]["ci_lower"])
+        highs.append(p[win]["ci_upper"])
+        ps.append(p[win]["p_value_one_sided"])
+        wins.append(win)
 
-    fig, ax = plt.subplots(figsize=(6.8, 3.4))
+    fig, ax = plt.subplots(figsize=(6.8, 3.6))
     y = np.arange(len(names))
-    err_low = np.array(means) - np.array(lows)
-    err_high = np.array(highs) - np.array(means)
-    for yi, (m, lo, hi) in enumerate(zip(means, err_low, err_high)):
-        ax.plot([m - lo, m + hi], [yi, yi], color=BLUE, lw=2.2, zorder=3)
-        ax.plot([m], [yi], "o", color=BLUE, ms=8, zorder=4)
-        ax.plot([m - lo, m - lo], [yi - 0.22, yi + 0.22], color=BLUE, lw=1.4)
-        ax.plot([m + hi, m + hi], [yi - 0.22, yi + 0.22], color=BLUE, lw=1.4)
-        p = ps[yi]
+    for yi, (m, lo, hi, p) in enumerate(zip(means, lows, highs, ps)):
+        sig = p < 0.05
+        color = BLUE if sig else GRAY_M
+        ax.plot([lo, hi], [yi, yi], color=color, lw=2.4, zorder=3)
+        ax.plot([m], [yi], "o", color=color, ms=8, zorder=4,
+                markeredgecolor="black", markeredgewidth=0.6)
+        ax.plot([lo, lo], [yi - 0.24, yi + 0.24], color=color, lw=1.4)
+        ax.plot([hi, hi], [yi - 0.24, yi + 0.24], color=color, lw=1.4)
         star = "***" if p < 0.001 else ("**" if p < 0.01 else ("*" if p < 0.05 else "ns"))
-        ax.text(m + hi + 0.0006, yi, star, va="center", fontsize=10, color=GRAY_D)
+        ax.text(hi + 0.0007, yi, star, va="center", fontsize=10, color=GRAY_D)
     ax.axvline(0, color=GRAY_D, lw=1.0, ls="--", zorder=2)
     ax.set_yticks(y)
     ax.set_yticklabels(names, fontsize=8)
-    ax.set_xlabel("MAE 差（基线 − 提议模型，Bootstrap 10,000 次）", fontsize=8.5)
+    ax.set_xlabel("MAE 差（基线 − 提议模型，Bootstrap 10,000 次，三种子合并）", fontsize=8.5)
     _clean_ax(ax)
-    final(fig, "fig3_6_bootstrap_significance", (6.8, 3.4))
+    final(fig, "fig3_6_bootstrap_significance", (6.8, 3.6))
 
 
 # ========== ⑥ fig4_4 四格诊断（重绘） ==========
