@@ -168,7 +168,11 @@ def train_eerm_single_seed(
         trigger_by_origin[ds.origins] = apply_frozen_event_rule(bundle, ds.origins, rule)
 
     # 训练集的环境标签映射（origin_index → env_label）
-    train_env = env_labels["train"]  # [N_train]
+    # 注意：batch 的 origin_index 是绝对时间步索引（0..T_total-1），
+    # 而 env_labels["train"] 是相对长度 [N_train]——必须展开为 [T_total] 绝对索引数组，
+    # 否则按绝对索引取值会越界（ISSUE：origin_index > N_train）
+    train_env = np.zeros(len(bundle.timestamps_ns), dtype=np.int64)
+    train_env[datasets["train"].origins] = env_labels["train"]
 
     best_state = None
     best_validation = float("inf")
