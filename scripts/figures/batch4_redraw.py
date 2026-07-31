@@ -242,24 +242,19 @@ def redraw_four_cell() -> None:
         for j in range(2):
             dark = matrix[i, j] > vmax * 0.55  # 深色格用白字
             text_c = "white" if dark else GRAY_D
-            # 第一行：MAE（粗体大字）
-            ax.text(j, i - 0.16, f"MAE = {matrix[i, j]:.4f}", ha="center",
-                    fontsize=12.5, fontweight="bold", color=text_c)
-            # 第二行：n 与占比（次级信息，小字半透明）
-            ax.text(j, i + 0.18, f"n = {counts[i, j]:,}\n{100 * counts[i, j] / total:.3f}%",
-                    ha="center", va="top", fontsize=8, color=text_c, alpha=0.85)
+            # MAE（粗体大字）
+            ax.text(j, i - 0.13, f"{matrix[i, j]:.4f}", ha="center",
+                    fontsize=13, fontweight="bold", color=text_c)
+            # n（次级信息，小字）
+            ax.text(j, i + 0.20, f"n = {counts[i, j]:,}", ha="center",
+                    va="top", fontsize=8.5, color=text_c, alpha=0.85)
     # 行列语义
     ax.set_xticks([0, 1])
     ax.set_xticklabels(["规则触发", "规则未触发"], fontsize=10.5)
     ax.set_yticks([0, 1])
     ax.set_yticklabels(["事件发生", "稳定时段"], fontsize=10.5)
-    ax.set_xlabel("rule_trigger（验证集冻结规则）", fontsize=9)
-    ax.set_ylabel("target_event（真实事件）", fontsize=9)
     ax.tick_params(length=0, labelsize=9)
-    # 关键证据：四格加权还原（必要说明文字）
-    ax.text(0.5, -0.22, "Σ(格 MAE × n) / Σn ≡ 全局 MAE（还原差 < 1e-9）",
-            transform=ax.transAxes, ha="center", fontsize=8, color=GRAY_D)
-    final(fig, "fig4_4_four_cell", (5.0, 4.6))
+    final(fig, "fig4_4_four_cell", (5.0, 4.4))
 
 
 # ========== ⑦ fig5_3 方向不对称（重绘：素雅配色） ==========
