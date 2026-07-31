@@ -166,7 +166,7 @@ def redraw_model_comparison() -> None:
     final(fig, "fig3_1_model_mae_comparison", (6.8, 4.0))
 
 
-# ========== ⑤ fig3_6 Bootstrap 网格分布图（新颖式：2×3 面板） ==========
+# ========== ⑤ fig3_6 Bootstrap 差异柱状图（简洁 diverging bar） ==========
 def redraw_bootstrap() -> None:
     d = json.load(open("outputs/analysis/bootstrap_significance.json"))
     # 标签 = "提议模型 vs 基线"（diff = MAE(基线) − MAE(提议)，正值 = 提议更优）
@@ -178,57 +178,34 @@ def redraw_bootstrap() -> None:
         "TCN - MLP": "MLP vs TCN",
         "AdaptiveGraph - no_event_gate": "no-event-gate vs AdaptiveGraph",
     }
-    panels = []
+    names, diffs, ps = [], [], []
     for c in d["comparisons"]:
         # pooled = 三种子正确合并（修复：原实现 per-seed 平均 + min-p 统计错误）
         p = c["pooled"]
         win = "global" if "global" in p else "event_window"
-        panels.append({
-            "name": labels.get(c["name"], c["name"])
-                    + ("（事件窗口）" if win == "event_window" else ""),
-            "diff": p[win]["observed_diff"],
-            "lo": p[win]["ci_lower"],
-            "hi": p[win]["ci_upper"],
-            "p": p[win]["p_value_one_sided"],
-            "seeds": [c["per_seed"][s][win]["observed_diff"] for s in c["per_seed"]],
-        })
+        suffix = "（事件窗口）" if win == "event_window" else ""
+        names.append(labels.get(c["name"], c["name"]) + suffix)
+        diffs.append(p[win]["observed_diff"])
+        ps.append(p[win]["p_value_one_sided"])
 
-    fig, axes = plt.subplots(2, 3, figsize=(7.4, 4.1),
-                             gridspec_kw={"hspace": 0.85, "wspace": 0.3})
-    xlim = (-0.021, 0.018)
-    for ax, dd in zip(axes.flat, panels):
-        sig = dd["p"] < 0.05
-        color = BLUE if sig else GRAY_M
-        # CI 阴影带（展示不确定性范围）
-        ax.axvspan(dd["lo"], dd["hi"], color=color, alpha=0.14, zorder=1)
-        # 三种子菱形（固定 y 位置，展示种子一致性）
-        for yi, s in zip([0.28, 0.5, 0.72], dd["seeds"]):
-            ax.scatter([s], [yi], marker="D", s=30, color=color, alpha=0.5,
-                       zorder=4, edgecolor="none")
-        # pooled 圆点（主视觉）
-        ax.scatter([dd["diff"]], [0.5], s=100, color=color, zorder=5,
-                   edgecolor="black", linewidth=0.7)
-        # 0 参考线
-        ax.axvline(0, color=GRAY_D, lw=0.9, ls="--", zorder=2)
-        # p 值标注
-        star = "***" if dd["p"] < 0.001 else ("**" if dd["p"] < 0.01
-                                              else ("*" if dd["p"] < 0.05 else "ns"))
-        ax.text(0.98, 0.88, star, transform=ax.transAxes, ha="right",
-                fontsize=11, color=color, fontweight="bold" if sig else "normal")
-        # 面板比较名（分类标签，非图题）
-        ax.text(0.5, 1.06, dd["name"], transform=ax.transAxes, ha="center",
-                fontsize=7.8, color=GRAY_D)
-        ax.set_xlim(*xlim)
-        ax.set_ylim(0.08, 0.92)
-        ax.set_yticks([])
-        ax.tick_params(axis="x", labelsize=7)
-        ax.spines[["top", "right", "left"]].set_visible(False)
-        ax.spines["bottom"].set_color(GRAY_L)
-    # 共享 x 轴说明（整图底部，非标题）
-    fig.text(0.5, 0.015,
-             "MAE 差（基线 − 提议模型）：菱形 = 单种子，圆点 = 三种子合并，阴影 = 95% CI",
-             ha="center", fontsize=8, color=GRAY_D)
-    final(fig, "fig3_6_bootstrap_significance", (7.4, 4.1))
+    fig, ax = plt.subplots(figsize=(7.2, 3.4))
+    x = np.arange(len(names))
+    colors = [BLUE if p < 0.05 else GRAY_L for p in ps]
+    bars = ax.bar(x, diffs, width=0.58, color=colors,
+                  edgecolor=GRAY_D, linewidth=0.5, zorder=3)
+    for xi, (dd, p) in enumerate(zip(diffs, ps)):
+        star = "***" if p < 0.001 else ("**" if p < 0.01 else ("*" if p < 0.05 else "ns"))
+        offset = 0.0006 if dd >= 0 else -0.0016
+        ax.text(xi, dd + offset, star, ha="center", va="bottom" if dd >= 0 else "top",
+                fontsize=11, color=GRAY_D, fontweight="bold" if p < 0.05 else "normal")
+    ax.axhline(0, color=GRAY_D, lw=1.0, zorder=2)
+    ax.set_xticks(x)
+    ax.set_xticklabels(names, fontsize=8, rotation=18, ha="right")
+    ax.set_ylabel("MAE 差（基线 − 提议模型）", fontsize=9)
+    ax.tick_params(axis="y", labelsize=8)
+    _clean_ax(ax)
+    ax.grid(axis="y", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
+    final(fig, "fig3_6_bootstrap_significance", (7.2, 3.4))
 
 
 # ========== ⑥ fig4_4 四格诊断（重绘） ==========
