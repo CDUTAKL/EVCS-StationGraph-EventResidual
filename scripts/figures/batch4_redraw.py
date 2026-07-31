@@ -194,12 +194,17 @@ def redraw_bootstrap() -> None:
     bars = ax.bar(x, diffs, width=0.58, color=colors,
                   edgecolor=GRAY_D, linewidth=0.5, zorder=3)
     for xi, (dd, p) in enumerate(zip(diffs, ps)):
-        # 直接标注 p 值（用户选定方案）：p<0.001 或具体数值
+        # 直接标注 p 值：正值柱上方、负值柱内部（避免超出坐标平面）
         label = "p<0.001" if p < 0.001 else f"p={p:.3f}"
-        offset = 0.0006 if dd >= 0 else -0.0016
-        ax.text(xi, dd + offset, label, ha="center", va="bottom" if dd >= 0 else "top",
-                fontsize=8.5, color=GRAY_D)
+        if dd >= 0:
+            ax.text(xi, dd + 0.0007, label, ha="center", va="bottom",
+                    fontsize=8.5, color=GRAY_D)
+        else:
+            ax.text(xi, dd / 2, label, ha="center", va="center",
+                    fontsize=8.5, color=GRAY_D)
     ax.axhline(0, color=GRAY_D, lw=1.0, zorder=2)
+    # y 轴留白：给柱顶 p 值标注留出空间（负柱标注已移入柱内）
+    ax.set_ylim(min(diffs) * 1.3, max(diffs) * 1.35 + 0.0015)
     ax.set_xticks(x)
     ax.set_xticklabels(names, fontsize=8, rotation=18, ha="right")
     ax.set_ylabel("MAE 差（基线 − 提议模型）", fontsize=9)
