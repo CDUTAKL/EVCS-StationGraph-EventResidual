@@ -83,7 +83,12 @@ def dump_yaml(config: dict[str, Any], path: str | Path) -> None:
 
 def _set_dotted(config: dict[str, Any], dotted_key: str, value: Any) -> None:
     cursor = config
-    parts = dotted_key.split(".")
+    # 去除每个路径段的空白：`--set "experiment.training. epochs=100"` 会静默
+    # 写入死键 " epochs" 而非 "epochs"（审查发现），strip 后统一行为；
+    # 空路径段直接报错而非静默无效
+    parts = [part.strip() for part in dotted_key.split(".")]
+    if not all(parts):
+        raise ConfigError(f"覆盖键包含空路径段：{dotted_key!r}")
     for part in parts[:-1]:
         child = cursor.setdefault(part, {})
         if not isinstance(child, dict):

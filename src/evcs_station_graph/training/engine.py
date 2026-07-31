@@ -233,7 +233,7 @@ def train_single_seed(
     log_rows: list[dict[str, float | int]] = []
     started = time.perf_counter()
     for epoch in range(1, epochs + 1):
-        train_loss = _train_epoch(
+        train_loss, train_l1 = _train_epoch(
             model,
             loaders["train"],
             optimizer,
@@ -253,9 +253,13 @@ def train_single_seed(
         )
         row: dict[str, float | int] = {
             "epoch": epoch,
-            "train_mae_scaled": train_loss,
+            # 真实 MAE（标准 L1 口径，与早停/评价一致）；加权模式下加权
+            # 损失单独记录为 train_loss_weighted_scaled，避免被误读为 MAE
+            "train_mae_scaled": train_l1,
             "validation_mae_scaled": validation_loss,
         }
+        if use_weighted_loss:
+            row["train_loss_weighted_scaled"] = train_loss
         alpha = _adaptive_alpha(model)
         if alpha is not None:
             # 逐轮记录自适应图混合系数 α（SG-EXP-004 可视化用）；
@@ -406,8 +410,8 @@ def _train_epoch(
     device: torch.device,
     trigger_by_origin: np.ndarray,
     scores_by_origin: np.ndarray | None = None,
-) -> float:
-    """执行一个训练轮次，返回该轮的平均训练损失（缩放后尺度）。
+) -> tuple[float, float]:
+    """执行一个训练轮次，返回 (平均加权损失, 平均真实 L1)（缩放后尺度）。
 
     梯度裁剪 max_norm=5.0 防止事件窗口内的极端残差导致梯度爆炸。
     触发矩阵 ``trigger_by_origin`` 在训练中控制哪些样本进入修正路径。
@@ -415,9 +419,14 @@ def _train_epoch(
     当 ``criterion`` 为 ``WeightedL1Loss`` 时，根据其 mode 选择事件信号：
     - binary：使用 trigger 的二值掩码
     - intensity：使用 ``scores_by_origin`` 的连续事件分数
+
+    同时累计真实 L1（不加权），保证日志中的 "train_mae_scaled" 恒为
+    真实 MAE——加权损失只是训练目标，不是模型泛化能力的度量
+    （审查发现：加权模式曾把加权损失直接记为 MAE，列名与语义不符）。
     """
     model.train()
     total_loss = 0.0
+    total_l1 = 0.0
     total_count = 0
     for batch in loader:
         x = batch["x"].to(device)
@@ -446,14 +455,17 @@ def _train_epoch(
 
         if not torch.isfinite(loss):
             raise FloatingPointError("训练损失出现非有限值")
+        # 真实 L1（不加权）：与早停/评价口径一致，仅用于日志记录
+        l1 = (output.prediction - y).abs().mean()
         loss.backward()
         torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=5.0)
         optimizer.step()
         total_loss += float(loss.detach()) * batch_size
+        total_l1 += float(l1.detach()) * batch_size
         total_count += batch_size
     if total_count == 0:
         raise RuntimeError("训练集没有可用样本")
-    return total_loss / total_count
+    return total_loss / total_count, total_l1 / total_count
 
 
 @torch.no_grad()
