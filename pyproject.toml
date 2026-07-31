@@ -17,6 +17,9 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+# 传统基线（scripts/run_traditional_baselines.py：Persistence/ARIMA/LightGBM/XGBoost）
+# 服务器 Python 3.8 需安装兼容版本：lightgbm 4.x / xgboost 2.x / statsmodels 0.14.x
+baselines = ["statsmodels>=0.14", "lightgbm>=4.0", "xgboost>=2.0"]
 
 [project.scripts]
 evcs-sg = "evcs_station_graph.cli:main"
@@ -27,3 +30,6 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
+# scripts/ 为无 __init__.py 的 namespace 包（test_bootstrap.py 导入 scripts.*），
+# 需将项目根加入 pytest 的 sys.path 才能收集
+pythonpath = ["."]
