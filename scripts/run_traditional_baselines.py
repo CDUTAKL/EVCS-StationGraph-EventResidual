@@ -27,8 +27,6 @@ from evcs_station_graph.data import (
     load_tensor_bundle,
 )
 from evcs_station_graph.evaluation import (
-    apply_frozen_event_rule,
-    fit_frozen_event_rule,
     stratified_metrics,
 )
 from evcs_station_graph.reproducibility import write_json
@@ -57,7 +55,7 @@ def _build_feature_matrix(
     for origin in origins:
         base = origin - FEATURE_WINDOW
         recent = features_flat[origin - 4: origin]  # [4, N*F] 最后 4 步
-        daily = features_flat[origin - 96: origin - 92]  # [4, N*F] 一天前同时刻（与目标时段对齐）
+        daily = features_flat[origin - 95: origin - 91]  # [4, N*F] 一天前同时刻（对应预测目标 [O+1,O+5)）
         win = features[base: origin]  # [96, N, F]
         row = np.concatenate([
             recent.ravel(), daily.ravel(),
@@ -81,7 +79,7 @@ def _predict_all_origins(
 
 def _evaluate(
     prediction: np.ndarray, bundle: Any, origins: np.ndarray,
-    trigger_by_origin: np.ndarray, name: str, output_dir: Path,
+    name: str, output_dir: Path,
 ) -> dict[str, Any]:
     """统一评价：物理量纲 truth vs prediction → 分层指标（完整留存）。
 
@@ -93,12 +91,10 @@ def _evaluate(
       - 预测长表 [S,H,N] + origin 索引（Bootstrap 显著性检验用），npz 格式
     """
     horizon = prediction.shape[1]
-    truth = bundle.targets[origins[:, None] + np.arange(horizon)[None, :]]  # [S,H,N]
-    # 触发矩阵 [S,N] 广播到 [S,H,N]（与 engine._predict 的 target_event 形状一致）
-    target_event = np.broadcast_to(
-        (trigger_by_origin[origins] > 0)[:, None, :],
-        (len(origins), horizon, truth.shape[2]),
-    )
+    # 与正式管线口径完全一致（data/dataset.py:78）：预测目标为 [O+1, O+1+H)
+    offset = origins[:, None] + 1 + np.arange(horizon)[None, :]  # [S,H]
+    truth = bundle.targets[offset]  # [S,H,N]
+    target_event = bundle.event_labels[offset]  # [S,H,N] 真实事件标签（非规则触发掩码）
     metrics = stratified_metrics(
         truth, prediction,
         target_event=target_event, node_ids=bundle.node_ids.tolist(),
@@ -144,24 +140,20 @@ def main() -> None:
         origins = origins[: args.max_validations]
     started = time.perf_counter()
 
-    # 事件规则（与正式评价一致）
-    rule = fit_frozen_event_rule(bundle, quantile=0.95, window_extension=2)
-    trigger_by_origin = np.zeros((len(bundle.timestamps_ns), len(bundle.node_ids)), dtype=bool)
-    trigger_by_origin[origins] = apply_frozen_event_rule(bundle, origins, rule)
-
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     results: list[dict[str, Any]] = []
 
     # ---- 1. Persistence：日周期持久化 ----
-    # 定义：预测 = 一天前（96 步）同时刻的 4 步负荷（y_hat[t+h] = y[t+h-96]）。
+    # 定义：预测 = 一天前（96 步）同时刻的 4 步负荷（y_hat[O+1+h] = y[O+1+h-96]）。
+    # 预测目标为 [O+1, O+5)，日周期对应 [O-95, O-91)。
     # 与旧项目 EXP-108 的"最后可见值持续"口径不同，论文表 3-1 表注需注明。
     print("=== Persistence（日周期）===", flush=True)
-    persistence_origin = lambda origin: bundle.targets[origin - 96: origin - 92]
+    persistence_origin = lambda origin: bundle.targets[origin - 95: origin - 91]
     results.append(_evaluate(
         _predict_all_origins(persistence_origin, origins, num_nodes, horizon),
-        bundle, origins, trigger_by_origin, "Persistence", output_dir,
+        bundle, origins, "Persistence", output_dir,
     ))
 
     # ---- 2. LightGBM / XGBoost ----
@@ -170,7 +162,8 @@ def main() -> None:
     train_end = int(bundle.split_origins["train"][-1])
     train_origins = bundle.split_origins["train"][FEATURE_WINDOW:]
     x_train = _build_feature_matrix(features_all, train_origins, bundle.node_ids)
-    y_train = bundle.targets[train_origins[:, None] + np.arange(horizon)[None, :]]  # [K,H,N]
+    # 训练标签与正式管线一致：预测目标 [O+1, O+1+H)
+    y_train = bundle.targets[train_origins[:, None] + 1 + np.arange(horizon)[None, :]]  # [K,H,N]
 
     x_test = _build_feature_matrix(features_all, origins, bundle.node_ids)
 
@@ -201,7 +194,7 @@ def main() -> None:
                 for h in range(horizon):
                     model.fit(x_train, y_n[:, h])
                     pred[:, h, n] = model.predict(x_test)
-        results.append(_evaluate(pred, bundle, origins, trigger_by_origin, name, output_dir))
+        results.append(_evaluate(pred, bundle, origins, name, output_dir))
 
     # ---- 3. ARIMA(2,1,2) 滚动前向 ----
     # 参数估计口径：每个节点仅在训练尾段拟合一次（近似假设 15 分钟粒度下
@@ -222,7 +215,7 @@ def main() -> None:
             fc = fitted.forecast(horizon)
             pred[i, :, n] = np.asarray(fc, dtype=np.float32)
         print(f"  节点 {bundle.node_ids[n]} ARIMA 完成", flush=True)
-    results.append(_evaluate(pred, bundle, origins, trigger_by_origin, "ARIMA", output_dir))
+    results.append(_evaluate(pred, bundle, origins, "ARIMA", output_dir))
     write_json({
         "analysis": "traditional baselines (chapter 3 main table)",
         "models": results,
