@@ -70,7 +70,9 @@ def _clean_ax(ax, xlabel=None, ylabel=None):
 # ========== ① fig2_3b 自相关（重绘） ==========
 def redraw_autocorrelation() -> None:
     nodes = ["CA-303", "CA-327", "CA-489"]
-    lags = np.arange(1, 193)
+    # lag 1~672 步 = 0.25h~168h：覆盖 24h 日周期与 168h 周周期两个峰
+    # （修复：原实现 lag 仅到 48h 却画了 168h 虚线——无数据支撑的内容错误）
+    lags = np.arange(1, 673)
     fig, ax = plt.subplots(figsize=(6.8, 3.2))
     for n, c, ls, lw in zip(nodes, [BLUE, GRAY_D, GRAY_M], ["-", "--", "-."], [1.6, 1.4, 1.4]):
         idx = list(BUNDLE.node_ids).index(n)
