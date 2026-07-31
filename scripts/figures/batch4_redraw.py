@@ -323,6 +323,115 @@ def redraw_coverage() -> None:
     final(fig, "fig5_4_coverage", (6.2, 3.8))
 
 
+# ========== ⑩ 第 5 章综合总览图（2×2 复杂大图，替代单图观感） ==========
+def redraw_ch5_overview() -> None:
+    te = json.load(open("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"))
+    con = json.load(open("outputs/analysis/conformal_prediction/conformal_summary.json"))
+    cat = json.load(open("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json"))
+
+    fig, axes = plt.subplots(2, 2, figsize=(7.4, 5.8),
+                             gridspec_kw={"hspace": 0.38, "wspace": 0.32})
+    (ax1, ax2), (ax3, ax4) = axes
+
+    # ---- (a) 传递熵有向信息流网络 ----
+    edges = te["significant_edges"]
+    nodes = sorted({e["source"] for e in edges} | {e["target"] for e in edges})
+    pos = {n: (np.cos(2 * np.pi * i / len(nodes)), np.sin(2 * np.pi * i / len(nodes)))
+           for i, n in enumerate(nodes)}
+    te_max = max(e["te"] for e in edges)
+    for e in edges:
+        s, t = pos[e["source"]], pos[e["target"]]
+        w = 0.4 + 2.6 * e["te"] / te_max
+        al = 0.30 + 0.6 * e["te"] / te_max
+        ax1.annotate("", xy=t, xytext=s,
+                     arrowprops=dict(arrowstyle="->", color=BLUE, lw=w, alpha=al,
+                                     shrinkA=13, shrinkB=13, connectionstyle="arc3,rad=0.10"))
+    for n, (x, y) in pos.items():
+        ax1.scatter(x, y, s=300, color="white", edgecolor=GRAY_D, lw=1.0, zorder=5)
+        ax1.text(x, y, n.split("-")[1], ha="center", va="center", fontsize=7, zorder=6)
+    ax1.set_xlim(-1.3, 1.3)
+    ax1.set_ylim(-1.3, 1.3)
+    ax1.set_aspect("equal")
+    ax1.axis("off")
+    ax1.text(0.02, 0.98, "a", transform=ax1.transAxes, fontsize=11, fontweight="bold",
+             color=GRAY_D, va="top")
+    ax1.text(0.98, 0.02, f"{te['overlap']['total_significant_edges']} 条显著边",
+             transform=ax1.transAxes, ha="right", fontsize=7.5, color=GRAY_M)
+
+    # ---- (b) 方向不对称 ----
+    pairs = te["asymmetry"]["top_asymmetric_pairs"][:4]
+    names = [f"{p['node_i'].split('-')[1]}→{p['node_j'].split('-')[1]}" for p in pairs]
+    te_ij = [p["te_i_to_j"] for p in pairs]
+    te_ji = [p["te_j_to_i"] for p in pairs]
+    x = np.arange(len(names))
+    w = 0.34
+    ax2.bar(x - w / 2, te_ij, w, label="正向", color=GRAY_L,
+            edgecolor=GRAY_D, linewidth=0.4, zorder=3)
+    ax2.bar(x + w / 2, te_ji, w, label="反向", color=BLUE,
+            edgecolor=GRAY_D, linewidth=0.4, zorder=3)
+    for xi, (a, b) in enumerate(zip(te_ij, te_ji)):
+        ax2.text(xi, max(a, b) * 1.06, f"{max(a, b) / max(min(a, b), 1e-9):.0f}×",
+                 ha="center", fontsize=7, color=GRAY_D)
+    ax2.set_xticks(x)
+    ax2.set_xticklabels(names, fontsize=7.5)
+    ax2.set_ylim(0, max(te_ji) * 1.3)
+    ax2.set_ylabel("传递熵", fontsize=8)
+    ax2.tick_params(labelsize=7)
+    ax2.spines[["top", "right"]].set_visible(False)
+    ax2.legend(fontsize=6.5, frameon=False, loc="upper left", ncol=2)
+    ax2.text(0.02, 0.98, "b", transform=ax2.transAxes, fontsize=11,
+             fontweight="bold", color=GRAY_D, va="top")
+
+    # ---- (c) 分层覆盖率 ----
+    groups = ["全局", "事件窗口", "稳定窗口"]
+    std_v = [con["standard_overall_mean"], con["standard_event_mean"], con["standard_stable_mean"]]
+    str_v = [con["stratified_overall_mean"], con["stratified_event_mean"], con["stratified_stable_mean"]]
+    x = np.arange(3)
+    ax3.bar(x - w / 2, std_v, w, label="标准", color=GRAY_L,
+            edgecolor=GRAY_D, linewidth=0.4, zorder=3)
+    ax3.bar(x + w / 2, str_v, w, label="分层", color=BLUE,
+            edgecolor=GRAY_D, linewidth=0.4, zorder=3)
+    for bars, off in ((std_v, -w / 2), (str_v, w / 2)):
+        for xi, v in enumerate(bars):
+            ax3.text(xi + off, v + 0.025, f"{v:.0%}", ha="center", fontsize=6.5,
+                     color=GRAY_D)
+    ax3.axhline(0.9, color=GRAY_D, lw=0.9, ls="--")
+    ax3.set_xticks(x)
+    ax3.set_xticklabels(groups, fontsize=8)
+    ax3.set_ylim(0, 1.05)
+    ax3.set_ylabel("覆盖率", fontsize=8)
+    ax3.tick_params(labelsize=7)
+    ax3.spines[["top", "right"]].set_visible(False)
+    ax3.legend(fontsize=6.5, frameon=False, loc="lower right")
+    ax3.text(0.02, 0.98, "c", transform=ax3.transAxes, fontsize=11,
+             fontweight="bold", color=GRAY_D, va="top")
+
+    # ---- (d) CATE 窗口条件效应 ----
+    iv = cat["interventions"]
+    names_cn = {"both_event": "全 event", "both_load": "全 load", "both_pattern": "全 pattern",
+                "equal": "等权 1/3", "g1_load_g2_learn": "GCN1=load",
+                "g1_learn_g2_pattern": "GCN2=pattern", "swapped": "交换两层"}
+    order = [k for k in iv if k in names_cn]
+    x = np.arange(len(order))
+    g_d = [iv[k]["global_delta"] for k in order]
+    s_d = [iv[k]["stable_delta"] for k in order]
+    e_d = [iv[k]["event_delta"] for k in order]
+    ax4.bar(x - 0.26, g_d, 0.24, label="全局", color=BLUE, edgecolor="black", linewidth=0.3)
+    ax4.bar(x, e_d, 0.24, label="事件", color=ORANGE, edgecolor="black", linewidth=0.3)
+    ax4.bar(x + 0.26, s_d, 0.24, label="稳定", color=GRAY_L, edgecolor="black", linewidth=0.3)
+    ax4.axhline(0, color=GRAY_D, lw=0.8)
+    ax4.set_xticks(x)
+    ax4.set_xticklabels([names_cn[k] for k in order], fontsize=6.5, rotation=25, ha="right")
+    ax4.set_ylabel("相对变化", fontsize=8)
+    ax4.tick_params(labelsize=7)
+    ax4.spines[["top", "right"]].set_visible(False)
+    ax4.legend(fontsize=6.5, frameon=False, loc="upper left", ncol=3)
+    ax4.text(0.02, 0.98, "d", transform=ax4.transAxes, fontsize=11,
+             fontweight="bold", color=GRAY_D, va="top")
+
+    final(fig, "fig5_1_ch5_overview", (7.4, 5.8))
+
+
 # ========== ⑨ fig5_5 分位数（重绘：舒展） ==========
 def redraw_quantile() -> None:
     c = json.load(open("outputs/analysis/conformal_prediction/conformal_summary.json"))
@@ -346,7 +455,7 @@ def redraw_quantile() -> None:
 
 
 if __name__ == "__main__":
-    print("=== 批次 4：重绘 9 张 ===")
+    print("=== 批次 4：重绘 9 张 + 综合图 ===")
     redraw_autocorrelation()
     redraw_distribution()
     redraw_event_timeline()
@@ -356,4 +465,5 @@ if __name__ == "__main__":
     redraw_asymmetry()
     redraw_coverage()
     redraw_quantile()
+    redraw_ch5_overview()
     print("批次 4 完成")
