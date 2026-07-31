@@ -107,38 +107,32 @@ def redraw_distribution() -> None:
     final(fig, "fig2_5_load_distribution", (6.2, 3.4))
 
 
-# ========== ③ fig2_6 事件时间线（精致：4 行 stem 竖线子图） ==========
+# ========== ③ fig2_6 事件时段分布（聚合 3 年全部事件到 24h） ==========
 def redraw_event_timeline() -> None:
-    f = BUNDLE.features
-    comps = {
-        "access": f[:, 0, 1], "departure": f[:, 0, 2],
-        "active_delta": np.abs(np.diff(f[:, 0, 3], prepend=f[0, 0, 3])),
-        "load_delta": f[:, 0, 6].astype(float),
-    }
-    names_cn = {"access": "接入数", "departure": "离站数",
-                "active_delta": "活跃变化", "load_delta": "负荷跳变"}
-    t0, t1 = 96 * 20, 96 * 21
-    x = np.arange(t1 - t0) / 4.0  # 小时
+    # 聚合口径：全部时间步中任一节点事件（event_labels）→ 按小时统计频率
+    # 单日事件稀疏画时间线必然空洞；聚合到 24h 时段后画面饱满且信息真实
+    ev = BUNDLE.event_labels.any(axis=1)  # [T] 任一节点发生事件
+    hours = pd.to_datetime(BUNDLE.timestamps_ns).hour[ev]
+    freq = np.bincount(hours, minlength=24) / max(ev.sum(), 1)  # 各时段事件占比
 
-    fig, axes = plt.subplots(4, 1, figsize=(7.0, 4.4), sharex=True,
-                             gridspec_kw={"hspace": 0.05})
-    for ax, (key, seg) in zip(axes, comps.items()):
-        v = seg[t0:t1]
-        vmax = v.max()
-        # vlines 竖线：仅事件时刻（v>0）画脉冲，无零值噪声
-        ax.vlines(x[v > 0], 0, v[v > 0], color=BLUE, lw=1.3, zorder=3)
-        ax.set_ylim(0, vmax + 0.5 if vmax > 0 else 1.0)
-        ax.set_yticks(np.arange(0, vmax + 1, 1) if vmax >= 1 else [0, 1])
-        ax.set_ylabel(names_cn[key], fontsize=8, rotation=0, ha="right",
-                      va="center", color=GRAY_D)
-        ax.tick_params(labelsize=7.5)
-        ax.spines[["top", "right"]].set_visible(False)
-        ax.grid(axis="y", color=GRAY_L, lw=0.4, alpha=0.5)
-        ax.tick_params(axis="y", length=2.5)
-    axes[-1].set_xlabel("时间（小时）", fontsize=9)
-    axes[-1].set_xticks(range(0, 25, 4))
-    axes[-1].tick_params(axis="x", labelsize=8)
-    final(fig, "fig2_6_event_timeline", (7.0, 4.4))
+    fig, ax = plt.subplots(figsize=(6.8, 3.4))
+    x = np.arange(24)
+    ax.bar(x, freq * 100, width=0.78, color=BLUE, edgecolor="white",
+           linewidth=0.4, zorder=3)
+    # 早晚高峰时段浅色底纹（8-11 时 / 16-20 时）
+    ax.axvspan(8, 11, color=ORANGE, alpha=0.12, zorder=1)
+    ax.axvspan(16, 20, color=ORANGE, alpha=0.12, zorder=1)
+    ax.text(9.5, freq.max() * 100 * 0.92, "早高峰", fontsize=7.5,
+            color=ORANGE, ha="center")
+    ax.text(18, freq.max() * 100 * 0.92, "晚高峰", fontsize=7.5,
+            color=ORANGE, ha="center")
+    ax.set_xticks(range(0, 24, 2))
+    ax.set_xlabel("时段（小时）", fontsize=9)
+    ax.set_ylabel("事件发生占比（%）", fontsize=9)
+    ax.tick_params(labelsize=8)
+    ax.spines[["top", "right"]].set_visible(False)
+    ax.grid(axis="y", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
+    final(fig, "fig2_6_event_hourly", (6.8, 3.4))
 
 
 # ========== ④ fig3_1 误差棒加强（重绘） ==========
