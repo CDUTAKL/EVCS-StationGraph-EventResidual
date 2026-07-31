@@ -86,15 +86,19 @@ def _check_stop_conditions(
     baseline: dict,
     lambda_val: int,
 ) -> list[str]:
-    """检查停止条件，返回触发的条件列表。"""
+    """检查停止条件，返回触发的条件列表。
+
+    注意：metrics_summary.json 的指标结构为 {scope: {metric: {"mean": ..., "std": ...}}}，
+    因此必须取到 ["mae"]["mean"] 才是可比较的标量。
+    """
     issues: list[str] = []
 
-    baseline_event = baseline["event_window"]["mae"]
-    baseline_stable = baseline["stable_window"]["mae"]
+    baseline_event = baseline["event_window"]["mae"]["mean"]
+    baseline_stable = baseline["stable_window"]["mae"]["mean"]
 
     current = results[lambda_val]
-    current_event = current["event_window"]["mae"]
-    current_stable = current["stable_window"]["mae"]
+    current_event = current["event_window"]["mae"]["mean"]
+    current_stable = current["stable_window"]["mae"]["mean"]
 
     # 停止条件 1：稳定窗口退化 >5%
     stable_change = (current_stable - baseline_stable) / baseline_stable
@@ -161,12 +165,33 @@ def run_sg_exp_007() -> None:
             print(f"  ✗ λ={lambda_val}: 实验未生成汇总文件", flush=True)
             results_007a[lambda_val] = {"error": "missing summary"}
 
-    # ── 分析 ──
+    # ── 分析并选择最优 λ ──
+    selection = _select_best_lambda(results_007a)
+    if selection is None:
+        print("\n✗ 所有 λ 均未通过停止条件。SG-EXP-007 终止。")
+        print("  结论：事件加权损失在当前数据条件下无统计显著改善。")
+        _save_report(root, "FAILED", results_007a, None, None)
+        return
+    best_lambda, best_result = selection
+
+    # ═══════════════════════════════════════════════════════════════
+    # 阶段 2：SG-EXP-007b — 连续强度加权（使用最优 λ）
+    # ═══════════════════════════════════════════════════════════════
+    results_007b = _run_007b(best_lambda, root, overrides)
+    _conclude(root, results_007a, best_lambda, best_result, results_007b)
+
+
+def _select_best_lambda(results_007a: dict[int, dict]) -> tuple[int, dict] | None:
+    """汇总 007a 筛选结果，按停止条件过滤后选出事件窗口 MAE 最低的 λ。
+
+    返回 ``(最优 λ, 对应的 scopes 字典)``；基线缺失或无候选通过停止条件时
+    返回 ``None``（调用方负责写 FAILED 报告）。
+    """
     print("\n── SG-EXP-007a 汇总 ──")
     baseline = results_007a.get(0, {})
     if not baseline or "event_window" not in baseline:
         print("✗ 基线 (λ=0) 实验失败，无法比较")
-        return
+        return None
 
     print(f"  基线 (λ=0):       event_mae={baseline['event_window']['mae']['mean']:.5f} "
           f"stable_mae={baseline['stable_window']['mae']['mean']:.5f}")
@@ -189,12 +214,8 @@ def run_sg_exp_007() -> None:
         if not issues:
             valid_candidates.append((lambda_val, result))
 
-    # ── 选择最优 λ ──
     if not valid_candidates:
-        print("\n✗ 所有 λ 均未通过停止条件。SG-EXP-007 终止。")
-        print("  结论：事件加权损失在当前数据条件下无统计显著改善。")
-        _save_report(root, "FAILED", results_007a, None, None)
-        return
+        return None
 
     # 在通过停止条件的候选中，选择事件窗口 MAE 最低者
     best_lambda, best_result = min(
@@ -203,14 +224,20 @@ def run_sg_exp_007() -> None:
     print(f"\n  → 007a 最优 λ = {best_lambda}")
     print(f"     event_mae: {best_result['event_window']['mae']['mean']:.5f} "
           f"stable_mae: {best_result['stable_window']['mae']['mean']:.5f}")
+    return best_lambda, best_result
 
-    # ═══════════════════════════════════════════════════════════════
-    # 阶段 2：SG-EXP-007b — 连续强度加权（使用最优 λ）
-    # ═══════════════════════════════════════════════════════════════
+
+def _run_007b(
+    best_lambda: int,
+    root: Path,
+    overrides: tuple[str, ...] = (),
+) -> dict | None:
+    """训练 SG-EXP-007b（intensity 模式），返回其 scopes 字典。"""
     print("\n" + "=" * 60)
     print(f"SG-EXP-007b：连续强度加权 (λ={best_lambda})")
     print("=" * 60)
 
+    bundle = load_tensor_bundle(BUNDLE_PATH)
     config_007b = load_experiment_config(PROJECT_PATH, CONFIG_007B, overrides)
     config_007b = _inject_params(config_007b, best_lambda, mode="intensity",
                                   normalize_intensity=True)
@@ -218,16 +245,25 @@ def run_sg_exp_007() -> None:
 
     run_root_007b = train_experiment(config_007b, bundle, str(root / "007b_intensity"))
 
-    results_007b = None
     summary_path_007b = run_root_007b / "metrics_summary.json"
-    if summary_path_007b.exists():
-        with open(summary_path_007b) as f:
-            summary_007b = json.load(f)
-        results_007b = summary_007b["scopes"]
-        print(f"  intensity mode: event_mae={results_007b['event_window']['mae']['mean']:.5f} "
-              f"stable_mae={results_007b['stable_window']['mae']['mean']:.5f}")
+    if not summary_path_007b.exists():
+        return None
+    with open(summary_path_007b) as f:
+        summary_007b = json.load(f)
+    results_007b = summary_007b["scopes"]
+    print(f"  intensity mode: event_mae={results_007b['event_window']['mae']['mean']:.5f} "
+          f"stable_mae={results_007b['stable_window']['mae']['mean']:.5f}")
+    return results_007b
 
-    # ── 最终结论 ──
+
+def _conclude(
+    root: Path,
+    results_007a: dict[int, dict],
+    best_lambda: int,
+    best_result: dict,
+    results_007b: dict | None,
+) -> None:
+    """对比 binary/intensity 两种加权模式，写出最终实验报告。"""
     print("\n" + "=" * 60)
     print("SG-EXP-007 最终结论")
     print("=" * 60)
