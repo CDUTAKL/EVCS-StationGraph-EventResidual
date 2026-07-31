@@ -8,7 +8,7 @@ seeds: [2024, 2025, 2026]
 result_authority: formal_candidate
 model_params:
   hidden_dim: 32
-  levels: 3
+  levels: 6
   dropout: 0.1
   embedding_dim: 12
   fixed_weight: 0.3

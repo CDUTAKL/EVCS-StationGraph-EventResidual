@@ -146,14 +146,16 @@ class StationGraphForecast(ForecastModel):
         levels: int = 3,
         dropout: float = 0.1,
         relation_dropout: float = 0.0,
+        history_steps: int | None = None,
         relation_weights_gcn1: torch.Tensor | None = None,
         relation_weights_gcn2: torch.Tensor | None = None,
     ) -> None:
         super().__init__()
-        # 共享 TCN 编码器
+        # 共享 TCN 编码器（history_steps 用于感受野下限校验）
         self.tcn = TemporalConvNet(
             input_dim, horizon,
             hidden_dim=hidden_dim, levels=levels, dropout=dropout,
+            history_steps=history_steps,
         )
         # 图模型只使用 tcn.encode（卷积编码），预测由外层 self.head 完成，
         # tcn.head 从不参与前向——删除以避免死参数混入参数量统计与优化器状态
@@ -254,12 +256,13 @@ class StaticGraphForecast(StationGraphForecast):
         levels: int = 3,
         dropout: float = 0.1,
         relation_dropout: float = 0.0,
+        history_steps: int | None = None,
     ) -> None:
         num_relations = len(adjacencies)
         super().__init__(
             input_dim, horizon, num_nodes, num_relations,
             hidden_dim=hidden_dim, levels=levels, dropout=dropout,
-            relation_dropout=relation_dropout,
+            relation_dropout=relation_dropout, history_steps=history_steps,
         )
         # 将三类固定邻接矩阵注册为 buffer（不参与梯度更新）
         for r, adj in enumerate(adjacencies):
@@ -313,13 +316,14 @@ class AdaptiveGraphForecast(StationGraphForecast):
         fixed_weight: float = 0.3,
         top_k: int = 5,
         relation_dropout: float = 0.0,
+        history_steps: int | None = None,
     ) -> None:
         # 4 类关系：load, event, pattern + adaptive
         num_relations = len(adjacencies) + 1
         super().__init__(
             input_dim, horizon, num_nodes, num_relations,
             hidden_dim=hidden_dim, levels=levels, dropout=dropout,
-            relation_dropout=relation_dropout,
+            relation_dropout=relation_dropout, history_steps=history_steps,
         )
         # 固定邻接矩阵
         for r, adj in enumerate(adjacencies):

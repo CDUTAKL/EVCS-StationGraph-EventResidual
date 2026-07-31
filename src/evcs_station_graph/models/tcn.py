@@ -89,10 +89,20 @@ class TemporalConvNet(ForecastModel):
         levels: int = 3,
         kernel_size: int = 3,
         dropout: float = 0.1,
+        history_steps: int | None = None,
     ) -> None:
         super().__init__()
         if levels <= 0:
             raise ValueError("levels 必须为正整数")
+        # 感受野下限校验（硬约束）：RF = 1 + (kernel-1) × (2^levels - 1)，
+        # 必须覆盖完整历史窗口，否则模型静默只看得到部分历史（审查发现：
+        # 仓库 YAML 曾写 levels=3 → RF=15 < 96，独立 evcs-sg run 无任何报错）
+        rf = 1 + (kernel_size - 1) * (2 ** levels - 1)
+        if history_steps is not None and rf < history_steps:
+            raise ValueError(
+                f"TCN 感受野 {rf} 步 < history_steps {history_steps} 步，"
+                f"请增大 levels（每层约 ×2 感受野）或减小历史窗口"
+            )
         blocks: list[nn.Module] = []
         channels = input_dim
         for level in range(levels):

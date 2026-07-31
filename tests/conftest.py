@@ -119,7 +119,9 @@ def smoke_config(tmp_path) -> dict:
             "result_authority": "implementation_smoke_only",
             "model_params": {
                 "hidden_dim": 8,
-                "levels": 2,
+                # levels=6 与正式口径一致（RF=127 ≥ history_steps=96）；
+                # 低于 6 会触发 TCN 感受野校验报错（tcn.py 硬约束）
+                "levels": 6,
                 "dropout": 0.0,
             },
             "training": {

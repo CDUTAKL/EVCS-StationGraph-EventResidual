@@ -748,3 +748,20 @@ def test_factory_mlp_rejects_float_history_steps() -> None:
     }
     with pytest.raises(ValueError, match="history_steps"):
         build_model(config, input_dim=7, horizon=4, num_nodes=10, adjacencies=[])
+
+
+def test_tcn_rejects_insufficient_receptive_field() -> None:
+    """TCN 感受野必须覆盖 history_steps（审查发现：levels=3 → RF=15 < 96 曾静默成立）。
+
+    RF = 1 + (kernel-1) × (2^levels - 1)，levels=3/kernel=3 → RF=15；
+    若提供 history_steps=96 必须报错，避免独立 `evcs-sg run` 训练出
+    只看得到 15/96 历史窗口的模型（与正式流水线 levels=6 不可比）。
+    """
+    # levels=3 + history_steps=96 → RF=15 < 96 必须拒绝
+    with pytest.raises(ValueError, match="感受野"):
+        TemporalConvNet(7, 4, hidden_dim=8, levels=3, history_steps=96)
+    # levels=6 + history_steps=96 → RF=127 ≥ 96 正常构造
+    model = TemporalConvNet(7, 4, hidden_dim=8, levels=6, history_steps=96)
+    assert model is not None
+    # 未提供 history_steps（旧调用方）不校验，保持向后兼容
+    TemporalConvNet(7, 4, hidden_dim=8, levels=3)

@@ -75,6 +75,14 @@ def build_model(
         "levels": int(params.get("levels", 3)),
         "dropout": float(params.get("dropout", 0.1)),
     }
+    # 历史窗口长度：TCN 感受野校验依赖它。TCN 系为"有配置即校验"的可选
+    # 增强——缺失或非法时跳过校验（不破坏未配置该字段的旧实验）；
+    # MLP 分支对展平维度是硬依赖，保留严格校验（见下）
+    raw_history = config.get("project", {}).get("history_steps", 0)
+    if isinstance(raw_history, bool) or not isinstance(raw_history, int) or raw_history <= 0:
+        history_steps = None
+    else:
+        history_steps = raw_history
     # 图基线模型共用的隐藏层/嵌入/dropout 参数
     graph_kwargs = {
         "hidden_dim": common["hidden_dim"],
@@ -87,30 +95,22 @@ def build_model(
     relation_dropout = float(experiment.get("graph", {}).get("relation_dropout", 0.0))
 
     if model_name in {"TCN", "temporal"}:
-        return TemporalConvNet(input_dim, horizon, **common)
+        return TemporalConvNet(
+            input_dim, horizon, history_steps=history_steps, **common,
+        )
 
     if model_name in {"mlp", "mlp_baseline"}:
-        # MLP 展平维度依赖历史窗口长度，必须从项目配置显式读取；
-        # 缺失时报错而非默认猜测，避免与数据张量维度静默错位
-        raw_history = config.get("project", {}).get("history_steps", 0)
-        # bool 是 int 的子类，需先行排除；浮点（如 YAML 误写 96.0）
-        # 若用 int() 截断会静默改变第一层权重维度，故显式拒绝
-        if isinstance(raw_history, bool) or not isinstance(raw_history, int):
-            raise ValueError(
-                "MLP 基线要求 project.history_steps 为正整数，实际为 "
-                f"{type(raw_history).__name__}({raw_history!r})"
-            )
-        if raw_history <= 0:
+        if history_steps is None:
             raise ValueError(
                 "MLP 基线需要 project.history_steps 确定输入展平维度，"
-                "请在项目配置中提供"
+                "请在项目配置中提供（正整数，浮点/布尔会被拒绝）"
             )
         return MLPBaseline(
             input_dim,
             horizon,
             num_nodes,
             hidden_dim=common["hidden_dim"],
-            history_steps=raw_history,
+            history_steps=history_steps,
             dropout=common["dropout"],
         )
 
@@ -134,7 +134,7 @@ def build_model(
     if model_name in {"TCN_GCN", "static_graph"}:
         return StaticGraphForecast(
             input_dim, horizon, num_nodes, adjacencies,
-            relation_dropout=relation_dropout, **common,
+            relation_dropout=relation_dropout, history_steps=history_steps, **common,
         )
 
     if model_name in {"adaptive_graph"}:
@@ -143,7 +143,7 @@ def build_model(
             embedding_dim=int(params.get("embedding_dim", 12)),
             fixed_weight=float(params.get("fixed_weight", 0.3)),
             top_k=int(params.get("top_k", 5)),
-            relation_dropout=relation_dropout, **common,
+            relation_dropout=relation_dropout, history_steps=history_steps, **common,
         )
 
     if model_name in {"event_residual", "frozen_event_gated_residual_correction"}:
@@ -155,11 +155,13 @@ def build_model(
             )
 
         if base_model_type == "temporal":
-            base: ForecastModel = TemporalConvNet(input_dim, horizon, **common)
+            base: ForecastModel = TemporalConvNet(
+                input_dim, horizon, history_steps=history_steps, **common,
+            )
         elif base_model_type == "static_graph":
             base = StaticGraphForecast(
                 input_dim, horizon, num_nodes, adjacencies,
-                relation_dropout=relation_dropout, **common,
+                relation_dropout=relation_dropout, history_steps=history_steps, **common,
             )
         elif base_model_type == "adaptive_graph":
             base = AdaptiveGraphForecast(
@@ -167,7 +169,7 @@ def build_model(
                 embedding_dim=int(params.get("embedding_dim", 12)),
                 fixed_weight=float(params.get("fixed_weight", 0.3)),
                 top_k=int(params.get("top_k", 5)),
-                relation_dropout=relation_dropout, **common,
+                relation_dropout=relation_dropout, history_steps=history_steps, **common,
             )
         else:
             raise ValueError(f"不支持的基模型类型：{base_model_type}")
