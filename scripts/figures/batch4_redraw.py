@@ -107,7 +107,7 @@ def redraw_distribution() -> None:
     final(fig, "fig2_5_load_distribution", (6.2, 3.4))
 
 
-# ========== ③ fig2_6 事件时间线（重绘：4 行子图） ==========
+# ========== ③ fig2_6 事件时间线（简约：单面板 4 折线） ==========
 def redraw_event_timeline() -> None:
     f = BUNDLE.features
     comps = {
@@ -116,23 +116,16 @@ def redraw_event_timeline() -> None:
         "load_delta": f[:, 0, 6].astype(float),
     }
     t0, t1 = 96 * 20, 96 * 21
-    fig, axes = plt.subplots(4, 1, figsize=(6.8, 4.6), sharex=True,
-                             gridspec_kw={"hspace": 0.12})
+    fig, ax = plt.subplots(figsize=(6.8, 3.2))
     x = np.arange(t1 - t0) / 4.0
-    colors = [BLUE, ORANGE, GRAY_D, RED_S]
-    for ax, (name, c) in zip(axes, zip(comps, colors)):
-        seg = comps[name][t0:t1]
-        ax.fill_between(x, 0, seg, color=c, alpha=0.75, lw=0)
-        ax.set_ylabel(name.replace("_", " "), fontsize=7.5, rotation=0,
-                      ha="right", va="center", color=GRAY_D)
-        ax.tick_params(labelsize=7)
-        ax.spines[["top", "right"]].set_visible(False)
-        ax.set_yticks([])
-    axes[-1].set_xlabel("时间（小时）", fontsize=9)
-    _clean_ax(axes[0])
-    for ax in axes:
-        ax.grid(False)
-    final(fig, "fig2_6_event_timeline", (6.8, 4.6))
+    styles = [(BLUE, "-"), (ORANGE, "--"), (GRAY_D, "-."), (RED_S, ":")]
+    for (name, seg), (c, ls) in zip(comps.items(), styles):
+        ax.plot(x, seg[t0:t1], color=c, ls=ls, lw=1.1, label=name.replace("_", " "))
+    ax.set_xlabel("时间（小时）", fontsize=9)
+    ax.set_ylabel("计数 / 标志值", fontsize=9)
+    ax.legend(fontsize=7.5, frameon=False, ncol=4, loc="upper right")
+    _clean_ax(ax)
+    final(fig, "fig2_6_event_timeline", (6.8, 3.2))
 
 
 # ========== ④ fig3_1 误差棒加强（重绘） ==========
@@ -154,10 +147,10 @@ def redraw_model_comparison() -> None:
     y = np.arange(len(names))
     bars = ax.barh(y, maes, height=0.62, color=colors,
                    edgecolor=GRAY_D, linewidth=0.5, zorder=3)
-    for yi, (mae, std) in enumerate(zip(maes, stds)):
-        if std is not None:
-            ax.errorbar(mae, yi, xerr=std, fmt="none", ecolor="black",
-                        elinewidth=1.6, capsize=5, capthick=1.6, zorder=5)
+    # 不画误差棒：确定性方法（ARIMA/LGBM/XGB/Persistence）无种子 std，
+    # 部分模型 std 待服务器回填——误差信息统一进表 3-1 的 mean±std 列，
+    # 避免"有的有有的没有"的不一致观感（确定性方法无 std 是科学事实）
+    for yi, mae in enumerate(maes):
         ax.text(mae + 0.0015, yi, f"{mae:.4f}", va="center", fontsize=8.5,
                 color=GRAY_D)
     bars[0].set_color(BLUE)
