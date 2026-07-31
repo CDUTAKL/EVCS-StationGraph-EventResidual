@@ -1,0 +1,29 @@
+experiment_id: SG-EXP-011
+name: decomposition_gcn_with_relation_routing
+status: ready_for_formal_run
+model: decomp_gcn
+purpose: >
+  检验多分辨率分解+关系路由是否超越 StaticGraph 的混合信号统一融合。
+  将负荷信号分解为趋势(走load图)/周期(走pattern图)/瞬变(走event图)
+  三个分量，各分量独立GCN后跨分量门控融合。
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+model_params:
+  hidden_dim: 32
+  levels: 6
+  dropout: 0.1
+  routing: one_to_one
+  trend_kernel: 12
+  season_kernel: 4
+training:
+  epochs: 60
+  patience: 8
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+graph:
+  scope: within_site
+  construction: train_only_statistical_relation
+  description: 三类固定关系参与分量专用路由（非统一融合）
+  relations: [load, event, pattern]
+  top_k: 3

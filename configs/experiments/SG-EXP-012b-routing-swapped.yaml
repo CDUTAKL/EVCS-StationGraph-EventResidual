@@ -1,0 +1,29 @@
+experiment_id: SG-EXP-012
+name: decomp_gcn_routing_ablation_swapped
+status: ready_for_formal_run
+model: decomp_gcn
+purpose: >
+  路由消融（交叉变体）：trend→pattern, season→event, transient→load，
+  验证路由正确性——如果交叉路由性能与 one_to_one 无差异，
+  说明分量-关系对应假设不成立。
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+model_params:
+  hidden_dim: 32
+  levels: 6
+  dropout: 0.1
+  routing: swapped
+  trend_kernel: 12
+  season_kernel: 4
+training:
+  epochs: 60
+  patience: 8
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+graph:
+  scope: within_site
+  construction: train_only_statistical_relation
+  description: 交叉路由（trend→pattern/season→event/transient→load）
+  relations: [load, event, pattern]
+  top_k: 3

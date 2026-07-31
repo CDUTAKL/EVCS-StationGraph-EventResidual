@@ -1,0 +1,25 @@
+experiment_id: SG-EXP-013
+name: knowledge_distillation_gcn_to_tcn
+status: ready_for_formal_run
+model: TCN
+purpose: >
+  GCN→TCN 知识蒸馏验证。以 SG-EXP-003 StaticGraph 为教师，
+  训练 TCN 学生拟合 L1(truth) + α*MSE(teacher, student)。
+  验证图结构知识是否可被纯时序模型吸收。
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+model_params:
+  hidden_dim: 32
+  levels: 6
+  dropout: 0.1
+training:
+  epochs: 60
+  patience: 8
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+graph:
+  scope: within_site
+  construction: train_only_statistical_relation
+  relations: [load, event, pattern]
+  top_k: 3

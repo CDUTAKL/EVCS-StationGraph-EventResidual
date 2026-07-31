@@ -15,6 +15,10 @@
   - ``"agcrn"``：AGCRN 自适应图基线（SG-EXP-008，NeurIPS 2020）。
   - ``"graph_wavenet"`` / ``"gwnet"``：Graph WaveNet 时空图基线
     （SG-EXP-010，IJCAI 2019），使用三类固定关系均值作为预定义图。
+  - ``"decomp_gcn"`` / ``"decomposition_gcn"``：多分辨率分解 + 关系路由
+    GCN（SG-EXP-011）。将信号分解为趋势/周期/瞬变三分量，
+    各分量通过最相关的关系图独立传播后门控融合。
+    通过 ``model_params.routing`` 控制路由策略（one_to_one/full/swapped）。
 
 图相关公共参数：
   ``experiment.graph.relation_dropout``（默认 0.0，关闭）会传入
@@ -34,6 +38,7 @@ import torch
 from evcs_station_graph.models import (
     AdaptiveGraphForecast,
     AGCRNForecast,
+    DecompGCNForecast,
     EventResidualCorrection,
     ForecastModel,
     GraphWaveNetForecast,
@@ -114,6 +119,17 @@ def build_model(
 
     if model_name in {"graph_wavenet", "gwnet"}:
         return GraphWaveNetForecast(input_dim, horizon, num_nodes, adjacencies, **graph_kwargs)
+
+    if model_name in {"decomp_gcn", "decomposition_gcn"}:
+        return DecompGCNForecast(
+            input_dim, horizon, num_nodes, adjacencies,
+            hidden_dim=common["hidden_dim"],
+            levels=int(params.get("levels", 6)),
+            dropout=common["dropout"],
+            routing=str(params.get("routing", "one_to_one")),
+            trend_kernel=int(params.get("trend_kernel", 12)),
+            season_kernel=int(params.get("season_kernel", 4)),
+        )
 
     if model_name in {"TCN_GCN", "static_graph"}:
         return StaticGraphForecast(

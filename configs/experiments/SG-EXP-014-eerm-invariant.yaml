@@ -1,0 +1,26 @@
+experiment_id: SG-EXP-014
+name: eerm_invariant_learning
+status: ready_for_formal_run
+model: static_graph
+purpose: >
+  环境不变学习分析。将训练数据按事件状态划分为稳定/事件两个环境，
+  施加跨环境隐表示不变性惩罚 L_inv = ||mean(H_e0) - mean(H_e1)||²。
+  验证事件特征是否为"伪相关"——若 λ 增大时事件 MAE 上升而稳定不变，
+  说明强制不变性会丢弃事件特征，解释了事件方法的失败。
+seeds: [2024, 2025, 2026]
+result_authority: formal_candidate
+model_params:
+  hidden_dim: 32
+  levels: 6
+  dropout: 0.1
+training:
+  epochs: 60
+  patience: 8
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+graph:
+  scope: within_site
+  construction: train_only_statistical_relation
+  relations: [load, event, pattern]
+  top_k: 3
