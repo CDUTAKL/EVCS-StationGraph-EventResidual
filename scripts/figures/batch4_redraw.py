@@ -166,7 +166,7 @@ def redraw_model_comparison() -> None:
     final(fig, "fig3_1_model_mae_comparison", (6.8, 4.0))
 
 
-# ========== ⑤ fig3_6 Bootstrap 森林图（增强版：pooled + 三种子散点） ==========
+# ========== ⑤ fig3_6 Bootstrap 网格分布图（新颖式：2×3 面板） ==========
 def redraw_bootstrap() -> None:
     d = json.load(open("outputs/analysis/bootstrap_significance.json"))
     # 标签 = "提议模型 vs 基线"（diff = MAE(基线) − MAE(提议)，正值 = 提议更优）
@@ -178,48 +178,57 @@ def redraw_bootstrap() -> None:
         "TCN - MLP": "MLP vs TCN",
         "AdaptiveGraph - no_event_gate": "no-event-gate vs AdaptiveGraph",
     }
-    names, means, lows, highs, ps, per_seed_diffs = [], [], [], [], [], []
+    panels = []
     for c in d["comparisons"]:
         # pooled = 三种子正确合并（修复：原实现 per-seed 平均 + min-p 统计错误）
         p = c["pooled"]
         win = "global" if "global" in p else "event_window"
-        suffix = "（事件窗口）" if win == "event_window" else ""
-        names.append(labels.get(c["name"], c["name"]) + suffix)
-        means.append(p[win]["observed_diff"])
-        lows.append(p[win]["ci_lower"])
-        highs.append(p[win]["ci_upper"])
-        ps.append(p[win]["p_value_one_sided"])
-        per_seed_diffs.append(
-            [c["per_seed"][s][win]["observed_diff"] for s in c["per_seed"]])
+        panels.append({
+            "name": labels.get(c["name"], c["name"])
+                    + ("（事件窗口）" if win == "event_window" else ""),
+            "diff": p[win]["observed_diff"],
+            "lo": p[win]["ci_lower"],
+            "hi": p[win]["ci_upper"],
+            "p": p[win]["p_value_one_sided"],
+            "seeds": [c["per_seed"][s][win]["observed_diff"] for s in c["per_seed"]],
+        })
 
-    fig, ax = plt.subplots(figsize=(7.0, 3.8))
-    y = np.arange(len(names))
-    # 0 线右侧 = 提议更优方向带
-    ax.axvspan(0, 0.018, color=BLUE, alpha=0.06, zorder=0)
-    for yi, (m, lo, hi, p, seeds) in enumerate(
-            zip(means, lows, highs, ps, per_seed_diffs)):
-        sig = p < 0.05
+    fig, axes = plt.subplots(2, 3, figsize=(7.4, 4.1),
+                             gridspec_kw={"hspace": 0.85, "wspace": 0.3})
+    xlim = (-0.021, 0.018)
+    for ax, dd in zip(axes.flat, panels):
+        sig = dd["p"] < 0.05
         color = BLUE if sig else GRAY_M
-        # 三种子散点（半透明，展示种子一致性）
-        ax.scatter(seeds, [yi] * 3, marker="D", s=22, color=color,
-                   alpha=0.45, zorder=4, edgecolor="none")
-        # pooled CI 线 + 点
-        ax.plot([lo, hi], [yi, yi], color=color, lw=2.6, zorder=3)
-        ax.plot([m], [yi], "o", color=color, ms=9, zorder=5,
-                markeredgecolor="black", markeredgewidth=0.6)
-        ax.plot([lo, lo], [yi - 0.26, yi + 0.26], color=color, lw=1.6)
-        ax.plot([hi, hi], [yi - 0.26, yi + 0.26], color=color, lw=1.6)
-        star = "***" if p < 0.001 else ("**" if p < 0.01 else ("*" if p < 0.05 else "ns"))
-        ax.text(hi + 0.0011, yi, star, va="center", fontsize=10.5,
-                color=GRAY_D, fontweight="bold" if sig else "normal")
-    ax.axvline(0, color=GRAY_D, lw=1.1, ls="--", zorder=2)
-    ax.text(0.0165, -0.42, "提议更优 →", fontsize=7.5, color=BLUE, ha="right")
-    ax.set_yticks(y)
-    ax.set_yticklabels(names, fontsize=8)
-    ax.set_xlabel("MAE 差（基线 − 提议模型；菱形 = 单种子，圆点 = 合并）", fontsize=8.5)
-    ax.set_xlim(-0.021, 0.018)
-    _clean_ax(ax)
-    final(fig, "fig3_6_bootstrap_significance", (7.0, 3.8))
+        # CI 阴影带（展示不确定性范围）
+        ax.axvspan(dd["lo"], dd["hi"], color=color, alpha=0.14, zorder=1)
+        # 三种子菱形（固定 y 位置，展示种子一致性）
+        for yi, s in zip([0.28, 0.5, 0.72], dd["seeds"]):
+            ax.scatter([s], [yi], marker="D", s=30, color=color, alpha=0.5,
+                       zorder=4, edgecolor="none")
+        # pooled 圆点（主视觉）
+        ax.scatter([dd["diff"]], [0.5], s=100, color=color, zorder=5,
+                   edgecolor="black", linewidth=0.7)
+        # 0 参考线
+        ax.axvline(0, color=GRAY_D, lw=0.9, ls="--", zorder=2)
+        # p 值标注
+        star = "***" if dd["p"] < 0.001 else ("**" if dd["p"] < 0.01
+                                              else ("*" if dd["p"] < 0.05 else "ns"))
+        ax.text(0.98, 0.88, star, transform=ax.transAxes, ha="right",
+                fontsize=11, color=color, fontweight="bold" if sig else "normal")
+        # 面板比较名（分类标签，非图题）
+        ax.text(0.5, 1.06, dd["name"], transform=ax.transAxes, ha="center",
+                fontsize=7.8, color=GRAY_D)
+        ax.set_xlim(*xlim)
+        ax.set_ylim(0.08, 0.92)
+        ax.set_yticks([])
+        ax.tick_params(axis="x", labelsize=7)
+        ax.spines[["top", "right", "left"]].set_visible(False)
+        ax.spines["bottom"].set_color(GRAY_L)
+    # 共享 x 轴说明（整图底部，非标题）
+    fig.text(0.5, 0.015,
+             "MAE 差（基线 − 提议模型）：菱形 = 单种子，圆点 = 三种子合并，阴影 = 95% CI",
+             ha="center", fontsize=8, color=GRAY_D)
+    final(fig, "fig3_6_bootstrap_significance", (7.4, 4.1))
 
 
 # ========== ⑥ fig4_4 四格诊断（重绘） ==========
