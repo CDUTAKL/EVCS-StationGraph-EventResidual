@@ -104,6 +104,11 @@ def _build_variants(
     Returns:
         三元组列表，每项为 (变体名称, 派生配置, 是否需要默认模型检查点)。
     """
+    # 不需要加载 checkpoint 的模型：
+    # - TCN/TCN_GCN/adaptive_graph：独立模型，不从底座初始化
+    # - event_residual 且 gate.enabled=false：门控关闭时所有样本均进入修正路径，
+    #   此时加载底座 checkpoint 无意义（底座被冻结但门控失效），且 checkpoint
+    #   可能来自不同底座类型导致 state_dict 不匹配
     model_without_checkpoint = {"TCN", "TCN_GCN", "adaptive_graph"}
     variants: list[tuple[str, dict[str, Any], bool]] = []
 
@@ -112,7 +117,16 @@ def _build_variants(
         for key, value in override_map.items():
             _set_dotted(config, key, value)
         model_name = str(config["experiment"]["model"])
-        variants.append((f"ablation-{name}", config, model_name not in model_without_checkpoint))
+        needs_checkpoint = model_name not in model_without_checkpoint
+        # 门控关闭的 event_residual 消融不加载底座 checkpoint
+        if model_name in {"event_residual", "frozen_event_gated_residual_correction"}:
+            gate_enabled = bool(config["experiment"].get("gate", {}).get("enabled", True))
+            if not gate_enabled:
+                needs_checkpoint = False
+                # 门控关闭时底座不需要冻结——所有样本都进入修正路径，
+                # 底座和修正器一起训练才有意义
+                config["experiment"]["model_params"]["freeze_base"] = False
+        variants.append((f"ablation-{name}", config, needs_checkpoint))
 
     # 关系消融：指定 graph.enabled_relations（单个关系名）来消融到单关系
     for relation_name in suite.get("relations", []):

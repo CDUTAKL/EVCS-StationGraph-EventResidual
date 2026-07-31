@@ -63,7 +63,10 @@ def test_mechanism_suite_builds_expected_variants() -> None:
     no_graph = next(item for item in variants if item[0] == "ablation-no_graph")
     no_event = next(item for item in variants if item[0] == "ablation-no_event_gate")
     assert no_graph[2] is False
-    assert no_event[2] is True
+    # no_event_gate：门控关闭时不加载底座 checkpoint（所有样本进入修正路径，
+    # 底座不冻结），且 freeze_base 强制为 False
+    assert no_event[2] is False
+    assert no_event[1]["experiment"]["model_params"]["freeze_base"] is False
 
     # relation_dropout 敏感性取值必须写入派生配置的 graph 段——
     # 工厂从 experiment.graph.relation_dropout 读取该值并传入模型
