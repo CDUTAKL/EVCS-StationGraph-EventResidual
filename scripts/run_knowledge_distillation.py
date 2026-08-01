@@ -165,9 +165,6 @@ def train_kd_single_seed(
                 teacher_pred = teacher_out.prediction
 
             optimizer.zero_grad(set_to_none=True)
-            student_pred = student(x).prediction if hasattr(student(x), 'prediction') else student(x)
-            # 重新前向（避免重复计算）
-            optimizer.zero_grad(set_to_none=True)
             student_out = student(x)
             if hasattr(student_out, 'prediction'):
                 student_pred = student_out.prediction

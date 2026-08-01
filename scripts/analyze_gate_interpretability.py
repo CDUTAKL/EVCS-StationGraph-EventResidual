@@ -32,6 +32,10 @@ def _load_gate_weights(checkpoint_path: Path) -> dict[str, np.ndarray]:
     """从 checkpoint 提取 GCN1 和 GCN2 的 Softmax 关系权重。
 
     返回 {"gcn1": [R], "gcn2": [R]}，值是 softmax 后的概率分布。
+
+    注意：仅提取层级全局 β（每层每关系一个标量）；模型内节点级 G 门控
+    （[B,N,D] 张量）未在此分析——本脚本结论只能表述为"层级全局关系权重
+    检查"，不得声称节点级门控专业化（审查 H-05，2026-08-01）。
     """
     payload = torch.load(checkpoint_path, map_location="cpu", weights_only=True)
     state = payload.get("model_state", payload)

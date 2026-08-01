@@ -18,6 +18,10 @@
    控制哪些样本/节点/预测步长进入修正路径。门关闭时残差为零。
 
 最终预测：prediction = base + gate × clip(correction, ±residual_bound)
+
+契约（审查 H-11，2026-08-01）：``rule_trigger`` 为可选参数，缺省时 **fail-open**
+（所有节点进入修正路径）——调用方必须经统一 engine 传入冻结规则矩阵；
+不经 engine 的分析脚本若省略该参数，其结果应视为"全量修正"而非"事件修正"。
 """
 
 from __future__ import annotations

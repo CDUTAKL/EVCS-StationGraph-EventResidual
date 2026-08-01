@@ -159,8 +159,8 @@ def fig_autocorrelation() -> None:
 # ========== ⑥ LRE 三关系矩阵热力图 ==========
 def fig_lre_matrices() -> None:
     d = np.load("outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz")
-    names = {"load": "负荷相关图（Pearson）", "event": "事件共现图（Jaccard）",
-             "pattern": "时序模式图（DTW）"}
+    names = {"load": "负荷耦合（abs-Pearson）", "event": "行为共现（余弦相似）",
+             "pattern": "轮廓相似（指数核）"}
     fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.8))
     for ax, (key, title) in zip(axes, names.items()):
         mat = d[key]

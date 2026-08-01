@@ -156,9 +156,11 @@ project.yaml (基础)  +  experiments/SG-EXP-XXX.yaml (实验差异)
 
 | 关系类型 | 构建方式 | 含义 |
 |---------|---------|------|
-| `load` | 训练集负荷向量的 Pearson 相关系数 | 节点间的统计负荷相似性 |
-| `event` | 事件标签的 Jaccard 共现系数 | 节点是否倾向于同时发生事件 |
-| `pattern` | 日负荷曲线的 DTW 距离取负 | 节点间的时序模式相似性 |
+| `load` | 训练集负荷向量的**绝对 Pearson 相关系数** | 节点间的负荷耦合强度（不区分正负方向） |
+| `event` | 行为信号（接入+离站+\|活跃变化\|）的**余弦相似度** | 节点事件活动模式的形状相似性 |
+| `pattern` | 96 步窗口平均轮廓的**欧氏距离指数核** | 节点间的日内负荷形状相似性 |
+
+> 三类关系均为训练期统计量（代码权威：`graphs/relations.py`）；不采用 Jaccard/DTW。
 | `adaptive` | 节点嵌入 → 学习邻接矩阵（仅 AdaptiveGraph） | 数据驱动的隐式关系 |
 
 > 三类固定关系均做 top-k 稀疏化 + 对称归一化。门控融合值可直接解释：
@@ -179,6 +181,8 @@ project.yaml (基础)  +  experiments/SG-EXP-XXX.yaml (实验差异)
 - 窗口扩展：触发点向后 `window_extension=2` 个时间片（因果前向，无未来信息泄漏）
 - 相邻/重叠窗口自动合并
 - 测试集**仅执行**已冻结规则，不参与阈值或参数确定
+- 边界注（审查 H-12）：规则按 split 分别应用，各 split 开头样本不继承前一个 split
+  边界之前的触发窗口——影响限于各 split 开头数个 origin，无信息泄漏；论文方法章披露即可
 
 ### 四格诊断（核心评价约束）
 
@@ -196,6 +200,7 @@ target_event=False   格3              格4
 - **命名**：SG-EXP-XXX，配置在 `configs/experiments/`。新增实验后更新 [实验登记表](docs/thesis/experiment-registry.md)
 - **三随机种子**：2024 / 2025 / 2026
 - **底座模型**：B3 最优参 — levels=6, hidden=32, embed=12, fixed_weight=0.5
+  （fixed_weight 为 **logit 初始化**，实际 α₀=sigmoid(0.5)≈0.622；论文报告收敛后 α≈0.17–0.21，勿称"固定图占比 0.5"）
 - **早停**：patience=8，始终基于标准 L1Loss（不基于加权损失）
 - **formal vs smoke**：`outputs/smoke/` 仅供实现验证；正式结果必须 3 种子 + `formal_ready=true`
 - **新结论**：只来自 SG-EXP-* 实验，不继承旧论文 EXP-108/111/112 结论
