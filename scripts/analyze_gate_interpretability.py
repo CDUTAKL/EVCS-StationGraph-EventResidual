@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 """D5-1：多关系门控权重内在可解释性分析。
 
-从已训练的 StaticGraph (SG-EXP-003) checkpoint 中提取门控权重 β_r，
-分析节点-关系依赖模式、事件/稳定窗口的 gate 分布差异、跨种子一致性。
+从已训练的 StaticGraph (SG-EXP-003) checkpoint 中提取**层级全局关系权重**
+（每层每关系一个 β_r，softmax 后为概率分布），分析跨种子一致性与
+事件/稳定窗口的 MAE 敏感性。模型内节点级 G 门控（[B,N,D] 张量）不在本
+脚本提取范围——结论只能表述为"层级全局关系权重检查"，不得声称节点级
+门控专业化（审查 H-05，2026-08-01）。
 
 零 GPU 成本，纯 CPU 分析。输入为已有 checkpoint 和预测文件。
 
 输出：
   - outputs/analysis/gate_interpretability/gate_summary.json
-  - 包含：per-node per-relation gate 值、事件/稳定窗口对比、
-    跨种子 ICC、节点功能分组等
+  - 包含：层级关系权重 β（每层 3 值）、跨种子 ICC、
+    事件/稳定窗口 MAE 敏感性（非 gate 张量分布——审查 H-05）
 
 用法：
   .venv/bin/python scripts/analyze_gate_interpretability.py \
@@ -226,11 +229,11 @@ def _analyze_gate_by_window(
     predictions_dir: Path,
     seeds_found: list[int],
 ) -> dict[str, Any]:
-    """从预测文件中按事件/稳定窗口分组分析。
+    """从预测文件中按事件/稳定窗口分组统计 MAE 敏感性。
 
-    注意：gate 值在当前实现中为 per-node 标量（非时变），
-    因此窗口对比主要验证 gate 值本身是否与事件状态相关。
-    若未来 gate 扩展为时变版本，此函数可复用。
+    注意（审查 H-05）：本函数仅按窗口分组计算 MAE/RMSE，未读取任何
+    gate 张量——"事件/稳定窗口 gate 分布"的说法不成立；窗口对比的
+    语义是"不同窗口下预测误差的差异"，与门控权重无关。
     """
     window_stats: dict[str, dict] = {}
     for seed in seeds_found:

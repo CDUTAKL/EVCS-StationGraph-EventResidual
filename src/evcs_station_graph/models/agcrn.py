@@ -1,7 +1,10 @@
-"""SG-EXP-008：AGCRN 自适应图卷积循环网络基线。
+"""SG-EXP-008：AGCRN 自适应图卷积循环网络基线（简化变体）。
 
-本模块实现 Bai et al. (NeurIPS 2020) 提出的 Adaptive Graph Convolutional
-Recurrent Network（AGCRN），作为与本文多关系门控 GCN 直接可比的自适应图基线。
+参考 Bai et al. (NeurIPS 2020) 的 Adaptive Graph Convolutional Recurrent
+Network（AGCRN）设计，作为与本文多关系门控 GCN 可比的自适应图基线。
+**简化说明（审查 H-07，2026-08-01）**：实现使用共享门控权重与自适应邻接，
+未包含原方法核心的节点自适应参数池（NAPL）——论文中命名为
+"AGCRN-inspired adaptive graph GRU"，不得声称完整复现原模型。
 
 核心机制：
 - Node Adaptive Parameter Learning：可学习节点嵌入 E ∈ [N, d_e]，自适应邻接

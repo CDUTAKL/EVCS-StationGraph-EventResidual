@@ -1,8 +1,11 @@
-"""SG-EXP-010：Graph WaveNet 时空图预测基线。
+"""SG-EXP-010：Graph WaveNet 时空图预测基线（简化变体）。
 
-实现 Wu et al., IJCAI 2019 核心结构：门控扩张因果卷积 + 预定义/自适应双图
-卷积 + 跨层 skip connection。本模型作为项目内时空图 SOTA 参照基线，与
-SG-EXP-003/004 的多关系门控 GCN 形成对照。
+参考 Wu et al., IJCAI 2019 的结构：门控扩张因果卷积 + 预定义/自适应双图
+卷积 + 跨层 skip connection，作为项目内时空图参照基线，与 SG-EXP-003/004
+的多关系门控 GCN 形成对照。
+**简化说明（审查 H-07，2026-08-01）**：实现为单步预定义图 + 自适应图聚合，
+未包含原模型典型的多阶 diffusion convolution——论文中命名为
+"simplified Graph-WaveNet-style baseline"，不得声称完整复现原模型。
 
 感受野计算：
   RF = 1 + Σ (kernel_size - 1) × dilation[level]
@@ -19,7 +22,7 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 
-from evcs_station_graph.models.common import ForecastModel, ForecastOutput, ForecastOutput
+from evcs_station_graph.models.common import ForecastModel, ForecastOutput
 
 
 class _GatedCausalConv(nn.Module):

@@ -178,6 +178,10 @@ def _profile_similarity(values: np.ndarray, periods_per_day: int = 96) -> np.nda
     usable = (len(values) // periods_per_day) * periods_per_day
     if usable < periods_per_day:
         return _safe_abs_corr(values)
+    # 注意（审查 M-03，2026-08-01）：按数组起点切 96 步块，未按自然日时间戳对齐——
+    # 数据集首时刻为 2018-04-25 11:00（非 00:00），"日内轮廓"实为固定相位的
+    # 24h 窗口轮廓（所有节点同相位偏移，节点间距离结构仍有效）。论文表述用
+    # "96 步窗口轮廓"而非"自然日轮廓"。
     profile = values[:usable].reshape(-1, periods_per_day, values.shape[1]).mean(axis=0)
     centered = profile - profile.mean(axis=0, keepdims=True)
     distances = np.sqrt(

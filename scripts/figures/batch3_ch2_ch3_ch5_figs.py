@@ -1,5 +1,10 @@
 """论文图批次 3：第 2 章数据特征 5 张 + 第 3 章方法 2 张 + 第 5 章补充 2 张。
 
+⚠️ 已废弃（审查 M-08，2026-08-01）：本批次全部输出已被 batch4~batch8
+重绘版覆盖（fig2_3b/2_5/2_6/3_1/3_6/4_4/5_3/5_4/5_5 由 batch4/6/7，
+其余由 batch5）。其中 fig2_6 事件时间线使用局部一天标准差 + load_jump_flag，
+与正式冻结规则口径不一致——**请勿运行本脚本覆盖最终图**。
+
 数据来源：
 - ①~⑤ bundle（data/processed/SG-DATA-005-primary-tensor.npz）
 - ⑥ outputs/experiments/SG-EXP-004/*/relation_matrices.npz（LRE 三关系矩阵）

@@ -1,7 +1,11 @@
 """SG-EXP-014：EERM 环境不变学习分析实验。
 
 将训练数据按事件状态划分为两个环境（稳定窗口 vs 事件窗口），
-在训练时施加跨环境表示不变性惩罚，验证"事件特征是否为伪相关"。
+在训练时施加跨环境表示不变性惩罚，分析不变性正则化对事件预测的敏感性。
+**结论范围（审查 H-09，2026-08-01）**：环境标签为"任一节点事件分数 > 0"
+（非冻结阈值窗口），均值表示匹配会同时消除真实状态差异——本实验只支持
+"不变性惩罚与事件预测目标冲突（正则化敏感性）"，不作"事件特征伪相关"
+的因果诊断。
 
 实验设计：
   - 模型：StaticGraph（与 SG-EXP-003 同架构）
@@ -12,10 +16,10 @@
   - λ sweep: {0.0, 0.01, 0.1, 1.0, 10.0}
   - 3 种子 × 5 λ 值 = 15 次训练
 
-预期结果：
-  若 λ 增大 → event 环境 MAE 显著上升而 stable 环境不变 →
-  事件特征对通用预测是"伪相关"，强制不变性会丢弃事件特征。
-  这从根本上解释了 EventResidual 和加权损失为何失败。
+预期结果（正则化敏感性口径，审查 H-09）：
+  若 λ 增大 → event 环境 MAE 显著上升而 stable 环境基本不变 →
+  不变性惩罚与事件预测目标冲突；不作"伪相关"因果诊断，
+  不引申解释 EventResidual/加权损失的成败。
 
 用法：
   .venv/bin/python scripts/run_eerm_invariant.py \
@@ -358,8 +362,9 @@ def main() -> None:
         "lambdas": lambdas, "seeds": seeds,
         "summaries": all_summaries,
         "baseline_avg_global_mae": np.mean([s["global"]["mae"] for s in baseline]) if baseline else None,
-        "analysis": "若 λ 增大时 event_mae 上升而 stable_mae 不变，"
-                    "说明事件特征是伪相关——强制不变性会丢弃事件特征。",
+        "analysis": "若 λ 增大时 event_mae 上升而 stable_mae 基本不变，"
+                    "说明不变性惩罚与事件预测目标冲突（正则化敏感性，"
+                    "审查 H-09：不作伪相关因果诊断）。",
     }, run_root / "eerm_summary.json")
     print(f"\n全部完成：{run_root}", flush=True)
 

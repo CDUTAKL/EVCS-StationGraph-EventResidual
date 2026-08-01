@@ -1,0 +1,17 @@
+# 服务器（Python 3.8.10，2× RTX A6000，CUDA 12.1）依赖锁
+# 审查 F-03（2026-08-01）：pyproject.toml 面向本地开发（Python >=3.11），
+# 服务器标准 pip install -e . 会被包元数据拒绝——本文件为服务器安装的权威清单。
+# 用法：
+#   pip install -r requirements-server.txt
+#   pip install torch==2.4.1+cu121 --index-url https://download.pytorch.org/whl/cu121
+
+# ---- 核心（3.8 兼容版本上限）----
+numpy>=1.24,<2.0
+pandas>=1.5,<2.0
+PyYAML>=6.0
+torch>=2.4.0,<2.5
+
+# ---- 传统基线（run_traditional_baselines.py）----
+statsmodels>=0.14,<0.15
+lightgbm>=4.0,<4.3
+xgboost>=2.0,<3.0

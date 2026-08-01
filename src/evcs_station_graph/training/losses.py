@@ -31,13 +31,15 @@ class WeightedL1Loss(nn.Module):
       最简形态，λ=2 时事件样本梯度贡献约翻 3 倍。
     - ``intensity``: visible_event_scores 的连续值 [B, N]。
       高分事件获得更高权重，低分事件接近等权。
-      可选 per-batch 归一化到 [0, 1]，避免 batch 间量纲差异。
+      可选 per-batch 归一化到 [0, 1]——注意此口径为 **batch 内相对强度**
+      （审查 M-01，2026-08-01：同一事件分数的权重随同 batch 其他样本变化，
+      论文需披露 batch-relative，不声称绝对事件强度）。
 
     Args:
         lambda_: 事件权重系数。λ=0 退化为标准 L1Loss。
         mode: ``"binary"`` | ``"intensity"`` — 权重信号来源。
-        normalize_intensity: intensity 模式下是否按 batch 最大值归一化。
-            推荐 True，防止 λ 的语义在不同 batch 间漂移。
+        normalize_intensity: intensity 模式下是否按 batch 最大值归一化
+            （batch 内相对强度，权重随同 batch 样本分布变化——审查 M-01）。
 
     Note:
         权重仅应用于训练损失的反向传播。验证损失（早停判断）使用

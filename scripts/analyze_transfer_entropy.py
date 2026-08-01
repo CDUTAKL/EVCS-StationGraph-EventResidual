@@ -12,11 +12,12 @@
      因为节点负荷量级差异超过 2 倍）
   3. lag∈{1,2,4} 逐对计算传递熵 TE(X→Y)，每对取最大 TE
   4. 置换检验（100 次 shuffle 源序列时间顺序）得 p 值
-  5. p<0.05 记为显著有向因果边，与三类统计图边集（top_k=3）做重叠度分析
+  5. p<0.05 记为 TE 候选有向边（探索性，未做多重比较校正——审查 H-06），
+     与三类统计图边集（top_k=3）做重叠度分析
 
 判定逻辑：
   显著因果边数量可观（≥10 条）且被三类统计图覆盖比例低（Jaccard < 0.5）
-  → 因果图提供新信息，值得投入 PCMCI+（方向 1 通过）
+  → TE 候选边提供统计图未覆盖的方向信息，值得投入 PCMCI+ 正式因果发现
   否则 → 因果方向降级为分析素材，主线转向预训练/共形预测
 
 用法：
@@ -48,7 +49,7 @@ P_VALUE_THRESHOLD = 0.05
 # 快速验证的因果边数量门槛：10 节点最多 90 条有向边，若显著边少于 10 条，
 # 说明节点间有向交互稀疏，因果图信息量不足。
 MIN_SIGNIFICANT_EDGES = 10
-# 判定"因果图提供新信息"的 Jaccard 上限：与统计图重叠度低于 0.5 视为提供新信息
+# 判定"TE 候选边提供新方向信息"的 Jaccard 上限：与统计图重叠度低于 0.5 视为提供新信息
 JACCARD_THRESHOLD = 0.5
 
 
@@ -137,7 +138,7 @@ def _significant_edges(
     te_matrix: np.ndarray, p_matrix: np.ndarray, lag_matrix: np.ndarray,
     node_ids: Sequence[str],
 ) -> List[Dict[str, Any]]:
-    """汇总 p<0.05 的显著有向因果边。"""
+    """汇总 p<0.05 的 TE 候选有向边（探索性，未校正；字段名 historical 保留）。"""
     edges: List[Dict[str, Any]] = []
     n = len(node_ids)
     for i in range(n):
@@ -213,7 +214,7 @@ def _overlap_analysis(
     """显著因果边与三类统计图边集的重叠度分析。
 
     Jaccard = |因果边 ∩ 统计边| / |因果边 ∪ 统计边|。
-    "因果独有边" = 因果显著但三类统计图（top_k=3）均未覆盖的节点对。
+    "统计图未覆盖候选" = TE 候选边（未校正）但三类统计图（top_k=3）均未覆盖的节点对。
     """
     causal_pairs = {frozenset((e["source"], e["target"])) for e in edges}
     stats = {
@@ -294,7 +295,7 @@ def main() -> None:
                 print(f"  进度 {done}/{total_pairs} 对", flush=True)
 
     edges = _significant_edges(te_matrix, p_matrix, lag_matrix, node_ids)
-    print(f"\n显著有向因果边（p<{P_VALUE_THRESHOLD}）：{len(edges)} 条", flush=True)
+    print(f"\nTE 候选有向边（p<{P_VALUE_THRESHOLD}，探索性）：{len(edges)} 条", flush=True)
     for e in edges[:15]:
         print(f"  {e['source']} → {e['target']}  TE={e['te']:.4f}  "
               f"p={e['p_value']:.3f}  lag={e['lag']}", flush=True)
