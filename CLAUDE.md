@@ -503,6 +503,7 @@ Step 0: 确认夜跑结果 → Step 1: P0 基线 → Step 2: SG-EXP-007a λ 筛�
 - [研究简报](docs/thesis/thesis-brief.md) ← 问题定义、假设、预期贡献（为什么做这个研究）
 - [实验架构](docs/thesis/experiment-architecture.md) ← 数据/模型/训练/评价四层架构
 - [实验登记表](docs/thesis/experiment-registry.md) ← 新增实验后必须更新
+- [实验进度总览](docs/thesis/experiment-progress-2026-08-01.md) ← 已完成效果/运行中/下周待办/素材就绪度
 - [范围与硬门槛](docs/thesis/project-scope-control.md) ← 允许/禁止的研究表述（答辩防身）
 - [数据可用性](docs/thesis/data-availability.md) ← 原始数据审计结论
 - [风险登记表](docs/thesis/risk-register.md) ← 7 项风险及当前控制措施
