@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-01T03:57:08.109148+00:00",
-  "source_commit": "05cbf54",
+  "generated_at_utc": "2026-08-01T05:18:23.075411+00:00",
+  "source_commit": "a646c75",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -10,7 +10,7 @@
     "fig2_3_load_heatmap": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "98c69c7df7db4cf2a8815354403d34efdb2313f260efdc157fc2c897110535d9"
+        "sha256": "93de60e5abe4b1d8dbad22898cd3bb3c788b66a530810311ee414e56ecdd87a2"
       },
       "inputs": [
         {
@@ -20,14 +20,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "88bf385e4c0f7d8d95c2ef7b2b99b53ceaf2b7fcb1d9c28671d423ba9f36cf65",
+          "sha256": "ca7d89c185853c587e0a7114723679a723fe290d831e79f397e5ed0b51250405",
           "size_bytes": 615844,
-          "mtime_utc": "2026-08-01T03:48:51.680089+00:00"
+          "mtime_utc": "2026-08-01T05:18:12.062526+00:00"
         },
         "png": {
           "sha256": "7a6ea697e1dadc331010cfefd3ff62b0c29f76a10940b73aacc68520a61d07c5",
           "size_bytes": 2585886,
-          "mtime_utc": "2026-08-01T03:48:56.470405+00:00"
+          "mtime_utc": "2026-08-01T05:18:16.519973+00:00"
         }
       }
     },
@@ -58,7 +58,7 @@
     "fig2_4_weekly_curves": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "98c69c7df7db4cf2a8815354403d34efdb2313f260efdc157fc2c897110535d9"
+        "sha256": "93de60e5abe4b1d8dbad22898cd3bb3c788b66a530810311ee414e56ecdd87a2"
       },
       "inputs": [
         {
@@ -68,14 +68,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "482bf5adcff4046ebee5a7e9e288c68b15c1603c22338d5649fd0213b705cfe2",
+          "sha256": "5bbe00721c731d7066e19e2d60546f7950b31073a16c055bf04178c312eaf2c9",
           "size_bytes": 19277,
-          "mtime_utc": "2026-08-01T03:48:56.553698+00:00"
+          "mtime_utc": "2026-08-01T05:18:16.609261+00:00"
         },
         "png": {
           "sha256": "8b195cee8c73dfb0687770347ae93239faa02e29522ab64638955f62115fb522",
           "size_bytes": 722856,
-          "mtime_utc": "2026-08-01T03:48:57.189339+00:00"
+          "mtime_utc": "2026-08-01T05:18:17.202599+00:00"
         }
       }
     },
@@ -186,7 +186,7 @@
     "fig3_3_lre_matrices": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "98c69c7df7db4cf2a8815354403d34efdb2313f260efdc157fc2c897110535d9"
+        "sha256": "93de60e5abe4b1d8dbad22898cd3bb3c788b66a530810311ee414e56ecdd87a2"
       },
       "inputs": [
         {
@@ -196,21 +196,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "51b2bfb6192ac4989f3f1ab77975c6902d2e71c575928d2b083ce3e1941c31de",
+          "sha256": "0f120f05b9cce84601b0c15720825ad7237840dc64b05296a57049874786720f",
           "size_bytes": 67912,
-          "mtime_utc": "2026-08-01T03:48:57.745785+00:00"
+          "mtime_utc": "2026-08-01T05:18:17.852158+00:00"
         },
         "png": {
           "sha256": "476eee4ed5716c4beb83e87512a0974f158724e39c13677e9a1cad0bd6938ec9",
           "size_bytes": 698748,
-          "mtime_utc": "2026-08-01T03:48:58.673354+00:00"
+          "mtime_utc": "2026-08-01T05:18:18.753726+00:00"
         }
       }
     },
     "fig3_5_training_curve": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "98c69c7df7db4cf2a8815354403d34efdb2313f260efdc157fc2c897110535d9"
+        "sha256": "93de60e5abe4b1d8dbad22898cd3bb3c788b66a530810311ee414e56ecdd87a2"
       },
       "inputs": [
         {
@@ -228,14 +228,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "7b38598a7f12db05a607e5125f2a1b39663b9705bc2a1c56c190e9346d60cd31",
+          "sha256": "eff694a47512a45de14890941a7595ec921d7e4fe72aa5a688c516d78f6dff88",
           "size_bytes": 20269,
-          "mtime_utc": "2026-08-01T03:48:58.753440+00:00"
+          "mtime_utc": "2026-08-01T05:18:18.836481+00:00"
         },
         "png": {
           "sha256": "d746708f3cfee0f9af6463978a6822e947544f3a963ce415135b02ae4aa33562",
           "size_bytes": 742497,
-          "mtime_utc": "2026-08-01T03:48:59.240543+00:00"
+          "mtime_utc": "2026-08-01T05:18:19.310994+00:00"
         }
       }
     },
@@ -266,7 +266,7 @@
     "fig3_7_alpha_convergence": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "98c69c7df7db4cf2a8815354403d34efdb2313f260efdc157fc2c897110535d9"
+        "sha256": "93de60e5abe4b1d8dbad22898cd3bb3c788b66a530810311ee414e56ecdd87a2"
       },
       "inputs": [
         {
@@ -284,21 +284,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "b126d20fbe2f1e6fa7c555a4245538fe49f66401a1ce16d58b5a7b2faf35fa65",
+          "sha256": "8bcdb2faa615d2cfdbbfe12aaa10b98c365b8830f2f5347d152c09ee55d06a38",
           "size_bytes": 18284,
-          "mtime_utc": "2026-08-01T03:48:59.296359+00:00"
+          "mtime_utc": "2026-08-01T05:18:19.367592+00:00"
         },
         "png": {
-          "sha256": "b75b553740b9fb361c19500e5f30c9e8d8a6f99f56e3026fe0411d60783b403f",
-          "size_bytes": 611564,
-          "mtime_utc": "2026-08-01T03:48:59.780153+00:00"
+          "sha256": "5bede0f6a76d53746a7bc3b3801d24dc299eada6a05d7f2451063bd34f052a6c",
+          "size_bytes": 616005,
+          "mtime_utc": "2026-08-01T05:18:19.829266+00:00"
         }
       }
     },
     "fig4_2_intervention": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "98c69c7df7db4cf2a8815354403d34efdb2313f260efdc157fc2c897110535d9"
+        "sha256": "93de60e5abe4b1d8dbad22898cd3bb3c788b66a530810311ee414e56ecdd87a2"
       },
       "inputs": [
         {
@@ -308,14 +308,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "c5ca08778bbd23fec0a6ab971337e1f7c2722d96c04b2953ef1571994c58f915",
+          "sha256": "d4e0e0d1d21c4e0cfa49b79ec08aeb2194dfd35143acacd2da79c4fca50787ae",
           "size_bytes": 18250,
-          "mtime_utc": "2026-08-01T03:48:59.839799+00:00"
+          "mtime_utc": "2026-08-01T05:18:19.887088+00:00"
         },
         "png": {
           "sha256": "cc6ad814909c6be7f8916a8fa010867d1be4b2a916b80d214428c7f48fbe7c26",
           "size_bytes": 565560,
-          "mtime_utc": "2026-08-01T03:49:00.212625+00:00"
+          "mtime_utc": "2026-08-01T05:18:20.247051+00:00"
         }
       }
     },
@@ -346,7 +346,7 @@
     "fig5_2_transfer_entropy": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "98c69c7df7db4cf2a8815354403d34efdb2313f260efdc157fc2c897110535d9"
+        "sha256": "93de60e5abe4b1d8dbad22898cd3bb3c788b66a530810311ee414e56ecdd87a2"
       },
       "inputs": [
         {
@@ -356,14 +356,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "8217f4c79eb570ec33b3abb3b3ef7149044222626eae115bf0c4602598872192",
+          "sha256": "3eaeafde4ca4c399879a0f6ad01a42b63d3e31a93c4f0bcf8477bd4c7702b3e0",
           "size_bytes": 25382,
-          "mtime_utc": "2026-08-01T03:49:00.309737+00:00"
+          "mtime_utc": "2026-08-01T05:18:20.335811+00:00"
         },
         "png": {
           "sha256": "78aab8b2537fe6060cc1316df4919c4564995f710bfcb165b315e4a58e1db5a8",
           "size_bytes": 1027606,
-          "mtime_utc": "2026-08-01T03:49:00.969037+00:00"
+          "mtime_utc": "2026-08-01T05:18:20.964415+00:00"
         }
       }
     },
@@ -470,7 +470,7 @@
     "fig5_8_cate": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "98c69c7df7db4cf2a8815354403d34efdb2313f260efdc157fc2c897110535d9"
+        "sha256": "93de60e5abe4b1d8dbad22898cd3bb3c788b66a530810311ee414e56ecdd87a2"
       },
       "inputs": [
         {
@@ -480,14 +480,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "7e41eacfa0376886b35aab730af69de32a6718691d267b0764282e15cf3eebdd",
+          "sha256": "98a429b34a894bb53560bba25335a418a27e79bf3a4d4a627148dc64b5a699d0",
           "size_bytes": 67449,
-          "mtime_utc": "2026-08-01T03:49:01.176254+00:00"
+          "mtime_utc": "2026-08-01T05:18:21.195238+00:00"
         },
         "png": {
           "sha256": "871391743806baf47e3ed23fd29ac24e9bfa894aaae6703861369a2d7b539f8e",
           "size_bytes": 1487986,
-          "mtime_utc": "2026-08-01T03:49:02.562887+00:00"
+          "mtime_utc": "2026-08-01T05:18:22.588857+00:00"
         }
       }
     }

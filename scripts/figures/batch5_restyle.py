@@ -230,10 +230,11 @@ def fig_alpha_convergence() -> None:
         ax.text(epochs.iloc[-1] + 0.8, alpha.iloc[-1], f"{alpha.iloc[-1]:.3f}",
                 fontsize=7.5, color=c, va="center")
     # 收敛带：三种子末值范围。A_mix = α·A_fixed + (1-α)·A_adp（graph.py），
-    # α 是固定图权重——α≈0.17-0.21 表示模型以自适应图为主（审查 2026-08-01 语义修正）
+    # α 是固定图权重——α≈0.17-0.21 表示内部邻接混合以自适应为主；
+    # 收缩措辞（审查 2026-08-01）：固定图还经门控层独立输入，α 不概括整网依赖
     lo, hi = min(finals), max(finals)
     ax.axhspan(lo, hi, color="0.88", alpha=0.7, zorder=0)
-    ax.text(1, hi + 0.02, f"α 收敛区间 {lo:.2f}–{hi:.2f}（自适应图为主）",
+    ax.text(1, hi + 0.02, f"α 收敛区间 {lo:.2f}–{hi:.2f}（内部邻接混合）",
             fontsize=7.5, color=GRAY_M, ha="left")
     ax.set_xlabel("训练轮次（epoch）", fontsize=9)
     ax.set_ylabel("固定图混合权重 α = σ(w)", fontsize=9)
