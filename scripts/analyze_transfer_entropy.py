@@ -323,13 +323,13 @@ def main() -> None:
         if overlap["total_significant_edges"] >= MIN_SIGNIFICANT_EDGES
         and overlap["exclusive_to_causal"] > 0
         and overlap["jaccard_load"] < JACCARD_THRESHOLD
-        else "未通过：因果边稀疏或与统计图高度重叠，方向降级为分析素材"
+        else "未通过：候选边稀疏或与统计图高度重叠，方向分析降级为素材"
     )
     overlap["verdict"] = verdict
     print(f"\n重叠度：load Jaccard={overlap['jaccard_load']:.3f} "
           f"event={overlap['jaccard_event']:.3f} pattern={overlap['jaccard_pattern']:.3f}")
     print(f"被统计图覆盖：{overlap['covered_by_any_statistical_graph']} 对；"
-          f"因果独有：{overlap['exclusive_to_causal']} 对")
+          f"统计图未覆盖候选：{overlap['exclusive_to_causal']} 对")
     print(f"判定：{verdict}")
 
     output_dir = Path(args.output_dir)
