@@ -319,7 +319,7 @@ def main() -> None:
               f"主导方向={p['dominant_direction']}")
 
     verdict = (
-        "通过：因果图提供新信息，值得投入 PCMCI+ 精细发现"
+        "通过：候选有向边提供统计图未覆盖的方向信息，值得投入 PCMCI+ 正式检验"
         if overlap["total_significant_edges"] >= MIN_SIGNIFICANT_EDGES
         and overlap["exclusive_to_causal"] > 0
         and overlap["jaccard_load"] < JACCARD_THRESHOLD

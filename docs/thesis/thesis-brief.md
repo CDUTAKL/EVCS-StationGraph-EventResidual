@@ -17,7 +17,8 @@
 
 ## 当前状态
 
-核心实验已完成：SG-EXP-001~010 三种子正式产物齐备（StaticGraph 0.01376 vs TCN 0.02952，
-↓53.4%），18 张论文图定稿（GPT 六轮 + Codex 两轮核查通过）。第 4 章 MDP 机制诊断与
-第 5 章增强分析素材就绪（PCMCI+ 与 SG-EXP-015/016 待正式化）。进度细节见
-[实验进度总览](experiment-progress-2026-08-01.md)。
+核心实验：SG-EXP-001~007、009~010 已形成正式或可复核三种子产物（StaticGraph
+0.01376 vs TCN 0.02952，↓53.4%）；SG-EXP-008（AGCRN）、SG-EXP-014（EERM）及
+SG-EXP-015/016/017（NAPL/Gate-MI/PCMCI+）待完成或核验。18 张论文图定稿（GPT 六轮 +
+Codex 三轮核查通过）。第 4 章 MDP 机制诊断与第 5 章分析素材就绪（正式结论权限严格
+以登记表为准）。进度细节见[实验进度总览](experiment-progress-2026-08-01.md)。
