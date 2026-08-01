@@ -159,8 +159,37 @@ def build_manifest() -> dict:
     }
 
 
+def check_repository(manifest: dict) -> bool:
+    """仓库完整性校验（CI 用，审查 2026-08-01）：只检查 Git 内内容——
+    图输出 SHA、绘图脚本 SHA、输入记录完整性、missing_files 为空。
+    不验证外部输入工件/数据集的哈希（干净 checkout 不含这些文件）。"""
+    ok = True
+    for name, info in manifest["figures"].items():
+        for ext in ("svg", "png"):
+            p = FIG_DIR / f"{name}.{ext}"
+            cur = sha256(p) if p.is_file() else None
+            if cur != info["formats"].get(ext, {}).get("sha256"):
+                ok = False
+                print(f"  ✗ {name}.{ext} SHA 不一致")
+        sp = SCRIPT_DIR / info["script"]["path"]
+        if not sp.is_file() or sha256(sp) != info["script"]["sha256"]:
+            ok = False
+            print(f"  ✗ 脚本 {info['script']['path']} 缺失或已变化")
+        if not info.get("inputs"):
+            ok = False
+            print(f"  ✗ {name} 无输入工件记录")
+        for item in info.get("inputs", []):
+            if "path" not in item or "sha256" not in item:
+                ok = False
+                print(f"  ✗ {name} 输入记录不完整: {item}")
+    if manifest.get("missing_files"):
+        ok = False
+        print(f"  ✗ missing_files 非空: {manifest['missing_files']}")
+    return ok
+
+
 def check(manifest: dict) -> bool:
-    """校验当前文件与 manifest 一致（输出图 + 脚本 + 输入工件 + 数据集）；不一致返回 False。"""
+    """本地完整 provenance 校验（输出图 + 脚本 + 输入工件 + 数据集）；不一致返回 False。"""
     ok = True
     for name, info in manifest["figures"].items():
         for ext in ("svg", "png"):
@@ -193,18 +222,21 @@ def check(manifest: dict) -> bool:
 
 
 def main() -> None:
-    """生成或校验 manifest（--check 时不一致退出码 1）。"""
+    """生成或校验 manifest（--check 本地完整 / --check-repository CI 仓库级）。"""
     parser = argparse.ArgumentParser(description="图 provenance manifest")
-    parser.add_argument("--check", action="store_true", help="校验模式")
+    parser.add_argument("--check", action="store_true",
+                        help="本地完整校验（含数据集与输入工件哈希）")
+    parser.add_argument("--check-repository", action="store_true",
+                        help="仓库完整性校验（CI 用，仅检查 Git 内内容）")
     args = parser.parse_args()
 
     manifest = build_manifest()
-    if args.check:
+    if args.check or args.check_repository:
         if not OUT.is_file():
             print("✗ manifest 不存在，请先生成")
             sys.exit(1)
         recorded = json.loads(OUT.read_text())
-        ok = check(recorded)
+        ok = check_repository(recorded) if args.check_repository else check(recorded)
         print("✅ manifest 校验通过" if ok else "✗ manifest 校验失败")
         sys.exit(0 if ok else 1)
 

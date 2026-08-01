@@ -24,7 +24,27 @@ jobs:
         run: python -m compileall -q src scripts tests
       - name: Run tests
         run: pytest -q
-      - name: Figure manifest check
+      # 强制失败型仓库完整性检查（审查 2026-08-01：不可加 || echo 屏蔽；
+      # 干净 checkout 不含外部工件，故只用仓库级模式）
+      - name: Figure repository integrity
+        run: python scripts/figures/figure_manifest.py --check-repository
+
+  # 轻量 Python 3.8 源码运行路径验证（审查 2026-08-01：F-03 边界复核）
+  test-py38-source-run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.8"
+      - name: Install 3.8-compatible deps (source-run path, no editable install)
         run: |
-          python scripts/figures/figure_manifest.py --check \
-            || echo "manifest 校验失败（图未重导出或输入已变化，需在本地重跑批次脚本）"
+          python -m pip install --upgrade pip
+          pip install "numpy>=1.24,<2.0" "pandas>=1.5,<2.0" "PyYAML>=6.0" \
+                      "torch>=2.4,<2.5" "pytest>=7.0,<8.0"
+      - name: Syntax check (3.8)
+        run: python -m compileall -q src scripts tests
+      - name: Run tests via PYTHONPATH (source-run)
+        env:
+          PYTHONPATH: src
+        run: pytest -q
