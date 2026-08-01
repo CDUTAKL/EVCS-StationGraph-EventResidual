@@ -212,7 +212,7 @@ def _overlap_analysis(
     relation_set: Any,
     node_ids: Sequence[str],
 ) -> Dict[str, Any]:
-    """显著因果边与三类统计图边集的重叠度分析。
+    """TE 候选有向边与三类统计图边集的重叠度分析。
 
     Jaccard = |因果边 ∩ 统计边| / |因果边 ∪ 统计边|。
     "统计图未覆盖候选" = TE 候选边（未校正）但三类统计图（top_k=3）均未覆盖的节点对。
