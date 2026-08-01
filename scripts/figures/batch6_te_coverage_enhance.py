@@ -186,12 +186,15 @@ def fig5_4_coverage() -> None:
     d = 0.11  # per-seed 散点抖动半宽
 
     # ---- 左面板：哑铃图 + per-seed 散点 ----
+    event_std_mean = event_str_mean = None
     for yi, g in enumerate(groups):
         key = {"全局": "overall", "事件窗口": "event_window",
                "稳定窗口": "stable_window"}[g]
         std_v = [s["standard_conformal"][f"coverage_{key}"] for s in seeds]
         str_v = [s["stratified_conformal"][f"coverage_{key}"] for s in seeds]
         s_mean, v_mean = float(np.mean(std_v)), float(np.mean(str_v))
+        if yi == 1:
+            event_std_mean, event_str_mean = s_mean, v_mean
         # 哑铃连接线（标准 → 分层）
         ax1.plot([s_mean, v_mean], [yi, yi], color=GRAY_L, lw=2.4, zorder=2)
         # per-seed 散点（抖动，不遮挡均值点）
@@ -222,10 +225,13 @@ def fig5_4_coverage() -> None:
     # 审查 2026-08-01：正式口径为可部署的规则路由；真实标签路由仅作上界诊断
     oracle_event = float(np.mean([
         s["stratified_oracle_upper"]["coverage_event_window"] for s in seeds]))
-    ax1.annotate("", xy=(0.039 + 0.02, 1.28), xytext=(0.03, 1.28),
+    # 提升箭头与文字由均值自动生成（审查 2026-08-01：不硬编码数值）
+    ax1.annotate("", xy=(event_str_mean + 0.02, 1.28),
+                 xytext=(max(event_std_mean - 0.01, 0.005), 1.28),
                  arrowprops=dict(arrowstyle="->", color=ORANGE, lw=1.7))
-    ax1.text(0.20, 1.42, "1.9% → 3.9%（规则路由）", ha="center", fontsize=8,
-             color=ORANGE)
+    ax1.text((event_std_mean + event_str_mean) / 2 + 0.08, 1.42,
+             f"{event_std_mean:.0%} → {event_str_mean:.0%}（规则路由）",
+             ha="center", fontsize=8, color=ORANGE)
     ax1.plot([oracle_event], [1], marker="*", ms=13, color=RED_S, zorder=6,
              markeredgecolor="white", markeredgewidth=0.6)
     ax1.text(oracle_event + 0.03, 1, f"oracle 上界 {oracle_event:.0%}",
@@ -251,7 +257,8 @@ def fig5_4_coverage() -> None:
     ax2.axhline(0.9, color=RED_S, lw=1.1, ls="--", zorder=1)
     ax2.set_xticks(hx)
     ax2.set_xlabel("预测步长（horizon，规则路由）", fontsize=9)
-    ax2.set_ylabel("覆盖率", fontsize=9)
+    # 右图按全样本统计（含稳定样本），明确标注避免误读为事件窗口（审查 2026-08-01）
+    ax2.set_ylabel("全样本覆盖率", fontsize=9)
     ax2.set_ylim(0.55, 0.93)
     ax2.set_yticks([0.60, 0.70, 0.80, 0.90])
     _clean_ax(ax2)

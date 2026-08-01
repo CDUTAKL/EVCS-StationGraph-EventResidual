@@ -143,10 +143,12 @@ def redraw_event_timeline() -> None:
 
 # ========== ④ fig3_1 误差棒加强（重绘） ==========
 def redraw_model_comparison() -> None:
+    # std 来源：正式三种子（night_run/20260730-171821）metrics.json global.mae 标准差
     data = [
-        ("StaticGraph\n(MRG-GCN)", 0.01376, None), ("AdaptiveGraph", 0.01396, 0.00010),
+        ("StaticGraph\n(MRG-GCN)", 0.01376, 0.00019),
+        ("AdaptiveGraph", 0.01396, 0.00014),
         ("GraphWaveNet", 0.01773, 0.00054), ("MLP", 0.02112, 0.00019),
-        ("ARIMA(2,1,2)", 0.02260, None), ("TCN", 0.02952, None),
+        ("ARIMA(2,1,2)", 0.02260, None), ("TCN", 0.02952, 0.00011),
         ("LightGBM", 0.03758, None), ("XGBoost", 0.03873, None),
         ("Persistence", 0.07828, None),
     ]
@@ -278,12 +280,13 @@ def redraw_four_cell() -> None:
     ax.set_yticks([0, 1])
     ax.set_yticklabels(["标签事件", "标签非事件"], fontsize=10.5)
     ax.tick_params(length=0, labelsize=9)
-    # 图底：种子 + 加权重建 MAE + 还原声明（可核验 ≤1e-9 硬约束）
+    # 图底：种子 + 加权重建 MAE + 实际还原差值（审查 2026-08-01：显示真实 |Δ|）
     rebuilt = float((matrix * counts).sum() / counts.sum())
     g_mae = float(m["global"]["mae"])
+    delta = abs(rebuilt - g_mae)
     ax.text(0.5, -0.13,
             f"seed 2024 · Σ(格MAE×n)/Σn = {rebuilt:.4f} · 全局 MAE = {g_mae:.4f}"
-            f" · |Δ| ≤ 1e-9",
+            f" · |Δ| = {delta:.2e}",
             transform=ax.transAxes, ha="center", va="top", fontsize=7.5,
             color=GRAY_D)
     final(fig, "fig4_4_four_cell", (5.0, 4.4))

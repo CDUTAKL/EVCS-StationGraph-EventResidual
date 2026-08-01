@@ -83,15 +83,16 @@ def fig5_5_quantile() -> None:
     w = 0.26
     ax1.bar(x - w, qg, w, label="全局", color=GRAY_L, edgecolor="white",
             linewidth=0.4, zorder=3)
-    ax1.bar(x, qs, w, label="稳定窗口", color=GRAY_M, edgecolor="white",
+    ax1.bar(x, qs, w, label="规则未触发层", color=GRAY_M, edgecolor="white",
             linewidth=0.4, zorder=3)
-    ax1.bar(x + w, qe, w, label="事件窗口", color=BLUE, edgecolor="white",
+    ax1.bar(x + w, qe, w, label="规则触发层", color=BLUE, edgecolor="white",
             linewidth=0.4, zorder=3)
-    # 事件层为共享分位数：只在第一根柱顶标注一次
+    # 触发层为共享分位数：只在第一根柱顶标注一次
     ax1.text(x[0] + w, qe[0] * 1.15, f"{qe[0]:.3f}", ha="center", va="bottom",
              fontsize=8, color=BLUE, fontweight="bold")
-    # 必要说明：事件层统一分位数（标注在图右上空白区）
-    ax1.text(0.99, 0.97, "事件层统一分位数\n（事件样本稀疏，无法逐节点拟合）",
+    # 必要说明：触发层统一分位数（校准分层 = 测试路由变量 = 冻结规则触发，
+    # 审查 2026-08-01 一致化口径；标注在图右上空白区）
+    ax1.text(0.99, 0.97, "规则触发层统一分位数\n（触发样本稀疏，无法逐节点拟合）",
              transform=ax1.transAxes, ha="right", va="top", fontsize=7,
              color=GRAY_D)
     ax1.set_xticks(x)
@@ -124,7 +125,7 @@ def fig5_5_quantile() -> None:
              color=ORANGE, ha="left")
     ax2.set_yticks(y)
     ax2.set_yticklabels(labels, fontsize=8)
-    ax2.set_xlabel("事件/全局 分位数倍数（3 种子均值 ± std）", fontsize=8.5)
+    ax2.set_xlabel("触发层/全局 分位数倍数（3 种子均值 ± std）", fontsize=8.5)
     ax2.set_xlim(0, ratio.max() * 1.28)
     ax2.tick_params(labelsize=8)
     _clean_ax(ax2)

@@ -293,11 +293,14 @@ def fig_transfer_entropy() -> None:
     te_min = min(e["te"] for e in edges)
     # 边按强度排序：强边后画（压在上层），弱边先画（在下层）
     edges_sorted = sorted(edges, key=lambda e: e["te"])
+    # 主图仅展示 TE 最强 15 条候选边（审查 2026-08-01：76 条全画成"毛线团"），
+    # 完整边数在右侧柱状图保留
+    edges_draw = edges_sorted[-15:]
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.6, 3.8),
                                    gridspec_kw={"width_ratios": [1.3, 1.0]})
-    # (a) 有向信息流网络：圆环布局，线宽+透明度双层编码 TE 强度
-    for e in edges_sorted:
+    # (a) 有向信息流网络：圆环布局，线宽+透明度双层编码 TE 强度（主图 top 15 边）
+    for e in edges_draw:
         s, t = node_pos[e["source"]], node_pos[e["target"]]
         rel = (e["te"] - te_min) / max(te_max - te_min, 1e-9)
         w = 0.4 + 2.6 * rel
@@ -320,6 +323,8 @@ def fig_transfer_entropy() -> None:
     ax1.set_ylim(-1.32, 1.32)
     ax1.set_aspect("equal")
     ax1.axis("off")
+    ax1.text(0, -1.45, f"主图：TE 最强 {len(edges_draw)} 条候选边（共 {len(edges)} 条）",
+             ha="center", fontsize=6.5, color=GRAY_M)
 
     # (b) 统计图覆盖 vs 因果独有边（灰阶柱 + 柱顶数值；措辞收敛为"候选"，
     # 审查 2026-08-01：TE 未做多重比较校正，不称"显著因果边"）

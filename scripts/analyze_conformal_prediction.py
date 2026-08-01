@@ -232,31 +232,45 @@ def main() -> None:
         # ---- 校准阶段：验证集残差（[S,H,N]，物理量纲） ----
         val = _predict(model, loaders["validation"], device, trigger_by_origin, bundle)
         val_residuals = np.abs(val["truth"] - val["prediction"])
+        # rule_trigger 为 [S,N]，广播到 [S,H,N]（与残差同形，供布尔掩码）
+        val_rule = np.broadcast_to(val["rule_trigger"][:, None, :],
+                                   val_residuals.shape)
 
         # 标准共形：per-node 全局分位数
         q_global = _per_node_quantiles(val_residuals, args.alpha)
-        # 分层共形：事件层用全局分位数（事件样本稀疏，见 _global_quantile 注释），
-        # 稳定层用 per-node 分位数（样本充足）
+        # 分层共形（正式口径，审查 2026-08-01 修正）：校准分层变量 = 测试路由变量
+        # = 冻结规则触发（可见信号）。事件/触发层用全局分位数（触发样本占比有限），
+        # 未触发层用 per-node 分位数（样本充足）
+        q_event_rule = np.full(
+            len(bundle.node_ids),
+            _global_quantile(val_residuals[val_rule], args.alpha),
+            dtype=np.float32,
+        )
+        q_stable_rule = _masked_per_node_quantiles(
+            val_residuals, ~val_rule, args.alpha)
+        # oracle 对比（事后上界）：真实标签分层校准（分层变量 = 标签事件）
         val_event = val["target_event"]
-        q_event = np.full(
+        q_event_oracle = np.full(
             len(bundle.node_ids),
             _global_quantile(val_residuals[val_event], args.alpha),
             dtype=np.float32,
         )
-        q_stable = _masked_per_node_quantiles(val_residuals, ~val_event, args.alpha)
+        q_stable_oracle = _masked_per_node_quantiles(
+            val_residuals, ~val_event, args.alpha)
 
         # ---- 评价阶段：测试集 ----
         test = _predict(model, loaders["test"], device, trigger_by_origin, bundle)
         widths_global = q_global
-        # 可部署路由：使用预测时刻可见的冻结规则触发（rule_trigger，因果前向，
-        # 无未来信息）；oracle 路由（真实标签）仅作事后上界对比（审查 F-01，2026-08-01）
-        # rule_trigger 形状 [S,N]，扩展为 [S,1,N] 后广播到 [S,H,N]（与 target_event 一致）
+        # 正式口径（审查 2026-08-01）：规则分层校准 + 规则触发路由——校准与测试
+        # 使用同一分层变量（可见冻结规则），无测试泄漏，标准 Mondrian 分层共形语义
         widths_stratified = np.where(
-            test["rule_trigger"][:, None, :], q_event[None, None, :],
-            q_stable[None, None, :],
+            test["rule_trigger"][:, None, :], q_event_rule[None, None, :],
+            q_stable_rule[None, None, :],
         )
+        # oracle 事后上界（对比）：真实标签分层校准 + 标签路由
         widths_oracle = np.where(
-            test["target_event"], q_event[None, None, :], q_stable[None, None, :],
+            test["target_event"], q_event_oracle[None, None, :],
+            q_stable_oracle[None, None, :],
         )
 
         report_global = _coverage_report(
@@ -277,8 +291,12 @@ def main() -> None:
             "stratified_conformal": report_stratified,
             "stratified_oracle_upper": report_oracle,
             "q_global_per_node": q_global.tolist(),
-            "q_event_per_node": q_event.tolist(),
-            "q_stable_per_node": q_stable.tolist(),
+            # 正式口径：规则分层校准分位数（与测试路由同变量）
+            "q_event_per_node": q_event_rule.tolist(),
+            "q_stable_per_node": q_stable_rule.tolist(),
+            # oracle 口径：真实标签分层校准分位数（诊断/上界用）
+            "q_event_oracle_per_node": q_event_oracle.tolist(),
+            "q_stable_oracle_per_node": q_stable_oracle.tolist(),
         }
         per_seed.append(row)
         print(f"\nseed={seed} 标准共形：整体覆盖={report_global['coverage_overall']:.3f} "
