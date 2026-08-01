@@ -43,3 +43,6 @@ outputs/*
 !outputs/figures/
 !outputs/figures/*.svg
 !outputs/figures/*.png
+# 调试脚本残留图不入仓（visualize_adaptive_graph.py 输出，已由正式图取代）
+outputs/figures/fig_adaptive_graph_heatmaps.*
+outputs/figures/fig_alpha_curve.*
