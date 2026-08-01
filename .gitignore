@@ -39,3 +39,7 @@ data/processed/*
 # 实验输出不进入 Git
 outputs/*
 !outputs/.gitkeep
+# 论文图例外：SVG/PNG 双格式入仓（可追溯 + 供审查），其余 outputs 一律忽略
+!outputs/figures/
+!outputs/figures/*.svg
+!outputs/figures/*.png
