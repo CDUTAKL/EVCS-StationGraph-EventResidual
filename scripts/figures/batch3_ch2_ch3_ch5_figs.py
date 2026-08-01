@@ -258,14 +258,9 @@ def fig_quantile_per_node() -> None:
 
 
 if __name__ == "__main__":
-    print("=== 批次 3：9 张图 ===")
-    fig_load_heatmap()
-    fig_weekly_curves()
-    fig_load_distribution()
-    fig_event_timeline()
-    fig_autocorrelation()
-    fig_lre_matrices()
-    fig_training_curve()
-    fig_asymmetry()
-    fig_quantile_per_node()
-    print("批次 3 完成")
+    # 审查 M-08（2026-08-01）：本批次已废弃，全部输出由 batch4~batch8 覆盖，
+    # 且事件时间线口径与正式冻结规则不一致——直接阻止执行，防止覆盖最终图
+    raise RuntimeError(
+        "batch3 已废弃（2026-08-01）：请勿运行。最终图为 batch4/batch5/"
+        "batch6/batch7/batch8 产物（见 figure_manifest.py）。"
+    )

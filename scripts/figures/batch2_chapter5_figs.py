@@ -18,8 +18,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/scipilot-figure-skill/scripts"))
-from export_figure import export_figure  # noqa: E402
-from setup_style import setup_style  # noqa: E402
+try:
+    from export_figure import export_figure  # noqa: E402
+    from setup_style import setup_style  # noqa: E402
+except ImportError:  # 无 skill 环境回退（审查 L-03）
+    from _skill_compat import export_figure, setup_style  # noqa: E402
 
 FIG_DIR = Path("outputs/figures")
 FIG_DIR.mkdir(parents=True, exist_ok=True)

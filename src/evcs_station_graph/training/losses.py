@@ -97,8 +97,8 @@ class WeightedL1Loss(nn.Module):
         signal = event_signal.to(error.dtype)  # [B, N]
 
         if self.mode == "intensity" and self.normalize_intensity:
-            # 按 batch 内最大值归一化，使 λ 的语义稳定
-            # 例如 λ=3 意味着"最高强度事件比稳定窗口重 4 倍"
+            # 按 batch 最大值归一化（审查 M-01，2026-08-01）：λ 仅控制 batch 内
+            # 最高强度样本的相对上限，同一原始事件分数的实际权重随 batch 组成变化
             max_val = signal.max()
             if max_val > 1e-8:
                 signal = signal / max_val

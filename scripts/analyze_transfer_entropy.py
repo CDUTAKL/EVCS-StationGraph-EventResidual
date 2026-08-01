@@ -1,9 +1,9 @@
-"""传递熵因果流快速验证（D6-1）：节点间有向信息流的证据。
+"""传递熵有向信息流快速验证（D6-1）：节点间有向信息的探索性证据。
 
 目的（决策工具，非正式实验）：
-  判断"因果图替换统计图"方向（第 5 章 5.1 候选主线）是否值得投入
+  判断"以方向性信息补充统计图"方向（第 5 章 5.1 候选主线）是否值得投入
   PCMCI+ 精细发现——如果节点间存在三类统计图（load/event/pattern）
-  未覆盖的显著有向信息流，说明因果图能提供新信息；否则及时止损，
+  未覆盖的候选有向信息流，说明方向性分析能提供新信息；否则及时止损，
   主线转向预训练/共形预测。
 
 方法：
@@ -11,14 +11,15 @@
   2. 分位分箱（8 bins，处理 78% 零值堆积与长尾；逐节点分位点，
      因为节点负荷量级差异超过 2 倍）
   3. lag∈{1,2,4} 逐对计算传递熵 TE(X→Y)，每对取最大 TE
-  4. 置换检验（100 次 shuffle 源序列时间顺序）得 p 值
-  5. p<0.05 记为 TE 候选有向边（探索性，未做多重比较校正——审查 H-06），
+  4. 循环平移置换检验（100 次；保留序列周期结构，只破坏 X-Y 相位配对）得 p 值
+  5. p<0.05 记为 TE 候选有向边（探索性，未做多重比较校正——审查 H-06；
+     字段名 significant_edges 为历史遗留，语义=候选边），
      与三类统计图边集（top_k=3）做重叠度分析
 
 判定逻辑：
-  显著因果边数量可观（≥10 条）且被三类统计图覆盖比例低（Jaccard < 0.5）
+  候选边数量可观（≥10 条）且被三类统计图覆盖比例低（Jaccard < 0.5）
   → TE 候选边提供统计图未覆盖的方向信息，值得投入 PCMCI+ 正式因果发现
-  否则 → 因果方向降级为分析素材，主线转向预训练/共形预测
+  否则 → 方向性分析降级为分析素材，主线转向预训练/共形预测
 
 用法：
   .venv/bin/python scripts/analyze_transfer_entropy.py \
@@ -241,7 +242,7 @@ def _overlap_analysis(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="D6-1 传递熵因果流快速验证")
+    parser = argparse.ArgumentParser(description="D6-1 传递熵有向信息流快速验证（探索性）")
     parser.add_argument("--dataset", default="data/processed/SG-DATA-005-primary-tensor.npz")
     parser.add_argument("--output-dir", default="outputs/analysis/transfer_entropy")
     parser.add_argument("--bins", type=int, default=DEFAULT_BINS)

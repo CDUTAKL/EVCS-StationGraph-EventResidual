@@ -24,8 +24,11 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/scipilot-figure-skill/scripts"))
-from export_figure import export_figure  # noqa: E402
-from setup_style import setup_style  # noqa: E402
+try:
+    from export_figure import export_figure  # noqa: E402
+    from setup_style import setup_style  # noqa: E402
+except ImportError:  # 无 skill 环境回退（审查 L-03）
+    from _skill_compat import export_figure, setup_style  # noqa: E402
 
 sys.path.insert(0, "src")
 from evcs_station_graph.data import load_tensor_bundle  # noqa: E402
@@ -375,13 +378,18 @@ def fig_cate() -> None:
     ax1.axhline(0, color=GRAY_D, lw=1.0)
     # 仅标注全局柱顶数值（避免 21 个标签互相遮挡）
     for xi, v in zip(x, g_d):
-        ax1.text(xi, v + 3, f"+{v:.0f}%", ha="center", fontsize=7.2,
+        ax1.text(xi, v + 3, f"{v:+.0f}%", ha="center", fontsize=7.2,
                  color=GRAY_D)
     ax1.set_xticks(x)
     ax1.set_xticklabels([names_cn[k] for k in order], fontsize=7.5, rotation=28,
                         ha="right")
     ax1.set_ylabel("相对 MAE 变化（%）", fontsize=8.5)
-    ax1.set_ylim(-8, max(g_d) * 1.22)
+    # y 轴范围按全部窗口的最大/最小值确定（修复 2026-08-01：原按 max(g_d) 定上限，
+    # 稳定窗口 delta 最大 317% 超出 285% 被 clip-path 裁切）
+    all_deltas = np.concatenate([g_d, e_d, s_d])
+    ymax = float(np.max(all_deltas))
+    ymin = min(-8.0, float(np.min(all_deltas)) * 1.15)
+    ax1.set_ylim(ymin, ymax * 1.15)
     _clean_ax(ax1)
     ax1.legend(fontsize=7.5, frameon=False, loc="upper left")
 

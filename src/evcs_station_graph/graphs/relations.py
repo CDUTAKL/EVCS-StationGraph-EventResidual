@@ -22,7 +22,7 @@ class RelationSet:
 
     load: np.ndarray       # A_load：负荷耦合强度关系（abs(corr)，不区分正负方向）
     event: np.ndarray      # A_event：充电行为共现（接入/离站/活跃变化余弦相似度）
-    pattern: np.ndarray    # A_pattern：时间模式相似度（日内平均轮廓距离）
+    pattern: np.ndarray    # A_pattern：时间模式相似度（固定相位 96 步窗口轮廓距离）
 
     def as_dict(self) -> dict[str, np.ndarray]:
         return {"load": self.load, "event": self.event, "pattern": self.pattern}
@@ -164,16 +164,17 @@ def _cosine_columns(values: np.ndarray) -> np.ndarray:
 
 
 def _profile_similarity(values: np.ndarray, periods_per_day: int = 96) -> np.ndarray:
-    """根据训练期日内平均轮廓构建相似度矩阵。
+    """根据训练期固定相位 96 步窗口轮廓构建相似度矩阵。
 
     方法：
-    1. 将训练期数据按天切分（每天 96 个 15 分钟片），取日内平均值曲线
+    1. 将训练期数据按 96 步块切分（固定相位窗口，非自然日——审查 M-03，
+       首时刻 11:00；所有节点同相位偏移，节点间距离结构仍有效），取块内平均值曲线
     2. 计算节点之间平均轮廓的欧氏距离
     3. 用指数核 exp(-distance/median_distance) 将距离转为相似度
 
-    与 load_correlation 的区别：temporal_profile 捕捉的是"节点 A 和节点 B
-    在一天中是否具有相似的负荷形状"（结构性），而非逐点瞬时同步（波动性）。
-    因此互补——一个节点对可能瞬时相关弱但日轮廓相似（或反之）。
+    与 load_correlation 的区别：本方法捕捉"节点 A 和节点 B 在相同相位
+    窗口内是否具有相似的负荷形状"（结构性），而非逐点瞬时同步（波动性）。
+    因此互补——一个节点对可能瞬时相关弱但轮廓相似（或反之）。
     """
     usable = (len(values) // periods_per_day) * periods_per_day
     if usable < periods_per_day:

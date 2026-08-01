@@ -7,7 +7,8 @@ Network（AGCRN）设计，作为与本文多关系门控 GCN 可比的自适应
 "AGCRN-inspired adaptive graph GRU"，不得声称完整复现原模型。
 
 核心机制：
-- Node Adaptive Parameter Learning：可学习节点嵌入 E ∈ [N, d_e]，自适应邻接
+- adaptive adjacency learning：可学习节点嵌入 E ∈ [N, d_e]，自适应邻接
+  （审查 H-07：不等同于原版 NAPL 节点自适应参数池——本实现权重跨节点共享）
   A_adp = Softmax(ReLU(E @ E^T))，逐行和为 1，无需预定义图结构。
 - 图卷积 GRU：将 GRU 中 update / reset / candidate 三个门的线性变换替换为
   基于 A_adp 的图卷积，即先以 A_adp 聚合邻居特征，再对特征维做线性投影。
