@@ -1,5 +1,9 @@
-"""论文图批次 2：⑥ 传递熵有向信息流 ⑦ 分层覆盖率对比 ⑧ CATE 分层热力图
+"""论文图批次 2：⑥ 传递熵有向信息流 ⑦ 分层覆盖率对比 ⑧ 分层参数干预热力图
 ⑨ 机制增强对比。输出 SVG + PNG(1200DPI) 到 outputs/figures/。
+
+⚠️ 已废弃（审查 2026-08-01）：本批次全部输出已被 batch5/batch6/batch8 重绘版覆盖
+（fig5_2→batch5、fig5_4→batch6、fig5_6→batch8、fig5_8→batch5），且措辞为旧口径
+（'显著因果边/因果独有边'）——**请勿运行本脚本**，最终图以 batch5~8 为准。
 
 数据来源（本地已验证素材）：
 - ⑥ outputs/analysis/transfer_entropy/transfer_entropy_summary.json
@@ -201,9 +205,8 @@ def fig_mechanism_enhance() -> None:
 
 
 if __name__ == "__main__":
-    print("=== 批次 2：4 张图 ===")
-    fig_transfer_entropy()
-    fig_coverage()
-    fig_cate()
-    fig_mechanism_enhance()
-    print("批次 2 完成")
+    # 审查 2026-08-01：批次 2 已废弃（输出由 batch5/6/8 覆盖，旧因果措辞）——阻止执行
+    raise RuntimeError(
+        "batch2 已废弃（2026-08-01）：请勿运行。最终图为 batch5/batch6/batch8 产物"
+        "（见 figure_manifest.py）。"
+    )
