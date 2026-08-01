@@ -184,10 +184,11 @@
 - 对比模型：Persistence、ARIMA、LightGBM/XGBoost、MLP、GRU、TCN、Graph WaveNet、AGCRN、AdaptiveGraph、StaticGraph（MRG-GCN）
 - ✅ 传统基线 4 模型（2026-07-31 修复口径完成，确定性模型无种子概念，一次运行入表）：
   Persistence 0.07828 / ARIMA(2,1,2) 0.02260 / LightGBM 0.03758 / XGBoost 0.03873（global MAE）
-- ✅ 已有：MLP/TCN/GWN/AGCRN/AdaptiveGraph/StaticGraph（三种子正式产物；
+- 🟡 已有/待核验：MLP/TCN/GWN/AdaptiveGraph/StaticGraph 三种子正式产物；
+  AGCRN 服务器运行中，结果拉回核验后入主表（审查 2026-08-01：不提前入表；
   GWN/AGCRN 为简化变体——共享门权重无节点参数池/单步聚合无多阶 diffusion，命名如实标注）
 - 注：传统基线评价口径与正式管线完全一致（truth 目标 [O+1,O+5)、真实事件标签分层、物理量纲），
-  predictions_*.npz 已落盘供 Bootstrap 显著性检验
+  predictions_*.npz 已落盘供 Bootstrap 描述性区间分析（点级 pooled，非严格独立样本显著性检验）
 ### 3.6.2 全局指标对比（表 3-1，对标朱俊丞表 4.2 格式）
 ### 3.6.3 分层指标对比（事件/稳定/非零负荷）
 ### 3.6.4 节点与步长明细（表）
@@ -282,7 +283,7 @@
 
 ## 4.6 协议总结：MDP 机制画像与可复用性（~2 页）
 - 四层结论汇成"机制画像"表（表 4-1）：每层 = 协议操作 / 诊断实验 / 判定准则 / 结论
-- **协议可复用性**：MDP 不依赖特定模型——任何图预测模型（GWN/AGCRN/自定义）输入 checkpoint 即可按四层执行诊断；诊断输出（L1 分工、L3 误差归属）是第 5 章增强方向的直接依据
+- **框架定位（审查 2026-08-01 收敛）**：四层机制诊断框架在本文模型（MRG-GCN）上完成验证；框架的操作定义（干预/蒸馏/四格/不变正则）与模型解耦，可在其他图预测模型上复用——跨模型复现作为未来工作，不提前宣称"任何图模型均可直接复用"
 - 三层闭环收束：L1 分工→5.4 增强依据；L3 误差→5.3 区间依据；L1+L3→5.5 参数干预依据
 
 ---
