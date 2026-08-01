@@ -113,10 +113,10 @@ def fig5_3_asymmetry() -> None:
     for x, y, c, a, s, sig in zip(xs, ys, colors, alphas, sizes, sigs):
         ax.scatter(x, y, s=s, facecolor=c if sig else "white",
                    edgecolor=c, linewidth=1.0, alpha=a, zorder=4)
-    # top 3 不对称对标注：统一放右上空白区，箭头连线（不遮挡散点）
+    # top 3 不对称对标注：分散放右上/顶部/右缘空白区，箭头连线（不遮挡散点）
     top3 = te["asymmetry"]["top_asymmetric_pairs"][:3]
-    label_xy = [(vmax * 0.74, vmax * 1.02), (vmax * 0.90, vmax * 1.02),
-                (vmax * 1.02, vmax * 0.90)]
+    label_xy = [(vmax * 0.68, vmax * 1.06), (vmax * 0.92, vmax * 1.04),
+                (vmax * 1.07, vmax * 0.86)]
     for p, (lx, ly) in zip(top3, label_xy):
         i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
         px, py = te_mat[i, j], te_mat[j, i]
@@ -130,10 +130,10 @@ def fig5_3_asymmetry() -> None:
     ax.text(vmax * 0.05, vmax * 0.94, "j→i 主导", fontsize=8, color=BLUE, ha="left")
     ax.text(vmax * 0.72, vmax * 0.06, "i→j 主导", fontsize=8, color=ORANGE, ha="left")
     ax.text(vmax * 0.06, vmax * 0.16, "近似对称", fontsize=7.5, color=GRAY_M)
-    # 统计注释
+    # 统计注释（措辞收敛：超过不对称阈值，非统计显著性——审查 2026-08-01）
     ax.text(vmax * 0.05, vmax * 0.045,
-            f"45 对中 {te['asymmetry']['asymmetric_pair_count']} 对显著不对称"
-            f"（{100 * te['asymmetry']['asymmetry_rate']:.0f}%）",
+            f"45 对中 {te['asymmetry']['asymmetric_pair_count']} 对超过不对称阈值"
+            f"（Δ>0.3，占 {100 * te['asymmetry']['asymmetry_rate']:.0f}%）",
             fontsize=7.5, color=GRAY_D, ha="left")
     _clean_ax(ax)
     ax.set_xlabel("传递熵 TE(i → j)（nats）", fontsize=9)
@@ -141,13 +141,13 @@ def fig5_3_asymmetry() -> None:
     ax.set_xlim(0, vmax * 1.15)
     ax.set_ylim(0, vmax * 1.15)
 
-    # 图例（三层：主导方向 + 面积 + 实心空心）
+    # 图例（三层：主导方向 + 面积 + 实心空心；实心 = 至少一个方向入选 TE 候选边）
     handles = [
         plt.scatter([], [], s=70, facecolor=BLUE, edgecolor=BLUE, label="j→i 主导"),
         plt.scatter([], [], s=70, facecolor=ORANGE, edgecolor=ORANGE, label="i→j 主导"),
         plt.scatter([], [], s=70, facecolor=GRAY_M, edgecolor=GRAY_M, label="近似对称"),
         plt.scatter([], [], s=70, facecolor="white", edgecolor=BLUE,
-                    linewidth=1.0, label="非显著对"),
+                    linewidth=1.0, label="两方向均未入选候选边"),
     ]
     ax.legend(handles=handles, fontsize=7.5, frameon=False, ncol=2,
               loc="lower right", bbox_to_anchor=(1.0, 0.0),
@@ -218,13 +218,21 @@ def fig5_4_coverage() -> None:
     ax1.axvspan(0.90, 1.0, color="0.94", zorder=0)
     ax1.axvline(0.9, color=RED_S, lw=1.2, ls="--", zorder=1)
     ax1.text(0.905, 2.36, "90% 目标", fontsize=7.5, color=RED_S)
-    # 事件窗口提升箭头（1.9% → 86.4%，均值口径）
-    ax1.annotate("", xy=(0.86, 1.28), xytext=(0.03, 1.28),
+    # 事件窗口：规则路由提升箭头（1.9% → 3.9%）+ oracle 事后上界标注。
+    # 审查 2026-08-01：正式口径为可部署的规则路由；真实标签路由仅作上界诊断
+    oracle_event = float(np.mean([
+        s["stratified_oracle_upper"]["coverage_event_window"] for s in seeds]))
+    ax1.annotate("", xy=(0.039 + 0.02, 1.28), xytext=(0.03, 1.28),
                  arrowprops=dict(arrowstyle="->", color=ORANGE, lw=1.7))
-    ax1.text(0.45, 1.45, "1.9% → 86.4%", ha="center", fontsize=8.5, color=ORANGE)
+    ax1.text(0.20, 1.42, "1.9% → 3.9%（规则路由）", ha="center", fontsize=8,
+             color=ORANGE)
+    ax1.plot([oracle_event], [1], marker="*", ms=13, color=RED_S, zorder=6,
+             markeredgecolor="white", markeredgewidth=0.6)
+    ax1.text(oracle_event + 0.03, 1, f"oracle 上界 {oracle_event:.0%}",
+             fontsize=7.5, color=RED_S, va="center")
     ax1.set_yticks(y)
     ax1.set_yticklabels(groups, fontsize=9.5)
-    ax1.set_xlabel("覆盖率（α = 0.1，3 种子）", fontsize=9)
+    ax1.set_xlabel("覆盖率（α = 0.1，规则路由，3 种子）", fontsize=9)
     ax1.set_xlim(0, 1.02)
     ax1.set_ylim(-0.55, 2.55)
     _clean_ax(ax1)
@@ -242,7 +250,7 @@ def fig5_4_coverage() -> None:
                  ms=4.5, label=lbl, zorder=z)
     ax2.axhline(0.9, color=RED_S, lw=1.1, ls="--", zorder=1)
     ax2.set_xticks(hx)
-    ax2.set_xlabel("预测步长（horizon）", fontsize=9)
+    ax2.set_xlabel("预测步长（horizon，规则路由）", fontsize=9)
     ax2.set_ylabel("覆盖率", fontsize=9)
     ax2.set_ylim(0.55, 0.93)
     ax2.set_yticks([0.60, 0.70, 0.80, 0.90])

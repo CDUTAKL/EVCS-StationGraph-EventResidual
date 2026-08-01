@@ -248,7 +248,14 @@ def main() -> None:
         # ---- 评价阶段：测试集 ----
         test = _predict(model, loaders["test"], device, trigger_by_origin, bundle)
         widths_global = q_global
+        # 可部署路由：使用预测时刻可见的冻结规则触发（rule_trigger，因果前向，
+        # 无未来信息）；oracle 路由（真实标签）仅作事后上界对比（审查 F-01，2026-08-01）
+        # rule_trigger 形状 [S,N]，扩展为 [S,1,N] 后广播到 [S,H,N]（与 target_event 一致）
         widths_stratified = np.where(
+            test["rule_trigger"][:, None, :], q_event[None, None, :],
+            q_stable[None, None, :],
+        )
+        widths_oracle = np.where(
             test["target_event"], q_event[None, None, :], q_stable[None, None, :],
         )
 
@@ -260,10 +267,15 @@ def main() -> None:
             test["truth"], test["prediction"], widths_stratified,
             test["target_event"], node_ids,
         )
+        report_oracle = _coverage_report(
+            test["truth"], test["prediction"], widths_oracle,
+            test["target_event"], node_ids,
+        )
         row = {
             "seed": seed,
             "standard_conformal": report_global,
             "stratified_conformal": report_stratified,
+            "stratified_oracle_upper": report_oracle,
             "q_global_per_node": q_global.tolist(),
             "q_event_per_node": q_event.tolist(),
             "q_stable_per_node": q_stable.tolist(),
@@ -299,23 +311,31 @@ def main() -> None:
             r["stratified_conformal"]["coverage_event_window"] for r in per_seed])),
         "stratified_stable_mean": float(np.mean([
             r["stratified_conformal"]["coverage_stable_window"] for r in per_seed])),
+        # oracle 上界对比（真实标签路由，仅事后诊断用）
+        "stratified_oracle_event_mean": float(np.mean([
+            r["stratified_oracle_upper"]["coverage_event_window"] for r in per_seed])),
+        "stratified_oracle_overall_mean": float(np.mean([
+            r["stratified_oracle_upper"]["coverage_overall"] for r in per_seed])),
         "per_seed": per_seed,
         "elapsed_seconds": time.perf_counter() - started,
     }
 
     standard_event = agg["standard_event_mean"]
     stratified_event = agg["stratified_event_mean"]
+    oracle_event = agg["stratified_oracle_event_mean"]
     if standard_event < COVERAGE_PASS and stratified_event >= COVERAGE_PASS:
         verdict = (
-            f"通过 + 论文贡献：标准共形事件窗口覆盖不足（{standard_event:.1%}），"
-            f"分层共形达标（{stratified_event:.1%}）→ 分层共形是 5.3 节核心贡献"
+            f"通过 + 论文贡献（规则路由可部署版）：标准共形事件窗口覆盖不足"
+            f"（{standard_event:.1%}），规则路由分层共形达标（{stratified_event:.1%}）"
+            f"；oracle 事后上界 {oracle_event:.1%}"
         )
     elif stratified_event >= COVERAGE_PASS:
-        verdict = "通过：分层共形事件窗口覆盖达标，简单共形即够用（贡献点较弱）"
+        verdict = "通过：规则路由分层共形事件窗口覆盖达标，简单共形即够用（贡献点较弱）"
     else:
-        verdict = "未通过：两种校准事件窗口覆盖均不足，方向降级"
+        verdict = "未通过：规则路由分层共形事件窗口覆盖仍不足，方向降级"
     agg["verdict"] = verdict
-    print(f"\n标准共形事件窗口覆盖：{standard_event:.1%} vs 分层共形：{stratified_event:.1%}")
+    print(f"\n标准共形事件窗口覆盖：{standard_event:.1%} vs "
+          f"规则路由分层共形：{stratified_event:.1%}（oracle 上界 {oracle_event:.1%}）")
     print(f"判定：{verdict}")
 
     out_path = output_dir / "conformal_summary.json"

@@ -97,7 +97,9 @@ def fig5_5_quantile() -> None:
     ax1.set_xticks(x)
     ax1.set_xticklabels(labels, fontsize=8)
     ax1.set_xlabel("充电节点", fontsize=9)
-    ax1.set_ylabel("90% 分位数（标准化残差，对数轴）", fontsize=8.5)
+    # 量纲修正（审查 2026-08-01）：分位数在反标准化残差上计算（engine._predict），
+    # 物理单位 kWh/15 min，非标准化尺度
+    ax1.set_ylabel("90% 残差分位数（kWh/15 min，对数轴）", fontsize=8.5)
     ax1.set_yscale("log")
     ax1.set_ylim(1e-4, 1.4)
     ax1.tick_params(labelsize=8)

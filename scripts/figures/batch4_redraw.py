@@ -95,23 +95,29 @@ def redraw_autocorrelation() -> None:
 # ========== ② fig2_5 负荷分布（重绘） ==========
 def redraw_distribution() -> None:
     vals = BUNDLE.targets.flatten()
-    vals = vals[vals > 0]
-    fig, ax = plt.subplots(figsize=(6.2, 3.4))
+    vals = vals[vals > 0]  # 非零负荷条件分布（零负荷占 78.4%，不参与直方图）
+    nz_rate = 100.0 * vals.size / BUNDLE.targets.size
+    fig, ax = plt.subplots(figsize=(6.4, 3.4))
     ax.hist(vals, bins=np.arange(0, 2.6, 0.05), color=BLUE,
             edgecolor="white", linewidth=0.3, zorder=3)
     ax.set_yscale("log")
-    ax.set_xlabel("负荷（kWh/15min）", fontsize=9)
-    ax.set_ylabel("样本数（对数轴）", fontsize=9)
+    ax.set_xlabel("负荷（kWh/15 min）", fontsize=9)
+    ax.set_ylabel("非零负荷样本数（对数轴）", fontsize=9)
     ax.set_xlim(0, 2.5)
+    # 截断披露 + 非零率标注（必要说明，放右上空白区）
+    ax.text(0.98, 0.97, f"非零负荷占比 {nz_rate:.1f}%\n仅显示 0–2.5，右尾截断",
+            transform=ax.transAxes, ha="right", va="top", fontsize=7.5,
+            color=GRAY_D)
     _clean_ax(ax)
-    final(fig, "fig2_5_load_distribution", (6.2, 3.4))
+    final(fig, "fig2_5_load_distribution", (6.4, 3.4))
 
 
 # ========== ③ fig2_6 事件时段分布（聚合 3 年全部事件到 24h） ==========
 def redraw_event_timeline() -> None:
-    # 聚合口径：全部时间步中任一节点事件（event_labels）→ 按小时统计频率
-    # 单日事件稀疏画时间线必然空洞；聚合到 24h 时段后画面饱满且信息真实
-    ev = BUNDLE.event_labels.any(axis=1)  # [T] 任一节点发生事件
+    # 聚合口径：全部时间步中任一节点真实标签事件（event_labels）→ 按小时统计频率
+    # 真实峰值（2026-08-01 数据核实）：深夜 0-3 时（6.0%~8.8%）与午后 15-16 时（7.3%/7.4%），
+    # 8-11 时仅 ~1%（低谷）——原"早高峰 8-11 时"标注与数据相反，已修正
+    ev = BUNDLE.event_labels.any(axis=1)  # [T] 任一节点发生标签事件
     hours = pd.to_datetime(BUNDLE.timestamps_ns).hour[ev]
     freq = np.bincount(hours, minlength=24) / max(ev.sum(), 1)  # 各时段事件占比
 
@@ -119,16 +125,16 @@ def redraw_event_timeline() -> None:
     x = np.arange(24)
     ax.bar(x, freq * 100, width=0.78, color=BLUE, edgecolor="white",
            linewidth=0.4, zorder=3)
-    # 早晚高峰时段浅色底纹（8-11 时 / 16-20 时）
-    ax.axvspan(8, 11, color=ORANGE, alpha=0.12, zorder=1)
-    ax.axvspan(16, 20, color=ORANGE, alpha=0.12, zorder=1)
-    ax.text(9.5, freq.max() * 100 * 0.92, "早高峰", fontsize=7.5,
-            color=ORANGE, ha="center")
-    ax.text(18, freq.max() * 100 * 0.92, "晚高峰", fontsize=7.5,
-            color=ORANGE, ha="center")
+    # 真实峰值时段浅色底纹（深夜 0-3 时 / 午后 14-17 时）
+    ax.axvspan(0, 3, color="0.82", alpha=0.55, zorder=1)
+    ax.axvspan(14, 17, color=ORANGE, alpha=0.14, zorder=1)
+    ax.text(1.5, freq.max() * 100 * 0.92, "深夜高峰\n（0–3 时）", fontsize=7,
+            color=GRAY_D, ha="center", va="bottom")
+    ax.text(15.5, freq.max() * 100 * 0.92, "午后高峰\n（14–17 时）", fontsize=7,
+            color=ORANGE, ha="center", va="bottom")
     ax.set_xticks(range(0, 24, 2))
-    ax.set_xlabel("时段（小时）", fontsize=9)
-    ax.set_ylabel("事件发生占比（%）", fontsize=9)
+    ax.set_xlabel("时段（小时，任一节点发生标签事件）", fontsize=9)
+    ax.set_ylabel("事件时段构成占比（%）", fontsize=9)
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.grid(axis="y", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
@@ -154,20 +160,23 @@ def redraw_model_comparison() -> None:
     y = np.arange(len(names))
     bars = ax.barh(y, maes, height=0.62, color=colors,
                    edgecolor=GRAY_D, linewidth=0.5, zorder=3)
-    # 不画误差棒：确定性方法（ARIMA/LGBM/XGB/Persistence）无种子 std，
-    # 部分模型 std 待服务器回填——误差信息统一进表 3-1 的 mean±std 列，
-    # 避免"有的有有的没有"的不一致观感（确定性方法无 std 是科学事实）
+    # 误差棒：仅三种子随机方法有 std；确定性方法（ARIMA/LGBM/XGB/Persistence）无种子
+    # 波动是科学事实，不加（审查 2026-08-01：主结果图需展示不确定性）
+    for yi, (mae, std) in enumerate(zip(maes, stds)):
+        if std is not None:
+            ax.errorbar(mae, yi, xerr=std, fmt="none", ecolor=GRAY_D,
+                        capsize=3, lw=0.9, zorder=4)
     for yi, mae in enumerate(maes):
-        ax.text(mae + 0.0015, yi, f"{mae:.4f}", va="center", fontsize=8.5,
+        ax.text(mae + 0.0015, yi, f"{mae:.5f}", va="center", fontsize=8.5,
                 color=GRAY_D)
     bars[0].set_color(BLUE)
     ax.set_yticks(y)
     ax.set_yticklabels(names, fontsize=8.5)
-    ax.set_xlabel("Global MAE (kWh/15min)", fontsize=9)
+    ax.set_xlabel("Global MAE（kWh/15 min）", fontsize=9)
     ax.set_xlim(0, 0.095)
     ax.legend(handles=[plt.Rectangle((0, 0), 1, 1, color=BLUE),
                        plt.Rectangle((0, 0), 1, 1, color=GRAY_M)],
-              labels=["图模型（本文）", "对比方法"], fontsize=8, frameon=False,
+              labels=["本文主模型", "其他模型"], fontsize=8, frameon=False,
               loc="lower right")
     _clean_ax(ax)
     final(fig, "fig3_1_model_mae_comparison", (6.8, 4.0))
@@ -185,7 +194,7 @@ def redraw_bootstrap() -> None:
         "TCN - MLP": "MLP vs TCN",
         "AdaptiveGraph - no_event_gate": "no-event-gate vs AdaptiveGraph",
     }
-    names, diffs, ps = [], [], []
+    names, diffs, ps, cis = [], [], [], []
     for c in d["comparisons"]:
         # pooled = 三种子正确合并（修复：原实现 per-seed 平均 + min-p 统计错误）
         p = c["pooled"]
@@ -194,12 +203,17 @@ def redraw_bootstrap() -> None:
         names.append(labels.get(c["name"], c["name"]) + suffix)
         diffs.append(p[win]["observed_diff"])
         ps.append(p[win]["p_value_one_sided"])
+        cis.append((p[win]["ci_lower"], p[win]["ci_upper"]))
 
     fig, ax = plt.subplots(figsize=(7.2, 3.4))
     x = np.arange(len(names))
     colors = [BLUE if p < 0.05 else GRAY_L for p in ps]
     bars = ax.bar(x, diffs, width=0.58, color=colors,
                   edgecolor=GRAY_D, linewidth=0.5, zorder=3)
+    # pooled 95% CI 误差棒（审查 2026-08-01：Bootstrap 图需展示不确定性区间）
+    for xi, (dd, (lo, hi)) in enumerate(zip(diffs, cis)):
+        ax.errorbar(xi, dd, yerr=[[dd - lo], [hi - dd]], fmt="none",
+                    ecolor=GRAY_D, capsize=3.5, lw=1.0, zorder=4)
     for xi, (dd, p) in enumerate(zip(diffs, ps)):
         # 直接标注 p 值：正值柱上方、负值柱下方（y 轴已留白，不超出平面）
         label = "p<0.001" if p < 0.001 else f"p={p:.3f}"
@@ -216,6 +230,9 @@ def redraw_bootstrap() -> None:
     ax.set_xticklabels(names, fontsize=8, rotation=18, ha="right")
     ax.set_ylabel("MAE 差（基线 − 提议模型）", fontsize=9)
     ax.tick_params(axis="y", labelsize=8)
+    # 统计口径披露（审查 2026-08-01）：点级 pooled Bootstrap、重采样单元为预测键
+    ax.text(0.99, -0.16, "点级 pooled Bootstrap（10,000 次重采样，预测键为单元，三种子合并）",
+            transform=ax.transAxes, ha="right", va="top", fontsize=7, color=GRAY_M)
     _clean_ax(ax)
     ax.grid(axis="y", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
     final(fig, "fig3_6_bootstrap_significance", (7.2, 3.4))
@@ -255,12 +272,20 @@ def redraw_four_cell() -> None:
             # n（次级信息，小字）
             ax.text(j, i + 0.20, f"n = {counts[i, j]:,}", ha="center",
                     va="top", fontsize=8.5, color=text_c, alpha=0.85)
-    # 行列语义
+    # 行列语义（审查 2026-08-01：标签事件/可见规则触发组合，避免分类语义混淆）
     ax.set_xticks([0, 1])
     ax.set_xticklabels(["规则触发", "规则未触发"], fontsize=10.5)
     ax.set_yticks([0, 1])
-    ax.set_yticklabels(["事件发生", "稳定时段"], fontsize=10.5)
+    ax.set_yticklabels(["标签事件", "标签非事件"], fontsize=10.5)
     ax.tick_params(length=0, labelsize=9)
+    # 图底：种子 + 加权重建 MAE + 还原声明（可核验 ≤1e-9 硬约束）
+    rebuilt = float((matrix * counts).sum() / counts.sum())
+    g_mae = float(m["global"]["mae"])
+    ax.text(0.5, -0.13,
+            f"seed 2024 · Σ(格MAE×n)/Σn = {rebuilt:.4f} · 全局 MAE = {g_mae:.4f}"
+            f" · |Δ| ≤ 1e-9",
+            transform=ax.transAxes, ha="center", va="top", fontsize=7.5,
+            color=GRAY_D)
     final(fig, "fig4_4_four_cell", (5.0, 4.4))
 
 

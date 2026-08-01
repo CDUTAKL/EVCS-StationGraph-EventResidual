@@ -106,11 +106,14 @@ def fig_load_heatmap() -> None:
     ax.set_yticks(np.arange(10) + 0.5)
     ax.set_yticklabels([n.split("-")[1] for n in node_ids], fontsize=8)
     ax.set_xticks(range(0, 29, 7))
-    ax.set_xlabel("时间（天，周末已加浅橙底纹）", fontsize=9)
+    ax.set_xlabel("时间（天，周末浅橙底纹，节点按累计负荷降序）", fontsize=9)
     ax.tick_params(labelsize=8)
     cbar = fig.colorbar(im, ax=ax, fraction=0.028, pad=0.02)
     cbar.set_label("归一化负荷（按节点最大值）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
+    # mini bar 标签（审查 2026-08-01：明确右侧条形语义，避免误读为时间轴延续）
+    ax.text(29.25, 10.15, "节点累计负荷", fontsize=7.5, color=GRAY_D,
+            ha="center")
     final(fig, "fig2_3_load_heatmap", (7.4, 3.4))
 
 
@@ -131,8 +134,8 @@ def fig_weekly_curves() -> None:
         idx = list(BUNDLE.node_ids).index(n)
         ax.plot(t, BUNDLE.targets[t0:t0 + 96 * 7, idx], color=c, ls=ls, lw=lw,
                 label=n)
-    ax.set_xlabel("时间（天，浅灰=夜间低谷时段）", fontsize=9)
-    ax.set_ylabel("负荷（kWh/15min）", fontsize=9)
+    ax.set_xlabel("时间（天；浅灰=夜间低谷时段，浅橙=周末）", fontsize=9)
+    ax.set_ylabel("负荷（kWh/15 min）", fontsize=9)
     ax.set_xlim(0, 7)
     ax.set_xticks(range(8))
     ax.tick_params(labelsize=8)
@@ -145,7 +148,9 @@ def fig_weekly_curves() -> None:
 # ========== ③ fig3_3 三关系邻接矩阵（重绘） ==========
 def fig_lre_matrices() -> None:
     d = np.load("outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz")
-    names = {"load": "负荷相关", "event": "事件共现", "pattern": "时序模式"}
+    # 图名精确化（审查 2026-08-01）：abs-Pearson / 余弦 / 轮廓欧氏指数核
+    names = {"load": "负荷耦合（|Pearson|）", "event": "行为共现（cosine）",
+             "pattern": "轮廓相似（指数核）"}
     vmax_all = max(d[k].max() for k in names)
     fig, axes = plt.subplots(1, 3, figsize=(7.6, 3.2))
     im = None
@@ -162,12 +167,12 @@ def fig_lre_matrices() -> None:
                 fontsize=8, color=GRAY_D, fontweight="bold")
         # 右下角最大权重标注
         ax.text(0.98, 0.02, f"w_max={mat.max():.2f}", transform=ax.transAxes,
-                ha="right", va="bottom", fontsize=6.5, color=GRAY_M)
+                ha="right", va="bottom", fontsize=7, color=GRAY_M)
         ax.set_xticks(range(10))
-        ax.set_xticklabels([n.split("-")[1] for n in BUNDLE.node_ids], fontsize=6.5)
+        ax.set_xticklabels([n.split("-")[1] for n in BUNDLE.node_ids], fontsize=7.5)
         ax.set_yticks(range(10))
-        ax.set_yticklabels([n.split("-")[1] for n in BUNDLE.node_ids], fontsize=6.5)
-        ax.tick_params(which="major", labelsize=6.5)
+        ax.set_yticklabels([n.split("-")[1] for n in BUNDLE.node_ids], fontsize=7.5)
+        ax.tick_params(which="major", labelsize=7.5)
     cbar = fig.colorbar(im, ax=axes, fraction=0.022, pad=0.03)
     cbar.set_label("对称归一化邻接权重", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
@@ -221,13 +226,14 @@ def fig_alpha_convergence() -> None:
         finals.append(alpha.iloc[-1])
         ax.text(epochs.iloc[-1] + 0.8, alpha.iloc[-1], f"{alpha.iloc[-1]:.3f}",
                 fontsize=7.5, color=c, va="center")
-    # 收敛带：三种子末值范围
+    # 收敛带：三种子末值范围。A_mix = α·A_fixed + (1-α)·A_adp（graph.py），
+    # α 是固定图权重——α≈0.17-0.21 表示模型以自适应图为主（审查 2026-08-01 语义修正）
     lo, hi = min(finals), max(finals)
     ax.axhspan(lo, hi, color="0.88", alpha=0.7, zorder=0)
-    ax.text(1, hi + 0.02, f"α 收敛区间 {lo:.2f}–{hi:.2f}", fontsize=7.5,
-            color=GRAY_M, ha="left")
+    ax.text(1, hi + 0.02, f"α 收敛区间 {lo:.2f}–{hi:.2f}（自适应图为主）",
+            fontsize=7.5, color=GRAY_M, ha="left")
     ax.set_xlabel("训练轮次（epoch）", fontsize=9)
-    ax.set_ylabel("自适应混合系数 α", fontsize=9)
+    ax.set_ylabel("固定图混合权重 α = σ(w)", fontsize=9)
     ax.set_xlim(0, max(df["epoch"]) + 6)
     _clean_ax(ax)
     ax.legend(fontsize=8, frameon=False, ncol=3, loc="upper right")
@@ -240,10 +246,10 @@ def fig_intervention() -> None:
     order = ["learned", "equal", "both_load", "both_pattern", "both_event",
              "g1_load_g2_learn", "g1_learn_g2_pattern", "swapped"]
     labels_cn = {
-        "learned": "学习值（基线）", "equal": "等权 1/3", "both_load": "两层全 load",
-        "both_pattern": "两层全 pattern", "both_event": "两层全 event",
-        "g1_load_g2_learn": "GCN1=load", "g1_learn_g2_pattern": "GCN2=pattern",
-        "swapped": "交换两层学习值",
+        "learned": "学习值（基线）", "equal": "等权 1/3",
+        "both_load": "两层全负荷关系", "both_pattern": "两层全模式关系",
+        "both_event": "两层全事件关系", "g1_load_g2_learn": "GCN1=负荷关系",
+        "g1_learn_g2_pattern": "GCN2=模式关系", "swapped": "交换两层学习值",
     }
     maes = [d[k]["global_mae_mean"] for k in order]
     stds = [d[k]["global_mae_std"] for k in order]
@@ -269,7 +275,7 @@ def fig_intervention() -> None:
     ax.axvline(base, color=GRAY_M, lw=1.0, ls=":", zorder=2)
     ax.set_yticks(y)
     ax.set_yticklabels([labels_cn[k] for k in order], fontsize=8)
-    ax.set_xlabel("全局 MAE（3 种子均值 ± std）", fontsize=9)
+    ax.set_xlabel("全局 MAE（kWh/15 min，3 种子均值 ± std）", fontsize=9)
     ax.set_xlim(0, max(maes) * 1.30)
     _clean_ax(ax)
     ax.grid(axis="y", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
@@ -315,11 +321,12 @@ def fig_transfer_entropy() -> None:
     ax1.set_aspect("equal")
     ax1.axis("off")
 
-    # (b) 统计图覆盖 vs 因果独有边（灰阶柱 + 柱顶数值）
+    # (b) 统计图覆盖 vs 因果独有边（灰阶柱 + 柱顶数值；措辞收敛为"候选"，
+    # 审查 2026-08-01：TE 未做多重比较校正，不称"显著因果边"）
     ov = te["overlap"]
     vals = [ov["total_significant_edges"], ov["covered_by_any_statistical_graph"],
             ov["exclusive_to_causal"]]
-    bars = ax2.bar(["显著因果边", "被统计图覆盖", "因果独有边"], vals,
+    bars = ax2.bar(["TE 候选边", "统计图覆盖候选", "统计图未覆盖候选"], vals,
                    color=[GRAY_D, GRAY_M, GRAY_L], edgecolor="white",
                    linewidth=0.6, width=0.55, zorder=3)
     for b, v in zip(bars, vals):
@@ -329,6 +336,9 @@ def fig_transfer_entropy() -> None:
     ax2.set_ylabel("边数", fontsize=8.5)
     ax2.tick_params(axis="x", labelsize=8, rotation=12)
     _clean_ax(ax2)
+    ax2.text(0.5, -0.22, "未做多重比较校正，正式因果结论以条件独立检验为准",
+             transform=ax2.transAxes, ha="center", va="top", fontsize=6.5,
+             color=GRAY_M)
     final(fig, "fig5_2_transfer_entropy", (7.6, 3.8))
 
 
@@ -346,30 +356,33 @@ def fig_cate() -> None:
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.8, 4.0),
                                    gridspec_kw={"width_ratios": [1.0, 1.35]})
-    # (a) 窗口分层条件效应：相对基线增量（delta-1，0 线 = 基线，正 = 恶化）
+    # (a) 窗口分层条件效应：柱高 = 相对变化率（%），0 线 = 基线，正 = 恶化。
+    # 修复（审查 2026-08-01）：global_delta 已为 (MAE_iv−MAE_base)/MAE_base 变化率，
+    # 绘图不得再减 1（原实现把 +149% 画成 +49%）
     x = np.arange(len(order))
     w = 0.26
-    g_d = [iv[k]["global_delta"] - 1 for k in order]
-    e_d = [iv[k]["event_delta"] - 1 for k in order]
-    s_d = [iv[k]["stable_delta"] - 1 for k in order]
+    g_d = [100 * iv[k]["global_delta"] for k in order]
+    e_d = [100 * iv[k]["event_delta"] for k in order]
+    s_d = [100 * iv[k]["stable_delta"] for k in order]
     ax1.bar(x - w, g_d, w, label="全局", color=BLUE, edgecolor="white", linewidth=0.3)
     ax1.bar(x, e_d, w, label="事件窗口", color=ORANGE, edgecolor="white", linewidth=0.3)
     ax1.bar(x + w, s_d, w, label="稳定窗口", color=GRAY_M, edgecolor="white", linewidth=0.3)
     ax1.axhline(0, color=GRAY_D, lw=1.0)
     # 仅标注全局柱顶数值（避免 21 个标签互相遮挡）
     for xi, v in zip(x, g_d):
-        ax1.text(xi, v + 0.05, f"+{v:.1f}×", ha="center", fontsize=7.2,
+        ax1.text(xi, v + 3, f"+{v:.0f}%", ha="center", fontsize=7.2,
                  color=GRAY_D)
     ax1.set_xticks(x)
     ax1.set_xticklabels([names_cn[k] for k in order], fontsize=7.5, rotation=28,
                         ha="right")
-    ax1.set_ylabel("相对基线的 MAE 增量（×）", fontsize=8.5)
-    ax1.set_ylim(-0.5, max(g_d) * 1.25)
+    ax1.set_ylabel("相对 MAE 变化（%）", fontsize=8.5)
+    ax1.set_ylim(-8, max(g_d) * 1.22)
     _clean_ax(ax1)
     ax1.legend(fontsize=7.5, frameon=False, loc="upper left")
 
-    # (b) 节点敏感度热力图（7 干预 × 10 节点，相对变化倍数）
-    matrix = np.array([[iv[k]["node_deltas"][n] for n in nodes] for k in order])
+    # (b) 节点敏感度热力图（7 干预 × 10 节点，相对变化率 %；node_deltas 已为变化率，
+    # 直接乘 100 显示百分比，不再做任何减 1）
+    matrix = np.array([[100 * iv[k]["node_deltas"][n] for n in nodes] for k in order])
     im = ax2.imshow(matrix, cmap="Blues", aspect="auto", vmin=0,
                     vmax=matrix.max())
     # 白色 cell 网格线
@@ -384,10 +397,10 @@ def fig_cate() -> None:
     for i in range(len(order)):
         for j in range(len(nodes)):
             v = matrix[i, j]
-            ax2.text(j, i, f"{v:.1f}", ha="center", va="center", fontsize=6.5,
+            ax2.text(j, i, f"{v:.0f}%", ha="center", va="center", fontsize=6.5,
                      color="white" if v > matrix.max() * 0.62 else GRAY_D)
     cbar = fig.colorbar(im, ax=ax2, fraction=0.045, pad=0.03)
-    cbar.set_label("MAE 相对变化（×）", fontsize=7.5)
+    cbar.set_label("MAE 相对变化（%）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
     final(fig, "fig5_8_cate", (7.8, 4.0))
 
