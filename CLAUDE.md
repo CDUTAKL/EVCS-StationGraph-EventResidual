@@ -372,7 +372,7 @@ type: 简短中文说明
 
 ```bash
 .venv/bin/python -m compileall -q src scripts tests  # 语法检查
-.venv/bin/pytest -q                                    # 31 个测试必须全过
+.venv/bin/pytest -q                                    # 89 项测试必须全过
 git status --short                                      # 确认无数据/权重/敏感文件
 git diff --check                                        # 无空白冲突
 ```
@@ -494,7 +494,7 @@ Step 0: 确认夜跑结果 → Step 1: P0 基线 → Step 2: SG-EXP-007a λ 筛�
 | `test_experiment_orchestration.py` | 机制变体生成、配置校验 | smoke_config |
 | `test_training_smoke.py` | 端到端训练循环、早停、checkpoint 加载、工件验证 | smoke_config |
 
-> 全部使用合成数据（`synthetic_bundle` fixture），不依赖真实数据。31 个测试。
+> 全部使用合成数据（`synthetic_bundle` fixture），不依赖真实数据。89 项测试。
 > 冒烟测试使用 `max_samples_per_split=8` 限制样本量（≈30 秒跑完）。
 
 ## 文档索引
