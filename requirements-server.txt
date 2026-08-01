@@ -1,6 +1,8 @@
 # 服务器（Python 3.8.10，2× RTX A6000，CUDA 12.1）依赖锁
-# 审查 F-03（2026-08-01）：pyproject.toml 面向本地开发（Python >=3.11），
-# 服务器标准 `pip install -e .` 会被包元数据拒绝——本文件为服务器安装的权威清单。
+# 状态（审查 F-03，2026-08-01）：**Python 3.8 服务器采用源码运行兼容路径**
+# （本文件 + PYTHONPATH 模块运行）；**项目标准包安装（pip install -e .）
+# 仅支持 Python ≥3.11**——pyproject.toml 面向本地开发，不承诺 3.8 editable install。
+# 本文件为服务器依赖安装的权威清单。
 #
 # 用法（按序执行）：
 #   1. pip install -r requirements-server.txt

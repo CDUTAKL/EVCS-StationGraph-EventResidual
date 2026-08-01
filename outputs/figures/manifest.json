@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-01T03:49:02.965439+00:00",
-  "git_commit": "966060a",
+  "generated_at_utc": "2026-08-01T03:57:08.109148+00:00",
+  "source_commit": "05cbf54",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -132,7 +132,44 @@
         "path": "batch4_redraw.py",
         "sha256": "6220487901609ea505f38168c6f43998a38140e02cb8028482d03c1276c62923"
       },
-      "inputs": [],
+      "inputs": [
+        {
+          "path": "outputs/night_run/20260730-171821/SG-EXP-002/20260730-171821/seed-2024/metrics.json",
+          "sha256": "52834eadacbbb22eb8a004f9386b9c24cd6a2d60570d230747ccc975743daa54"
+        },
+        {
+          "path": "outputs/night_run/20260730-171821/SG-EXP-002/20260730-171821/seed-2025/metrics.json",
+          "sha256": "78f4608fafa78b5dde01c018cb9ab6407f56347017388cae164379d6dce5e4b1"
+        },
+        {
+          "path": "outputs/night_run/20260730-171821/SG-EXP-002/20260730-171821/seed-2026/metrics.json",
+          "sha256": "1ebf25e5ffc4767f96087576c19bfa9ab1685a3c00ed53082007beea789f4012"
+        },
+        {
+          "path": "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2024/metrics.json",
+          "sha256": "7098dcee337c241f5ccd3445bcd17128327574a6b3490fa1b42c9f174b20cb34"
+        },
+        {
+          "path": "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2025/metrics.json",
+          "sha256": "31d0edb78513585d62ca2d0a6ae6983b4326cf17487a0c00c18001431f1b81ca"
+        },
+        {
+          "path": "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2026/metrics.json",
+          "sha256": "41d0d36944b91a5410c9ffb37a64e0931679dd7830ee14a98ff14cf58701d58c"
+        },
+        {
+          "path": "outputs/night_run/20260730-171821/SG-EXP-004/20260730-171821/seed-2024/metrics.json",
+          "sha256": "0f1e1295682fd15009a1423df49c82f6c03f7155df43304ff24cb3d32a1f453a"
+        },
+        {
+          "path": "outputs/night_run/20260730-171821/SG-EXP-004/20260730-171821/seed-2025/metrics.json",
+          "sha256": "2c69088080f38d3ecb34ace0bf4109026d76c97676d6477b0f7fa5179f0104c1"
+        },
+        {
+          "path": "outputs/night_run/20260730-171821/SG-EXP-004/20260730-171821/seed-2026/metrics.json",
+          "sha256": "3f286612f2b2fd7682657fe707b9f0a2866bf5d16941e03b9f459457589d355a"
+        }
+      ],
       "formats": {
         "svg": {
           "sha256": "2c8bdbabce89d304e6df8b9452ac4921c11304ce4890114a79a2810f2ae56219",
@@ -175,7 +212,20 @@
         "path": "batch5_restyle.py",
         "sha256": "98c69c7df7db4cf2a8815354403d34efdb2313f260efdc157fc2c897110535d9"
       },
-      "inputs": [],
+      "inputs": [
+        {
+          "path": "outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/training_log.csv",
+          "sha256": "4d907bc266170361417b4ab0feb87f299131d3dc4c5e4ac3eeaf8ccef52b9f7d"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-004/20260731-102456/seed-2025/training_log.csv",
+          "sha256": "23ea971e468306f11fd4acbab117fa898a5d92f406b2e951404d96ef4842a79c"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-004/20260731-102456/seed-2026/training_log.csv",
+          "sha256": "c2671f79c470be16e445715f71f88a9d18fa31fd8f5c964c82340cc81788576b"
+        }
+      ],
       "formats": {
         "svg": {
           "sha256": "7b38598a7f12db05a607e5125f2a1b39663b9705bc2a1c56c190e9346d60cd31",
@@ -218,7 +268,20 @@
         "path": "batch5_restyle.py",
         "sha256": "98c69c7df7db4cf2a8815354403d34efdb2313f260efdc157fc2c897110535d9"
       },
-      "inputs": [],
+      "inputs": [
+        {
+          "path": "outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/training_log.csv",
+          "sha256": "4d907bc266170361417b4ab0feb87f299131d3dc4c5e4ac3eeaf8ccef52b9f7d"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-004/20260731-102456/seed-2025/training_log.csv",
+          "sha256": "23ea971e468306f11fd4acbab117fa898a5d92f406b2e951404d96ef4842a79c"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-004/20260731-102456/seed-2026/training_log.csv",
+          "sha256": "c2671f79c470be16e445715f71f88a9d18fa31fd8f5c964c82340cc81788576b"
+        }
+      ],
       "formats": {
         "svg": {
           "sha256": "b126d20fbe2f1e6fa7c555a4245538fe49f66401a1ce16d58b5a7b2faf35fa65",
