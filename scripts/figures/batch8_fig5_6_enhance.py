@@ -79,10 +79,7 @@ def fig5_6_mechanism_enhance() -> None:
     ax.spines[["left", "bottom"]].set_color(GRAY_D)
     ax.tick_params(labelsize=8, colors=GRAY_D)
     ax.grid(axis="x", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
-    # 快速筛选披露（单种子，非正式结论；图内不出现实验代号）
-    ax.text(0.99, 0.97, "验证集快速筛选（单种子）\n正式结果待回填后替换",
-            transform=ax.transAxes, ha="right", va="top", fontsize=7,
-            color=GRAY_M)
+    # 单种子/快速筛选性质只在图注和图表清单中披露，避免工作状态文字进入图面。
     final(fig, "fig5_6_mechanism_enhance", (6.6, 3.2))
 
 

@@ -5,7 +5,7 @@
 - fig2_5 分布：右上角文字删除 + 2.0 后空旷 → x 截断 0-2.5 + 对数 y
 - fig2_6 事件时间线：堆叠面积丑陋 → 4 行子图共享 x 轴
 - fig3_1 误差棒不明显 → 加粗 + 大 capsize + 深色
-- fig3_6 Bootstrap → 素雅重设计（点+粗误差棒+浅网格）
+- fig3_6 点级 pooled Bootstrap 差异 → 描述性差异图（不作正式显著性宣称）
 - fig4_4 四格 → 精致热力图（白网格线 + 大方格 + 双行标注）
 - fig5_3 配色 → 深蓝/橙/灰素雅配色
 - fig5_4 覆盖率 → 加大间距、标签不遮挡
@@ -89,7 +89,8 @@ def redraw_autocorrelation() -> None:
     ax.text(168, 0.03, "168 h", fontsize=7.5, color=GRAY_M, ha="center")
     ax.set_xlabel("滞后（小时）", fontsize=9)
     ax.set_ylabel("自相关系数", fontsize=9)
-    ax.set_ylim(-0.05, 0.8)
+    # 不截断 lag=0 的理论自相关峰；本图从 lag=1 开始绘制，仍保留 1.0 参照范围。
+    ax.set_ylim(-0.05, 1.02)
     ax.legend(fontsize=8, frameon=False, ncol=3, loc="upper right")
     _clean_ax(ax)
     final(fig, "fig2_3b_autocorrelation", (6.8, 3.2))
@@ -187,17 +188,17 @@ def redraw_model_comparison() -> None:
     final(fig, "fig3_1_model_mae_comparison", (6.8, 4.0))
 
 
-# ========== ⑤ fig3_6 Bootstrap 差异柱状图（简洁 diverging bar） ==========
+# ========== ⑤ fig3_6 点级 pooled Bootstrap 差异图（描述性） ==========
 def redraw_bootstrap() -> None:
     d = json.load(open("outputs/analysis/bootstrap_significance.json"))
     # 标签 = "提议模型 vs 基线"（diff = MAE(基线) − MAE(提议)，正值 = 提议更优）
     labels = {
-        "TCN - StaticGraph": "StaticGraph vs TCN",
-        "StaticGraph - AdaptiveGraph": "AdaptiveGraph vs StaticGraph",
-        "AdaptiveGraph - EventResidual": "EventResidual vs AdaptiveGraph",
-        "StaticGraph - MLP": "MLP vs StaticGraph",
-        "TCN - MLP": "MLP vs TCN",
-        "AdaptiveGraph - no_event_gate": "no-event-gate vs AdaptiveGraph",
+        "TCN - StaticGraph": "StaticGraph\nvs TCN",
+        "StaticGraph - AdaptiveGraph": "AdaptiveGraph\nvs StaticGraph",
+        "AdaptiveGraph - EventResidual": "EventResidual\nvs AdaptiveGraph",
+        "StaticGraph - MLP": "MLP\nvs StaticGraph",
+        "TCN - MLP": "MLP\nvs TCN",
+        "AdaptiveGraph - no_event_gate": "no-event-gate\nvs AdaptiveGraph",
     }
     names, diffs, ps, cis = [], [], [], []
     for c in d["comparisons"]:
@@ -205,14 +206,18 @@ def redraw_bootstrap() -> None:
         p = c["pooled"]
         win = "global" if "global" in p else "event_window"
         suffix = "（事件窗口）" if win == "event_window" else ""
-        names.append(labels.get(c["name"], c["name"]) + suffix)
+        label = labels.get(c["name"], c["name"])
+        if suffix:
+            label += "\n" + suffix.strip("（）")
+        names.append(label)
         diffs.append(p[win]["observed_diff"])
         ps.append(p[win]["p_value_one_sided"])
         cis.append((p[win]["ci_lower"], p[win]["ci_upper"]))
 
     fig, ax = plt.subplots(figsize=(7.2, 3.4))
     x = np.arange(len(names))
-    colors = [BLUE if p < 0.05 else GRAY_L for p in ps]
+    # 颜色只编码方向，不把 pooled p 值视觉化为“显著/不显著”。
+    colors = [BLUE if dd > 0 else GRAY_M for dd in diffs]
     bars = ax.bar(x, diffs, width=0.58, color=colors,
                   edgecolor=GRAY_D, linewidth=0.5, zorder=3)
     # pooled 95% CI 误差棒（审查 2026-08-01：Bootstrap 图需展示不确定性区间）
@@ -224,23 +229,27 @@ def redraw_bootstrap() -> None:
         label = "p<0.001" if p < 0.001 else f"p={p:.3f}"
         if dd >= 0:
             ax.text(xi, dd + 0.0007, label, ha="center", va="bottom",
-                    fontsize=8.5, color=GRAY_D)
+                    fontsize=7.5, color=GRAY_D)
         else:
             ax.text(xi, dd - 0.0012, label, ha="center", va="top",
-                    fontsize=8.5, color=GRAY_D)
+                    fontsize=7.5, color=GRAY_D)
     ax.axhline(0, color=GRAY_D, lw=1.0, zorder=2)
     # y 轴留白：正柱标注在上方、负柱标注在柱底下方，均需留足空间
-    ax.set_ylim(min(diffs) * 1.4 - 0.001, max(diffs) * 1.35 + 0.0015)
+    ax.set_ylim(min(diffs) * 1.4 - 0.0015, max(diffs) * 1.35 + 0.0018)
     ax.set_xticks(x)
-    ax.set_xticklabels(names, fontsize=8, rotation=18, ha="right")
-    ax.set_ylabel("MAE 差（基线 − 提议模型）", fontsize=9)
+    ax.set_xticklabels(names, fontsize=7.2, rotation=0, ha="center")
+    ax.tick_params(axis="x", pad=4)
+    ax.set_ylabel("MAE 差（kWh/15 min；基线 − 提议模型）", fontsize=8.5)
     ax.tick_params(axis="y", labelsize=8)
     # 统计口径披露（审查 2026-08-01）：点级 pooled Bootstrap、重采样单元为预测键
-    ax.text(0.99, -0.16, "点级 pooled Bootstrap（10,000 次重采样，预测键为单元，三种子合并）",
-            transform=ax.transAxes, ha="right", va="top", fontsize=7, color=GRAY_M)
+    ax.text(0.99, -0.30,
+            "点级 pooled Bootstrap（10,000 次；预测键为重采样单元；三种子合并）\n"
+            "误差棒：95% 百分位区间；p 值为描述性单侧比例，不作正式显著性结论",
+            transform=ax.transAxes, ha="right", va="top", fontsize=6.5, color=GRAY_M)
     _clean_ax(ax)
     ax.grid(axis="y", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
-    final(fig, "fig3_6_bootstrap_significance", (7.2, 3.4))
+    fig.subplots_adjust(bottom=0.30)
+    final(fig, "fig3_6_bootstrap_difference", (7.2, 4.0))
 
 
 # ========== ⑥ fig4_4 四格诊断（重绘：Blues 色阶 + 分层标注） ==========
@@ -326,7 +335,7 @@ def redraw_asymmetry() -> None:
     asym = te["asymmetry"]["top_asymmetric_pairs"][:3]
     for p in asym:
         i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
-        ax.annotate(f"{p['node_i'].split('-')[1]}↔{p['node_j'].split('-')[1]}",
+        ax.annotate(f"{p['node_i'].split('-')[1]} vs {p['node_j'].split('-')[1]}",
                     xy=(te_mat[i, j], te_mat[j, i]), xytext=(te_mat[i, j] + vmax * 0.06,
                                                               te_mat[j, i] + vmax * 0.04),
                     fontsize=7.5, color=GRAY_D,

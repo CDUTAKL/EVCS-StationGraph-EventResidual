@@ -24,7 +24,7 @@ OUT = FIG_DIR / "manifest.json"
 SCRIPT_DIR = Path("scripts/figures")
 BUNDLE_PATH = Path("data/processed/SG-DATA-005-primary-tensor.npz")
 
-# 图 → 最终生成脚本（batch4~8；batch3 已废弃勿运行）
+# 图 → 最终生成脚本（batch4~9；batch3 已废弃勿运行）
 FINAL_SCRIPTS = {
     "fig2_3_load_heatmap": "batch5_restyle.py",
     "fig2_3b_autocorrelation": "batch4_redraw.py",
@@ -33,17 +33,17 @@ FINAL_SCRIPTS = {
     "fig2_6_event_hourly": "batch4_redraw.py",
     "fig3_1_model_mae_comparison": "batch4_redraw.py",
     "fig3_3_lre_matrices": "batch5_restyle.py",
-    "fig3_5_training_curve": "batch5_restyle.py",
-    "fig3_6_bootstrap_significance": "batch4_redraw.py",
-    "fig3_7_alpha_convergence": "batch5_restyle.py",
+    "fig3_5_training_curve": "batch9_advisor_redraw.py",
+    "fig3_6_bootstrap_difference": "batch9_advisor_redraw.py",
+    "fig3_7_alpha_convergence": "batch9_advisor_redraw.py",
     "fig4_2_intervention": "batch5_restyle.py",
-    "fig4_4_four_cell": "batch4_redraw.py",
+    "fig4_4_four_cell": "batch9_advisor_redraw.py",
     "fig5_2_transfer_entropy": "batch5_restyle.py",
     "fig5_3_asymmetry": "batch6_te_coverage_enhance.py",
-    "fig5_4_coverage": "batch6_te_coverage_enhance.py",
-    "fig5_5_quantile_per_node": "batch7_fig5_5_quantile.py",
-    "fig5_6_mechanism_enhance": "batch8_fig5_6_enhance.py",
-    "fig5_8_cate": "batch5_restyle.py",
+    "fig5_4_coverage": "batch9_advisor_redraw.py",
+    "fig5_5_quantile_per_node": "batch9_advisor_redraw.py",
+    "fig5_6_mechanism_enhance": "batch9_advisor_redraw.py",
+    "fig5_8_parameter_intervention": "batch5_restyle.py",
 }
 
 # 图 → 关键输入工件（存在性 + SHA 校验；glob 模式展开为匹配文件列表）
@@ -64,7 +64,7 @@ INPUTS_BY_FIGURE = {
     "fig3_5_training_curve": [
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/training_log.csv"),
     ],
-    "fig3_6_bootstrap_significance": [Path("outputs/analysis/bootstrap_significance.json")],
+    "fig3_6_bootstrap_difference": [Path("outputs/analysis/bootstrap_significance.json")],
     "fig3_7_alpha_convergence": [
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/training_log.csv"),
     ],
@@ -78,7 +78,7 @@ INPUTS_BY_FIGURE = {
         Path("outputs/analysis/variant_quick_check/variant_napl.json"),
         Path("outputs/analysis/variant_quick_check/variant_gate-mi.json"),
     ],
-    "fig5_8_cate": [Path("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json")],
+    "fig5_8_parameter_intervention": [Path("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json")],
 }
 
 

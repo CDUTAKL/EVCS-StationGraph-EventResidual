@@ -3,12 +3,12 @@
 重绘清单（用户 2026-08-01 反馈"提升复杂度和美观度，图片文字不遮挡"）：
 - fig2_3_load_heatmap   节点按活跃度排序 + Blues 色阶 + 天网格线 + 周末竖带
 - fig2_4_weekly_curves  灰阶深蓝三节点 + 夜间底纹 + 周末底纹
-- fig3_3_lre_matrices   Blues 色阶 + 白网格线 + 关系名标注 + 最大权重标注
-- fig3_5_training_curve 素雅三曲线 + 早停虚线 + 末端终值标注
-- fig3_7_alpha_convergence 素雅三曲线 + 收敛带 + 末端终值标注
+- fig3_3_lre_matrices   统一节点标签 + 白网格线 + 关系名标注
+- fig3_5_training_curve 素雅三曲线 + 早停虚线 + 不重叠终值标注
+- fig3_7_alpha_convergence 素雅三曲线 + 收敛带 + 终值范围说明
 - fig4_2_intervention   语义色（基线蓝/恶化红）+ 基线参考线 + 柱外百分比标注
 - fig5_2_transfer_entropy 分层线宽圆环网络 + 强度图例 + 灰阶覆盖柱
-- fig5_8_cate           相对基线 diverging 柱 + Blues 热力图 + 数值标注
+- fig5_8_parameter_intervention 相对基线柱 + Blues 热力图 + 数值标注
 
 统一规范：无标题、无文件名/代号、SVG+PNG 1200DPI、文字不遮挡图形。
 """
@@ -165,21 +165,19 @@ def fig_lre_matrices() -> None:
         ax.set_yticks(np.arange(10) - 0.5, minor=True)
         ax.grid(which="minor", color="white", lw=1.4)
         ax.tick_params(which="minor", length=0)
-        # 关系名标注在左上角空白区（图内必要标识，非标题）
-        ax.text(0.02, 0.98, cn, transform=ax.transAxes, ha="left", va="top",
-                fontsize=8, color=GRAY_D, fontweight="bold")
-        # 右下角最大权重标注
-        ax.text(0.98, 0.02, f"w_max={mat.max():.2f}", transform=ax.transAxes,
-                ha="right", va="bottom", fontsize=7, color=GRAY_M)
+        # 关系名放在每个面板上方，避免压住热力图单元。
+        ax.text(0.5, 1.04, cn, transform=ax.transAxes, ha="center", va="bottom",
+                fontsize=7.5, color=GRAY_D, fontweight="bold")
         ax.set_xticks(range(10))
-        ax.set_xticklabels([n.split("-")[1] for n in BUNDLE.node_ids], fontsize=7.5)
+        ax.set_xticklabels(BUNDLE.node_ids, fontsize=6.2, rotation=45, ha="right")
         ax.set_yticks(range(10))
-        ax.set_yticklabels([n.split("-")[1] for n in BUNDLE.node_ids], fontsize=7.5)
-        ax.tick_params(which="major", labelsize=7.5)
+        ax.set_yticklabels(BUNDLE.node_ids, fontsize=6.2)
+        ax.tick_params(which="major", labelsize=6.2)
     cbar = fig.colorbar(im, ax=axes, fraction=0.022, pad=0.03)
-    cbar.set_label("对称归一化邻接权重", fontsize=7.5)
+    cbar.set_label("关系权重（统一色阶）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
-    final(fig, "fig3_3_lre_matrices", (7.6, 3.3))
+    fig.subplots_adjust(bottom=0.30, top=0.86)
+    final(fig, "fig3_3_lre_matrices", (7.6, 3.6))
 
 
 # ========== ④ fig3_5 训练收敛曲线（重绘） ==========
@@ -194,21 +192,23 @@ def fig_training_curve() -> None:
         epochs = df["epoch"]
         vals = df["validation_mae_scaled"]
         ax.plot(epochs, vals, color=c, ls=ls, lw=1.6, label=f"seed {s}")
-        # 末端菱形标记 + 右侧空白区终值标注（不遮挡曲线）
+        # 末端菱形标记；终值统一放到图内说明，避免不同 seed 标注相互覆盖。
         ax.plot(epochs.iloc[-1], vals.iloc[-1], marker="D", ms=4.5, color=c,
                 zorder=5)
-        ax.text(epochs.iloc[-1] + 0.8, vals.iloc[-1], f"{vals.iloc[-1]:.4f}",
-                fontsize=7.5, color=c, va="center")
         stop_epochs.append(epochs.iloc[-1])
     # 早停虚线（取最晚早停轮次，落在数据范围内）
     ax.axvline(max(stop_epochs), color=GRAY_L, lw=0.9, ls="--", zorder=1)
-    ax.text(max(stop_epochs), ax.get_ylim()[1] * 0.96, "早停", fontsize=7.5,
-            color=GRAY_M, ha="right")
+    # 早停含义在图注中说明；图内保留竖虚线，避免文字与右上角图例重叠。
     ax.set_xlabel("训练轮次（epoch）", fontsize=9)
     ax.set_ylabel("验证 MAE（标准化尺度）", fontsize=9)
     ax.set_xlim(0, max(stop_epochs) + 6)
     _clean_ax(ax)
     ax.legend(fontsize=8, frameon=False, ncol=3, loc="upper right")
+    terminal = "；".join(f"{s}={v:.4f}" for s, v in zip(seeds, [
+        float(pd.read_csv(next(Path("outputs/experiments/SG-EXP-004").glob(f"*/seed-{s}/training_log.csv")))
+              ["validation_mae_scaled"].iloc[-1]) for s in seeds]))
+    ax.text(0.02, 0.04, f"末值（验证 MAE）：{terminal}", transform=ax.transAxes,
+            fontsize=6.5, color=GRAY_M, ha="left")
     final(fig, "fig3_5_training_curve", (6.6, 3.4))
 
 
@@ -227,15 +227,14 @@ def fig_alpha_convergence() -> None:
         ax.plot(epochs.iloc[-1], alpha.iloc[-1], marker="o", ms=4.5, color=c,
                 zorder=5)
         finals.append(alpha.iloc[-1])
-        ax.text(epochs.iloc[-1] + 0.8, alpha.iloc[-1], f"{alpha.iloc[-1]:.3f}",
-                fontsize=7.5, color=c, va="center")
     # 收敛带：三种子末值范围。A_mix = α·A_fixed + (1-α)·A_adp（graph.py），
     # α 是固定图权重——α≈0.17-0.21 表示内部邻接混合以自适应为主；
     # 收缩措辞（审查 2026-08-01）：固定图还经门控层独立输入，α 不概括整网依赖
     lo, hi = min(finals), max(finals)
     ax.axhspan(lo, hi, color="0.88", alpha=0.7, zorder=0)
-    ax.text(1, hi + 0.02, f"α 收敛区间 {lo:.2f}–{hi:.2f}（内部邻接混合）",
-            fontsize=7.5, color=GRAY_M, ha="left")
+    ax.text(0.02, 0.04,
+            f"α 终值范围 {lo:.3f}–{hi:.3f}（3 种子；内部邻接混合）",
+            transform=ax.transAxes, fontsize=7, color=GRAY_M, ha="left")
     ax.set_xlabel("训练轮次（epoch）", fontsize=9)
     ax.set_ylabel("固定图混合权重 α = σ(w)", fontsize=9)
     ax.set_xlim(0, max(df["epoch"]) + 6)
@@ -286,7 +285,7 @@ def fig_intervention() -> None:
     final(fig, "fig4_2_intervention", (7.0, 3.6))
 
 
-# ========== ⑦ fig5_2 传递熵有向信息流（重绘：分层线宽） ==========
+# ========== ⑦ fig5_2 传递熵方向性候选（探索性） ==========
 def fig_transfer_entropy() -> None:
     te = json.load(open("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"))
     edges = te["significant_edges"]
@@ -315,19 +314,20 @@ def fig_transfer_entropy() -> None:
                                      connectionstyle="arc3,rad=0.12"))
     for n, (x, y) in node_pos.items():
         ax1.scatter(x, y, s=330, color="white", edgecolor=BLUE, lw=1.2, zorder=5)
-        ax1.text(x, y, n.split("-")[1], ha="center", va="center", fontsize=7.5,
+        ax1.text(x, y, n, ha="center", va="center", fontsize=6.2,
                  color=GRAY_D, zorder=6)
     # 强度图例（放左下空白区，不遮挡节点）
     import matplotlib.lines as mlines
     hi = mlines.Line2D([], [], color=BLUE, lw=2.8, alpha=0.75, ls="-")
     lo = mlines.Line2D([], [], color=BLUE, lw=0.6, alpha=0.25, ls="-")
-    ax1.legend([hi, lo], ["TE 强", "TE 弱"], loc="lower left", fontsize=7,
+    ax1.legend([hi, lo], ["TE 强（线宽大）", "TE 弱（线宽小）"], loc="lower left", fontsize=6.5,
                frameon=False, borderaxespad=0.2)
     ax1.set_xlim(-1.32, 1.32)
     ax1.set_ylim(-1.32, 1.32)
     ax1.set_aspect("equal")
     ax1.axis("off")
-    ax1.text(0, -1.45, f"主图：TE 最强 {len(edges_draw)} 条候选边（共 {len(edges)} 条）",
+    ax1.text(0, -1.45,
+             f"箭头表示方向性候选；主图展示 TE 最强 {len(edges_draw)} 条（共 {len(edges)} 条）",
              ha="center", fontsize=6.5, color=GRAY_M)
 
     # (b) 统计图覆盖 vs 因果独有边（灰阶柱 + 柱顶数值；措辞收敛为"候选"，
@@ -351,21 +351,21 @@ def fig_transfer_entropy() -> None:
     final(fig, "fig5_2_transfer_entropy", (7.6, 3.8))
 
 
-# ========== ⑧ fig5_8 CATE 分层热力图（重绘：相对基线 diverging） ==========
-def fig_cate() -> None:
+# ========== ⑧ fig5_8 分层参数干预敏感度 ==========
+def fig_parameter_intervention() -> None:
     cat = json.load(open("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json"))
     iv = cat["interventions"]
     names_cn = {
-        "both_event": "全 event", "both_load": "全 load", "both_pattern": "全 pattern",
-        "equal": "等权 1/3", "g1_load_g2_learn": "GCN1=load",
-        "g1_learn_g2_pattern": "GCN2=pattern", "swapped": "交换两层",
+        "both_event": "全事件关系", "both_load": "全负荷关系", "both_pattern": "全模式关系",
+        "equal": "等权 1/3", "g1_load_g2_learn": "GCN1=负荷关系",
+        "g1_learn_g2_pattern": "GCN2=模式关系", "swapped": "交换两层学习值",
     }
     order = [k for k in iv if k in names_cn]
     nodes = list(iv[order[0]]["node_deltas"].keys())
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.8, 4.0),
                                    gridspec_kw={"width_ratios": [1.0, 1.35]})
-    # (a) 窗口分层条件效应：柱高 = 相对变化率（%），0 线 = 基线，正 = 恶化。
+    # (a) 分层参数干预敏感度：柱高 = 相对 MAE 变化率（%），正值表示退化。
     # 修复（审查 2026-08-01）：global_delta 已为 (MAE_iv−MAE_base)/MAE_base 变化率，
     # 绘图不得再减 1（原实现把 +149% 画成 +49%）
     x = np.arange(len(order))
@@ -416,7 +416,7 @@ def fig_cate() -> None:
     cbar = fig.colorbar(im, ax=ax2, fraction=0.045, pad=0.03)
     cbar.set_label("MAE 相对变化（%）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
-    final(fig, "fig5_8_cate", (7.8, 4.0))
+    final(fig, "fig5_8_parameter_intervention", (7.8, 4.0))
 
 
 if __name__ == "__main__":
@@ -428,5 +428,5 @@ if __name__ == "__main__":
     fig_alpha_convergence()
     fig_intervention()
     fig_transfer_entropy()
-    fig_cate()
+    fig_parameter_intervention()
     print("批次 5 完成")

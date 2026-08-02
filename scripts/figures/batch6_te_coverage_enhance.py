@@ -123,21 +123,22 @@ def fig5_3_asymmetry() -> None:
     for p, (lx, ly) in zip(top3, label_xy):
         i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
         px, py = te_mat[i, j], te_mat[j, i]
-        ax.annotate(f"{p['node_i'].split('-')[1]}↔{p['node_j'].split('-')[1]}"
+        ax.annotate(f"{p['node_i']} vs {p['node_j']}"
                     f"  (Δ={p['asymmetry']:.2f})",
                     xy=(px, py), xytext=(lx, ly),
-                    fontsize=7.5, color=GRAY_D,
+                    fontsize=6.8, color=GRAY_D,
+                    bbox=dict(facecolor="white", edgecolor="none", alpha=0.78, pad=1.0),
                     arrowprops=dict(arrowstyle="->", color=GRAY_M, lw=0.8,
                                     shrinkA=4, shrinkB=2))
     # 主导区说明（必要说明文字，放左下空白区）
     ax.text(vmax * 0.05, vmax * 0.94, "j→i 主导", fontsize=8, color=BLUE, ha="left")
     ax.text(vmax * 0.72, vmax * 0.06, "i→j 主导", fontsize=8, color=ORANGE, ha="left")
-    ax.text(vmax * 0.06, vmax * 0.16, "近似对称", fontsize=7.5, color=GRAY_M)
+    ax.text(vmax * 0.06, vmax * 0.16, "近似对称（|Δ|≤0.3）", fontsize=7.2, color=GRAY_M)
     # 统计注释（措辞收敛：超过不对称阈值，非统计显著性——审查 2026-08-01）
     ax.text(vmax * 0.05, vmax * 0.045,
             f"45 对中 {te['asymmetry']['asymmetric_pair_count']} 对超过不对称阈值"
             f"（Δ>0.3，占 {100 * te['asymmetry']['asymmetry_rate']:.0f}%）",
-            fontsize=7.5, color=GRAY_D, ha="left")
+            fontsize=7.0, color=GRAY_D, ha="left")
     _clean_ax(ax)
     ax.set_xlabel("传递熵 TE(i → j)（nats）", fontsize=9)
     ax.set_ylabel("传递熵 TE(j → i)（nats）", fontsize=9)
@@ -150,10 +151,10 @@ def fig5_3_asymmetry() -> None:
         plt.scatter([], [], s=70, facecolor=ORANGE, edgecolor=ORANGE, label="i→j 主导"),
         plt.scatter([], [], s=70, facecolor=GRAY_M, edgecolor=GRAY_M, label="近似对称"),
         plt.scatter([], [], s=70, facecolor="white", edgecolor=BLUE,
-                    linewidth=1.0, label="两方向均未入选候选边"),
+                    linewidth=1.0, label="未入选 TE 候选边"),
     ]
-    ax.legend(handles=handles, fontsize=7.5, frameon=False, ncol=2,
-              loc="lower right", bbox_to_anchor=(1.0, 0.0),
+    ax.legend(handles=handles, fontsize=7.0, frameon=False, ncol=2,
+              loc="upper left", bbox_to_anchor=(0.01, 0.98),
               handletextpad=0.3, columnspacing=0.8)
 
     # ---- 顶部边缘直方图（TE(i→j) 分布） ----
@@ -211,15 +212,17 @@ def fig5_4_coverage() -> None:
                     linewidth=1.5, zorder=4, label="标准共形" if yi == 0 else None)
         ax1.scatter([v_mean], [yi], s=115, facecolor=BLUE, edgecolor=GRAY_D,
                     linewidth=1.0, zorder=5, label="分层共形" if yi == 0 else None)
-        # 数值标签（均值点外侧，不遮挡）
-        ax1.text(s_mean - 0.045, yi, f"{s_mean:.0%}", ha="center", va="center",
-                 fontsize=8, color=GRAY_M)
-        ax1.text(v_mean + 0.045, yi, f"{v_mean:.0%}", ha="center", va="center",
-                 fontsize=8, color=GRAY_D, fontweight="bold" if yi == 1 else "normal")
-        # Δ 提升标注（右侧空白区，橙色）
+        # 数值标签（事件窗口的精确数值由上方箭头统一标注，避免与点/行标签拥挤）
+        if yi != 1:
+            ax1.text(s_mean - 0.045, yi, f"{s_mean:.1%}", ha="center", va="center",
+                     fontsize=8, color=GRAY_M)
+            ax1.text(v_mean + 0.045, yi, f"{v_mean:.1%}", ha="center", va="center",
+                     fontsize=8, color=GRAY_D)
+        # Δ 提升标注（右侧空白区，事件窗口由上方箭头给出）
         delta = v_mean - s_mean
-        ax1.text(0.975, yi, f"Δ+{delta * 100:.0f}pp", ha="right", va="center",
-                 fontsize=8, color=ORANGE, fontweight="bold" if yi == 1 else "normal")
+        if yi != 1:
+            ax1.text(0.975, yi, f"Δ+{delta * 100:.1f} pp", ha="right", va="center",
+                     fontsize=8, color=ORANGE)
     # 90% 目标线 + 达标区底纹（0.85-1.0 浅灰蓝）
     ax1.axvspan(0.90, 1.0, color="0.94", zorder=0)
     ax1.axvline(0.9, color=RED_S, lw=1.2, ls="--", zorder=1)
@@ -229,19 +232,23 @@ def fig5_4_coverage() -> None:
     oracle_event = float(np.mean([
         s["stratified_oracle_upper"]["coverage_event_window"] for s in seeds]))
     # 提升箭头与文字由均值自动生成（审查 2026-08-01：不硬编码数值）
-    ax1.annotate("", xy=(event_str_mean + 0.02, 1.28),
+    ax1.annotate("", xy=(event_str_mean + 0.02, 1.25),
                  xytext=(max(event_std_mean - 0.01, 0.005), 1.28),
                  arrowprops=dict(arrowstyle="->", color=ORANGE, lw=1.7))
-    ax1.text((event_std_mean + event_str_mean) / 2 + 0.08, 1.42,
-             f"{event_std_mean:.0%} → {event_str_mean:.0%}（规则路由）",
+    ax1.text((event_std_mean + event_str_mean) / 2 + 0.08, 1.38,
+             f"{event_std_mean:.1%} → {event_str_mean:.1%}（规则路由）",
              ha="center", fontsize=8, color=ORANGE)
     ax1.plot([oracle_event], [1], marker="*", ms=13, color=RED_S, zorder=6,
              markeredgecolor="white", markeredgewidth=0.6)
-    ax1.text(oracle_event + 0.03, 1, f"oracle 上界 {oracle_event:.0%}",
-             fontsize=7.5, color=RED_S, va="center")
+    ax1.annotate(f"oracle 事后上界 {oracle_event:.1%}\n不可部署",
+                 xy=(oracle_event, 1), xytext=(0.72, 1.72),
+                 fontsize=7.0, color=RED_S, ha="center", va="center",
+                 bbox=dict(facecolor="white", edgecolor="none", alpha=0.82, pad=1.5),
+                 arrowprops=dict(arrowstyle="->", color=RED_S, lw=0.8,
+                                 shrinkA=2, shrinkB=3))
     ax1.set_yticks(y)
     ax1.set_yticklabels(groups, fontsize=9.5)
-    ax1.set_xlabel("覆盖率（α = 0.1，规则路由，3 种子）", fontsize=9)
+    ax1.set_xlabel("覆盖率（α = 0.1；3 种子）", fontsize=9)
     ax1.set_xlim(0, 1.02)
     ax1.set_ylim(-0.55, 2.55)
     _clean_ax(ax1)
@@ -252,14 +259,14 @@ def fig5_4_coverage() -> None:
     std_mats = np.array([s["standard_conformal"]["coverage_by_horizon"] for s in seeds])
     str_mats = np.array([s["stratified_conformal"]["coverage_by_horizon"] for s in seeds])
     for mat, c, ls, lbl, z in [(std_mats, GRAY_M, "--", "标准共形", 2),
-                               (str_mats, BLUE, "-", "分层共形", 3)]:
+                               (str_mats, BLUE, "-", "规则路由分层共形", 3)]:
         lo, hi = mat.min(axis=0), mat.max(axis=0)
         ax2.fill_between(hx, lo, hi, color=c, alpha=0.12, zorder=z - 1)
         ax2.plot(hx, mat.mean(axis=0), color=c, ls=ls, lw=1.8, marker="o",
                  ms=4.5, label=lbl, zorder=z)
     ax2.axhline(0.9, color=RED_S, lw=1.1, ls="--", zorder=1)
     ax2.set_xticks(hx)
-    ax2.set_xlabel("预测步长（horizon，规则路由）", fontsize=9)
+    ax2.set_xlabel("预测步长（horizon；规则路由）", fontsize=9)
     # 右图按全样本统计（含稳定样本），明确标注避免误读为事件窗口（审查 2026-08-01）
     ax2.set_ylabel("全样本覆盖率", fontsize=9)
     ax2.set_ylim(0.55, 0.93)

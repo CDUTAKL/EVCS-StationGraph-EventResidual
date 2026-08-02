@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="678.112965pt" height="321.596751pt" viewBox="0 0 678.112965 321.596751" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-02T13:28:25.528001</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.0, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 321.596751 
+L 678.112965 321.596751 
+L 678.112965 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 122.76625 276.876751 
+L 254.350073 276.876751 
+L 254.350073 29.445854 
+L 122.76625 29.445854 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 166.627524 276.876751 
+L 166.627524 29.445854 
+" clip-path="url(#p07c232efaf)" style="fill: none; stroke: #c8c8c8; stroke-opacity: 0.72; stroke-width: 0.55; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2">
+      <defs>
+       <path id="maea2db13fb" d="M 0 0 
+L 0 3.5 
+" style="stroke: #404040; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#maea2db13fb" x="166.627524" y="276.876751" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #404040" x="166.627524" y="290.756751" transform="rotate(-0 166.627524 290.756751)">0.00</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 215.362274 276.876751 
+L 215.362274 29.445854 
+" clip-path="url(#p07c232efaf)" style="fill: none; stroke: #c8c8c8; stroke-opacity: 0.72; stroke-width: 0.55; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#maea2db13fb" x="215.362274" y="276.876751" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #404040" x="215.362274" y="290.756751" transform="rotate(-0 215.362274 290.756751)">0.01</text>
+     </g>
+    </g>
+    <g id="text_3">
+     <text style="font-size: 7.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(111.462185 304.250751)">MAE 差：基线 − 提议模型（kWh/15 min）</text>
+     <text style="font-size: 7.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(144.037958 315.310751)">（正值 = 提议模型更优）</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_5">
+      <defs>
+       <path id="mb5d4b9e449" d="M 0 0 
+L -3.5 0 
+" style="stroke: #404040; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#mb5d4b9e449" x="122.76625" y="265.629892" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #404040" x="115.76625" y="269.069892" transform="rotate(-0 115.76625 269.069892)">MLP vs TCN</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#mb5d4b9e449" x="122.76625" y="190.650833" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #404040" x="115.76625" y="194.090833" transform="rotate(-0 115.76625 194.090833)">MLP vs StaticGraph</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#mb5d4b9e449" x="122.76625" y="115.671773" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #404040" x="115.76625" y="119.111773" transform="rotate(-0 115.76625 119.111773)">AdaptiveGraph vs StaticGraph</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#mb5d4b9e449" x="122.76625" y="40.692713" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #404040" x="115.76625" y="44.132713" transform="rotate(-0 115.76625 44.132713)">StaticGraph vs TCN</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_9">
+    <path d="M 166.627524 276.876751 
+L 166.627524 29.445854 
+" clip-path="url(#p07c232efaf)" style="fill: none; stroke: #404040; stroke-linecap: square"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 122.76625 276.876751 
+L 122.76625 29.445854 
+" style="fill: none; stroke: #404040; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 122.76625 276.876751 
+L 254.350073 276.876751 
+" style="fill: none; stroke: #404040; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_8">
+    <g id="patch_5">
+     <path d="M 211.674911 269.562892 
+L 239.337443 269.562892 
+L 239.337443 261.696892 
+L 211.674911 261.696892 
+z
+" style="fill: #ffffff; opacity: 0.75"/>
+    </g>
+    <text style="font-size: 6.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="212.157911" y="268.113892" transform="rotate(-0 212.157911 268.113892)">+0.0084</text>
+   </g>
+   <g id="text_9">
+    <g id="patch_6">
+     <path d="M 134.466153 194.583833 
+L 161.7632 194.583833 
+L 161.7632 186.717833 
+L 134.466153 186.717833 
+z
+" style="fill: #ffffff; opacity: 0.75"/>
+    </g>
+    <text style="font-size: 6.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="134.949153" y="193.134833" transform="rotate(-0 134.949153 193.134833)">-0.0074</text>
+   </g>
+   <g id="text_10">
+    <g id="patch_7">
+     <path d="M 166.705259 119.604773 
+L 194.36779 119.604773 
+L 194.36779 111.738773 
+L 166.705259 111.738773 
+z
+" style="fill: #ffffff; opacity: 0.75"/>
+    </g>
+    <text style="font-size: 6.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="167.188259" y="118.155773" transform="rotate(-0 167.188259 118.155773)">-0.0002</text>
+   </g>
+   <g id="text_11">
+    <g id="patch_8">
+     <path d="M 250.049527 44.625713 
+L 276.338527 44.625713 
+L 276.338527 36.759713 
+L 250.049527 36.759713 
+z
+" style="fill: #ffffff; opacity: 0.75"/>
+    </g>
+    <text style="font-size: 6.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="250.532527" y="43.176713" transform="rotate(-0 250.532527 43.176713)">+0.0158</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 7px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #808080" x="251.718397" y="40.414472" transform="rotate(-0 251.718397 40.414472)">pooled n=2.14M</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="106.976191" y="13.06" transform="rotate(-0 106.976191 13.06)">A</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 8.8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="116.187059" y="12.857875" transform="rotate(-0 116.187059 12.857875)">全局窗口：Bootstrap 森林图</text>
+   </g>
+   <g id="LineCollection_1">
+    <path d="M 207.3454 265.629892 
+L 207.812893 265.629892 
+" clip-path="url(#p07c232efaf)" style="fill: none; stroke: #404040"/>
+   </g>
+   <g id="line2d_10">
+    <defs>
+     <path id="m4f41e2b2d8" d="M 0 3 
+L 0 -3 
+" style="stroke: #404040"/>
+    </defs>
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#m4f41e2b2d8" x="207.3454" y="265.629892" style="fill: #1f77b4; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_11">
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#m4f41e2b2d8" x="207.812893" y="265.629892" style="fill: #1f77b4; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="LineCollection_2">
+    <path d="M 130.527075 190.650833 
+L 130.992671 190.650833 
+" clip-path="url(#p07c232efaf)" style="fill: none; stroke: #404040"/>
+   </g>
+   <g id="line2d_12">
+    <defs>
+     <path id="m4eb95c20c6" d="M 0 3 
+L 0 -3 
+" style="stroke: #404040"/>
+    </defs>
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#m4eb95c20c6" x="130.527075" y="190.650833" style="fill: #ff7f0e; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_13">
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#m4eb95c20c6" x="130.992671" y="190.650833" style="fill: #ff7f0e; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="LineCollection_3">
+    <path d="M 165.611066 115.671773 
+L 165.658376 115.671773 
+" clip-path="url(#p07c232efaf)" style="fill: none; stroke: #404040"/>
+   </g>
+   <g id="line2d_14">
+    <defs>
+     <path id="mc6f55ba475" d="M 0 3 
+L 0 -3 
+" style="stroke: #404040"/>
+    </defs>
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#mc6f55ba475" x="165.611066" y="115.671773" style="fill: #2ca02c; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_15">
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#mc6f55ba475" x="165.658376" y="115.671773" style="fill: #2ca02c; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="LineCollection_4">
+    <path d="M 243.220067 40.692713 
+L 243.67702 40.692713 
+" clip-path="url(#p07c232efaf)" style="fill: none; stroke: #404040"/>
+   </g>
+   <g id="line2d_16">
+    <defs>
+     <path id="m069e552f01" d="M 0 3 
+L 0 -3 
+" style="stroke: #404040"/>
+    </defs>
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#m069e552f01" x="243.220067" y="40.692713" style="fill: #d62728; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_17">
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#m069e552f01" x="243.67702" y="40.692713" style="fill: #d62728; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_18">
+    <defs>
+     <path id="m57c9bdc51c" d="M 0 2.85 
+C 0.755829 2.85 1.480803 2.549706 2.015254 2.015254 
+C 2.549706 1.480803 2.85 0.755829 2.85 0 
+C 2.85 -0.755829 2.549706 -1.480803 2.015254 -2.015254 
+C 1.480803 -2.549706 0.755829 -2.85 0 -2.85 
+C -0.755829 -2.85 -1.480803 -2.549706 -2.015254 -2.015254 
+C -2.549706 -1.480803 -2.85 -0.755829 -2.85 0 
+C -2.85 0.755829 -2.549706 1.480803 -2.015254 2.015254 
+C -1.480803 2.549706 -0.755829 2.85 0 2.85 
+z
+" style="stroke: #2c5f8a"/>
+    </defs>
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#m57c9bdc51c" x="207.581085" y="265.629892" style="fill: #2c5f8a; stroke: #2c5f8a"/>
+    </g>
+   </g>
+   <g id="line2d_19">
+    <defs>
+     <path id="maa3449749f" d="M 0 2.85 
+C 0.755829 2.85 1.480803 2.549706 2.015254 2.015254 
+C 2.549706 1.480803 2.85 0.755829 2.85 0 
+C 2.85 -0.755829 2.549706 -1.480803 2.015254 -2.015254 
+C 1.480803 -2.549706 0.755829 -2.85 0 -2.85 
+C -0.755829 -2.85 -1.480803 -2.549706 -2.015254 -2.015254 
+C -2.549706 -1.480803 -2.85 -0.755829 -2.85 0 
+C -2.85 0.755829 -2.549706 1.480803 -2.015254 2.015254 
+C -1.480803 2.549706 -0.755829 2.85 0 2.85 
+z
+" style="stroke: #808080"/>
+    </defs>
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#maa3449749f" x="130.760369" y="190.650833" style="fill: #808080; stroke: #808080"/>
+    </g>
+   </g>
+   <g id="line2d_20">
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#maa3449749f" x="165.634801" y="115.671773" style="fill: #808080; stroke: #808080"/>
+    </g>
+   </g>
+   <g id="line2d_21">
+    <g clip-path="url(#p07c232efaf)">
+     <use xlink:href="#m57c9bdc51c" x="243.44824" y="40.692713" style="fill: #2c5f8a; stroke: #2c5f8a"/>
+    </g>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_9">
+    <path d="M 521.21587 276.876751 
+L 652.799693 276.876751 
+L 652.799693 29.445854 
+L 521.21587 29.445854 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_3">
+     <g id="line2d_22">
+      <path d="M 521.21587 276.876751 
+L 521.21587 29.445854 
+" clip-path="url(#p622cb938a2)" style="fill: none; stroke: #c8c8c8; stroke-opacity: 0.72; stroke-width: 0.55; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_23">
+      <g>
+       <use xlink:href="#maea2db13fb" x="521.21587" y="276.876751" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_15">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #404040" x="521.21587" y="290.756751" transform="rotate(-0 521.21587 290.756751)">-0.04</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_24">
+      <path d="M 556.30489 276.876751 
+L 556.30489 29.445854 
+" clip-path="url(#p622cb938a2)" style="fill: none; stroke: #c8c8c8; stroke-opacity: 0.72; stroke-width: 0.55; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_25">
+      <g>
+       <use xlink:href="#maea2db13fb" x="556.30489" y="276.876751" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_16">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #404040" x="556.30489" y="290.756751" transform="rotate(-0 556.30489 290.756751)">-0.02</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_26">
+      <path d="M 591.393909 276.876751 
+L 591.393909 29.445854 
+" clip-path="url(#p622cb938a2)" style="fill: none; stroke: #c8c8c8; stroke-opacity: 0.72; stroke-width: 0.55; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_27">
+      <g>
+       <use xlink:href="#maea2db13fb" x="591.393909" y="276.876751" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_17">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #404040" x="591.393909" y="290.756751" transform="rotate(-0 591.393909 290.756751)">0.00</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_28">
+      <path d="M 626.482929 276.876751 
+L 626.482929 29.445854 
+" clip-path="url(#p622cb938a2)" style="fill: none; stroke: #c8c8c8; stroke-opacity: 0.72; stroke-width: 0.55; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#maea2db13fb" x="626.482929" y="276.876751" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_18">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #404040" x="626.482929" y="290.756751" transform="rotate(-0 626.482929 290.756751)">0.02</text>
+     </g>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 7.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(509.911805 304.250751)">MAE 差：基线 − 提议模型（kWh/15 min）</text>
+     <text style="font-size: 7.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif" transform="translate(542.487579 315.310751)">（正值 = 提议模型更优）</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_5">
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#mb5d4b9e449" x="521.21587" y="265.629892" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_20">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #404040" x="514.21587" y="269.069892" transform="rotate(-0 514.21587 269.069892)">no-event-gate vs AdaptiveGraph</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#mb5d4b9e449" x="521.21587" y="209.395598" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #404040" x="514.21587" y="212.835598" transform="rotate(-0 514.21587 212.835598)">MLP vs StaticGraph</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#mb5d4b9e449" x="521.21587" y="153.161303" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #404040" x="514.21587" y="156.601303" transform="rotate(-0 514.21587 156.601303)">EventResidual vs AdaptiveGraph</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_33">
+      <g>
+       <use xlink:href="#mb5d4b9e449" x="521.21587" y="96.927008" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #404040" x="514.21587" y="100.367008" transform="rotate(-0 514.21587 100.367008)">AdaptiveGraph vs StaticGraph</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#mb5d4b9e449" x="521.21587" y="40.692713" style="fill: #404040; stroke: #404040; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font-size: 8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #404040" x="514.21587" y="44.132713" transform="rotate(-0 514.21587 44.132713)">StaticGraph vs TCN</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_35">
+    <path d="M 591.393909 276.876751 
+L 591.393909 29.445854 
+" clip-path="url(#p622cb938a2)" style="fill: none; stroke: #404040; stroke-linecap: square"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 521.21587 276.876751 
+L 521.21587 29.445854 
+" style="fill: none; stroke: #404040; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 521.21587 276.876751 
+L 652.799693 276.876751 
+" style="fill: none; stroke: #404040; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_25">
+    <g id="patch_12">
+     <path d="M 559.144954 269.562892 
+L 586.807485 269.562892 
+L 586.807485 261.696892 
+L 559.144954 261.696892 
+z
+" style="fill: #ffffff; opacity: 0.75"/>
+    </g>
+    <text style="font-size: 6.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="559.627954" y="268.113892" transform="rotate(-0 559.627954 268.113892)">-0.0206</text>
+   </g>
+   <g id="text_26">
+    <g id="patch_13">
+     <path d="M 535.463801 213.328598 
+L 563.126332 213.328598 
+L 563.126332 205.462598 
+L 535.463801 205.462598 
+z
+" style="fill: #ffffff; opacity: 0.75"/>
+    </g>
+    <text style="font-size: 6.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="535.946801" y="211.879598" transform="rotate(-0 535.946801 211.879598)">-0.0353</text>
+   </g>
+   <g id="text_27">
+    <g id="patch_14">
+     <path d="M 592.090821 157.094303 
+L 619.753352 157.094303 
+L 619.753352 149.228303 
+L 592.090821 149.228303 
+z
+" style="fill: #ffffff; opacity: 0.75"/>
+    </g>
+    <text style="font-size: 6.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="592.573821" y="155.645303" transform="rotate(-0 592.573821 155.645303)">+0.0003</text>
+   </g>
+   <g id="text_28">
+    <g id="patch_15">
+     <path d="M 591.247623 100.860008 
+L 618.910154 100.860008 
+L 618.910154 92.994008 
+L 591.247623 92.994008 
+z
+" style="fill: #ffffff; opacity: 0.75"/>
+    </g>
+    <text style="font-size: 6.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="591.730623" y="99.411008" transform="rotate(-0 591.730623 99.411008)">-0.0002</text>
+   </g>
+   <g id="text_29">
+    <g id="patch_16">
+     <path d="M 647.333434 44.625713 
+L 674.995965 44.625713 
+L 674.995965 36.759713 
+L 647.333434 36.759713 
+z
+" style="fill: #ffffff; opacity: 0.75"/>
+    </g>
+    <text style="font-size: 6.9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="647.816434" y="43.176713" transform="rotate(-0 647.816434 43.176713)">+0.0288</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 7px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #808080" x="650.168017" y="40.414472" transform="rotate(-0 650.168017 40.414472)">pooled n=30,480</text>
+   </g>
+   <g id="text_31">
+    <text style="font-weight: 700; font-size: 11px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="505.425811" y="13.06" transform="rotate(-0 505.425811 13.06)">B</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 8.8px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #404040" x="514.636679" y="12.857875" transform="rotate(-0 514.636679 12.857875)">事件窗口：Bootstrap 森林图</text>
+   </g>
+   <g id="LineCollection_5">
+    <path d="M 553.857873 265.629892 
+L 556.671016 265.629892 
+" clip-path="url(#p622cb938a2)" style="fill: none; stroke: #404040"/>
+   </g>
+   <g id="line2d_36">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#m4f41e2b2d8" x="553.857873" y="265.629892" style="fill: #1f77b4; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_37">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#m4f41e2b2d8" x="556.671016" y="265.629892" style="fill: #1f77b4; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="LineCollection_6">
+    <path d="M 527.684896 209.395598 
+L 531.207411 209.395598 
+" clip-path="url(#p622cb938a2)" style="fill: none; stroke: #404040"/>
+   </g>
+   <g id="line2d_38">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#m4eb95c20c6" x="527.684896" y="209.395598" style="fill: #ff7f0e; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_39">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#m4eb95c20c6" x="531.207411" y="209.395598" style="fill: #ff7f0e; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="LineCollection_7">
+    <path d="M 591.785534 153.161303 
+L 592.004728 153.161303 
+" clip-path="url(#p622cb938a2)" style="fill: none; stroke: #404040"/>
+   </g>
+   <g id="line2d_40">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#mc6f55ba475" x="591.785534" y="153.161303" style="fill: #2ca02c; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_41">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#mc6f55ba475" x="592.004728" y="153.161303" style="fill: #2ca02c; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="LineCollection_8">
+    <path d="M 590.813592 96.927008 
+L 591.190015 96.927008 
+" clip-path="url(#p622cb938a2)" style="fill: none; stroke: #404040"/>
+   </g>
+   <g id="line2d_42">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#m069e552f01" x="590.813592" y="96.927008" style="fill: #d62728; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_43">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#m069e552f01" x="591.190015" y="96.927008" style="fill: #d62728; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="LineCollection_9">
+    <path d="M 640.283958 40.692713 
+L 643.633338 40.692713 
+" clip-path="url(#p622cb938a2)" style="fill: none; stroke: #404040"/>
+   </g>
+   <g id="line2d_44">
+    <defs>
+     <path id="m14df150c5e" d="M 0 3 
+L 0 -3 
+" style="stroke: #404040"/>
+    </defs>
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#m14df150c5e" x="640.283958" y="40.692713" style="fill: #9467bd; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_45">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#m14df150c5e" x="643.633338" y="40.692713" style="fill: #9467bd; stroke: #404040"/>
+    </g>
+   </g>
+   <g id="line2d_46">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#maa3449749f" x="555.262521" y="265.629892" style="fill: #808080; stroke: #808080"/>
+    </g>
+   </g>
+   <g id="line2d_47">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#maa3449749f" x="529.441065" y="209.395598" style="fill: #808080; stroke: #808080"/>
+    </g>
+   </g>
+   <g id="line2d_48">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#m57c9bdc51c" x="591.894325" y="153.161303" style="fill: #2c5f8a; stroke: #2c5f8a"/>
+    </g>
+   </g>
+   <g id="line2d_49">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#maa3449749f" x="591.003438" y="96.927008" style="fill: #808080; stroke: #808080"/>
+    </g>
+   </g>
+   <g id="line2d_50">
+    <g clip-path="url(#p622cb938a2)">
+     <use xlink:href="#m57c9bdc51c" x="641.977622" y="40.692713" style="fill: #2c5f8a; stroke: #2c5f8a"/>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p07c232efaf">
+   <rect x="122.76625" y="29.445854" width="131.583823" height="247.430898"/>
+  </clipPath>
+  <clipPath id="p622cb938a2">
+   <rect x="521.21587" y="29.445854" width="131.583823" height="247.430898"/>
+  </clipPath>
+ </defs>
+</svg>

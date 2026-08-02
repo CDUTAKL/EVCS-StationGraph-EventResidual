@@ -173,7 +173,7 @@ def fig_cate() -> None:
     cbar.set_label("MAE 相对变化（×）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
 
-    final(fig, "fig5_8_cate", (7.2, 4.0))
+    final(fig, "fig5_8_parameter_intervention", (7.2, 4.0))
 
 
 # ========== ⑨ 机制增强对比 ==========
