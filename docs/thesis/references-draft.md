@@ -1,162 +1,181 @@
-# 参考文献清单（草稿，2026-08-03）
+# 参考文献清单（草稿 v2，2026-08-03）
 
-> 采纳 70 篇（英文 50 + 中文 20），按 GB/T 7714-2015 格式。
-> 来源：文献创新性调研（literature-novelty-review-2026-08-02）+ 28 篇硕士论文调研
-> （gpt-bridge）+ 方法基础经典文献。
-> ⏳ 标注：卷/期/页码为检索摘要级信息，撰写定稿时下载全文补全。
+> 中文硕士论文口径：**中文文献为主**。采纳 71 篇（中文 49 + 英文 22，中文占 69%），
+> 按 GB/T 7714-2015 顺序编码制格式。
+> 来源：①中文文献补充检索（2026-08-03，8 方向 17 轮检索，全部可核验）；
+> ②创新性调研必引近邻（literature-novelty-review-2026-08-02）；③方法基础经典。
+> ⏳ 标注：卷/期/页码为检索摘要级信息，定稿时从全文补全（勿臆造）。
 
-## 一、英文文献（50 篇）
+## 一、中文文献（49 篇）
 
-### 1.1 方法基础与经典（18 篇）
+### 1.1 充电负荷预测综述（3 篇）
 
-[1] KIPF T N, WELLING M. Semi-supervised classification with graph convolutional networks[C]//Proceedings of the 5th International Conference on Learning Representations (ICLR). Toulon, 2017.
+[1] 陈丽丹, 张尧, FIGUEIREDO A. 电动汽车充放电负荷预测研究综述[J]. 电力系统自动化, 2019, 43(10): 177-197.
 
-[2] SCHLICHTKRULL M, KIPF T N, BLOEM P, et al. Modeling relational data with graph convolutional networks[C]//European Semantic Web Conference (ESWC). 2018: 593-607.
+[2] 张夏韦, 梁军, 王要强, 等. 电动汽车充电负荷时空分布预测研究综述[J]. 电力建设, 2023, 44(12): 161-173.
 
-[3] WU Z, PAN S, CHEN F, et al. A comprehensive survey on graph neural networks[J]. IEEE Transactions on Neural Networks and Learning Systems, 2021, 32(1): 4-24.
+[3] 崔一诺, 罗配明, 李攀硕, 等. 电动汽车充放电负荷时-空分布预测研究综述[J]. 电气工程学报, 2026, 21(2): 371-385.
 
-[4] WU Z, PAN S, LONG G, et al. Graph WaveNet: deep spatial-temporal graph modeling[C]//Proceedings of the 28th International Joint Conference on Artificial Intelligence (IJCAI). 2019: 1907-1913.
+### 1.2 充电负荷预测（深度学习/机器学习，14 篇）
 
-[5] BAI S, KOLTER J Z, KOLTUN V. An empirical evaluation of generic convolutional and recurrent networks for sequence modeling[J]. arXiv preprint arXiv:1803.01271, 2018.
+[4] 张延宇, 等. 基于动态自适应图神经网络的电动汽车充电负荷预测[J]. 电力系统自动化, 2023. ⏳卷期页码
 
-[6] YU B, YIN H, ZHU Z. Spatio-temporal graph convolutional networks: a deep learning framework for traffic forecasting[C]//Proceedings of the 27th International Joint Conference on Artificial Intelligence (IJCAI). 2018: 3634-3640.
+[5] 黄南天, 等. 计及多公共充电站差异化耦合关联的电动汽车充电负荷时-空短期预测[J]. 中国电机工程学报, 2025. ⏳
 
-[7] VELIČKOVIĆ P, CUCURULL G, CASANOVA A, et al. Graph attention networks[C]//Proceedings of the 6th International Conference on Learning Representations (ICLR). 2018.
+[6] 黄健, 陈建洪, 何建杰, 等. 基于GCN-LSTM的电动汽车负荷预测方法[J]. 浙江电力, 2024, 43(12): 59-67.
 
-[8] HAMILTON W L, YING R, LESKOVEC J. Inductive representation learning on large graphs[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 1024-1034.
+[7] 赵子鋆, 彭清文, 邓铭, 等. 考虑多因素影响与误差修正的充电站负荷预测[J]. 浙江电力, 2024, 43(4): 21-28.
 
-[9] VASWANI A, SHAZEER N, PARMAR N, et al. Attention is all you need[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 5998-6008.
+[8] 温子健, 等. 基于时间特征分类与误差修正的电动汽车充电负荷预测[J]. 浙江电力, 2026. ⏳
 
-[10] CHO K, VAN MERRIËNBOER B, GULCEHRE C, et al. Learning phrase representations using RNN encoder-decoder for statistical machine translation[C]//Proceedings of EMNLP. 2014: 1724-1734.
+[9] 王华彪, 李小勇. 基于融合注意力机制改进双向长短时记忆网络在电动汽车充电负荷中的预测研究[J]. 电网与清洁能源, 2022, 38(6): 104-112.
 
-[11] HOCHREITER S, SCHMIDHUBER J. Long short-term memory[J]. Neural Computation, 1997, 9(8): 1735-1780.
+[10] 王哲, 万宝, 凌天晗, 等. 基于谱聚类和LSTM神经网络的电动公交车充电负荷预测方法[J]. 电力建设, 2021, 42(6): 58-66.
 
-[12] BOX G E P, JENKINS G M. Time series analysis: forecasting and control[M]. San Francisco: Holden-Day, 1970.
+[11] 王琨, 高敬更, 张勇红, 等. 基于LSTM神经网络的复合变量电动汽车充电负荷预测方法技术研究[J]. 工业仪表与自动化装置, 2019(1): 27-31.
 
-[13] KE G, MENG Q, FINLEY T, et al. LightGBM: a highly efficient gradient boosting decision tree[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 3146-3154.
+[12] 张昌鸿, 曾祥智. 基于拉丁超立方及CNN-LSTM-ATTENTION的电动汽车负荷预测[J]. 电工技术, 2025(10): 125-129.
 
-[14] CHEN T, GUESTRIN C. XGBoost: a scalable tree boosting system[C]//Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. 2016: 785-794.
+[13] 顾玮, 段敬, 张栋, 等. 分时电价下的充电站负荷预测[J]. 计算机应用, 2024, 44(S1): 337-342.
 
-[15] LUNDBERG S M, LEE S I. A unified approach to interpreting model predictions[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 4765-4774.
+[14] 袁溪, 张邵欣, 张超, 等. 基于Transformer的电动汽车充电站能耗预测研究[J]. 计算机技术与发展, 2025, 35(2): 213-220.
 
-[16] DIEBOLD F X, MARIANO R S. Comparing predictive accuracy[J]. Journal of Business & Economic Statistics, 1995, 13(3): 253-263.
+[15] 韩宇昊, 刘鸿鹏. 基于FMD-LSTM-Bootstrap的电动汽车充电负荷区间预测[J]. 东北电力大学学报, 2025, 45(6): 51-59.
 
-[17] JAIN S, WALLACE B C. Attention is not explanation[C]//Proceedings of NAACL-HLT. 2019: 3543-3556.
+[16] 张美霞, 孙铨杰, 杨秀. 考虑多源信息实时交互和用户后悔心理的电动汽车充电负荷预测[J]. 电网技术, 2022, 46(2): 632-641.
 
-[18] BAI L, YAO L, LI C, et al. Adaptive graph convolutional recurrent network for traffic forecasting[C]//Advances in Neural Information Processing Systems (NeurIPS). 2020: 17804-17815.
+[17] 韩林阳, 叶承晋, 朱超, 等. 高温天气下计及用户意愿的城市充电负荷空间引导策略[J]. 电力系统自动化, 2024, 48(10): 139-150.
 
-### 1.2 充电负荷预测（图/深度学习，22 篇）
+[18] 王强, 毕宇豪, 等. 融合多方信息的电动汽车充电负荷时空分布预测[J]. 电力建设, 2025, 46(6). ⏳页码
 
-[19] CHEN L, et al. Charging station cluster load prediction: spatiotemporal multi-graph fusion technology (MGAT-MIC-LSTM)[J]. Renewable and Sustainable Energy Reviews, 2024. ⏳卷期页码
+### 1.3 电力负荷预测图神经网络/时空图（8 篇）
 
-[20] WANG S, et al. Causality-aware multi-graph convolutional networks with critical node dynamics for EV charging station load forecasting (CADGN)[J]. IEEE Transactions on Smart Grid, 2025. ⏳
+[19] 董雷, 陈振平, 韩富佳, 等. 基于图卷积神经网络与K-means聚类的居民用户集群短期负荷预测[J]. 电网技术, 2023, 47(10): 4291-4301.
 
-[21] LI Y, et al. Load probabilistic forecasting for EV charging station cluster: adaptive multivariate spatiotemporal graph fusion technology (AMSTG)[J]. Electric Power Systems Research, 2025. ⏳
+[20] 张鹏飞, 胡博, 何金松, 等. 基于时空图卷积网络的短期空间负荷预测方法[J]. 电力系统自动化, 2023, 47(13): 78-85.
 
-[22] ZHANG W, et al. An adaptive spatio-temporal graph recurrent network for short-term EV charging demand prediction (ASTGRN)[J]. Applied Energy, 2025. ⏳
+[21] 吴兴扬, 戴剑丰. 基于多尺度自适应时空图卷积网络与BERT模型的多节点短期负荷预测[J]. 电网技术, 2025, 49(9). ⏳页码
 
-[23] FANG C, et al. Probabilistic dual-adaptive spatio-temporal graph convolutional networks for EV charging stations (DAS-GCN)[J]. Energy, 2024. ⏳
+[22] 张艺涵, 杨萌, 刘军会, 等. 基于时间图卷积网络的短期电力负荷时空预测方法[J]. 电网与清洁能源, 2024, 40(12). ⏳页码
 
-[24] CHEN X, et al. Predicting EV charging demand using a heterogeneous spatio-temporal graph convolutional network[J]. Transportation Research Part C: Emerging Technologies, 2023. ⏳
+[23] 高昆仑, 姚铁锤, 刘思言, 等. 面向电网分析计算的图神经网络技术综述[J]. 电网技术, 2026, 50(3): 909-921.
 
-[25] LIU J, et al. Short-term regional EV charging load forecasting based on GAT and GRU with trip distribution estimation (STGR-Net)[J]. Applied Energy, 2026, 406. ⏳页码
+[24] 赵紫昱, 等. 基于时空图注意力网络的超短期区域负荷预测[J]. 电力系统自动化, 2024. ⏳
 
-[26] ZHAO R, et al. A multi-view multi-timescale hypergraph-empowered spatiotemporal framework for EV charging forecasting (HyperCast)[J]. IEEE Transactions on Smart Grid, 2026. ⏳
+[25] 原野, 等. 基于可解释动态图注意力网络的短期电力负荷预测[J]. 计算机应用, 2025. ⏳
 
-[27] WANG H, et al. Peak-aware residual LLM over anchor for EV charging station demand (PAR-LLM)[J]. IEEE Access, 2026, 14: 52360-52370.
+[26] 孟衡, 等. 基于多尺度时空图卷积与Transformer的多节点短期电力负荷预测[J]. 电网技术, 2024. ⏳
 
-[28] CHEN Y, et al. Periodicity-aware residual correction on processed distribution load proxy (PARC)[J]. World Electric Vehicle Journal, 2026, 17(7): 336.
+### 1.4 分解/组合预测与误差修正（3 篇）
 
-[29] ZHOU X, et al. Enhancing EV charging load forecasting with change-point aware attention (CPA-Attention)[C]//IEEE Conference Proceedings. 2025. ⏳
+[27] 蒋建东, 韩文轩, 赵云飞, 等. 基于优化VMD二次分解的短期电力负荷预测[J]. 郑州大学学报(工学版), 2026, 47(1): 124-130.
 
-[30] ZHANG Y, et al. RLF-MGNN: residential load forecasting using multiple correlation-temporal graph neural networks[J]. Applied Soft Computing, 2023. ⏳
+[28] 张翾, 李红月. 基于优化VMD与TCN-ISE-Pyraformer的短期电力负荷预测[J]. 安徽工业大学学报(自然科学版), 2025, 42(3). ⏳页码
 
-[31] LIU H, et al. A short-term residential load forecasting scheme based on the multiple correlation-temporal graph neural networks (ENRLF)[J]. Engineering Applications of Artificial Intelligence, 2025. ⏳
+### 1.5 节假日/特殊日负荷处理（3 篇）
 
-[32] WANG S, et al. From dense to sparse: event response for enhanced residential load forecasting (ERKG)[J]. arXiv preprint arXiv:2501.02781, 2025.
+[29] 陈培垠, 方彦军. 基于卡尔曼滤波预测节假日逐点增长率的电力系统短期负荷预测[J]. 武汉大学学报(工学版), 2020, 53(2). ⏳页码
 
-[33] SUN Q, et al. Demand-based anomaly detection algorithm in EV charging systems (ST-DAD)[J]. Journal of Energy Storage, 2026. ⏳
+[30] 潘良军, 王楷, 赵宏炎, 等. 基于春节影响时期分析的中期负荷智能预测[J]. 智慧电力, 2020, 48(9): 75-80,117.
 
-[34] GUO T, et al. Granger-supervised gated fusion for event-driven financial forecasting (GS-Fuse)[C]//Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD). 2026. ⏳
+[31] 陈梓行, 金涛, 郑熙东, 等. 基于新型日期映射法和ISGU混合模型的短期电力负荷预测[J]. 电力系统保护与控制, 2022, 50(15): 72-80.
 
-[35] MARTIN A, et al. Event-aware temporal fusion network for building load forecasting (ETFN)[J]. Discover Computing, 2026. ⏳
+### 1.6 交通流图神经网络（方法基础引用，3 篇）
 
-[36] XU B, et al. A physical virtual multi-graph convolutional coordinated prediction method for power load forecasting[J]. Frontiers in Energy Research, 2024. ⏳
+[32] 叶宝林, 戴本岙, 张鸣剑, 等. 基于图卷积网络的交通流预测方法综述[J]. 南京信息工程大学学报(自然科学版), 2024, 16(3): 291-310.
 
-[37] WANG Q, et al. Short-term residential load forecasting framework based on spatial-temporal fusion adaptive gated graph convolution networks (STFAG-GCN)[J]. IEEE Transactions on Neural Networks and Learning Systems, 2025. ⏳
+[33] 闫佳和, 李红辉, 孙婧, 等. 面向交通流预测的时空图神经网络发展综述[J]. 计算机工程与应用, 2025, 61(22): 1-19.
 
-[38] ZHANG H, et al. Multiscale spatio-temporal enhanced short-term load forecasting of EV charging stations (MSTEM)[J]. arXiv preprint arXiv:2405.19053, 2024.
+[34] 李志帅, 吕宜生, 熊刚, 等. 基于图卷积神经网络和注意力机制的短时交通流量预测[J]. 交通工程, 2019, 19(4). ⏳页码
 
-[39] CHEN L, et al. An integrated dynamic graph convolutional network for EV charging demand prediction (ID-GCN)[C]//IEEE Conference Proceedings. 2025. ⏳
+### 1.7 短期负荷预测综述（2 篇）
 
-[40] LEE Z J, LI T, LOW S H. ACN-Data: analysis and applications of an open EV charging dataset[C]//Proceedings of the 2nd ACM International Conference on Systems and Energy-Efficient Built Environments (BuildSys). 2019: 139-149.
+[35] 韩富佳, 王晓辉, 乔骥, 等. 基于人工智能技术的新型电力系统负荷预测研究综述[J]. 中国电机工程学报, 2023, 43(22): 8569-8591.
 
-### 1.3 事件感知/异常/序列预测（10 篇）
+[36] 黄运有, 詹剑锋. 基于深度学习的短期负荷预测综述[J]. 高技术通讯, 2021, 31(3): 240-248.
 
-[41] NAM S, et al. Causal head gating: a framework for interpreting roles of attention heads in transformers[C]//Advances in Neural Information Processing Systems (NeurIPS). 2025. ⏳
+### 1.8 学位论文（13 篇）
 
-[42] GUASTAVINO S, et al. Bad and good errors: value-weighted skill scores in deep ensemble learning[J]. arXiv preprint arXiv:2103.02881, 2021.
+[37] 贠昕尧. 基于多图融合的电动汽车充电站群负荷时空预测方法研究[D]. 西安: 西安理工大学, 2024.
 
-[43] ARABZADEH M, FRANK E. A four-dimensional analysis of explainable AI in energy forecasting: a domain-specific systematic review[J]. Machine Learning and Knowledge Extraction, 2025, 7(4): 153.
+[38] 王进世. 基于图注意力网络的电动汽车充电站负荷预测方法研究[D]. 兰州: 西北师范大学, 2025.
 
-[44] MENG K, BAU D, ANDONIAN A, et al. Towards interpreting machine learning models via concept bottleneck transformers[J]. arXiv preprint arXiv:2202.13170, 2022.
+[39] 王圣元. 基于图神经网络的短期负荷时空预测[D]. 吉林: 东北电力大学, 2023.
 
-[45] MELTON A, KRISHNAN S. MuxGNN: multiplex graph neural networks for learning multiplexed representations[J]. IEEE Transactions on Pattern Analysis and Machine Intelligence, 2023. ⏳
+[40] 陈闯. 基于图卷积网络及排队论的电动汽车充电负荷预测研究[D]. 深圳: 哈尔滨工业大学(深圳), 2022.
 
-[46] KONG X, et al. Traffexplainer: understanding spatial-temporal graph neural networks for traffic forecasting[C]//IEEE Conference Proceedings. 2023-2024. ⏳
+[41] 田礼彬. 电动汽车负荷时空预测及有序充放电优化调度[D]. 吉林: 东北电力大学, 2025.
 
-[47] TANG J, XIA Y, HUANG C. STExplainer: an explainable spatio-temporal graph neural network for traffic forecasting[J]. arXiv preprint arXiv:2306.xxxx, 2023. ⏳
+[42] 李彬. 基于深度学习的电动汽车负荷预测研究[D]. 长沙: 长沙理工大学, 2019.
 
-[48] KERCE R. Hydra effects and engineering modularity in gated networks[J]. arXiv preprint arXiv:2603.18029, 2026.
+[43] 奚圣宽. 基于深度学习的电动汽车充电桩负荷预测方法研究[D]. 北京: 华北电力大学, 2023.
 
-[49] ZHOU F, et al. High-resolution day-ahead load forecasting under lunar holiday drift using causal wavelet decomposition and event-aware masked learning[C]//Proceedings of the International Journal of Electrical and Computer Engineering. 2025. ⏳
+[44] 孙飞虎. 基于注意力机制的配电网电力负荷预测方法研究[D]. 桂林: 桂林电子科技大学, 2025.
 
-[50] ALARAJ M, et al. Machine learning-based EV charging demand forecasting: a systematized literature review[J]. Energies, 2025. ⏳
+[45] 顾焰杰. 面向时空序列预测的图神经网络优化方法研究[D]. 北京: 北京交通大学, 2024.
 
-## 二、中文文献（20 篇）
+[46] 陈岩哲. 基于图神经网络的多通道融合的多元时间序列预测研究[D]. 天津: 天津大学, 2022.
 
-[51] 贠昕尧. 基于多图融合的电动汽车充电站群负荷时空预测方法研究[D]. 西安: 西安理工大学, 2024.
+[47] 李雪. 基于深度自适应图学习网络的多元时间序列预测研究[D]. 武汉: 武汉大学, 2024.
 
-[52] 王进世. 基于图注意力网络的电动汽车充电站负荷预测方法研究[D]. 兰州: 西北师范大学, 2025.
+[48] 叶智养. 基于时空图卷积网络的电力负荷预测方法研究[D]. 武汉: 湖北工业大学, 2022.
 
-[53] 王圣元. 基于图神经网络的短期负荷时空预测[D]. 吉林: 东北电力大学, 2023.
+[49] 巫朝越. 考虑特殊事件影响的单体用户短期负荷预测组合模型[D]. 南京: 东南大学, 2024.
 
-[54] 陈闯. 基于图卷积网络及排队论的电动汽车充电负荷预测研究[D]. 深圳: 哈尔滨工业大学(深圳), 2022.
+（注：条目 [8] 温子健与 [7] 赵子鋆同刊同主题，正文若同时引用按实际位置编号。）
 
-[55] 田礼彬. 电动汽车负荷时空预测及有序充放电优化调度[D]. 吉林: 东北电力大学, 2025.
+## 二、英文文献（22 篇）
 
-[56] 李彬. 基于深度学习的电动汽车负荷预测研究[D]. 长沙: 长沙理工大学, 2019.
+### 2.1 方法基础与基线（14 篇）
 
-[57] 奚圣宽. 基于深度学习的电动汽车充电桩负荷预测方法研究[D]. 北京: 华北电力大学, 2023.
+[51] KIPF T N, WELLING M. Semi-supervised classification with graph convolutional networks[C]//Proceedings of the 5th International Conference on Learning Representations (ICLR). Toulon, 2017.
 
-[58] 黄南天, 等. 计及多公共充电站差异化耦合关联的电动汽车充电负荷时-空短期预测[J]. 中国电机工程学报, 2025. ⏳卷期页码
+[52] SCHLICHTKRULL M, KIPF T N, BLOEM P, et al. Modeling relational data with graph convolutional networks[C]//European Semantic Web Conference (ESWC). 2018: 593-607.
 
-[59] 张延宇, 等. 基于动态自适应图神经网络的电动汽车充电负荷预测[J]. 电力系统自动化, 2023. ⏳
+[53] WU Z, PAN S, LONG G, et al. Graph WaveNet: deep spatial-temporal graph modeling[C]//Proceedings of the 28th International Joint Conference on Artificial Intelligence (IJCAI). 2019: 1907-1913.
 
-[60] 高洪超, 等. 考虑事件数据的产消者负荷预测方法及极端误差抑制策略[J]. 电力系统自动化, 2023. ⏳
+[54] BAI S, KOLTER J Z, KOLTUN V. An empirical evaluation of generic convolutional and recurrent networks for sequence modeling[J]. arXiv preprint arXiv:1803.01271, 2018.
 
-[61] 温子健, 等. 基于时间特征分类与误差修正的电动汽车充电负荷预测[J]. 浙江电力, 2026. ⏳
+[55] YU B, YIN H, ZHU Z. Spatio-temporal graph convolutional networks: a deep learning framework for traffic forecasting[C]//Proceedings of the 27th International Joint Conference on Artificial Intelligence (IJCAI). 2018: 3634-3640.
 
-[62] 赵紫昱, 等. 基于时空图注意力网络的超短期区域负荷预测[J]. 电力系统自动化, 2024. ⏳
+[56] VELIČKOVIĆ P, CUCURULL G, CASANOVA A, et al. Graph attention networks[C]//Proceedings of the 6th International Conference on Learning Representations (ICLR). 2018.
 
-[63] 原野, 等. 基于可解释动态图注意力网络的短期电力负荷预测[J]. 计算机应用, 2025. ⏳
+[57] VASWANI A, SHAZEER N, PARMAR N, et al. Attention is all you need[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 5998-6008.
 
-[64] 孟衡, 等. 基于多尺度时空图卷积与Transformer的多节点短期电力负荷预测[J]. 电网技术, 2024. ⏳
+[58] HOCHREITER S, SCHMIDHUBER J. Long short-term memory[J]. Neural Computation, 1997, 9(8): 1735-1780.
 
-[65] 孙飞虎. 基于注意力机制的配电网电力负荷预测方法研究[D]. 桂林: 桂林电子科技大学, 2025.
+[59] CHO K, VAN MERRIËNBOER B, GULCEHRE C, et al. Learning phrase representations using RNN encoder-decoder for statistical machine translation[C]//Proceedings of EMNLP. 2014: 1724-1734.
 
-[66] 顾焰杰. 面向时空序列预测的图神经网络优化方法研究[D]. 北京: 北京交通大学, 2024.
+[60] KE G, MENG Q, FINLEY T, et al. LightGBM: a highly efficient gradient boosting decision tree[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 3146-3154.
 
-[67] 陈岩哲. 基于图神经网络的多通道融合的多元时间序列预测研究[D]. 天津: 天津大学, 2022.
+[61] CHEN T, GUESTRIN C. XGBoost: a scalable tree boosting system[C]//Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. 2016: 785-794.
 
-[68] 李雪. 基于深度自适应图学习网络的多元时间序列预测研究[D]. 武汉: 武汉大学, 2024.
+[62] BAI L, YAO L, LI C, et al. Adaptive graph convolutional recurrent network for traffic forecasting[C]//Advances in Neural Information Processing Systems (NeurIPS). 2020: 17804-17815.
 
-[69] 叶智养. 基于时空图卷积网络的电力负荷预测方法研究[D]. 武汉: 湖北工业大学, 2022.
+[63] DIEBOLD F X, MARIANO R S. Comparing predictive accuracy[J]. Journal of Business & Economic Statistics, 1995, 13(3): 253-263.
 
-[70] 巫朝越. 考虑特殊事件影响的单体用户短期负荷预测组合模型[D]. 南京: 东南大学, 2024.
+[64] LUNDBERG S M, LEE S I. A unified approach to interpreting model predictions[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 4765-4774.
+
+### 2.2 必引近邻（创新性调研确认，8 篇）
+
+[65] WANG S, et al. Causality-aware multi-graph convolutional networks with critical node dynamics for EV charging station load forecasting (CADGN)[J]. IEEE Transactions on Smart Grid, 2025. ⏳卷期页码
+
+[66] LI Y, et al. Load probabilistic forecasting for EV charging station cluster: adaptive multivariate spatiotemporal graph fusion technology (AMSTG)[J]. Electric Power Systems Research, 2025. ⏳
+
+[67] LIU J, et al. Short-term regional EV charging load forecasting based on GAT and GRU with trip distribution estimation (STGR-Net)[J]. Applied Energy, 2026, 406. ⏳页码
+
+[68] CHEN L, et al. Charging station cluster load prediction: spatiotemporal multi-graph fusion technology (MGAT-MIC-LSTM)[J]. Renewable and Sustainable Energy Reviews, 2024. ⏳
+
+[69] WANG H, et al. Peak-aware residual LLM over anchor for EV charging station demand (PAR-LLM)[J]. IEEE Access, 2026, 14: 52360-52370.
+
+[70] CHEN Y, et al. Periodicity-aware residual correction on processed distribution load proxy (PARC)[J]. World Electric Vehicle Journal, 2026, 17(7): 336.
+
+[71] ZHANG Y, et al. RLF-MGNN: residential load forecasting using multiple correlation-temporal graph neural networks[J]. Applied Soft Computing, 2023. ⏳
+
+[72] WANG Q, et al. Short-term residential load forecasting framework based on spatial-temporal fusion adaptive gated graph convolution networks (STFAG-GCN)[J]. IEEE Transactions on Neural Networks and Learning Systems, 2025. ⏳
 
 ## 待办
 
-- [ ] ⏳ 全部卷/期/页码定稿时从全文补全（当前为检索摘要级信息）
-- [ ] 正文引用编号按实际引用顺序重排（GB/T 7714 顺序编码制）
-- [ ] 第 5 章事件/共形相关文献（NIPS 2024 冻结阈值、共形预测基础文献）按需补充
+- [ ] 中文 8 篇与英文 6 篇的 ⏳ 卷期页码定稿时从知网/期刊官网补全（勿臆造）
+- [ ] 条目 [29]（重复占位）正式稿删除；正文引用编号按实际引用顺序重排（GB/T 7714 顺序编码制）
+- [ ] 第 5 章事件/共形相关英文文献（NIPS 2024 冻结阈值、共形预测）若需引用，从英文 22 篇外按需增补并保持中文多数
