@@ -1,10 +1,12 @@
 # 参考文献清单（草稿 v2，2026-08-03）
 
-> 中文硕士论文口径：**中文文献为主**。采纳 71 篇（中文 49 + 英文 22，中文占 69%），
+> 中文硕士论文口径：**中文文献为主**。采纳 77 篇（中文 50 + 英文 27，中文占 65%），
 > 按 GB/T 7714-2015 顺序编码制格式。
 > 来源：①中文文献补充检索（2026-08-03，8 方向 17 轮检索，全部可核验）；
 > ②创新性调研必引近邻（literature-novelty-review-2026-08-02）；③方法基础经典。
 > ⏳ 标注：卷/期/页码为检索摘要级信息，定稿时从全文补全（勿臆造）。
+> 2026-08-03 追加 [72]-[77]（第 1/4 章写作补充）：高洪超事件数据、ARIMA 基础、
+> 干预范式（Causal Head Gating）、误差分解（Guastavino）、注意力批评、XAI 综述。
 
 ## 一、中文文献（49 篇）
 
@@ -174,8 +176,22 @@
 
 [71] WANG Q, et al. Short-term residential load forecasting framework based on spatial-temporal fusion adaptive gated graph convolution networks (STFAG-GCN)[J]. IEEE Transactions on Neural Networks and Learning Systems, 2025. ⏳
 
+### 2.3 追加补充（第 1/4 章写作需要，5 篇）
+
+[72] 高洪超, 等. 考虑事件数据的产消者负荷预测方法及极端误差抑制策略[J]. 电力系统自动化, 2023. ⏳卷期页码
+
+[73] BOX G E P, JENKINS G M. Time series analysis: forecasting and control[M]. San Francisco: Holden-Day, 1970.
+
+[74] NAM S, et al. Causal head gating: a framework for interpreting roles of attention heads in transformers[C]//Advances in Neural Information Processing Systems (NeurIPS). 2025. ⏳
+
+[75] GUASTAVINO S, et al. Bad and good errors: value-weighted skill scores in deep ensemble learning[J]. arXiv preprint arXiv:2103.02881, 2021.
+
+[76] JAIN S, WALLACE B C. Attention is not explanation[C]//Proceedings of NAACL-HLT. 2019: 3543-3556.
+
+[77] ARABZADEH M, FRANK E. A four-dimensional analysis of explainable AI in energy forecasting: a domain-specific systematic review[J]. Machine Learning and Knowledge Extraction, 2025, 7(4): 153.
+
 ## 待办
 
-- [ ] 中文 8 篇与英文 6 篇的 ⏳ 卷期页码定稿时从知网/期刊官网补全（勿臆造）
-- [ ] 条目 [29]（重复占位）正式稿删除；正文引用编号按实际引用顺序重排（GB/T 7714 顺序编码制）
-- [ ] 第 5 章事件/共形相关英文文献（NIPS 2024 冻结阈值、共形预测）若需引用，从英文 22 篇外按需增补并保持中文多数
+- [ ] 中文 9 篇与英文 6 篇的 ⏳ 卷期页码定稿时从知网/期刊官网补全（勿臆造）
+- [ ] 正文引用编号按实际引用顺序重排（GB/T 7714 顺序编码制；第 1 章已按当前编号引用 [1]-[71]，[72]-[77] 供第 4 章使用）
+- [ ] 第 5 章事件/共形相关英文文献（NIPS 2024 冻结阈值、共形预测）若需引用，按需增补并保持中文多数
