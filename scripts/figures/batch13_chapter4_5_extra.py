@@ -71,11 +71,16 @@ def _clean(ax, grid_axis="y") -> None:
 
 
 def redraw_fig4_6() -> None:
-    """图 4-6：预测残差分布（全局 vs 事件窗口，三模型核密度）。"""
+    """图 4-6：预测残差分布（全局 vs 事件窗口，三模型核密度）。
+
+    第三模型用 MLP 而非 AdaptiveGraph：StaticGraph 与 AdaptiveGraph 的
+    逐样本预测差 79% < 0.001（全局 MAE 仅差 1%），残差分布重合到不可分辨，
+    图中改用差异更大的 MLP 展示残差结构差异。
+    """
     resids = {}
     for exp, label, color in [("SG-EXP-002", "TCN", GRAY_M),
                               ("SG-EXP-003", "StaticGraph", ORANGE),
-                              ("SG-EXP-004", "AdaptiveGraph", BLUE)]:
+                              ("SG-EXP-009", "MLP", RED)]:
         df = pd.read_csv(_pred_path(exp))
         df["resid"] = df["y_pred"] - df["y_true"]
         resids[label] = (df[~df["target_event"]]["resid"].to_numpy(),
@@ -90,7 +95,7 @@ def redraw_fig4_6() -> None:
         # 三条 KDE 高度重叠（残差集中于 0 附近），颜色 + 线型双编码区分
         for label, color, ls in [("TCN", GRAY_M, "-"),
                                  ("StaticGraph", ORANGE, "--"),
-                                 ("AdaptiveGraph", BLUE, "-.")]:
+                                 ("MLP", RED, "-.")]:
             r_global, r_evt = resids[label]
             r = r_global if win_key == 0 else r_evt
             kde = stats.gaussian_kde(r)

@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-02T07:43:21.527478+00:00",
-  "source_commit": "250be65",
+  "generated_at_utc": "2026-08-02T07:46:30.062671+00:00",
+  "source_commit": "602df4c",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -810,7 +810,7 @@
     "fig4_6_residual_distribution": {
       "script": {
         "path": "batch13_chapter4_5_extra.py",
-        "sha256": "41d8821cfe9cb09133d078e1d4eb829bbb801d680d011037978d0ffeb3577e48"
+        "sha256": "25cb26b24cbe05919997d0fc1d9f27aa7af554498083091e9f220d885ce76dc9"
       },
       "inputs": [
         {
@@ -828,21 +828,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "84708f7f5d4e7c4c2432032649e1932898285b2b03fc903ba8f22f19391367b5",
-          "size_bytes": 34840,
-          "mtime_utc": "2026-08-02T07:42:46.625111+00:00"
+          "sha256": "788ae75a8f80bc52ce11800c71264881e36af608f37dc6ec9727f1ac0bd9ce61",
+          "size_bytes": 34977,
+          "mtime_utc": "2026-08-02T07:46:25.857249+00:00"
         },
         "png": {
-          "sha256": "f666bbae8d80ac004027c00598abb2caf48a090d61a29f61760c0e81a3f4a9c8",
-          "size_bytes": 1014228,
-          "mtime_utc": "2026-08-02T07:42:47.347739+00:00"
+          "sha256": "2e34598f56b8266febbcc22bacc1e90defe93e904d2fc6d5e91e97ba154064c5",
+          "size_bytes": 1054002,
+          "mtime_utc": "2026-08-02T07:46:26.631402+00:00"
         }
       }
     },
     "fig4_7_error_vs_event_intensity": {
       "script": {
         "path": "batch13_chapter4_5_extra.py",
-        "sha256": "41d8821cfe9cb09133d078e1d4eb829bbb801d680d011037978d0ffeb3577e48"
+        "sha256": "25cb26b24cbe05919997d0fc1d9f27aa7af554498083091e9f220d885ce76dc9"
       },
       "inputs": [
         {
@@ -852,14 +852,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "2c4e780c86a9e28d051ab704ba700917264d3b95918955835b352ebdab6d6b4f",
+          "sha256": "a84c87280654660ca2921995b20707f7e125efa8b964406a34913e56de214dea",
           "size_bytes": 13459,
-          "mtime_utc": "2026-08-02T07:42:48.054595+00:00"
+          "mtime_utc": "2026-08-02T07:46:27.389431+00:00"
         },
         "png": {
           "sha256": "837f8256a9e42b38d2065624acd0d93af10f49cf5ed5f06a4aff0a58dcc94d46",
           "size_bytes": 548202,
-          "mtime_utc": "2026-08-02T07:42:48.603966+00:00"
+          "mtime_utc": "2026-08-02T07:46:27.898596+00:00"
         }
       }
     },
@@ -1014,7 +1014,7 @@
     "fig5_10_coverage_width": {
       "script": {
         "path": "batch13_chapter4_5_extra.py",
-        "sha256": "41d8821cfe9cb09133d078e1d4eb829bbb801d680d011037978d0ffeb3577e48"
+        "sha256": "25cb26b24cbe05919997d0fc1d9f27aa7af554498083091e9f220d885ce76dc9"
       },
       "inputs": [
         {
@@ -1024,21 +1024,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "514541bccc2b064af400850521eef81dd288aa3ae28527e683e2fff5b0b683c4",
+          "sha256": "27c605949b26a8d9525e86218cac885130eb55b117bef27c40e6047ca2699009",
           "size_bytes": 42240,
-          "mtime_utc": "2026-08-02T07:42:48.715086+00:00"
+          "mtime_utc": "2026-08-02T07:46:28.018030+00:00"
         },
         "png": {
           "sha256": "09e910b5aee526dc061ba5a39145318570cab9569020d0ba7d31dde4d8aa8c69",
           "size_bytes": 745984,
-          "mtime_utc": "2026-08-02T07:42:49.442905+00:00"
+          "mtime_utc": "2026-08-02T07:46:28.751248+00:00"
         }
       }
     },
     "fig5_11_te_vs_relations": {
       "script": {
         "path": "batch13_chapter4_5_extra.py",
-        "sha256": "41d8821cfe9cb09133d078e1d4eb829bbb801d680d011037978d0ffeb3577e48"
+        "sha256": "25cb26b24cbe05919997d0fc1d9f27aa7af554498083091e9f220d885ce76dc9"
       },
       "inputs": [
         {
@@ -1052,14 +1052,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "1864c1bdd4cb6e01b9cf6d7c87b4c6dc79679e80a8581ce56b87519decf658e8",
+          "sha256": "645c0e945f658d3c0b36b257aec2f2b67f5fcabcfa537cae6d260785724b4463",
           "size_bytes": 66502,
-          "mtime_utc": "2026-08-02T07:42:49.545816+00:00"
+          "mtime_utc": "2026-08-02T07:46:28.859017+00:00"
         },
         "png": {
           "sha256": "260a70708f103771f3a4417460c0c380a94cba5e8429897bfb404b4c9a242dbe",
           "size_bytes": 1132328,
-          "mtime_utc": "2026-08-02T07:42:50.194917+00:00"
+          "mtime_utc": "2026-08-02T07:46:29.524039+00:00"
         }
       }
     }
