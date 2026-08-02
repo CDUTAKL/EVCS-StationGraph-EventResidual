@@ -169,7 +169,10 @@ def fig5_3_asymmetry() -> None:
         ax_top.text(px, max(top_n) * 1.05, str(k), ha="center", va="bottom",
                     fontsize=7.2, color=RED_S, fontweight="bold")
     ax_top.set_ylim(0, max(top_n) * 1.18)
-    ax_top.set_title("主图横轴边缘分布：TE(i → j)", fontsize=8.0, loc="left", pad=2)
+    # 面板说明用 ax.text（图内禁止 set_title API）
+    ax_top.text(0.02, 0.97, "主图横轴边缘分布：TE(i → j)",
+                transform=ax_top.transAxes, ha="left", va="top",
+                fontsize=8.0, color=GRAY_D)
     ax_top.set_ylabel("频数", fontsize=7.0)
     ax_top.tick_params(axis="x", labelbottom=False)
     ax_top.tick_params(axis="y", labelsize=6.5)
@@ -188,7 +191,8 @@ def fig5_3_asymmetry() -> None:
         ax_right.text(-max_right_n * 0.34, py, str(k), ha="center", va="center",
                       fontsize=7.2, color=RED_S, fontweight="bold")
     ax_right.set_xlim(-max_right_n * 0.48, max_right_n * 1.12)
-    ax_right.set_title("TE(j → i)", fontsize=7.2, pad=2)
+    ax_right.text(0.5, 0.95, "TE(j → i)", transform=ax_right.transAxes,
+                  ha="center", va="top", fontsize=7.2, color=GRAY_D)
     ax_right.text(0.5, 1.12, "纵轴边缘", transform=ax_right.transAxes,
                   ha="center", va="bottom", fontsize=6.8)
     ax_right.set_xticks([])

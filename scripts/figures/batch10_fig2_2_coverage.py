@@ -140,9 +140,10 @@ def main() -> None:
     ax_sum.set_yticks([])
     ax_sum.set_xticks([0, 10, 15, 55])
     ax_sum.set_xlabel("候选节点数量", fontsize=7.2, labelpad=3)
-    ax_sum.set_title(
-        f"B  筛选结果：{n_main} 个主分析 + {n_sens} 个敏感性专属 + {n_gray} 个未入选",
-        loc="left", fontsize=8.4, color=GRAY_D, pad=4)
+    # 面板标注用 ax.text 而非 set_title（图内禁止标题 API，见 CLAUDE.md 图表约束）
+    ax_sum.text(0.0, 0.60,
+                f"B  筛选结果：{n_main} 个主分析 + {n_sens} 个敏感性专属 + {n_gray} 个未入选",
+                ha="left", va="top", fontsize=8.4, color=GRAY_D)
     ax_sum.text(len(df), 0.42, f"总计 {len(df)} 个", ha="right", va="bottom",
                 fontsize=6.2, color=GRAY_M)
     for spine in ("top", "right", "left"):

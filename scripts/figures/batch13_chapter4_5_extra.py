@@ -103,7 +103,9 @@ def redraw_fig4_6() -> None:
         ax.set_xlabel("预测残差（kWh/15 min）", fontsize=8.4)
         ax.set_ylabel("核密度", fontsize=8.4)
         ax.set_xlim(-xmax, xmax)
-        ax.set_title(win_label, fontsize=8.8, color=GRAY_D, loc="left", pad=6)
+        # 面板说明用 ax.text（图内禁止 set_title API）
+        ax.text(0.0, 1.03, win_label, transform=ax.transAxes,
+                ha="left", va="bottom", fontsize=8.8, color=GRAY_D)
         _clean(ax)
         if win_key == 0:
             ax.legend(fontsize=7.2, frameon=False, loc="upper right")
