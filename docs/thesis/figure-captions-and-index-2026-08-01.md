@@ -25,10 +25,10 @@
 | 图 2-7 | `fig2_7_feature_correlation.svg/.png` | 特征相关性矩阵 | `SG-DATA-005-primary-tensor.npz` | 可用 |
 | 图 2-8 | `fig2_8_weekday_hour_heatmap.svg/.png` | 星期×小时负荷热力图 | `SG-DATA-005-primary-tensor.npz` | 可用 |
 | 图 2-9 | `fig2_9_event_component_composition.svg/.png` | 事件四分量构成 | `SG-DATA-005-primary-tensor.npz` | 可用 |
-| 图 2-10 | `fig2_10_event_window_length.svg/.png` | 事件窗口长度分布 | 冻结规则（SG-DATA-005） | 可用 |
+| 图 2-10 | `fig2_10_event_window_length.svg/.png` | 事件窗口长度分布 | 冻结规则（SG-DATA-005） | 已修订 |
 | 图 3-1 | `fig3_1_model_mae_comparison.svg/.png` | 模型全局 MAE 对比 | SG-EXP-002/003/004 + 传统基线 | 可用 |
 | 图 3-3 | `fig3_3_lre_matrices.svg/.png` | 三类关系矩阵 | SG-EXP-004 `relation_matrices.npz` | 已修订 |
-| 图 3-4 | `fig3_4_mae_by_horizon.svg/.png` | 逐预测步长 MAE | 五模型 seed-* `metrics.json` | 可用 |
+| 图 3-4 | `fig3_4_mae_by_horizon.svg/.png` | 逐预测步长 MAE | 五模型 seed-* `metrics.json` | 已修订 |
 | 图 3-5 | `fig3_5_training_curve.svg/.png` | 三种子训练收敛 | SG-EXP-004 `training_log.csv` | 已修订 |
 | 图 3-6 | `fig3_6_bootstrap_difference.svg/.png` | 点级 pooled Bootstrap 差异 | `bootstrap_significance.json` | 已修订 |
 | 图 3-7 | `fig3_7_alpha_convergence.svg/.png` | 自适应图混合权重收敛 | SG-EXP-004 `training_log.csv` | 已修订 |
@@ -43,7 +43,7 @@
 | 图 5-2 | `fig5_2_transfer_entropy.svg/.png` | TE 方向性候选结构 | `transfer_entropy_summary.json` | 探索性 |
 | 图 5-3 | `fig5_3_asymmetry.svg/.png` | TE 方向不对称性 | `transfer_entropy_summary.json` | 已修订 |
 | 图 5-4 | `fig5_4_coverage.svg/.png` | 标准/规则路由共形覆盖 | `conformal_summary.json` | 已修订 |
-| 图 5-5 | `fig5_5_quantile_per_node.svg/.png` | 分层残差分位数 | `conformal_summary.json` | 可用 |
+| 图 5-5 | `fig5_5_quantile_per_node.svg/.png` | 分层残差分位数 | `conformal_summary.json` | 已修订 |
 | 图 5-6 | `fig5_6_mechanism_enhance.svg/.png` | NAPL/Gate-MI 快速筛选 | `variant_quick_check/*.json` | **仅内部/附录** |
 | 图 5-8 | `fig5_8_parameter_intervention.svg/.png` | 分层参数干预敏感度 | `counterfactual_cate_summary.json` | 已修订 |
 | 图 5-10 | `fig5_10_coverage_width.svg/.png` | 覆盖率与区间宽度 | `conformal_summary.json` | 可用 |
@@ -73,7 +73,7 @@
 
 **图 2-9.** 测试集事件触发样本处 4 个行为分量的逐节点平均归一化贡献（每节点按自身标准差归一化，与事件分数定义一致）。堆叠柱展示接入、离站、活跃变化与负荷跳变在触发窗口中的相对构成；全量统计无误差棒。
 
-**图 2-10.** 冻结事件规则（验证集 95 分位阈值 + 因果前向扩展 2 步）在测试集产生的窗口结构。A 为窗口长度分布（扩展 2 步后几乎全部为 3 片，合并相邻窗口后可达 6 片）；B 为逐节点窗口数，展示节点间触发频率差异。该统计描述规则行为本身，不表示模型性能。
+**图 2-10.** 冻结事件规则（验证集 95 分位阈值 + 因果前向扩展 2 步）在测试集产生的窗口结构。A 为窗口长度分布，长度为 3 片的窗口数直接标注在柱内；B 为逐节点窗口数，展示节点间触发频率差异。扩展 2 步后窗口几乎全部为 3 片，合并相邻窗口后可达 6 片。该统计描述规则行为本身，不表示模型性能。
 
 ### 第 3 章
 

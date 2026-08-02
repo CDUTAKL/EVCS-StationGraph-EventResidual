@@ -127,23 +127,29 @@ def _clean(ax, grid_axis="y") -> None:
 
 def redraw_fig3_4() -> None:
     """图 3-4：逐预测步长 MAE（h1→h4，5 模型三种子均值 ± SD）。"""
-    fig, ax = plt.subplots(figsize=(6.8, 4.0))
+    fig, ax = plt.subplots(figsize=(8.4, 4.65))
+    fig.subplots_adjust(left=0.11, right=0.98, bottom=0.18, top=0.79)
     hs = np.arange(1, 5)
+    markers = {"TCN": "o", "StaticGraph": "s", "AdaptiveGraph": "D",
+               "MLP": "^", "GWN": "P"}
     for exp_id, label, color in MODELS:
         data = _load_model_metrics(exp_id)
         mat = np.asarray([[data[s]["by_horizon"][h] for h in hs] for s in SEEDS])
         mean, sd = mat.mean(axis=0), mat.std(axis=0)
-        ax.plot(hs, mean, marker="o", ms=5.5, lw=1.6, color=color,
+        ax.plot(hs, mean, marker=markers[label], ms=6.0, lw=1.7, color=color,
                 label=label, zorder=4)
         ax.fill_between(hs, mean - sd, mean + sd, color=color,
-                        alpha=0.18, lw=0, zorder=2)
+                        alpha=0.11, lw=0, zorder=2)
     ax.set_xlabel("预测步长 h（15 min）", fontsize=8.8)
     ax.set_ylabel("MAE（kWh/15 min）", fontsize=8.8)
     ax.set_xticks(hs)
     ax.set_xticklabels([f"h={h}" for h in hs], fontsize=8.2)
-    ax.legend(fontsize=7.4, frameon=False, ncol=3, loc="upper left")
+    ax.legend(fontsize=7.5, frameon=False, ncol=5, loc="upper center",
+              bbox_to_anchor=(0.50, 1.18), columnspacing=1.0, handletextpad=0.35)
     _clean(ax)
-    _final(fig, "fig3_4_mae_by_horizon", (6.8, 4.0))
+    fig.text(0.50, 0.92, "点为三种子均值；浅色带为跨种子标准差",
+             ha="center", va="center", fontsize=7.0, color=GRAY_M)
+    _final(fig, "fig3_4_mae_by_horizon", (8.4, 4.65))
     return None
 
 

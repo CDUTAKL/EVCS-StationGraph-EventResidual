@@ -90,8 +90,10 @@ def redraw_fig5_4() -> None:
         ("stratified_oracle_upper", "oracle 事后上界", ORANGE, "*", ORANGE),
     ]
 
-    fig = plt.figure(figsize=(10.4, 4.35), constrained_layout=True)
-    gs = GridSpec(1, 3, figure=fig, width_ratios=[1.28, 1.28, 1.48], wspace=0.34)
+    # 顶部保留独立说明带；数据区只放点、误差棒和曲线，避免说明文字压到图形。
+    fig = plt.figure(figsize=(12.2, 4.85), constrained_layout=False)
+    gs = GridSpec(1, 3, figure=fig, width_ratios=[1.18, 1.25, 1.42],
+                  left=0.065, right=0.985, bottom=0.20, top=0.79, wspace=0.40)
 
     # A：最容易误读的事件窗口单独展开，规则路由与 oracle 不再叠在同一行。
     ax = fig.add_subplot(gs[0, 0])
@@ -118,12 +120,12 @@ def redraw_fig5_4() -> None:
     oracle_event = float(np.mean([
         s["stratified_oracle_upper"]["coverage_event_window"] for s in seeds
     ]))
-    ax.text(0.98, 0.92, f"★ oracle {oracle_event:.1%}\n真实标签事后上界\n不可部署",
-            transform=ax.transAxes, ha="right", va="top", fontsize=7.0, color=ORANGE,
-            bbox=dict(facecolor="white", edgecolor=ORANGE, linewidth=0.7,
-                      boxstyle="round,pad=0.35"))
     clean_ax(ax, "x")
     panel_label(ax, "A", "事件窗口：部署路径放大")
+    fig.text(0.27, 0.925, f"★ oracle {oracle_event:.1%}  ·  真实标签事后上界  ·  不可部署",
+             ha="center", va="center", fontsize=7.2, color=ORANGE,
+             bbox=dict(facecolor="white", edgecolor=ORANGE, linewidth=0.7,
+                       boxstyle="round,pad=0.35"))
 
     # B：只比较全局和稳定窗口；事件窗口已在 A 中单独放大，避免小值被大范围压缩。
     ax = fig.add_subplot(gs[0, 1])
@@ -139,7 +141,7 @@ def redraw_fig5_4() -> None:
                     ecolor=GRAY_D, capsize=2.3, lw=0.9, zorder=4)
         ax.errorbar(rule_mean, yi, xerr=rule_sd, fmt="o", ms=6.0, mfc=BLUE, mec=BLUE,
                     ecolor=BLUE, capsize=2.3, lw=0.9, zorder=4)
-        ax.text((std_mean + rule_mean) / 2, yi + 0.18,
+        ax.text((std_mean + rule_mean) / 2, yi + 0.23,
                 f"{std_mean:.1%} → {rule_mean:.1%}", ha="center", va="bottom",
                 fontsize=7.2, color=GRAY_D)
     ax.set_yticks(yy)
@@ -171,7 +173,8 @@ def redraw_fig5_4() -> None:
     ax.set_xlabel("预测步长（规则路由）", fontsize=8.5)
     ax.set_ylabel("全样本覆盖率", fontsize=8.5)
     ax.set_ylim(0.55, 0.93)
-    ax.legend(fontsize=7.0, frameon=False, loc="upper left")
+    ax.legend(fontsize=7.0, frameon=True, facecolor="white", edgecolor="none",
+              framealpha=0.88, loc="lower right")
     ax.text(0.02, 0.03, "阴影：3 种子 min–max", transform=ax.transAxes,
             fontsize=6.8, color=GRAY_M)
     clean_ax(ax, "y")
@@ -193,8 +196,9 @@ def redraw_fig5_5() -> None:
     ratio_sd = ratio_all.std(axis=0)
     order = np.argsort(ratio)[::-1]
 
-    fig = plt.figure(figsize=(10.6, 5.0), constrained_layout=True)
-    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.16, 1.0], wspace=0.30)
+    fig = plt.figure(figsize=(11.8, 5.35), constrained_layout=False)
+    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.16, 1.0],
+                  left=0.075, right=0.975, bottom=0.20, top=0.80, wspace=0.40)
 
     # A：用 log-x 点图展示“全局/未触发”与统一事件层分位数的量级差。
     ax = fig.add_subplot(gs[0, 0])
@@ -218,11 +222,19 @@ def redraw_fig5_5() -> None:
     ax.set_yticklabels(labels, fontsize=7.8)
     ax.invert_yaxis()
     ax.set_xlabel("90% 残差分位数（kWh/15 min，对数轴）", fontsize=8.5)
-    ax.legend(fontsize=7.3, frameon=False, loc="upper right")
-    ax.text(0.98, 0.04, f"蓝线/色带：统一事件层分位数 {qe.mean():.3f} ± {qe_sd.mean():.3f}",
-            transform=ax.transAxes, ha="right", fontsize=6.7, color=BLUE)
     clean_ax(ax, "x")
     panel_label(ax, "A", "节点分位数：事件层是统一值")
+
+    # 三类点的图例放入独立顶部区域，不再压在对数轴数据或统一事件层竖线上。
+    fig.legend(handles=[Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
+                               markeredgecolor=GRAY_D, markersize=5.3, label="全局"),
+                        Line2D([0], [0], marker="s", color="none", markerfacecolor="white",
+                               markeredgecolor=GRAY_M, markersize=5.3, label="规则未触发层"),
+                        Line2D([0], [0], marker="D", color="none", markerfacecolor=BLUE,
+                               markeredgecolor="white", markersize=5.3, label="规则触发层（统一；蓝线）")],
+               fontsize=7.3, frameon=False, ncol=3, loc="upper center",
+               bbox_to_anchor=(0.50, 0.965), columnspacing=1.2, handletextpad=0.35)
+    # 统一事件层的含义已由顶部图例和蓝色竖线共同表达；不再在最后一个节点行附近放说明文字。
 
     # B：排序后的膨胀倍数森林图；误差棒和均值线独立表达跨种子变化。
     ax = fig.add_subplot(gs[0, 1])
@@ -233,20 +245,23 @@ def redraw_fig5_5() -> None:
     mean_ratio = ratio.mean()
     ax.axvline(mean_ratio, color=ORANGE, lw=1.2, ls="--", zorder=2)
     for yi, idx in zip(yy, order):
-        ax.text(ratio[idx] + ratio_sd[idx] + 65, yi, f"{ratio[idx]:.0f}×",
-                va="center", fontsize=7.5, color=GRAY_D)
-    ax.text(mean_ratio + 70, len(order) - 0.45, f"均值 {mean_ratio:.0f}×",
-            fontsize=7.5, color=ORANGE)
+        ax.annotate(f"{ratio[idx]:.0f}×", xy=(ratio[idx] + ratio_sd[idx], yi),
+                    xytext=(6, 0), textcoords="offset points", va="center",
+                    fontsize=7.5, color=GRAY_D,
+                    bbox=dict(facecolor="white", edgecolor="none", alpha=0.82, pad=0.4))
+    ax.annotate(f"均值 {mean_ratio:.0f}×", xy=(mean_ratio, len(order) - 0.55),
+                xytext=(6, 0), textcoords="offset points", fontsize=7.5,
+                color=ORANGE,
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.84, pad=0.4))
     ax.set_yticks(yy)
     ax.set_yticklabels([labels[i] for i in order], fontsize=7.8)
     ax.invert_yaxis()
     ax.set_xlim(0, max(ratio + ratio_sd) * 1.25)
     ax.set_xlabel("规则触发层 / 全局分位数（倍数）", fontsize=8.5)
-    ax.text(0.01, -0.16, "误差棒：3 种子比值 SD；越右表示事件层区间膨胀越强",
-            transform=ax.transAxes, fontsize=6.7, color=GRAY_M)
     clean_ax(ax, "x")
     panel_label(ax, "B", "区间膨胀：事件层相对全局")
-    final(fig, "fig5_5_quantile_per_node", (10.6, 5.0))
+    # 误差棒口径已由图注说明；底部不再放脚注，避免侵入坐标轴刻度区域。
+    final(fig, "fig5_5_quantile_per_node", (11.8, 5.35))
 
 
 def redraw_fig5_6() -> None:
@@ -258,8 +273,9 @@ def redraw_fig5_6() -> None:
     rel = (vals / base - 1.0) * 100.0
     colors = [GRAY_D, BLUE, ORANGE]
 
-    fig = plt.figure(figsize=(8.4, 4.2), constrained_layout=True)
-    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.25, 1.0], wspace=0.34)
+    fig = plt.figure(figsize=(10.2, 4.85), constrained_layout=False)
+    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.24, 1.0],
+                  left=0.105, right=0.975, bottom=0.20, top=0.79, wspace=0.40)
 
     ax = fig.add_subplot(gs[0, 0])
     y = np.arange(3)[::-1]
@@ -267,39 +283,44 @@ def redraw_fig5_6() -> None:
         ax.hlines(yi, 0, value, color=GRAY_XL, lw=3.0, zorder=1)
         ax.scatter(value, yi, s=75, facecolor="white" if yi == y[0] else color,
                    edgecolor=color, linewidth=1.5, zorder=4)
-        ax.text(value + 0.00022, yi, f"{value:.5f}", va="center", fontsize=8.2,
-                color=GRAY_D)
+        ax.annotate(f"{value:.5f}", xy=(value, yi), xytext=(7, 0),
+                    textcoords="offset points", va="center", fontsize=8.2,
+                    color=GRAY_D,
+                    bbox=dict(facecolor="white", edgecolor="none", alpha=0.84, pad=0.35))
     ax.axvline(base, color=GRAY_M, lw=1.0, ls="--", zorder=2)
-    ax.text(base, 2.47, "基线参考", ha="center", fontsize=7.2, color=GRAY_M)
     ax.set_yticks(y)
     ax.set_yticklabels(names, fontsize=8.5)
     ax.set_xlim(0, 0.0178)
     ax.set_xlabel("验证集 MAE（kWh/15 min）", fontsize=8.8)
-    ax.text(0.02, -0.17, "绝对误差：不截断 0 起点；数值来自 seed-2024 快速验证",
-            transform=ax.transAxes, fontsize=6.8, color=GRAY_M)
     clean_ax(ax, "x")
     panel_label(ax, "A", "绝对性能：验证集 MAE")
+    fig.text(0.33, 0.925, "虚线：StaticGraph 基线参考；数值来自 seed-2024 快速验证",
+             ha="center", va="center", fontsize=7.0, color=GRAY_M)
 
     ax = fig.add_subplot(gs[0, 1])
     y = np.arange(3)[::-1]
     for yi, name, delta, color in zip(y, names, rel, colors):
         ax.barh(yi, delta, height=0.45, color=color, alpha=0.88,
                 edgecolor="white", linewidth=0.5, zorder=3)
-        xpos = delta - 0.18 if delta < -0.4 else delta + 0.12
-        ax.text(xpos, yi, f"{delta:+.1f}%", ha="right" if delta < -0.4 else "left",
-                va="center", fontsize=8.5, color=color, fontweight="bold")
+        if delta < -0.4:
+            # 负值标签放在条形内部，避免侵入左侧类别文字区域。
+            ax.text(delta / 2.0, yi, f"{delta:+.1f}%", ha="center", va="center",
+                    fontsize=8.5, color="white", fontweight="bold")
+        else:
+            ax.text(delta + 0.12, yi, f"{delta:+.1f}%", ha="left", va="center",
+                    fontsize=8.5, color=color, fontweight="bold",
+                    bbox=dict(facecolor="white", edgecolor="none", alpha=0.82, pad=0.25))
     ax.axvline(0, color=GRAY_D, lw=1.0)
     ax.set_yticks(y)
     ax.set_yticklabels(names, fontsize=8.5)
     ax.set_xlim(-7.0, 1.0)
     ax.set_xlabel("相对基线变化（%）", fontsize=8.8)
-    ax.text(0.02, -0.17, "负值=验证集 MAE 下降；不表示正式三种子结论",
-            transform=ax.transAxes, fontsize=6.8, color=GRAY_M)
     clean_ax(ax, "x")
     panel_label(ax, "B", "方向筛选：相对基线变化")
-    fig.text(0.985, 0.985, "单种子（2024）· 快速验证集筛选材料 · 不作正式结论",
-             ha="right", va="top", fontsize=7.0, color=GRAY_M)
-    final(fig, "fig5_6_mechanism_enhance", (8.4, 4.2))
+    fig.text(0.98, 0.95, "单种子（2024）· 快速验证集筛选材料 · 不作正式结论",
+             ha="right", va="center", fontsize=7.0, color=GRAY_M)
+    # 数据口径和单种子边界由图注承接；图面底部不再放密集脚注。
+    final(fig, "fig5_6_mechanism_enhance", (10.2, 4.85))
 
 
 def redraw_fig4_4() -> None:
@@ -361,7 +382,9 @@ def redraw_fig4_4() -> None:
         ax.barh(y, vals, left=left, color=color, height=0.42,
                 edgecolor="white", linewidth=0.6)
         for pos_i, (yi, v, lft) in enumerate(zip(y, vals, left)):
-            row_i = 1 - pos_i
+            # vals 的第 pos_i 项对应 bars 的同一行；y 仅负责把两行上下反转。
+            # 这里不能用 1-pos_i，否则会把两条堆叠条的组成比例交叉标注。
+            row_i = pos_i
             fraction = v / (v + (bars[row_i][1][1 - seg_i]))
             if fraction >= 0.15:
                 ax.text(lft + v / 2, yi, f"{fraction:.1%}",
@@ -458,16 +481,17 @@ def redraw_fig3_5() -> None:
 def redraw_fig3_6() -> None:
     data = json.load(open("outputs/analysis/bootstrap_significance.json"))
     label_map = {
-        "TCN - StaticGraph": "StaticGraph vs TCN",
-        "StaticGraph - AdaptiveGraph": "AdaptiveGraph vs StaticGraph",
-        "AdaptiveGraph - EventResidual": "EventResidual vs AdaptiveGraph",
-        "StaticGraph - MLP": "MLP vs StaticGraph",
-        "TCN - MLP": "MLP vs TCN",
-        "AdaptiveGraph - no_event_gate": "no-event-gate vs AdaptiveGraph",
+        "TCN - StaticGraph": "StaticGraph\nvs TCN",
+        "StaticGraph - AdaptiveGraph": "AdaptiveGraph\nvs StaticGraph",
+        "AdaptiveGraph - EventResidual": "EventResidual\nvs AdaptiveGraph",
+        "StaticGraph - MLP": "MLP\nvs StaticGraph",
+        "TCN - MLP": "MLP\nvs TCN",
+        "AdaptiveGraph - no_event_gate": "no-event-gate\nvs AdaptiveGraph",
     }
     groups = [("global", "全局窗口", "2.14M"), ("event_window", "事件窗口", "30,480")]
-    fig = plt.figure(figsize=(9.4, 4.45), constrained_layout=True)
-    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.0, 1.0], wspace=0.34)
+    fig = plt.figure(figsize=(9.8, 4.85), constrained_layout=False)
+    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.0, 1.0],
+                  left=0.17, right=0.985, bottom=0.22, top=0.80, wspace=0.16)
     for col, (window, title, n_text) in enumerate(groups):
         ax = fig.add_subplot(gs[0, col])
         rows = []
@@ -484,24 +508,25 @@ def redraw_fig3_6() -> None:
             ax.errorbar(diff, yi, xerr=[[diff - lo], [hi - diff]], fmt="o",
                         ms=5.7, mfc=color, mec=color, ecolor=GRAY_D,
                         capsize=3.0, lw=1.0, zorder=4)
-            x_text = hi + (abs(hi) * 0.07 + 0.0003)
-            ax.text(x_text, yi, f"{diff:+.4f}", va="center", ha="left",
-                    fontsize=6.9, color=GRAY_D,
-                    bbox=dict(facecolor="white", edgecolor="none", alpha=0.75, pad=0.5))
+            ax.annotate(f"{diff:+.4f}", xy=(diff, yi), xytext=(6, 0),
+                        textcoords="offset points", va="center", ha="left",
+                        fontsize=6.9, color=GRAY_D,
+                        bbox=dict(facecolor="white", edgecolor="none", alpha=0.84, pad=0.5))
         ax.axvline(0, color=GRAY_D, lw=1.0, zorder=2)
         ax.set_yticks(yy)
-        ax.set_yticklabels([r[0] for r in rows], fontsize=7.3)
+        ax.set_yticklabels([r[0] for r in rows], fontsize=7.1, linespacing=0.95)
         if window == "global":
-            ax.set_xlim(-0.009, 0.018)
+            ax.set_xlim(-0.010, 0.020)
         else:
-            ax.set_xlim(-0.040, 0.035)
+            ax.set_xlim(-0.042, 0.041)
         ax.set_xlabel("MAE 差：基线 − 提议模型（kWh/15 min）\n"
                       "（正值 = 提议模型更优）", fontsize=7.9)
-        ax.text(0.98, 0.98, f"pooled n={n_text}", transform=ax.transAxes,
-                ha="right", va="top", fontsize=7.0, color=GRAY_M)
+        ax.text(0.03, 0.94, f"pooled n={n_text}", transform=ax.transAxes,
+                ha="left", va="top", fontsize=7.0, color=GRAY_M,
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=0.4))
         clean_ax(ax, "x")
         panel_label(ax, "AB"[col], f"{title}：Bootstrap 森林图")
-    final(fig, "fig3_6_bootstrap_difference", (9.4, 4.45))
+    final(fig, "fig3_6_bootstrap_difference", (9.8, 4.85))
 
 
 def redraw_fig3_7() -> None:
@@ -533,14 +558,12 @@ def redraw_fig3_7() -> None:
     ax.fill_between(epochs, np.nanmin(aligned, axis=0), np.nanmax(aligned, axis=0),
                     color=BLUE_L, alpha=0.12, zorder=1)
     ax.axhline(0.20, color=GRAY_L, lw=0.9, ls=":")
-    ax.text(max_len - 0.3, 0.202, "内部混合权重参考线 0.20", ha="right",
-            fontsize=6.8, color=GRAY_M)
     ax.set_xlabel("训练轮次（epoch）", fontsize=8.8)
     ax.set_ylabel("图混合权重 α = σ(w)", fontsize=8.8)
     ax.set_xlim(0, max_len + 1)
     ax.set_ylim(0.14, 0.48)
     ax.legend(fontsize=7.4, frameon=False, ncol=3, loc="upper right")
-    ax.text(0.02, 0.04, "★ 最佳验证点   ◆ 日志末轮   阴影=逐轮跨种子范围",
+    ax.text(0.02, 0.04, "★ 最佳验证点   ◆ 日志末轮   阴影=逐轮跨种子范围   虚线=参考线 0.20",
             transform=ax.transAxes, fontsize=7.0, color=GRAY_M)
     clean_ax(ax, "y")
     panel_label(ax, "A", "训练轨迹：固定图/自适应图混合")

@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib.colors import LinearSegmentedColormap
+from matplotlib.gridspec import GridSpec
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/scipilot-figure-skill/scripts"))
 try:
@@ -219,32 +220,49 @@ def redraw_fig2_10() -> None:
         per_node_count.append(len(starts))
     lens = np.asarray(lens)
 
-    fig, axes = plt.subplots(1, 2, figsize=(8.8, 3.5))
-    ax = axes[0]
-    # 横轴范围：至少覆盖 4 片（扩展 2 步后最小窗口 3 片，留出右边界）
-    max_len = max(lens.max(), 4)
-    bins = np.arange(0.5, max_len + 1.5, 1.0)
-    ax.hist(lens, bins=bins, color=BLUE, edgecolor="white", lw=0.8, zorder=3)
+    # 只保留 A/B 两个数据面板；统计摘要放入图注，不在图中央叠加文字卡片。
+    fig = plt.figure(figsize=(9.8, 4.25), constrained_layout=False)
+    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.15, 1.45],
+                  left=0.075, right=0.985, bottom=0.22, top=0.80, wspace=0.30)
+
+    ax = fig.add_subplot(gs[0, 0])
+    max_len = max(int(lens.max()), 6)
+    xs = np.arange(1, max_len + 1)
+    counts = np.bincount(lens.astype(int), minlength=max_len + 1)[1:]
+    colors = [BLUE if x == 3 else ORANGE if x == 6 else GRAY_L for x in xs]
+    ax.bar(xs, counts, width=0.66, color=colors, edgecolor="white", lw=0.8, zorder=3)
+    for x, c in zip(xs, counts):
+        if c > 0:
+            if c > 3:
+                ax.text(x, c - max(counts) * 0.035, str(c), ha="center", va="top",
+                        fontsize=7.0, color="white", fontweight="bold")
+            else:
+                ax.text(x, c + max(counts) * 0.025, str(c), ha="center", va="bottom",
+                        fontsize=7.0, color=GRAY_D)
     ax.set_xlabel("窗口长度（15 min 时间片）", fontsize=8.4)
     ax.set_ylabel("窗口数", fontsize=8.4)
-    ax.set_xticks(np.arange(1, max_len + 1))
-    ax.text(0.98, 0.96, f"共 {len(lens)} 个；平均 {lens.mean():.1f} 片，最长 {lens.max()} 片",
-            transform=ax.transAxes, ha="right", va="top",
-            fontsize=6.9, color=GRAY_M)
-    _clean(ax)
-
-    ax = axes[1]
-    xs = np.arange(len(BUNDLE.node_ids))
-    ax.bar(xs, per_node_count, width=0.62, color=ORANGE,
-           edgecolor="white", lw=0.6, zorder=3)
-    for xi, c in enumerate(per_node_count):
-        ax.text(xi, c + 0.8, str(c), ha="center", va="bottom",
-                fontsize=6.8, color=GRAY_D)
     ax.set_xticks(xs)
-    ax.set_xticklabels(BUNDLE.node_ids, fontsize=6.8, rotation=45, ha="right")
-    ax.set_ylabel("事件窗口数（测试集）", fontsize=8.4)
+    ax.set_ylim(0, max(counts) * 1.18)
     _clean(ax)
-    _final(fig, "fig2_10_event_window_length", (8.8, 3.5))
+    fig.text(0.075, 0.885, "A 事件窗口长度分布", ha="left", va="center",
+             fontsize=9.2, color=GRAY_D)
+
+    ax = fig.add_subplot(gs[0, 1])
+    ys = np.arange(len(BUNDLE.node_ids))
+    ax.barh(ys, per_node_count, height=0.62, color=ORANGE,
+            edgecolor="white", lw=0.6, zorder=3)
+    for yi, c in enumerate(per_node_count):
+        ax.text(c + 0.8, yi, str(c), ha="left", va="center",
+                fontsize=7.0, color=GRAY_D)
+    ax.set_yticks(ys)
+    ax.set_yticklabels(BUNDLE.node_ids, fontsize=7.4)
+    ax.set_xlabel("事件窗口数（测试集）", fontsize=8.4)
+    ax.set_xlim(0, max(per_node_count) * 1.18)
+    ax.invert_yaxis()
+    _clean(ax, "x")
+    fig.text(0.53, 0.885, "B 逐节点窗口数", ha="left", va="center",
+             fontsize=9.2, color=GRAY_D)
+    _final(fig, "fig2_10_event_window_length", (9.8, 4.25))
     return None
 
 

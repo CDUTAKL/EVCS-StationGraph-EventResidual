@@ -23,7 +23,7 @@
 | SG-EXP-013 | GCN→TCN 知识蒸馏 | ⏳ 脚本就绪 | — | 未排期 |
 | SG-EXP-014 | EERM 环境不变学习 | 🔄 服务器运行中 | —（5λ × 3 种子 = 15 次） | GPU1 队列 |
 | — | 传统基线（ARIMA/LGBM/XGB/Persistence） | ✅ 重跑完成 | 0.02260 / 0.03758 / 0.03873 / 0.07828 | traditional_baselines |
-| — | 19 张结果图工件 | 🟢 已完成图件 QA | SVG+PNG 已生成；图 5-6 仍为单种子临时图 | [图表清单与图注](figure-captions-and-index-2026-08-01.md) + manifest |
+| — | 32 张结果图工件 | 🟢 已完成图件 QA | SVG+PNG 已生成；图 5-6 仍为单种子临时图 | [图表清单与图注](figure-captions-and-index-2026-08-01.md) + manifest |
 
 ## 二、已完成实验的效果明细
 

@@ -92,11 +92,12 @@ def fig5_3_asymmetry() -> None:
     avg = (xs + ys) / 2.0            # 平均 TE（点面积编码）
     band = 0.12 * vmax               # 近似对称带半宽
 
-    fig = plt.figure(figsize=(8.4, 6.6))
-    # 固定坐标保证边缘分布与主图紧密对齐，避免自动布局制造过大空白。
-    ax = fig.add_axes([0.12, 0.18, 0.65, 0.64])
-    ax_top = fig.add_axes([0.12, 0.83, 0.65, 0.12], sharex=ax)
-    ax_right = fig.add_axes([0.80, 0.18, 0.12, 0.64], sharey=ax)
+    fig = plt.figure(figsize=(11.2, 8.0))
+    # 增大主图面积，同时把图例、方向判定条、顶部边缘分布拆成三层。
+    # 方向说明不进入任何数据区，避免文字与直方图/散点发生覆盖。
+    ax = fig.add_axes([0.11, 0.16, 0.68, 0.58])
+    ax_top = fig.add_axes([0.11, 0.79, 0.68, 0.09], sharex=ax)
+    ax_right = fig.add_axes([0.83, 0.16, 0.11, 0.58], sharey=ax)
 
     # ---- 主面板 ----
     # 对称带（|y-x| < band 区域浅灰填充，与两侧边界虚线一致）
@@ -132,9 +133,6 @@ def fig5_3_asymmetry() -> None:
                               edgecolor=RED_S, linewidth=0.8),
                     arrowprops=dict(arrowstyle="->", color=GRAY_M, lw=0.8,
                                     shrinkA=4, shrinkB=2))
-    # 主导区说明（必要说明文字，放左下空白区）
-    ax.text(vmax * 0.05, vmax * 0.94, "j→i 主导", fontsize=8, color=BLUE, ha="left")
-    ax.text(vmax * 0.72, vmax * 0.06, "i→j 主导", fontsize=8, color=ORANGE, ha="left")
     _clean_ax(ax)
     ax.set_xlabel("传递熵 TE(i → j)（nats）", fontsize=9)
     ax.set_ylabel("传递熵 TE(j → i)（nats）", fontsize=9)
@@ -144,9 +142,9 @@ def fig5_3_asymmetry() -> None:
     # 图例置于主图外的上边距，避免遮挡散点。
     handles = [
         Line2D([0], [0], marker="o", color="none", markerfacecolor=BLUE,
-               markeredgecolor=BLUE, markersize=6, label="j→i 主导"),
+               markeredgecolor=BLUE, markersize=6, label="j→i 主导（y>x）"),
         Line2D([0], [0], marker="o", color="none", markerfacecolor=ORANGE,
-               markeredgecolor=ORANGE, markersize=6, label="i→j 主导"),
+               markeredgecolor=ORANGE, markersize=6, label="i→j 主导（x>y）"),
         Line2D([0], [0], marker="o", color="none", markerfacecolor=GRAY_M,
                markeredgecolor=GRAY_M, markersize=6, label="近似对称"),
         Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
@@ -165,14 +163,16 @@ def fig5_3_asymmetry() -> None:
     for k, p in enumerate(top3, start=1):
         i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
         px = te_mat[i, j]
-        ax_top.scatter([px], [max(top_n) * 0.92], marker="v", s=24, color=RED_S, zorder=4)
-        ax_top.text(px, max(top_n) * 1.05, str(k), ha="center", va="bottom",
-                    fontsize=7.2, color=RED_S, fontweight="bold")
-    ax_top.set_ylim(0, max(top_n) * 1.18)
-    # 面板说明用 ax.text（图内禁止 set_title API）
-    ax_top.text(0.02, 0.97, "主图横轴边缘分布：TE(i → j)",
-                transform=ax_top.transAxes, ha="left", va="top",
-                fontsize=8.0, color=GRAY_D)
+        # 编号标记放到直方图上方的独立带，不再落在柱顶或柱体内部。
+        xtrans = ax_top.get_xaxis_transform()
+        ax_top.scatter([px], [1.08], transform=xtrans, marker="v", s=28,
+                       color=RED_S, zorder=5, clip_on=False)
+        ax_top.text(px, 1.18, str(k), transform=xtrans, ha="center", va="bottom",
+                    fontsize=7.2, color=RED_S, fontweight="bold", clip_on=False)
+    ax_top.set_ylim(0, max(top_n) * 1.02)
+    # 说明放在顶部直方图之外；方向关系由上方图例中的 y>x / x>y 直接定义。
+    fig.text(0.11, 0.945, "主图横轴边缘分布：TE(i → j)",
+             ha="left", va="top", fontsize=8.0, color=GRAY_D)
     ax_top.set_ylabel("频数", fontsize=7.0)
     ax_top.tick_params(axis="x", labelbottom=False)
     ax_top.tick_params(axis="y", labelsize=6.5)
@@ -196,9 +196,11 @@ def fig5_3_asymmetry() -> None:
     ax_right.text(0.5, 1.12, "纵轴边缘", transform=ax_right.transAxes,
                   ha="center", va="bottom", fontsize=6.8)
     ax_right.set_xticks([])
-    ax_right.tick_params(axis="y", labelleft=False)
+    # 纵轴刻度已由主图提供；右侧边缘图不再重复绘制短刻度，避免形成误读。
+    ax_right.set_yticks([])
+    ax_right.tick_params(axis="y", left=False, right=False, labelleft=False, labelright=False)
 
-    final(fig, "fig5_3_asymmetry", (8.4, 6.6))
+    final(fig, "fig5_3_asymmetry", (11.2, 8.0))
 
 
 # ========== fig5_4 覆盖率（v3：per-seed 散点 + horizon 面板） ==========
