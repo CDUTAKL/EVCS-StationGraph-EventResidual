@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-02T07:46:30.062671+00:00",
-  "source_commit": "602df4c",
+  "generated_at_utc": "2026-08-02T07:48:49.556488+00:00",
+  "source_commit": "c4d33b8",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -154,7 +154,7 @@
     "fig2_7_feature_correlation": {
       "script": {
         "path": "batch11_chapter2_extra.py",
-        "sha256": "1b6c273e5f7a7b2ffed95437ff52fb9340e014ed583c78362895cabd43d0242e"
+        "sha256": "c6e61ccf9df91b0f01b12493c7d6b9d756bb3e0b4d1efe8d5fa1a62bf128b2ab"
       },
       "inputs": [
         {
@@ -178,7 +178,7 @@
     "fig2_8_weekday_hour_heatmap": {
       "script": {
         "path": "batch11_chapter2_extra.py",
-        "sha256": "1b6c273e5f7a7b2ffed95437ff52fb9340e014ed583c78362895cabd43d0242e"
+        "sha256": "c6e61ccf9df91b0f01b12493c7d6b9d756bb3e0b4d1efe8d5fa1a62bf128b2ab"
       },
       "inputs": [
         {
@@ -188,21 +188,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "04e39992dcf44b2acd0dcc97a2edad2b9bf4b9405a649d603c157fe4f0a78de7",
-          "size_bytes": 32851,
-          "mtime_utc": "2026-08-02T07:42:31.712891+00:00"
+          "sha256": "acca6f97d45de36afd62989fe8596eb740e77dc0fbd2154ee8388205db77e3b9",
+          "size_bytes": 32881,
+          "mtime_utc": "2026-08-02T07:48:47.153151+00:00"
         },
         "png": {
-          "sha256": "3021bb76c14581a1cc270e0ca31f13a3b0e985c0d1d3f49d9b9b35c3b4d04225",
-          "size_bytes": 392662,
-          "mtime_utc": "2026-08-02T07:42:33.332763+00:00"
+          "sha256": "58717da8e331c9e6fc0f9ac51eb69fbbdd484d543d44d5c20f6123fc3cdc82a5",
+          "size_bytes": 393176,
+          "mtime_utc": "2026-08-02T07:48:49.029660+00:00"
         }
       }
     },
     "fig2_9_event_component_composition": {
       "script": {
         "path": "batch11_chapter2_extra.py",
-        "sha256": "1b6c273e5f7a7b2ffed95437ff52fb9340e014ed583c78362895cabd43d0242e"
+        "sha256": "c6e61ccf9df91b0f01b12493c7d6b9d756bb3e0b4d1efe8d5fa1a62bf128b2ab"
       },
       "inputs": [
         {
@@ -226,7 +226,7 @@
     "fig2_10_event_window_length": {
       "script": {
         "path": "batch11_chapter2_extra.py",
-        "sha256": "1b6c273e5f7a7b2ffed95437ff52fb9340e014ed583c78362895cabd43d0242e"
+        "sha256": "c6e61ccf9df91b0f01b12493c7d6b9d756bb3e0b4d1efe8d5fa1a62bf128b2ab"
       },
       "inputs": [
         {

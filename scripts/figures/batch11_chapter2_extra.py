@@ -120,11 +120,12 @@ def redraw_fig2_8() -> None:
     fig, ax = plt.subplots(figsize=(7.6, 3.6))
     cmap = LinearSegmentedColormap.from_list(
         "load_ramp", ["#FFFFFF", "#C9DCE8", "#2C5F8A"])
-    # 周末行浅橙底纹置于热力图之上（zorder=2）才可见，与图 2-3/2-4 语义一致
+    # 周末行浅橙底纹置于热力图之上但半透明（alpha=0.35）：
+    # 既标识周末又不遮挡数据（全不透明会盖住周末行数值）
     for wk in (5, 6):
         ax.add_patch(plt.Rectangle((-0.5, wk - 0.5), 24, 1,
                                    facecolor="#F5E9D8", edgecolor="none",
-                                   zorder=2))
+                                   alpha=0.35, zorder=2))
     im = ax.imshow(mat, cmap=cmap, aspect="auto", zorder=1,
                    vmin=0, vmax=np.percentile(mat, 99))
     ax.set_xticks(range(24))
