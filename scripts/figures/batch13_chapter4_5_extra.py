@@ -87,12 +87,14 @@ def redraw_fig4_6() -> None:
             [("全局（非事件样本）", 0.05), ("事件窗口样本", 0.8)]):
         ax = axes[win_key]
         xs = np.linspace(-xmax, xmax, 300)
-        for label, color in [("TCN", GRAY_M), ("StaticGraph", ORANGE),
-                             ("AdaptiveGraph", BLUE)]:
+        # 三条 KDE 高度重叠（残差集中于 0 附近），颜色 + 线型双编码区分
+        for label, color, ls in [("TCN", GRAY_M, "-"),
+                                 ("StaticGraph", ORANGE, "--"),
+                                 ("AdaptiveGraph", BLUE, "-.")]:
             r_global, r_evt = resids[label]
             r = r_global if win_key == 0 else r_evt
             kde = stats.gaussian_kde(r)
-            ax.plot(xs, kde(xs), lw=1.5, label=label, color=color)
+            ax.plot(xs, kde(xs), lw=1.5, ls=ls, label=label, color=color)
         ax.set_xlabel("预测残差（kWh/15 min）", fontsize=8.4)
         ax.set_ylabel("核密度", fontsize=8.4)
         ax.set_xlim(-xmax, xmax)
@@ -148,9 +150,16 @@ def redraw_fig4_7() -> None:
         means.append(sub["abs_err"].mean())
         counts.append(len(sub))
     ax.plot(x, means, marker="o", ms=6, lw=1.6, color=BLUE, zorder=4)
+    # 标注位置：高值点（>上限 70%）标签放点下方避免顶出图面
+    ymax_show = max(means) * 1.28
     for xi, (m, c) in enumerate(zip(means, counts)):
-        ax.text(xi, m + 0.012, f"{m:.3f}\nn={c:,}", ha="center", va="bottom",
-                fontsize=6.8, color=GRAY_D)
+        if m > ymax_show * 0.7:
+            ax.text(xi, m - 0.004, f"{m:.3f}\nn={c:,}", ha="center",
+                    va="top", fontsize=6.8, color=GRAY_D)
+        else:
+            ax.text(xi, m + 0.012, f"{m:.3f}\nn={c:,}", ha="center",
+                    va="bottom", fontsize=6.8, color=GRAY_D)
+    ax.set_ylim(0, ymax_show)
     ax.set_xticks(x)
     ax.set_xticklabels(labels, fontsize=7.6)
     ax.set_xlabel("事件强度分箱（可见事件分数）", fontsize=8.6)
@@ -228,9 +237,14 @@ def redraw_fig5_11() -> None:
                  ("pattern", "轮廓相似关系", GREEN)]
     for ax, (key, name, color) in zip(axes, rel_names):
         w_mat = np.asarray(rel[key], dtype=float)
-        te_vals = [te_mat[i, j] for i, j in pairs]
-        w_vals = [w_mat[i, j] for i, j in pairs]
-        ax.scatter(w_vals, te_vals, s=16, color=color, alpha=0.75, zorder=3)
+        te_vals = np.asarray([te_mat[i, j] for i, j in pairs])
+        w_vals = np.asarray([w_mat[i, j] for i, j in pairs])
+        # TE=0 的边（无显著信息流）画为灰色小叉，不混入散点云
+        nz = te_vals > 0
+        ax.scatter(w_vals[nz], te_vals[nz], s=16, color=color,
+                   alpha=0.75, zorder=3, label="_nolegend_")
+        ax.scatter(w_vals[~nz], te_vals[~nz], s=12, marker="x",
+                   color=GRAY_M, alpha=0.7, zorder=2, label="_nolegend_")
         r, p = stats.spearmanr(w_vals, te_vals)
         # 显著性标注阈值：p<0.01 双星（探索性分析，未做多重比较校正）
         ax.text(0.97, 0.05, f"Spearman r = {r:.2f}{'**' if p < 0.01 else ''}",

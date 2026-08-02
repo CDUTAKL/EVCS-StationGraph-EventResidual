@@ -199,11 +199,15 @@ def redraw_fig2_9() -> None:
 
 
 def redraw_fig2_10() -> None:
-    """图 2-10：测试集事件窗口长度分布（冻结规则，含因果扩展）。"""
+    """图 2-10：事件窗口长度分布 + 逐节点窗口数（冻结规则，含因果扩展）。
+
+    A：窗口长度直方图（扩展 2 步后几乎全部 3 片，合并后可达 6 片）；
+    B：逐节点窗口数条形图（展示节点间触发频率差异）。
+    """
     rule = fit_frozen_event_rule(BUNDLE)
     trig = apply_frozen_event_rule(BUNDLE, BUNDLE.split_origins["test"], rule)
     # 连续 True 段的长度 = 窗口长度（时间片数；同一节点的时间轴）
-    lens = []
+    lens, per_node_count = [], []
     for ni in range(trig.shape[1]):
         col = trig[:, ni].astype(int)
         # 段起止：diff 边界（np.diff + pad 处理首尾）
@@ -211,24 +215,35 @@ def redraw_fig2_10() -> None:
         starts = np.where(np.diff(padded) == 1)[0]
         ends = np.where(np.diff(padded) == -1)[0]
         lens.extend(int(e - s) for s, e in zip(starts, ends))
+        per_node_count.append(len(starts))
     lens = np.asarray(lens)
 
-    fig, ax = plt.subplots(figsize=(6.6, 3.5))
+    fig, axes = plt.subplots(1, 2, figsize=(8.8, 3.5))
+    ax = axes[0]
     # 横轴范围：至少覆盖 4 片（扩展 2 步后最小窗口 3 片，留出右边界）
     max_len = max(lens.max(), 4)
     bins = np.arange(0.5, max_len + 1.5, 1.0)
     ax.hist(lens, bins=bins, color=BLUE, edgecolor="white", lw=0.8, zorder=3)
-    ax.set_xlabel("事件窗口长度（15 min 时间片）", fontsize=8.6)
-    ax.set_ylabel("窗口数（测试集）", fontsize=8.6)
+    ax.set_xlabel("窗口长度（15 min 时间片）", fontsize=8.4)
+    ax.set_ylabel("窗口数", fontsize=8.4)
     ax.set_xticks(np.arange(1, max_len + 1))
-    # 关键统计：窗口总数与平均/最长长度（扩展 2 步后最小窗口 3 片）
-    total = len(lens)
-    ax.text(0.98, 0.96,
-            f"共 {total} 个窗口；平均 {lens.mean():.1f} 片，最长 {lens.max()} 片",
+    ax.text(0.98, 0.96, f"共 {len(lens)} 个；平均 {lens.mean():.1f} 片，最长 {lens.max()} 片",
             transform=ax.transAxes, ha="right", va="top",
-            fontsize=7.2, color=GRAY_M)
+            fontsize=6.9, color=GRAY_M)
     _clean(ax)
-    _final(fig, "fig2_10_event_window_length", (6.6, 3.5))
+
+    ax = axes[1]
+    xs = np.arange(len(BUNDLE.node_ids))
+    ax.bar(xs, per_node_count, width=0.62, color=ORANGE,
+           edgecolor="white", lw=0.6, zorder=3)
+    for xi, c in enumerate(per_node_count):
+        ax.text(xi, c + 0.8, str(c), ha="center", va="bottom",
+                fontsize=6.8, color=GRAY_D)
+    ax.set_xticks(xs)
+    ax.set_xticklabels(BUNDLE.node_ids, fontsize=6.8, rotation=45, ha="right")
+    ax.set_ylabel("事件窗口数（测试集）", fontsize=8.4)
+    _clean(ax)
+    _final(fig, "fig2_10_event_window_length", (8.8, 3.5))
     return None
 
 

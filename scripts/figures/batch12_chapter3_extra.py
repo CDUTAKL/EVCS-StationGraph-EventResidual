@@ -148,27 +148,29 @@ def redraw_fig3_4() -> None:
 
 
 def redraw_fig3_8() -> None:
-    """图 3-8：分层窗口 MAE 对比（log 轴，事件窗口量级远大于稳定窗口）。"""
-    fig, ax = plt.subplots(figsize=(7.6, 4.1))
+    """图 3-8：分层窗口 MAE 对比（log 轴分组柱，事件窗口量级远大于稳定窗口）。"""
+    fig, ax = plt.subplots(figsize=(8.2, 4.2))
     x = np.arange(len(SCOPES))
-    for exp_id, label, color in MODELS:
+    width = 0.15
+    for mi, (exp_id, label, color) in enumerate(MODELS):
         data = _load_model_metrics(exp_id)
         means, sds = [], []
         for scope_key, _cn in SCOPES:
-            vals = np.asarray([data[s]["scopes"].get(scope_key, float("nan"))
-                               for s in SEEDS], dtype=float)
-            means.append(np.nanmean(vals))
-            sds.append(np.nanstd(vals))
-        ax.errorbar(x, means, yerr=sds, fmt="o", ms=6.0, color=color,
-                    ecolor=color, capsize=2.8, lw=1.1, label=label, zorder=4)
-    ax.set_xticks(x)
-    ax.set_xticklabels([cn for _k, cn in SCOPES], fontsize=8.4)
-    ax.set_ylabel("MAE（kWh/15 min，对数轴）", fontsize=8.8)
+            vals = np.asarray([data[s]["scopes"][scope_key] for s in SEEDS],
+                              dtype=float)
+            means.append(vals.mean())
+            sds.append(vals.std())
+        ax.bar(x + (mi - 2) * width, means, width=width, color=color,
+               edgecolor="white", lw=0.5, yerr=sds, capsize=2.2,
+               error_kw=dict(lw=0.8), label=label, zorder=3)
     ax.set_yscale("log")
-    ax.set_ylim(0.004, 0.6)
-    ax.legend(fontsize=7.2, frameon=False, ncol=5, loc="upper left")
+    ax.set_xticks(x)
+    ax.set_xticklabels([cn for _k, cn in SCOPES], fontsize=8.6)
+    ax.set_ylabel("MAE（kWh/15 min，对数轴）", fontsize=8.8)
+    ax.set_ylim(0.004, 0.7)
+    ax.legend(fontsize=7.4, frameon=False, ncol=5, loc="upper left")
     _clean(ax)
-    _final(fig, "fig3_8_mae_by_window", (7.6, 4.1))
+    _final(fig, "fig3_8_mae_by_window", (8.2, 4.2))
     return None
 
 
@@ -278,7 +280,7 @@ def redraw_fig3_11() -> None:
                     color=GRAY_XL, lw=0, zorder=1)
     ax.set_xlabel("目标时间索引（15 min 步长）", fontsize=8.6)
     ax.set_ylabel(f"{best_node} 负荷（kWh/15 min）", fontsize=8.6)
-    ax.legend(fontsize=7.6, frameon=False, loc="upper right")
+    ax.legend(fontsize=7.6, frameon=False, loc="lower left")
     _clean(ax)
     _final(fig, "fig3_11_event_window_forecast", (8.2, 3.6))
     return None
