@@ -1,6 +1,6 @@
 # 论文配图清单与图注口径（2026-08-01）
 
-本文件是当前工作区 19 张结果图的编号、文件名、来源与图注口径索引。
+本文件是当前工作区 32 张结果图的编号、文件名、来源与图注口径索引。
 结果图统一导出为 SVG + PNG；PNG 为 1200 DPI，SVG 保留可编辑文字。
 
 ## 使用规则
@@ -12,7 +12,7 @@
 - 图 5-6 仅为单种子验证集快速筛选材料，正式三种子结果完成前不得作为正文正式证据。
 - 图 5-8 使用“分层参数干预敏感度”命名，不使用 CATE 或因果效应术语。
 
-## 当前生成的 19 张图
+## 当前生成的 32 张图
 
 | 图号 | 文件名（不含目录） | 类型与用途 | 数据/实验来源 | 状态 |
 |---|---|---|---|:---:|
@@ -22,19 +22,32 @@
 | 图 2-4 | `fig2_4_weekly_curves.svg/.png` | 典型周负荷曲线 | `SG-DATA-005-primary-tensor.npz` | 可用 |
 | 图 2-5 | `fig2_5_load_distribution.svg/.png` | 非零负荷分布 | `SG-DATA-005-primary-tensor.npz` | 可用 |
 | 图 2-6 | `fig2_6_event_hourly.svg/.png` | 事件时段构成 | `SG-DATA-005-primary-tensor.npz` | 可用 |
+| 图 2-7 | `fig2_7_feature_correlation.svg/.png` | 特征相关性矩阵 | `SG-DATA-005-primary-tensor.npz` | 可用 |
+| 图 2-8 | `fig2_8_weekday_hour_heatmap.svg/.png` | 星期×小时负荷热力图 | `SG-DATA-005-primary-tensor.npz` | 可用 |
+| 图 2-9 | `fig2_9_event_component_composition.svg/.png` | 事件四分量构成 | `SG-DATA-005-primary-tensor.npz` | 可用 |
+| 图 2-10 | `fig2_10_event_window_length.svg/.png` | 事件窗口长度分布 | 冻结规则（SG-DATA-005） | 可用 |
 | 图 3-1 | `fig3_1_model_mae_comparison.svg/.png` | 模型全局 MAE 对比 | SG-EXP-002/003/004 + 传统基线 | 可用 |
 | 图 3-3 | `fig3_3_lre_matrices.svg/.png` | 三类关系矩阵 | SG-EXP-004 `relation_matrices.npz` | 已修订 |
+| 图 3-4 | `fig3_4_mae_by_horizon.svg/.png` | 逐预测步长 MAE | 五模型 seed-* `metrics.json` | 可用 |
 | 图 3-5 | `fig3_5_training_curve.svg/.png` | 三种子训练收敛 | SG-EXP-004 `training_log.csv` | 已修订 |
 | 图 3-6 | `fig3_6_bootstrap_difference.svg/.png` | 点级 pooled Bootstrap 差异 | `bootstrap_significance.json` | 已修订 |
 | 图 3-7 | `fig3_7_alpha_convergence.svg/.png` | 自适应图混合权重收敛 | SG-EXP-004 `training_log.csv` | 已修订 |
+| 图 3-8 | `fig3_8_mae_by_window.svg/.png` | 分层窗口 MAE | 五模型 seed-* `metrics.json` | 可用 |
+| 图 3-9 | `fig3_9_mae_by_node.svg/.png` | 逐节点 MAE | 五模型 seed-* `metrics.json` | 可用 |
+| 图 3-10 | `fig3_10_mechanism_ablation.svg/.png` | 机制消融 | SG-EXP-006 正式（三种子） | 可用 |
+| 图 3-11 | `fig3_11_event_window_forecast.svg/.png` | 事件窗口预测时序 | SG-EXP-004 `predictions.csv.gz` | 可用 |
 | 图 4-2 | `fig4_2_intervention.svg/.png` | 门控参数干预 | `intervention_summary.json` | 可用 |
 | 图 4-4 | `fig4_4_four_cell.svg/.png` | 事件/规则四格诊断 | SG-EXP-004 `metrics.json` | 已重绘 |
+| 图 4-6 | `fig4_6_residual_distribution.svg/.png` | 预测残差分布 | 三模型 `predictions.csv.gz` | 可用 |
+| 图 4-7 | `fig4_7_error_vs_event_intensity.svg/.png` | 误差 vs 事件强度 | predictions + 事件分数 | 可用 |
 | 图 5-2 | `fig5_2_transfer_entropy.svg/.png` | TE 方向性候选结构 | `transfer_entropy_summary.json` | 探索性 |
 | 图 5-3 | `fig5_3_asymmetry.svg/.png` | TE 方向不对称性 | `transfer_entropy_summary.json` | 已修订 |
 | 图 5-4 | `fig5_4_coverage.svg/.png` | 标准/规则路由共形覆盖 | `conformal_summary.json` | 已修订 |
 | 图 5-5 | `fig5_5_quantile_per_node.svg/.png` | 分层残差分位数 | `conformal_summary.json` | 可用 |
 | 图 5-6 | `fig5_6_mechanism_enhance.svg/.png` | NAPL/Gate-MI 快速筛选 | `variant_quick_check/*.json` | **仅内部/附录** |
 | 图 5-8 | `fig5_8_parameter_intervention.svg/.png` | 分层参数干预敏感度 | `counterfactual_cate_summary.json` | 已修订 |
+| 图 5-10 | `fig5_10_coverage_width.svg/.png` | 覆盖率与区间宽度 | `conformal_summary.json` | 可用 |
+| 图 5-11 | `fig5_11_te_vs_relations.svg/.png` | TE 与统计关系一致性 | TE + `relation_matrices.npz` | 探索性 |
 
 ## 图注草案
 
@@ -54,11 +67,21 @@
 
 **图 2-6.** 按小时聚合的事件时段构成。事件定义为任一节点在该时间步具有真实事件标签；柱高表示该小时占全部事件时间步的比例，而非节点分类准确率或事件发生概率；该全量统计无误差棒。
 
+**图 2-7.** 7 个输入特征的 Spearman 相关矩阵（全部 118,818×10 样本展平计算；Spearman 抗稀疏零值）。数值为相关系数，色阶蓝（负）—白—正（红）；特征稀疏性使相关幅值整体偏低。该图刻画特征冗余与共线结构，不表示因果关系。
+
+**图 2-8.** 全站负荷按星期（7 行）× 小时（24 列）聚合的均值热力图，浅橙底纹为周末。展示日内时段与周末-工作日差异的双周期结构；全量统计无误差棒。
+
+**图 2-9.** 测试集事件触发样本处 4 个行为分量的逐节点平均归一化贡献（每节点按自身标准差归一化，与事件分数定义一致）。堆叠柱展示接入、离站、活跃变化与负荷跳变在触发窗口中的相对构成；全量统计无误差棒。
+
+**图 2-10.** 冻结事件规则（验证集 95 分位阈值 + 因果前向扩展 2 步）在测试集产生的窗口长度分布；窗口总数与单时间片窗口占比在图内标注。该统计描述规则行为本身，不表示模型性能。
+
 ### 第 3 章
 
 **图 3-1.** 不同预测模型的全局 MAE 对比。随机初始化模型显示三种子（2024、2025、2026）的均值，误差棒为跨种子标准差；ARIMA、LightGBM、XGBoost 和 Persistence 为确定性基线，不具有种子标准差。纵向比较均基于相同预测键、时间划分和 kWh/15 min 评价口径。
 
 **图 3-3.** SG-EXP-004 的三类站内关系矩阵：负荷耦合、行为共现和轮廓相似。三个面板使用统一色阶，行列均为完整节点编号；颜色表示对应关系权重，矩阵是模型输入的统计关系表示，不是物理拓扑图或因果图；该固定关系工件无误差棒。
+
+**图 3-4.** 5 个对比模型在 4 个预测步长（h1–h4）上的 MAE 曲线，点为三种子均值、阴影为跨种子标准差。误差随步长单调上升，图模型相对 TCN 的增益在长步长上扩大。
 
 **图 3-5.** SG-EXP-004 三种子（2024、2025、2026）训练过程中的验证集 MAE。左图曲线为标准化尺度验证 MAE，星形表示每个种子的最佳验证点，菱形表示日志末轮，竖虚线表示各运行日志的停止轮次；右图将最佳点与末轮按种子配对展示。数值不表示测试集性能，图中无误差棒。
 
@@ -66,11 +89,23 @@
 
 **图 3-7.** 三种子（2024、2025、2026）训练过程中自适应图混合权重 $\alpha=\sigma(w)$ 的变化。左图展示完整训练轨迹及逐轮跨种子范围，右图比较初始、最佳验证点和日志末轮；阴影表示种子范围而非置信区间。$\alpha$ 仅描述固定图与自适应图在内部邻接混合处的权重，不概括整个模型的因果作用或全部关系依赖。
 
+**图 3-8.** 5 个对比模型在全局、事件窗口、稳定窗口与非零负荷四个分层口径上的 MAE（对数纵轴，事件窗口量级远大于稳定窗口）。误差棒为三种子标准差；各口径样本量差异见正文表 3-2。
+
+**图 3-9.** 10 个主分析节点 × 5 个模型的 MAE 热力图（三种子均值，节点按累计负荷降序）。节点间误差差异明显，高累计负荷节点误差整体更大；该图展示节点异质性，不表示图边关系。
+
+**图 3-10.** SG-EXP-006 机制消融：完整模型与四个消融变体的全局 MAE（三种子均值，误差棒为跨种子标准差）。移除图结构后退化为 TCN 水平，移除事件门控后全局误差大幅上升——两类组件均为模型增益来源；具体变体定义见正文 3.7 节。
+
+**图 3-11.** seed-2024 测试集中代表性事件窗口的负荷真值与 h=1 预测对比（灰色阴影为预测绝对误差带）。展示事件窗口内负荷波动下的预测跟踪行为；该图为描述性示例而非全量统计，不单独用于结论。
+
 ### 第 4 章
 
 **图 4-2.** 不同门控参数干预组合下的全局 MAE。蓝色表示学习到的门控基线，红色表示固定、交换或等权干预；柱外百分比为相对于学习值基线的 MAE 变化，误差棒为三种子均值的标准差。正百分比表示性能退化。
 
 **图 4-4.** seed-2024 的真实标签事件与可见规则触发组合下的两层诊断。A 为四格单元 MAE 主图，B 展示规则触发样本与标签事件样本的组成比例及总样本基数；蓝色表示事件触发，橙色表示事件漏触发，灰色表示非事件触发。规则触发率、事件召回和触发事件纯度均可由 A/B 的单元计数复算；该图为单种子机制诊断，无误差棒，不作三种子泛化结论。
+
+**图 4-6.** TCN、StaticGraph 与 AdaptiveGraph 预测残差（预测−真值）的核密度曲线。左图为全局非事件样本，右图为事件窗口样本（量级差异约 20 倍，拆分双面板）；事件窗口残差分布更宽且右偏，指示事件时段的误差结构差异。该图为 seed-2024 描述性诊断，无误差棒。
+
+**图 4-7.** seed-2024 测试集按可见事件分数分箱的平均绝对误差（0 档与三个非零分位档，95 分位≈冻结触发阈值）。误差随事件强度单调上升，量化事件窗口误差的结构性来源；分箱计数标注于各点上方。
 
 ### 第 5 章
 
@@ -86,9 +121,13 @@
 
 **图 5-8.** 三种子（2024、2025、2026）汇总的分层参数干预相对 MAE 变化。左图比较全局、事件窗口和稳定窗口的相对变化率，右图展示 7 种干预组合在 10 个节点上的相对 MAE 变化；正值表示相对学习值基线退化。当前汇总工件未保存逐种子离散度，因此图中无误差棒；该图描述参数干预敏感度，不使用 CATE 或严格因果效应解释。
 
+**图 5-10.** 标准共形与规则路由分层共形的逐步长覆盖率对比（左，三种子均值 ± 标准差，虚线为 90% 目标）与 10 节点区间宽度对比（右，均值 ± 标准差）。规则路由在事件相关节点上宽度略宽但覆盖率接近标准共形；oracle 口径不在此图展开（见图 5-4 A）。
+
+**图 5-11.** 90 个有向节点对（45 对 × 双向）的传递熵与三类固定统计关系权重（负荷耦合/行为共现/轮廓相似）的散点，Spearman r 标注（\*\* 表示 p<0.01）。TE 与统计关系权重的一致性为探索性分析，未进行多重比较校正，不构成因果证明。
+
 ## 图表交付检查
 
-- 生成脚本：`scripts/figures/batch4_redraw.py`、`batch5_restyle.py`、`batch6_te_coverage_enhance.py`、`batch8_fig5_6_enhance.py`、`batch9_advisor_redraw.py`、`batch10_fig2_2_coverage.py`。
+- 生成脚本：`scripts/figures/batch4_redraw.py`、`batch5_restyle.py`、`batch6_te_coverage_enhance.py`、`batch8_fig5_6_enhance.py`、`batch9_advisor_redraw.py`、`batch10_fig2_2_coverage.py`、`batch11_chapter2_extra.py`、`batch12_chapter3_extra.py`、`batch13_chapter4_5_extra.py`。
 - 输入与输出 SHA：`outputs/figures/manifest.json`。
 - 输出格式：每个当前图号均有 SVG 与 PNG；PNG 导出参数为 1200 DPI。
 - 最终插入论文前：按 Word/PDF 实际栏宽缩放检查，确认中文字体、刻度、图例和图注引用仍可读；再检查灰度打印下的线型、填充和图例冗余编码。
