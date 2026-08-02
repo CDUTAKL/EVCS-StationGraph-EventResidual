@@ -128,51 +128,51 @@
 
 ### 2.1 方法基础与基线（14 篇）
 
-[51] KIPF T N, WELLING M. Semi-supervised classification with graph convolutional networks[C]//Proceedings of the 5th International Conference on Learning Representations (ICLR). Toulon, 2017.
+[50] KIPF T N, WELLING M. Semi-supervised classification with graph convolutional networks[C]//Proceedings of the 5th International Conference on Learning Representations (ICLR). Toulon, 2017.
 
-[52] SCHLICHTKRULL M, KIPF T N, BLOEM P, et al. Modeling relational data with graph convolutional networks[C]//European Semantic Web Conference (ESWC). 2018: 593-607.
+[51] SCHLICHTKRULL M, KIPF T N, BLOEM P, et al. Modeling relational data with graph convolutional networks[C]//European Semantic Web Conference (ESWC). 2018: 593-607.
 
-[53] WU Z, PAN S, LONG G, et al. Graph WaveNet: deep spatial-temporal graph modeling[C]//Proceedings of the 28th International Joint Conference on Artificial Intelligence (IJCAI). 2019: 1907-1913.
+[52] WU Z, PAN S, LONG G, et al. Graph WaveNet: deep spatial-temporal graph modeling[C]//Proceedings of the 28th International Joint Conference on Artificial Intelligence (IJCAI). 2019: 1907-1913.
 
-[54] BAI S, KOLTER J Z, KOLTUN V. An empirical evaluation of generic convolutional and recurrent networks for sequence modeling[J]. arXiv preprint arXiv:1803.01271, 2018.
+[53] BAI S, KOLTER J Z, KOLTUN V. An empirical evaluation of generic convolutional and recurrent networks for sequence modeling[J]. arXiv preprint arXiv:1803.01271, 2018.
 
-[55] YU B, YIN H, ZHU Z. Spatio-temporal graph convolutional networks: a deep learning framework for traffic forecasting[C]//Proceedings of the 27th International Joint Conference on Artificial Intelligence (IJCAI). 2018: 3634-3640.
+[54] YU B, YIN H, ZHU Z. Spatio-temporal graph convolutional networks: a deep learning framework for traffic forecasting[C]//Proceedings of the 27th International Joint Conference on Artificial Intelligence (IJCAI). 2018: 3634-3640.
 
-[56] VELIČKOVIĆ P, CUCURULL G, CASANOVA A, et al. Graph attention networks[C]//Proceedings of the 6th International Conference on Learning Representations (ICLR). 2018.
+[55] VELIČKOVIĆ P, CUCURULL G, CASANOVA A, et al. Graph attention networks[C]//Proceedings of the 6th International Conference on Learning Representations (ICLR). 2018.
 
-[57] VASWANI A, SHAZEER N, PARMAR N, et al. Attention is all you need[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 5998-6008.
+[56] VASWANI A, SHAZEER N, PARMAR N, et al. Attention is all you need[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 5998-6008.
 
-[58] HOCHREITER S, SCHMIDHUBER J. Long short-term memory[J]. Neural Computation, 1997, 9(8): 1735-1780.
+[57] HOCHREITER S, SCHMIDHUBER J. Long short-term memory[J]. Neural Computation, 1997, 9(8): 1735-1780.
 
-[59] CHO K, VAN MERRIËNBOER B, GULCEHRE C, et al. Learning phrase representations using RNN encoder-decoder for statistical machine translation[C]//Proceedings of EMNLP. 2014: 1724-1734.
+[58] CHO K, VAN MERRIËNBOER B, GULCEHRE C, et al. Learning phrase representations using RNN encoder-decoder for statistical machine translation[C]//Proceedings of EMNLP. 2014: 1724-1734.
 
-[60] KE G, MENG Q, FINLEY T, et al. LightGBM: a highly efficient gradient boosting decision tree[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 3146-3154.
+[59] KE G, MENG Q, FINLEY T, et al. LightGBM: a highly efficient gradient boosting decision tree[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 3146-3154.
 
-[61] CHEN T, GUESTRIN C. XGBoost: a scalable tree boosting system[C]//Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. 2016: 785-794.
+[60] CHEN T, GUESTRIN C. XGBoost: a scalable tree boosting system[C]//Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. 2016: 785-794.
 
-[62] BAI L, YAO L, LI C, et al. Adaptive graph convolutional recurrent network for traffic forecasting[C]//Advances in Neural Information Processing Systems (NeurIPS). 2020: 17804-17815.
+[61] BAI L, YAO L, LI C, et al. Adaptive graph convolutional recurrent network for traffic forecasting[C]//Advances in Neural Information Processing Systems (NeurIPS). 2020: 17804-17815.
 
-[63] DIEBOLD F X, MARIANO R S. Comparing predictive accuracy[J]. Journal of Business & Economic Statistics, 1995, 13(3): 253-263.
+[62] DIEBOLD F X, MARIANO R S. Comparing predictive accuracy[J]. Journal of Business & Economic Statistics, 1995, 13(3): 253-263.
 
-[64] LUNDBERG S M, LEE S I. A unified approach to interpreting model predictions[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 4765-4774.
+[63] LUNDBERG S M, LEE S I. A unified approach to interpreting model predictions[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 4765-4774.
 
 ### 2.2 必引近邻（创新性调研确认，8 篇）
 
-[65] WANG S, et al. Causality-aware multi-graph convolutional networks with critical node dynamics for EV charging station load forecasting (CADGN)[J]. IEEE Transactions on Smart Grid, 2025. ⏳卷期页码
+[64] WANG S, et al. Causality-aware multi-graph convolutional networks with critical node dynamics for EV charging station load forecasting (CADGN)[J]. IEEE Transactions on Smart Grid, 2025. ⏳卷期页码
 
-[66] LI Y, et al. Load probabilistic forecasting for EV charging station cluster: adaptive multivariate spatiotemporal graph fusion technology (AMSTG)[J]. Electric Power Systems Research, 2025. ⏳
+[65] LI Y, et al. Load probabilistic forecasting for EV charging station cluster: adaptive multivariate spatiotemporal graph fusion technology (AMSTG)[J]. Electric Power Systems Research, 2025. ⏳
 
-[67] LIU J, et al. Short-term regional EV charging load forecasting based on GAT and GRU with trip distribution estimation (STGR-Net)[J]. Applied Energy, 2026, 406. ⏳页码
+[66] LIU J, et al. Short-term regional EV charging load forecasting based on GAT and GRU with trip distribution estimation (STGR-Net)[J]. Applied Energy, 2026, 406. ⏳页码
 
-[68] CHEN L, et al. Charging station cluster load prediction: spatiotemporal multi-graph fusion technology (MGAT-MIC-LSTM)[J]. Renewable and Sustainable Energy Reviews, 2024. ⏳
+[67] CHEN L, et al. Charging station cluster load prediction: spatiotemporal multi-graph fusion technology (MGAT-MIC-LSTM)[J]. Renewable and Sustainable Energy Reviews, 2024. ⏳
 
-[69] WANG H, et al. Peak-aware residual LLM over anchor for EV charging station demand (PAR-LLM)[J]. IEEE Access, 2026, 14: 52360-52370.
+[68] WANG H, et al. Peak-aware residual LLM over anchor for EV charging station demand (PAR-LLM)[J]. IEEE Access, 2026, 14: 52360-52370.
 
-[70] CHEN Y, et al. Periodicity-aware residual correction on processed distribution load proxy (PARC)[J]. World Electric Vehicle Journal, 2026, 17(7): 336.
+[69] CHEN Y, et al. Periodicity-aware residual correction on processed distribution load proxy (PARC)[J]. World Electric Vehicle Journal, 2026, 17(7): 336.
 
-[71] ZHANG Y, et al. RLF-MGNN: residential load forecasting using multiple correlation-temporal graph neural networks[J]. Applied Soft Computing, 2023. ⏳
+[70] ZHANG Y, et al. RLF-MGNN: residential load forecasting using multiple correlation-temporal graph neural networks[J]. Applied Soft Computing, 2023. ⏳
 
-[72] WANG Q, et al. Short-term residential load forecasting framework based on spatial-temporal fusion adaptive gated graph convolution networks (STFAG-GCN)[J]. IEEE Transactions on Neural Networks and Learning Systems, 2025. ⏳
+[71] WANG Q, et al. Short-term residential load forecasting framework based on spatial-temporal fusion adaptive gated graph convolution networks (STFAG-GCN)[J]. IEEE Transactions on Neural Networks and Learning Systems, 2025. ⏳
 
 ## 待办
 
