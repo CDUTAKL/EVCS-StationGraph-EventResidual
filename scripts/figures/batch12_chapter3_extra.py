@@ -213,13 +213,19 @@ def redraw_fig3_9() -> None:
 
 
 def redraw_fig3_10() -> None:
-    """图 3-10：机制消融（SG-EXP-006）——基线 vs 四个变体的全局 MAE。"""
+    """图 3-10：机制消融（SG-EXP-006）——基线 vs 四个变体的全局 MAE。
+
+    基线 = SG-EXP-005（event_residual 正式三种子，night_run 流水线产物）；
+    注意 no_event_gate 变体的语义（mechanism.py）：gate 关闭后残差修正路径
+    **无条件作用于所有样本**（非"无修正"）——其大幅恶化证明门控的选择性
+    激活是必要的，而非事件修正本身带来的收益。
+    """
     variants = [
         ("baseline", "完整模型（基线）", BLUE),
         ("SG-EXP-006-ablation-no_graph", "无图（TCN 结构）", GRAY_M),
         ("SG-EXP-006-ablation-static_graph_only", "仅固定图", ORANGE),
         ("SG-EXP-006-ablation-adaptive_graph_only", "仅自适应图", GREEN),
-        ("SG-EXP-006-ablation-no_event_gate", "无事件门控", RED),
+        ("SG-EXP-006-ablation-no_event_gate", "门控关闭\n（全样本修正）", RED),
     ]
     fig, ax = plt.subplots(figsize=(7.8, 3.8))
     x = np.arange(len(variants))
@@ -227,7 +233,7 @@ def redraw_fig3_10() -> None:
     for xi, (key, label, color) in enumerate(variants):
         if key == "baseline":
             paths = sorted(glob.glob(
-                "outputs/experiments/SG-EXP-004/*/seed-*/metrics.json"))
+                "outputs/night_run/20260730-171821/SG-EXP-005/*/seed-*/metrics.json"))
         else:
             paths = sorted(glob.glob(
                 f"outputs/night_run/20260730-171821/SG-EXP-006/*/children/{key}/*/seed-*/metrics.json"))
