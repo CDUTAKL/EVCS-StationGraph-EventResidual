@@ -91,63 +91,69 @@ def redraw_fig5_4() -> None:
     ]
 
     fig = plt.figure(figsize=(10.4, 4.35), constrained_layout=True)
-    gs = GridSpec(1, 3, figure=fig, width_ratios=[1.05, 1.22, 1.48], wspace=0.34)
+    gs = GridSpec(1, 3, figure=fig, width_ratios=[1.28, 1.28, 1.48], wspace=0.34)
 
     # A：最容易误读的事件窗口单独展开，规则路由与 oracle 不再叠在同一行。
     ax = fig.add_subplot(gs[0, 0])
     event_vals = []
     event_stds = []
-    for key, label, color, marker, face in methods:
+    for key, label, color, marker, face in methods[:2]:
         vals = np.asarray([s[key]["coverage_event_window"] for s in seeds], dtype=float)
         event_vals.append(vals.mean())
         event_stds.append(vals.std())
-    yy = np.arange(len(methods))[::-1]
-    for yi, (item, mean, sd, y) in enumerate(zip(methods, event_vals, event_stds, yy)):
+    yy = np.arange(2)[::-1]
+    for yi, (item, mean, sd, y) in enumerate(zip(methods[:2], event_vals, event_stds, yy)):
         _, label, color, marker, face = item
-        ax.errorbar(mean, y, xerr=sd, fmt=marker, ms=7.0 if marker != "*" else 10,
+        ax.errorbar(mean, y, xerr=sd, fmt=marker, ms=7.0,
                     mfc=face, mec=color, mew=1.1, ecolor=color, capsize=2.8,
                     lw=1.0, zorder=4)
-        tx = min(mean + sd + 0.035, 0.97)
+        tx = min(mean + sd + 0.008, 0.095)
         ax.text(tx, y, f"{mean:.1%}", va="center", fontsize=8.1,
-                color=color, fontweight="bold" if marker == "*" else "normal")
-    ax.axvline(0.90, color=RED, lw=1.0, ls="--", zorder=1)
-    ax.text(0.90, 2.36, "90%目标", color=RED, fontsize=7.2, ha="center")
+                color=color)
     ax.set_yticks(yy)
-    ax.set_yticklabels([m[1] for m in methods], fontsize=8.0)
-    ax.set_xlim(0, 1.0)
-    ax.set_ylim(-0.65, 2.55)
-    ax.set_xlabel("事件窗口覆盖率", fontsize=8.5)
-    ax.text(0.02, -0.19, "规则路由=可部署路径\noracle=真实标签事后上界",
-            transform=ax.transAxes, fontsize=6.8, color=GRAY_M, va="top")
+    ax.set_yticklabels([m[1] for m in methods[:2]], fontsize=8.0)
+    ax.set_xlim(0, 0.10)
+    ax.set_ylim(-0.62, 1.72)
+    ax.set_xlabel("事件窗口覆盖率（放大）", fontsize=8.5)
+    oracle_event = float(np.mean([
+        s["stratified_oracle_upper"]["coverage_event_window"] for s in seeds
+    ]))
+    ax.text(0.98, 0.92, f"★ oracle {oracle_event:.1%}\n真实标签事后上界\n不可部署",
+            transform=ax.transAxes, ha="right", va="top", fontsize=7.0, color=ORANGE,
+            bbox=dict(facecolor="white", edgecolor=ORANGE, linewidth=0.7,
+                      boxstyle="round,pad=0.35"))
     clean_ax(ax, "x")
-    panel_label(ax, "A", "事件窗口：部署路径与上界")
+    panel_label(ax, "A", "事件窗口：部署路径放大")
 
-    # B：所有窗口只比较标准共形与规则路由，避免 oracle 与可部署结果混成一组。
+    # B：只比较全局和稳定窗口；事件窗口已在 A 中单独放大，避免小值被大范围压缩。
     ax = fig.add_subplot(gs[0, 1])
-    x = np.arange(len(windows))
-    for offset, (key, label, color, marker, face) in zip([-0.12, 0.12], methods[:2]):
-        means, sds = [], []
-        for wk, _ in windows:
-            vals = np.asarray([s[key][f"coverage_{wk}"] for s in seeds], dtype=float)
-            means.append(vals.mean())
-            sds.append(vals.std())
-        ax.errorbar(x + offset, means, yerr=sds, fmt=marker, ms=6.5,
-                    mfc=face, mec=color, mew=1.0, ecolor=color, capsize=2.8,
-                    lw=1.0, color=color, label=label, zorder=4)
-        # 事件窗口的精确值已在 A 面板单独展开；B 面板不重复标注，避免两点过近。
-        for xi, mean, wk in zip(x + offset, means, [w[0] for w in windows]):
-            if wk != "event_window":
-                ax.text(xi, mean + 0.035, f"{mean:.1%}", ha="center", va="bottom",
-                        fontsize=7.0, color=color)
-    ax.axhline(0.90, color=RED, lw=1.0, ls="--", zorder=1)
-    ax.text(2.42, 0.905, "90%", fontsize=7.0, color=RED, ha="right")
-    ax.set_xticks(x)
-    ax.set_xticklabels([w[1] for w in windows], fontsize=8.2)
-    ax.set_ylim(0, 1.02)
-    ax.set_ylabel("覆盖率（均值 ± 跨种子 SD）", fontsize=8.3)
-    ax.legend(fontsize=7.0, frameon=False, loc="upper left")
-    clean_ax(ax, "y")
-    panel_label(ax, "B", "窗口汇总：标准 vs 规则路由")
+    summary_windows = [("overall", "全局"), ("stable_window", "稳定窗口")]
+    yy = np.arange(len(summary_windows))[::-1]
+    for yi, (wk, wk_label) in zip(yy, summary_windows):
+        std_vals = np.asarray([s["standard_conformal"][f"coverage_{wk}"] for s in seeds], dtype=float)
+        rule_vals = np.asarray([s["stratified_conformal"][f"coverage_{wk}"] for s in seeds], dtype=float)
+        std_mean, rule_mean = std_vals.mean(), rule_vals.mean()
+        std_sd, rule_sd = std_vals.std(), rule_vals.std()
+        ax.plot([std_mean, rule_mean], [yi, yi], color=GRAY_L, lw=2.6, zorder=2)
+        ax.errorbar(std_mean, yi, xerr=std_sd, fmt="o", ms=6.0, mfc="white", mec=GRAY_D,
+                    ecolor=GRAY_D, capsize=2.3, lw=0.9, zorder=4)
+        ax.errorbar(rule_mean, yi, xerr=rule_sd, fmt="o", ms=6.0, mfc=BLUE, mec=BLUE,
+                    ecolor=BLUE, capsize=2.3, lw=0.9, zorder=4)
+        ax.text((std_mean + rule_mean) / 2, yi + 0.18,
+                f"{std_mean:.1%} → {rule_mean:.1%}", ha="center", va="bottom",
+                fontsize=7.2, color=GRAY_D)
+    ax.set_yticks(yy)
+    ax.set_yticklabels([w[1] for w in summary_windows], fontsize=8.2)
+    ax.set_xlim(0.65, 0.75)
+    ax.set_ylim(-0.58, 1.62)
+    ax.set_xlabel("覆盖率（均值 ± 跨种子 SD）", fontsize=8.3)
+    ax.legend(handles=[Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
+                              markeredgecolor=GRAY_D, markersize=5.5, label="标准共形"),
+                       Line2D([0], [0], marker="o", color="none", markerfacecolor=BLUE,
+                              markeredgecolor=BLUE, markersize=5.5, label="规则路由分层共形")],
+              fontsize=7.0, frameon=False, loc="lower left")
+    clean_ax(ax, "x")
+    panel_label(ax, "B", "全局/稳定窗口：标准 vs 规则")
 
     # C：预测步长上的全样本覆盖率，阴影明确是三种子范围而非置信区间。
     ax = fig.add_subplot(gs[0, 2])
@@ -312,58 +318,51 @@ def redraw_fig4_4() -> None:
     rmse = np.array([[fc["target_event_triggered"]["rmse"], fc["target_event_not_triggered"]["rmse"]],
                      [fc["stable_triggered"]["rmse"], fc["stable_not_triggered"]["rmse"]]])
     total = counts.sum()
-    event_total = counts[0].sum()
-    trigger_total = counts[:, 0].sum()
-    event_recall = counts[0, 0] / event_total
-    event_purity = counts[0, 0] / trigger_total
-    trigger_rate = trigger_total / total
 
-    fig = plt.figure(figsize=(9.4, 4.75), constrained_layout=True)
-    gs = GridSpec(2, 2, figure=fig, width_ratios=[1.06, 1.48],
-                  height_ratios=[1.0, 1.0], wspace=0.32, hspace=0.28)
+    # 上下两个等权部分：A 回答“哪一格误差大”，B 回答“规则触发样本由什么组成”。
+    fig = plt.figure(figsize=(9.4, 6.5))
 
-    # A：误差四格，MAE 为主信息，RMSE 和样本占比作为二级诊断。
-    ax = fig.add_subplot(gs[:, 0])
-    im = ax.imshow(matrix, cmap="Blues", vmin=0, vmax=0.30, aspect="equal")
+    # A：四格 MAE 主图，单元内只保留主指标，避免 RMSE/n/百分比堆叠。
+    ax = fig.add_axes([0.11, 0.56, 0.76, 0.32])
+    im = ax.imshow(matrix, cmap="Blues", vmin=0, vmax=0.30, aspect="auto")
     for pos in [-0.5, 0.5, 1.5]:
         ax.axhline(pos, color="white", lw=2.4)
         ax.axvline(pos, color="white", lw=2.4)
     for i in range(2):
         for j in range(2):
             text_color = "white" if matrix[i, j] > 0.16 else GRAY_D
-            ax.text(j, i - 0.18, f"{matrix[i, j]:.4f}", ha="center",
-                    fontsize=11.5, fontweight="bold", color=text_color)
-            ax.text(j, i + 0.03, f"RMSE {rmse[i, j]:.3f}", ha="center",
-                    fontsize=7.6, color=text_color, alpha=0.9)
-            ax.text(j, i + 0.22, f"n={counts[i, j]:,}  ({counts[i, j] / total:.2%})",
-                    ha="center", fontsize=7.2, color=text_color, alpha=0.9)
+            ax.text(j, i, f"{matrix[i, j]:.4f}", ha="center", va="center",
+                    fontsize=17, fontweight="bold", color=text_color)
     ax.set_xticks([0, 1])
-    ax.set_xticklabels(["规则触发", "规则未触发"], fontsize=8.7)
+    ax.set_xticklabels(["规则触发", "规则未触发"], fontsize=9.5)
     ax.set_yticks([0, 1])
-    ax.set_yticklabels(["标签事件", "标签非事件"], fontsize=8.7)
+    ax.set_yticklabels(["标签事件", "标签非事件"], fontsize=9.5)
     ax.tick_params(length=0)
-    cbar = fig.colorbar(im, ax=ax, fraction=0.045, pad=0.035)
-    cbar.set_label("MAE（kWh/15 min）", fontsize=7.5)
+    ax.set_xlabel("单元 MAE（kWh/15 min；seed-2024）", fontsize=9.0, labelpad=6)
+    cax = fig.add_axes([0.89, 0.56, 0.022, 0.32])
+    cbar = fig.colorbar(im, cax=cax)
+    cbar.set_label("MAE（kWh/15 min）", fontsize=8.0)
     cbar.ax.tick_params(labelsize=7)
-    panel_label(ax, "A", "四格误差诊断：MAE 主值")
+    panel_label(ax, "A", "事件标签 × 规则触发：单元 MAE")
 
-    # B：规则触发覆盖了什么，避免只看 MAE 而忽略触发机制的基数问题。
-    ax = fig.add_subplot(gs[0, 1])
+    # B：规则触发覆盖了什么，直接显示两种样本集合的组成比例和基数。
+    ax = fig.add_axes([0.11, 0.15, 0.82, 0.26])
     bars = [
         ("标签事件样本", [counts[0, 0], counts[0, 1]], [BLUE, ORANGE],
          ["触发", "漏触发"]),
         ("规则触发样本", [counts[0, 0], counts[1, 0]], [BLUE, GRAY_M],
          ["标签事件", "标签非事件"]),
     ]
-    y = np.arange(2)
+    y = np.arange(2)[::-1]
     left = np.zeros(2)
     for seg_i in range(2):
         vals = np.array([bars[row][1][seg_i] for row in range(2)])
         color = [bars[row][2][seg_i] for row in range(2)]
         ax.barh(y, vals, left=left, color=color, height=0.42,
                 edgecolor="white", linewidth=0.6)
-        for yi, v, lft in zip(y, vals, left):
-            fraction = v / (v + (bars[yi][1][1 - seg_i]))
+        for pos_i, (yi, v, lft) in enumerate(zip(y, vals, left)):
+            row_i = 1 - pos_i
+            fraction = v / (v + (bars[row_i][1][1 - seg_i]))
             if fraction >= 0.15:
                 ax.text(lft + v / 2, yi, f"{fraction:.1%}",
                         ha="center", va="center", fontsize=7.2,
@@ -371,37 +370,22 @@ def redraw_fig4_4() -> None:
             else:
                 # 极窄色块不把文字塞进色块内部，段外标注并以短线指回。
                 ax.annotate(f"{fraction:.1%}", xy=(lft + v / 2, yi),
-                            xytext=(lft + v + 120, yi - 0.16),
+                            xytext=(lft + v + 150, yi - 0.17),
                             ha="left", va="center", fontsize=6.8, color=GRAY_D,
                             arrowprops=dict(arrowstyle="-", color=GRAY_D, lw=0.55))
         left += vals
     ax.set_yticks(y)
-    ax.set_yticklabels([b[0] for b in bars], fontsize=8.1)
+    ax.set_yticklabels([b[0] for b in bars[::-1]], fontsize=9.0)
     ax.xaxis.set_major_formatter(FuncFormatter(lambda v, pos: f"{v / 1000:.0f}k"))
-    ax.set_xlabel("样本数（堆叠显示组成）", fontsize=8.2, labelpad=2)
-    ax.set_ylim(-0.42, 1.18)
+    ax.set_xlabel("样本数（堆叠显示组成）", fontsize=9.0, labelpad=3)
+    ax.set_ylim(-0.48, 1.48)
+    ax.text(0.0, 1.23, "蓝=事件触发   橙=事件漏触发   灰=非事件触发",
+            transform=ax.transAxes, fontsize=7.5, color=GRAY_D, ha="left")
+    ax.text(1.0, 1.23, f"总样本 n={total:,}", transform=ax.transAxes,
+            fontsize=7.5, color=GRAY_M, ha="right")
     clean_ax(ax, "x")
-    panel_label(ax, "B", "规则路由组成：蓝=事件触发 · 橙=事件漏触发 · 灰=非事件触发")
-
-    # C：四个单元的 MAE 排序，直接连接左侧色阶与具体误差大小。
-    ax = fig.add_subplot(gs[1, 1])
-    values = [fc[k]["mae"] for k, _, _ in cells]
-    order = np.argsort(values)[::-1]
-    yy = np.arange(len(order))
-    for yi, idx in zip(yy, order):
-        key, label, color = cells[idx]
-        ax.hlines(yi, 0, values[idx], color=color, lw=5.0, alpha=0.78, zorder=2)
-        ax.scatter(values[idx], yi, s=48, color=color, edgecolor=GRAY_D,
-                   linewidth=0.6, zorder=4)
-        ax.text(values[idx] + 0.006, yi, f"{values[idx]:.4f}  |  n={fc[key]['count']:,}",
-                va="center", fontsize=7.2, color=GRAY_D)
-    ax.set_yticks(yy)
-    ax.set_yticklabels([cells[i][1].replace("\n", " / ") for i in order], fontsize=7.4)
-    ax.set_xlim(0, 0.34)
-    ax.set_xlabel("单元 MAE（kWh/15 min；seed-2024）", fontsize=8.2)
-    clean_ax(ax, "x")
-    panel_label(ax, "C", "单元误差：事件与触发组合")
-    final(fig, "fig4_4_four_cell", (9.4, 4.75))
+    panel_label(ax, "B", "规则路由覆盖：样本组成与基数")
+    final(fig, "fig4_4_four_cell", (9.4, 6.5))
 
 
 def _training_logs():

@@ -1,12 +1,12 @@
-"""论文图批次 6：fig5_3 / fig5_4 高信息密度重设计（用户 2026-08-01 反馈"还不够完美"）。
+"""论文图批次 6：fig5_3 / fig5_4 高信息密度重设计。
 
-fig5_3 方向不对称（v3）：
+fig5_3 方向不对称（v4）：
 - 主面板 45° 对称散点：符号化距离配色（线上方 j→i 主导蓝 / 下方 i→j 主导橙 / 对称带灰）
 - 点面积编码平均 TE 强度；显著对有向边实心、非显著空心
 - 近似对称带（±阈值）+ 45° 参考线
-- 顶部 + 右侧边缘直方图（双向 TE 分布）
-- top 3 不对称对箭头标注（统一放右上空白区，不遮挡散点）
-- 统计注释（20/45 对不对称 = 44.4%）
+- 顶部 + 右侧边缘直方图明确标注为主图横轴/纵轴分布，并用 1/2/3 编号联动 top 3 不对称对
+- 长节点对名称移至图下，主图仅保留编号，避免文字遮挡散点
+- 统计注释（20/45 对不对称 = 44.4%）置于图下
 
 fig5_4 覆盖率（v3）：
 - 左面板哑铃图增强：均值点 + per-seed 三种子散点（抖动）+ Δ 差值标注 + 90% 目标线
@@ -23,6 +23,7 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.lines import Line2D
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/scipilot-figure-skill/scripts"))
 try:
@@ -70,7 +71,7 @@ def _clean_ax(ax, xlabel=None, ylabel=None):
         ax.set_ylabel(ylabel, fontsize=9)
 
 
-# ========== fig5_3 方向不对称（v3：符号化距离 + 边缘直方图） ==========
+# ========== fig5_3 方向不对称（v4：编号联动主图 + 边缘分布） ==========
 def fig5_3_asymmetry() -> None:
     te = json.load(open("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"))
     node_ids = list(BUNDLE.node_ids)
@@ -91,12 +92,11 @@ def fig5_3_asymmetry() -> None:
     avg = (xs + ys) / 2.0            # 平均 TE（点面积编码）
     band = 0.12 * vmax               # 近似对称带半宽
 
-    fig = plt.figure(figsize=(7.2, 6.2))
-    gs = fig.add_gridspec(2, 2, width_ratios=[4.2, 1.0], height_ratios=[1.0, 4.2],
-                          wspace=0.12, hspace=0.12)
-    ax = fig.add_subplot(gs[1, 0])
-    ax_top = fig.add_subplot(gs[0, 0], sharex=ax)
-    ax_right = fig.add_subplot(gs[1, 1], sharey=ax)
+    fig = plt.figure(figsize=(8.4, 6.6))
+    # 固定坐标保证边缘分布与主图紧密对齐，避免自动布局制造过大空白。
+    ax = fig.add_axes([0.12, 0.18, 0.65, 0.64])
+    ax_top = fig.add_axes([0.12, 0.83, 0.65, 0.12], sharex=ax)
+    ax_right = fig.add_axes([0.80, 0.18, 0.12, 0.64], sharey=ax)
 
     # ---- 主面板 ----
     # 对称带（|y-x| < band 区域浅灰填充，与两侧边界虚线一致）
@@ -116,66 +116,85 @@ def fig5_3_asymmetry() -> None:
     for x, y, c, a, s, sig in zip(xs, ys, colors, alphas, sizes, sigs):
         ax.scatter(x, y, s=s, facecolor=c if sig else "white",
                    edgecolor=c, linewidth=1.0, alpha=a, zorder=4)
-    # top 3 不对称对标注：分散放右上/顶部/右缘空白区，箭头连线（不遮挡散点）
+    # 只在主图中标出编号；节点对名称放在图底部，避免长标签压住散点。
     top3 = te["asymmetry"]["top_asymmetric_pairs"][:3]
-    label_xy = [(vmax * 0.68, vmax * 1.06), (vmax * 0.92, vmax * 1.04),
-                (vmax * 1.07, vmax * 0.86)]
-    for p, (lx, ly) in zip(top3, label_xy):
+    label_offsets = [(vmax * 0.060, vmax * 0.060),
+                     (vmax * 0.030, vmax * 0.050),
+                     (vmax * 0.050, -vmax * 0.055)]
+    for k, (p, (dx, dy)) in enumerate(zip(top3, label_offsets), start=1):
         i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
         px, py = te_mat[i, j], te_mat[j, i]
-        ax.annotate(f"{p['node_i']} vs {p['node_j']}"
-                    f"  (Δ={p['asymmetry']:.2f})",
-                    xy=(px, py), xytext=(lx, ly),
-                    fontsize=6.8, color=GRAY_D,
-                    bbox=dict(facecolor="white", edgecolor="none", alpha=0.78, pad=1.0),
+        ax.scatter([px], [py], s=105, facecolor="none", edgecolor=RED_S,
+                   linewidth=1.2, zorder=6)
+        ax.annotate(str(k), xy=(px, py), xytext=(px + dx, py + dy),
+                    fontsize=8.0, color=RED_S, fontweight="bold", ha="center", va="center",
+                    bbox=dict(boxstyle="circle,pad=0.18", facecolor="white",
+                              edgecolor=RED_S, linewidth=0.8),
                     arrowprops=dict(arrowstyle="->", color=GRAY_M, lw=0.8,
                                     shrinkA=4, shrinkB=2))
     # 主导区说明（必要说明文字，放左下空白区）
     ax.text(vmax * 0.05, vmax * 0.94, "j→i 主导", fontsize=8, color=BLUE, ha="left")
     ax.text(vmax * 0.72, vmax * 0.06, "i→j 主导", fontsize=8, color=ORANGE, ha="left")
-    ax.text(vmax * 0.06, vmax * 0.16, "近似对称（|Δ|≤0.3）", fontsize=7.2, color=GRAY_M)
-    # 统计注释（措辞收敛：超过不对称阈值，非统计显著性——审查 2026-08-01）
-    ax.text(vmax * 0.05, vmax * 0.045,
-            f"45 对中 {te['asymmetry']['asymmetric_pair_count']} 对超过不对称阈值"
-            f"（Δ>0.3，占 {100 * te['asymmetry']['asymmetry_rate']:.0f}%）",
-            fontsize=7.0, color=GRAY_D, ha="left")
     _clean_ax(ax)
     ax.set_xlabel("传递熵 TE(i → j)（nats）", fontsize=9)
     ax.set_ylabel("传递熵 TE(j → i)（nats）", fontsize=9)
     ax.set_xlim(0, vmax * 1.15)
     ax.set_ylim(0, vmax * 1.15)
 
-    # 图例（三层：主导方向 + 面积 + 实心空心；实心 = 至少一个方向入选 TE 候选边）
+    # 图例置于主图外的上边距，避免遮挡散点。
     handles = [
-        plt.scatter([], [], s=70, facecolor=BLUE, edgecolor=BLUE, label="j→i 主导"),
-        plt.scatter([], [], s=70, facecolor=ORANGE, edgecolor=ORANGE, label="i→j 主导"),
-        plt.scatter([], [], s=70, facecolor=GRAY_M, edgecolor=GRAY_M, label="近似对称"),
-        plt.scatter([], [], s=70, facecolor="white", edgecolor=BLUE,
-                    linewidth=1.0, label="未入选 TE 候选边"),
+        Line2D([0], [0], marker="o", color="none", markerfacecolor=BLUE,
+               markeredgecolor=BLUE, markersize=6, label="j→i 主导"),
+        Line2D([0], [0], marker="o", color="none", markerfacecolor=ORANGE,
+               markeredgecolor=ORANGE, markersize=6, label="i→j 主导"),
+        Line2D([0], [0], marker="o", color="none", markerfacecolor=GRAY_M,
+               markeredgecolor=GRAY_M, markersize=6, label="近似对称"),
+        Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
+               markeredgecolor=BLUE, markersize=6, label="未入选候选边"),
     ]
-    ax.legend(handles=handles, fontsize=7.0, frameon=False, ncol=2,
-              loc="upper left", bbox_to_anchor=(0.01, 0.98),
-              handletextpad=0.3, columnspacing=0.8)
+    fig.legend(handles=handles, fontsize=7.0, frameon=False, ncol=4,
+               loc="upper center", bbox_to_anchor=(0.47, 0.985),
+               handletextpad=0.3, columnspacing=0.8)
 
-    # ---- 顶部边缘直方图（TE(i→j) 分布） ----
+    # ---- 顶部边缘直方图：明确是主图横轴 TE(i→j) 的分布 ----
     for s in ax_top.spines.values():
         s.set_visible(False)
-    ax_top.hist(xs, bins=14, range=(0, vmax * 1.15), color=GRAY_M, alpha=0.75,
+    top_n, _, _ = ax_top.hist(xs, bins=14, range=(0, vmax * 1.15), color=GRAY_M, alpha=0.75,
                 edgecolor="white", linewidth=0.3)
     ax_top.axvline(xs.mean(), color=GRAY_D, lw=0.9, ls="--")
-    ax_top.set_yticks([])
+    for k, p in enumerate(top3, start=1):
+        i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
+        px = te_mat[i, j]
+        ax_top.scatter([px], [max(top_n) * 0.92], marker="v", s=24, color=RED_S, zorder=4)
+        ax_top.text(px, max(top_n) * 1.05, str(k), ha="center", va="bottom",
+                    fontsize=7.2, color=RED_S, fontweight="bold")
+    ax_top.set_ylim(0, max(top_n) * 1.18)
+    ax_top.set_title("主图横轴边缘分布：TE(i → j)", fontsize=8.0, loc="left", pad=2)
+    ax_top.set_ylabel("频数", fontsize=7.0)
     ax_top.tick_params(axis="x", labelbottom=False)
+    ax_top.tick_params(axis="y", labelsize=6.5)
 
-    # ---- 右侧边缘直方图（TE(j→i) 分布） ----
+    # ---- 右侧边缘直方图：明确是主图纵轴 TE(j→i) 的分布 ----
     for s in ax_right.spines.values():
         s.set_visible(False)
-    ax_right.hist(ys, bins=14, range=(0, vmax * 1.15), color=GRAY_M, alpha=0.75,
+    right_n, _, _ = ax_right.hist(ys, bins=14, range=(0, vmax * 1.15), color=GRAY_M, alpha=0.75,
                   edgecolor="white", linewidth=0.3, orientation="horizontal")
     ax_right.axhline(ys.mean(), color=GRAY_D, lw=0.9, ls="--")
+    max_right_n = max(right_n)
+    for k, p in enumerate(top3, start=1):
+        i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
+        py = te_mat[j, i]
+        ax_right.scatter([-max_right_n * 0.16], [py], marker="<", s=24, color=RED_S, zorder=4)
+        ax_right.text(-max_right_n * 0.34, py, str(k), ha="center", va="center",
+                      fontsize=7.2, color=RED_S, fontweight="bold")
+    ax_right.set_xlim(-max_right_n * 0.48, max_right_n * 1.12)
+    ax_right.set_title("TE(j → i)", fontsize=7.2, pad=2)
+    ax_right.text(0.5, 1.12, "纵轴边缘", transform=ax_right.transAxes,
+                  ha="center", va="bottom", fontsize=6.8)
     ax_right.set_xticks([])
     ax_right.tick_params(axis="y", labelleft=False)
 
-    final(fig, "fig5_3_asymmetry", (7.2, 6.2))
+    final(fig, "fig5_3_asymmetry", (8.4, 6.6))
 
 
 # ========== fig5_4 覆盖率（v3：per-seed 散点 + horizon 面板） ==========

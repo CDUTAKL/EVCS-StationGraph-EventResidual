@@ -1,6 +1,6 @@
 """论文图 provenance manifest 生成与校验（审查 H-13，2026-08-01）。
 
-为 18 张最终图建立唯一可追溯入口：图 → 生成脚本(SHA) → 输入工件(SHA) → 输出 SHA
+为 19 张最终图建立唯一可追溯入口：图 → 生成脚本(SHA) → 输入工件(SHA) → 输出 SHA
 → git commit → 数据集 SHA。
 
 用法：
@@ -24,8 +24,9 @@ OUT = FIG_DIR / "manifest.json"
 SCRIPT_DIR = Path("scripts/figures")
 BUNDLE_PATH = Path("data/processed/SG-DATA-005-primary-tensor.npz")
 
-# 图 → 最终生成脚本（batch4~9；batch3 已废弃勿运行）
+# 图 → 最终生成脚本（batch4~10；batch3 已废弃勿运行）
 FINAL_SCRIPTS = {
+    "fig2_2_node_coverage": "batch10_fig2_2_coverage.py",
     "fig2_3_load_heatmap": "batch5_restyle.py",
     "fig2_3b_autocorrelation": "batch4_redraw.py",
     "fig2_4_weekly_curves": "batch5_restyle.py",
@@ -50,6 +51,7 @@ FINAL_SCRIPTS = {
 # 审查 H-13（2026-08-01）：fig3_1 数值硬编码于脚本，其数据源为正式三种子
 # metrics.json（night_run/20260730-171821）；fig3_5/3_7 读取训练日志。
 INPUTS_BY_FIGURE = {
+    "fig2_2_node_coverage": [Path("data/processed/SG-DATA-002-node-coverage-stability.csv")],
     "fig2_3_load_heatmap": [BUNDLE_PATH],
     "fig2_3b_autocorrelation": [BUNDLE_PATH],
     "fig2_4_weekly_curves": [BUNDLE_PATH],
