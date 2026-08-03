@@ -110,7 +110,7 @@ def _network_panel(ax, data: dict) -> None:
             bidir_side[(t, s)] = -side
     for s, t in conf:
         c = abs(coef_map.get((s, t), lo))
-        w = 0.7 + 2.8 * (c - lo) / max(hi - lo, 1e-9)
+        w = 0.8 + 3.2 * (c - lo) / max(hi - lo, 1e-9)
         alpha = 0.6 + 0.35 * (c - lo) / max(hi - lo, 1e-9)
         # 双向对两条弧线分别向两侧凸出（rad 正负），避免重叠成一束
         if frozenset((s, t)) in bidir_pairs:
@@ -124,12 +124,12 @@ def _network_panel(ax, data: dict) -> None:
     # 节点：大小 ∝ 累计负荷（冗余编码），编号 + CA 名双标注
     for i, nd in enumerate(NODE_ORDER):
         x, y = pos[nd]
-        ax.scatter(x, y, s=260 + 420 * LOAD_N[i], color="white",
-                   edgecolor=GRAY_D, lw=1.1, zorder=6)
-        ax.text(x, y, str(i + 1), ha="center", va="center", fontsize=5.4,
+        ax.scatter(x, y, s=330 + 540 * LOAD_N[i], color="white",
+                   edgecolor=GRAY_D, lw=1.2, zorder=6)
+        ax.text(x, y, str(i + 1), ha="center", va="center", fontsize=6.0,
                 color=GRAY_D, zorder=7)
-        ax.text(x * 1.34, y * 1.34, nd.replace("CA-", ""), ha="center",
-                va="center", fontsize=4.8, color=GRAY_M, zorder=7)
+        ax.text(x * 1.35, y * 1.35, nd.replace("CA-", ""), ha="center",
+                va="center", fontsize=5.2, color=GRAY_M, zorder=7)
     # 图例（左下角空白区）
     import matplotlib.lines as mlines
     handles = [
@@ -144,48 +144,48 @@ def _network_panel(ax, data: dict) -> None:
     ]
     ax.legend(handles=handles, loc="lower left", fontsize=5.6, frameon=False,
               handlelength=1.6, borderaxespad=0.1)
-    ax.set_xlim(-1.62, 1.62)
-    ax.set_ylim(-1.62, 1.62)
+    ax.set_xlim(-1.75, 1.75)
+    ax.set_ylim(-1.75, 1.75)
     ax.set_aspect("equal")
     ax.axis("off")
-    ax.text(0, -1.58, "箭头表示方向；线宽 ∝ |条件依赖系数|；自环（自回归滞后边 10 条）未绘制",
-            ha="center", fontsize=5.8, color=GRAY_M)
+    ax.text(0, -1.70, "箭头表示方向；线宽 ∝ |条件依赖系数|；自环（自回归滞后边 10 条）未绘制",
+            ha="center", fontsize=6.0, color=GRAY_M)
 
 
-def _funnel_panel(ax, data: dict) -> None:
-    """中面板：验证漏斗（76 候选 → 44 确认 → 32 未确认；16 独有拆 6+10）。"""
+def _summary_panel(ax, data: dict) -> None:
+    """右上面板：验证进度（57.9% 确认条 + 数字卡，替代失败的漏斗）。"""
     n_total = data["n_te_candidates"]           # 76
     n_conf = data["n_te_confirmed_by_pcmci"]    # 44
-    n_te_only = data["n_te_candidates"] - n_conf
+    n_te_only = n_total - n_conf                # 32
     n_pcmci_ns = sum(1 for e in data["pcmci_only_edges"] if e[0] != e[1])  # 6
     n_loop = len(data["pcmci_only_edges"]) - n_pcmci_ns                    # 10
+    frac = n_conf / n_total
+    # 大数字 + 小标签的统计卡（三行）
     rows = [
-        ("TE 候选边", n_total, BLUE, 0.0),
-        ("PCMCI+ 确认", n_conf, BLUE, 0.25),
-        ("未确认", n_te_only, RED_S, 0.0),
+        ("TE 候选边", n_total, BLUE, "100%"),
+        ("PCMCI+ 确认", n_conf, BLUE, "{:.0f}%".format(100 * frac)),
+        ("未确认", n_te_only, RED_S, "{:.0f}%".format(100 * (1 - frac))),
     ]
-    y = np.arange(len(rows))[::-1]
-    colors = [r[2] for r in rows]
-    fracs = [r[1] / n_total for r in rows]
-    widths = [max(0.10, 0.9 * f) for f in fracs]
-    for yi, (name, val, color, _), wd, f in zip(y, rows, widths, fracs):
-        ax.bar(yi, wd, width=0.5, color=color, alpha=0.85, edgecolor="white",
-               linewidth=0.6, zorder=3)
-        pct = "100" if f > 0.999 else "{:.0f}".format(100.0 * f)
-        label = "{}\n{} 条（{}%）".format(name, val, pct) if val else name
-        ax.text(yi, wd / 2, label, ha="center", va="center", fontsize=6.4,
-                color="white", zorder=4)
-    # 漏斗连接线（确认段到独有段的视觉导流）
-    ax.plot([-0.32, -0.32], [y[1] + 0.25, y[2] - 0.25], color=GRAY_L, lw=0.8,
-            ls=":", zorder=2)
-    # PCMCI+ 独有（拆分标注）
-    ax.text(0, y[0] - 0.85, "PCMCI+ 独有：节点间 {} 条 + 自回归滞后 {} 条".format(
-        n_pcmci_ns, n_loop), ha="center", fontsize=6.8, color=ORANGE)
-    ax.set_ylim(-1.4, len(rows) - 0.4)
-    ax.set_xlim(-0.6, 0.6)
+    for i, (name, val, color, pct) in enumerate(rows):
+        y = 3.2 - i * 1.25
+        ax.text(0.02, y, "{}".format(val), ha="left", va="center",
+                fontsize=17, color=color, zorder=5)
+        ax.text(0.16, y + 0.42, name, ha="left", va="center", fontsize=7.2,
+                color=GRAY_D, zorder=5)
+        ax.text(0.16, y - 0.42, pct, ha="left", va="center", fontsize=6.6,
+                color=GRAY_M, zorder=5)
+    # 57.9% 确认进度条（视觉锚点）
+    ax.barh(3.2 - 3 * 1.25 + 0.62, 0.9, height=0.10, color=GRAY_L,
+            edgecolor="none", zorder=3)
+    ax.barh(3.2 - 3 * 1.25 + 0.62, 0.9 * frac, height=0.10, color=BLUE,
+            alpha=0.85, edgecolor="none", zorder=4)
+    # PCMCI+ 独有拆分
+    ax.text(0.02, -0.75, "PCMCI+ 独有：节点间 {} 条 + 自回归 {} 条".format(
+        n_pcmci_ns, n_loop), ha="left", va="center", fontsize=6.8,
+        color=ORANGE, zorder=5)
+    ax.set_xlim(0, 1)
+    ax.set_ylim(-1.3, 3.7)
     ax.axis("off")
-    ax.text(0, len(rows) + 0.75, "验证漏斗（TE 候选 → PCMCI+ 条件独立确认）",
-            ha="center", fontsize=7.2, color=GRAY_D)
 
 
 def _node_panel(ax, data: dict) -> None:
@@ -235,16 +235,20 @@ def _node_panel(ax, data: dict) -> None:
 
 
 def main() -> None:
-    """绘制并导出三面板 PCMCI+ 验证网络图。"""
+    """绘制并导出 PCMCI+ 验证网络图（左大网络 + 右上进度 + 右下节点条）。"""
     data = json.load(open("outputs/analysis/pcmci/pcmci_summary.json"))
-    fig, (ax1, ax2, ax3) = plt.subplots(
-        1, 3, figsize=(10.4, 5.0),
-        gridspec_kw={"width_ratios": [1.5, 0.9, 1.15], "wspace": 0.22},
+    fig = plt.figure(figsize=(11.0, 5.4))
+    gs = fig.add_gridspec(
+        2, 2, width_ratios=[2.0, 1.0], height_ratios=[0.95, 1.05],
+        wspace=0.18, hspace=0.55,
     )
+    ax1 = fig.add_subplot(gs[:, 0])          # 左列整高：验证网络（主导）
+    ax2a = fig.add_subplot(gs[0, 1])         # 右上：验证进度
+    ax2b = fig.add_subplot(gs[1, 1])         # 右下：节点级堆叠条
     _network_panel(ax1, data)
-    _funnel_panel(ax2, data)
-    _node_panel(ax3, data)
-    final(fig, "fig5_2b_pcmci_validation_network", (10.4, 5.0))
+    _summary_panel(ax2a, data)
+    _node_panel(ax2b, data)
+    final(fig, "fig5_2b_pcmci_validation_network", (11.0, 5.4))
 
 
 if __name__ == "__main__":
