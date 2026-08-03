@@ -58,44 +58,42 @@ def main() -> None:
     means = np.asarray(means)[order]
     sds = np.asarray(sds)[order]
 
-    fig, ax = plt.subplots(figsize=(7.4, 4.4))
+    # v4：横向条形图（fig3_1 同款风格）——天然无遮挡、无空旷、无数字重合
     GREEN = "#597A62"
-    # 差距带：教师线到学生区域之间的浅绿带（填充空白 + 表达"蒸馏未弥合"语义）
-    band_top = float(np.mean(means)) + 0.0003
-    ax.axhspan(TEACHER_MAE, band_top, color=GREEN, alpha=0.07, zorder=0)
-    ax.text(2.08, (TEACHER_MAE + band_top) / 2, "蒸馏未弥合区间\n≈ 2.1×",
-            fontsize=7.2, color=GREEN, ha="right", va="center")
+    rows = [
+        ("教师 StaticGraph", TEACHER_MAE, None, GREEN),
+        ("学生 α=2.0（强蒸馏）", float(means[alphas == 2.0][0]),
+         float(sds[alphas == 2.0][0]), BLUE),
+        ("学生 α=1.0", float(means[alphas == 1.0][0]),
+         float(sds[alphas == 1.0][0]), BLUE),
+        ("学生 α=0.5", float(means[alphas == 0.5][0]),
+         float(sds[alphas == 0.5][0]), BLUE),
+        ("学生 α=0.1", float(means[alphas == 0.1][0]),
+         float(sds[alphas == 0.1][0]), BLUE),
+        ("纯 TCN 基线", TCN_MAE, None, GRAY_M),
+    ]
+    fig, ax = plt.subplots(figsize=(7.6, 3.7))
+    ys = np.arange(len(rows))
+    for yi, (label, m, sd, color) in enumerate(rows):
+        ax.barh(yi, m, height=0.62, color=color, edgecolor="white",
+                lw=0.6, xerr=sd, capsize=2.5, error_kw=dict(lw=0.8),
+                zorder=3)
+        ax.text(m + 0.0006, yi, f"{m:.4f}", va="center", ha="left",
+                fontsize=7.2, color=GRAY_D)
+    # 教师与学生柱之间的差距标注（双箭头 + 文字，位于数值标注右侧的空白区）
+    y_teacher = 0  # 教师行（反转后显示在最上方）
+    y_student = 3  # 学生 α=0.5 行
+    ax.annotate("", xy=(0.0318, y_teacher), xytext=(0.0318, y_student),
+                arrowprops=dict(arrowstyle="<->", color=GRAY_D, lw=1.0))
+    ax.text(0.0322, (y_teacher + y_student) / 2, "差距 ≈ 2.1×",
+            fontsize=7.6, color=GRAY_D, ha="left", va="center")
 
-    # 学生曲线（蓝点 + 误差棒 + 连接线）
-    ax.plot(alphas, means, color=BLUE, lw=1.2, zorder=3)
-    ax.errorbar(alphas, means, yerr=sds, fmt="o", ms=6.5, color=BLUE,
-                ecolor=BLUE, capsize=3.0, lw=1.2, label="蒸馏学生（TCN+KD）",
-                zorder=4)
-    # 数值标注放点下方（TCN 参考线在点上方，避免与标注重叠）
-    for xi, m in zip(alphas, means):
-        ax.text(xi, m - 0.0008, f"{m:.4f}", ha="center", va="top",
-                fontsize=7.0, color=BLUE)
-    # 参考线：教师（绿虚线）与纯 TCN（灰点线），名称左端、数值右端
-    ax.axhline(TEACHER_MAE, color=GREEN, lw=1.4, ls="--", zorder=1)
-    ax.text(0.105, TEACHER_MAE + 0.00025, "教师 StaticGraph", fontsize=7.4,
-            color=GREEN, ha="left", va="bottom")
-    ax.text(2.0, TEACHER_MAE + 0.00025, f"{TEACHER_MAE:.4f}", fontsize=7.4,
-            color=GREEN, ha="right", va="bottom")
-    ax.axhline(TCN_MAE, color=GRAY_M, lw=1.3, ls=":", zorder=1)
-    ax.text(0.105, TCN_MAE + 0.00025, "纯 TCN 基线", fontsize=7.4,
-            color=GRAY_M, ha="left", va="bottom")
-    ax.text(2.0, TCN_MAE + 0.00025, f"{TCN_MAE:.4f}", fontsize=7.4,
-            color=GRAY_M, ha="right", va="bottom")
-
-    ax.set_xscale("log")
-    ax.set_xticks(list(alphas))
-    ax.set_xticklabels([str(a) for a in alphas], fontsize=8.2)
-    ax.set_xlabel("蒸馏权重 α（对数刻度）", fontsize=8.8)
-    ax.set_ylabel("测试集全局 MAE（kWh/15 min）", fontsize=8.8)
-    ax.set_ylim(0.0132, 0.0306)
-    ax.set_xlim(0.09, 2.35)
-    ax.legend(fontsize=7.4, frameon=False, loc="upper center",
-              bbox_to_anchor=(0.5, 1.10))
+    ax.set_yticks(ys)
+    ax.set_yticklabels([r[0] for r in rows], fontsize=8.0)
+    ax.invert_yaxis()  # 教师行（最优）显示在最上方
+    ax.set_xlabel("测试集全局 MAE（kWh/15 min）", fontsize=8.8)
+    ax.set_xlim(0, 0.034)
+    ax.grid(axis="x", color=GRAY_L, lw=0.55, alpha=0.72, zorder=0)
 
     for spine in ("top", "right"):
         ax.spines[spine].set_visible(False)
