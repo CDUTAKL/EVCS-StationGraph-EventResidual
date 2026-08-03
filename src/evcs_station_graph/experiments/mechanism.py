@@ -129,13 +129,18 @@ def _build_variants(
         variants.append((f"ablation-{name}", config, needs_checkpoint))
 
     # 关系消融：指定 graph.enabled_relations（单个关系名）来消融到单关系
+    # 审查 2026-08-04：单关系变体的逐关系变换矩阵数量（W_r 数 = 关系数）与
+    # base checkpoint（三/四关系）不同，state_dict 结构不匹配——必须从头训练，
+    # needs_checkpoint 置 False（此前置 True 导致 checkpoint 加载崩溃）
     for relation_name in suite.get("relations", []):
         config = copy.deepcopy(base)
         if relation_name == "all":
             config["experiment"]["graph"]["enabled_relations"] = ["load", "event", "pattern"]
         else:
             config["experiment"]["graph"]["enabled_relations"] = [relation_name]
-        variants.append((f"relation-{relation_name}", config, True))
+        # 从头训练：关闭 base 的 freeze_base（其原值依赖 005 的 checkpoint 冻结）
+        config["experiment"]["model_params"]["freeze_base"] = False
+        variants.append((f"relation-{relation_name}", config, False))
 
     sensitivity = suite.get("sensitivity", {})
     for top_k in sensitivity.get("top_k", []):
