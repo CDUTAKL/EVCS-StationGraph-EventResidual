@@ -59,41 +59,45 @@ def main() -> None:
     sds = np.asarray(sds)[order]
 
     # v4：横向条形图（fig3_1 同款风格）——天然无遮挡、无空旷、无数字重合
-    # 全部行为三种子均值；教师/TCN 的 SD 取正式核验值（与 fig3_1 一致），口径统一
+    # 教师/TCN 的 SD 取正式核验值（与 fig3_1 一致）；学生为 4 组 α 的
+    # 三种子均值（0.0292~0.0294，α 扫描无显著差异——KD 不奏效的直接证据）
     GREEN = "#597A62"
+    student_mean = float(np.mean(means))
+    student_lo = float(means.min())
+    student_hi = float(means.max())
     rows = [
-        ("教师模型 StaticGraph", TEACHER_MAE, 0.00019, GREEN),
-        ("学生模型 TCN（α=2.0）", float(means[alphas == 2.0][0]),
-         float(sds[alphas == 2.0][0]), BLUE),
-        ("学生模型 TCN（α=1.0）", float(means[alphas == 1.0][0]),
-         float(sds[alphas == 1.0][0]), BLUE),
-        ("学生模型 TCN（α=0.5）", float(means[alphas == 0.5][0]),
-         float(sds[alphas == 0.5][0]), BLUE),
-        ("学生模型 TCN（α=0.1）", float(means[alphas == 0.1][0]),
-         float(sds[alphas == 0.1][0]), BLUE),
-        ("纯 TCN 基线（无蒸馏）", TCN_MAE, 0.00011, GRAY_M),
+        ("教师模型 StaticGraph", TEACHER_MAE, 0.00019, None, None, GREEN),
+        ("学生模型 TCN（α 扫描 4 组）", student_mean, None,
+         student_lo, student_hi, BLUE),
+        ("纯 TCN 基线（无蒸馏）", TCN_MAE, 0.00011, None, None, GRAY_M),
     ]
-    fig, ax = plt.subplots(figsize=(7.6, 3.7))
+    fig, ax = plt.subplots(figsize=(7.6, 3.0))
     ys = np.arange(len(rows))
-    for yi, (label, m, sd, color) in enumerate(rows):
-        ax.barh(yi, m, height=0.62, color=color, edgecolor="white",
-                lw=0.6, xerr=sd, capsize=2.5, error_kw=dict(lw=0.8),
-                zorder=3)
+    for yi, (label, m, sd, lo, hi, color) in enumerate(rows):
+        if sd is not None:
+            ax.barh(yi, m, height=0.52, color=color, edgecolor="white",
+                    lw=0.6, xerr=sd, capsize=2.5, error_kw=dict(lw=0.8),
+                    zorder=3)
+        else:  # 学生行：误差棒 = 4 组 α 的 min-max 范围（不对称）
+            ax.barh(yi, m, height=0.52, color=color, edgecolor="white",
+                    lw=0.6, xerr=[[m - lo], [hi - m]], capsize=2.5,
+                    error_kw=dict(lw=0.8), zorder=3)
         ax.text(m + 0.0006, yi, f"{m:.4f}", va="center", ha="left",
-                fontsize=7.2, color=GRAY_D)
-    # 教师与学生柱之间的差距标注（双箭头 + 文字，位于数值标注右侧的空白区）
-    y_teacher = 0  # 教师行（反转后显示在最上方）
-    y_student = 3  # 学生 α=0.5 行
-    ax.annotate("", xy=(0.0318, y_teacher), xytext=(0.0318, y_student),
+                fontsize=7.4, color=GRAY_D)
+    # 学生行补充 α 扫描差异说明
+    ax.text(student_hi + 0.0032, 1, "α 0.1→2.0\n差异 <0.1%",
+            fontsize=6.8, color=BLUE, ha="left", va="center")
+    # 教师与学生柱之间的差距标注（双箭头 + 文字）
+    ax.annotate("", xy=(0.0316, 0), xytext=(0.0316, 1),
                 arrowprops=dict(arrowstyle="<->", color=GRAY_D, lw=1.0))
-    ax.text(0.0322, (y_teacher + y_student) / 2, "差距 ≈ 2.1×",
-            fontsize=7.6, color=GRAY_D, ha="left", va="center")
+    ax.text(0.0320, 0.5, "差距 ≈ 2.1×", fontsize=7.6, color=GRAY_D,
+            ha="left", va="center")
 
     ax.set_yticks(ys)
     ax.set_yticklabels([r[0] for r in rows], fontsize=8.0)
     ax.invert_yaxis()  # 教师行（最优）显示在最上方
     ax.set_xlabel("测试集全局 MAE（kWh/15 min）", fontsize=8.8)
-    ax.set_xlim(0, 0.034)
+    ax.set_xlim(0, 0.036)
     ax.grid(axis="x", color=GRAY_L, lw=0.55, alpha=0.72, zorder=0)
 
     for spine in ("top", "right"):
