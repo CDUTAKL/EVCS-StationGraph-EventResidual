@@ -16,6 +16,9 @@ model_params:
   residual_hidden_dim: 32
   residual_bound: 0.5
   freeze_base: true
+  # 底座为 AdaptiveGraph（night_run 20260730-171821 实际口径，B6 最优底座）；
+  # 未声明时默认 temporal，与底座 checkpoint 结构不匹配会导致 strict 加载崩溃
+  base_model_type: adaptive_graph
 training:
   epochs: 40
   patience: 6

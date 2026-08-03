@@ -145,7 +145,11 @@ def _build_variants(
     sensitivity = suite.get("sensitivity", {})
     for top_k in sensitivity.get("top_k", []):
         config = copy.deepcopy(base)
-        config["experiment"]["graph"]["top_k"] = int(top_k)
+        # 审查 2026-08-03：top_k 必须写入 model_params——factory 从
+        # model_params.top_k 读取（AdaptiveGraph/StaticGraph 分支），
+        # 写入 graph.top_k 不会生效（graph 下无对应读取点，曾导致
+        # topk-7 变体实际以默认 5 训练、与 topk-5 预测逐位相同）
+        config["experiment"]["model_params"]["top_k"] = int(top_k)
         variants.append((f"topk-{top_k}", config, True))
     for dropout in sensitivity.get("relation_dropout", []):
         config = copy.deepcopy(base)
