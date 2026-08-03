@@ -38,6 +38,7 @@
 | 图 3-11 | `fig3_11_event_window_forecast.svg/.png` | 事件窗口预测时序 | SG-EXP-004 `predictions.csv.gz` | 可用 |
 | 图 4-2 | `fig4_2_intervention.svg/.png` | 门控参数干预 | `intervention_summary.json` | 可用 |
 | 图 4-4 | `fig4_4_four_cell.svg/.png` | 事件/规则四格诊断 | SG-EXP-004 `metrics.json` | 已重绘 |
+| 图 4-5 | `fig4_5_eerm_lambda.svg/.png` | EERM λ 敏感性曲线 | SG-EXP-014 `eerm_summary.json` | 可用 |
 | 图 4-6 | `fig4_6_residual_distribution.svg/.png` | 预测残差分布 | 三模型 `predictions.csv.gz` | 可用 |
 | 图 4-7 | `fig4_7_error_vs_event_intensity.svg/.png` | 误差 vs 事件强度 | predictions + 事件分数 | 可用 |
 | 图 5-2 | `fig5_2_transfer_entropy.svg/.png` | TE 方向性候选结构 | `transfer_entropy_summary.json` | 探索性 |
@@ -102,6 +103,8 @@
 **图 4-2.** 不同门控参数干预组合下的全局 MAE。蓝色表示学习到的门控基线，红色表示固定、交换或等权干预；柱外百分比为相对于学习值基线的 MAE 变化，误差棒为三种子均值的标准差。正百分比表示性能退化。
 
 **图 4-4.** seed-2024 的真实标签事件与可见规则触发组合下的两层诊断。A 为四格单元 MAE 主图，B 展示规则触发样本与标签事件样本的组成比例及总样本基数；蓝色表示事件触发，橙色表示事件漏触发，灰色表示非事件触发。规则触发率、事件召回和触发事件纯度均可由 A/B 的单元计数复算；该图为单种子机制诊断，无误差棒，不作三种子泛化结论。
+
+**图 4-5.** SG-EXP-014 环境不变学习（EERM）的 λ 敏感性曲线：5 个正则化权重（0、0.01、0.1、1、10）× 3 种子，事件窗口/稳定窗口/全局 MAE 三种子均值，误差棒为跨种子标准差。λ 从 0 增至 10 时事件窗口 MAE 波动 <0.5%、稳定窗口波动约 2%，均无单调响应——不变性惩罚在本文配置下敏感性不显著，如实报告为无显著效应；本图描述正则化敏感性，不作事件特征伪相关的因果诊断。
 
 **图 4-6.** TCN、StaticGraph 与 MLP 预测残差（预测−真值）的核密度曲线（颜色 + 线型双编码区分）。左图为全局非事件样本，右图为事件窗口样本（量级差异约 20 倍，拆分双面板）；事件窗口残差分布更宽且右偏，指示事件时段的误差结构差异。第三模型选 MLP 而非 AdaptiveGraph：后者的逐样本预测差与 StaticGraph 79% 小于 0.001（全局 MAE 仅差约 1%），残差分布重合至不可分辨，两者差异在正文 3.7 节以数值表述。该图为 seed-2024 描述性诊断，无误差棒。
 

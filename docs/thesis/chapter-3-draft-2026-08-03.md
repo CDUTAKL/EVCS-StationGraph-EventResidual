@@ -307,9 +307,10 @@ $$ \beta^{(l)}_r \leftarrow \frac{\beta^{(l)}_r \cdot m_r}{\sum_{r'} \beta^{(l)}
 
 对比模型包括传统时序/机器学习基线（Persistence、ARIMA、LightGBM、XGBoost）、
 逐点深度学习基线（MLP）、时间序列基线（TCN）与时空图基线（Graph WaveNet 简化
-变体、AGCRN ⏳ 待核验）。其中 Graph WaveNet 与 AGCRN 为本文简化实现——前者
-采用单步聚合、无多阶 diffusion，后者采用共享门权重、无节点自适应参数池，
-命名如实标注，不宣称与原文实现完全一致。
+变体、AGCRN）。其中 Graph WaveNet 与 AGCRN 为本文简化实现——前者采用单步
+聚合、无多阶 diffusion，后者采用共享门权重、无节点自适应参数池，命名如实标注，
+不宣称与原文实现完全一致。AGCRN 已核验（2026-08-04）：全局 MAE 0.02057
+（三种子），较 StaticGraph 落后 33.1%。
 
 ### 3.6.2 全局指标对比（表 3-1）
 

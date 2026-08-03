@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-02T16:04:44.122764+00:00",
-  "source_commit": "9ca1c5b",
+  "generated_at_utc": "2026-08-03T01:30:54.747282+00:00",
+  "source_commit": "6958511",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -804,6 +804,30 @@
           "sha256": "375a6bf6d5b0e9034d7eb8da583f733ee0708cf30983d0286c05263375ed37c6",
           "size_bytes": 961918,
           "mtime_utc": "2026-08-02T15:02:59.486910+00:00"
+        }
+      }
+    },
+    "fig4_5_eerm_lambda": {
+      "script": {
+        "path": "batch14_fig4_5_eerm.py",
+        "sha256": "edd52da12ecf8b60cbbe718e2ea6c13b166c89ad7c5730987e5b581d26f58f41"
+      },
+      "inputs": [
+        {
+          "path": "outputs/experiments/SG-EXP-014/20260731-181616/eerm_summary.json",
+          "sha256": "30de08792925fe17f99fe89acabd957018e895f2609312c045bedc0124b52b98"
+        }
+      ],
+      "formats": {
+        "svg": {
+          "sha256": "fe05253d4b4930944b18902f983d344f1f0f0e9d18e843d520c8932545a3b182",
+          "size_bytes": 32507,
+          "mtime_utc": "2026-08-03T01:28:57.198119+00:00"
+        },
+        "png": {
+          "sha256": "224c63512264a0414862344b3ba0ad48ecd9f043739cb8372b011218968a0470",
+          "size_bytes": 507566,
+          "mtime_utc": "2026-08-03T01:28:57.856122+00:00"
         }
       }
     },
