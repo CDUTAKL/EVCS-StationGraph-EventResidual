@@ -505,11 +505,11 @@ def redraw_fig3_6() -> None:
         "AdaptiveGraph - no_event_gate": "no-event-gate\nvs AdaptiveGraph",
     }
     groups = [("global", "全局窗口", "2.14M"), ("event_window", "事件窗口", "30,480")]
-    fig = plt.figure(figsize=(9.8, 4.85), constrained_layout=False)
-    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.0, 1.0],
-                  left=0.17, right=0.985, bottom=0.22, top=0.80, wspace=0.16)
-    for col, (window, title, n_text) in enumerate(groups):
-        ax = fig.add_subplot(gs[0, col])
+    fig = plt.figure(figsize=(8.4, 5.05), constrained_layout=False)
+    gs = GridSpec(2, 1, figure=fig, height_ratios=[1.0, 1.08],
+                  left=0.18, right=0.975, bottom=0.10, top=0.90, hspace=0.16)
+    for row, (window, title, n_text) in enumerate(groups):
+        ax = fig.add_subplot(gs[row, 0])
         rows = []
         for comp in data["comparisons"]:
             if window in comp["pooled"]:
@@ -537,20 +537,21 @@ def redraw_fig3_6() -> None:
             ax.set_xlim(-0.042, 0.041)
         ax.set_xlabel("MAE 差：基线 − 提议模型（kWh/15 min）\n"
                       "（正值 = 提议模型更优）", fontsize=7.9)
-        ax.text(0.03, 0.94, f"pooled n={n_text}", transform=ax.transAxes,
+        ax.text(0.02, 0.92, f"pooled n={n_text}", transform=ax.transAxes,
                 ha="left", va="top", fontsize=7.0, color=GRAY_M,
                 bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=0.4))
         clean_ax(ax, "x")
-        panel_label(ax, "AB"[col], f"{title}：Bootstrap 森林图")
-    final(fig, "fig3_6_bootstrap_difference", (9.8, 4.85))
+        panel_label(ax, "AB"[row], f"{title}：Bootstrap 森林图")
+    final(fig, "fig3_6_bootstrap_difference", (8.4, 5.05))
 
 
 def redraw_fig3_7() -> None:
     logs = _training_logs()
     colors = {"2024": BLUE, "2025": GRAY_D, "2026": ORANGE}
     styles = {"2024": "-", "2025": "--", "2026": "-."}
-    fig = plt.figure(figsize=(9.2, 4.25), constrained_layout=True)
-    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.7, 1.0], wspace=0.32)
+    fig = plt.figure(figsize=(8.4, 5.15), constrained_layout=False)
+    gs = GridSpec(2, 1, figure=fig, height_ratios=[1.25, 1.0],
+                  left=0.13, right=0.975, bottom=0.10, top=0.90, hspace=0.16)
     ax = fig.add_subplot(gs[0, 0])
     series = []
     for seed, df in logs.items():
@@ -579,12 +580,10 @@ def redraw_fig3_7() -> None:
     ax.set_xlim(0, max_len + 1)
     ax.set_ylim(0.14, 0.48)
     ax.legend(fontsize=7.4, frameon=False, ncol=3, loc="upper right")
-    ax.text(0.02, 0.04, "★ 最佳验证点   ◆ 日志末轮   阴影=逐轮跨种子范围   虚线=参考线 0.20",
-            transform=ax.transAxes, fontsize=7.0, color=GRAY_M)
     clean_ax(ax, "y")
     panel_label(ax, "A", "训练轨迹：固定图/自适应图混合")
 
-    ax = fig.add_subplot(gs[0, 1])
+    ax = fig.add_subplot(gs[1, 0])
     stages = ["初始", "最佳验证点", "日志末轮"]
     xs = np.arange(3)
     for seed in ["2024", "2025", "2026"]:
@@ -595,18 +594,13 @@ def redraw_fig3_7() -> None:
                 float(df["adaptive_graph_alpha"].iloc[-1])]
         ax.plot(xs, vals, color=colors[seed], lw=1.35, marker="o", ms=4.5,
                 label=f"seed {seed}", zorder=3)
-        ax.text(2.04, vals[-1], f"{vals[-1]:.3f}", va="center", fontsize=7.0,
-                color=colors[seed])
     ax.set_xticks(xs)
     ax.set_xticklabels(stages, fontsize=7.8)
     ax.set_ylim(0.14, 0.48)
     ax.set_ylabel("α", fontsize=8.8)
-    ax.legend(fontsize=7.0, frameon=False, loc="upper right")
-    ax.text(0.02, -0.17, "阶段对照用于区分初始值、最佳验证点和日志末轮；不作因果解释",
-            transform=ax.transAxes, fontsize=6.7, color=GRAY_M)
     clean_ax(ax, "y")
     panel_label(ax, "B", "阶段摘要：三种子终值与最佳点")
-    final(fig, "fig3_7_alpha_convergence", (9.2, 4.25))
+    final(fig, "fig3_7_alpha_convergence", (8.4, 5.15))
 
 
 if __name__ == "__main__":

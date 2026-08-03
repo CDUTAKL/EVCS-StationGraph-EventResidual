@@ -89,8 +89,10 @@ def fig5_3_asymmetry() -> None:
     xs, ys, sigs = np.array(xs), np.array(ys), np.array(sigs)
     vmax = max(xs.max(), ys.max())
     d = ys - xs                      # 符号化距离：正 = j→i 主导
+    asym = np.divide(np.abs(d), np.maximum(xs, ys),
+                     out=np.zeros_like(d), where=np.maximum(xs, ys) > 0)
     avg = (xs + ys) / 2.0            # 平均 TE（点面积编码）
-    band = 0.12 * vmax               # 近似对称带半宽
+    asym_threshold = 0.30            # 与正文 ASYM > 0.3 判定完全一致
 
     fig = plt.figure(figsize=(11.2, 8.0))
     # 增大主图面积，同时把图例、方向判定条、顶部边缘分布拆成三层。
@@ -100,17 +102,18 @@ def fig5_3_asymmetry() -> None:
     ax_right = fig.add_axes([0.83, 0.16, 0.11, 0.58], sharey=ax)
 
     # ---- 主面板 ----
-    # 对称带（|y-x| < band 区域浅灰填充，与两侧边界虚线一致）
-    line_x = np.linspace(0, vmax * 1.15, 50)
-    ax.fill_between(line_x, line_x - band, line_x + band, color="0.86", alpha=0.6,
-                    zorder=1)
-    # 45° 参考线 + 带边界线
+    # 对称带采用 ASYM <= 0.3 的比例边界，而不是固定绝对差带：
+    # y >= x 时 y <= x/(1-0.3)，y < x 时 y >= (1-0.3)x。
+    line_x = np.linspace(0, vmax * 1.15, 200)
+    lower = (1.0 - asym_threshold) * line_x
+    upper = line_x / (1.0 - asym_threshold)
+    ax.fill_between(line_x, lower, upper, color="#E3E8EC", alpha=0.34, zorder=1)
+    # 45° 参考线 + ASYM 阈值边界线
     ax.plot([0, vmax * 1.15], [0, vmax * 1.15], color=GRAY_D, lw=1.1, ls="--", zorder=2)
-    for off in (-band, band):
-        ax.plot([0, vmax * 1.15], [off, vmax * 1.15 + off], color=GRAY_L, lw=0.8,
-                ls=":", zorder=1)
+    ax.plot(line_x, lower, color=GRAY_L, lw=0.8, ls=":", zorder=1)
+    ax.plot(line_x, upper, color=GRAY_L, lw=0.8, ls=":", zorder=1)
     # 散点：颜色 = 主导方向，深浅 = 不对称程度；面积 = 平均 TE；实心 = 显著对
-    colors = np.where(np.abs(d) < band, GRAY_M,
+    colors = np.where(asym <= asym_threshold, GRAY_M,
                       np.where(d > 0, BLUE, ORANGE))
     alphas = 0.35 + 0.65 * np.abs(d) / max(np.abs(d).max(), 1e-9)
     sizes = 26 + 130 * avg / max(avg.max(), 1e-9)
@@ -146,7 +149,7 @@ def fig5_3_asymmetry() -> None:
         Line2D([0], [0], marker="o", color="none", markerfacecolor=ORANGE,
                markeredgecolor=ORANGE, markersize=6, label="i→j 主导（x>y）"),
         Line2D([0], [0], marker="o", color="none", markerfacecolor=GRAY_M,
-               markeredgecolor=GRAY_M, markersize=6, label="近似对称"),
+               markeredgecolor=GRAY_M, markersize=6, label="近似对称（ASYM≤0.3）"),
         Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
                markeredgecolor=BLUE, markersize=6, label="未入选候选边"),
     ]
@@ -193,8 +196,6 @@ def fig5_3_asymmetry() -> None:
     ax_right.set_xlim(-max_right_n * 0.48, max_right_n * 1.12)
     ax_right.text(0.5, 0.95, "TE(j → i)", transform=ax_right.transAxes,
                   ha="center", va="top", fontsize=7.2, color=GRAY_D)
-    ax_right.text(0.5, 1.12, "纵轴边缘", transform=ax_right.transAxes,
-                  ha="center", va="bottom", fontsize=6.8)
     ax_right.set_xticks([])
     # 纵轴刻度已由主图提供；右侧边缘图不再重复绘制短刻度，避免形成误读。
     ax_right.set_yticks([])
@@ -208,99 +209,141 @@ def fig5_4_coverage() -> None:
     c = json.load(open("outputs/analysis/conformal_prediction/conformal_summary.json"))
     seeds = c["per_seed"]
     groups = ["全局", "事件窗口", "稳定窗口"]
+    key_map = {"全局": "overall", "事件窗口": "event_window",
+               "稳定窗口": "stable_window"}
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8.4, 3.9),
-                                   gridspec_kw={"width_ratios": [1.5, 1.0]})
-    y = np.arange(len(groups))
-    d = 0.11  # per-seed 散点抖动半宽
+    # 三层证据结构：A 事件窗口放大，B 全局/稳定窗口，C 逐步长稳定性。
+    fig = plt.figure(figsize=(8.4, 8.25), constrained_layout=False)
+    gs = fig.add_gridspec(3, 1, height_ratios=[1.08, 1.0, 1.12],
+                          left=0.14, right=0.975, bottom=0.08, top=0.95,
+                          hspace=0.34)
 
-    # ---- 左面板：哑铃图 + per-seed 散点 ----
-    event_std_mean = event_str_mean = None
-    for yi, g in enumerate(groups):
-        key = {"全局": "overall", "事件窗口": "event_window",
-               "稳定窗口": "stable_window"}[g]
-        std_v = [s["standard_conformal"][f"coverage_{key}"] for s in seeds]
-        str_v = [s["stratified_conformal"][f"coverage_{key}"] for s in seeds]
-        s_mean, v_mean = float(np.mean(std_v)), float(np.mean(str_v))
-        if yi == 1:
-            event_std_mean, event_str_mean = s_mean, v_mean
-        # 哑铃连接线（标准 → 分层）
-        ax1.plot([s_mean, v_mean], [yi, yi], color=GRAY_L, lw=2.4, zorder=2)
-        # per-seed 散点（抖动，不遮挡均值点）
-        jit = np.linspace(-d, d, len(seeds))
-        ax1.scatter(std_v, yi + jit, s=26, facecolor="white", edgecolor=GRAY_M,
-                    linewidth=0.8, zorder=3)
-        ax1.scatter(str_v, yi + jit, s=26, facecolor=BLUE, edgecolor=BLUE,
-                    linewidth=0.4, alpha=0.55, zorder=3)
-        # 均值点（大圆）
-        ax1.scatter([s_mean], [yi], s=95, facecolor="white", edgecolor=GRAY_D,
-                    linewidth=1.5, zorder=4, label="标准共形" if yi == 0 else None)
-        ax1.scatter([v_mean], [yi], s=115, facecolor=BLUE, edgecolor=GRAY_D,
-                    linewidth=1.0, zorder=5, label="分层共形" if yi == 0 else None)
-        # 数值标签（事件窗口的精确数值由上方箭头统一标注，避免与点/行标签拥挤）
-        if yi != 1:
-            ax1.text(s_mean - 0.045, yi, f"{s_mean:.1%}", ha="center", va="center",
-                     fontsize=8, color=GRAY_M)
-            ax1.text(v_mean + 0.045, yi, f"{v_mean:.1%}", ha="center", va="center",
-                     fontsize=8, color=GRAY_D)
-        # Δ 提升标注（右侧空白区，事件窗口由上方箭头给出）
-        delta = v_mean - s_mean
-        if yi != 1:
-            ax1.text(0.975, yi, f"Δ+{delta * 100:.1f} pp", ha="right", va="center",
-                     fontsize=8, color=ORANGE)
-    # 90% 目标线 + 达标区底纹（0.85-1.0 浅灰蓝）
-    ax1.axvspan(0.90, 1.0, color="0.94", zorder=0)
-    ax1.axvline(0.9, color=RED_S, lw=1.2, ls="--", zorder=1)
-    ax1.text(0.905, 2.36, "90% 目标", fontsize=7.5, color=RED_S)
-    # 事件窗口：规则路由提升箭头（1.9% → 3.9%）+ oracle 事后上界标注。
-    # 审查 2026-08-01：正式口径为可部署的规则路由；真实标签路由仅作上界诊断
+    def panel_tag(ax, tag: str, title: str) -> None:
+        ax.text(-0.13, 1.08, tag, transform=ax.transAxes, fontsize=13,
+                fontweight="bold", color=GRAY_D, va="top")
+        ax.set_title(title, loc="left", fontsize=10.2, color=GRAY_D, pad=8)
+
+    # ---- A：事件窗口可部署覆盖率 + 独立 oracle 参考 ----
+    inner = gs[0].subgridspec(1, 2, width_ratios=[2.15, 1.0], wspace=0.24)
+    axA = fig.add_subplot(inner[0, 0])
+    axA_ref = fig.add_subplot(inner[0, 1])
+    event_key = key_map["事件窗口"]
+    event_std = np.array([s["standard_conformal"][f"coverage_{event_key}"] for s in seeds])
+    event_str = np.array([s["stratified_conformal"][f"coverage_{event_key}"] for s in seeds])
+    event_means = [float(event_std.mean()), float(event_str.mean())]
+    event_sds = [float(event_std.std(ddof=1)), float(event_str.std(ddof=1))]
+    x = np.arange(2)
+    jit = np.linspace(-0.09, 0.09, len(seeds))
+    for xi, vals, mean, sd, color, face in [
+        (0, event_std, event_means[0], event_sds[0], GRAY_D, "white"),
+        (1, event_str, event_means[1], event_sds[1], BLUE, BLUE),
+    ]:
+        axA.scatter(np.full(len(vals), xi) + jit, vals, s=30,
+                    facecolor=face, edgecolor=color, linewidth=0.8, alpha=0.75,
+                    zorder=3)
+        axA.errorbar(xi, mean, yerr=sd, fmt="o", ms=8.5, color=color,
+                     markerfacecolor=face, markeredgecolor=GRAY_D,
+                     markeredgewidth=1.0, capsize=3.0, lw=1.2, zorder=4)
+        axA.text(xi, mean + sd + 0.006, f"{mean:.1%}", ha="center", va="bottom",
+                 fontsize=8.2, color=GRAY_D)
+    axA.plot(x, event_means, color=ORANGE, lw=1.2, alpha=0.75, zorder=2)
+    axA.text(0.5, 0.96, f"规则路由相对标准：+{(event_means[1]-event_means[0])*100:.1f} pp",
+             transform=axA.transAxes, ha="center", va="top", fontsize=8.5, color=ORANGE)
+    axA.set_xticks(x)
+    axA.set_xticklabels(["标准共形", "规则路由分层"], fontsize=8.8)
+    axA.set_ylabel("事件窗口覆盖率", fontsize=8.8)
+    axA.set_ylim(0, 0.10)
+    axA.set_yticks([0, 0.02, 0.04, 0.06, 0.08, 0.10])
+    axA.set_yticklabels(["0%", "2%", "4%", "6%", "8%", "10%"], fontsize=7.8)
+    _clean_ax(axA)
+    panel_tag(axA, "A", "事件窗口：可部署覆盖率（放大视图）")
+
     oracle_event = float(np.mean([
         s["stratified_oracle_upper"]["coverage_event_window"] for s in seeds]))
-    # 提升箭头与文字由均值自动生成（审查 2026-08-01：不硬编码数值）
-    ax1.annotate("", xy=(event_str_mean + 0.02, 1.25),
-                 xytext=(max(event_std_mean - 0.01, 0.005), 1.28),
-                 arrowprops=dict(arrowstyle="->", color=ORANGE, lw=1.7))
-    ax1.text((event_std_mean + event_str_mean) / 2 + 0.08, 1.38,
-             f"{event_std_mean:.1%} → {event_str_mean:.1%}（规则路由）",
-             ha="center", fontsize=8, color=ORANGE)
-    ax1.plot([oracle_event], [1], marker="*", ms=13, color=RED_S, zorder=6,
-             markeredgecolor="white", markeredgewidth=0.6)
-    ax1.annotate(f"oracle 事后上界 {oracle_event:.1%}\n不可部署",
-                 xy=(oracle_event, 1), xytext=(0.72, 1.72),
-                 fontsize=7.0, color=RED_S, ha="center", va="center",
-                 bbox=dict(facecolor="white", edgecolor="none", alpha=0.82, pad=1.5),
-                 arrowprops=dict(arrowstyle="->", color=RED_S, lw=0.8,
-                                 shrinkA=2, shrinkB=3))
-    ax1.set_yticks(y)
-    ax1.set_yticklabels(groups, fontsize=9.5)
-    ax1.set_xlabel("覆盖率（α = 0.1；3 种子）", fontsize=9)
-    ax1.set_xlim(0, 1.02)
-    ax1.set_ylim(-0.55, 2.55)
-    _clean_ax(ax1)
-    ax1.legend(fontsize=7.5, frameon=False, loc="lower left", ncol=2)
+    target = 1.0 - float(c["alpha"])
+    axA_ref.axhline(0.5, color=GRAY_L, lw=2.2, zorder=1)
+    axA_ref.axvline(target, color=RED_S, lw=1.2, ls="--", zorder=2)
+    axA_ref.plot(oracle_event, 0.5, marker="*", ms=15, color=RED_S,
+                 markeredgecolor="white", markeredgewidth=0.7, zorder=3)
+    axA_ref.text(oracle_event, 0.70, f"oracle\n{oracle_event:.1%}",
+                 ha="center", va="bottom", fontsize=8.2, color=RED_S)
+    axA_ref.text(target, 0.16, "目标", ha="center", va="top", fontsize=7.8,
+                 color=RED_S)
+    axA_ref.set_xlim(0.80, 0.92)
+    axA_ref.set_ylim(0, 1)
+    axA_ref.set_xticks([0.80, 0.85, 0.90])
+    axA_ref.set_xticklabels(["80%", "85%", "90%"], fontsize=7.5)
+    axA_ref.set_yticks([])
+    axA_ref.set_xlabel("事后诊断参照（不可部署）", fontsize=8.2, labelpad=8)
+    _clean_ax(axA_ref)
 
-    # ---- 右面板：per-horizon 覆盖率（3 种子 min-max 带 + 均值线） ----
+    # ---- B：全局/稳定窗口的三种子均值与标准差 ----
+    axB = fig.add_subplot(gs[1, 0])
+    groups_B = ["稳定窗口", "全局"]
+    yB = np.arange(len(groups_B))
+    for yi, g in zip(yB, groups_B):
+        key = key_map[g]
+        std_v = np.array([s["standard_conformal"][f"coverage_{key}"] for s in seeds])
+        str_v = np.array([s["stratified_conformal"][f"coverage_{key}"] for s in seeds])
+        s_mean, v_mean = float(std_v.mean()), float(str_v.mean())
+        s_sd, v_sd = float(std_v.std(ddof=1)), float(str_v.std(ddof=1))
+        axB.plot([s_mean, v_mean], [yi, yi], color=GRAY_L, lw=2.4, zorder=1)
+        jitB = np.linspace(-0.10, 0.10, len(seeds))
+        axB.scatter(std_v, yi + jitB, s=28, facecolor="white", edgecolor=GRAY_M,
+                    linewidth=0.8, zorder=3)
+        axB.scatter(str_v, yi + jitB, s=28, facecolor=BLUE, edgecolor=BLUE,
+                    linewidth=0.5, alpha=0.7, zorder=3)
+        axB.errorbar(s_mean, yi, xerr=s_sd, fmt="o", ms=8.5, color=GRAY_D,
+                     markerfacecolor="white", markeredgecolor=GRAY_D,
+                     capsize=3.0, lw=1.1, zorder=4,
+                     label="标准共形" if yi == 0 else None)
+        axB.errorbar(v_mean, yi, xerr=v_sd, fmt="o", ms=8.5, color=BLUE,
+                     markerfacecolor=BLUE, markeredgecolor=GRAY_D,
+                     capsize=3.0, lw=1.1, zorder=5,
+                     label="规则路由分层" if yi == 0 else None)
+        axB.text(0.825, yi, f"Δ{(v_mean-s_mean)*100:+.1f} pp", ha="right",
+                 va="center", fontsize=8.2, color=ORANGE)
+    axB.set_yticks(yB)
+    axB.set_yticklabels(groups_B, fontsize=9.0)
+    axB.set_xlabel("覆盖率（α = 0.1；3 种子）", fontsize=8.8)
+    axB.set_xlim(0.60, 0.84)
+    axB.set_xticks([0.60, 0.65, 0.70, 0.75, 0.80])
+    axB.set_xticklabels(["60%", "65%", "70%", "75%", "80%"], fontsize=7.8)
+    axB.set_ylim(-0.45, 1.45)
+    _clean_ax(axB)
+    axB.legend(fontsize=7.5, frameon=False, loc="upper right", ncol=2,
+               handlelength=1.8, columnspacing=0.8)
+    panel_tag(axB, "B", "全局与稳定窗口：标准/规则路由对比")
+
+    # ---- C：逐步长覆盖率及三种子 min–max 范围 ----
+    axC = fig.add_subplot(gs[2, 0])
     hx = np.arange(1, 5)
     std_mats = np.array([s["standard_conformal"]["coverage_by_horizon"] for s in seeds])
     str_mats = np.array([s["stratified_conformal"]["coverage_by_horizon"] for s in seeds])
-    for mat, c, ls, lbl, z in [(std_mats, GRAY_M, "--", "标准共形", 2),
-                               (str_mats, BLUE, "-", "规则路由分层共形", 3)]:
+    for mat, color, ls, label, z in [
+        (std_mats, GRAY_M, "--", "标准共形", 2),
+        (str_mats, BLUE, "-", "规则路由分层", 3),
+    ]:
         lo, hi = mat.min(axis=0), mat.max(axis=0)
-        ax2.fill_between(hx, lo, hi, color=c, alpha=0.12, zorder=z - 1)
-        ax2.plot(hx, mat.mean(axis=0), color=c, ls=ls, lw=1.8, marker="o",
-                 ms=4.5, label=lbl, zorder=z)
-    ax2.axhline(0.9, color=RED_S, lw=1.1, ls="--", zorder=1)
-    ax2.set_xticks(hx)
-    ax2.set_xlabel("预测步长（horizon；规则路由）", fontsize=9)
-    # 右图按全样本统计（含稳定样本），明确标注避免误读为事件窗口（审查 2026-08-01）
-    ax2.set_ylabel("全样本覆盖率", fontsize=9)
-    ax2.set_ylim(0.55, 0.93)
-    ax2.set_yticks([0.60, 0.70, 0.80, 0.90])
-    _clean_ax(ax2)
-    ax2.legend(fontsize=7.5, frameon=False, loc="lower left")
-    ax2.text(4.03, 0.905, "90% 目标", fontsize=7, color=RED_S, ha="right")
+        axC.fill_between(hx, lo, hi, color=color, alpha=0.14, zorder=z - 1)
+        axC.plot(hx, mat.mean(axis=0), color=color, ls=ls, lw=1.9, marker="o",
+                 ms=4.8, label=label, zorder=z)
+    axC.axhline(target, color=RED_S, lw=1.1, ls="--", zorder=1)
+    axC.text(3.98, target + 0.004, "90% 目标", fontsize=7.8, color=RED_S, ha="right")
+    axC.set_xticks(hx)
+    axC.set_xlabel("预测步长（horizon；规则路由）", fontsize=8.8)
+    axC.set_ylabel("全样本覆盖率", fontsize=8.8)
+    axC.set_ylim(0.55, 0.93)
+    axC.set_yticks([0.60, 0.70, 0.80, 0.90])
+    axC.set_yticklabels(["60%", "70%", "80%", "90%"], fontsize=7.8)
+    axC.set_xlim(0.8, 4.2)
+    _clean_ax(axC)
+    axC.legend(fontsize=7.5, frameon=True, facecolor="white", edgecolor="none",
+               framealpha=0.88, loc="upper left", ncol=2,
+               handlelength=1.8, columnspacing=0.8)
+    panel_tag(axC, "C", "逐步长覆盖率：三种子范围与均值")
 
-    final(fig, "fig5_4_coverage", (8.4, 3.9))
+    final(fig, "fig5_4_coverage", (8.4, 8.25))
 
 
 if __name__ == "__main__":

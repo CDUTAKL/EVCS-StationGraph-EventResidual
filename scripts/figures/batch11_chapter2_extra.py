@@ -47,6 +47,8 @@ GREEN = "#597A62"
 
 # 特征中文名（与 feature_names 顺序一一对应）
 FEATURE_CN = ["负荷", "接入数", "离站数", "活跃数", "占用率", "需求强度", "负荷跳变"]
+# 图内采用短标签，完整含义保留在图注和正文，避免缩放后长中文标签互相挤压。
+FEATURE_SHORT = ["负荷", "接入", "离站", "活跃", "占用", "需求", "跳变"]
 # 事件分数 4 分量（与 rules.py 定义一致）：索引 1/2/3/6
 EVENT_COMPONENTS = [
     (1, "接入"),
@@ -82,28 +84,39 @@ def redraw_fig2_7() -> None:
     flat = feats.reshape(-1, feats.shape[2])  # 展平 [T*N, F]：跨节点全局相关性
     corr = pd.DataFrame(flat, columns=FEATURE_CN).corr(method="spearman").to_numpy()
 
-    fig, ax = plt.subplots(figsize=(5.6, 5.0))
-    # 蓝-白-红 diverging 色阶：负相关蓝、正相关红（零值稀疏数据下相关系数偏低）
+    fig, ax = plt.subplots(figsize=(6.4, 5.35))
+    # 当前矩阵的相关系数均为非负，使用白—蓝顺序色阶突出高相关状态特征，
+    # 避免在 [-1, 1] 发散色阶下将 0.99 与 0.20 都压成相近的浅红色。
     cmap = LinearSegmentedColormap.from_list(
-        "rdbu_soft", ["#8EABC0", "#FFFFFF", "#C98A83"])
-    im = ax.imshow(corr, cmap=cmap, vmin=-1, vmax=1)
+        "corr_blue", ["#F7FAFC", "#C9DCE8", BLUE])
+    im = ax.imshow(corr, cmap=cmap, vmin=0, vmax=1)
     for i in range(corr.shape[0]):
         for j in range(corr.shape[1]):
             val = corr[i, j]
-            # 文本对比度阈值：|r|>0.45 用白字（深色底），否则用深灰字（浅色底）
-            color = "white" if abs(val) > 0.45 else GRAY_D
+            # 高相关格使用白字，弱相关格使用深灰字；对角线仍保留 1.00 作为校验。
+            color = "white" if val > 0.58 else GRAY_D
             ax.text(j, i, f"{val:.2f}", ha="center", va="center",
-                    fontsize=7.6, color=color)
+                    fontsize=8.0, color=color, fontweight="medium")
     ax.set_xticks(range(len(FEATURE_CN)))
     ax.set_yticks(range(len(FEATURE_CN)))
-    ax.set_xticklabels(FEATURE_CN, fontsize=8.2, rotation=45, ha="right")
-    ax.set_yticklabels(FEATURE_CN, fontsize=8.2)
-    ax.tick_params(length=0)
+    ax.set_xticklabels(FEATURE_SHORT, fontsize=8.7)
+    ax.set_yticklabels(FEATURE_SHORT, fontsize=8.7)
+    ax.set_xlabel("输入特征", fontsize=8.8, labelpad=8)
+    ax.set_ylabel("输入特征", fontsize=8.8, labelpad=8)
+    # 白色细网格明确单元格边界，避免数值与色块边界混在一起。
+    n = len(FEATURE_CN)
+    ax.set_xticks(np.arange(-0.5, n, 1), minor=True)
+    ax.set_yticks(np.arange(-0.5, n, 1), minor=True)
+    ax.grid(which="minor", color="white", lw=1.1)
+    ax.tick_params(which="both", length=0)
     for spine in ax.spines.values():
         spine.set_color(GRAY_L)
-    cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
-    cbar.ax.tick_params(labelsize=7.5)
-    _final(fig, "fig2_7_feature_correlation", (5.6, 5.0))
+    cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.035,
+                        ticks=[0, 0.25, 0.50, 0.75, 1.00])
+    cbar.set_label("Spearman ρ", fontsize=8.6, labelpad=6)
+    cbar.ax.tick_params(labelsize=7.6, length=3)
+    fig.subplots_adjust(left=0.15, right=0.875, bottom=0.15, top=0.965)
+    _final(fig, "fig2_7_feature_correlation", (6.4, 5.35))
     return None
 
 
@@ -121,22 +134,25 @@ def redraw_fig2_8() -> None:
     fig, ax = plt.subplots(figsize=(7.6, 3.6))
     cmap = LinearSegmentedColormap.from_list(
         "load_ramp", ["#FFFFFF", "#C9DCE8", "#2C5F8A"])
-    # 周末行浅橙底纹置于热力图之上但半透明（alpha=0.35）：
-    # 既标识周末又不遮挡数据（全不透明会盖住周末行数值）
-    for wk in (5, 6):
-        ax.add_patch(plt.Rectangle((-0.5, wk - 0.5), 24, 1,
-                                   facecolor="#F5E9D8", edgecolor="none",
-                                   alpha=0.35, zorder=2))
     im = ax.imshow(mat, cmap=cmap, aspect="auto", zorder=1,
                    vmin=0, vmax=np.percentile(mat, 99))
+    # 周末不再用暖色底纹覆盖数据色阶；改用同一蓝灰色系的分隔线、标签和独立标识。
+    weekend_color = "#5F7890"
+    ax.axhline(4.5, color=weekend_color, lw=1.15, alpha=0.82, zorder=3)
     ax.set_xticks(range(24))
     ax.set_xticklabels([f"{h:02d}" for h in range(24)], fontsize=7.2)
     ax.set_yticks(range(7))
-    ax.set_yticklabels(["周一", "周二", "周三", "周四", "周五", "周六", "周日"],
-                       fontsize=7.8)
+    weekday_labels = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"]
+    ax.set_yticklabels(weekday_labels, fontsize=7.8)
+    for idx in (5, 6):
+        ax.get_yticklabels()[idx].set_color(weekend_color)
+        ax.get_yticklabels()[idx].set_fontweight("bold")
     ax.set_xlabel("小时（0–23）", fontsize=8.6)
     ax.set_ylabel("星期", fontsize=8.6)
     ax.tick_params(length=0)
+    # 标出 6 小时相位边界，帮助读者快速识别日内节律，但不增加单元格文字。
+    for hour in (6, 12, 18):
+        ax.axvline(hour - 0.5, color="white", lw=0.8, alpha=0.65, zorder=3)
     cbar = fig.colorbar(im, ax=ax, fraction=0.045, pad=0.03)
     cbar.set_label("全站负荷均值（kWh/15 min）", fontsize=7.6)
     cbar.ax.tick_params(labelsize=7.5)

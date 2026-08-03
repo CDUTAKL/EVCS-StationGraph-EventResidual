@@ -158,7 +158,7 @@ def redraw_fig3_4() -> None:
 
 def redraw_fig3_8() -> None:
     """图 3-8：分层窗口 MAE 对比（log 轴分组柱，事件窗口量级远大于稳定窗口）。"""
-    fig, ax = plt.subplots(figsize=(8.2, 4.2))
+    fig, ax = plt.subplots(figsize=(8.0, 4.0))
     x = np.arange(len(SCOPES))
     width = 0.15
     for mi, (exp_id, label, color) in enumerate(MODELS):
@@ -177,9 +177,12 @@ def redraw_fig3_8() -> None:
     ax.set_xticklabels([cn for _k, cn in SCOPES], fontsize=8.6)
     ax.set_ylabel("MAE（kWh/15 min，对数轴）", fontsize=8.8)
     ax.set_ylim(0.004, 0.7)
-    ax.legend(fontsize=7.4, frameon=False, ncol=6, loc="upper left")
+    ax.legend(fontsize=7.2, frameon=False, ncol=3, loc="upper center",
+              bbox_to_anchor=(0.50, 1.16), columnspacing=0.9,
+              handletextpad=0.35)
     _clean(ax)
-    _final(fig, "fig3_8_mae_by_window", (8.2, 4.2))
+    fig.subplots_adjust(left=0.12, right=0.98, bottom=0.17, top=0.80)
+    _final(fig, "fig3_8_mae_by_window", (8.0, 4.0))
     return None
 
 
@@ -267,37 +270,69 @@ def redraw_fig3_11() -> None:
     df = pd.read_csv(
         "outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/predictions.csv.gz")
     ev = df[(df["split"] == "test") & df["rule_trigger"]].copy()
-    # 每 origin 有 4 个 horizon，rule_trigger 按 [O,N] 广播——取每 origin 首个 horizon 判定
+    # 每 origin 有 4 个 horizon，rule_trigger 按 [O,N] 广播；先用触发段选择代表窗口，
+    # 再回到完整 h=1 测试序列绘图，避免把不连续事件窗口直接连成一条假曲线。
     uniq = ev.drop_duplicates(["node_id", "origin_index"])[["node_id", "origin_index"]]
     # 选 rule_trigger 样本最密集的节点
     best_node = uniq["node_id"].value_counts().index[0]
-    sub = ev[ev["node_id"] == best_node].sort_values("origin_index")
-    origins = sub["origin_index"].unique()
-    # 取第一段连续 origin 作为展示窗口（事件窗口段；按段长取 max 与数据分布无关紧要）
-    breaks = np.where(np.diff(origins) > 1)[0]
-    seg_start = int(breaks[0]) + 1 if len(breaks) else 0
-    # 展示窗固定 48 个连续 origin（= 12 小时，覆盖 1-3 个合并窗口的长度量级）
-    seg_origins = origins[seg_start:seg_start + 48]
+    event_origins = np.sort(uniq.loc[uniq["node_id"] == best_node, "origin_index"].unique())
+    # 选择连续触发段最长的一段，选择规则可复核且不依赖手工挑点。
+    starts = np.r_[0, np.where(np.diff(event_origins) > 1)[0] + 1]
+    ends = np.r_[np.where(np.diff(event_origins) > 1)[0], len(event_origins) - 1]
+    best_seg = int(np.argmax(ends - starts + 1))
+    event_start = int(event_origins[starts[best_seg]])
+    event_end = int(event_origins[ends[best_seg]])
+    # 取触发段前后各 5 步上下文（15 min/步），避开相邻事件段，
+    # 并保留所有 h=1 测试点以展示真实的连续时间走势。
+    context = 5
+    sub = df[(df["split"] == "test") & (df["node_id"] == best_node)
+             & (df["horizon"] == 1)].sort_values("origin_index")
+    sub = sub[(sub["origin_index"] >= event_start - context)
+              & (sub["origin_index"] <= event_end + context)].copy()
+    if sub.empty:
+        raise RuntimeError("图 3-11 代表事件窗口为空")
 
-    # 只需 h=1 预测（对齐 t+1），先滤 horizon 再按 origin 一次取齐
-    h1 = sub[sub["horizon"] == 1].set_index("origin_index")
-    truth_pts = h1.loc[seg_origins, "y_true"].to_numpy()
-    pred_pts = h1.loc[seg_origins, "y_pred"].to_numpy()
-    times = h1.loc[seg_origins, "target_index"].to_numpy()
+    # x 使用相对事件位置而非巨大的 target_index，避免横轴稀疏且留白过多。
+    rel = sub["origin_index"].to_numpy() - event_start
+    truth_pts = np.maximum(sub["y_true"].to_numpy(dtype=float), 0.0)
+    pred_pts = sub["y_pred"].to_numpy(dtype=float)
+    trigger = sub["rule_trigger"].to_numpy(dtype=bool)
+    trigger_idx = np.flatnonzero(trigger)
+    if len(trigger_idx) == 0:
+        raise RuntimeError("图 3-11 代表窗口未找到规则触发点")
 
-    fig, ax = plt.subplots(figsize=(8.2, 3.6))
-    ts = np.asarray(times)
-    ax.plot(ts, truth_pts, color=GRAY_D, lw=1.4, label="真实负荷", zorder=3)
-    ax.plot(ts, pred_pts, color=BLUE, lw=1.2, ls="--", marker="o", ms=3.2,
-            label="预测（h=1）", zorder=4)
-    ax.fill_between(ts, np.minimum(truth_pts, pred_pts),
+    # 显式预留顶部图例带，避免图例进入数据区遮挡峰值曲线。
+    fig = plt.figure(figsize=(8.4, 3.9), constrained_layout=False)
+    ax = fig.add_axes([0.115, 0.17, 0.86, 0.68])
+    # 仅对真实规则触发段加浅橙底纹；底纹是窗口标识，不是误差或置信区间。
+    ax.axvspan(-0.5, event_end - event_start + 0.5,
+               color=ORANGE, alpha=0.12, zorder=0, label="规则触发段")
+    ax.fill_between(rel, np.minimum(truth_pts, pred_pts),
                     np.maximum(truth_pts, pred_pts),
-                    color=GRAY_XL, lw=0, zorder=1)
-    ax.set_xlabel("目标时间索引（15 min 步长）", fontsize=8.6)
-    ax.set_ylabel(f"{best_node} 负荷（kWh/15 min）", fontsize=8.6)
-    ax.legend(fontsize=7.6, frameon=False, loc="lower left")
+                    color=GRAY_XL, lw=0, zorder=1, label="绝对误差带")
+    ax.plot(rel, truth_pts, color=GRAY_D, lw=1.7, marker="o", ms=3.2,
+            label="真实负荷", zorder=3)
+    ax.plot(rel, pred_pts, color=BLUE, lw=1.35, ls="--", marker="o", ms=3.0,
+            label="预测（h=1）", zorder=4)
+    # 用边界线强化触发段的左右边界，不在数据点旁添加小字。
+    ax.axvline(-0.5, color=ORANGE, lw=0.8, alpha=0.65, zorder=2)
+    ax.axvline(event_end - event_start + 0.5, color=ORANGE, lw=0.8,
+               alpha=0.65, zorder=2)
+    ticks = [-context, 0, event_end - event_start,
+             event_end - event_start + context]
+    labels = ["事件前", "触发开始", "触发结束", "事件后"]
+    ax.set_xticks(ticks)
+    ax.set_xticklabels(labels, fontsize=8.0)
+    ax.set_xlabel("相对事件窗口位置（每步 15 min）", fontsize=8.8)
+    ax.set_ylabel(f"{best_node} 负荷（kWh/15 min）", fontsize=8.8)
+    handles, legend_labels = ax.get_legend_handles_labels()
+    fig.legend(handles, legend_labels, fontsize=7.5, frameon=False,
+               loc="upper left", bbox_to_anchor=(0.115, 0.985), ncol=4,
+               handlelength=2.0, columnspacing=0.9, borderaxespad=0.0)
+    ax.set_xlim(-context - 0.5, event_end - event_start + context + 0.5)
+    ax.set_ylim(bottom=min(-0.02, float(pred_pts.min()) - 0.02))
     _clean(ax)
-    _final(fig, "fig3_11_event_window_forecast", (8.2, 3.6))
+    _final(fig, "fig3_11_event_window_forecast", (8.4, 3.9))
     return None
 
 

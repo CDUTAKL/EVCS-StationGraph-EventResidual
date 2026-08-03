@@ -360,39 +360,45 @@ def fig_parameter_intervention() -> None:
         "equal": "等权 1/3", "g1_load_g2_learn": "GCN1=负荷关系",
         "g1_learn_g2_pattern": "GCN2=模式关系", "swapped": "交换两层学习值",
     }
+    names_short = {
+        "both_event": "全事件\n关系", "both_load": "全负荷\n关系", "both_pattern": "全模式\n关系",
+        "equal": "等权\n1/3", "g1_load_g2_learn": "GCN1=负荷",
+        "g1_learn_g2_pattern": "GCN2=模式", "swapped": "交换两层\n学习值",
+    }
     order = [k for k in iv if k in names_cn]
     nodes = list(iv[order[0]]["node_deltas"].keys())
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.8, 4.0),
-                                   gridspec_kw={"width_ratios": [1.0, 1.35]})
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8.4, 4.6),
+                                   gridspec_kw={"width_ratios": [1.08, 1.40]})
     # (a) 分层参数干预敏感度：柱高 = 相对 MAE 变化率（%），正值表示退化。
     # 修复（审查 2026-08-01）：global_delta 已为 (MAE_iv−MAE_base)/MAE_base 变化率，
     # 绘图不得再减 1（原实现把 +149% 画成 +49%）
-    x = np.arange(len(order))
-    w = 0.26
+    y = np.arange(len(order))
+    w = 0.24
     g_d = [100 * iv[k]["global_delta"] for k in order]
     e_d = [100 * iv[k]["event_delta"] for k in order]
     s_d = [100 * iv[k]["stable_delta"] for k in order]
-    ax1.bar(x - w, g_d, w, label="全局", color=BLUE, edgecolor="white", linewidth=0.3)
-    ax1.bar(x, e_d, w, label="事件窗口", color=ORANGE, edgecolor="white", linewidth=0.3)
-    ax1.bar(x + w, s_d, w, label="稳定窗口", color=GRAY_M, edgecolor="white", linewidth=0.3)
-    ax1.axhline(0, color=GRAY_D, lw=1.0)
-    # 仅标注全局柱顶数值（避免 21 个标签互相遮挡）
-    for xi, v in zip(x, g_d):
-        ax1.text(xi, v + 3, f"{v:+.0f}%", ha="center", fontsize=7.2,
+    ax1.barh(y - w, g_d, w, label="全局", color=BLUE, edgecolor="white", linewidth=0.3)
+    ax1.barh(y, e_d, w, label="事件窗口", color=ORANGE, edgecolor="white", linewidth=0.3)
+    ax1.barh(y + w, s_d, w, label="稳定窗口", color=GRAY_M, edgecolor="white", linewidth=0.3)
+    ax1.axvline(0, color=GRAY_D, lw=1.0)
+    # 仅标注全局柱数值，横向布局避免干预组合标签拥挤。
+    for yi, v in zip(y, g_d):
+        ax1.text(v + 5, yi - w, f"{v:+.0f}%", va="center", fontsize=7.0,
                  color=GRAY_D)
-    ax1.set_xticks(x)
-    ax1.set_xticklabels([names_cn[k] for k in order], fontsize=7.5, rotation=28,
-                        ha="right")
-    ax1.set_ylabel("相对 MAE 变化（%）", fontsize=8.5)
+    ax1.set_yticks(y)
+    ax1.set_yticklabels([names_short[k].replace("\n", "") for k in order], fontsize=7.4)
+    ax1.invert_yaxis()
+    ax1.set_xlabel("相对 MAE 变化（%）", fontsize=8.5)
+    ax1.set_ylabel("干预组合", fontsize=8.2)
     # y 轴范围按全部窗口的最大/最小值确定（修复 2026-08-01：原按 max(g_d) 定上限，
     # 稳定窗口 delta 最大 317% 超出 285% 被 clip-path 裁切）
     all_deltas = np.concatenate([g_d, e_d, s_d])
     ymax = float(np.max(all_deltas))
     ymin = min(-8.0, float(np.min(all_deltas)) * 1.15)
-    ax1.set_ylim(ymin, ymax * 1.15)
+    ax1.set_xlim(ymin, ymax * 1.15)
     _clean_ax(ax1)
-    ax1.legend(fontsize=7.5, frameon=False, loc="upper left")
+    ax1.legend(fontsize=7.2, frameon=False, loc="lower right")
 
     # (b) 节点敏感度热力图（7 干预 × 10 节点，相对变化率 %；node_deltas 已为变化率，
     # 直接乘 100 显示百分比，不再做任何减 1）
@@ -407,7 +413,7 @@ def fig_parameter_intervention() -> None:
     ax2.set_xticks(range(len(nodes)))
     ax2.set_xticklabels([n.split("-")[1] for n in nodes], fontsize=7.5)
     ax2.set_yticks(range(len(order)))
-    ax2.set_yticklabels([names_cn[k] for k in order], fontsize=7.5)
+    ax2.set_yticklabels([names_cn[k] for k in order], fontsize=7.2)
     for i in range(len(order)):
         for j in range(len(nodes)):
             v = matrix[i, j]
@@ -416,7 +422,8 @@ def fig_parameter_intervention() -> None:
     cbar = fig.colorbar(im, ax=ax2, fraction=0.045, pad=0.03)
     cbar.set_label("MAE 相对变化（%）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
-    final(fig, "fig5_6_parameter_intervention", (7.8, 4.0))
+    fig.subplots_adjust(left=0.09, right=0.96, bottom=0.13, top=0.94, wspace=0.28)
+    final(fig, "fig5_6_parameter_intervention", (8.4, 4.6))
 
 
 if __name__ == "__main__":

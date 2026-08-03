@@ -202,7 +202,7 @@ def redraw_fig5_10() -> None:
     ax.text(4.35, 0.905, "90% 目标", fontsize=7.0, color=RED, ha="right")
     ax.set_xticks(hs)
     ax.set_xticklabels([f"h={h}" for h in hs], fontsize=8.0)
-    ax.set_ylim(0.55, 0.95)
+    ax.set_ylim(0.55, 0.93)
     ax.set_xlabel("预测步长", fontsize=8.6)
     ax.set_ylabel("覆盖率（均值 ± 跨种子 SD）", fontsize=8.6)
     ax.legend(fontsize=7.0, frameon=False, loc="lower left")
@@ -242,6 +242,13 @@ def redraw_fig5_11() -> None:
     rel_names = [("load", "负荷耦合关系", BLUE),
                  ("event", "行为共现关系", ORANGE),
                  ("pattern", "轮廓相似关系", GREEN)]
+    all_weights = []
+    for key, _name, _color in rel_names:
+        w_mat = np.asarray(rel[key], dtype=float)
+        all_weights.append(np.asarray([w_mat[i, j] for i, j in pairs]))
+    observed_max = float(np.max(np.concatenate(all_weights)))
+    # 权重实际集中在低值区间；按共同有效范围展开，保留三图之间的横轴可比性。
+    x_limit = float(np.ceil(max(observed_max * 1.12, 0.20) * 100) / 100)
     for ax, (key, name, color) in zip(axes, rel_names):
         w_mat = np.asarray(rel[key], dtype=float)
         te_vals = np.asarray([te_mat[i, j] for i, j in pairs])
@@ -260,7 +267,8 @@ def redraw_fig5_11() -> None:
         ax.set_xlabel(f"{name}权重", fontsize=7.8)
         ax.set_ylabel("TE(i→j)（nats）" if key == "load" else "",
                       fontsize=7.8)
-        ax.set_xlim(0, 1)
+        ax.set_xlim(0, x_limit)
+        ax.set_xticks(np.round(np.linspace(0, x_limit, 5), 2))
         _clean(ax)
     _final(fig, "fig5_8_te_vs_relations", (9.6, 3.4))
     return None
