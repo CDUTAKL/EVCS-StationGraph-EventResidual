@@ -150,55 +150,6 @@ def _network_panel(ax, data: dict) -> None:
     ax.axis("off")
 
 
-def _summary_panel(ax, data: dict) -> None:
-    """右上面板：验证进度 2×2 卡片（大数字 + 占比条 + 独有拆分）。"""
-    n_total = data["n_te_candidates"]           # 76
-    n_conf = data["n_te_confirmed_by_pcmci"]    # 44
-    n_te_only = n_total - n_conf                # 32
-    n_pcmci_ns = sum(1 for e in data["pcmci_only_edges"] if e[0] != e[1])  # 6
-    n_loop = len(data["pcmci_only_edges"]) - n_pcmci_ns                    # 10
-    cards = [
-        ("TE 候选边", n_total, BLUE, 1.0, "100%"),
-        ("PCMCI+ 确认", n_conf, BLUE, n_conf / n_total,
-         "{:.0f}%".format(100 * n_conf / n_total)),
-        ("未确认", n_te_only, RED_S, n_te_only / n_total,
-         "{:.0f}%".format(100 * n_te_only / n_total)),
-        ("PCMCI+ 独有", n_pcmci_ns + n_loop, ORANGE, None,
-         "节点间 {} + 自回归 {}".format(n_pcmci_ns, n_loop)),
-    ]
-    for idx, (name, val, color, frac, sub) in enumerate(cards):
-        cx = idx % 2          # 列：左 0 / 右 1
-        cy = 1 - idx // 2     # 行：上 1 / 下 0
-        # 卡片底（圆角浅底 + 细边框）
-        box = mpatches.FancyBboxPatch(
-            (cx * 0.5 + 0.015, cy * 0.5 + 0.015), 0.47, 0.47,
-            boxstyle="round,pad=0.008", fc="0.965", ec="0.82", lw=0.6,
-            zorder=1)
-        ax.add_patch(box)
-        cxm = cx * 0.5 + 0.25   # 卡片中心 x
-        cym = cy * 0.5 + 0.25   # 卡片中心 y
-        ax.text(cxm, cym + 0.155, "{}".format(val), ha="center",
-                va="center", fontsize=16, color=color, zorder=3)
-        ax.text(cxm, cym + 0.065, name, ha="center", va="center",
-                fontsize=6.8, color=GRAY_D, zorder=3)
-        if frac is not None:
-            # 占比条（卡片内底部，色条 + 灰底）
-            ax.barh(cym - 0.115, 0.42 * frac, left=cx * 0.5 + 0.04,
-                    height=0.045, color=color, alpha=0.85,
-                    edgecolor="none", zorder=2)
-            ax.barh(cym - 0.115, 0.42 * (1 - frac),
-                    left=cx * 0.5 + 0.04 + 0.42 * frac, height=0.045,
-                    color=GRAY_L, edgecolor="none", zorder=2)
-            ax.text(cxm, cym - 0.165, sub, ha="center", va="center",
-                    fontsize=5.8, color=GRAY_M, zorder=3)
-        else:
-            ax.text(cxm, cym - 0.115, sub, ha="center", va="center",
-                    fontsize=6.0, color=GRAY_M, zorder=3)
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, 1)
-    ax.axis("off")
-
-
 def _node_panel(ax, data: dict) -> None:
     """右面板：节点级验证堆叠条（确认/未确认 + PCMCI+ 独有出边）。"""
     from collections import Counter
@@ -217,11 +168,11 @@ def _node_panel(ax, data: dict) -> None:
     rows.sort(key=lambda r: -(r[2] + r[3]))  # 按候选出边总数降序
     y = np.arange(len(rows))
     for yi, (num, nd, c, t, p) in enumerate(rows):
-        ax.barh(yi, c, height=0.42, color=BLUE, alpha=0.9, edgecolor="white",
+        ax.barh(yi, c, height=0.55, color=BLUE, alpha=0.9, edgecolor="white",
                 linewidth=0.5, zorder=3)
-        ax.barh(yi, t, left=c, height=0.42, color=GRAY_M, alpha=0.7,
+        ax.barh(yi, t, left=c, height=0.55, color=GRAY_M, alpha=0.7,
                 edgecolor="white", linewidth=0.5, zorder=3)
-        ax.barh(yi, p, left=c + t, height=0.42, color=ORANGE, alpha=0.95,
+        ax.barh(yi, p, left=c + t, height=0.55, color=ORANGE, alpha=0.95,
                 edgecolor="white", linewidth=0.5, zorder=3)
         ax.text(0.4, yi, "{}".format(num), va="center", fontsize=5.6,
                 color="white", zorder=4)
@@ -229,7 +180,7 @@ def _node_panel(ax, data: dict) -> None:
                 fontsize=5.4, color=GRAY_D, zorder=4)
     ax.set_yticks(y)
     ax.set_yticklabels([r[1].replace("CA-", "") for r in rows], fontsize=6.0)
-    ax.set_ylim(-1.1, len(rows) + 0.1)
+    ax.set_ylim(-0.9, len(rows) + 0.1)
     ax.set_xlim(0, 17)
     ax.set_xlabel("出边数（确认 / 未确认 / PCMCI+ 独有）", fontsize=7.0)
     ax.tick_params(axis="x", labelsize=6.0)
@@ -246,20 +197,17 @@ def _node_panel(ax, data: dict) -> None:
 
 
 def main() -> None:
-    """绘制并导出 PCMCI+ 验证网络图（左大网络 + 右上进度 + 右下节点条）。"""
+    """绘制并导出 PCMCI+ 验证网络图（左大网络 + 右节点级验证条）。"""
     data = json.load(open("outputs/analysis/pcmci/pcmci_summary.json"))
-    fig = plt.figure(figsize=(10.2, 5.0))
+    fig = plt.figure(figsize=(10.6, 5.0))
     gs = fig.add_gridspec(
-        2, 2, width_ratios=[2.0, 1.0], height_ratios=[0.78, 1.22],
-        wspace=0.12, hspace=0.44,
+        1, 2, width_ratios=[2.0, 1.0], wspace=0.22,
     )
-    ax1 = fig.add_subplot(gs[:, 0])          # 左列整高：验证网络（主导）
-    ax2a = fig.add_subplot(gs[0, 1])         # 右上：验证进度
-    ax2b = fig.add_subplot(gs[1, 1])         # 右下：节点级堆叠条
+    ax1 = fig.add_subplot(gs[:, 0])          # 左：验证网络（主导）
+    ax2b = fig.add_subplot(gs[:, 1])         # 右：节点级堆叠条
     _network_panel(ax1, data)
-    _summary_panel(ax2a, data)
     _node_panel(ax2b, data)
-    final(fig, "fig5_2b_pcmci_validation_network", (10.2, 5.0))
+    final(fig, "fig5_2b_pcmci_validation_network", (10.6, 5.0))
 
 
 if __name__ == "__main__":
