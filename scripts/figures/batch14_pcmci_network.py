@@ -148,8 +148,6 @@ def _network_panel(ax, data: dict) -> None:
     ax.set_ylim(-1.48, 1.48)
     ax.set_aspect("equal")
     ax.axis("off")
-    ax.text(0, -1.44, "箭头表示方向；线宽 ∝ |条件依赖系数|；自环（自回归滞后边 10 条）未绘制",
-            ha="center", fontsize=6.0, color=GRAY_M)
 
 
 def _summary_panel(ax, data: dict) -> None:
@@ -219,11 +217,11 @@ def _node_panel(ax, data: dict) -> None:
     rows.sort(key=lambda r: -(r[2] + r[3]))  # 按候选出边总数降序
     y = np.arange(len(rows))
     for yi, (num, nd, c, t, p) in enumerate(rows):
-        ax.barh(yi, c, height=0.62, color=BLUE, alpha=0.9, edgecolor="white",
+        ax.barh(yi, c, height=0.5, color=BLUE, alpha=0.9, edgecolor="white",
                 linewidth=0.5, zorder=3)
-        ax.barh(yi, t, left=c, height=0.62, color=GRAY_M, alpha=0.7,
+        ax.barh(yi, t, left=c, height=0.5, color=GRAY_M, alpha=0.7,
                 edgecolor="white", linewidth=0.5, zorder=3)
-        ax.barh(yi, p, left=c + t, height=0.62, color=ORANGE, alpha=0.95,
+        ax.barh(yi, p, left=c + t, height=0.5, color=ORANGE, alpha=0.95,
                 edgecolor="white", linewidth=0.5, zorder=3)
         ax.text(0.4, yi, "{}".format(num), va="center", fontsize=5.6,
                 color="white", zorder=4)
@@ -231,8 +229,8 @@ def _node_panel(ax, data: dict) -> None:
                 fontsize=5.4, color=GRAY_D, zorder=4)
     ax.set_yticks(y)
     ax.set_yticklabels([r[1].replace("CA-", "") for r in rows], fontsize=6.0)
-    ax.set_ylim(-0.6, len(rows) - 0.4)
-    ax.set_xlim(0, 16)
+    ax.set_ylim(-0.9, len(rows) - 0.1)
+    ax.set_xlim(0, 17)
     ax.set_xlabel("出边数（确认 / 未确认 / PCMCI+ 独有）", fontsize=7.0)
     ax.tick_params(axis="x", labelsize=6.0)
     ax.spines[["top", "right"]].set_visible(False)
@@ -252,8 +250,8 @@ def main() -> None:
     data = json.load(open("outputs/analysis/pcmci/pcmci_summary.json"))
     fig = plt.figure(figsize=(10.2, 5.0))
     gs = fig.add_gridspec(
-        2, 2, width_ratios=[2.0, 1.0], height_ratios=[0.95, 1.05],
-        wspace=0.12, hspace=0.40,
+        2, 2, width_ratios=[2.0, 1.0], height_ratios=[0.82, 1.18],
+        wspace=0.12, hspace=0.42,
     )
     ax1 = fig.add_subplot(gs[:, 0])          # 左列整高：验证网络（主导）
     ax2a = fig.add_subplot(gs[0, 1])         # 右上：验证进度
