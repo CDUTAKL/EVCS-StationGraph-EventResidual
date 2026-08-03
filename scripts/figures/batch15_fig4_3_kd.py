@@ -76,16 +76,14 @@ def main() -> None:
     for yi, (label, m, sd, lo, hi, color) in enumerate(rows):
         if sd is not None:
             ax.barh(yi, m, height=0.52, color=color, edgecolor="white",
-                    lw=0.6, xerr=sd, capsize=5.0, error_kw=dict(lw=1.4),
+                    lw=0.6, xerr=sd, capsize=2.5, error_kw=dict(lw=0.8),
                     zorder=3)
-            sd_text = f"±{sd:.4f}"
         else:  # 学生行：误差棒 = 4 组 α 的 min-max 范围（不对称）
             ax.barh(yi, m, height=0.52, color=color, edgecolor="white",
-                    lw=0.6, xerr=[[m - lo], [hi - m]], capsize=5.0,
-                    error_kw=dict(lw=1.4), zorder=3)
-            sd_text = f"{lo:.4f}~{hi:.4f}"
-        ax.text(m + 0.0006, yi, f"{m:.4f}  {sd_text}", va="center",
-                ha="left", fontsize=7.0, color=GRAY_D)
+                    lw=0.6, xerr=[[m - lo], [hi - m]], capsize=2.5,
+                    error_kw=dict(lw=0.8), zorder=3)
+        ax.text(m + 0.0006, yi, f"{m:.4f}", va="center", ha="left",
+                fontsize=7.4, color=GRAY_D)
     # 学生行补充 α 扫描差异说明
     ax.text(student_hi + 0.0032, 1, "α 0.1→2.0\n差异 <0.1%",
             fontsize=6.8, color=BLUE, ha="left", va="center")
@@ -99,7 +97,7 @@ def main() -> None:
     ax.set_yticklabels([r[0] for r in rows], fontsize=8.0)
     ax.invert_yaxis()  # 教师行（最优）显示在最上方
     ax.set_xlabel("测试集全局 MAE（kWh/15 min）", fontsize=8.8)
-    ax.set_xlim(0, 0.040)
+    ax.set_xlim(0, 0.036)
     ax.grid(axis="x", color=GRAY_L, lw=0.55, alpha=0.72, zorder=0)
 
     for spine in ("top", "right"):
