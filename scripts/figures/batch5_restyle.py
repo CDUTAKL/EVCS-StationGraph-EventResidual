@@ -313,8 +313,8 @@ def fig_transfer_entropy() -> None:
                                      shrinkA=15, shrinkB=15,
                                      connectionstyle="arc3,rad=0.12"))
     for n, (x, y) in node_pos.items():
-        ax1.scatter(x, y, s=330, color="white", edgecolor=BLUE, lw=1.2, zorder=5)
-        ax1.text(x, y, n, ha="center", va="center", fontsize=6.2,
+        ax1.scatter(x, y, s=400, color="white", edgecolor=BLUE, lw=1.2, zorder=5)
+        ax1.text(x, y, n, ha="center", va="center", fontsize=5.0,
                  color=GRAY_D, zorder=6)
     # 强度图例（放左下空白区，不遮挡节点）
     import matplotlib.lines as mlines
@@ -331,21 +331,23 @@ def fig_transfer_entropy() -> None:
              ha="center", fontsize=6.5, color=GRAY_M)
 
     # (b) 统计图覆盖 vs 因果独有边（灰阶柱 + 柱顶数值；措辞收敛为"候选"，
-    # 审查 2026-08-01：TE 未做多重比较校正，不称"显著因果边"）
+    # 审查 2026-08-01：TE 未做多重比较校正，不称"显著因果边"；
+    # 审查 2026-08-03：统一无向对口径——覆盖统计仅有无向对维度
+    # （33+12=45=undirected_pairs），76 为有向边数，混用会误导）
     ov = te["overlap"]
-    vals = [ov["total_significant_edges"], ov["covered_by_any_statistical_graph"],
+    vals = [ov["undirected_pairs"], ov["covered_by_any_statistical_graph"],
             ov["exclusive_to_causal"]]
-    bars = ax2.bar(["TE 候选边", "统计图覆盖候选", "统计图未覆盖候选"], vals,
+    bars = ax2.bar(["TE 候选对", "统计图覆盖对", "统计图未覆盖对"], vals,
                    color=[GRAY_D, GRAY_M, GRAY_L], edgecolor="white",
                    linewidth=0.6, width=0.55, zorder=3)
     for b, v in zip(bars, vals):
         ax2.text(b.get_x() + b.get_width() / 2, v + 1.2, str(v), ha="center",
                  fontsize=9, color=GRAY_D)
-    ax2.set_ylim(0, 90)
+    ax2.set_ylim(0, 60)
     ax2.set_ylabel("边数", fontsize=8.5)
     ax2.tick_params(axis="x", labelsize=8, rotation=12)
     _clean_ax(ax2)
-    ax2.text(0.5, -0.22, "未做多重比较校正，正式因果结论以条件独立检验为准",
+    ax2.text(0.5, -0.22, "76 条有向候选边对应 45 个无向节点对；覆盖按无向对统计；未做多重比较校正",
              transform=ax2.transAxes, ha="center", va="top", fontsize=6.5,
              color=GRAY_M)
     final(fig, "fig5_2_transfer_entropy", (7.6, 3.8))

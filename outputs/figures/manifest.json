@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-03T03:57:38.413924+00:00",
-  "source_commit": "c3d5308",
+  "generated_at_utc": "2026-08-03T04:44:39.417588+00:00",
+  "source_commit": "4b705af",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -58,7 +58,7 @@
     "fig2_3b_autocorrelation": {
       "script": {
         "path": "batch4_redraw.py",
-        "sha256": "29430632a07c5299046bfef44d34459d4bcbf21dafa07f76aacd999bb7576681"
+        "sha256": "ca3fa1bf8337d0a2f05625b1aac9c06f00c2a8df628f1a8ef5f0e870b54a765b"
       },
       "inputs": [
         {
@@ -106,7 +106,7 @@
     "fig2_5_load_distribution": {
       "script": {
         "path": "batch4_redraw.py",
-        "sha256": "29430632a07c5299046bfef44d34459d4bcbf21dafa07f76aacd999bb7576681"
+        "sha256": "ca3fa1bf8337d0a2f05625b1aac9c06f00c2a8df628f1a8ef5f0e870b54a765b"
       },
       "inputs": [
         {
@@ -130,7 +130,7 @@
     "fig2_6_event_hourly": {
       "script": {
         "path": "batch4_redraw.py",
-        "sha256": "29430632a07c5299046bfef44d34459d4bcbf21dafa07f76aacd999bb7576681"
+        "sha256": "ca3fa1bf8337d0a2f05625b1aac9c06f00c2a8df628f1a8ef5f0e870b54a765b"
       },
       "inputs": [
         {
@@ -140,14 +140,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "9d5b6146adaf4968ab7e9e0f75edf1b5d08a3cda894d8fe5d6c39ad9bf463519",
-          "size_bytes": 19473,
-          "mtime_utc": "2026-08-03T02:00:49.169440+00:00"
+          "sha256": "cb254238650686c851a7a83b27b7637da01e49ede16b316050c424836413b3ca",
+          "size_bytes": 19310,
+          "mtime_utc": "2026-08-03T04:44:21.577618+00:00"
         },
         "png": {
-          "sha256": "84eee826a3d54d4694af514ed751c00815a3add621526b5611e4013e652a45be",
-          "size_bytes": 340982,
-          "mtime_utc": "2026-08-03T02:00:49.597591+00:00"
+          "sha256": "84bf25d525989692e0b2d733ee864ab8536e4f10cb981db42f815fb26b8ed1fd",
+          "size_bytes": 283406,
+          "mtime_utc": "2026-08-03T04:44:22.097556+00:00"
         }
       }
     },
@@ -250,7 +250,7 @@
     "fig3_1_model_mae_comparison": {
       "script": {
         "path": "batch4_redraw.py",
-        "sha256": "29430632a07c5299046bfef44d34459d4bcbf21dafa07f76aacd999bb7576681"
+        "sha256": "ca3fa1bf8337d0a2f05625b1aac9c06f00c2a8df628f1a8ef5f0e870b54a765b"
       },
       "inputs": [
         {
