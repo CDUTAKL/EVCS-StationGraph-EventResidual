@@ -82,18 +82,22 @@ def _mean_std(values: list[np.ndarray]) -> tuple[np.ndarray, np.ndarray]:
 def redraw_fig5_4() -> None:
     c = json.load(open("outputs/analysis/conformal_prediction/conformal_summary.json"))
     seeds = c["per_seed"]
-    windows = [("overall", "全局"), ("event_window", "事件窗口"),
-               ("stable_window", "稳定窗口")]
     methods = [
         ("standard_conformal", "标准共形", GRAY_D, "o", "white"),
         ("stratified_conformal", "规则路由分层共形", BLUE, "o", BLUE),
         ("stratified_oracle_upper", "oracle 事后上界", ORANGE, "*", ORANGE),
     ]
 
-    # 顶部保留独立说明带；数据区只放点、误差棒和曲线，避免说明文字压到图形。
-    fig = plt.figure(figsize=(12.2, 4.85), constrained_layout=False)
-    gs = GridSpec(1, 3, figure=fig, width_ratios=[1.18, 1.25, 1.42],
-                  left=0.065, right=0.985, bottom=0.20, top=0.79, wspace=0.40)
+    # 三个面板分别回答：事件窗口的部署覆盖率、全局/稳定窗口比较、逐步长稳定性。
+    # 采用单列三行，给每个证据面板完整的横向空间，避免横向三栏造成标签和误差棒拥挤。
+    fig = plt.figure(figsize=(8.4, 7.8), constrained_layout=False)
+    gs = GridSpec(3, 1, figure=fig, height_ratios=[1.0, 1.0, 1.15],
+                  left=0.16, right=0.965, bottom=0.08, top=0.88, hspace=0.32)
+
+    oracle_note = f"★ oracle {float(np.mean([s['stratified_oracle_upper']['coverage_event_window'] for s in seeds])):.1%}：真实标签事后上界 · 不可部署"
+    fig.text(0.50, 0.94, oracle_note, ha="center", va="center", fontsize=8.2,
+             color=ORANGE, bbox=dict(facecolor="white", edgecolor=ORANGE,
+                                      linewidth=0.8, boxstyle="round,pad=0.38"))
 
     # A：最容易误读的事件窗口单独展开，规则路由与 oracle 不再叠在同一行。
     ax = fig.add_subplot(gs[0, 0])
@@ -103,32 +107,38 @@ def redraw_fig5_4() -> None:
         vals = np.asarray([s[key]["coverage_event_window"] for s in seeds], dtype=float)
         event_vals.append(vals.mean())
         event_stds.append(vals.std())
-    yy = np.arange(2)[::-1]
-    for yi, (item, mean, sd, y) in enumerate(zip(methods[:2], event_vals, event_stds, yy)):
+    yy = np.array([1, 0])
+    for item, mean, sd, y in zip(methods[:2], event_vals, event_stds, yy):
         _, label, color, marker, face = item
         ax.errorbar(mean, y, xerr=sd, fmt=marker, ms=7.0,
                     mfc=face, mec=color, mew=1.1, ecolor=color, capsize=2.8,
                     lw=1.0, zorder=4)
-        tx = min(mean + sd + 0.008, 0.095)
-        ax.text(tx, y, f"{mean:.1%}", va="center", fontsize=8.1,
-                color=color)
+        # 数值标签固定放在点右侧，并使用白底；不再让标签回落到 y 轴左侧。
+        tx = min(mean + sd + 0.012, 0.086)
+        ax.text(tx, y, f"{mean:.1%}", va="center", ha="left", fontsize=8.0,
+                color=color, bbox=dict(facecolor="white", edgecolor="none",
+                                       alpha=0.90, pad=0.3))
     ax.set_yticks(yy)
     ax.set_yticklabels([m[1] for m in methods[:2]], fontsize=8.0)
     ax.set_xlim(0, 0.10)
-    ax.set_ylim(-0.62, 1.72)
+    ax.set_ylim(-0.62, 1.62)
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda value, pos: f"{value:.0%}"))
     ax.set_xlabel("事件窗口覆盖率（放大）", fontsize=8.5)
     oracle_event = float(np.mean([
         s["stratified_oracle_upper"]["coverage_event_window"] for s in seeds
     ]))
+    delta_event = event_vals[1] - event_vals[0]
+    ax.text(0.005, 1.28, f"规则路由相对标准：+{delta_event * 100:.1f} pp",
+            ha="left", va="center", fontsize=7.1, color=ORANGE,
+            transform=ax.transData)
     clean_ax(ax, "x")
-    panel_label(ax, "A", "事件窗口：部署路径放大")
-    fig.text(0.27, 0.925, f"★ oracle {oracle_event:.1%}  ·  真实标签事后上界  ·  不可部署",
-             ha="center", va="center", fontsize=7.2, color=ORANGE,
-             bbox=dict(facecolor="white", edgecolor=ORANGE, linewidth=0.7,
-                       boxstyle="round,pad=0.35"))
+    ax.text(-0.12, 1.04, "A", transform=ax.transAxes, ha="left", va="bottom",
+            fontsize=11, fontweight="bold", color=GRAY_D)
+    ax.text(-0.02, 1.04, "事件窗口：部署路径放大", transform=ax.transAxes,
+            ha="left", va="bottom", fontsize=8.8, color=GRAY_D)
 
     # B：只比较全局和稳定窗口；事件窗口已在 A 中单独放大，避免小值被大范围压缩。
-    ax = fig.add_subplot(gs[0, 1])
+    ax = fig.add_subplot(gs[1, 0])
     summary_windows = [("overall", "全局"), ("stable_window", "稳定窗口")]
     yy = np.arange(len(summary_windows))[::-1]
     for yi, (wk, wk_label) in zip(yy, summary_windows):
@@ -146,7 +156,7 @@ def redraw_fig5_4() -> None:
                 fontsize=7.2, color=GRAY_D)
     ax.set_yticks(yy)
     ax.set_yticklabels([w[1] for w in summary_windows], fontsize=8.2)
-    ax.set_xlim(0.65, 0.75)
+    ax.set_xlim(0.64, 0.76)
     ax.set_ylim(-0.58, 1.62)
     ax.set_xlabel("覆盖率（均值 ± 跨种子 SD）", fontsize=8.3)
     ax.legend(handles=[Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
@@ -155,10 +165,13 @@ def redraw_fig5_4() -> None:
                               markeredgecolor=BLUE, markersize=5.5, label="规则路由分层共形")],
               fontsize=7.0, frameon=False, loc="lower left")
     clean_ax(ax, "x")
-    panel_label(ax, "B", "全局/稳定窗口：标准 vs 规则")
+    ax.text(-0.12, 1.04, "B", transform=ax.transAxes, ha="left", va="bottom",
+            fontsize=11, fontweight="bold", color=GRAY_D)
+    ax.text(-0.02, 1.04, "全局/稳定窗口：标准 vs 规则", transform=ax.transAxes,
+            ha="left", va="bottom", fontsize=8.8, color=GRAY_D)
 
     # C：预测步长上的全样本覆盖率，阴影明确是三种子范围而非置信区间。
-    ax = fig.add_subplot(gs[0, 2])
+    ax = fig.add_subplot(gs[2, 0])
     hx = np.arange(1, 5)
     for key, label, color, ls in [("standard_conformal", "标准共形", GRAY_D, "--"),
                                   ("stratified_conformal", "规则路由分层共形", BLUE, "-")]:
@@ -175,11 +188,14 @@ def redraw_fig5_4() -> None:
     ax.set_ylim(0.55, 0.93)
     ax.legend(fontsize=7.0, frameon=True, facecolor="white", edgecolor="none",
               framealpha=0.88, loc="lower right")
-    ax.text(0.02, 0.03, "阴影：3 种子 min–max", transform=ax.transAxes,
+    ax.text(0.02, 0.76, "阴影：3 种子 min–max", transform=ax.transAxes,
             fontsize=6.8, color=GRAY_M)
     clean_ax(ax, "y")
-    panel_label(ax, "C", "步长稳定性：全样本")
-    final(fig, "fig5_4_coverage", (10.4, 4.35))
+    ax.text(-0.12, 1.04, "C", transform=ax.transAxes, ha="left", va="bottom",
+            fontsize=11, fontweight="bold", color=GRAY_D)
+    ax.text(-0.02, 1.04, "步长稳定性：全样本", transform=ax.transAxes,
+            ha="left", va="bottom", fontsize=8.8, color=GRAY_D)
+    final(fig, "fig5_4_coverage", (8.4, 7.8))
 
 
 def redraw_fig5_5() -> None:

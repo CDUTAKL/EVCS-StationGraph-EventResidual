@@ -1,8 +1,8 @@
-"""第 4/5 章新增 4 图：图 4-6、4-7、5-10、5-11。
+"""第 4/5 章新增 4 图：图 4-5、4-6、5-10、5-11。
 
-- 图 4-6 预测残差分布：TCN/StaticGraph/AdaptiveGraph 的全局与事件窗口残差
+- 图 4-5 预测残差分布：TCN/StaticGraph/MLP 的全局与事件窗口残差
   核密度对比（事件窗口残差量级远大于全局，拆双面板）。
-- 图 4-7 误差 vs 事件强度：测试集按事件分数分箱的 MAE 曲线（主模型 vs TCN）。
+- 图 4-6 误差 vs 事件强度：测试集按事件分数分箱的 MAE 曲线。
 - 图 5-10 共形逐步长覆盖率与节点区间宽度：标准 vs 规则路由双对比。
 - 图 5-11 TE 强度与三类统计关系权重一致性：90 有向对的散点 + Spearman r。
 
@@ -123,7 +123,7 @@ def _pred_path(exp: str) -> str:
 
 
 def redraw_fig4_7() -> None:
-    """图 4-7：误差 vs 事件强度——按事件分数分箱的 MAE 曲线。"""
+    """图 4-6：误差 vs 事件强度——按事件分数分箱的 MAE 曲线。"""
     # 事件分数（可见代理）在测试集 origin 上计算
     rule = fit_frozen_event_rule(BUNDLE)
     scores = visible_event_scores(
@@ -224,7 +224,7 @@ def redraw_fig5_10() -> None:
     ax.set_ylabel("区间宽度（kWh/15 min）", fontsize=8.4)
     ax.legend(fontsize=6.8, frameon=False, loc="upper right")
     _clean(ax)
-    _final(fig, "fig5_10_coverage_width", (9.2, 3.7))
+    _final(fig, "fig5_7_coverage_width", (9.2, 3.7))
     return None
 
 
@@ -262,7 +262,7 @@ def redraw_fig5_11() -> None:
                       fontsize=7.8)
         ax.set_xlim(0, 1)
         _clean(ax)
-    _final(fig, "fig5_11_te_vs_relations", (9.6, 3.4))
+    _final(fig, "fig5_8_te_vs_relations", (9.6, 3.4))
     return None
 
 

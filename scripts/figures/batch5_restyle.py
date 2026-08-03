@@ -8,7 +8,7 @@
 - fig3_7_alpha_convergence 素雅三曲线 + 收敛带 + 终值范围说明
 - fig4_2_intervention   语义色（基线蓝/恶化红）+ 基线参考线 + 柱外百分比标注
 - fig5_2_transfer_entropy 分层线宽圆环网络 + 强度图例 + 灰阶覆盖柱
-- fig5_8_parameter_intervention 相对基线柱 + Blues 热力图 + 数值标注
+- fig5_6_parameter_intervention 相对基线柱 + Blues 热力图 + 数值标注
 
 统一规范：无标题、无文件名/代号、SVG+PNG 1200DPI、文字不遮挡图形。
 """
@@ -416,7 +416,7 @@ def fig_parameter_intervention() -> None:
     cbar = fig.colorbar(im, ax=ax2, fraction=0.045, pad=0.03)
     cbar.set_label("MAE 相对变化（%）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
-    final(fig, "fig5_8_parameter_intervention", (7.8, 4.0))
+    final(fig, "fig5_6_parameter_intervention", (7.8, 4.0))
 
 
 if __name__ == "__main__":

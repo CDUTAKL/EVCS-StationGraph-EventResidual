@@ -66,10 +66,9 @@ FINAL_SCRIPTS = {
     "fig5_3_asymmetry": "batch6_te_coverage_enhance.py",
     "fig5_4_coverage": "batch9_advisor_redraw.py",
     "fig5_5_quantile_per_node": "batch9_advisor_redraw.py",
-    "fig5_6_mechanism_enhance": "batch9_advisor_redraw.py",
-    "fig5_8_parameter_intervention": "batch5_restyle.py",
-    "fig5_10_coverage_width": "batch13_chapter4_5_extra.py",
-    "fig5_11_te_vs_relations": "batch13_chapter4_5_extra.py",
+    "fig5_6_parameter_intervention": "batch5_restyle.py",
+    "fig5_7_coverage_width": "batch13_chapter4_5_extra.py",
+    "fig5_8_te_vs_relations": "batch13_chapter4_5_extra.py",
 }
 
 # 图 → 关键输入工件（存在性 + SHA 校验；glob 模式展开为匹配文件列表）
@@ -119,13 +118,9 @@ INPUTS_BY_FIGURE = {
     "fig5_3_asymmetry": [Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json")],
     "fig5_4_coverage": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
     "fig5_5_quantile_per_node": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
-    "fig5_6_mechanism_enhance": [
-        Path("outputs/analysis/variant_quick_check/variant_napl.json"),
-        Path("outputs/analysis/variant_quick_check/variant_gate-mi.json"),
-    ],
-    "fig5_8_parameter_intervention": [Path("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json")],
-    "fig5_10_coverage_width": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
-    "fig5_11_te_vs_relations": [
+    "fig5_6_parameter_intervention": [Path("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json")],
+    "fig5_7_coverage_width": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
+    "fig5_8_te_vs_relations": [
         Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"),
         Path("outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz"),
     ],
