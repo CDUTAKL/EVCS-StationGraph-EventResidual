@@ -62,16 +62,16 @@ def main() -> None:
     # 全部行为三种子均值；教师/TCN 的 SD 取正式核验值（与 fig3_1 一致），口径统一
     GREEN = "#597A62"
     rows = [
-        ("教师 StaticGraph", TEACHER_MAE, 0.00019, GREEN),
-        ("学生 α=2.0（强蒸馏）", float(means[alphas == 2.0][0]),
+        ("教师模型 StaticGraph", TEACHER_MAE, 0.00019, GREEN),
+        ("学生模型 TCN（α=2.0）", float(means[alphas == 2.0][0]),
          float(sds[alphas == 2.0][0]), BLUE),
-        ("学生 α=1.0", float(means[alphas == 1.0][0]),
+        ("学生模型 TCN（α=1.0）", float(means[alphas == 1.0][0]),
          float(sds[alphas == 1.0][0]), BLUE),
-        ("学生 α=0.5", float(means[alphas == 0.5][0]),
+        ("学生模型 TCN（α=0.5）", float(means[alphas == 0.5][0]),
          float(sds[alphas == 0.5][0]), BLUE),
-        ("学生 α=0.1", float(means[alphas == 0.1][0]),
+        ("学生模型 TCN（α=0.1）", float(means[alphas == 0.1][0]),
          float(sds[alphas == 0.1][0]), BLUE),
-        ("纯 TCN 基线", TCN_MAE, 0.00011, GRAY_M),
+        ("纯 TCN 基线（无蒸馏）", TCN_MAE, 0.00011, GRAY_M),
     ]
     fig, ax = plt.subplots(figsize=(7.6, 3.7))
     ys = np.arange(len(rows))
