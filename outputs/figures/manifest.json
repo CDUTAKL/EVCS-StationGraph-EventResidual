@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-03T01:30:54.747282+00:00",
-  "source_commit": "6958511",
+  "generated_at_utc": "2026-08-03T01:57:47.354498+00:00",
+  "source_commit": "1fa8f18",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -807,34 +807,10 @@
         }
       }
     },
-    "fig4_5_eerm_lambda": {
-      "script": {
-        "path": "batch14_fig4_5_eerm.py",
-        "sha256": "edd52da12ecf8b60cbbe718e2ea6c13b166c89ad7c5730987e5b581d26f58f41"
-      },
-      "inputs": [
-        {
-          "path": "outputs/experiments/SG-EXP-014/20260731-181616/eerm_summary.json",
-          "sha256": "30de08792925fe17f99fe89acabd957018e895f2609312c045bedc0124b52b98"
-        }
-      ],
-      "formats": {
-        "svg": {
-          "sha256": "fe05253d4b4930944b18902f983d344f1f0f0e9d18e843d520c8932545a3b182",
-          "size_bytes": 32507,
-          "mtime_utc": "2026-08-03T01:28:57.198119+00:00"
-        },
-        "png": {
-          "sha256": "224c63512264a0414862344b3ba0ad48ecd9f043739cb8372b011218968a0470",
-          "size_bytes": 507566,
-          "mtime_utc": "2026-08-03T01:28:57.856122+00:00"
-        }
-      }
-    },
-    "fig4_6_residual_distribution": {
+    "fig4_5_residual_distribution": {
       "script": {
         "path": "batch13_chapter4_5_extra.py",
-        "sha256": "3a9000c1ca6e775ec8fabe55a2fbdade86c7714f02bc6f11bcef6cbb306fb6c0"
+        "sha256": "1e1ab1ba0d6a0d666b847c70f1dd72db73dc9999de68c0f6f7daaee8454a33bb"
       },
       "inputs": [
         {
@@ -852,21 +828,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "93f87bef551edfc93c2bdb8eba9d5849e237d0e60b1b043a439e9e60a5d63bfd",
+          "sha256": "acb1097465bd76d5fca7609971fee51d5e9e4efc1db9d8632c5f87b7b1f24ec7",
           "size_bytes": 35006,
-          "mtime_utc": "2026-08-02T07:51:01.611570+00:00"
+          "mtime_utc": "2026-08-03T01:57:06.789926+00:00"
         },
         "png": {
           "sha256": "678b2683e0431e72de6935b6104637499f8b8d04ee233425e4b609484c40be7c",
           "size_bytes": 1047008,
-          "mtime_utc": "2026-08-02T07:51:02.382125+00:00"
+          "mtime_utc": "2026-08-03T01:57:07.555275+00:00"
         }
       }
     },
-    "fig4_7_error_vs_event_intensity": {
+    "fig4_6_error_vs_event_intensity": {
       "script": {
         "path": "batch13_chapter4_5_extra.py",
-        "sha256": "3a9000c1ca6e775ec8fabe55a2fbdade86c7714f02bc6f11bcef6cbb306fb6c0"
+        "sha256": "1e1ab1ba0d6a0d666b847c70f1dd72db73dc9999de68c0f6f7daaee8454a33bb"
       },
       "inputs": [
         {
@@ -876,14 +852,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "0239c7d7f647ce4c8fe89fd308cfeb8cdfb74034c8777107f912628ebadf167c",
+          "sha256": "5959c581bef89a7d4dc2493efb184e40650a08fabc21f158b7d45cd609c30027",
           "size_bytes": 13459,
-          "mtime_utc": "2026-08-02T07:51:03.104547+00:00"
+          "mtime_utc": "2026-08-03T01:57:08.269724+00:00"
         },
         "png": {
           "sha256": "837f8256a9e42b38d2065624acd0d93af10f49cf5ed5f06a4aff0a58dcc94d46",
           "size_bytes": 548202,
-          "mtime_utc": "2026-08-02T07:51:03.606849+00:00"
+          "mtime_utc": "2026-08-03T01:57:08.758307+00:00"
         }
       }
     },
@@ -1038,7 +1014,7 @@
     "fig5_10_coverage_width": {
       "script": {
         "path": "batch13_chapter4_5_extra.py",
-        "sha256": "3a9000c1ca6e775ec8fabe55a2fbdade86c7714f02bc6f11bcef6cbb306fb6c0"
+        "sha256": "1e1ab1ba0d6a0d666b847c70f1dd72db73dc9999de68c0f6f7daaee8454a33bb"
       },
       "inputs": [
         {
@@ -1048,21 +1024,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "9bdaa8205b62071c31f8622d6d1daf065fba662a1653e1d0638389872381ca01",
+          "sha256": "85df5c86c1d4bb98a4137428c275a08d99c2d3672b7e1db31a8f73dd0ebb9bf6",
           "size_bytes": 42240,
-          "mtime_utc": "2026-08-02T07:51:03.711202+00:00"
+          "mtime_utc": "2026-08-03T01:57:08.863972+00:00"
         },
         "png": {
           "sha256": "09e910b5aee526dc061ba5a39145318570cab9569020d0ba7d31dde4d8aa8c69",
           "size_bytes": 745984,
-          "mtime_utc": "2026-08-02T07:51:04.454714+00:00"
+          "mtime_utc": "2026-08-03T01:57:09.635509+00:00"
         }
       }
     },
     "fig5_11_te_vs_relations": {
       "script": {
         "path": "batch13_chapter4_5_extra.py",
-        "sha256": "3a9000c1ca6e775ec8fabe55a2fbdade86c7714f02bc6f11bcef6cbb306fb6c0"
+        "sha256": "1e1ab1ba0d6a0d666b847c70f1dd72db73dc9999de68c0f6f7daaee8454a33bb"
       },
       "inputs": [
         {
@@ -1076,14 +1052,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "55a8c5ab5043f468fae21c4a57572c5b2451c9a20f9459ecca29b89294996836",
+          "sha256": "cd8ccadcdbef2dbdb9b9433852806f8ccfcf566c8f5857c947a57bc1a780816e",
           "size_bytes": 66502,
-          "mtime_utc": "2026-08-02T07:51:04.559669+00:00"
+          "mtime_utc": "2026-08-03T01:57:09.739915+00:00"
         },
         "png": {
           "sha256": "260a70708f103771f3a4417460c0c380a94cba5e8429897bfb404b4c9a242dbe",
           "size_bytes": 1132328,
-          "mtime_utc": "2026-08-02T07:51:05.239819+00:00"
+          "mtime_utc": "2026-08-03T01:57:10.363337+00:00"
         }
       }
     }
