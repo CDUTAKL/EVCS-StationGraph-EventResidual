@@ -45,16 +45,18 @@ GRAY_M = "#808080"
 GRAY_L = "#C8C8C8"
 GRAY_XL = "#E6E9EC"
 RED = "#B05A4A"
+PURPLE = "#7A6FA0"  # AGCRN 线色（与 MLP 红区分）
 GREEN = "#597A62"
 
 SEEDS = ("2024", "2025", "2026")
-# 5 个对比模型：实验 ID → 展示名 → 颜色
+# 6 个对比模型：实验 ID → 展示名 → 颜色（AGCRN 2026-08-04 核验入图）
 MODELS = [
     ("SG-EXP-002", "TCN", GRAY_M),
     ("SG-EXP-003", "StaticGraph", ORANGE),
     ("SG-EXP-004", "AdaptiveGraph", BLUE),
     ("SG-EXP-009", "MLP", RED),
     ("SG-EXP-010", "GWN", GREEN),
+    ("SG-EXP-008", "AGCRN", PURPLE),
 ]
 # 窗口 scope → 展示名（与 metrics.json scopes 键一致）
 SCOPES = [("global", "全局"), ("event_window", "事件窗口"),
@@ -68,6 +70,7 @@ METRICS_SOURCES = {
     "SG-EXP-002": "outputs/night_run/20260730-171821/SG-EXP-002/*/seed-*/metrics.json",
     "SG-EXP-003": "outputs/night_run/20260730-171821/SG-EXP-003/*/seed-*/metrics.json",
     "SG-EXP-004": "outputs/night_run/20260730-171821/SG-EXP-004/*/seed-*/metrics.json",
+    "SG-EXP-008": "outputs/experiments/SG-EXP-008/*/seed-*/metrics.json",
     "SG-EXP-009": "outputs/experiments/SG-EXP-009/*/seed-*/metrics.json",
     "SG-EXP-010": "outputs/experiments/SG-EXP-010/*/seed-*/metrics.json",
 }
@@ -131,7 +134,7 @@ def redraw_fig3_4() -> None:
     fig.subplots_adjust(left=0.11, right=0.98, bottom=0.18, top=0.79)
     hs = np.arange(1, 5)
     markers = {"TCN": "o", "StaticGraph": "s", "AdaptiveGraph": "D",
-               "MLP": "^", "GWN": "P"}
+               "MLP": "^", "GWN": "P", "AGCRN": "X"}
     for exp_id, label, color in MODELS:
         data = _load_model_metrics(exp_id)
         mat = np.asarray([[data[s]["by_horizon"][h] for h in hs] for s in SEEDS])
@@ -144,7 +147,7 @@ def redraw_fig3_4() -> None:
     ax.set_ylabel("MAE（kWh/15 min）", fontsize=8.8)
     ax.set_xticks(hs)
     ax.set_xticklabels([f"h={h}" for h in hs], fontsize=8.2)
-    ax.legend(fontsize=7.5, frameon=False, ncol=5, loc="upper center",
+    ax.legend(fontsize=7.5, frameon=False, ncol=6, loc="upper center",
               bbox_to_anchor=(0.50, 1.18), columnspacing=1.0, handletextpad=0.35)
     _clean(ax)
     fig.text(0.50, 0.92, "点为三种子均值；浅色带为跨种子标准差",
@@ -174,7 +177,7 @@ def redraw_fig3_8() -> None:
     ax.set_xticklabels([cn for _k, cn in SCOPES], fontsize=8.6)
     ax.set_ylabel("MAE（kWh/15 min，对数轴）", fontsize=8.8)
     ax.set_ylim(0.004, 0.7)
-    ax.legend(fontsize=7.4, frameon=False, ncol=5, loc="upper left")
+    ax.legend(fontsize=7.4, frameon=False, ncol=6, loc="upper left")
     _clean(ax)
     _final(fig, "fig3_8_mae_by_window", (8.2, 4.2))
     return None

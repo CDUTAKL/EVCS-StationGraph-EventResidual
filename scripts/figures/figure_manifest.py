@@ -25,12 +25,13 @@ OUT = FIG_DIR / "manifest.json"
 SCRIPT_DIR = Path("scripts/figures")
 BUNDLE_PATH = Path("data/processed/SG-DATA-005-primary-tensor.npz")
 
-# 5 个对比模型的 seed-* metrics.json（审查 H2：004 与图 3-1 同口径用正式流水线
-# night_run；009/010 仅 experiments 存在；图 3-4/3-8/3-9 共享此输入集合）
+# 6 个对比模型的 seed-* metrics.json（审查 H2：004 与图 3-1 同口径用正式流水线
+# night_run；008/009/010 仅 experiments 存在；图 3-4/3-8/3-9 共享此输入集合）
 MAE_5_MODELS_INPUTS = [
     ("glob", "outputs/night_run/20260730-171821/SG-EXP-002/*/seed-*/metrics.json"),
     ("glob", "outputs/night_run/20260730-171821/SG-EXP-003/*/seed-*/metrics.json"),
     ("glob", "outputs/night_run/20260730-171821/SG-EXP-004/*/seed-*/metrics.json"),
+    ("glob", "outputs/experiments/SG-EXP-008/*/seed-*/metrics.json"),
     ("glob", "outputs/experiments/SG-EXP-009/*/seed-*/metrics.json"),
     ("glob", "outputs/experiments/SG-EXP-010/*/seed-*/metrics.json"),
 ]

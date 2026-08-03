@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-03T01:57:47.354498+00:00",
-  "source_commit": "1fa8f18",
+  "generated_at_utc": "2026-08-03T02:01:52.361278+00:00",
+  "source_commit": "7857a3b",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -58,7 +58,7 @@
     "fig2_3b_autocorrelation": {
       "script": {
         "path": "batch4_redraw.py",
-        "sha256": "97c894b869bbd0d6dfc2542c7a023b06c8057a5646ce43446aac6973ff868ed6"
+        "sha256": "29430632a07c5299046bfef44d34459d4bcbf21dafa07f76aacd999bb7576681"
       },
       "inputs": [
         {
@@ -68,14 +68,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "b7493ea106c4347ab9ca06fef184331dfa94d37bff82a0260ad7a7c83d310e25",
+          "sha256": "2ab08790e177c6fd28fda58bcfeb8be2a46ee04d7df7eee3ea25c9b21a3f864d",
           "size_bytes": 31787,
-          "mtime_utc": "2026-08-02T13:34:02.869196+00:00"
+          "mtime_utc": "2026-08-03T02:00:47.924509+00:00"
         },
         "png": {
           "sha256": "4e171160fe42260a6028b4aa43a1f1bc0ef1a6d5fd587c7ae749c0135f53b632",
           "size_bytes": 740789,
-          "mtime_utc": "2026-08-02T13:34:03.397519+00:00"
+          "mtime_utc": "2026-08-03T02:00:48.448166+00:00"
         }
       }
     },
@@ -106,7 +106,7 @@
     "fig2_5_load_distribution": {
       "script": {
         "path": "batch4_redraw.py",
-        "sha256": "97c894b869bbd0d6dfc2542c7a023b06c8057a5646ce43446aac6973ff868ed6"
+        "sha256": "29430632a07c5299046bfef44d34459d4bcbf21dafa07f76aacd999bb7576681"
       },
       "inputs": [
         {
@@ -116,21 +116,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "dc652fa29bed56c57f2742277702ecffeff1dc732b3ac94d3028c31bc834acd0",
+          "sha256": "86a484c59b436a101478c82653b8e1b9cdf13d95094fa1a92c0c3bb02d0b7bd8",
           "size_bytes": 31876,
-          "mtime_utc": "2026-08-02T13:34:03.683452+00:00"
+          "mtime_utc": "2026-08-03T02:00:48.692885+00:00"
         },
         "png": {
           "sha256": "8cc0076209a270b13172b9cf5ed06bcd5bc2d68080b8f096340679bc27ae0ed1",
           "size_bytes": 328318,
-          "mtime_utc": "2026-08-02T13:34:04.107014+00:00"
+          "mtime_utc": "2026-08-03T02:00:49.091475+00:00"
         }
       }
     },
     "fig2_6_event_hourly": {
       "script": {
         "path": "batch4_redraw.py",
-        "sha256": "97c894b869bbd0d6dfc2542c7a023b06c8057a5646ce43446aac6973ff868ed6"
+        "sha256": "29430632a07c5299046bfef44d34459d4bcbf21dafa07f76aacd999bb7576681"
       },
       "inputs": [
         {
@@ -140,14 +140,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "0ff352d0fc835c68d18ce7f56ed09956ee1eff186c4ae454933bf4d4b4201465",
+          "sha256": "9d5b6146adaf4968ab7e9e0f75edf1b5d08a3cda894d8fe5d6c39ad9bf463519",
           "size_bytes": 19473,
-          "mtime_utc": "2026-08-02T13:34:04.194464+00:00"
+          "mtime_utc": "2026-08-03T02:00:49.169440+00:00"
         },
         "png": {
           "sha256": "84eee826a3d54d4694af514ed751c00815a3add621526b5611e4013e652a45be",
           "size_bytes": 340982,
-          "mtime_utc": "2026-08-02T13:34:04.607298+00:00"
+          "mtime_utc": "2026-08-03T02:00:49.597591+00:00"
         }
       }
     },
@@ -250,7 +250,7 @@
     "fig3_1_model_mae_comparison": {
       "script": {
         "path": "batch4_redraw.py",
-        "sha256": "97c894b869bbd0d6dfc2542c7a023b06c8057a5646ce43446aac6973ff868ed6"
+        "sha256": "29430632a07c5299046bfef44d34459d4bcbf21dafa07f76aacd999bb7576681"
       },
       "inputs": [
         {
@@ -292,14 +292,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "eadcd5b776fecce8b9e7e3236da05219cad4a135b2121325ce5d58e5aef8f386",
-          "size_bytes": 19627,
-          "mtime_utc": "2026-08-02T13:34:04.670879+00:00"
+          "sha256": "267f45440f10fdef2a9a95dfec9da52bd7e6b40590119b0e77d903eedd52bd88",
+          "size_bytes": 21550,
+          "mtime_utc": "2026-08-03T02:00:49.665083+00:00"
         },
         "png": {
-          "sha256": "be84359e4e25f246dbae9d3d247362aee93b38336ec0232920fb31b84e5ea5db",
-          "size_bytes": 541820,
-          "mtime_utc": "2026-08-02T13:34:05.149861+00:00"
+          "sha256": "fe137d5e4133d8e8b498f069963754640c9f0ac42c4fb81deca3b8c3caf8e983",
+          "size_bytes": 589270,
+          "mtime_utc": "2026-08-03T02:00:50.144126+00:00"
         }
       }
     },
@@ -330,7 +330,7 @@
     "fig3_4_mae_by_horizon": {
       "script": {
         "path": "batch12_chapter3_extra.py",
-        "sha256": "cc16b60098e53db23e4bdb2a49056fa96e905639d9bd9149d11a1facaeabcd4d"
+        "sha256": "2f0998d705a74f05418bfcfdd48c70931fa2e6890e38811b37ef7271ca26045e"
       },
       "inputs": [
         {
@@ -370,6 +370,18 @@
           "sha256": "3f286612f2b2fd7682657fe707b9f0a2866bf5d16941e03b9f459457589d355a"
         },
         {
+          "path": "outputs/experiments/SG-EXP-008/20260731-205118/seed-2024/metrics.json",
+          "sha256": "93e1c22ced1200b45361d0c36a5f38b9ae4e7555e9e328f6caa6a4deefec7b9e"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-008/20260731-205118/seed-2025/metrics.json",
+          "sha256": "be1e809fad955b15fd09e75561e2f9b80dadce3fb531e7c78a61037938112ca4"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-008/20260731-205118/seed-2026/metrics.json",
+          "sha256": "65a3dbd49980134e6459717405351c2da85a6c3a1b48429be3890d3a4899da7e"
+        },
+        {
           "path": "outputs/experiments/SG-EXP-009/20260731-095406/seed-2024/metrics.json",
           "sha256": "f32b1d64e8a3cd99290ea796d63ef23954d081f73e2a6f5979715db4c4f1dd87"
         },
@@ -396,14 +408,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "20aea79742557b83913bf9e4b24e0eb4b44f02489b0725b9c3506108094a2444",
-          "size_bytes": 20250,
-          "mtime_utc": "2026-08-02T16:04:37.591544+00:00"
+          "sha256": "021b7e1bbfec2c7b6cc52f694a726e00671a30d8665baa497c713cf4aaa70fd9",
+          "size_bytes": 22381,
+          "mtime_utc": "2026-08-03T02:01:21.816750+00:00"
         },
         "png": {
-          "sha256": "f15c5f3d7968a7aaa5808bb9bbdbaad73f198b7489f332ba1ab0be9bbc074432",
-          "size_bytes": 1070734,
-          "mtime_utc": "2026-08-02T16:04:38.819907+00:00"
+          "sha256": "3358ab271cebc14cb19f41b73df7c9a9400bf80f2cd1a37ae04af88c853ecbda",
+          "size_bytes": 1195611,
+          "mtime_utc": "2026-08-03T02:01:22.756814+00:00"
         }
       }
     },
@@ -452,14 +464,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "b4952b8ba54e240bf0861e38a5ce432ae8d11112ab41a46decd5d9259e999b35",
-          "size_bytes": 35014,
-          "mtime_utc": "2026-08-02T15:02:55.907035+00:00"
+          "sha256": "e481f02ab739f8bb38e8251eb207c19c9e4dc35d1f9dd5690497680f177111b9",
+          "size_bytes": 17855,
+          "mtime_utc": "2026-08-03T02:00:50.467894+00:00"
         },
         "png": {
-          "sha256": "cdee9913e3f766dce5cf05855170d3e837272637bb5fe29eb93cbf55820bd6a2",
-          "size_bytes": 1033241,
-          "mtime_utc": "2026-08-02T15:02:56.748552+00:00"
+          "sha256": "3ad986f4a3cc61da232b2765d477de1840a64fd168d10676f7b927294f4bfe01",
+          "size_bytes": 644917,
+          "mtime_utc": "2026-08-03T02:00:51.037396+00:00"
         }
       }
     },
@@ -498,7 +510,7 @@
     "fig3_8_mae_by_window": {
       "script": {
         "path": "batch12_chapter3_extra.py",
-        "sha256": "cc16b60098e53db23e4bdb2a49056fa96e905639d9bd9149d11a1facaeabcd4d"
+        "sha256": "2f0998d705a74f05418bfcfdd48c70931fa2e6890e38811b37ef7271ca26045e"
       },
       "inputs": [
         {
@@ -538,6 +550,18 @@
           "sha256": "3f286612f2b2fd7682657fe707b9f0a2866bf5d16941e03b9f459457589d355a"
         },
         {
+          "path": "outputs/experiments/SG-EXP-008/20260731-205118/seed-2024/metrics.json",
+          "sha256": "93e1c22ced1200b45361d0c36a5f38b9ae4e7555e9e328f6caa6a4deefec7b9e"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-008/20260731-205118/seed-2025/metrics.json",
+          "sha256": "be1e809fad955b15fd09e75561e2f9b80dadce3fb531e7c78a61037938112ca4"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-008/20260731-205118/seed-2026/metrics.json",
+          "sha256": "65a3dbd49980134e6459717405351c2da85a6c3a1b48429be3890d3a4899da7e"
+        },
+        {
           "path": "outputs/experiments/SG-EXP-009/20260731-095406/seed-2024/metrics.json",
           "sha256": "f32b1d64e8a3cd99290ea796d63ef23954d081f73e2a6f5979715db4c4f1dd87"
         },
@@ -564,21 +588,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "85ffc0e00573901ef457b09e1066405af118a39e1f50e8e22c14fa1930486dea",
-          "size_bytes": 26411,
-          "mtime_utc": "2026-08-02T16:04:39.071993+00:00"
+          "sha256": "667d861cc306aa999cbbab286fefe07b5468b6cad29906365bad684bbe14bc86",
+          "size_bytes": 29604,
+          "mtime_utc": "2026-08-03T02:01:22.964012+00:00"
         },
         "png": {
-          "sha256": "4ea034e3b729904c7506f3c6628e09a6c32ef7b0ab653d950bdff82a94878cc9",
-          "size_bytes": 358789,
-          "mtime_utc": "2026-08-02T16:04:39.657467+00:00"
+          "sha256": "d5e232fa7797cdd0b0ebb63c00f3b20ad1a0261bc6181d20e74069e03eae1bae",
+          "size_bytes": 363096,
+          "mtime_utc": "2026-08-03T02:01:23.518379+00:00"
         }
       }
     },
     "fig3_9_mae_by_node": {
       "script": {
         "path": "batch12_chapter3_extra.py",
-        "sha256": "cc16b60098e53db23e4bdb2a49056fa96e905639d9bd9149d11a1facaeabcd4d"
+        "sha256": "2f0998d705a74f05418bfcfdd48c70931fa2e6890e38811b37ef7271ca26045e"
       },
       "inputs": [
         {
@@ -618,6 +642,18 @@
           "sha256": "3f286612f2b2fd7682657fe707b9f0a2866bf5d16941e03b9f459457589d355a"
         },
         {
+          "path": "outputs/experiments/SG-EXP-008/20260731-205118/seed-2024/metrics.json",
+          "sha256": "93e1c22ced1200b45361d0c36a5f38b9ae4e7555e9e328f6caa6a4deefec7b9e"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-008/20260731-205118/seed-2025/metrics.json",
+          "sha256": "be1e809fad955b15fd09e75561e2f9b80dadce3fb531e7c78a61037938112ca4"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-008/20260731-205118/seed-2026/metrics.json",
+          "sha256": "65a3dbd49980134e6459717405351c2da85a6c3a1b48429be3890d3a4899da7e"
+        },
+        {
           "path": "outputs/experiments/SG-EXP-009/20260731-095406/seed-2024/metrics.json",
           "sha256": "f32b1d64e8a3cd99290ea796d63ef23954d081f73e2a6f5979715db4c4f1dd87"
         },
@@ -644,21 +680,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "ee1d959765aa94b9f56a2938e3e0787af08eda3309355c4531e04a336b069d57",
-          "size_bytes": 38158,
-          "mtime_utc": "2026-08-02T16:04:39.835313+00:00"
+          "sha256": "18db6bd92618faa02d3219b8b1e4aae399228608faf141166c093ea1662dd9f1",
+          "size_bytes": 41146,
+          "mtime_utc": "2026-08-03T02:01:23.706877+00:00"
         },
         "png": {
-          "sha256": "45c5a8a664f671f126c9e1a31ffbaf141fb877e715d1a8ab7840a2c936230e49",
-          "size_bytes": 772203,
-          "mtime_utc": "2026-08-02T16:04:41.932338+00:00"
+          "sha256": "7d3ccb66b729c400539531851a8c8481edb0a8b254701af8f3c793c55cd78285",
+          "size_bytes": 842663,
+          "mtime_utc": "2026-08-03T02:01:25.623559+00:00"
         }
       }
     },
     "fig3_10_mechanism_ablation": {
       "script": {
         "path": "batch12_chapter3_extra.py",
-        "sha256": "cc16b60098e53db23e4bdb2a49056fa96e905639d9bd9149d11a1facaeabcd4d"
+        "sha256": "2f0998d705a74f05418bfcfdd48c70931fa2e6890e38811b37ef7271ca26045e"
       },
       "inputs": [
         {
@@ -724,21 +760,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "2eac095f00a717039efcbba1afe4d95575cbbf348bc87d009e26d90a71bb39f2",
+          "sha256": "b2cda4173fbd09d3ee4723dede3cd23c24be2a40cfba2736adbdeacac3ec8457",
           "size_bytes": 15076,
-          "mtime_utc": "2026-08-02T16:04:42.003248+00:00"
+          "mtime_utc": "2026-08-03T02:01:25.696337+00:00"
         },
         "png": {
           "sha256": "e11870d211b9abb73fd5b2a5ebd76c95dc1dde7494635ae223d34d5f23f04300",
           "size_bytes": 549794,
-          "mtime_utc": "2026-08-02T16:04:42.579021+00:00"
+          "mtime_utc": "2026-08-03T02:01:26.237828+00:00"
         }
       }
     },
     "fig3_11_event_window_forecast": {
       "script": {
         "path": "batch12_chapter3_extra.py",
-        "sha256": "cc16b60098e53db23e4bdb2a49056fa96e905639d9bd9149d11a1facaeabcd4d"
+        "sha256": "2f0998d705a74f05418bfcfdd48c70931fa2e6890e38811b37ef7271ca26045e"
       },
       "inputs": [
         {
@@ -748,14 +784,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "d57ffa0d3f4b5ec489d13b206111a024f47dfa7c9ca6dc50d2740bf48d8eda85",
+          "sha256": "19da5dfcf33aeac0307b438c3d2c1577fd5f233c445bd60363d93bd9fd5dca6f",
           "size_bytes": 23845,
-          "mtime_utc": "2026-08-02T16:04:43.061042+00:00"
+          "mtime_utc": "2026-08-03T02:01:26.793492+00:00"
         },
         "png": {
           "sha256": "7252a3f9036a7b9579833e4a8653ea98499b528aca1c48910eb80ff34b2ffe0a",
           "size_bytes": 881943,
-          "mtime_utc": "2026-08-02T16:04:43.705172+00:00"
+          "mtime_utc": "2026-08-03T02:01:27.422889+00:00"
         }
       }
     },
@@ -796,14 +832,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "809a06133e5fc72a813befad6f8bfb5abb9858da6c63ae0435a51da931e601b9",
-          "size_bytes": 31218,
-          "mtime_utc": "2026-08-02T15:02:57.873437+00:00"
+          "sha256": "65b3ad378ec0007e484846b48f65eeb54d447581105de668355bec64783c0591",
+          "size_bytes": 17071,
+          "mtime_utc": "2026-08-03T02:00:51.133346+00:00"
         },
         "png": {
-          "sha256": "375a6bf6d5b0e9034d7eb8da583f733ee0708cf30983d0286c05263375ed37c6",
-          "size_bytes": 961918,
-          "mtime_utc": "2026-08-02T15:02:59.486910+00:00"
+          "sha256": "397a39b474f3da1427ebb395662b993fa0c4815735d48a9726dfe25618d2c5f8",
+          "size_bytes": 379523,
+          "mtime_utc": "2026-08-03T02:00:52.135382+00:00"
         }
       }
     },
@@ -900,14 +936,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "9f5d1aab1ef8efee098634291ae95ae97c3d26339273745c276a745f596da275",
-          "size_bytes": 71135,
-          "mtime_utc": "2026-08-02T14:54:51.824197+00:00"
+          "sha256": "e472e920042fa883b7d45adcf9544fa775654367e0217ed4898487d2b78043c2",
+          "size_bytes": 19594,
+          "mtime_utc": "2026-08-03T02:00:52.217597+00:00"
         },
         "png": {
-          "sha256": "dcb988a336a902bb2f4819bad16517da87ef4cde879bd71e1b7c53498d907615",
-          "size_bytes": 1776847,
-          "mtime_utc": "2026-08-02T14:54:53.616823+00:00"
+          "sha256": "4a03752f797dfaf015b680803a15c49ff8177b57a882661abe129bd8d8a6901e",
+          "size_bytes": 835239,
+          "mtime_utc": "2026-08-03T02:00:52.965661+00:00"
         }
       }
     },
@@ -924,14 +960,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "dcc6282b1df92e1740be27d853e9caef86f770f44050454d4b028f6c72b22957",
-          "size_bytes": 40654,
-          "mtime_utc": "2026-08-02T15:03:00.045134+00:00"
+          "sha256": "0771b082f2f397dcd352ae5542468e7f90adb0c467f464d4d21c2e8537e04bdf",
+          "size_bytes": 12733,
+          "mtime_utc": "2026-08-03T02:00:53.025457+00:00"
         },
         "png": {
-          "sha256": "8549e1e9456c75fbe7bfa56cad690f1f25bb35d7bbb280b5ee57fd8250e7572b",
-          "size_bytes": 1168158,
-          "mtime_utc": "2026-08-02T15:03:00.962075+00:00"
+          "sha256": "32e71f3063eef89a4af2cf410a1c6818d8bf629005e81a27ea0bae694ed06e54",
+          "size_bytes": 386870,
+          "mtime_utc": "2026-08-03T02:00:53.379493+00:00"
         }
       }
     },
@@ -948,14 +984,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "40862bf911ffb19bbdc8ce302a85f804cb108e633df89eba47589eeb4635f9ae",
-          "size_bytes": 55923,
-          "mtime_utc": "2026-08-02T15:03:01.077532+00:00"
+          "sha256": "68d3c96b4f42486e1623d8498e6d856a9aadc90f80f00898db42362a03b8f573",
+          "size_bytes": 17961,
+          "mtime_utc": "2026-08-03T02:00:53.432149+00:00"
         },
         "png": {
-          "sha256": "8cc930cf8454c476fa2129012624ca7a736797554863b88a83562127b88cdcb7",
-          "size_bytes": 1235258,
-          "mtime_utc": "2026-08-02T15:03:02.107515+00:00"
+          "sha256": "d5599079d89974789e064814cc45eaddf6cd24830524d0a193f1e350bcf9c9d3",
+          "size_bytes": 349043,
+          "mtime_utc": "2026-08-03T02:00:53.821015+00:00"
         }
       }
     },

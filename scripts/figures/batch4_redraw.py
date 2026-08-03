@@ -156,9 +156,9 @@ def redraw_model_comparison() -> None:
         ("StaticGraph\n(MRG-GCN)", 0.01376, 0.00019),
         ("AdaptiveGraph", 0.01396, 0.00014),
         ("GraphWaveNet", 0.01773, 0.00054), ("MLP", 0.02112, 0.00019),
-        ("ARIMA(2,1,2)", 0.02260, None), ("TCN", 0.02952, 0.00011),
-        ("LightGBM", 0.03758, None), ("XGBoost", 0.03873, None),
-        ("Persistence", 0.07828, None),
+        ("AGCRN\n(简化变体)", 0.02057, 0.00024), ("ARIMA(2,1,2)", 0.02260, None),
+        ("TCN", 0.02952, 0.00011), ("LightGBM", 0.03758, None),
+        ("XGBoost", 0.03873, None), ("Persistence", 0.07828, None),
     ]
     data.sort(key=lambda x: x[1])
     names = [d[0] for d in data]
