@@ -128,9 +128,9 @@ def _network_panel(ax, data: dict) -> None:
                    edgecolor=GRAY_D, lw=1.2, zorder=6)
         ax.text(x, y, str(i + 1), ha="center", va="center", fontsize=6.0,
                 color=GRAY_D, zorder=7)
-        ax.text(x * 1.35, y * 1.35, nd.replace("CA-", ""), ha="center",
+        ax.text(x * 1.38, y * 1.38, nd.replace("CA-", ""), ha="center",
                 va="center", fontsize=5.2, color=GRAY_M, zorder=7)
-    # 图例（左下角空白区）
+    # 图例（置于网络面板右侧图外，避免遮挡左下节点与说明文字）
     import matplotlib.lines as mlines
     handles = [
         mlines.Line2D([], [], color=BLUE, lw=2.2, alpha=0.9, ls="-",
@@ -139,52 +139,65 @@ def _network_panel(ax, data: dict) -> None:
                       label="TE 候选未确认"),
         mlines.Line2D([], [], color=ORANGE, lw=1.5, alpha=0.95, ls="-",
                       label="PCMCI+ 独有"),
-        mlines.Line2D([], [], marker="o", color="none", ms=6, mfc="white",
+        mlines.Line2D([], [], marker="o", color="none", ms=7, mfc="white",
                       mec=GRAY_D, label="节点大小 ∝ 累计负荷"),
     ]
-    ax.legend(handles=handles, loc="lower left", fontsize=5.6, frameon=False,
-              handlelength=1.6, borderaxespad=0.1)
-    ax.set_xlim(-1.75, 1.75)
-    ax.set_ylim(-1.75, 1.75)
+    ax.legend(handles=handles, loc="center left", bbox_to_anchor=(1.02, 0.5),
+              fontsize=6.4, frameon=False, handlelength=1.7, borderaxespad=0.1)
+    ax.set_xlim(-1.48, 1.48)
+    ax.set_ylim(-1.48, 1.48)
     ax.set_aspect("equal")
     ax.axis("off")
-    ax.text(0, -1.70, "箭头表示方向；线宽 ∝ |条件依赖系数|；自环（自回归滞后边 10 条）未绘制",
+    ax.text(0, -1.44, "箭头表示方向；线宽 ∝ |条件依赖系数|；自环（自回归滞后边 10 条）未绘制",
             ha="center", fontsize=6.0, color=GRAY_M)
 
 
 def _summary_panel(ax, data: dict) -> None:
-    """右上面板：验证进度（57.9% 确认条 + 数字卡，替代失败的漏斗）。"""
+    """右上面板：验证进度 2×2 卡片（大数字 + 占比条 + 独有拆分）。"""
     n_total = data["n_te_candidates"]           # 76
     n_conf = data["n_te_confirmed_by_pcmci"]    # 44
     n_te_only = n_total - n_conf                # 32
     n_pcmci_ns = sum(1 for e in data["pcmci_only_edges"] if e[0] != e[1])  # 6
     n_loop = len(data["pcmci_only_edges"]) - n_pcmci_ns                    # 10
-    frac = n_conf / n_total
-    # 大数字 + 小标签的统计卡（三行）
-    rows = [
-        ("TE 候选边", n_total, BLUE, "100%"),
-        ("PCMCI+ 确认", n_conf, BLUE, "{:.0f}%".format(100 * frac)),
-        ("未确认", n_te_only, RED_S, "{:.0f}%".format(100 * (1 - frac))),
+    cards = [
+        ("TE 候选边", n_total, BLUE, 1.0, "100%"),
+        ("PCMCI+ 确认", n_conf, BLUE, n_conf / n_total,
+         "{:.0f}%".format(100 * n_conf / n_total)),
+        ("未确认", n_te_only, RED_S, n_te_only / n_total,
+         "{:.0f}%".format(100 * n_te_only / n_total)),
+        ("PCMCI+ 独有", n_pcmci_ns + n_loop, ORANGE, None,
+         "节点间 {} + 自回归 {}".format(n_pcmci_ns, n_loop)),
     ]
-    for i, (name, val, color, pct) in enumerate(rows):
-        y = 3.2 - i * 1.25
-        ax.text(0.02, y, "{}".format(val), ha="left", va="center",
-                fontsize=17, color=color, zorder=5)
-        ax.text(0.16, y + 0.42, name, ha="left", va="center", fontsize=7.2,
-                color=GRAY_D, zorder=5)
-        ax.text(0.16, y - 0.42, pct, ha="left", va="center", fontsize=6.6,
-                color=GRAY_M, zorder=5)
-    # 57.9% 确认进度条（视觉锚点）
-    ax.barh(3.2 - 3 * 1.25 + 0.62, 0.9, height=0.10, color=GRAY_L,
-            edgecolor="none", zorder=3)
-    ax.barh(3.2 - 3 * 1.25 + 0.62, 0.9 * frac, height=0.10, color=BLUE,
-            alpha=0.85, edgecolor="none", zorder=4)
-    # PCMCI+ 独有拆分
-    ax.text(0.02, -0.75, "PCMCI+ 独有：节点间 {} 条 + 自回归 {} 条".format(
-        n_pcmci_ns, n_loop), ha="left", va="center", fontsize=6.8,
-        color=ORANGE, zorder=5)
+    for idx, (name, val, color, frac, sub) in enumerate(cards):
+        cx = idx % 2          # 列：左 0 / 右 1
+        cy = 1 - idx // 2     # 行：上 1 / 下 0
+        # 卡片底（圆角浅底 + 细边框）
+        box = mpatches.FancyBboxPatch(
+            (cx * 0.5 + 0.015, cy * 0.5 + 0.015), 0.47, 0.47,
+            boxstyle="round,pad=0.008", fc="0.965", ec="0.82", lw=0.6,
+            zorder=1)
+        ax.add_patch(box)
+        cxm = cx * 0.5 + 0.25   # 卡片中心 x
+        cym = cy * 0.5 + 0.25   # 卡片中心 y
+        ax.text(cxm, cym + 0.155, "{}".format(val), ha="center",
+                va="center", fontsize=16, color=color, zorder=3)
+        ax.text(cxm, cym + 0.065, name, ha="center", va="center",
+                fontsize=6.8, color=GRAY_D, zorder=3)
+        if frac is not None:
+            # 占比条（卡片内底部，色条 + 灰底）
+            ax.barh(cym - 0.115, 0.42 * frac, left=cx * 0.5 + 0.04,
+                    height=0.045, color=color, alpha=0.85,
+                    edgecolor="none", zorder=2)
+            ax.barh(cym - 0.115, 0.42 * (1 - frac),
+                    left=cx * 0.5 + 0.04 + 0.42 * frac, height=0.045,
+                    color=GRAY_L, edgecolor="none", zorder=2)
+            ax.text(cxm, cym - 0.165, sub, ha="center", va="center",
+                    fontsize=5.8, color=GRAY_M, zorder=3)
+        else:
+            ax.text(cxm, cym - 0.115, sub, ha="center", va="center",
+                    fontsize=6.0, color=GRAY_M, zorder=3)
     ax.set_xlim(0, 1)
-    ax.set_ylim(-1.3, 3.7)
+    ax.set_ylim(0, 1)
     ax.axis("off")
 
 
@@ -237,10 +250,10 @@ def _node_panel(ax, data: dict) -> None:
 def main() -> None:
     """绘制并导出 PCMCI+ 验证网络图（左大网络 + 右上进度 + 右下节点条）。"""
     data = json.load(open("outputs/analysis/pcmci/pcmci_summary.json"))
-    fig = plt.figure(figsize=(11.0, 5.4))
+    fig = plt.figure(figsize=(10.2, 5.0))
     gs = fig.add_gridspec(
         2, 2, width_ratios=[2.0, 1.0], height_ratios=[0.95, 1.05],
-        wspace=0.18, hspace=0.55,
+        wspace=0.12, hspace=0.40,
     )
     ax1 = fig.add_subplot(gs[:, 0])          # 左列整高：验证网络（主导）
     ax2a = fig.add_subplot(gs[0, 1])         # 右上：验证进度
@@ -248,7 +261,7 @@ def main() -> None:
     _network_panel(ax1, data)
     _summary_panel(ax2a, data)
     _node_panel(ax2b, data)
-    final(fig, "fig5_2b_pcmci_validation_network", (11.0, 5.4))
+    final(fig, "fig5_2b_pcmci_validation_network", (10.2, 5.0))
 
 
 if __name__ == "__main__":
