@@ -18,7 +18,7 @@
 ## 当前状态
 
 核心实验：SG-EXP-001~007、009~010 已形成正式或可复核三种子产物（StaticGraph
-0.01376 vs TCN 0.02952，↓53.4%）；SG-EXP-008（AGCRN）、SG-EXP-014（EERM）及
+0.01376 vs TCN 0.02952，↓53.4%）；SG-EXP-008（AGCRN）及
 SG-EXP-015/016/017（NAPL/Gate-MI/PCMCI+）待完成或核验。18 张结果图工件已生成，
 其中图 5-6 仍为单种子临时筛选图；正式图号、文件名与图注见
 [figure-captions-and-index-2026-08-01.md](figure-captions-and-index-2026-08-01.md)。
