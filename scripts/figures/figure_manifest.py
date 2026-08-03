@@ -59,6 +59,7 @@ FINAL_SCRIPTS = {
     "fig3_10_mechanism_ablation": "batch12_chapter3_extra.py",
     "fig3_11_event_window_forecast": "batch12_chapter3_extra.py",
     "fig4_2_intervention": "batch5_restyle.py",
+    "fig4_3_kd_distillation": "batch15_fig4_3_kd.py",
     "fig4_4_four_cell": "batch9_advisor_redraw.py",
     "fig4_5_residual_distribution": "batch13_chapter4_5_extra.py",
     "fig4_6_error_vs_event_intensity": "batch13_chapter4_5_extra.py",
@@ -107,6 +108,7 @@ INPUTS_BY_FIGURE = {
     ],
     "fig3_11_event_window_forecast": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/predictions.csv.gz")],
     "fig4_2_intervention": [Path("outputs/analysis/gate_intervention/intervention_summary.json")],
+    "fig4_3_kd_distillation": [("glob", "outputs/experiments/SG-EXP-013/20260803-093503/alpha-*_seed-*/metrics.json")],
     "fig4_4_four_cell": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/metrics.json")],
     "fig4_5_residual_distribution": [
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-2024/predictions.csv.gz"),

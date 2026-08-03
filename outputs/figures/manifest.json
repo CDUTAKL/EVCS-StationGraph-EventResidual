@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-03T02:32:42.003279+00:00",
-  "source_commit": "e876f4b",
+  "generated_at_utc": "2026-08-03T02:43:12.513705+00:00",
+  "source_commit": "fddcbb4",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -816,6 +816,74 @@
           "sha256": "cc6ad814909c6be7f8916a8fa010867d1be4b2a916b80d214428c7f48fbe7c26",
           "size_bytes": 565560,
           "mtime_utc": "2026-08-03T02:32:01.338475+00:00"
+        }
+      }
+    },
+    "fig4_3_kd_distillation": {
+      "script": {
+        "path": "batch15_fig4_3_kd.py",
+        "sha256": "5ff3e9b855b2a21a37c638ad45215655ae8d030f421268f0069e278e4d5e6b5a"
+      },
+      "inputs": [
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-0.1_seed-2024/metrics.json",
+          "sha256": "56543202b57360be7057e4822d8b0ed97aa2aba6c4200864922561f45ecc39fe"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-0.1_seed-2025/metrics.json",
+          "sha256": "75b3319fbdec977adf53faa7203ac927c42a6a62beaaa244dee6c42df9884f57"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-0.1_seed-2026/metrics.json",
+          "sha256": "92f5d2dec9d226c1bee380807ed200f619c2efce6e489402dadfbee0632ce21a"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-0.5_seed-2024/metrics.json",
+          "sha256": "44fc1485d73bf59285a3e625f2932c2f517a065336f0c0bde8bceaa5e815099d"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-0.5_seed-2025/metrics.json",
+          "sha256": "4525635a8d6a7c87fd0c503791a647e480eca984a50755131090a1a8d0ed57e9"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-0.5_seed-2026/metrics.json",
+          "sha256": "3436e6bed177173310bbdd6e6c5d0ef540b26c60ac7040def44dd73b1cdedb14"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-1.0_seed-2024/metrics.json",
+          "sha256": "4d2b0187c7ed94e7d44ad1b52efd29dd4b8fcdc665a3fe3768b547ec59425b4d"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-1.0_seed-2025/metrics.json",
+          "sha256": "4e8f1f8c05a8c1507948002df8c839edc7cf1be5fe61d5bf1fc1ed7f8f656afc"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-1.0_seed-2026/metrics.json",
+          "sha256": "2bcf5d6ebb49eac9717e8fc948f53004622422d68da954a459d7b11fcff40e66"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-2.0_seed-2024/metrics.json",
+          "sha256": "78b68376784e0db9595078f38ce41a6a465baf913c7bc0f328651825cc8962d9"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-2.0_seed-2025/metrics.json",
+          "sha256": "c887765f3e3b54e777adc57de2e22562e26837fbac106d01e2a879c72516d70e"
+        },
+        {
+          "path": "outputs/experiments/SG-EXP-013/20260803-093503/alpha-2.0_seed-2026/metrics.json",
+          "sha256": "80462857469a1560bc3385f1253128b80bf2e5440198a62df74d81a691add03a"
+        }
+      ],
+      "formats": {
+        "svg": {
+          "sha256": "b64e9ca70933a1da61c89d21bb0cd95ec631d4ead9c4e1af0a8d16ee1556f09c",
+          "size_bytes": 27546,
+          "mtime_utc": "2026-08-03T02:41:58.533427+00:00"
+        },
+        "png": {
+          "sha256": "401e840d3a42f5943009534a57fd70c559a5db89301252194da7bf704bffb29a",
+          "size_bytes": 654679,
+          "mtime_utc": "2026-08-03T02:41:59.423472+00:00"
         }
       }
     },

@@ -37,6 +37,7 @@
 | 图 3-10 | `fig3_10_mechanism_ablation.svg/.png` | 机制消融 | SG-EXP-006 正式（三种子） | 可用 |
 | 图 3-11 | `fig3_11_event_window_forecast.svg/.png` | 事件窗口预测时序 | SG-EXP-004 `predictions.csv.gz` | 可用 |
 | 图 4-2 | `fig4_2_intervention.svg/.png` | 门控参数干预 | `intervention_summary.json` | 可用 |
+| 图 4-3 | `fig4_3_kd_distillation.svg/.png` | GCN→TCN 知识蒸馏 | SG-EXP-013（4α×3 种子） | 可用 |
 | 图 4-4 | `fig4_4_four_cell.svg/.png` | 事件/规则四格诊断 | SG-EXP-004 `metrics.json` | 已重绘 |
 | 图 4-5 | `fig4_5_residual_distribution.svg/.png` | 预测残差分布 | 三模型 `predictions.csv.gz` | 可用 |
 | 图 4-6 | `fig4_6_error_vs_event_intensity.svg/.png` | 误差 vs 事件强度 | predictions + 事件分数 | 可用 |
@@ -100,6 +101,8 @@
 
 **图 4-2.** 不同门控参数干预组合下的全局 MAE。蓝色表示学习到的门控基线，红色表示固定、交换或等权干预；柱外百分比为相对于学习值基线的 MAE 变化，误差棒为三种子均值的标准差。正百分比表示性能退化。
 
+**图 4-3.** GCN→TCN 知识蒸馏结果（SG-EXP-013，4 组蒸馏权重 × 3 种子）：学生 TCN+KD 的测试集全局 MAE（三种子均值 ± 跨种子标准差），虚线为教师 StaticGraph（0.01376）与纯 TCN 无蒸馏基线（0.02952）。α 从 0.1 增至 2.0 学生始终约 0.029（与教师差距约 2.1 倍）——KD 未弥合差距，图结构承载不可蒸馏的结构知识；结论限定于本蒸馏配置（单学生架构、单蒸馏目标、α 扫描范围）。
+
 **图 4-4.** seed-2024 的真实标签事件与可见规则触发组合下的两层诊断。A 为四格单元 MAE 主图，B 展示规则触发样本与标签事件样本的组成比例及总样本基数；蓝色表示事件触发，橙色表示事件漏触发，灰色表示非事件触发。规则触发率、事件召回和触发事件纯度均可由 A/B 的单元计数复算；该图为单种子机制诊断，无误差棒，不作三种子泛化结论。
 
 **图 4-5.** TCN、StaticGraph 与 MLP 预测残差（预测−真值）的核密度曲线（颜色 + 线型双编码区分）。左图为全局非事件样本，右图为事件窗口样本（量级差异约 20 倍，拆分双面板）；事件窗口残差分布更宽且右偏，指示事件时段的误差结构差异。第三模型选 MLP 而非 AdaptiveGraph：后者的逐样本预测差与 StaticGraph 79% 小于 0.001（全局 MAE 仅差约 1%），残差分布重合至不可分辨，两者差异在正文 3.7 节以数值表述。该图为 seed-2024 描述性诊断，无误差棒。
@@ -124,7 +127,7 @@
 
 ## 图表交付检查
 
-- 生成脚本：`scripts/figures/batch4_redraw.py`、`batch5_restyle.py`、`batch6_te_coverage_enhance.py`、`batch8_fig5_6_enhance.py`、`batch9_advisor_redraw.py`、`batch10_fig2_2_coverage.py`、`batch11_chapter2_extra.py`、`batch12_chapter3_extra.py`、`batch13_chapter4_5_extra.py`。
+- 生成脚本：`scripts/figures/batch4_redraw.py`、`batch5_restyle.py`、`batch6_te_coverage_enhance.py`、`batch8_fig5_6_enhance.py`、`batch9_advisor_redraw.py`、`batch10_fig2_2_coverage.py`、`batch11_chapter2_extra.py`、`batch12_chapter3_extra.py`、`batch13_chapter4_5_extra.py`、`batch15_fig4_3_kd.py`。
 - 输入与输出 SHA：`outputs/figures/manifest.json`。
 - 输出格式：每个当前图号均有 SVG 与 PNG；PNG 导出参数为 1200 DPI。
 - 最终插入论文前：按 Word/PDF 实际栏宽缩放检查，确认中文字体、刻度、图例和图注引用仍可读；再检查灰度打印下的线型、填充和图例冗余编码。
