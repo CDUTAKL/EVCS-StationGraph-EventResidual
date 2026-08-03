@@ -375,7 +375,7 @@ def redraw_fig4_4() -> None:
     ax.set_yticks([0, 1])
     ax.set_yticklabels(["标签事件", "标签非事件"], fontsize=9.5)
     ax.tick_params(length=0)
-    ax.set_xlabel("单元 MAE（kWh/15 min；seed-2024）", fontsize=9.0, labelpad=6)
+    ax.set_xlabel("单元 MAE（kWh/15 min；单种子口径见图注）", fontsize=9.0, labelpad=6)
     cax = fig.add_axes([0.89, 0.56, 0.022, 0.32])
     cbar = fig.colorbar(im, cax=cax)
     cbar.set_label("MAE（kWh/15 min）", fontsize=8.0)
@@ -452,7 +452,7 @@ def redraw_fig3_5() -> None:
     for seed, df in logs.items():
         color = colors[seed]
         ax.plot(df["epoch"], df["validation_mae_scaled"], color=color,
-                ls=styles[seed], lw=1.7, label=f"seed {seed}", zorder=3)
+                ls=styles[seed], lw=1.7, label=f"{seed} 运行", zorder=3)
         bi, bv, last_epoch, last_val = best[seed]
         ax.scatter(bi, bv, s=58, marker="*", color=color, edgecolor="white",
                    linewidth=0.5, zorder=5)
@@ -484,7 +484,7 @@ def redraw_fig3_5() -> None:
         ax.text(max(bv, lv) + 0.00012, yi, f"{lv:.4f}", va="center",
                 fontsize=7.0, color=GRAY_D)
     ax.set_yticks(y)
-    ax.set_yticklabels([f"seed {s}" for s in ["2024", "2025", "2026"]], fontsize=8.0)
+    ax.set_yticklabels([f"{s} 运行" for s in ["2024", "2025", "2026"]], fontsize=8.0)
     ax.set_xlim(0.0145, 0.0205)
     ax.set_xlabel("验证 MAE（标准化尺度）", fontsize=8.4)
     # 形状含义已经在 A 面板的说明中给出；B 面板不再额外放图例，
@@ -559,7 +559,7 @@ def redraw_fig3_7() -> None:
         epochs = df["epoch"].to_numpy()
         series.append((epochs, alpha))
         ax.plot(epochs, alpha, color=colors[seed], ls=styles[seed], lw=1.7,
-                label=f"seed {seed}", zorder=3)
+                label=f"{seed} 运行", zorder=3)
         best_i = df["validation_mae_scaled"].idxmin()
         ax.scatter(df.loc[best_i, "epoch"], df.loc[best_i, "adaptive_graph_alpha"],
                    marker="*", s=52, color=colors[seed], edgecolor="white",
@@ -593,7 +593,7 @@ def redraw_fig3_7() -> None:
                 float(df.loc[best_i, "adaptive_graph_alpha"]),
                 float(df["adaptive_graph_alpha"].iloc[-1])]
         ax.plot(xs, vals, color=colors[seed], lw=1.35, marker="o", ms=4.5,
-                label=f"seed {seed}", zorder=3)
+                label=f"{seed} 运行", zorder=3)
     ax.set_xticks(xs)
     ax.set_xticklabels(stages, fontsize=7.8)
     ax.set_ylim(0.14, 0.48)

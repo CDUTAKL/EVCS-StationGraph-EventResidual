@@ -1,0 +1,28 @@
+experiment_id: SG-EXP-005-v1-unfreeze
+name: event_residual_unfreeze_variant
+status: exploration_variant
+# 探索变体（2026-08-03）：事件残差翻身尝试 V1——联合微调
+# 与正式 005 的唯一差异：freeze_base=false（底座与残差头联合训练）
+# 目的：验证"冻结底座"是否为事件残差无收益的原因
+model: event_residual
+gate:
+  type: validation_frozen
+  enabled: true
+seeds: [2024, 2025, 2026]
+result_authority: exploration_candidate
+model_params:
+  hidden_dim: 32
+  levels: 6
+  dropout: 0.1
+  residual_hidden_dim: 32
+  residual_bound: 0.5
+  freeze_base: false
+  base_model_type: adaptive_graph
+training:
+  epochs: 40
+  patience: 6
+  batch_size: 256
+  learning_rate: 0.001
+  weight_decay: 0.0001
+graph:
+  top_k: 5

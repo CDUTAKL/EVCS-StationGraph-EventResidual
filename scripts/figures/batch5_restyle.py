@@ -191,7 +191,7 @@ def fig_training_curve() -> None:
         df = pd.read_csv(f)
         epochs = df["epoch"]
         vals = df["validation_mae_scaled"]
-        ax.plot(epochs, vals, color=c, ls=ls, lw=1.6, label=f"seed {s}")
+        ax.plot(epochs, vals, color=c, ls=ls, lw=1.6, label=f"{s} 运行")
         # 末端菱形标记；终值统一放到图内说明，避免不同 seed 标注相互覆盖。
         ax.plot(epochs.iloc[-1], vals.iloc[-1], marker="D", ms=4.5, color=c,
                 zorder=5)
@@ -223,7 +223,7 @@ def fig_alpha_convergence() -> None:
         df = pd.read_csv(f)
         epochs = df["epoch"]
         alpha = df["adaptive_graph_alpha"]
-        ax.plot(epochs, alpha, color=c, ls=ls, lw=1.6, label=f"seed {s}")
+        ax.plot(epochs, alpha, color=c, ls=ls, lw=1.6, label=f"{s} 运行")
         ax.plot(epochs.iloc[-1], alpha.iloc[-1], marker="o", ms=4.5, color=c,
                 zorder=5)
         finals.append(alpha.iloc[-1])

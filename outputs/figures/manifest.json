@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-03T04:44:39.417588+00:00",
-  "source_commit": "4b705af",
+  "generated_at_utc": "2026-08-03T08:21:41.479745+00:00",
+  "source_commit": "3740676",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -34,7 +34,7 @@
     "fig2_3_load_heatmap": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "e7dbb5beee77275a25a079ed55c89808275b1d2e38f686361ea03e14af9386bd"
+        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
       },
       "inputs": [
         {
@@ -82,7 +82,7 @@
     "fig2_4_weekly_curves": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "e7dbb5beee77275a25a079ed55c89808275b1d2e38f686361ea03e14af9386bd"
+        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
       },
       "inputs": [
         {
@@ -306,7 +306,7 @@
     "fig3_3_lre_matrices": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "e7dbb5beee77275a25a079ed55c89808275b1d2e38f686361ea03e14af9386bd"
+        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
       },
       "inputs": [
         {
@@ -798,7 +798,7 @@
     "fig4_2_intervention": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "e7dbb5beee77275a25a079ed55c89808275b1d2e38f686361ea03e14af9386bd"
+        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
       },
       "inputs": [
         {
@@ -970,7 +970,7 @@
     "fig5_2_transfer_entropy": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "e7dbb5beee77275a25a079ed55c89808275b1d2e38f686361ea03e14af9386bd"
+        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
       },
       "inputs": [
         {
@@ -980,14 +980,38 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "e7f638747e5858a33f0675acfe9c9cec9d98d1f80f86fc267728abeb16b823a1",
-          "size_bytes": 25467,
-          "mtime_utc": "2026-08-03T02:32:01.425764+00:00"
+          "sha256": "039185c5c3a0496cf331e514b9b4f27dfac38e1848c57b91371014a45f738e6c",
+          "size_bytes": 23249,
+          "mtime_utc": "2026-08-03T07:01:04.771169+00:00"
         },
         "png": {
-          "sha256": "774f8f14a44b21a2ea7d3c8bb101d2e06ba42ce61582d8ad00a7c190316eba7e",
-          "size_bytes": 1107373,
-          "mtime_utc": "2026-08-03T02:32:01.996348+00:00"
+          "sha256": "2b355fbe6e31fbaf981fcf543a62fde787f591c44636368115b76721a17e2010",
+          "size_bytes": 1066191,
+          "mtime_utc": "2026-08-03T07:01:05.676527+00:00"
+        }
+      }
+    },
+    "fig5_2b_pcmci_validation_network": {
+      "script": {
+        "path": "batch14_pcmci_network.py",
+        "sha256": "02932ff8f896ebc004cb0a1cb27da6c6cd76baf06c0a2df05e29e7c510efc43e"
+      },
+      "inputs": [
+        {
+          "path": "outputs/analysis/pcmci/pcmci_summary.json",
+          "sha256": "4ca10966c26e004c4c706f0b0441ee44716af3e678c890214e2621c12ec0b8b3"
+        }
+      ],
+      "formats": {
+        "svg": {
+          "sha256": "d8ac6d09e7fe7dcee73ee39db6a558d6e62720b72adb694eaf6acb156eb4b539",
+          "size_bytes": 74132,
+          "mtime_utc": "2026-08-03T07:33:51.330167+00:00"
+        },
+        "png": {
+          "sha256": "d58fb5ec214b21835e1b179c0da3c06eca31238c499fea68183b5c5755d69a56",
+          "size_bytes": 3063244,
+          "mtime_utc": "2026-08-03T07:33:53.014302+00:00"
         }
       }
     },
@@ -1066,7 +1090,7 @@
     "fig5_6_parameter_intervention": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "e7dbb5beee77275a25a079ed55c89808275b1d2e38f686361ea03e14af9386bd"
+        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
       },
       "inputs": [
         {
