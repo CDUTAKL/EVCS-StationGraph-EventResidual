@@ -59,16 +59,23 @@ def main() -> None:
     sds = np.asarray(sds)[order]
 
     fig, ax = plt.subplots(figsize=(7.4, 4.4))
+    GREEN = "#597A62"
+    # 差距带：教师线到学生区域之间的浅绿带（填充空白 + 表达"蒸馏未弥合"语义）
+    band_top = float(np.mean(means)) + 0.0003
+    ax.axhspan(TEACHER_MAE, band_top, color=GREEN, alpha=0.07, zorder=0)
+    ax.text(2.08, (TEACHER_MAE + band_top) / 2, "蒸馏未弥合区间\n≈ 2.1×",
+            fontsize=7.2, color=GREEN, ha="right", va="center")
+
     # 学生曲线（蓝点 + 误差棒 + 连接线）
     ax.plot(alphas, means, color=BLUE, lw=1.2, zorder=3)
     ax.errorbar(alphas, means, yerr=sds, fmt="o", ms=6.5, color=BLUE,
                 ecolor=BLUE, capsize=3.0, lw=1.2, label="蒸馏学生（TCN+KD）",
                 zorder=4)
+    # 数值标注放点下方（TCN 参考线在点上方，避免与标注重叠）
     for xi, m in zip(alphas, means):
-        ax.text(xi, m + 0.0011, f"{m:.4f}", ha="center", va="bottom",
+        ax.text(xi, m - 0.0008, f"{m:.4f}", ha="center", va="top",
                 fontsize=7.0, color=BLUE)
-    # 参考线：教师（绿虚线，标签放右端空白）与纯 TCN（灰点线，标签放左端上方）
-    GREEN = "#597A62"
+    # 参考线：教师（绿虚线）与纯 TCN（灰点线），名称左端、数值右端
     ax.axhline(TEACHER_MAE, color=GREEN, lw=1.4, ls="--", zorder=1)
     ax.text(0.105, TEACHER_MAE + 0.00025, "教师 StaticGraph", fontsize=7.4,
             color=GREEN, ha="left", va="bottom")
@@ -79,20 +86,16 @@ def main() -> None:
             color=GRAY_M, ha="left", va="bottom")
     ax.text(2.0, TCN_MAE + 0.00025, f"{TCN_MAE:.4f}", fontsize=7.4,
             color=GRAY_M, ha="right", va="bottom")
-    # 差距标注：学生区域到教师线的双箭头
-    ax.annotate("", xy=(1.35, TEACHER_MAE + 0.0008), xytext=(1.35, 0.0287),
-                arrowprops=dict(arrowstyle="<->", color=GRAY_D, lw=1.0))
-    ax.text(1.42, 0.0212, "差距 ≈ 2.1×", fontsize=7.6, color=GRAY_D,
-            ha="left", va="center", rotation=90)
 
     ax.set_xscale("log")
     ax.set_xticks(list(alphas))
     ax.set_xticklabels([str(a) for a in alphas], fontsize=8.2)
     ax.set_xlabel("蒸馏权重 α（对数刻度）", fontsize=8.8)
     ax.set_ylabel("测试集全局 MAE（kWh/15 min）", fontsize=8.8)
-    ax.set_ylim(0.012, 0.032)
-    ax.set_xlim(0.09, 2.2)
-    ax.legend(fontsize=7.4, frameon=False, loc="lower left")
+    ax.set_ylim(0.0132, 0.0306)
+    ax.set_xlim(0.09, 2.35)
+    ax.legend(fontsize=7.4, frameon=False, loc="upper center",
+              bbox_to_anchor=(0.5, 1.10))
 
     for spine in ("top", "right"):
         ax.spines[spine].set_visible(False)
