@@ -58,20 +58,32 @@ def main() -> None:
     means = np.asarray(means)[order]
     sds = np.asarray(sds)[order]
 
-    fig, ax = plt.subplots(figsize=(7.0, 4.2))
+    fig, ax = plt.subplots(figsize=(7.4, 4.4))
+    # 学生曲线（蓝点 + 误差棒 + 连接线）
+    ax.plot(alphas, means, color=BLUE, lw=1.2, zorder=3)
     ax.errorbar(alphas, means, yerr=sds, fmt="o", ms=6.5, color=BLUE,
-                ecolor=BLUE, capsize=3.0, lw=1.2, label="学生（TCN+KD）", zorder=4)
+                ecolor=BLUE, capsize=3.0, lw=1.2, label="蒸馏学生（TCN+KD）",
+                zorder=4)
     for xi, m in zip(alphas, means):
-        ax.text(xi, m + 0.0008, f"{m:.4f}", ha="center", va="bottom",
-                fontsize=6.8, color=BLUE)
-    # 教师与纯 TCN 参考线
+        ax.text(xi, m + 0.0011, f"{m:.4f}", ha="center", va="bottom",
+                fontsize=7.0, color=BLUE)
+    # 参考线：教师（绿虚线，标签放右端空白）与纯 TCN（灰点线，标签放左端上方）
     GREEN = "#597A62"
-    ax.axhline(TEACHER_MAE, color=GREEN, lw=1.2, ls="--", zorder=1)
-    ax.text(0.09, TEACHER_MAE + 0.0004, f"教师 StaticGraph {TEACHER_MAE:.4f}",
-            fontsize=7.0, color=GREEN, ha="left")
-    ax.axhline(TCN_MAE, color=GRAY_M, lw=1.2, ls=":", zorder=1)
-    ax.text(0.09, TCN_MAE + 0.0004, f"纯 TCN（无蒸馏）{TCN_MAE:.4f}",
-            fontsize=7.0, color=GRAY_M, ha="left")
+    ax.axhline(TEACHER_MAE, color=GREEN, lw=1.4, ls="--", zorder=1)
+    ax.text(0.105, TEACHER_MAE + 0.00025, "教师 StaticGraph", fontsize=7.4,
+            color=GREEN, ha="left", va="bottom")
+    ax.text(2.0, TEACHER_MAE + 0.00025, f"{TEACHER_MAE:.4f}", fontsize=7.4,
+            color=GREEN, ha="right", va="bottom")
+    ax.axhline(TCN_MAE, color=GRAY_M, lw=1.3, ls=":", zorder=1)
+    ax.text(0.105, TCN_MAE + 0.00025, "纯 TCN 基线", fontsize=7.4,
+            color=GRAY_M, ha="left", va="bottom")
+    ax.text(2.0, TCN_MAE + 0.00025, f"{TCN_MAE:.4f}", fontsize=7.4,
+            color=GRAY_M, ha="right", va="bottom")
+    # 差距标注：学生区域到教师线的双箭头
+    ax.annotate("", xy=(1.35, TEACHER_MAE + 0.0008), xytext=(1.35, 0.0287),
+                arrowprops=dict(arrowstyle="<->", color=GRAY_D, lw=1.0))
+    ax.text(1.42, 0.0212, "差距 ≈ 2.1×", fontsize=7.6, color=GRAY_D,
+            ha="left", va="center", rotation=90)
 
     ax.set_xscale("log")
     ax.set_xticks(list(alphas))
@@ -79,10 +91,8 @@ def main() -> None:
     ax.set_xlabel("蒸馏权重 α（对数刻度）", fontsize=8.8)
     ax.set_ylabel("测试集全局 MAE（kWh/15 min）", fontsize=8.8)
     ax.set_ylim(0.012, 0.032)
-    ax.legend(fontsize=7.6, frameon=False, loc="upper right")
-    ax.text(0.98, -0.15,
-            "α 0.1→2.0 学生始终约 0.029（与教师差距约 2.1 倍）——图结构知识不可被纯时序参数吸收",
-            transform=ax.transAxes, ha="right", va="top", fontsize=6.6, color=GRAY_M)
+    ax.set_xlim(0.09, 2.2)
+    ax.legend(fontsize=7.4, frameon=False, loc="lower left")
 
     for spine in ("top", "right"):
         ax.spines[spine].set_visible(False)
