@@ -210,6 +210,8 @@
 
 [85] 中国电动汽车充电基础设施促进联盟. 2025年一季度全国公共充电基础设施增长情况分析[EB/OL]. (2025-04-16)[2026-08-04]. https://www.evcipa.org.cn/newsinfo/8310587.html.
 
+[86] RUNGE J. Discovering contemporaneous and lagged causal relations in autocorrelated nonlinear time series datasets[C]//Proceedings of the 36th Conference on Uncertainty in Artificial Intelligence (UAI). PMLR, 2020, 124: 1388-1397.
+
 ## 待办
 
 - [ ] 中文 9 篇与英文 6 篇的 ⏳ 卷期页码定稿时从知网/期刊官网补全（勿臆造）
