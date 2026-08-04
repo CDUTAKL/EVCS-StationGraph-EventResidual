@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-04T03:57:15.418216+00:00",
-  "source_commit": "c76943e",
+  "generated_at_utc": "2026-08-04T03:59:20.825001+00:00",
+  "source_commit": "916df56",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -1089,7 +1089,7 @@
     "fig5_2b_pcmci_validation_network": {
       "script": {
         "path": "batch14_pcmci_network.py",
-        "sha256": "c8de87822fd9e2ac754d9cfffed6fd7f1eef6f61c5b077bc61fa16d6f94e3a71"
+        "sha256": "5eaf6ffbadfcffdae5b402aee12d4afffc81c4e8d5aa4eeb45ea27bdce487114"
       },
       "inputs": [
         {
@@ -1099,14 +1099,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "6a0a9eb8850a7891b4efefb06b8f6eef58e8935ee1e447648465f003cf7be15e",
-          "size_bytes": 73412,
-          "mtime_utc": "2026-08-04T03:57:13.078200+00:00"
+          "sha256": "1f937dea1e52d08840b423ebbfcd440e0acf5df59757282dc0595430b1e91833",
+          "size_bytes": 73418,
+          "mtime_utc": "2026-08-04T03:59:18.478554+00:00"
         },
         "png": {
-          "sha256": "7c958640ee363eac15bfb0c23b2ce25b03bdefdacb9dc2b178216729868d5d6f",
-          "size_bytes": 3059491,
-          "mtime_utc": "2026-08-04T03:57:14.855633+00:00"
+          "sha256": "b672c31bcbe906d733ab09beb672d1abfe2d2070d4274a864594cb88de5c9c26",
+          "size_bytes": 2831787,
+          "mtime_utc": "2026-08-04T03:59:20.244986+00:00"
         }
       }
     },

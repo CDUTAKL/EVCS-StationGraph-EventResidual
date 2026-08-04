@@ -144,8 +144,10 @@ def _network_panel(ax, data: dict) -> None:
         mlines.Line2D([], [], marker="o", color="none", ms=7, mfc="white",
                       mec=GRAY_D, label="节点大小 ∝ 累计负荷"),
     ]
-    ax.legend(handles=handles, loc="center left", bbox_to_anchor=(1.02, 0.5),
-              fontsize=6.4, frameon=False, handlelength=1.7, borderaxespad=0.1)
+    # 图例置于面板上方（2026-08-04 用户反馈：原右侧图外遮挡右面板）
+    ax.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.0, 1.08),
+              fontsize=6.4, frameon=False, handlelength=1.7, ncol=4,
+              columnspacing=1.2, borderaxespad=0.1)
     ax.set_xlim(-1.48, 1.48)
     ax.set_ylim(-1.48, 1.48)
     ax.set_aspect("equal")
@@ -195,8 +197,9 @@ def _node_panel(ax, data: dict) -> None:
         mp.Patch(color=GRAY_M, label="TE 未确认"),
         mp.Patch(color=ORANGE, label="PCMCI+ 独有"),
     ]
-    ax.legend(handles=handles, loc="lower right", fontsize=5.4, frameon=False,
-              ncol=1, bbox_to_anchor=(1.0, 0.02))
+    # 图例置于面板上方（2026-08-04 用户反馈：原右下遮挡条形）
+    ax.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.02, 1.05),
+              fontsize=5.4, frameon=False, ncol=3, columnspacing=1.0)
 
 
 def main() -> None:
