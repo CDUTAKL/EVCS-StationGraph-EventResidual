@@ -1,12 +1,31 @@
 {
-  "generated_at_utc": "2026-08-04T02:56:31.398324+00:00",
-  "source_commit": "c67aaa7",
+  "generated_at_utc": "2026-08-04T03:32:36.321333+00:00",
+  "source_commit": "aa88149",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
   },
   "missing_files": [],
   "figures": {
+    "fig1_1_roadmap": {
+      "script": {
+        "path": "batch18_fig1_1_roadmap.py",
+        "sha256": "0a7b8577b08439c424b3671c68c996e98c61dfe16c9aef06158f8bf7b49e9b85"
+      },
+      "inputs": [],
+      "formats": {
+        "svg": {
+          "sha256": "00d792719ed176300a6bcf26b968a50a259ec2b42c37e604d3baa5711ac928f6",
+          "size_bytes": 19957,
+          "mtime_utc": "2026-08-04T03:30:43.312443+00:00"
+        },
+        "png": {
+          "sha256": "e9b91625fcba9565631fd5086342152360ae8381ba338cd8d00b46ab952118c6",
+          "size_bytes": 1795861,
+          "mtime_utc": "2026-08-04T03:30:45.552476+00:00"
+        }
+      }
+    },
     "fig2_1_data_reconstruction": {
       "script": {
         "path": "batch16_schematic_figs.py",

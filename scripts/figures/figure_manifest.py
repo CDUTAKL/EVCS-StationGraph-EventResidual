@@ -38,6 +38,7 @@ MAE_5_MODELS_INPUTS = [
 
 # 图 → 最终生成脚本（batch4~13；batch3 已废弃勿运行）
 FINAL_SCRIPTS = {
+    "fig1_1_roadmap": "batch18_fig1_1_roadmap.py",
     "fig2_1_data_reconstruction": "batch16_schematic_figs.py",
     "fig2_2_node_coverage": "batch10_fig2_2_coverage.py",
     "fig2_3_load_heatmap": "batch5_restyle.py",
@@ -84,6 +85,7 @@ FINAL_SCRIPTS = {
 # 为纯手工绘制的流程/架构示意图，无数据输入工件，登记空列表以通过
 # --check-repository 的输入登记完整性检查。
 INPUTS_BY_FIGURE = {
+    "fig1_1_roadmap": [],
     "fig2_1_data_reconstruction": [],
     "fig2_2_node_coverage": [Path("data/processed/SG-DATA-002-node-coverage-stability.csv")],
     "fig2_3_load_heatmap": [BUNDLE_PATH],
