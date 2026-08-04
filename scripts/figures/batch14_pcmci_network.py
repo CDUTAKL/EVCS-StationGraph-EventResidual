@@ -183,7 +183,8 @@ def _node_panel(ax, data: dict) -> None:
     ax.set_yticks(y)
     ax.set_yticklabels([r[1].replace("CA-", "") for r in rows], fontsize=6.0)
     ax.set_ylim(-0.9, len(rows) + 0.1)
-    ax.set_xlim(0, 17)
+    # xlim 上限收紧（17→12.5）：最长出边 9、尾标 9.6，条形占比更高视觉更长
+    ax.set_xlim(0, 12.5)
     ax.set_xlabel("出边数（确认 / 未确认 / PCMCI+ 独有）", fontsize=7.0)
     ax.tick_params(axis="x", labelsize=6.0)
     ax.spines[["top", "right"]].set_visible(False)
@@ -202,9 +203,9 @@ def main() -> None:
     """绘制并导出 PCMCI+ 验证网络图（左大网络 + 右节点级验证条）。"""
     data = json.load(open("outputs/analysis/pcmci/pcmci_summary.json"))
     fig = plt.figure(figsize=(10.6, 5.0))
-    # 左网络面板加大（2.0→2.4），右面板保持加宽左移（2026-08-04 用户反馈）
+    # 左网络面板加大 + 右面板更宽（验证条更长）+ 整体紧凑（2026-08-04 用户反馈）
     gs = fig.add_gridspec(
-        1, 2, width_ratios=[2.4, 1.18], wspace=0.14,
+        1, 2, width_ratios=[2.5, 1.4], wspace=0.10,
     )
     ax1 = fig.add_subplot(gs[:, 0])          # 左：验证网络（主导）
     ax2b = fig.add_subplot(gs[:, 1])         # 右：节点级堆叠条
