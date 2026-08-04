@@ -128,8 +128,10 @@ def _network_panel(ax, data: dict) -> None:
                    edgecolor=GRAY_D, lw=1.2, zorder=6)
         ax.text(x, y, str(i + 1), ha="center", va="center", fontsize=6.0,
                 color=GRAY_D, zorder=7)
+        # 节点标签（CA- 编号）：加粗 + 深灰提升可读性（2026-08-04 用户反馈）
         ax.text(x * 1.38, y * 1.38, nd.replace("CA-", ""), ha="center",
-                va="center", fontsize=5.2, color=GRAY_M, zorder=7)
+                va="center", fontsize=5.8, color=GRAY_D, fontweight="bold",
+                zorder=7)
     # 图例（置于网络面板右侧图外，避免遮挡左下节点与说明文字）
     import matplotlib.lines as mlines
     handles = [
@@ -200,8 +202,9 @@ def main() -> None:
     """绘制并导出 PCMCI+ 验证网络图（左大网络 + 右节点级验证条）。"""
     data = json.load(open("outputs/analysis/pcmci/pcmci_summary.json"))
     fig = plt.figure(figsize=(10.6, 5.0))
+    # 右面板加宽（1.0→1.18）并左移（wspace 0.22→0.14）（2026-08-04 用户反馈）
     gs = fig.add_gridspec(
-        1, 2, width_ratios=[2.0, 1.0], wspace=0.22,
+        1, 2, width_ratios=[2.0, 1.18], wspace=0.14,
     )
     ax1 = fig.add_subplot(gs[:, 0])          # 左：验证网络（主导）
     ax2b = fig.add_subplot(gs[:, 1])         # 右：节点级堆叠条
