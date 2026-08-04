@@ -217,4 +217,4 @@
 - [ ] 中文 9 篇与英文 6 篇的 ⏳ 卷期页码定稿时从知网/期刊官网补全（勿臆造）
 - [ ] 正文引用编号按实际引用顺序重排（GB/T 7714 顺序编码制；第 1 章已按当前编号引用 [1]-[77]——[72]/[74]-[77] 于 2026-08-04 回填，其余章节当前无引用、定稿时按需增补后重排）
 - [x] 孤儿编号核对（2026-08-04 处理）：[27][28] 已补引至 1.2.1 分解/组合方法处、[56] 已补引至 1.2.1 Transformer 基础（已完成）；[73] 由其他 agent 补引至 3.6 ARIMA 传统基线处
-- [x] 第 4/5 章方法文献 [78]-[84] 已增补（TE/PCMCI+/KD/共形/ACI/EDformer，2026-08-04）；[84] EDformer 标题/作者已核验（2026-08-04 WebSearch 确认：Chakraborty S / Delibasoglu I / Heintz F，arXiv 2412.12227，题名 "EDformer: Embedded Decomposition Transformer for Interpretable Multivariate Time Series Predictions"）；WEITS 经两轮检索未查到确切出处，未新增 [85] 条目，正文【待补引文】标注保留
+- [x] 第 4/5 章方法文献 [78]-[86] 已增补（TE/PCMCI+/KD/共形/ACI/EDformer/PCMCI+ 原始文献，2026-08-04）；[84] EDformer 标题/作者已核验（2026-08-04 WebSearch 确认：Chakraborty S / Delibasoglu I / Heintz F，arXiv 2412.12227，题名 "EDformer: Embedded Decomposition Transformer for Interpretable Multivariate Time Series Predictions"）；[86] Runge UAI 2020 为 PCMCI+ 直接原始文献（PMLR 官网核验）；WEITS 经两轮检索未查到确切出处，未新增条目，正文【待补引文】标注保留
