@@ -95,9 +95,9 @@ def fig1_1_roadmap() -> None:
         ("MDP 三层机制诊断", GREEN,
          "L1 门控干预归因：模型依赖什么关系\n"
          "L2 蒸馏验证：图结构能否被替代\n"
-         "L3 四格溯源：误差集中在哪一层"),
+         "L3 四格溯源：误差集中在哪类窗口"),
         ("预测支持探索与结论", RED_S,
-         "有向信息流结构与条件独立确认\n事件窗口区间预测与潜力上界\n"
+         "有向候选结构与条件独立核验\n事件窗口区间预测与潜力上界\n"
          "分层参数干预敏感度与结论"),
     ]
 
@@ -112,7 +112,8 @@ def fig1_1_roadmap() -> None:
         _card(ax, xs[k] - 1, 82, card_w + 2, 7.5, title,
               fc=color, ec=color, fs=9.5, weight="bold",
               text_color="white", radius=0.4)
-        _badge(ax, xs[k] + 2.2, 85.7, 1.7, str(k + 1), fc=color)
+        # 编号放在内容卡片上缘，避开较长的阶段标题。
+        _badge(ax, xs[k] + 2.2, 77.0, 1.5, str(k + 1), fc=color)
 
         # 阶段主线标签（卡片底部）
         mainline = ["数据", "方法", "机制", "结论"][k]
@@ -137,8 +138,8 @@ def fig1_1_roadmap() -> None:
     ax.add_patch(bar)
     ax.text(50, 21.5, "贯通主线", ha="center", fontsize=8, color=GRAY_M)
     for k, (t, color) in enumerate(zip(
-            ["统一预测键与三随机种子\n一致评价口径",
-             "测试集不参与任何\n统计量与阈值确定",
+            ["统一预测键与三种子\n一致评价口径",
+             "测试集不参与关系图\n与阈值确定",
              "三层诊断贯通至\n预测支持探索",
              "结论以量化证据\n逐条给出"], [BLUE, ORANGE, GREEN, RED_S])):
         cx = 15 + k * 24

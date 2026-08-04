@@ -16,7 +16,7 @@
 
 | 图号 | 文件名（不含目录） | 类型与用途 | 数据/实验来源 | 状态 |
 |---|---|---|---|:---:|
-| 图 1-1 | `fig1_1_roadmap.svg/.png` | 技术路线图（四阶段：数据→方法→机制→结论） | 方法章 | 新增 2026-08-04 |
+| 图 1-1 | `fig1_1_roadmap.svg/.png` | 技术路线图（四阶段：数据→方法→机制→结论） | 第1章技术路线 | 已修订 2026-08-04 |
 | 图 2-1 | `fig2_1_data_reconstruction.svg/.png` | 数据重构流程（会话→审计→聚合→张量→划分） | 数据审计文档 | 新增 2026-08-04 |
 | 图 2-2 | `fig2_2_node_coverage.svg/.png` | 节点覆盖率/活跃月份分布 | `SG-DATA-002-node-coverage-stability.csv` | 可用 |
 | 图 2-3 | `fig2_3_load_heatmap.svg/.png` | 节点负荷时间热力图 | `SG-DATA-005-primary-tensor.npz` | 可用 |

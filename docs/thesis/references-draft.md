@@ -164,27 +164,27 @@
 
 ### 2.2 必引近邻（创新性调研确认，8 篇）
 
-[64] WANG S, et al. Causality-aware multi-graph convolutional networks with critical node dynamics for EV charging station load forecasting (CADGN)[J]. IEEE Transactions on Smart Grid, 2025. ⏳卷期页码
+[64] HUANG Y, WU S, WANG Z, et al. Causality-aware multi-graph convolutional networks with critical node dynamics for electric vehicle charging station load forecasting[J]. IEEE Transactions on Smart Grid, 2025, 16(4): 3210-3225. DOI: 10.1109/TSG.2025.3570955.
 
-[65] LI Y, et al. Load probabilistic forecasting for EV charging station cluster: adaptive multivariate spatiotemporal graph fusion technology (AMSTG)[J]. Electric Power Systems Research, 2025. ⏳
+[65] ZHANG L, JIAO Z, ZHAO C. Load probabilistic forecasting for electric vehicle charging station cluster: adaptive multivariate spatiotemporal graph fusion technology[J]. International Journal of Electrical Power & Energy Systems, 2025, 173: 111387. DOI: 10.1016/j.ijepes.2025.111387.
 
-[66] LIU J, et al. Short-term regional EV charging load forecasting based on GAT and GRU with trip distribution estimation (STGR-Net)[J]. Applied Energy, 2026, 406. ⏳页码
+[66] HE J, LIU Q Y, HU Y L, et al. Short-term regional EV charging load forecasting based on GAT and GRU with trip distribution estimation[J]. Applied Energy, 2026, 406: 127262. DOI: 10.1016/j.apenergy.2025.127262.
 
-[67] CHEN L, et al. Charging station cluster load prediction: spatiotemporal multi-graph fusion technology (MGAT-MIC-LSTM)[J]. Renewable and Sustainable Energy Reviews, 2024. ⏳
+[67] XIE T, YUN X, ZHANG G, et al. Charging station cluster load prediction: spatiotemporal multi-graph fusion technology[J]. Renewable and Sustainable Energy Reviews, 2024, 206: 114855. DOI: 10.1016/j.rser.2024.114855.
 
-[68] WANG H, et al. Peak-aware residual LLM over anchor for EV charging station demand (PAR-LLM)[J]. IEEE Access, 2026, 14: 52360-52370.
+[68] HWANG J, SUH D. PAR-LLM: peak-aware residual LLM over anchor for EV charging station demand[J]. IEEE Access, 2026, 14: 52360-52370. DOI: 10.1109/ACCESS.2026.3679962.
 
-[69] CHEN Y, et al. Periodicity-aware residual correction on processed distribution load proxy (PARC)[J]. World Electric Vehicle Journal, 2026, 17(7): 336.
+[69] LIANG Y. Forecast-time-safe load forecasting for connected and automated EV charging operation: periodicity-aware residual correction on a processed distribution load proxy with public EV charging validation[J]. World Electric Vehicle Journal, 2026, 17(7): 336. DOI: 10.3390/wevj17070336.
 
-[70] ZHANG Y, et al. RLF-MGNN: residential load forecasting using multiple correlation-temporal graph neural networks[J]. Applied Soft Computing, 2023. ⏳
+[70] WANG Y, RUI L, MA J, et al. A short-term residential load forecasting scheme based on the multiple correlation-temporal graph neural networks[J]. Applied Soft Computing, 2023, 146: 110629. DOI: 10.1016/j.asoc.2023.110629.
 
-[71] WANG Q, et al. Short-term residential load forecasting framework based on spatial-temporal fusion adaptive gated graph convolution networks (STFAG-GCN)[J]. IEEE Transactions on Neural Networks and Learning Systems, 2025. ⏳
+[71] ZHANG T, JIAO W, YU J, et al. Short-term residential load forecasting framework based on spatial-temporal fusion adaptive gated graph convolution networks[J]. IEEE Transactions on Neural Networks and Learning Systems, 2025, 36(9): 17004-17018. DOI: 10.1109/TNNLS.2025.3551778.
 
 ### 2.3 追加补充（第 1/4 章写作需要，5 篇）
 
 [73] BOX G E P, JENKINS G M. Time series analysis: forecasting and control[M]. San Francisco: Holden-Day, 1970.
 
-[74] NAM S, et al. Causal head gating: a framework for interpreting roles of attention heads in transformers[C]//Advances in Neural Information Processing Systems (NeurIPS). 2025. ⏳
+[74] NAM A, CONKLIN H, YANG Y, et al. Causal head gating: a framework for interpreting roles of attention heads in transformers[C]//Advances in Neural Information Processing Systems. 2025, 38.
 
 [75] GUASTAVINO S, et al. Bad and good errors: value-weighted skill scores in deep ensemble learning[J]. arXiv preprint arXiv:2103.02881, 2021.
 
@@ -208,7 +208,7 @@
 
 [84] CHAKRABORTY S, DELIBASOGLU I, HEINTZ F. EDformer: embedded decomposition transformer for interpretable multivariate time series predictions[J/OL]. arXiv preprint arXiv:2412.12227, 2024.
 
-[85] 中国电动汽车充电基础设施促进联盟. 2025年一季度全国公共充电基础设施增长情况分析[EB/OL]. (2025-04-16)[2026-08-04]. https://www.evcipa.org.cn/newsinfo/8310587.html.
+[85] 中国电动汽车充电基础设施促进联盟. 2024年全国电动汽车充换电基础设施运行情况[EB/OL]. (2025-01-23)[2026-08-04]. https://www.evcipa.org.cn/newsinfo/8137834.html.
 
 [86] RUNGE J. Discovering contemporaneous and lagged causal relations in autocorrelated nonlinear time series datasets[C]//Proceedings of the 36th Conference on Uncertainty in Artificial Intelligence (UAI). PMLR, 2020, 124: 1388-1397.
 
