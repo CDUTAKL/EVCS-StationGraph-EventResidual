@@ -3,6 +3,7 @@
 所有实验配置通过 ``model`` 字段选择模型类型，工厂负责创建对应的模块实例。
 支持的模型名：
   - ``"temporal"`` / ``"TCN"``：纯时序 TCN（SG-EXP-002 默认路径）
+  - ``"gru"`` / ``"GRU"``：逐节点独立 GRU 循环时序基线（SG-EXP-018）
   - ``"static_graph"`` / ``"TCN_GCN"``：固定图时空预测（SG-EXP-003）
   - ``"adaptive_graph"``：自适应图时空预测（SG-EXP-004）
   - ``"event_residual"``：事件门控残差修正（SG-EXP-005）。
@@ -42,6 +43,7 @@ from evcs_station_graph.models import (
     EventResidualCorrection,
     ForecastModel,
     GraphWaveNetForecast,
+    GruForecast,
     MLPBaseline,
     StaticGraphForecast,
     TemporalConvNet,
@@ -97,6 +99,24 @@ def build_model(
     if model_name in {"TCN", "temporal"}:
         return TemporalConvNet(
             input_dim, horizon, history_steps=history_steps, **common,
+        )
+
+    if model_name in {"gru", "GRU"}:
+        # num_layers 显式校验：YAML bool/float 会被 int() 静默截断
+        # （如 true→1、2.5→2），与代码协议"遇异常直接抛出"一致
+        num_layers = params.get("num_layers", 1)
+        if (
+            isinstance(num_layers, bool)
+            or not isinstance(num_layers, int)
+            or num_layers <= 0
+        ):
+            raise ValueError(
+                f"num_layers 必须为正整数，收到 {num_layers!r}"
+            )
+        return GruForecast(
+            input_dim, horizon, num_nodes,
+            hidden_dim=common["hidden_dim"],
+            num_layers=num_layers,
         )
 
     if model_name in {"mlp", "mlp_baseline"}:

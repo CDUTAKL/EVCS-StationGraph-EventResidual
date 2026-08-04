@@ -11,6 +11,7 @@ from evcs_station_graph.graphs import normalize_adjacency
 from evcs_station_graph.models import (
     AdaptiveGraphForecast,
     EventResidualCorrection,
+    GruForecast,
     MLPBaseline,
     StaticGraphForecast,
     TemporalConvNet,
@@ -26,6 +27,7 @@ def test_all_model_output_shapes() -> None:
     adjacencies = [np.eye(4, dtype=np.float32)] * 3
     models = (
         TemporalConvNet(7, 4, hidden_dim=8, levels=2, dropout=0.0),
+        GruForecast(7, 4, 4, hidden_dim=8),
         StaticGraphForecast(
             7, 4, 4, adjacencies,
             hidden_dim=8, levels=2, dropout=0.0,

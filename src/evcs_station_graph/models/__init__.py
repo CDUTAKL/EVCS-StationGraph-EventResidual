@@ -1,8 +1,9 @@
 """预测模型公共导出。
 
-本模块包含七个预测模型及其公共接口：
+本模块包含九个预测模型及其公共接口：
 
 - ``TemporalConvNet`` (SG-EXP-002)：仅使用节点自身历史的默认 TCN，作为稳定时段的默认预测路径
+- ``GruForecast`` (SG-EXP-018)：逐节点独立共享 GRU 的循环时序基线（与 TCN 互为对照）
 - ``StaticGraphForecast`` (SG-EXP-003)：TCN 编码 + 训练期固定的统计交互图消息传递
 - ``AdaptiveGraphForecast`` (SG-EXP-004)：TCN 编码 + 节点嵌入学习的自适应图（融合固定先验）
 - ``EventResidualCorrection`` (SG-EXP-005)：冻结默认模型 + 事件门控下的有界残差修正
@@ -20,6 +21,7 @@ from evcs_station_graph.models.common import ForecastModel, ForecastOutput
 from evcs_station_graph.models.decomp_gcn import DecompGCNForecast
 from evcs_station_graph.models.graph import AdaptiveGraphForecast, StaticGraphForecast
 from evcs_station_graph.models.graph_wavenet import GraphWaveNetForecast
+from evcs_station_graph.models.gru import GruForecast
 from evcs_station_graph.models.mlp import MLPBaseline
 from evcs_station_graph.models.residual import EventResidualCorrection
 from evcs_station_graph.models.tcn import TemporalConvNet
@@ -32,6 +34,7 @@ __all__ = [
     "ForecastModel",
     "ForecastOutput",
     "GraphWaveNetForecast",
+    "GruForecast",
     "MLPBaseline",
     "StaticGraphForecast",
     "TemporalConvNet",
