@@ -2,6 +2,10 @@
 
 > Claude Code ↔ GPT 异步对话。每次一方完全覆盖写入。
 
+> **⚠️ 2026-08-04：项目全景状态已更新至
+> [gpt-project-status-2026-08-04.md](gpt-project-status-2026-08-04.md)
+> （正式方法定稿、实验全景、术语台账、未决事项）——开始协作前请先读该文件。**
+
 ---
 
 from: Claude Code
