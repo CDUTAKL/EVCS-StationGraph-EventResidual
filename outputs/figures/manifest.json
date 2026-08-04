@@ -1,12 +1,31 @@
 {
-  "generated_at_utc": "2026-08-03T08:21:41.479745+00:00",
-  "source_commit": "3740676",
+  "generated_at_utc": "2026-08-04T02:56:31.398324+00:00",
+  "source_commit": "c67aaa7",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
   },
   "missing_files": [],
   "figures": {
+    "fig2_1_data_reconstruction": {
+      "script": {
+        "path": "batch16_schematic_figs.py",
+        "sha256": "8ebc4273719df125df5547fe4828686d0f4ec5061f932be99df0dfe2d36ae717"
+      },
+      "inputs": [],
+      "formats": {
+        "svg": {
+          "sha256": "79c638a00798c7f44f4bb6a58c53a863dc785c301c7f769788befee7c32d9673",
+          "size_bytes": 16220,
+          "mtime_utc": "2026-08-04T02:26:40.649968+00:00"
+        },
+        "png": {
+          "sha256": "975754b79e7a494f177f53d630d9ce279cf0f7921de27d068dab6828edb83e9a",
+          "size_bytes": 1667077,
+          "mtime_utc": "2026-08-04T02:26:42.405790+00:00"
+        }
+      }
+    },
     "fig2_2_node_coverage": {
       "script": {
         "path": "batch10_fig2_2_coverage.py",
@@ -34,7 +53,7 @@
     "fig2_3_load_heatmap": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
+        "sha256": "9796f373c7b52697e1ead6882c6ed15e78095d13defe5354059f62f3b000ec02"
       },
       "inputs": [
         {
@@ -82,7 +101,7 @@
     "fig2_4_weekly_curves": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
+        "sha256": "9796f373c7b52697e1ead6882c6ed15e78095d13defe5354059f62f3b000ec02"
       },
       "inputs": [
         {
@@ -303,10 +322,29 @@
         }
       }
     },
+    "fig3_2_gate_fusion": {
+      "script": {
+        "path": "batch17_fig3_2_gate_fusion.py",
+        "sha256": "2a8fbe016c45606097684c650786d5e9c3f2d374214a1d0f38181ccd018aa7b0"
+      },
+      "inputs": [],
+      "formats": {
+        "svg": {
+          "sha256": "d0aabd53bc76de09036e5cd99f1609ba18a7200dc5447a696c8996134d75c251",
+          "size_bytes": 28387,
+          "mtime_utc": "2026-08-04T02:53:12.200721+00:00"
+        },
+        "png": {
+          "sha256": "1e5870ad9674c975a57608b9dbc5a69faca940b3ef89a36a56f2b9f2446fce74",
+          "size_bytes": 1599219,
+          "mtime_utc": "2026-08-04T02:53:14.980763+00:00"
+        }
+      }
+    },
     "fig3_3_lre_matrices": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
+        "sha256": "9796f373c7b52697e1ead6882c6ed15e78095d13defe5354059f62f3b000ec02"
       },
       "inputs": [
         {
@@ -422,7 +460,7 @@
     "fig3_5_training_curve": {
       "script": {
         "path": "batch9_advisor_redraw.py",
-        "sha256": "29a6cbd4b67d0b202f30aa323c66451269283e9146c19660a7b996f4737c780a"
+        "sha256": "2e7284f9eb0ac2897dd728893f293081914574beb47d4842a29d654171a89cc7"
       },
       "inputs": [
         {
@@ -440,21 +478,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "d807bd19b5ba09bb229f233a73cdeb0732b103e41fb2b9370083c2198baa7887",
-          "size_bytes": 19537,
-          "mtime_utc": "2026-08-03T02:31:59.865513+00:00"
+          "sha256": "a7f6c2743f7ad9afbfe166ac87710ff874ad879d4a1bd41d59da30d499a64a74",
+          "size_bytes": 33337,
+          "mtime_utc": "2026-08-03T08:24:44.827255+00:00"
         },
         "png": {
-          "sha256": "8ad2898413e954ccbfd126bfdad001550a3b43ae46cd6793051a1793fd959fae",
-          "size_bytes": 743269,
-          "mtime_utc": "2026-08-03T02:32:00.340071+00:00"
+          "sha256": "206a78979b7c3b2b3dadc9fc6a26102b0a4db111fe4b1038851a74c6c0e3ef0c",
+          "size_bytes": 1153474,
+          "mtime_utc": "2026-08-03T08:24:46.305880+00:00"
         }
       }
     },
     "fig3_6_bootstrap_difference": {
       "script": {
         "path": "batch9_advisor_redraw.py",
-        "sha256": "29a6cbd4b67d0b202f30aa323c66451269283e9146c19660a7b996f4737c780a"
+        "sha256": "2e7284f9eb0ac2897dd728893f293081914574beb47d4842a29d654171a89cc7"
       },
       "inputs": [
         {
@@ -478,7 +516,7 @@
     "fig3_7_alpha_convergence": {
       "script": {
         "path": "batch9_advisor_redraw.py",
-        "sha256": "29a6cbd4b67d0b202f30aa323c66451269283e9146c19660a7b996f4737c780a"
+        "sha256": "2e7284f9eb0ac2897dd728893f293081914574beb47d4842a29d654171a89cc7"
       },
       "inputs": [
         {
@@ -496,14 +534,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "1022f6f02fe3e8e9955f44686c1a3a27cc99d85a43460d93c6c1dfa6f6f77007",
-          "size_bytes": 32603,
-          "mtime_utc": "2026-08-03T03:35:05.528669+00:00"
+          "sha256": "da4fa04b17e9a8e24525ba865dbb521a69069f0e0b9a4fa14de644b4e2aa3a5f",
+          "size_bytes": 32609,
+          "mtime_utc": "2026-08-03T08:24:46.478979+00:00"
         },
         "png": {
-          "sha256": "4e0abe34ed902d35964038f092363e61b4fc59a8e32a8199711dcba78533a482",
-          "size_bytes": 1170136,
-          "mtime_utc": "2026-08-03T03:35:06.955120+00:00"
+          "sha256": "5c5101cabb15a809227526358cab1c06a2ed3584caf155405623b799dc4edced",
+          "size_bytes": 1169677,
+          "mtime_utc": "2026-08-03T08:24:47.487998+00:00"
         }
       }
     },
@@ -795,10 +833,29 @@
         }
       }
     },
+    "fig4_1_three_layer_framework": {
+      "script": {
+        "path": "batch16_schematic_figs.py",
+        "sha256": "8ebc4273719df125df5547fe4828686d0f4ec5061f932be99df0dfe2d36ae717"
+      },
+      "inputs": [],
+      "formats": {
+        "svg": {
+          "sha256": "5bea2926f348d871df945f488739ab0e66bc8b3e584ab2841c2595fd5504779a",
+          "size_bytes": 27873,
+          "mtime_utc": "2026-08-04T02:26:42.515588+00:00"
+        },
+        "png": {
+          "sha256": "279516a352e005d4854c14f7c636505eccb131ad011d8df9673659a37e168df1",
+          "size_bytes": 1593334,
+          "mtime_utc": "2026-08-04T02:26:44.238630+00:00"
+        }
+      }
+    },
     "fig4_2_intervention": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
+        "sha256": "9796f373c7b52697e1ead6882c6ed15e78095d13defe5354059f62f3b000ec02"
       },
       "inputs": [
         {
@@ -890,7 +947,7 @@
     "fig4_4_four_cell": {
       "script": {
         "path": "batch9_advisor_redraw.py",
-        "sha256": "29a6cbd4b67d0b202f30aa323c66451269283e9146c19660a7b996f4737c780a"
+        "sha256": "2e7284f9eb0ac2897dd728893f293081914574beb47d4842a29d654171a89cc7"
       },
       "inputs": [
         {
@@ -900,14 +957,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "7ef8f8498fd6a7cf48ffa7270bfbda2ac92ace5c1dc13f84925d354f8788e300",
-          "size_bytes": 31218,
-          "mtime_utc": "2026-08-03T02:27:46.818349+00:00"
+          "sha256": "6b5a7318b573c7024a506077bdf179e1cc77c6dad23184989815ad26ec83d559",
+          "size_bytes": 31233,
+          "mtime_utc": "2026-08-03T08:24:47.656493+00:00"
         },
         "png": {
-          "sha256": "375a6bf6d5b0e9034d7eb8da583f733ee0708cf30983d0286c05263375ed37c6",
-          "size_bytes": 961918,
-          "mtime_utc": "2026-08-03T02:27:48.916170+00:00"
+          "sha256": "456890cdcb4e74200e0eb956a86740fba07a5302fe47e2e314b9a94cf805dd9e",
+          "size_bytes": 966218,
+          "mtime_utc": "2026-08-03T08:24:49.802575+00:00"
         }
       }
     },
@@ -967,10 +1024,29 @@
         }
       }
     },
+    "fig5_1_exploration_roadmap": {
+      "script": {
+        "path": "batch16_schematic_figs.py",
+        "sha256": "8ebc4273719df125df5547fe4828686d0f4ec5061f932be99df0dfe2d36ae717"
+      },
+      "inputs": [],
+      "formats": {
+        "svg": {
+          "sha256": "e6c1ce38234c3f5cc41ba290cfa68ac3297d8fa00e50dcd875469a511738c264",
+          "size_bytes": 24863,
+          "mtime_utc": "2026-08-04T02:26:44.315270+00:00"
+        },
+        "png": {
+          "sha256": "addaa01b29ac07ccbfda7284a7c9e82d3e47ee7f863045f569e17f1df682d2b5",
+          "size_bytes": 1853201,
+          "mtime_utc": "2026-08-04T02:26:45.999056+00:00"
+        }
+      }
+    },
     "fig5_2_transfer_entropy": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
+        "sha256": "9796f373c7b52697e1ead6882c6ed15e78095d13defe5354059f62f3b000ec02"
       },
       "inputs": [
         {
@@ -1042,7 +1118,7 @@
     "fig5_4_coverage": {
       "script": {
         "path": "batch9_advisor_redraw.py",
-        "sha256": "29a6cbd4b67d0b202f30aa323c66451269283e9146c19660a7b996f4737c780a"
+        "sha256": "2e7284f9eb0ac2897dd728893f293081914574beb47d4842a29d654171a89cc7"
       },
       "inputs": [
         {
@@ -1066,7 +1142,7 @@
     "fig5_5_quantile_per_node": {
       "script": {
         "path": "batch9_advisor_redraw.py",
-        "sha256": "29a6cbd4b67d0b202f30aa323c66451269283e9146c19660a7b996f4737c780a"
+        "sha256": "2e7284f9eb0ac2897dd728893f293081914574beb47d4842a29d654171a89cc7"
       },
       "inputs": [
         {
@@ -1090,7 +1166,7 @@
     "fig5_6_parameter_intervention": {
       "script": {
         "path": "batch5_restyle.py",
-        "sha256": "bd9098258886355dc70cb5ac4d2c866df7a3a2f39972252910e17eacbc48c3cf"
+        "sha256": "9796f373c7b52697e1ead6882c6ed15e78095d13defe5354059f62f3b000ec02"
       },
       "inputs": [
         {

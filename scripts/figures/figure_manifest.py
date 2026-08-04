@@ -1,6 +1,6 @@
 """论文图 provenance manifest 生成与校验（审查 H-13，2026-08-01）。
 
-为 32 张最终图建立唯一可追溯入口：图 → 生成脚本(SHA) → 输入工件(SHA) → 输出 SHA
+为 37 张最终图建立唯一可追溯入口：图 → 生成脚本(SHA) → 输入工件(SHA) → 输出 SHA
 → git commit → 数据集 SHA。
 
 用法：
@@ -50,6 +50,7 @@ FINAL_SCRIPTS = {
     "fig2_9_event_component_composition": "batch11_chapter2_extra.py",
     "fig2_10_event_window_length": "batch11_chapter2_extra.py",
     "fig3_1_model_mae_comparison": "batch4_redraw.py",
+    "fig3_2_gate_fusion": "batch17_fig3_2_gate_fusion.py",
     "fig3_3_lre_matrices": "batch5_restyle.py",
     "fig3_4_mae_by_horizon": "batch12_chapter3_extra.py",
     "fig3_5_training_curve": "batch9_advisor_redraw.py",
@@ -79,7 +80,11 @@ FINAL_SCRIPTS = {
 # 图 → 关键输入工件（存在性 + SHA 校验；glob 模式展开为匹配文件列表）
 # 审查 H-13（2026-08-01）：fig3_1 数值硬编码于脚本，其数据源为正式三种子
 # metrics.json（night_run/20260730-171821）；fig3_5/3_7 读取训练日志。
+# 示意图（2026-08-04）：fig2_1/fig4_1/fig5_1（batch16）与 fig3_2（batch17）
+# 为纯手工绘制的流程/架构示意图，无数据输入工件，登记空列表以通过
+# --check-repository 的输入登记完整性检查。
 INPUTS_BY_FIGURE = {
+    "fig2_1_data_reconstruction": [],
     "fig2_2_node_coverage": [Path("data/processed/SG-DATA-002-node-coverage-stability.csv")],
     "fig2_3_load_heatmap": [BUNDLE_PATH],
     "fig2_3b_autocorrelation": [BUNDLE_PATH],
@@ -95,6 +100,7 @@ INPUTS_BY_FIGURE = {
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-003/*/seed-*/metrics.json"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-004/*/seed-*/metrics.json"),
     ],
+    "fig3_2_gate_fusion": [],
     "fig3_3_lre_matrices": [Path("outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz")],
     "fig3_4_mae_by_horizon": MAE_5_MODELS_INPUTS,
     "fig3_5_training_curve": [
@@ -111,6 +117,7 @@ INPUTS_BY_FIGURE = {
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/metrics.json"),
     ],
     "fig3_11_event_window_forecast": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/predictions.csv.gz")],
+    "fig4_1_three_layer_framework": [],
     "fig4_2_intervention": [Path("outputs/analysis/gate_intervention/intervention_summary.json")],
     "fig4_3_kd_distillation": [("glob", "outputs/experiments/SG-EXP-013/20260803-093503/alpha-*_seed-*/metrics.json")],
     "fig4_4_four_cell": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/metrics.json")],
@@ -120,6 +127,7 @@ INPUTS_BY_FIGURE = {
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-003/*/seed-2024/predictions.csv.gz"),
     ],
     "fig4_6_error_vs_event_intensity": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/predictions.csv.gz")],
+    "fig5_1_exploration_roadmap": [],
     "fig5_2_transfer_entropy": [Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json")],
     "fig5_2b_pcmci_validation_network": [Path("outputs/analysis/pcmci/pcmci_summary.json")],
     "fig5_3_asymmetry": [Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json")],
@@ -227,9 +235,11 @@ def check_repository(manifest: dict) -> bool:
         if not sp.is_file() or sha256(sp) != info["script"]["sha256"]:
             ok = False
             print(f"  ✗ 脚本 {info['script']['path']} 缺失或已变化")
-        if not info.get("inputs"):
+        # 示意图（batch16/17）合法地无输入工件（INPUTS_BY_FIGURE 登记空列表）；
+        # 此处检查"是否已登记"而非"是否非空"，防漏登记。
+        if name not in INPUTS_BY_FIGURE:
             ok = False
-            print(f"  ✗ {name} 无输入工件记录")
+            print(f"  ✗ {name} 未在 INPUTS_BY_FIGURE 登记输入工件")
         for item in info.get("inputs", []):
             if "path" not in item or "sha256" not in item:
                 ok = False
