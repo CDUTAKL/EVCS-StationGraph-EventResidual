@@ -1,6 +1,6 @@
 # 参考文献清单（草稿 v2，2026-08-03）
 
-> 中文硕士论文口径：**中文文献为主**。采纳 84 篇（中文 50 + 英文 34，中文占 60%），
+> 中文硕士论文口径：**中文文献为主**。采纳 86 篇（中文 51 + 英文 35，中文占 59%），
 > 按 GB/T 7714-2015 顺序编码制格式。
 > 来源：①中文文献补充检索（2026-08-03，8 方向 17 轮检索，全部可核验）；
 > ②创新性调研必引近邻（literature-novelty-review-2026-08-02）；③方法基础经典。
@@ -192,7 +192,7 @@
 
 [77] ARABZADEH M, FRANK E. A four-dimensional analysis of explainable AI in energy forecasting: a domain-specific systematic review[J]. Machine Learning and Knowledge Extraction, 2025, 7(4): 153.
 
-### 2.4 追加补充（第 4/5 章方法文献，2026-08-04，7 篇）
+### 2.4 追加补充（第 4/5 章方法文献，2026-08-04，9 篇 [78]-[86]）
 
 [78] SCHREIBER T. Measuring information transfer[J]. Physical Review Letters, 2000, 85(2): 461-464.
 
