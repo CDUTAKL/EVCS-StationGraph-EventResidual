@@ -1,6 +1,6 @@
 # 论文配图清单与图注口径（2026-08-01）
 
-本文件是当前工作区 33 张结果图的编号、文件名、来源与图注口径索引。
+本文件是当前工作区 36 张结果图的编号、文件名、来源与图注口径索引。
 结果图统一导出为 SVG + PNG；PNG 为 1200 DPI，SVG 保留可编辑文字。
 
 ## 使用规则
@@ -12,10 +12,11 @@
 
 - 图 5-6 使用“分层参数干预敏感度”命名，不使用 CATE 或因果效应术语（2026-08-04 修正：原 5-8 编号为旧体系残留）。
 
-## 当前生成的 33 张图
+## 当前生成的 36 张图
 
 | 图号 | 文件名（不含目录） | 类型与用途 | 数据/实验来源 | 状态 |
 |---|---|---|---|:---:|
+| 图 2-1 | `fig2_1_data_reconstruction.svg/.png` | 数据重构流程示意（会话 → 审计 → 聚合 → 张量 → 划分） | 静态示意（2026-08-04 新增） | 可用 |
 | 图 2-2 | `fig2_2_node_coverage.svg/.png` | 节点覆盖率/活跃月份分布 | `SG-DATA-002-node-coverage-stability.csv` | 可用 |
 | 图 2-3 | `fig2_3_load_heatmap.svg/.png` | 节点负荷时间热力图 | `SG-DATA-005-primary-tensor.npz` | 可用 |
 | 图 2-3b | `fig2_3b_autocorrelation.svg/.png` | 代表节点自相关 | `SG-DATA-005-primary-tensor.npz` | 已修订 |
@@ -36,11 +37,13 @@
 | 图 3-9 | `fig3_9_mae_by_node.svg/.png` | 逐节点 MAE | 六模型 seed-* `metrics.json`（含 AGCRN 简化变体） | 可用 |
 | 图 3-10 | `fig3_10_mechanism_ablation.svg/.png` | 机制消融 | SG-EXP-006 正式（三种子） | 可用 |
 | 图 3-11 | `fig3_11_event_window_forecast.svg/.png` | 事件窗口预测时序 | SG-EXP-004 `predictions.csv.gz` | 可用 |
+| 图 4-1 | `fig4_1_three_layer_framework.svg/.png` | 三层机制诊断框架示意（L1/L2/L3 四环节协议） | 静态示意（2026-08-04 新增） | 可用 |
 | 图 4-2 | `fig4_2_intervention.svg/.png` | 门控参数干预 | `intervention_summary.json` | 可用 |
 | 图 4-3 | `fig4_3_kd_distillation.svg/.png` | GCN→TCN 知识蒸馏 | SG-EXP-013（4α×3 种子） | 可用 |
 | 图 4-4 | `fig4_4_four_cell.svg/.png` | 事件/规则四格诊断 | SG-EXP-004 `metrics.json` | 已重绘 |
 | 图 4-5 | `fig4_5_residual_distribution.svg/.png` | 预测残差分布 | 三模型 `predictions.csv.gz` | 可用 |
 | 图 4-6 | `fig4_6_error_vs_event_intensity.svg/.png` | 误差 vs 事件强度 | predictions + 事件分数 | 可用 |
+| 图 5-1 | `fig5_1_exploration_roadmap.svg/.png` | 第 5 章技术路线示意（三问题 → 三方向 → 三证据 → 闭环） | 静态示意（2026-08-04 新增） | 可用 |
 | 图 5-2 | `fig5_2_transfer_entropy.svg/.png` | TE 方向性候选结构 | `transfer_entropy_summary.json` | 探索性 |
 | 图 5-2b | `fig5_2b_pcmci_validation_network.svg/.png` | PCMCI+ 验证网络（三面板） | `pcmci_summary.json` | 新增 2026-08-03 |
 | 图 5-3 | `fig5_3_asymmetry.svg/.png` | TE 方向不对称性 | `transfer_entropy_summary.json` | 已修订 |

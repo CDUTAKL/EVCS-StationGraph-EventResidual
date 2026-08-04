@@ -38,6 +38,7 @@ MAE_5_MODELS_INPUTS = [
 
 # 图 → 最终生成脚本（batch4~13；batch3 已废弃勿运行）
 FINAL_SCRIPTS = {
+    "fig2_1_data_reconstruction": "batch16_schematic_figs.py",
     "fig2_2_node_coverage": "batch10_fig2_2_coverage.py",
     "fig2_3_load_heatmap": "batch5_restyle.py",
     "fig2_3b_autocorrelation": "batch4_redraw.py",
@@ -58,11 +59,13 @@ FINAL_SCRIPTS = {
     "fig3_9_mae_by_node": "batch12_chapter3_extra.py",
     "fig3_10_mechanism_ablation": "batch12_chapter3_extra.py",
     "fig3_11_event_window_forecast": "batch12_chapter3_extra.py",
+    "fig4_1_three_layer_framework": "batch16_schematic_figs.py",
     "fig4_2_intervention": "batch5_restyle.py",
     "fig4_3_kd_distillation": "batch15_fig4_3_kd.py",
     "fig4_4_four_cell": "batch9_advisor_redraw.py",
     "fig4_5_residual_distribution": "batch13_chapter4_5_extra.py",
     "fig4_6_error_vs_event_intensity": "batch13_chapter4_5_extra.py",
+    "fig5_1_exploration_roadmap": "batch16_schematic_figs.py",
     "fig5_2_transfer_entropy": "batch5_restyle.py",
     "fig5_2b_pcmci_validation_network": "batch14_pcmci_network.py",
     "fig5_3_asymmetry": "batch6_te_coverage_enhance.py",

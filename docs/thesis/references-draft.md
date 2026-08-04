@@ -192,9 +192,25 @@
 
 [77] ARABZADEH M, FRANK E. A four-dimensional analysis of explainable AI in energy forecasting: a domain-specific systematic review[J]. Machine Learning and Knowledge Extraction, 2025, 7(4): 153.
 
+### 2.4 追加补充（第 4/5 章方法文献，2026-08-04，7 篇）
+
+[78] SCHREIBER T. Measuring information transfer[J]. Physical Review Letters, 2000, 85(2): 461-464.
+
+[79] RUNGE J, NOWACK P, KRETSCHMER M, et al. Detecting and quantifying causal associations in large nonlinear time series datasets[J]. Science Advances, 2019, 5(11): eaau4996.
+
+[80] HINTON G, VINYALS O, DEAN J. Distilling the knowledge in a neural network[C]//NeurIPS 2014 Deep Learning Workshop. 2015.
+
+[81] VOVK V, GAMMERMAN A, SHAFER G. Algorithmic learning in a random world[M]. New York: Springer, 2005.
+
+[82] LEI J, G'SELL M, RINALDO A, et al. Distribution-free predictive inference for regression[J]. Journal of the American Statistical Association, 2018, 113(523): 1094-1111.
+
+[83] GIBBS I, CANDÈS E. Adaptive conformal inference under distribution shift[C]//Advances in Neural Information Processing Systems. 2021, 34: 1660-1672.
+
+[84] CHAKRABORTY S, DELIBASOGLU I, HEINTZ F. EDformer: embedded decomposition transformer for interpretable multivariate time series predictions[J/OL]. arXiv preprint arXiv:2412.12227, 2024.
+
 ## 待办
 
 - [ ] 中文 9 篇与英文 6 篇的 ⏳ 卷期页码定稿时从知网/期刊官网补全（勿臆造）
 - [ ] 正文引用编号按实际引用顺序重排（GB/T 7714 顺序编码制；第 1 章已按当前编号引用 [1]-[77]——[72]/[74]-[77] 于 2026-08-04 回填，其余章节当前无引用、定稿时按需增补后重排）
-- [ ] 孤儿编号核对（2026-08-04 审计）：[27][28][56][73] 当前无任何章节引用——定稿时在对应位置补引（1.2.1 分解/组合方法处 [27][28]、Transformer 基础范式 [56]、ARIMA 基础 [73]）或从清单删除（GB/T 7714 顺序编码制不允许"列而不引"）
-- [ ] 第 5 章事件/共形相关英文文献（NIPS 2024 冻结阈值、共形预测）若需引用，按需增补并保持中文多数
+- [x] 孤儿编号核对（2026-08-04 处理）：[27][28] 补引至 1.2.1 分解/组合方法处、[56] 补引至 1.2.1 Transformer 基础、[73] 补引至 3.6 ARIMA 传统基线处
+- [x] 第 4/5 章方法文献 [78]-[84] 已增补（TE/PCMCI+/KD/共形/ACI/EDformer，2026-08-04）；WEITS 出处未核验，正文【待补引文】标注保留
