@@ -202,9 +202,9 @@ def main() -> None:
     """绘制并导出 PCMCI+ 验证网络图（左大网络 + 右节点级验证条）。"""
     data = json.load(open("outputs/analysis/pcmci/pcmci_summary.json"))
     fig = plt.figure(figsize=(10.6, 5.0))
-    # 右面板加宽（1.0→1.18）并左移（wspace 0.22→0.14）（2026-08-04 用户反馈）
+    # 左网络面板加大（2.0→2.4），右面板保持加宽左移（2026-08-04 用户反馈）
     gs = fig.add_gridspec(
-        1, 2, width_ratios=[2.0, 1.18], wspace=0.14,
+        1, 2, width_ratios=[2.4, 1.18], wspace=0.14,
     )
     ax1 = fig.add_subplot(gs[:, 0])          # 左：验证网络（主导）
     ax2b = fig.add_subplot(gs[:, 1])         # 右：节点级堆叠条
