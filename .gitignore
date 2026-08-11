@@ -20,6 +20,7 @@ htmlcov/
 *.swp
 *.tmp
 *.log
+.drawio-tmp/
 
 # 原始、中间及正式数据不进入 Git；仅保留目录骨架与轻量清单
 data/external/*
@@ -46,3 +47,5 @@ outputs/*
 # 调试脚本残留图不入仓（visualize_adaptive_graph.py 输出，已由正式图取代）
 outputs/figures/fig_adaptive_graph_heatmaps.*
 outputs/figures/fig_alpha_curve.*
+# 未纳入正文的早期示意图源稿留在本地，不进入版本库
+outputs/figures/schematics/

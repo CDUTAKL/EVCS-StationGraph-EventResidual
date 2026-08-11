@@ -138,7 +138,7 @@ def redraw_fig3_4() -> None:
     for exp_id, label, color in MODELS:
         data = _load_model_metrics(exp_id)
         mat = np.asarray([[data[s]["by_horizon"][h] for h in hs] for s in SEEDS])
-        mean, sd = mat.mean(axis=0), mat.std(axis=0)
+        mean, sd = mat.mean(axis=0), mat.std(axis=0, ddof=1)
         ax.plot(hs, mean, marker=markers[label], ms=6.0, lw=1.7, color=color,
                 label=label, zorder=4)
         ax.fill_between(hs, mean - sd, mean + sd, color=color,
@@ -152,7 +152,7 @@ def redraw_fig3_4() -> None:
     _clean(ax)
     fig.text(0.50, 0.92, "点为三种子均值；浅色带为跨种子标准差",
              ha="center", va="center", fontsize=7.0, color=GRAY_M)
-    _final(fig, "fig3_4_mae_by_horizon", (8.4, 4.65))
+    _final(fig, "fig3_8_mae_by_horizon", (8.4, 4.65))
     return None
 
 
@@ -161,6 +161,7 @@ def redraw_fig3_8() -> None:
     fig, ax = plt.subplots(figsize=(8.0, 4.0))
     x = np.arange(len(SCOPES))
     width = 0.15
+    hatches = ["", "///", "\\\\", "...", "xx", "++"]
     for mi, (exp_id, label, color) in enumerate(MODELS):
         data = _load_model_metrics(exp_id)
         means, sds = [], []
@@ -168,9 +169,10 @@ def redraw_fig3_8() -> None:
             vals = np.asarray([data[s]["scopes"][scope_key] for s in SEEDS],
                               dtype=float)
             means.append(vals.mean())
-            sds.append(vals.std())
+            sds.append(vals.std(ddof=1))
         ax.bar(x + (mi - 2) * width, means, width=width, color=color,
-               edgecolor="white", lw=0.5, yerr=sds, capsize=2.2,
+               edgecolor="white", lw=0.5, hatch=hatches[mi],
+               yerr=sds, capsize=2.2,
                error_kw=dict(lw=0.8), label=label, zorder=3)
     ax.set_yscale("log")
     ax.set_xticks(x)
@@ -182,7 +184,7 @@ def redraw_fig3_8() -> None:
               handletextpad=0.35)
     _clean(ax)
     fig.subplots_adjust(left=0.12, right=0.98, bottom=0.17, top=0.80)
-    _final(fig, "fig3_8_mae_by_window", (8.0, 4.0))
+    _final(fig, "fig3_10_mae_by_window", (8.0, 4.0))
     return None
 
 
@@ -214,7 +216,7 @@ def redraw_fig3_9() -> None:
     cbar.set_label("MAE（kWh/15 min，三种子均值）", fontsize=7.6)
     cbar.ax.tick_params(labelsize=7.2)
     ax.tick_params(length=0)
-    _final(fig, "fig3_9_mae_by_node", (8.0, 3.4))
+    _final(fig, "fig3_11_mae_by_node", (8.0, 3.4))
     return None
 
 
@@ -246,7 +248,7 @@ def redraw_fig3_10() -> None:
         if len(paths) != 3:
             raise FileNotFoundError(f"{key} 三种子 metrics.json 不齐（{len(paths)} 个）")
         vals = [json.load(open(p))["global"]["mae"] for p in paths]
-        mean, sd = float(np.mean(vals)), float(np.std(vals))
+        mean, sd = float(np.mean(vals)), float(np.std(vals, ddof=1))
         means.append(mean)
         sds.append(sd)
         ax.bar(xi, mean, width=0.56, color=color, edgecolor="white",
@@ -261,7 +263,7 @@ def redraw_fig3_10() -> None:
     ax.set_ylabel("全局 MAE（kWh/15 min）", fontsize=8.8)
     ax.set_ylim(0, ymax)
     _clean(ax)
-    _final(fig, "fig3_10_mechanism_ablation", (7.8, 3.8))
+    _final(fig, "fig3_12_mechanism_ablation", (7.8, 3.8))
     return None
 
 
@@ -332,15 +334,14 @@ def redraw_fig3_11() -> None:
     ax.set_xlim(-context - 0.5, event_end - event_start + context + 0.5)
     ax.set_ylim(bottom=min(-0.02, float(pred_pts.min()) - 0.02))
     _clean(ax)
-    _final(fig, "fig3_11_event_window_forecast", (8.4, 3.9))
+    _final(fig, "fig3_16_event_window_forecast", (8.4, 3.9))
     return None
 
 
 if __name__ == "__main__":
-    print("=== 批次 12：第 3 章实验章新增 5 图 ===")
+    print("=== 批次 12：第 3 章主文 4 图 ===")
     redraw_fig3_4()
     redraw_fig3_8()
     redraw_fig3_9()
     redraw_fig3_10()
-    redraw_fig3_11()
     print("批次 12 完成")

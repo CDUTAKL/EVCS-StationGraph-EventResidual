@@ -1,7 +1,7 @@
 """论文图批次 3：第 2 章数据特征 5 张 + 第 3 章方法 2 张 + 第 5 章补充 2 张。
 
 ⚠️ 已废弃（审查 M-08，2026-08-01）：本批次全部输出已被 batch4~batch8
-重绘版覆盖（fig2_3b/2_5/2_6/3_1/3_6/4_4/5_3/5_4/5_5 由 batch4/6/7，
+重绘版覆盖（相关旧图已由 batch4/6/7 等后续批次替代，
 其余由 batch5）。其中 fig2_6 事件时间线使用局部一天标准差 + load_jump_flag，
 与正式冻结规则口径不一致——**请勿运行本脚本覆盖最终图**。
 
@@ -70,7 +70,7 @@ def fig_load_heatmap() -> None:
     cbar = fig.colorbar(im, ax=ax, fraction=0.03, pad=0.02)
     cbar.set_label("归一化负荷", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
-    final(fig, "fig2_3_load_heatmap", (7.2, 3.0))
+    final(fig, "fig2_4_load_heatmap", (7.2, 3.0))
 
 
 # ========== ② 典型周曲线 ==========
@@ -89,7 +89,7 @@ def fig_weekly_curves() -> None:
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, ncol=3, loc="upper left")
-    final(fig, "fig2_4_weekly_curves", (6.8, 3.0))
+    final(fig, "fig2_6_weekly_curves", (6.8, 3.0))
 
 
 # ========== ③ 负荷分布（稀疏性） ==========
@@ -105,7 +105,7 @@ def fig_load_distribution() -> None:
     # 标注稀疏性
     ax.text(0.98, 0.95, f"全局非零率 21.59%\n峰均比 ≈ 38", transform=ax.transAxes,
             ha="right", va="top", fontsize=8.5, color="0.25")
-    final(fig, "fig2_5_load_distribution", (6.2, 3.2))
+    final(fig, "fig2_7_load_distribution", (6.2, 3.2))
 
 
 # ========== ④ 事件分数时间线 ==========
@@ -158,7 +158,7 @@ def fig_autocorrelation() -> None:
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, ncol=3, loc="upper right")
-    final(fig, "fig2_3b_autocorrelation", (6.8, 3.0))
+    final(fig, "fig2_5_autocorrelation", (6.8, 3.0))
 
 
 # ========== ⑥ LRE 三关系矩阵热力图 ==========
@@ -178,7 +178,7 @@ def fig_lre_matrices() -> None:
     cbar = fig.colorbar(im, ax=axes, fraction=0.025, pad=0.03)
     cbar.set_label("邻接权重（对称归一化）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
-    final(fig, "fig3_3_lre_matrices", (7.2, 2.9))
+    final(fig, "fig3_6_lre_matrices", (7.2, 2.9))
 
 
 # ========== ⑦ 训练收敛曲线 ==========
@@ -195,7 +195,7 @@ def fig_training_curve() -> None:
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, loc="upper right")
-    final(fig, "fig3_5_training_curve", (6.2, 3.2))
+    final(fig, "fig3_10_training_curve", (6.2, 3.2))
 
 
 # ========== ⑧ 方向不对称条形图 ==========
@@ -231,7 +231,7 @@ def fig_asymmetry() -> None:
     ax2.tick_params(axis="x", labelsize=7.5)
     ax2.spines[["top", "right"]].set_visible(False)
 
-    final(fig, "fig5_3_asymmetry", (7.2, 3.2))
+    final(fig, "fig5_4_asymmetry", (7.2, 3.2))
 
 
 # ========== ⑨ per-node 共形分位数对比 ==========
@@ -254,7 +254,7 @@ def fig_quantile_per_node() -> None:
     ax.tick_params(axis="y", labelsize=7.5)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=7.5, frameon=False, loc="upper left")
-    final(fig, "fig5_5_quantile_per_node", (6.2, 3.2))
+    final(fig, "fig5_9_quantile_per_node", (6.2, 3.2))
 
 
 if __name__ == "__main__":

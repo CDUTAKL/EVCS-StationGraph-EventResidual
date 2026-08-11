@@ -76,7 +76,7 @@ def panel_label(ax, label: str, text: str) -> None:
 
 def _mean_std(values: list[np.ndarray]) -> tuple[np.ndarray, np.ndarray]:
     arr = np.asarray(values, dtype=float)
-    return arr.mean(axis=0), arr.std(axis=0)
+    return arr.mean(axis=0), arr.std(axis=0, ddof=1)
 
 
 def redraw_fig5_4() -> None:
@@ -85,7 +85,7 @@ def redraw_fig5_4() -> None:
     methods = [
         ("standard_conformal", "标准共形", GRAY_D, "o", "white"),
         ("stratified_conformal", "规则路由分层共形", BLUE, "o", BLUE),
-        ("stratified_oracle_upper", "oracle 事后上界", ORANGE, "*", ORANGE),
+        ("stratified_oracle_upper", "oracle 事后参照", ORANGE, "*", ORANGE),
     ]
 
     # 三个面板分别回答：事件窗口的部署覆盖率、全局/稳定窗口比较、逐步长稳定性。
@@ -94,7 +94,7 @@ def redraw_fig5_4() -> None:
     gs = GridSpec(3, 1, figure=fig, height_ratios=[1.0, 1.0, 1.15],
                   left=0.16, right=0.965, bottom=0.08, top=0.88, hspace=0.32)
 
-    oracle_note = f"★ oracle {float(np.mean([s['stratified_oracle_upper']['coverage_event_window'] for s in seeds])):.1%}：真实标签事后上界 · 不可部署"
+    oracle_note = f"★ oracle {float(np.mean([s['stratified_oracle_upper']['coverage_event_window'] for s in seeds])):.1%}：真实标签事后参照 · 预测时不可用"
     fig.text(0.50, 0.94, oracle_note, ha="center", va="center", fontsize=8.2,
              color=ORANGE, bbox=dict(facecolor="white", edgecolor=ORANGE,
                                       linewidth=0.8, boxstyle="round,pad=0.38"))
@@ -106,7 +106,7 @@ def redraw_fig5_4() -> None:
     for key, label, color, marker, face in methods[:2]:
         vals = np.asarray([s[key]["coverage_event_window"] for s in seeds], dtype=float)
         event_vals.append(vals.mean())
-        event_stds.append(vals.std())
+        event_stds.append(vals.std(ddof=1))
     yy = np.array([1, 0])
     for item, mean, sd, y in zip(methods[:2], event_vals, event_stds, yy):
         _, label, color, marker, face = item
@@ -145,7 +145,7 @@ def redraw_fig5_4() -> None:
         std_vals = np.asarray([s["standard_conformal"][f"coverage_{wk}"] for s in seeds], dtype=float)
         rule_vals = np.asarray([s["stratified_conformal"][f"coverage_{wk}"] for s in seeds], dtype=float)
         std_mean, rule_mean = std_vals.mean(), rule_vals.mean()
-        std_sd, rule_sd = std_vals.std(), rule_vals.std()
+        std_sd, rule_sd = std_vals.std(ddof=1), rule_vals.std(ddof=1)
         ax.plot([std_mean, rule_mean], [yi, yi], color=GRAY_L, lw=2.6, zorder=2)
         ax.errorbar(std_mean, yi, xerr=std_sd, fmt="o", ms=6.0, mfc="white", mec=GRAY_D,
                     ecolor=GRAY_D, capsize=2.3, lw=0.9, zorder=4)
@@ -195,7 +195,7 @@ def redraw_fig5_4() -> None:
             fontsize=11, fontweight="bold", color=GRAY_D)
     ax.text(-0.02, 1.04, "步长稳定性：全样本", transform=ax.transAxes,
             ha="left", va="bottom", fontsize=8.8, color=GRAY_D)
-    final(fig, "fig5_4_coverage", (8.4, 7.8))
+    final(fig, "fig5_7_coverage", (8.4, 7.8))
 
 
 def redraw_fig5_5() -> None:
@@ -209,7 +209,7 @@ def redraw_fig5_5() -> None:
                             np.maximum(np.asarray(s["q_global_per_node"]), 1e-12)
                             for s in seeds])
     ratio = ratio_all.mean(axis=0)
-    ratio_sd = ratio_all.std(axis=0)
+    ratio_sd = ratio_all.std(axis=0, ddof=1)
     order = np.argsort(ratio)[::-1]
 
     fig = plt.figure(figsize=(11.8, 5.35), constrained_layout=False)
@@ -277,7 +277,7 @@ def redraw_fig5_5() -> None:
     clean_ax(ax, "x")
     panel_label(ax, "B", "区间膨胀：事件层相对全局")
     # 误差棒口径已由图注说明；底部不再放脚注，避免侵入坐标轴刻度区域。
-    final(fig, "fig5_5_quantile_per_node", (11.8, 5.35))
+    final(fig, "fig5_8_quantile_per_node", (11.8, 5.35))
 
 
 def redraw_fig5_6() -> None:
@@ -491,7 +491,7 @@ def redraw_fig3_5() -> None:
     # 避免图例覆盖末轮点及其数值标签。
     clean_ax(ax, "x")
     panel_label(ax, "B", "训练结果：最佳与末轮差异")
-    final(fig, "fig3_5_training_curve", (9.2, 4.25))
+    final(fig, "fig3_10_training_curve", (9.2, 4.25))
 
 
 def redraw_fig3_6() -> None:
@@ -542,7 +542,7 @@ def redraw_fig3_6() -> None:
                 bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=0.4))
         clean_ax(ax, "x")
         panel_label(ax, "AB"[row], f"{title}：Bootstrap 森林图")
-    final(fig, "fig3_6_bootstrap_difference", (8.4, 5.05))
+    final(fig, "fig3_9_bootstrap_difference", (8.4, 5.05))
 
 
 def redraw_fig3_7() -> None:
@@ -600,16 +600,13 @@ def redraw_fig3_7() -> None:
     ax.set_ylabel("α", fontsize=8.8)
     clean_ax(ax, "y")
     panel_label(ax, "B", "阶段摘要：三种子终值与最佳点")
-    final(fig, "fig3_7_alpha_convergence", (8.4, 5.15))
+    final(fig, "fig3_12_alpha_convergence", (8.4, 5.15))
 
 
 if __name__ == "__main__":
-    print("=== 批次 9：导师审阅版 7 张图重绘 ===")
-    redraw_fig3_5()
+    print("=== 批次 9：主文 4 张图重绘 ===")
     redraw_fig3_6()
-    redraw_fig3_7()
     redraw_fig4_4()
     redraw_fig5_4()
     redraw_fig5_5()
-    redraw_fig5_6()
     print("批次 9 完成")

@@ -1,4 +1,4 @@
-"""论文图批次 14：PCMCI+ 因果验证网络图（图 5-2b，SG-EXP-017）。
+"""论文图批次 14：PCMCI+ 条件独立核验网络图（现图5-6，SG-EXP-017）。
 
 三面板设计（2026-08-03 用户要求"无比精致复杂"）：
 - 左：验证网络图——圆环布局，节点大小编码累计负荷（冗余编码），
@@ -88,12 +88,12 @@ def _network_panel(ax, data: dict) -> None:
                     arrowprops=dict(arrowstyle="->", color=GRAY_M, lw=0.5,
                                     alpha=0.22, shrinkA=16, shrinkB=16,
                                     connectionstyle="arc3,rad=0.10"))
-    # PCMCI+ 独有边（橙，中粗）
+    # PCMCI+ 独有边（橙色点划线；用线型冗余编码，灰度打印仍可区分）
     for s, t in pcmci_only:
         ax.annotate("", xy=pos[t], xytext=pos[s],
                     arrowprops=dict(arrowstyle="->", color=ORANGE, lw=1.5,
                                     alpha=0.95, shrinkA=16, shrinkB=16,
-                                    connectionstyle="arc3,rad=0.10"))
+                                    linestyle="-.", connectionstyle="arc3,rad=0.10"))
     # 确认边（蓝，线宽 ∝ |coef|；双向对用正负曲率区分方向）
     ab = {abs(x) for x in coef_map.values()}
     lo, hi = min(ab), max(ab)
@@ -139,7 +139,7 @@ def _network_panel(ax, data: dict) -> None:
                       label="TE→PCMCI+ 确认"),
         mlines.Line2D([], [], color=GRAY_M, lw=0.8, alpha=0.5, ls="--",
                       label="TE 候选未确认"),
-        mlines.Line2D([], [], color=ORANGE, lw=1.5, alpha=0.95, ls="-",
+        mlines.Line2D([], [], color=ORANGE, lw=1.5, alpha=0.95, ls="-.",
                       label="PCMCI+ 独有"),
         mlines.Line2D([], [], marker="o", color="none", ms=7, mfc="white",
                       mec=GRAY_D, label="节点大小 ∝ 累计负荷"),
@@ -173,11 +173,11 @@ def _node_panel(ax, data: dict) -> None:
     y = np.arange(len(rows))
     for yi, (num, nd, c, t, p) in enumerate(rows):
         ax.barh(yi, c, height=0.55, color=BLUE, alpha=0.9, edgecolor="white",
-                linewidth=0.5, zorder=3)
+                linewidth=0.5, hatch="///", zorder=3)
         ax.barh(yi, t, left=c, height=0.55, color=GRAY_M, alpha=0.7,
-                edgecolor="white", linewidth=0.5, zorder=3)
+                edgecolor="white", linewidth=0.5, hatch="...", zorder=3)
         ax.barh(yi, p, left=c + t, height=0.55, color=ORANGE, alpha=0.95,
-                edgecolor="white", linewidth=0.5, zorder=3)
+                edgecolor="white", linewidth=0.5, hatch="xx", zorder=3)
         ax.text(0.4, yi, "{}".format(num), va="center", fontsize=5.6,
                 color="white", zorder=4)
         ax.text(c + t + p + 0.6, yi, "{}".format(c + t + p), va="center",
@@ -193,9 +193,9 @@ def _node_panel(ax, data: dict) -> None:
     # 堆叠图例（紧凑横排于顶部）
     import matplotlib.patches as mp
     handles = [
-        mp.Patch(color=BLUE, label="确认"),
-        mp.Patch(color=GRAY_M, label="TE 未确认"),
-        mp.Patch(color=ORANGE, label="PCMCI+ 独有"),
+        mp.Patch(facecolor=BLUE, hatch="///", label="确认"),
+        mp.Patch(facecolor=GRAY_M, hatch="...", label="TE 未确认"),
+        mp.Patch(facecolor=ORANGE, hatch="xx", label="PCMCI+ 独有"),
     ]
     # 图例置于面板上方（2026-08-04 用户反馈：原右下遮挡条形）
     ax.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.02, 1.05),
@@ -214,7 +214,7 @@ def main() -> None:
     ax2b = fig.add_subplot(gs[:, 1])         # 右：节点级堆叠条
     _network_panel(ax1, data)
     _node_panel(ax2b, data)
-    final(fig, "fig5_2b_pcmci_validation_network", (10.6, 5.0))
+    final(fig, "fig5_5_pcmci_validation_network", (10.6, 5.0))
 
 
 if __name__ == "__main__":

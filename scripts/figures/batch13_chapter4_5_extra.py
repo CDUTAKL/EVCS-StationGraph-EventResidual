@@ -195,7 +195,7 @@ def redraw_fig5_10() -> None:
     ax = axes[0]
     for data, label, color in [(std_cov, "标准共形", GRAY_M),
                                (rule_cov, "规则路由分层共形", BLUE)]:
-        mean, sd = data.mean(axis=0), data.std(axis=0)
+        mean, sd = data.mean(axis=0), data.std(axis=0, ddof=1)
         ax.errorbar(hs, mean, yerr=sd, fmt="o", ms=5.5, color=color,
                     ecolor=color, capsize=2.8, lw=1.1, label=label, zorder=4)
     ax.axhline(0.90, color=RED, lw=1.0, ls="--", zorder=1)
@@ -214,17 +214,17 @@ def redraw_fig5_10() -> None:
     w = 0.36
     ax.bar(x - w / 2, std_w.mean(axis=0), width=w, color=GRAY_M,
            edgecolor="white", lw=0.5,
-           yerr=std_w.std(axis=0), capsize=2.0, label="标准共形", zorder=3)
+           yerr=std_w.std(axis=0, ddof=1), capsize=2.0, label="标准共形", zorder=3)
     ax.bar(x + w / 2, rule_w.mean(axis=0), width=w, color=BLUE,
            edgecolor="white", lw=0.5,
-           yerr=rule_w.std(axis=0), capsize=2.0,
+           yerr=rule_w.std(axis=0, ddof=1), capsize=2.0,
            label="规则路由分层共形", zorder=3)
     ax.set_xticks(x)
     ax.set_xticklabels(BUNDLE.node_ids, fontsize=6.8, rotation=45, ha="right")
     ax.set_ylabel("区间宽度（kWh/15 min）", fontsize=8.4)
     ax.legend(fontsize=6.8, frameon=False, loc="upper right")
     _clean(ax)
-    _final(fig, "fig5_7_coverage_width", (9.2, 3.7))
+    _final(fig, "fig5_10_coverage_width", (9.2, 3.7))
     return None
 
 
@@ -270,14 +270,13 @@ def redraw_fig5_11() -> None:
         ax.set_xlim(0, x_limit)
         ax.set_xticks(np.round(np.linspace(0, x_limit, 5), 2))
         _clean(ax)
-    _final(fig, "fig5_8_te_vs_relations", (9.6, 3.4))
+    _final(fig, "fig5_4_te_vs_relations", (9.6, 3.4))
     return None
 
 
 if __name__ == "__main__":
-    print("=== 批次 13：第 4/5 章新增 4 图 ===")
+    print("=== 批次 13：第 4/5 章主文 3 图 ===")
     redraw_fig4_6()
     redraw_fig4_7()
-    redraw_fig5_10()
     redraw_fig5_11()
     print("批次 13 完成")

@@ -1,15 +1,8 @@
-"""论文图批次 17：图 3-2 门控融合层架构示意图。
+"""历史图批次 17：简化多关系门控传播单元（已退出正式配图入口）。
 
-MRG-GCN 双层门控融合层（3.5.3-3.5.4 节）的机制示意：
-- 四类关系独立消息计算（load/event/pattern/adaptive，逐关系 W_r）
-- 关系级 β 门控（softmax，logit 初始化 0 → β₀=1/3）
-- 节点级 G 门控（sigmoid，逐节点自适应保留）
-- 残差 + LayerNorm 输出
-
-布局（横版）：左=输入与四关系、中=β 门控融合（权重条可视化）、
-右=G 门控与输出；底部标注训练期关系 dropout 与两层独立 β 口径。
-统一规范：无标题、无章节号/实验代号、SVG+PNG 1200 DPI、
-色盲安全配色 + 冗余编码。
+严格对应 ``MultiRelationGatedGCN.forward``：三类固定关系独立传播，
+经 Softmax 关系权重融合；节点门控同时接收自身表示 H 与关系消息 M，
+完成邻居消息/自身信息混合，最后执行 Dropout、残差和 LayerNorm。
 """
 from __future__ import annotations
 
@@ -33,9 +26,8 @@ setup_style(journal="general", lang="zh")
 
 # 色盲安全低饱和色板（与批次 16 一致）
 BLUE = "#2C5F8A"      # 深蓝（固定关系 / β 门控）
-ORANGE = "#D08A3C"    # 低饱和橙（自适应关系）
-GREEN = "#4C7A5C"     # 低饱和绿（G 门控 / 输出）
-RED_S = "#B05A4A"     # 低饱和红（约束 / 训练期）
+ORANGE = "#B9935A"    # 浅棕金（关系融合）
+GREEN = "#647A70"     # 灰绿（节点门控 / 输出）
 GRAY_D = "#404040"
 GRAY_M = "#808080"
 GRAY_L = "#C8C8C8"
@@ -74,125 +66,88 @@ def _arrow(ax, x1, y1, x2, y2, *, color=GRAY_M, lw=1.4, style="-|>",
     ))
 
 
-def fig3_2_gate_fusion() -> None:
-    """门控融合层示意图：四关系消息 → β 门控 → G 门控 → 输出。"""
-    fig, ax = plt.subplots(figsize=(13.4, 7.6))
+def fig3_2_relation_propagation_unit() -> None:
+    """三关系消息 → β 融合 → 节点门控 → 残差归一化。"""
+    fig, ax = plt.subplots(figsize=(10.4, 6.0))
     ax.set_xlim(0, 100)
-    ax.set_ylim(0, 100)
+    ax.set_ylim(0, 72)
     ax.axis("off")
 
-    # ---------- 左：输入与四类关系 ----------
-    ax.text(8, 92, "输入表征", ha="center", fontsize=9.5, fontweight="bold",
-            color=GRAY_D)
-    _card(ax, 3, 84, 10, 5, "H\n[B,N,D]", fc=BG, ec=GRAY_D, lw=1.4, fs=8)
-    _arrow(ax, 13.5, 86.5, 18.5, 86.5, color=GRAY_D, lw=1.5, ms=11)
+    # 输入主干
+    _card(ax, 3, 31, 10, 10, "$H$\n$[B,N,D]$", fc="#EEF3F7", ec=BLUE,
+          lw=1.3, fs=9, weight="bold")
 
+    # 三类固定关系平行传播；三行以标签和线型区分，不虚构权重值。
     rels = [
-        ("load", "负荷耦合\n绝对 Pearson 相关", BLUE, "固定"),
-        ("event", "行为共现\n余弦相似度", BLUE, "固定"),
-        ("pattern", "轮廓相似\n欧氏指数核", BLUE, "固定"),
-        ("adaptive", "节点嵌入内积\n（对照）", ORANGE, "学习"),
+        ("负荷关系", r"$\hat A_{load}HW_{load}$", "-"),
+        ("行为关系", r"$\hat A_{event}HW_{event}$", "--"),
+        ("轮廓关系", r"$\hat A_{pattern}HW_{pattern}$", ":"),
     ]
-    rel_x, rel_w = 19, 17
-    for k, (name, desc, color, tag) in enumerate(rels):
-        y = 74 - k * 13
-        _card(ax, rel_x, y, rel_w, 10.5, f"{name}\n\n{desc}", fc=BG,
-              ec=color, lw=1.4, fs=7.5)
-        # 关系类型角标（固定/学习）
-        _card(ax, rel_x + rel_w - 6.2, y + 7.8, 6.0, 2.2, tag,
-              fc=color, ec=color, fs=6.5, text_color="white", radius=0.5)
+    ys = [57, 36, 15]
+    for (label, formula, ls), y in zip(rels, ys):
+        _card(ax, 20, y - 4, 15, 8, label, fc="#F4F7F9", ec=BLUE,
+              lw=1.1, fs=8.3)
+        _card(ax, 42, y - 4, 17, 8, formula, fc="white", ec=GRAY_M,
+              lw=1.0, fs=8.5)
+        _arrow(ax, 13.5, 36, 19.5, y, color=BLUE, lw=1.15, ms=9,
+               ls=ls)
+        _arrow(ax, 35.5, y, 41.5, y, color=BLUE, lw=1.15, ms=9,
+               ls=ls)
 
-    # 关系 → 消息 箭头（四条并行）
-    for k in range(4):
-        y = 74 - k * 13
-        _arrow(ax, rel_x + rel_w + 0.6, y + 5.2, rel_x + rel_w + 4.4, y + 5.2,
-               color=GRAY_M, lw=1.2, ms=9)
+    # 关系级融合
+    _card(ax, 64, 27, 13, 18,
+          r"$\beta=\mathrm{softmax}(w)$" "\n" r"$M=\sum_r\beta_rM_r$",
+          fc="#F6F0E5", ec=ORANGE, lw=1.3, fs=8.5)
+    for y in ys:
+        _arrow(ax, 59.5, y, 63.5, 36, color=ORANGE, lw=1.15, ms=9)
 
-    # ---------- 中：逐关系消息计算 ----------
-    msg_x, msg_w = 41, 15
-    ax.text(48.5, 92, "逐关系消息计算", ha="center", fontsize=9.5,
-            fontweight="bold", color=GRAY_D)
-    for k, color in enumerate([BLUE, BLUE, BLUE, ORANGE]):
-        y = 74 - k * 13
-        _card(ax, msg_x, y, msg_w, 10.5,
-              f"M{chr(ord('1') + k)} = Â{chr(ord('1') + k)} H W{chr(ord('1') + k)}",
-              fc=BG, ec=color, lw=1.2, fs=7.8)
-        if k < 3:
-            # 固定关系之间：关系 dropout 标注（训练期）
-            ax.text(msg_x + msg_w / 2, y - 1.6, "关系 dropout（训练期）",
-                    ha="center", fontsize=5.5, color=GRAY_M)
-        else:
-            ax.text(msg_x + msg_w / 2, y - 1.6, "节点嵌入，无 top-k",
-                    ha="center", fontsize=5.5, color=GRAY_M)
+    # 节点级门控：明确 H 与 M 都进入 gate，并显示两条混合支路。
+    _card(ax, 82, 46, 14, 9, r"$G=\sigma(W_g[H\Vert M])$",
+          fc="#EEF3F1", ec=GREEN, lw=1.3, fs=8.3)
+    _arrow(ax, 77.5, 36, 82, 50.5, color=GREEN, lw=1.2, ms=9)
+    # 用同名端口复用 H，避免长旁路线穿越主体；公式明确门控接收 H 与 M。
+    ax.text(80.0, 54.0, "$H$", ha="center", va="center", fontsize=8.5,
+            color=GRAY_M)
+    _arrow(ax, 80.8, 53.0, 82.0, 51.5, color=GRAY_M, lw=0.9, ms=8,
+           ls="--")
+    _card(ax, 82, 30, 14, 9,
+          r"$\tilde H=G\odot M$" "\n" r"$+(1-G)\odot H$",
+          fc="#EEF3F1", ec=GREEN, lw=1.3, fs=8.1)
+    _arrow(ax, 89, 45.5, 89, 39.5, color=GREEN, lw=1.2, ms=9)
 
-    # 消息 → β 门控 箭头
-    for k in range(4):
-        y = 74 - k * 13
-        _arrow(ax, msg_x + msg_w + 0.6, y + 5.2, msg_x + msg_w + 4.0, y + 5.2,
-               color=GRAY_M, lw=1.2, ms=9)
+    # 残差与输出；旁路从 H 直达加法节点。
+    _card(ax, 84, 21, 10, 5, "Dropout", fc="#F4F7F6",
+          ec=GREEN, lw=1.1, fs=7.8)
+    _arrow(ax, 89, 29.5, 89, 26.5, color=GREEN, lw=1.2, ms=9)
+    ax.scatter([89], [16], s=300, facecolor="white", edgecolor=GREEN,
+               linewidth=1.2, zorder=4)
+    ax.text(89, 16, "+", ha="center", va="center", fontsize=13,
+            color=GREEN, zorder=5)
+    _arrow(ax, 89, 20.5, 89, 18.2, color=GREEN, lw=1.2, ms=9)
+    # 外层残差同样使用 H 端口，终点明确指向加法节点。
+    ax.text(80.0, 16, "$H$", ha="center", va="center", fontsize=8.5,
+            color=GRAY_M)
+    _arrow(ax, 81.0, 16, 86.8, 16, color=GRAY_M, lw=0.9, ms=8,
+           ls="--")
+    _card(ax, 84, 7, 10, 5, "LayerNorm", fc="#F4F7F6",
+          ec=GREEN, lw=1.1, fs=7.8)
+    _arrow(ax, 89, 13.8, 89, 12.5, color=GREEN, lw=1.2, ms=9)
+    ax.text(89, 2, r"$H_{out}\in\mathbb{R}^{B\times N\times D}$",
+            ha="center", va="center", fontsize=9, color=GRAY_D)
+    _arrow(ax, 89, 6.5, 89, 3.5, color=GREEN, lw=1.2, ms=9)
 
-    # ---------- 中右：关系级 β 门控 ----------
-    beta_x, beta_w = 61, 17
-    ax.text(beta_x + beta_w / 2, 92, "关系级 β 门控（softmax）",
-            ha="center", fontsize=9.5, fontweight="bold", color=BLUE)
-    _card(ax, beta_x, 60, beta_w, 16,
-          "β = softmax(w)\n\nβ₀ = 1/3\n（logit 初始化 0）\n\nM = Σᵣ βᵣ Mᵣ",
-          fc=BG, ec=BLUE, lw=1.5, fs=8)
-    # 权重条可视化（冗余编码：长度 ∝ 学习后权重示意，非真实值）
-    bar_colors = [BLUE, BLUE, BLUE, ORANGE]
-    bar_vals = [0.30, 0.22, 0.30, 0.18]
-    for k, (bc, bv) in enumerate(zip(bar_colors, bar_vals)):
-        y = 60 + k * 3.6 + 0.4
-        bar = mpatches.FancyBboxPatch(
-            (beta_x + 1.5, y), 14.0 * bv / 0.35, 2.4,
-            boxstyle="round,pad=0.004,rounding_size=0.3",
-            fc=bc, ec="none", zorder=4,
-        )
-        ax.add_patch(bar)
-    ax.text(beta_x + beta_w / 2, 55.6, "学习后权重示意（两层独立，逐层重估）",
-            ha="center", fontsize=5.5, color=GRAY_M)
-
-    # β 输出 → G 门控 箭头
-    _arrow(ax, beta_x + beta_w / 2, 59.4, beta_x + beta_w / 2, 50.5,
-           color=BLUE, lw=1.6, ms=11)
-
-    # ---------- 右：节点级 G 门控 → 输出 ----------
-    g_x, g_w = 79, 17
-    ax.text(g_x + g_w / 2, 92, "节点级 G 门控（sigmoid）",
-            ha="center", fontsize=9.5, fontweight="bold", color=GREEN)
-    _card(ax, g_x, 40, g_w, 14,
-          "g = σ(W_g H)\n\nM′ = g ⊙ M\n\n逐节点自适应保留\n（0~1 连续，非开关）",
-          fc=BG, ec=GREEN, lw=1.5, fs=7.8)
-    _arrow(ax, g_x + g_w / 2, 39.4, g_x + g_w / 2, 32.5, color=GREEN,
-           lw=1.6, ms=11)
-    _card(ax, g_x, 23, g_w, 9, "残差 + LayerNorm\nH′ = H + LN(M′)",
-          fc="#F0F5F0", ec=GREEN, lw=1.3, fs=7.8)
-    _arrow(ax, g_x + g_w / 2, 22.4, g_x + g_w / 2, 17.5, color=GREEN,
-           lw=1.6, ms=11)
-    _card(ax, g_x, 10, g_w, 7, "输出 H′\n[B,N,D]", fc=BG, ec=GRAY_D,
-          lw=1.4, fs=8)
-
-    # 输出回注：Skip Fusion 上游
-    ax.text(g_x + g_w / 2, 8.0, "H′ 汇入跨层 Skip Fusion（时序/一阶/二阶）",
-            ha="center", fontsize=6, color=GRAY_M)
-
-    # 右侧竖注：两层独立 β
-    note = mpatches.FancyBboxPatch(
-        (3, 4), 94, 8, boxstyle="round,pad=0.008,rounding_size=0.5",
-        fc="#FDF3F1", ec=RED_S, lw=1.2, zorder=3,
-    )
-    ax.add_patch(note)
-    ax.text(50, 8,
-            "两层 GCN 使用独立关系权重：一阶传播与二阶传播分别选择关系混合；\n"
-            "β 与 G 门控语义可解释：βᵣ 接近 1 → 该类关系对节点贡献大，g 接近 0 → 该节点无需邻居信息",
-            ha="center", va="center", fontsize=7.5, color=RED_S, zorder=4)
+    ax.text(70.5, 47.5, "关系级融合", ha="center", fontsize=7.2,
+            color=ORANGE)
+    ax.text(89, 57.5, "节点门控", ha="center", fontsize=7.2,
+            color=GREEN)
 
     fig.tight_layout()
-    final(fig, "fig3_2_gate_fusion", (13.4, 7.6))
+    final(fig, "legacy_fig3_2_relation_propagation_unit", (10.4, 6.0))
     plt.close(fig)
 
 
 if __name__ == "__main__":
-    print("=== 批次 17：图 3-2 门控融合层架构示意图 ===")
-    fig3_2_gate_fusion()
-    print("=== 完成 ===")
+    raise RuntimeError(
+        "该脚本生成的是已废弃的简化图3-2；正式图3-2为复杂多关系传播单元，"
+        "不得用本脚本覆盖。"
+    )

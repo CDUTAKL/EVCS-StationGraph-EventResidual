@@ -72,7 +72,7 @@ def _clean_ax(ax, xlabel=None, ylabel=None):
 
 
 # ========== fig5_3 方向不对称（v4：编号联动主图 + 边缘分布） ==========
-def fig5_3_asymmetry() -> None:
+def fig5_4_asymmetry() -> None:
     te = json.load(open("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"))
     node_ids = list(BUNDLE.node_ids)
     te_mat = np.array(te["te_matrix"])
@@ -205,7 +205,7 @@ def fig5_3_asymmetry() -> None:
 
 
 # ========== fig5_4 覆盖率（v3：per-seed 散点 + horizon 面板） ==========
-def fig5_4_coverage() -> None:
+def fig5_8_coverage() -> None:
     c = json.load(open("outputs/analysis/conformal_prediction/conformal_summary.json"))
     seeds = c["per_seed"]
     groups = ["全局", "事件窗口", "稳定窗口"]
@@ -343,11 +343,10 @@ def fig5_4_coverage() -> None:
                handlelength=1.8, columnspacing=0.8)
     panel_tag(axC, "C", "逐步长覆盖率：三种子范围与均值")
 
-    final(fig, "fig5_4_coverage", (8.4, 8.25))
+    final(fig, "fig5_8_coverage", (8.4, 8.25))
 
 
 if __name__ == "__main__":
-    print("=== 批次 6：fig5_3 / fig5_4 高信息密度重设计 ===")
-    fig5_3_asymmetry()
-    fig5_4_coverage()
+    print("=== 批次 6：图5-3方向不对称性重设计 ===")
+    fig5_4_asymmetry()
     print("批次 6 完成")

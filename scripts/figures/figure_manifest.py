@@ -1,6 +1,6 @@
-"""论文图 provenance manifest 生成与校验（审查 H-13，2026-08-01）。
+"""论文图 provenance manifest 生成与校验（41 图方案，2026-08-11）。
 
-为 37 张最终图建立唯一可追溯入口：图 → 生成脚本(SHA) → 输入工件(SHA) → 输出 SHA
+为 32 张数据支撑图建立唯一可追溯入口：图 → 生成脚本(SHA) → 输入工件(SHA) → 输出 SHA
 → git commit → 数据集 SHA。
 
 用法：
@@ -36,46 +36,41 @@ MAE_5_MODELS_INPUTS = [
     ("glob", "outputs/experiments/SG-EXP-010/*/seed-*/metrics.json"),
 ]
 
-# 图 → 最终生成脚本（batch4~13；batch3 已废弃勿运行）
+# 图 → 最终生成脚本。41 幅主文图中，9 幅纯方法示意图不依赖实验工件；
+# fig5_1 虽为衔接示意图，但包含 TE/PCMCI+ 计数，故纳入本 manifest。
 FINAL_SCRIPTS = {
-    "fig1_1_roadmap": "batch18_fig1_1_roadmap.py",
+    "fig1_2_roadmap": "batch18_fig1_1_roadmap.py",
     "fig2_1_data_reconstruction": "batch16_schematic_figs.py",
     "fig2_2_node_coverage": "batch10_fig2_2_coverage.py",
     "fig2_3_load_heatmap": "batch5_restyle.py",
-    "fig2_3b_autocorrelation": "batch4_redraw.py",
-    "fig2_4_weekly_curves": "batch5_restyle.py",
-    "fig2_5_load_distribution": "batch4_redraw.py",
-    "fig2_6_event_hourly": "batch4_redraw.py",
-    "fig2_7_feature_correlation": "batch11_chapter2_extra.py",
-    "fig2_8_weekday_hour_heatmap": "batch11_chapter2_extra.py",
+    "fig2_4_autocorrelation": "batch4_redraw.py",
+    "fig2_5_weekly_curves": "batch5_restyle.py",
+    "fig2_6_load_distribution": "batch4_redraw.py",
+    "fig2_8_event_hourly": "batch4_redraw.py",
     "fig2_9_event_component_composition": "batch11_chapter2_extra.py",
-    "fig2_10_event_window_length": "batch11_chapter2_extra.py",
-    "fig3_1_model_mae_comparison": "batch4_redraw.py",
-    "fig3_2_gate_fusion": "batch17_fig3_2_gate_fusion.py",
-    "fig3_3_lre_matrices": "batch5_restyle.py",
-    "fig3_4_mae_by_horizon": "batch12_chapter3_extra.py",
-    "fig3_5_training_curve": "batch9_advisor_redraw.py",
-    "fig3_6_bootstrap_difference": "batch9_advisor_redraw.py",
-    "fig3_7_alpha_convergence": "batch9_advisor_redraw.py",
-    "fig3_8_mae_by_window": "batch12_chapter3_extra.py",
-    "fig3_9_mae_by_node": "batch12_chapter3_extra.py",
-    "fig3_10_mechanism_ablation": "batch12_chapter3_extra.py",
-    "fig3_11_event_window_forecast": "batch12_chapter3_extra.py",
+    "fig2_11_feature_correlation": "batch11_chapter2_extra.py",
+    "fig2_12_weekday_hour_heatmap": "batch11_chapter2_extra.py",
+    "fig3_5_lre_matrices": "batch5_restyle.py",
+    "fig3_7_model_mae_comparison": "batch4_redraw.py",
+    "fig3_8_mae_by_horizon": "batch12_chapter3_extra.py",
+    "fig3_9_bootstrap_difference": "batch9_advisor_redraw.py",
+    "fig3_10_mae_by_window": "batch12_chapter3_extra.py",
+    "fig3_11_mae_by_node": "batch12_chapter3_extra.py",
+    "fig3_12_mechanism_ablation": "batch12_chapter3_extra.py",
     "fig4_1_three_layer_framework": "batch16_schematic_figs.py",
-    "fig4_2_intervention": "batch5_restyle.py",
-    "fig4_3_kd_distillation": "batch15_fig4_3_kd.py",
-    "fig4_4_four_cell": "batch9_advisor_redraw.py",
+    "fig4_2_beta_profile": "batch19_41fig_ch4.py",
+    "fig4_3_intervention": "batch5_restyle.py",
+    "fig4_4_four_cell": "batch19_41fig_ch4.py",
     "fig4_5_residual_distribution": "batch13_chapter4_5_extra.py",
     "fig4_6_error_vs_event_intensity": "batch13_chapter4_5_extra.py",
-    "fig5_1_exploration_roadmap": "batch16_schematic_figs.py",
+    "fig5_1_te_pcmci_flow": "batch20_fig5_1_compact_flow.py",
     "fig5_2_transfer_entropy": "batch5_restyle.py",
-    "fig5_2b_pcmci_validation_network": "batch14_pcmci_network.py",
     "fig5_3_asymmetry": "batch6_te_coverage_enhance.py",
-    "fig5_4_coverage": "batch9_advisor_redraw.py",
-    "fig5_5_quantile_per_node": "batch9_advisor_redraw.py",
-    "fig5_6_parameter_intervention": "batch5_restyle.py",
-    "fig5_7_coverage_width": "batch13_chapter4_5_extra.py",
-    "fig5_8_te_vs_relations": "batch13_chapter4_5_extra.py",
+    "fig5_4_te_vs_relations": "batch13_chapter4_5_extra.py",
+    "fig5_5_pcmci_validation_network": "batch14_pcmci_network.py",
+    "fig5_7_coverage": "batch9_advisor_redraw.py",
+    "fig5_8_quantile_per_node": "batch9_advisor_redraw.py",
+    "fig5_9_parameter_intervention": "batch5_restyle.py",
 }
 
 # 图 → 关键输入工件（存在性 + SHA 校验；glob 模式展开为匹配文件列表）
@@ -85,43 +80,44 @@ FINAL_SCRIPTS = {
 # 为纯手工绘制的流程/架构示意图，无数据输入工件，登记空列表以通过
 # --check-repository 的输入登记完整性检查。
 INPUTS_BY_FIGURE = {
-    "fig1_1_roadmap": [],
+    "fig1_2_roadmap": [],
     "fig2_1_data_reconstruction": [],
     "fig2_2_node_coverage": [Path("data/processed/SG-DATA-002-node-coverage-stability.csv")],
     "fig2_3_load_heatmap": [BUNDLE_PATH],
-    "fig2_3b_autocorrelation": [BUNDLE_PATH],
-    "fig2_4_weekly_curves": [BUNDLE_PATH],
-    "fig2_5_load_distribution": [BUNDLE_PATH],
-    "fig2_6_event_hourly": [BUNDLE_PATH],
-    "fig2_7_feature_correlation": [BUNDLE_PATH],
-    "fig2_8_weekday_hour_heatmap": [BUNDLE_PATH],
+    "fig2_4_autocorrelation": [BUNDLE_PATH],
+    "fig2_5_weekly_curves": [BUNDLE_PATH],
+    "fig2_6_load_distribution": [BUNDLE_PATH],
+    "fig2_8_event_hourly": [BUNDLE_PATH],
     "fig2_9_event_component_composition": [BUNDLE_PATH],
-    "fig2_10_event_window_length": [BUNDLE_PATH],
-    "fig3_1_model_mae_comparison": [
+    "fig2_11_feature_correlation": [BUNDLE_PATH],
+    "fig2_12_weekday_hour_heatmap": [BUNDLE_PATH],
+    "fig3_7_model_mae_comparison": [
+        Path("outputs/analysis/traditional_baselines/formal_baselines_locked.json"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-002/*/seed-*/metrics.json"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-003/*/seed-*/metrics.json"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-004/*/seed-*/metrics.json"),
+        ("glob", "outputs/night_run/20260730-171821/SG-EXP-005/*/seed-*/metrics.json"),
+        ("glob", "outputs/experiments/SG-EXP-008/*/seed-*/metrics.json"),
+        ("glob", "outputs/experiments/SG-EXP-009/*/seed-*/metrics.json"),
+        ("glob", "outputs/experiments/SG-EXP-010/*/seed-*/metrics.json"),
+        ("glob", "outputs/experiments/SG-EXP-018/*/seed-*/metrics.json"),
     ],
-    "fig3_2_gate_fusion": [],
-    "fig3_3_lre_matrices": [Path("outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz")],
-    "fig3_4_mae_by_horizon": MAE_5_MODELS_INPUTS,
-    "fig3_5_training_curve": [
-        ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/training_log.csv"),
-    ],
-    "fig3_6_bootstrap_difference": [Path("outputs/analysis/bootstrap_significance.json")],
-    "fig3_7_alpha_convergence": [
-        ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/training_log.csv"),
-    ],
-    "fig3_8_mae_by_window": MAE_5_MODELS_INPUTS,
-    "fig3_9_mae_by_node": MAE_5_MODELS_INPUTS,
-    "fig3_10_mechanism_ablation": [
+    "fig3_5_lre_matrices": [Path("outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz")],
+    "fig3_8_mae_by_horizon": MAE_5_MODELS_INPUTS,
+    "fig3_9_bootstrap_difference": [Path("outputs/analysis/bootstrap_significance.json")],
+    "fig3_10_mae_by_window": MAE_5_MODELS_INPUTS,
+    "fig3_11_mae_by_node": MAE_5_MODELS_INPUTS,
+    "fig3_12_mechanism_ablation": [
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-006/*/children/SG-EXP-006-ablation-*/*/seed-*/metrics.json"),
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/metrics.json"),
     ],
-    "fig3_11_event_window_forecast": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/predictions.csv.gz")],
     "fig4_1_three_layer_framework": [],
-    "fig4_2_intervention": [Path("outputs/analysis/gate_intervention/intervention_summary.json")],
-    "fig4_3_kd_distillation": [("glob", "outputs/experiments/SG-EXP-013/20260803-093503/alpha-*_seed-*/metrics.json")],
+    "fig4_2_beta_profile": [
+        Path("outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2024/model.pt"),
+        Path("outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2025/model.pt"),
+        Path("outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2026/model.pt"),
+    ],
+    "fig4_3_intervention": [Path("outputs/analysis/gate_intervention/intervention_summary.json")],
     "fig4_4_four_cell": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/metrics.json")],
     "fig4_5_residual_distribution": [
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-2024/predictions.csv.gz"),
@@ -129,17 +125,21 @@ INPUTS_BY_FIGURE = {
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-003/*/seed-2024/predictions.csv.gz"),
     ],
     "fig4_6_error_vs_event_intensity": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/predictions.csv.gz")],
-    "fig5_1_exploration_roadmap": [],
+    "fig5_1_te_pcmci_flow": [
+        Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"),
+        Path("outputs/analysis/pcmci/pcmci_summary.json"),
+    ],
     "fig5_2_transfer_entropy": [Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json")],
-    "fig5_2b_pcmci_validation_network": [Path("outputs/analysis/pcmci/pcmci_summary.json")],
     "fig5_3_asymmetry": [Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json")],
-    "fig5_4_coverage": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
-    "fig5_5_quantile_per_node": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
-    "fig5_6_parameter_intervention": [Path("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json")],
-    "fig5_7_coverage_width": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
-    "fig5_8_te_vs_relations": [
+    "fig5_4_te_vs_relations": [
         Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"),
         Path("outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz"),
+    ],
+    "fig5_5_pcmci_validation_network": [Path("outputs/analysis/pcmci/pcmci_summary.json")],
+    "fig5_7_coverage": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
+    "fig5_8_quantile_per_node": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
+    "fig5_9_parameter_intervention": [
+        Path("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json"),
     ],
 }
 

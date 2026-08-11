@@ -92,7 +92,7 @@ def fig_model_comparison() -> None:
                ["图模型", "深度学习", "统计基线", "传统 ML", "最简基线"]]
     ax.legend(handles, ["图模型", "深度学习", "统计基线", "传统 ML", "最简基线"],
               loc="lower right", fontsize=7.5, frameon=False, title="方法族")
-    final(fig, "fig3_1_model_mae_comparison", (6.8, 3.9))
+    final(fig, "fig3_8_model_mae_comparison", (6.8, 3.9))
 
 
 # ========== ② Bootstrap 置信区间 ==========
@@ -138,7 +138,7 @@ def fig_bootstrap() -> None:
     ax.tick_params(axis="x", labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.text(0.0045, len(names) - 0.35, "正向 = 提议模型更优", fontsize=7.5, color="0.3")
-    final(fig, "fig3_6_bootstrap_difference", (6.8, 3.2))
+    final(fig, "fig3_11_bootstrap_difference", (6.8, 3.2))
 
 
 # ========== ③ α 混合系数收敛曲线 ==========
@@ -162,7 +162,7 @@ def fig_alpha_convergence() -> None:
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, loc="upper right")
-    final(fig, "fig3_7_alpha_convergence", (6.0, 3.4))
+    final(fig, "fig3_12_alpha_convergence", (6.0, 3.4))
 
 
 # ========== ④ L1 干预结果 ==========

@@ -89,8 +89,8 @@
 - 定位：结构发现贡献，不宣称已完成方向性候选融入预测，不解释为物理因果
 
 **素材状态**：D6-1 ✅（传递熵全套）；SG-EXP-017 ✅（PCMCI+ 已完成：80 条显著边，44/76 候选确认 57.9%）
-**图表**：图 5-2 传递熵方向性候选（fig5_2_transfer_entropy）/ 图 5-2b PCMCI+ 验证网络（双面板，fig5_2b_pcmci_validation_network）/
-图 5-3 方向不对称性（fig5_3_asymmetry）/ 图 5-8 TE 与统计关系一致性（fig5_8_te_vs_relations）；
+**图表**：图5-3 传递熵方向性候选（fig5_3_transfer_entropy）/ 图5-6 PCMCI+ 验证网络（双面板，fig5_6_pcmci_validation_network）/
+图5-4 方向不对称性（fig5_4_asymmetry）/ 图5-5 TE 与统计关系一致性（fig5_5_te_vs_relations）；
 表 5-1 候选显著边与统计图覆盖
 **剩余工作**：无（融入预测与增益评估列为未来工作，非本论文范围）
 
@@ -112,8 +112,8 @@
 
 #### 5.3.3 结果（D6-3 ✅ 三种子；正式口径 = 规则路由，oracle 仅上界）
 - 标准共形事件窗口覆盖 **1.9%**（几乎完全失效）
-- 规则路由分层共形 **3.9%**（可见信号受限：规则触发样本仅 ~7.7% 为真实事件，规则触发窗口与真实事件窗口错位）
-- oracle 事后上界（真实标签路由）**86.1%**——分层校准机制有效性的潜力诊断，**不具备部署意义**
+- 规则路由分层共形 **3.9%**（可见信号受限：规则触发样本仅 ~7.7% 属于标签事件，规则触发窗口与标签事件窗口错位）
+- 标签事件事后参照（oracle 路由）**86.1%**——分层校准潜力的事后诊断，**不具备部署意义**
 - 稳定窗口两种校准均 ~68%：测试期分布漂移 → 共形覆盖退化的已知现象
 - per-node 区间宽度：事件窗口宽度为稳定窗口 ~20-30 倍（误差结构的直接可视化）
 - 口径披露：经验覆盖率，未做有限样本秩修正，不宣称分布无关保证
@@ -125,8 +125,8 @@
 
 **素材状态**：✅ 齐全（conformal_summary.json：3 种子 × 标准/分层 × 整体/事件/稳定/per-horizon/per-node）
 **图表**：表 5-2 分层覆盖率对比（含跨种子 SD）/ 表 5-3 逐节点覆盖率 /
-图 5-4 覆盖率与规则路由上界对比（fig5_4_coverage）/ 图 5-5 分层残差分位数（fig5_5_quantile_per_node）/
-图 5-7 覆盖率与区间宽度（fig5_7_coverage_width）
+图5-8 覆盖率与规则路由上界对比（fig5_8_coverage）/ 图5-9 分层残差分位数（fig5_9_quantile_per_node）/
+图5-10 覆盖率与区间宽度（fig5_10_coverage_width）
 **正式实验需求**：无（已满足回填门槛）
 
 ### 5.4 门控分配的分层参数干预敏感度（~3 页）⭐ Q5-4
@@ -167,7 +167,7 @@
 4. 结论：干预分析从"全局是否有效"升级为"**不同窗口与节点对参数干预的敏感度差异**"
 
 **素材状态**：✅ 齐全（counterfactual_cate_summary.json，3 种子）
-**图表**：图 5-6 分层参数干预敏感度（fig5_6_parameter_intervention；左：窗口分组柱状图，右：10 节点热力图）/
+**图表**：图5-11 分层参数干预敏感度（fig5_11_parameter_intervention；左：窗口分组柱状图，右：10 节点热力图）/
 表 5-4 分层参数干预汇总表
 **正式实验需求**：无
 
@@ -208,18 +208,18 @@
 | 编号 | 文件名 | 内容 | 数据来源 | 状态 |
 |------|--------|------|---------|:---:|
 | 图 5-1 | `fig5_1_exploration_roadmap` | 本章探索技术路线（三问题→三方向→证据→闭环） | — | ✅ 已生成（batch18） |
-| 图 5-2 | `fig5_2_transfer_entropy` | TE 方向性候选结构（10 节点，边宽=TE 值） | transfer_entropy_summary.json | ✅ |
-| 图 5-2b | `fig5_2b_pcmci_validation_network` | PCMCI+ 验证网络（双面板：左网络图 + 右节点验证条） | pcmci_summary.json | ✅ 2026-08-04 布局终调 |
-| 图 5-3 | `fig5_3_asymmetry` | TE 方向不对称性（20/45 对） | transfer_entropy_summary.json | ✅ |
-| 图 5-4 | `fig5_4_coverage` | 标准/规则路由共形覆盖（含 oracle 上界） | conformal_summary.json | ✅ |
-| 图 5-5 | `fig5_5_quantile_per_node` | 分层残差分位数与事件层膨胀倍数 | conformal_summary.json | ✅ |
-| 图 5-6 | `fig5_6_parameter_intervention` | **分层参数干预敏感度**（左：窗口分组柱状图；右：10 节点热力图） | counterfactual_cate_summary.json | ✅ 不使用 CATE 术语 |
-| 图 5-7 | `fig5_7_coverage_width` | 覆盖率与区间宽度 | conformal_summary.json | ✅ |
-| 图 5-8 | `fig5_8_te_vs_relations` | TE 与统计关系一致性 | TE + relation_matrices.npz | ✅ 探索性 |
+| 图5-3 | `fig5_3_transfer_entropy` | TE 方向性候选结构（10 节点，边宽=TE 值） | transfer_entropy_summary.json | ✅ |
+| 图5-6 | `fig5_6_pcmci_validation_network` | PCMCI+ 验证网络（双面板：左网络图 + 右节点验证条） | pcmci_summary.json | ✅ 2026-08-04 布局终调 |
+| 图5-4 | `fig5_4_asymmetry` | TE 方向不对称性（20/45 对） | transfer_entropy_summary.json | ✅ |
+| 图5-5 | `fig5_5_te_vs_relations` | TE 与统计关系一致性 | TE + relation_matrices.npz | ✅ 探索性 |
+| 图5-8 | `fig5_8_coverage` | 标准/规则路由共形覆盖（含 oracle 上界） | conformal_summary.json | ✅ |
+| 图5-9 | `fig5_9_quantile_per_node` | 分层残差分位数与事件层膨胀倍数 | conformal_summary.json | ✅ |
+| 图5-10 | `fig5_10_coverage_width` | 覆盖率与区间宽度 | conformal_summary.json | ✅ |
+| 图5-11 | `fig5_11_parameter_intervention` | **分层参数干预敏感度**（左：窗口分组柱状图；右：10 节点热力图） | counterfactual_cate_summary.json | ✅ 不使用 CATE 术语 |
 
-> 图号映射修正（2026-08-04）：图 5-6 = 分层参数干预敏感度；图 5-8 = TE 与统计关系一致性。
-> 旧规划"图 5-9 节点敏感度条形图"**已删除**（manifest 无此图，节点敏感度并入图 5-6 右面板）；
-> 旧规划"图 5-6 机制增强快速筛选 / 图 5-7 去相关损失训练曲线"（NAPL/Gate-MI 素材）不再出现于正文。
+> 图号映射修正（2026-08-04）：图5-9 = 分层参数干预敏感度；图5-11 = TE 与统计关系一致性。
+> 旧规划"图 5-9 节点敏感度条形图"**已删除**（manifest 无此图，节点敏感度并入图5-9 右面板）；
+> 旧规划"图5-9 机制增强快速筛选 / 图5-10 去相关损失训练曲线"（NAPL/Gate-MI 素材）不再出现于正文。
 
 表：5-1 候选显著边与统计图覆盖 / 5-2 分层覆盖率（含跨种子 SD）/ 5-3 逐节点覆盖率 / 5-4 参数干预汇总 / 5-5 小结汇总
 

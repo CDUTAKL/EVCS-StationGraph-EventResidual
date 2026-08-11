@@ -1,7 +1,7 @@
 """重绘 9 张问题图（对齐老论文素雅风格：灰阶 + 深蓝强调 + 低饱和）。
 
 修复清单（用户 2026-08-01 反馈）：
-- fig2_3b 自相关：文字遮挡曲线 + 顶部空旷 → y 上限 0.8、标注移至空白区、宽线+浅网格
+- 现图2-5自相关：文字遮挡曲线 + 顶部空旷 → y 上限 0.8、标注移至空白区、宽线+浅网格
 - fig2_5 分布：右上角文字删除 + 2.0 后空旷 → x 截断 0-2.5 + 对数 y
 - fig2_6 事件时间线：堆叠面积丑陋 → 4 行子图共享 x 轴
 - fig3_1 误差棒不明显 → 加粗 + 大 capsize + 深色
@@ -70,7 +70,7 @@ def _clean_ax(ax, xlabel=None, ylabel=None):
         ax.set_ylabel(ylabel, fontsize=9)
 
 
-# ========== ① fig2_3b 自相关（重绘） ==========
+# ========== ① 现图2-5自相关（重绘） ==========
 def redraw_autocorrelation() -> None:
     nodes = ["CA-303", "CA-327", "CA-489"]
     # lag 1~672 步 = 0.25h~168h：覆盖 24h 日周期与 168h 周周期两个峰
@@ -93,7 +93,7 @@ def redraw_autocorrelation() -> None:
     ax.set_ylim(-0.05, 1.02)
     ax.legend(fontsize=8, frameon=False, ncol=3, loc="upper right")
     _clean_ax(ax)
-    final(fig, "fig2_3b_autocorrelation", (6.8, 3.2))
+    final(fig, "fig2_4_autocorrelation", (6.8, 3.2))
 
 
 # ========== ② fig2_5 负荷分布（重绘） ==========
@@ -113,7 +113,7 @@ def redraw_distribution() -> None:
             transform=ax.transAxes, ha="right", va="top", fontsize=7.5,
             color=GRAY_D)
     _clean_ax(ax)
-    final(fig, "fig2_5_load_distribution", (6.4, 3.4))
+    final(fig, "fig2_6_load_distribution", (6.4, 3.4))
 
 
 # ========== ③ fig2_6 事件时段分布（聚合 3 年全部事件到 24h） ==========
@@ -150,19 +150,25 @@ def redraw_event_timeline() -> None:
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.grid(axis="y", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
-    final(fig, "fig2_6_event_hourly", (6.8, 3.4))
+    final(fig, "fig2_8_event_hourly", (6.8, 3.4))
 
 
 # ========== ④ fig3_1 误差棒加强（重绘） ==========
 def redraw_model_comparison() -> None:
-    # std 来源：正式三种子（night_run/20260730-171821）metrics.json global.mae 标准差
+    # 数值与正文表 3-1 一致；随机模型给出三种子标准差，确定性模型不画误差棒。
     data = [
-        ("StaticGraph\n(MRG-GCN)", 0.01376, 0.00019),
-        ("AdaptiveGraph", 0.01396, 0.00014),
-        ("GraphWaveNet", 0.01773, 0.00054), ("MLP", 0.02112, 0.00019),
-        ("AGCRN\n(简化变体)", 0.02057, 0.00024), ("ARIMA(2,1,2)", 0.02260, None),
-        ("TCN", 0.02952, 0.00011), ("LightGBM", 0.03758, None),
-        ("XGBoost", 0.03873, None), ("Persistence", 0.07828, None),
+        ("MRG-GCN", 0.01376, 0.00023),
+        ("EventResidual", 0.01390, 0.00015),
+        ("AdaptiveGraph", 0.01396, 0.00017),
+        ("GraphWaveNet\n（简化变体）", 0.01773, 0.00054),
+        ("AGCRN\n（简化变体）", 0.02057, 0.00029),
+        ("MLP", 0.02112, 0.00019),
+        ("ARIMA(2,1,2)", 0.02260, None),
+        ("TCN", 0.02952, 0.00014),
+        ("GRU", 0.02965, 0.00003),
+        ("LightGBM", 0.03758, None),
+        ("XGBoost", 0.03873, None),
+        ("Persistence", 0.07828, None),
     ]
     data.sort(key=lambda x: x[1])
     names = [d[0] for d in data]
@@ -170,7 +176,7 @@ def redraw_model_comparison() -> None:
     stds = [d[2] for d in data]
     colors = [BLUE if i == 0 else GRAY_M for i in range(len(names))]
 
-    fig, ax = plt.subplots(figsize=(6.8, 4.0))
+    fig, ax = plt.subplots(figsize=(7.2, 5.1))
     y = np.arange(len(names))
     bars = ax.barh(y, maes, height=0.62, color=colors,
                    edgecolor=GRAY_D, linewidth=0.5, zorder=3)
@@ -193,7 +199,7 @@ def redraw_model_comparison() -> None:
               labels=["本文主模型", "其他模型"], fontsize=8, frameon=False,
               loc="lower right")
     _clean_ax(ax)
-    final(fig, "fig3_1_model_mae_comparison", (6.8, 4.0))
+    final(fig, "fig3_7_model_mae_comparison", (7.2, 5.1))
 
 
 # ========== ⑤ fig3_6 点级 pooled Bootstrap 差异图（描述性） ==========
@@ -257,7 +263,7 @@ def redraw_bootstrap() -> None:
     _clean_ax(ax)
     ax.grid(axis="y", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
     fig.subplots_adjust(bottom=0.30)
-    final(fig, "fig3_6_bootstrap_difference", (7.2, 4.0))
+    final(fig, "fig3_11_bootstrap_difference", (7.2, 4.0))
 
 
 # ========== ⑥ fig4_4 四格诊断（重绘：Blues 色阶 + 分层标注） ==========
@@ -364,7 +370,7 @@ def redraw_asymmetry() -> None:
                        plt.scatter([], [], s=55, facecolor="white", edgecolor=GRAY_L,
                                    label="非显著边")],
               fontsize=8, frameon=False, loc="upper left")
-    final(fig, "fig5_3_asymmetry", (6.2, 5.2))
+    final(fig, "fig5_4_asymmetry", (6.2, 5.2))
 
 
 # ========== ⑧ fig5_4 覆盖率（重设计：哑铃图） ==========
@@ -406,7 +412,7 @@ def redraw_coverage() -> None:
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, loc="lower left", ncol=2)
-    final(fig, "fig5_4_coverage", (6.4, 3.2))
+    final(fig, "fig5_8_coverage", (6.4, 3.2))
 
 
 # ========== ⑨ fig5_5 分位数（重绘：舒展） ==========
@@ -428,18 +434,13 @@ def redraw_quantile() -> None:
     ax.set_ylabel("90% 分位数（标准化残差）", fontsize=8.5)
     ax.legend(fontsize=8, frameon=False, loc="upper left")
     _clean_ax(ax)
-    final(fig, "fig5_5_quantile_per_node", (6.6, 3.4))
+    final(fig, "fig5_9_quantile_per_node", (6.6, 3.4))
 
 
 if __name__ == "__main__":
-    print("=== 批次 4：重绘 9 张 + 综合图 ===")
+    print("=== 批次 4：主文 4 张图重绘 ===")
     redraw_autocorrelation()
     redraw_distribution()
     redraw_event_timeline()
     redraw_model_comparison()
-    redraw_bootstrap()
-    redraw_four_cell()
-    redraw_asymmetry()
-    redraw_coverage()
-    redraw_quantile()
     print("批次 4 完成")

@@ -1,10 +1,10 @@
 """第 2 章数据章新增 4 图：图 2-7~2-10。
 
-- 图 2-7 特征相关性矩阵：7 特征 Spearman 相关（抗稀疏零值），全局展平样本。
-- 图 2-8 星期×小时负荷热力图：日内（24 h）× 周内（7 d）双周期聚合视图。
-- 图 2-9 事件四分量构成：触发样本处 access/departure/|Δactive|/load_jump
+- 图 2-9 特征相关性矩阵：7 特征 Spearman 秩相关，全局展平样本。
+- 图 2-10 星期×小时负荷热力图：日内（24 h）× 周内（7 d）双周期聚合视图。
+- 图 2-7 事件四分量构成：冻结规则事件窗口内 access/departure/|Δactive|/|Δload|
   的逐节点归一化平均贡献（与事件分数定义一致，per-node std 归一化）。
-- 图 2-10 事件窗口长度分布：冻结规则（验证集 95 分位 + 因果前向扩展 2 步）
+- 图 2-8 事件窗口长度分布：冻结规则（验证集 95 分位，触发后向未来扩展 2 步）
   在测试集上的窗口长度直方图与占比。
 
 全部从 SG-DATA-005 直接计算，无新实验；输出同名 SVG + 1200 DPI PNG。
@@ -49,13 +49,7 @@ GREEN = "#597A62"
 FEATURE_CN = ["负荷", "接入数", "离站数", "活跃数", "占用率", "需求强度", "负荷跳变"]
 # 图内采用短标签，完整含义保留在图注和正文，避免缩放后长中文标签互相挤压。
 FEATURE_SHORT = ["负荷", "接入", "离站", "活跃", "占用", "需求", "跳变"]
-# 事件分数 4 分量（与 rules.py 定义一致）：索引 1/2/3/6
-EVENT_COMPONENTS = [
-    (1, "接入"),
-    (2, "离站"),
-    (3, "活跃变化"),
-    (6, "负荷跳变"),
-]
+EVENT_COMPONENT_LABELS = ["接入", "离站", "活跃变化", "负荷变化"]
 
 BUNDLE = load_tensor_bundle("data/processed/SG-DATA-005-primary-tensor.npz")
 
@@ -78,8 +72,8 @@ def _clean(ax, grid_axis="y") -> None:
         ax.grid(axis=grid_axis, color=GRAY_L, lw=0.55, alpha=0.72, zorder=0)
 
 
-def redraw_fig2_7() -> None:
-    """图 2-7：7 特征 Spearman 相关矩阵（全局展平，抗零值稀疏）。"""
+def redraw_fig2_9() -> None:
+    """图 2-9：7 特征 Spearman 相关矩阵（全局展平，抗零值稀疏）。"""
     feats = BUNDLE.features  # [T, N, F]
     flat = feats.reshape(-1, feats.shape[2])  # 展平 [T*N, F]：跨节点全局相关性
     corr = pd.DataFrame(flat, columns=FEATURE_CN).corr(method="spearman").to_numpy()
@@ -116,12 +110,12 @@ def redraw_fig2_7() -> None:
     cbar.set_label("Spearman ρ", fontsize=8.6, labelpad=6)
     cbar.ax.tick_params(labelsize=7.6, length=3)
     fig.subplots_adjust(left=0.15, right=0.875, bottom=0.15, top=0.965)
-    _final(fig, "fig2_7_feature_correlation", (6.4, 5.35))
+    _final(fig, "fig2_11_feature_correlation", (6.4, 5.35))
     return None
 
 
-def redraw_fig2_8() -> None:
-    """图 2-8：星期×小时聚合负荷热力图（全节点均值，双周期视图）。"""
+def redraw_fig2_10() -> None:
+    """图 2-10：星期×小时聚合负荷热力图（全节点均值，双周期视图）。"""
     t = BUNDLE.targets  # [T, N]
     ts = pd.to_datetime(BUNDLE.timestamps)
     df = pd.DataFrame({"load": t.mean(axis=1), "ts": ts})
@@ -157,54 +151,51 @@ def redraw_fig2_8() -> None:
     cbar.set_label("全站负荷均值（kWh/15 min）", fontsize=7.6)
     cbar.ax.tick_params(labelsize=7.5)
     _clean(ax, grid_axis=None)
-    _final(fig, "fig2_8_weekday_hour_heatmap", (7.6, 3.6))
+    _final(fig, "fig2_12_weekday_hour_heatmap", (7.6, 3.6))
     return None
 
 
-def redraw_fig2_9() -> None:
-    """图 2-9：事件四分量构成——验证+测试触发样本处各分量归一化平均贡献。
+def redraw_fig2_7() -> None:
+    """图 2-7：测试集冻结规则事件窗口内四分量归一化平均贡献。
 
     事件分数 = 4 分量 per-node std 归一化后求和（rules.py 定义）；
-    本图展示每个节点触发样本的平均归一化分量，堆叠柱观察构成。
+    本图展示每个节点事件窗口时间片的平均归一化分量，堆叠柱观察构成。
     """
     feats = BUNDLE.features
-    # 与事件分数定义（rules.py _compute_score_stats）一致：std 只在训练集估计，
-    # 不引入测试集统计量（审查 M5）
-    train_end = BUNDLE.split_origins["train"][-1] + 1
-    stds = feats[:train_end].std(axis=0)  # [N, F]
-    stds = np.where(stds < 1e-12, 1.0, stds)  # 常数列避免除零
-    norm = feats / stds[None, :, :]  # [T, N, F] 逐节点逐特征归一化
-    active = feats[:, :, 3]
-    delta_active = np.abs(np.diff(active, axis=0, prepend=active[:1]))  # 一阶差分
-
     rule = fit_frozen_event_rule(BUNDLE)
-    trig_test = apply_frozen_event_rule(
-        BUNDLE, BUNDLE.split_origins["test"], rule)  # [O, N]
-    # origin 即时间索引：触发矩阵映射回 [T, N] 全局时间轴，才能与特征切片对齐
-    trig_TN = np.zeros((BUNDLE.features.shape[0], BUNDLE.node_ids.shape[0]),
-                       dtype=bool)
-    trig_TN[BUNDLE.split_origins["test"]] = trig_test
+    origins = BUNDLE.split_origins["test"]
+    previous = np.maximum(origins - 1, 0)
+    trig_test = apply_frozen_event_rule(BUNDLE, origins, rule)  # [O, N]
+    std_access = np.asarray(rule.score_stats["std_access"])
+    std_departure = np.asarray(rule.score_stats["std_departure"])
+    std_active_delta = np.asarray(rule.score_stats["std_active_delta"])
+    std_load_delta = np.asarray(rule.score_stats["std_load_delta"])
+    access = feats[origins, :, 1] / std_access[None, :]
+    departure = feats[origins, :, 2] / std_departure[None, :]
+    active_change = np.abs(feats[origins, :, 3] - feats[previous, :, 3])
+    active_change /= std_active_delta[None, :]
+    load_change = np.abs(feats[origins, :, 0] - feats[previous, :, 0])
+    load_change /= std_load_delta[None, :]
+    components = [access, departure, active_change, load_change]
 
-    # 逐节点平均：trig_TN 按列聚合 4 分量值（fidx=3 用一阶差分）
-    per_node = np.zeros((BUNDLE.node_ids.shape[0], len(EVENT_COMPONENTS)))
-    for ci, (fidx, _name) in enumerate(EVENT_COMPONENTS):  # 双层嵌套解包：(序号, (特征索引, 名称))
+    # 逐节点平均；掩码和四分量均位于相同的测试预测起点轴上。
+    per_node = np.zeros((BUNDLE.node_ids.shape[0], len(components)))
+    for ci, values in enumerate(components):
         for ni in range(BUNDLE.node_ids.shape[0]):
-            col_mask = trig_TN[:, ni]  # [T] 该节点触发掩码
+            col_mask = trig_test[:, ni]
             if col_mask.any():
-                if fidx == 3:
-                    vals = delta_active[col_mask, ni]  # 2D [T,N] 列切片
-                else:
-                    vals = norm[col_mask, ni, fidx]  # 3D [T,N,F] 元素切片
-                per_node[ni, ci] = vals.mean()
+                per_node[ni, ci] = values[col_mask, ni].mean()
 
     fig, ax = plt.subplots(figsize=(7.8, 3.9))
     colors = [BLUE, ORANGE, GREEN, "#7A6FA0"]
-    labels = [n for _, n in EVENT_COMPONENTS]
+    hatches = ["///", "\\\\", "...", "xx"]
+    labels = EVENT_COMPONENT_LABELS
     x = np.arange(len(BUNDLE.node_ids))
     bottom = np.zeros(len(BUNDLE.node_ids))
     for ci, color in enumerate(colors):
         ax.bar(x, per_node[:, ci], bottom=bottom, color=color, width=0.62,
-               edgecolor="white", linewidth=0.5, label=labels[ci], zorder=3)
+               edgecolor="white", linewidth=0.5, hatch=hatches[ci],
+               label=labels[ci], zorder=3)
         bottom += per_node[:, ci]
     ax.set_xticks(x)
     ax.set_xticklabels(BUNDLE.node_ids, fontsize=7.6, rotation=45, ha="right")
@@ -216,8 +207,8 @@ def redraw_fig2_9() -> None:
     return None
 
 
-def redraw_fig2_10() -> None:
-    """图 2-10：事件窗口长度分布 + 逐节点窗口数（冻结规则，含因果扩展）。
+def redraw_fig2_8() -> None:
+    """图 2-8：事件窗口长度分布 + 逐节点窗口数（冻结规则，向未来扩展）。
 
     A：窗口长度直方图（扩展 2 步后几乎全部 3 片，合并后可达 6 片）；
     B：逐节点窗口数条形图（展示节点间触发频率差异）。
@@ -278,14 +269,13 @@ def redraw_fig2_10() -> None:
     _clean(ax, "x")
     fig.text(0.53, 0.885, "B 逐节点窗口数", ha="left", va="center",
              fontsize=9.2, color=GRAY_D)
-    _final(fig, "fig2_10_event_window_length", (9.8, 4.25))
+    _final(fig, "fig2_12_event_window_length", (9.8, 4.25))
     return None
 
 
 if __name__ == "__main__":
-    print("=== 批次 11：第 2 章数据章新增 4 图 ===")
+    print("=== 批次 11：第 2 章主文 3 图 ===")
     redraw_fig2_7()
     redraw_fig2_8()
     redraw_fig2_9()
-    redraw_fig2_10()
     print("批次 11 完成")

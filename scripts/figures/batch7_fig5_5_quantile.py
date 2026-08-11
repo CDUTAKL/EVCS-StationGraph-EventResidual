@@ -75,7 +75,7 @@ def fig5_5_quantile() -> None:
     qe = np.mean([s["q_event_per_node"] for s in seeds], axis=0)
     ratio = qe / np.maximum(qg, 1e-12)
     ratio_std = np.std([np.array(s["q_event_per_node"]) / np.maximum(
-        np.array(s["q_global_per_node"]), 1e-12) for s in seeds], axis=0)
+        np.array(s["q_global_per_node"]), 1e-12) for s in seeds], axis=0, ddof=1)
     labels = [n.split("-")[1] for n in BUNDLE.node_ids]
     x = np.arange(10)
 
@@ -133,7 +133,7 @@ def fig5_5_quantile() -> None:
     ax2.tick_params(labelsize=8)
     _clean_ax(ax2)
 
-    final(fig, "fig5_5_quantile_per_node", (8.8, 4.0))
+    final(fig, "fig5_9_quantile_per_node", (8.8, 4.0))
 
 
 if __name__ == "__main__":

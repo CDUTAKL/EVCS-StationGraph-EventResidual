@@ -1,4 +1,4 @@
-"""论文图批次 18：图 1-1 技术路线图（第 1 章，四阶段）。
+"""论文图批次 18：图 1-2 总体技术路线图（第 1 章，四阶段）。
 
 按第 1 章 1.5 节四阶段组织：数据重构与节点筛选 → LRE 关系构建与
 MRG-GCN 建模 → MDP 三层机制诊断 → 预测支持探索与结论。
@@ -78,9 +78,9 @@ def _badge(ax, cx, cy, r, text, *, fc=BLUE, fs=8, tc="white"):
             color=tc, fontweight="bold", zorder=6)
 
 
-def fig1_1_roadmap() -> None:
-    """技术路线图：四阶段横向流程 + 底部贯通主线。"""
-    fig, ax = plt.subplots(figsize=(14.0, 7.2))
+def fig1_2_roadmap() -> None:
+    """技术路线图：四阶段蛇形流程 + 底部贯通主线。"""
+    fig, ax = plt.subplots(figsize=(8.4, 6.0))
     ax.set_xlim(0, 100)
     ax.set_ylim(0, 100)
     ax.axis("off")
@@ -101,57 +101,60 @@ def fig1_1_roadmap() -> None:
          "分层参数干预敏感度与结论"),
     ]
 
-    # 阶段卡片（横向四列）
-    card_w, card_h = 21, 40
-    xs = [3.5 + k * 24.5 for k in range(4)]
-    for k, (title, color, body) in enumerate(stages):
-        cx = xs[k] + card_w / 2
-        _card(ax, xs[k], 40, card_w, card_h, body, fc=BG, ec=color,
-              lw=1.5, fs=7.6)
-        # 阶段标题条（卡片顶部）
-        _card(ax, xs[k] - 1, 82, card_w + 2, 7.5, title,
-              fc=color, ec=color, fs=9.5, weight="bold",
-              text_color="white", radius=0.4)
-        # 编号放在内容卡片上缘，避开较长的阶段标题。
-        _badge(ax, xs[k] + 2.2, 77.0, 1.5, str(k + 1), fc=color)
-
-        # 阶段主线标签（卡片底部）
+    # 两行蛇形布置，确保缩放到论文版心后标题和正文仍可辨识。
+    card_w, card_h = 40, 23
+    positions = [(6, 59), (54, 59), (54, 30), (6, 30)]
+    for k, ((title, color, body), (x, y)) in enumerate(zip(stages, positions)):
+        cx = x + card_w / 2
+        _card(ax, x, y, card_w, card_h, body, fc=BG, ec=color,
+              lw=1.5, fs=9.2)
+        _card(ax, x, y + card_h + 1.2, card_w, 6.0, title,
+              fc=color, ec=color, fs=9.4, weight="bold",
+              text_color="white", radius=0.35)
+        _badge(ax, x + 2.4, y + card_h - 2.5, 1.45, str(k + 1), fc=color)
         mainline = ["数据", "方法", "机制", "结论"][k]
-        ax.text(cx, 38.0, mainline, ha="center", fontsize=8.5,
+        ax.text(cx, y - 1.8, mainline, ha="center", fontsize=8.5,
                 color=color, fontweight="bold")
 
-    # 阶段间箭头
-    for k in range(3):
-        _arrow(ax, xs[k] + card_w + 1.0, 60, xs[k + 1] - 1.0, 60,
-               color=GRAY_D, lw=1.8, ms=13)
+    # 两条论文贡献线不再另设一张框架图，而以阶段 2、3 的贡献标签直接嵌入
+    # 总体技术路线，避免与双贡献示意图的内容重复。
+    _card(ax, 54, 89.2, 18.0, 4.8, "方法贡献", fc="#F4E9D9", ec=ORANGE,
+          lw=1.0, fs=8.0, weight="bold", radius=0.25, text_color=ORANGE)
+    _card(ax, 74, 89.2, 20.0, 4.8, "机制诊断贡献", fc="#E8F0EA", ec=GREEN,
+          lw=1.0, fs=8.0, weight="bold", radius=0.25, text_color=GREEN)
+
+    # 1→2，2→3，3→4 的蛇形主流程。
+    _arrow(ax, 46.8, 70.5, 53.2, 70.5, color=GRAY_D, lw=1.8, ms=13)
+    _arrow(ax, 74, 57.4, 74, 54.0, color=GRAY_D, lw=1.8, ms=13)
+    _arrow(ax, 53.2, 41.5, 46.8, 41.5, color=GRAY_D, lw=1.8, ms=13)
 
     # 顶部：四阶段总述（正文语义文字）
-    ax.text(50, 95.5,
+    ax.text(29, 96.0,
             "数据驱动重构 → 场景化关系建模 → 机制化诊断 → 探索性支持",
             ha="center", fontsize=10.5, fontweight="bold", color=GRAY_D)
 
     # 底部贯通主线条
     bar = mpatches.FancyBboxPatch(
-        (3.5, 10), 93, 16, boxstyle="round,pad=0.008,rounding_size=0.5",
+        (4, 4), 92, 15, boxstyle="round,pad=0.008,rounding_size=0.5",
         fc=BG, ec=GRAY_D, lw=1.3, zorder=3,
     )
     ax.add_patch(bar)
-    ax.text(50, 21.5, "贯通主线", ha="center", fontsize=8, color=GRAY_M)
+    ax.text(50, 16.8, "贯通主线", ha="center", fontsize=8, color=GRAY_M)
     for k, (t, color) in enumerate(zip(
             ["统一预测键与三种子\n一致评价口径",
              "测试集不参与关系图\n与阈值确定",
              "三层诊断贯通至\n预测支持探索",
              "结论以量化证据\n逐条给出"], [BLUE, ORANGE, GREEN, RED_S])):
-        cx = 15 + k * 24
-        _card(ax, cx - 10, 10.5, 20, 10.5, t, fc="#FDFDFB",
-              ec=color, lw=1.2, fs=7.2)
+        cx = [15, 39, 63, 85][k]
+        _card(ax, cx - 10, 4.8, 20, 9.5, t, fc="#FDFDFB",
+              ec=color, lw=1.2, fs=8.2)
 
     fig.tight_layout()
-    final(fig, "fig1_1_roadmap", (14.0, 7.2))
+    final(fig, "fig1_2_roadmap", (8.4, 6.0))
     plt.close(fig)
 
 
 if __name__ == "__main__":
-    print("=== 批次 18：图 1-1 技术路线图 ===")
-    fig1_1_roadmap()
+    print("=== 批次 18：图 1-2 总体技术路线图 ===")
+    fig1_2_roadmap()
     print("=== 完成 ===")

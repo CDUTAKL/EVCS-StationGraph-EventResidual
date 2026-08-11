@@ -89,7 +89,7 @@ def fig_transfer_entropy() -> None:
     ax2.tick_params(axis="y", labelsize=8)
     ax2.spines[["top", "right"]].set_visible(False)
 
-    final(fig, "fig5_2_transfer_entropy", (7.2, 3.6))
+    final(fig, "fig5_3_transfer_entropy", (7.2, 3.6))
 
 
 # ========== ⑦ 分层覆盖率对比 ==========
@@ -123,7 +123,7 @@ def fig_coverage() -> None:
     ax.tick_params(axis="y", labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.legend(fontsize=8, frameon=False, loc="lower right")
-    final(fig, "fig5_4_coverage", (5.8, 3.5))
+    final(fig, "fig5_8_coverage", (5.8, 3.5))
 
 
 # ========== ⑧ CATE 分层热力图 ==========
@@ -173,7 +173,7 @@ def fig_cate() -> None:
     cbar.set_label("MAE 相对变化（×）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
 
-    final(fig, "fig5_8_parameter_intervention", (7.2, 4.0))
+    final(fig, "fig5_11_parameter_intervention", (7.2, 4.0))
 
 
 # ========== ⑨ 机制增强对比 ==========

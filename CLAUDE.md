@@ -381,6 +381,8 @@ git diff --check                                        # 无空白冲突
 
 ## 图表绘制
 
+当前论文采用41幅连续编号图（第1章2幅、第2章12幅、第3章12幅、第4章6幅、第5章9幅），唯一编号依据为 `docs/thesis/figure-renumbering-2026-08-10.md`，图注与文件状态以 `docs/thesis/figure-captions-and-index-2026-08-01.md` 为准。11幅撤出主文的图保留在 `outputs/figures/archive/2026-08-10-withdrawn-from-main-text/`，禁止恢复任何带字母后缀的补丁式编号。
+
 ### 结果数据图
 
 **使用 scipilot-figure-skill**（路径：`~/.claude/skills/scipilot-figure-skill/`，2026-07-31 已迁入本地）：

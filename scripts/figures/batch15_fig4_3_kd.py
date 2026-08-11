@@ -52,7 +52,7 @@ def main() -> None:
         vals = [json.load(open(f))["global"]["mae"] for f in mf]
         alphas.append(alpha)
         means.append(float(np.mean(vals)))
-        sds.append(float(np.std(vals)))
+        sds.append(float(np.std(vals, ddof=1)))
     order = np.argsort(alphas)
     alphas = np.asarray(alphas)[order]
     means = np.asarray(means)[order]

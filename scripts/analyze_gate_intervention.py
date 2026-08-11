@@ -255,7 +255,7 @@ def main() -> None:
         summary[name] = {
             "desc": iv["desc"],
             "global_mae_mean": float(np.mean([r["global_mae"] for r in rows])),
-            "global_mae_std": float(np.std([r["global_mae"] for r in rows])),
+            "global_mae_std": float(np.std([r["global_mae"] for r in rows], ddof=1)),
             "event_mae_mean": float(np.mean([r["event_mae"] for r in rows])),
             "stable_mae_mean": float(np.mean([r["stable_mae"] for r in rows])),
         }

@@ -1,14 +1,14 @@
 """论文图批次 5：8 张旧版图素雅重绘（提升复杂度 + 无遮挡）。
 
 重绘清单（用户 2026-08-01 反馈"提升复杂度和美观度，图片文字不遮挡"）：
-- fig2_3_load_heatmap   节点按活跃度排序 + Blues 色阶 + 天网格线 + 周末竖带
-- fig2_4_weekly_curves  灰阶深蓝三节点 + 夜间底纹 + 周末底纹
-- fig3_3_lre_matrices   统一节点标签 + 白网格线 + 关系名标注
-- fig3_5_training_curve 素雅三曲线 + 早停虚线 + 不重叠终值标注
-- fig3_7_alpha_convergence 素雅三曲线 + 收敛带 + 终值范围说明
+- fig2_4_load_heatmap   节点按活跃度排序 + Blues 色阶 + 天网格线 + 周末竖带
+- fig2_6_weekly_curves  灰阶深蓝三节点 + 夜间底纹 + 周末底纹
+- fig3_6_lre_matrices   统一节点标签 + 白网格线 + 关系名标注
+- fig3_10_training_curve 素雅三曲线 + 早停虚线 + 不重叠终值标注
+- fig3_12_alpha_convergence 素雅三曲线 + 收敛带 + 终值范围说明
 - fig4_2_intervention   语义色（基线蓝/恶化红）+ 基线参考线 + 柱外百分比标注
-- fig5_2_transfer_entropy 分层线宽圆环网络 + 强度图例 + 灰阶覆盖柱
-- fig5_6_parameter_intervention 相对基线柱 + Blues 热力图 + 数值标注
+- fig5_3_transfer_entropy 分层线宽圆环网络 + 强度图例 + 灰阶覆盖柱
+- fig5_11_parameter_intervention 相对基线柱 + Blues 热力图 + 数值标注
 
 统一规范：无标题、无文件名/代号、SVG+PNG 1200DPI、文字不遮挡图形。
 """
@@ -145,7 +145,7 @@ def fig_weekly_curves() -> None:
     _clean_ax(ax)
     ax.legend(fontsize=8, frameon=False, ncol=3, loc="upper left",
               bbox_to_anchor=(0.0, 0.97))
-    final(fig, "fig2_4_weekly_curves", (7.0, 3.2))
+    final(fig, "fig2_5_weekly_curves", (7.0, 3.2))
 
 
 # ========== ③ fig3_3 三关系邻接矩阵（重绘） ==========
@@ -177,7 +177,7 @@ def fig_lre_matrices() -> None:
     cbar.set_label("关系权重（统一色阶）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
     fig.subplots_adjust(bottom=0.30, top=0.86)
-    final(fig, "fig3_3_lre_matrices", (7.6, 3.6))
+    final(fig, "fig3_5_lre_matrices", (7.6, 3.6))
 
 
 # ========== ④ fig3_5 训练收敛曲线（重绘） ==========
@@ -209,7 +209,7 @@ def fig_training_curve() -> None:
               ["validation_mae_scaled"].iloc[-1]) for s in seeds]))
     ax.text(0.02, 0.04, f"末值（验证 MAE）：{terminal}", transform=ax.transAxes,
             fontsize=6.5, color=GRAY_M, ha="left")
-    final(fig, "fig3_5_training_curve", (6.6, 3.4))
+    final(fig, "fig3_10_training_curve", (6.6, 3.4))
 
 
 # ========== ⑤ fig3_7 α 混合系数收敛（重绘） ==========
@@ -240,7 +240,7 @@ def fig_alpha_convergence() -> None:
     ax.set_xlim(0, max(df["epoch"]) + 6)
     _clean_ax(ax)
     ax.legend(fontsize=8, frameon=False, ncol=3, loc="upper right")
-    final(fig, "fig3_7_alpha_convergence", (6.6, 3.4))
+    final(fig, "fig3_12_alpha_convergence", (6.6, 3.4))
 
 
 # ========== ⑥ fig4_2 门控干预结果（重绘：语义色 + 柱外标注） ==========
@@ -282,7 +282,7 @@ def fig_intervention() -> None:
     ax.set_xlim(0, max(maes) * 1.30)
     _clean_ax(ax)
     ax.grid(axis="y", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
-    final(fig, "fig4_2_intervention", (7.0, 3.6))
+    final(fig, "fig4_3_intervention", (7.0, 3.6))
 
 
 # ========== ⑦ fig5_2 传递熵方向性候选（探索性） ==========
@@ -425,16 +425,14 @@ def fig_parameter_intervention() -> None:
     cbar.set_label("MAE 相对变化（%）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
     fig.subplots_adjust(left=0.09, right=0.96, bottom=0.13, top=0.94, wspace=0.28)
-    final(fig, "fig5_6_parameter_intervention", (8.4, 4.6))
+    final(fig, "fig5_9_parameter_intervention", (8.4, 4.6))
 
 
 if __name__ == "__main__":
-    print("=== 批次 5：8 张图素雅重绘 ===")
+    print("=== 批次 5：主文 6 张图素雅重绘 ===")
     fig_load_heatmap()
     fig_weekly_curves()
     fig_lre_matrices()
-    fig_training_curve()
-    fig_alpha_convergence()
     fig_intervention()
     fig_transfer_entropy()
     fig_parameter_intervention()
