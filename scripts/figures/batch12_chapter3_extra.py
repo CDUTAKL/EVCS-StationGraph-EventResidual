@@ -21,6 +21,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.ticker import NullFormatter
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/scipilot-figure-skill/scripts"))
 try:
@@ -175,6 +176,9 @@ def redraw_fig3_8() -> None:
                yerr=sds, capsize=2.2,
                error_kw=dict(lw=0.8), label=label, zorder=3)
     ax.set_yscale("log")
+    # Keep only major log labels; unlabeled minor ticks avoid tiny, noisy text
+    # when the figure is reduced to the thesis text width.
+    ax.yaxis.set_minor_formatter(NullFormatter())
     ax.set_xticks(x)
     ax.set_xticklabels([cn for _k, cn in SCOPES], fontsize=8.6)
     ax.set_ylabel("MAE（kWh/15 min，对数轴）", fontsize=8.8)

@@ -126,11 +126,11 @@ def _network_panel(ax, data: dict) -> None:
         x, y = pos[nd]
         ax.scatter(x, y, s=330 + 540 * LOAD_N[i], color="white",
                    edgecolor=GRAY_D, lw=1.2, zorder=6)
-        ax.text(x, y, str(i + 1), ha="center", va="center", fontsize=6.0,
+        ax.text(x, y, str(i + 1), ha="center", va="center", fontsize=6.6,
                 color=GRAY_D, zorder=7)
         # 节点标签（CA- 编号）：加粗 + 深灰提升可读性（2026-08-04 用户反馈）
         ax.text(x * 1.38, y * 1.38, nd.replace("CA-", ""), ha="center",
-                va="center", fontsize=5.8, color=GRAY_D, fontweight="bold",
+                va="center", fontsize=6.5, color=GRAY_D, fontweight="bold",
                 zorder=7)
     # 图例（置于网络面板右侧图外，避免遮挡左下节点与说明文字）
     import matplotlib.lines as mlines
@@ -178,12 +178,12 @@ def _node_panel(ax, data: dict) -> None:
                 edgecolor="white", linewidth=0.5, hatch="...", zorder=3)
         ax.barh(yi, p, left=c + t, height=0.55, color=ORANGE, alpha=0.95,
                 edgecolor="white", linewidth=0.5, hatch="xx", zorder=3)
-        ax.text(0.4, yi, "{}".format(num), va="center", fontsize=5.6,
+        ax.text(0.4, yi, "{}".format(num), va="center", fontsize=6.2,
                 color="white", zorder=4)
         ax.text(c + t + p + 0.6, yi, "{}".format(c + t + p), va="center",
-                fontsize=5.4, color=GRAY_D, zorder=4)
+                fontsize=6.2, color=GRAY_D, zorder=4)
     ax.set_yticks(y)
-    ax.set_yticklabels([r[1].replace("CA-", "") for r in rows], fontsize=6.0)
+    ax.set_yticklabels([r[1].replace("CA-", "") for r in rows], fontsize=6.5)
     ax.set_ylim(-0.9, len(rows) + 0.1)
     # xlim 上限收紧（17→12.5）：最长出边 9、尾标 9.6，条形占比更高视觉更长
     ax.set_xlim(0, 12.5)
@@ -199,7 +199,7 @@ def _node_panel(ax, data: dict) -> None:
     ]
     # 图例置于面板上方（2026-08-04 用户反馈：原右下遮挡条形）
     ax.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.02, 1.05),
-              fontsize=5.4, frameon=False, ncol=3, columnspacing=1.0)
+              fontsize=6.2, frameon=False, ncol=3, columnspacing=1.0)
 
 
 def main() -> None:

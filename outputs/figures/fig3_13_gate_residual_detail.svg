@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="634.79952pt" height="325.19952pt" viewBox="0 0 634.79952 325.19952" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-06T18:24:19.941465</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.0, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 325.19952
+L 634.79952 325.19952
+L 634.79952 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 94.60193 173.956886
+L 110.291918 173.956886
+L 110.291918 219.385389
+L 433.505671 219.385389
+" clip-path="url(#p927bf32121)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #6e7b82"/>
+   </g>
+   <g id="patch_2">
+    <path d="M 95.371874 161.961164
+Q 113.431033 146.982785 130.242385 133.039346
+" clip-path="url(#p927bf32121)" style="fill: none; stroke: #2c5f8a; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 125.886764 134.05353
+L 130.242385 133.039346
+L 128.440359 137.132353
+z
+" clip-path="url(#p927bf32121)" style="fill: #2c5f8a; stroke: #2c5f8a; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 95.316714 78.121953
+Q 113.429936 95.876666 130.385433 112.496568
+" clip-path="url(#p927bf32121)" style="fill: none; stroke: #b9935a; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 128.928885 108.268274
+L 130.385433 112.496568
+L 126.128869 111.124829
+z
+" clip-path="url(#p927bf32121)" style="fill: #b9935a; stroke: #b9935a; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 252.501587 128.528383
+Q 267.192891 128.528383 280.263045 128.528383
+" clip-path="url(#p927bf32121)" style="fill: none; stroke: #b97973; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 276.263045 126.528383
+L 280.263045 128.528383
+L 276.263045 130.528383
+z
+" clip-path="url(#p927bf32121)" style="fill: #b97973; stroke: #b97973; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 403.125472 128.528383
+Q 417.816776 128.528383 430.88693 128.528383
+" clip-path="url(#p927bf32121)" style="fill: none; stroke: #b9935a; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 426.88693 126.528383
+L 430.88693 128.528383
+L 426.88693 130.528383
+z
+" clip-path="url(#p927bf32121)" style="fill: #b9935a; stroke: #b9935a; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 522.371679 128.528383
+Q 533.923942 128.528383 543.855054 128.528383
+" clip-path="url(#p927bf32121)" style="fill: none; stroke: #2c5f8a; stroke-width: 1.45; stroke-linecap: round"/>
+    <path d="M 539.855054 126.528383
+L 543.855054 128.528383
+L 539.855054 130.528383
+z
+" clip-path="url(#p927bf32121)" style="fill: #2c5f8a; stroke: #2c5f8a; stroke-width: 1.45; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 433.866319 218.453056
+Q 444.488986 190.991739 454.708298 164.57316
+" clip-path="url(#p927bf32121)" style="fill: none; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #6e7b82; stroke-linecap: round"/>
+    <path d="M 451.730742 167.281325
+L 454.708298 164.57316
+L 455.088296 168.580104
+z
+" clip-path="url(#p927bf32121)" style="fill: #6e7b82; stroke-dasharray: 3.7,1.6; stroke-dashoffset: 0; stroke: #6e7b82; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #263238" x="19.289988" y="27.79497" transform="rotate(-0 19.289988 27.79497)">节点级门控与残差更新</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 8.6px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #6e7b82" x="19.289988" y="49.19519" transform="rotate(-0 19.289988 49.19519)">关系消息先融合，再由节点门值控制保留比例</text>
+   </g>
+   <g id="patch_8">
+    <path d="M 28.703981 196.671137
+L 91.463933 196.671137
+L 91.463933 128.528383
+L 28.703981 128.528383
+z
+" clip-path="url(#p927bf32121)" style="fill: #eaf1f6; stroke: #2c5f8a; stroke-width: 1.05; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 28.703981 128.528383
+L 40.942171 120.862323
+L 103.702123 120.862323
+L 91.463933 128.528383
+z
+" clip-path="url(#p927bf32121)" style="fill: #eaf1f6; stroke: #2c5f8a; stroke-width: 1.05; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 91.463933 196.671137
+L 103.702123 189.005077
+L 103.702123 120.862323
+L 91.463933 128.528383
+z
+" clip-path="url(#p927bf32121)" style="fill: #eaf1f6; stroke: #2c5f8a; stroke-width: 1.05; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 28.703981 100.135569
+L 91.463933 100.135569
+L 91.463933 49.028503
+L 28.703981 49.028503
+z
+" clip-path="url(#p927bf32121)" style="fill: #f4edde; stroke: #b9935a; stroke-width: 1.05; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 28.703981 49.028503
+L 40.942171 41.362443
+L 103.702123 41.362443
+L 91.463933 49.028503
+z
+" clip-path="url(#p927bf32121)" style="fill: #f4edde; stroke: #b9935a; stroke-width: 1.05; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 91.463933 100.135569
+L 103.702123 92.469509
+L 103.702123 41.362443
+L 91.463933 49.028503
+z
+" clip-path="url(#p927bf32121)" style="fill: #f4edde; stroke: #b9935a; stroke-width: 1.05; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 135.502591 162.645189
+L 248.257121 162.645189
+Q 248.414021 162.645189 248.414021 162.503224
+L 248.414021 94.553541
+Q 248.414021 94.411577 248.257121 94.411577
+L 135.502591 94.411577
+Q 135.345691 94.411577 135.345691 94.553541
+L 135.345691 162.503224
+Q 135.345691 162.645189 135.502591 162.645189
+z
+" clip-path="url(#p927bf32121)" style="fill: #eaf1f6; stroke: #2c5f8a; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 286.126476 162.645189
+L 398.881006 162.645189
+Q 399.037906 162.645189 399.037906 162.503224
+L 399.037906 94.553541
+Q 399.037906 94.411577 398.881006 94.411577
+L 286.126476 94.411577
+Q 285.969576 94.411577 285.969576 94.553541
+L 285.969576 162.503224
+Q 285.969576 162.645189 286.126476 162.645189
+z
+" clip-path="url(#p927bf32121)" style="fill: #f5e9e7; stroke: #b97973; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 436.750361 162.645189
+L 518.124914 162.645189
+Q 518.281814 162.645189 518.281814 162.503224
+L 518.281814 94.553541
+Q 518.281814 94.411577 518.124914 94.411577
+L 436.750361 94.411577
+Q 436.593461 94.411577 436.593461 94.553541
+L 436.593461 162.503224
+Q 436.593461 162.645189 436.750361 162.645189
+z
+" clip-path="url(#p927bf32121)" style="fill: #f4edde; stroke: #b9935a; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 549.718274 162.645189
+L 605.988847 162.645189
+Q 606.145747 162.645189 606.145747 162.503224
+L 606.145747 94.553541
+Q 606.145747 94.411577 605.988847 94.411577
+L 549.718274 94.411577
+Q 549.561374 94.411577 549.561374 94.553541
+L 549.561374 162.503224
+Q 549.561374 162.645189 549.718274 162.645189
+z
+" clip-path="url(#p927bf32121)" style="fill: #eaf1f6; stroke: #2c5f8a; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_3">
+    <!-- 身份路径：$Z^{(l)}$ 直接保留到残差更新 -->
+    <g style="fill: #6e7b82" transform="translate(160.49988 244.770927)">
+     <text>
+      <tspan x="0" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">身</tspan>
+      <tspan x="9.390594" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">份</tspan>
+      <tspan x="18.781189" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">路</tspan>
+      <tspan x="28.171783" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">径</tspan>
+      <tspan x="37.562378" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">：</tspan>
+      <tspan x="61.256801" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82"> </tspan>
+      <tspan x="64.383861" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">直</tspan>
+      <tspan x="73.774455" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">接</tspan>
+      <tspan x="83.16505" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">保</tspan>
+      <tspan x="92.555644" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">留</tspan>
+      <tspan x="101.946239" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">到</tspan>
+      <tspan x="111.336833" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">残</tspan>
+      <tspan x="120.727428" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">差</tspan>
+      <tspan x="130.118022" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">更</tspan>
+      <tspan x="139.508617" y="-0.119363" style="font-size: 9.4px; font-family: 'PingFang SC'; fill: #6e7b82">新</tspan>
+      <tspan x="46.952972" y="-0.119363" style="font-style: oblique; font-size: 9.4px; font-family: 'DejaVu Sans'; fill: #6e7b82">Z</tspan>
+      <tspan x="54.044364" y="-4.001563" style="font-size: 6.58px; font-family: 'DejaVu Sans'; fill: #6e7b82">(</tspan>
+      <tspan x="58.435225" y="-4.001563" style="font-size: 6.58px; font-family: 'DejaVu Sans'; fill: #6e7b82">)</tspan>
+      <tspan x="56.608908" y="-4.001563" style="font-style: oblique; font-size: 6.58px; font-family: 'DejaVu Sans'; fill: #6e7b82">l</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #2c5f8a" x="28.703981" y="279.010299" transform="rotate(-0 28.703981 279.010299)">关系级 β：决定融合哪些关系</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #b97973" x="311.123765" y="279.010299" transform="rotate(-0 311.123765 279.010299)">节点级 G：决定当前节点保留多少消息</text>
+   </g>
+   <g id="line2d_2">
+    <path d="M 49.414765 196.671137
+L 49.414765 128.528383
+" clip-path="url(#p927bf32121)" style="fill: none; stroke: #2c5f8a; stroke-opacity: 0.72; stroke-width: 0.55; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 70.125549 196.671137
+L 70.125549 128.528383
+" clip-path="url(#p927bf32121)" style="fill: none; stroke: #2c5f8a; stroke-opacity: 0.72; stroke-width: 0.55; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 49.414765 100.135569
+L 49.414765 49.028503
+" clip-path="url(#p927bf32121)" style="fill: none; stroke: #b9935a; stroke-opacity: 0.72; stroke-width: 0.55; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 70.125549 100.135569
+L 70.125549 49.028503
+" clip-path="url(#p927bf32121)" style="fill: none; stroke: #b9935a; stroke-opacity: 0.72; stroke-width: 0.55; stroke-linecap: square"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #263238" transform="translate(173.879856 126.620102)">节点门控</text>
+    <!-- $G^{(l)}=σ([Z∥M]W_g+b_g)$ -->
+    <g style="fill: #263238" transform="translate(142.919856 136.628383)">
+     <text>
+      <tspan x="0" y="-0.492375" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">G</tspan>
+      <tspan x="25.583271" y="-0.492375" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">σ</tspan>
+      <tspan x="38.309834" y="-0.492375" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">Z</tspan>
+      <tspan x="48.975361" y="-0.492375" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">M</tspan>
+      <tspan x="60.251729" y="-0.492375" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">W</tspan>
+      <tspan x="84.443623" y="-0.492375" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">b</tspan>
+      <tspan x="7.623262" y="-4.209375" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">(</tspan>
+      <tspan x="11.831465" y="-4.209375" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">)</tspan>
+      <tspan x="10.081123" y="-4.209375" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">l</tspan>
+      <tspan x="69.150654" y="0.857621" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">g</tspan>
+      <tspan x="90.156514" y="0.857621" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">g</tspan>
+      <tspan x="16.288838" y="-0.492375" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">=</tspan>
+      <tspan x="31.287373" y="-0.492375" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">(</tspan>
+      <tspan x="34.798604" y="-0.492375" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">[</tspan>
+      <tspan x="44.475361" y="-0.492375" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">∥</tspan>
+      <tspan x="56.740498" y="-0.492375" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">]</tspan>
+      <tspan x="75.149189" y="-0.492375" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">+</tspan>
+      <tspan x="94.401631" y="-0.492375" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">)</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9.2px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #263238" transform="translate(324.103741 126.582727)">门控混合</text>
+    <!-- $G⊙M+(1−G)⊙Z$ -->
+    <g style="fill: #263238" transform="translate(302.713741 136.670383)">
+     <text>
+      <tspan x="0" y="-0.03125" style="font-style: oblique; font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">G</tspan>
+      <tspan x="14.817535" y="-0.03125" style="font-style: oblique; font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">M</tspan>
+      <tspan x="54.730225" y="-0.03125" style="font-style: oblique; font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">G</tspan>
+      <tspan x="73.132141" y="-0.03125" style="font-style: oblique; font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">Z</tspan>
+      <tspan x="7.119415" y="-0.03125" style="font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">⊙</tspan>
+      <tspan x="24.534393" y="-0.03125" style="font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">+</tspan>
+      <tspan x="34.022461" y="-0.03125" style="font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">(</tspan>
+      <tspan x="37.606842" y="-0.03125" style="font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">1</tspan>
+      <tspan x="45.242157" y="-0.03125" style="font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">−</tspan>
+      <tspan x="61.84964" y="-0.03125" style="font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">)</tspan>
+      <tspan x="65.434021" y="-0.03125" style="font-size: 9.2px; font-family: 'DejaVu Sans'; fill: #263238">⊙</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #263238" transform="translate(459.437638 126.615883)">残差更新</text>
+    <!-- $Z+Dropout(·)$ -->
+    <g style="fill: #263238" transform="translate(445.577638 136.178383)">
+     <text>
+      <tspan x="0" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">Z</tspan>
+      <tspan x="17.213379" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">D</tspan>
+      <tspan x="24.143555" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">r</tspan>
+      <tspan x="27.84375" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">o</tspan>
+      <tspan x="33.350098" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">p</tspan>
+      <tspan x="39.062988" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">o</tspan>
+      <tspan x="44.569336" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">u</tspan>
+      <tspan x="50.273438" y="-0.171875" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">t</tspan>
+      <tspan x="7.918945" y="-0.171875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">+</tspan>
+      <tspan x="53.802246" y="-0.171875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">(</tspan>
+      <tspan x="57.313477" y="-0.171875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">·</tspan>
+      <tspan x="60.174316" y="-0.171875" style="font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">)</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 9.5px; font-family: 'PingFang SC', 'Arial', 'Helvetica', 'DejaVu Sans', sans-serif; fill: #263238" transform="translate(553.685709 125.517328)">LayerNorm</text>
+    <!-- $H^{(l)}$ -->
+    <g style="fill: #263238" transform="translate(570.253561 138.503383)">
+     <text>
+      <tspan x="0" y="-0.023375" style="font-style: oblique; font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #263238">H</tspan>
+      <tspan x="7.809557" y="-3.946875" style="font-size: 6.65px; font-family: 'DejaVu Sans'; fill: #263238">(</tspan>
+      <tspan x="12.251549" y="-3.946875" style="font-size: 6.65px; font-family: 'DejaVu Sans'; fill: #263238">)</tspan>
+      <tspan x="10.403966" y="-3.946875" style="font-style: oblique; font-size: 6.65px; font-family: 'DejaVu Sans'; fill: #263238">l</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_10">
+    <!-- $Z^{(l)}$ -->
+    <g style="fill: #263238" transform="translate(54.422776 217.146119)">
+     <text>
+      <tspan x="0" y="-0.492375" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">Z</tspan>
+      <tspan x="6.797168" y="-4.209375" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">(</tspan>
+      <tspan x="11.005371" y="-4.209375" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">)</tspan>
+      <tspan x="9.255029" y="-4.209375" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">l</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_11">
+    <!-- $M^{(l)}$ -->
+    <g style="fill: #263238" transform="translate(53.612776 120.610551)">
+     <text>
+      <tspan x="0" y="-0.492375" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'; fill: #263238">M</tspan>
+      <tspan x="8.396777" y="-4.209375" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">(</tspan>
+      <tspan x="12.60498" y="-4.209375" style="font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">)</tspan>
+      <tspan x="10.854639" y="-4.209375" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'; fill: #263238">l</tspan>
+     </text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p927bf32121">
+   <rect x="3.6" y="3.6" width="627.59952" height="317.99952"/>
+  </clipPath>
+ </defs>
+</svg>

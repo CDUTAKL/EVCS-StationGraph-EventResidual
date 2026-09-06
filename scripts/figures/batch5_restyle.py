@@ -314,13 +314,13 @@ def fig_transfer_entropy() -> None:
                                      connectionstyle="arc3,rad=0.12"))
     for n, (x, y) in node_pos.items():
         ax1.scatter(x, y, s=400, color="white", edgecolor=BLUE, lw=1.2, zorder=5)
-        ax1.text(x, y, n, ha="center", va="center", fontsize=5.0,
+        ax1.text(x, y, n, ha="center", va="center", fontsize=6.4,
                  color=GRAY_D, zorder=6)
     # 强度图例（放左下空白区，不遮挡节点）
     import matplotlib.lines as mlines
     hi = mlines.Line2D([], [], color=BLUE, lw=2.8, alpha=0.75, ls="-")
     lo = mlines.Line2D([], [], color=BLUE, lw=0.6, alpha=0.25, ls="-")
-    ax1.legend([hi, lo], ["TE 强（线宽大）", "TE 弱（线宽小）"], loc="lower left", fontsize=6.5,
+    ax1.legend([hi, lo], ["TE 强（线宽大）", "TE 弱（线宽小）"], loc="lower left", fontsize=7.0,
                frameon=False, borderaxespad=0.2)
     ax1.set_xlim(-1.32, 1.32)
     ax1.set_ylim(-1.32, 1.32)

@@ -23,6 +23,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.ticker import NullFormatter
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/scipilot-figure-skill/scripts"))
 try:
@@ -105,6 +106,9 @@ def redraw_distribution() -> None:
     ax.hist(vals, bins=np.arange(0, 2.6, 0.05), color=BLUE,
             edgecolor="white", linewidth=0.3, zorder=3)
     ax.set_yscale("log")
+    # Minor log ticks do not carry information in this distribution panel and
+    # their default labels render below the thesis readability threshold.
+    ax.yaxis.set_minor_formatter(NullFormatter())
     ax.set_xlabel("负荷（kWh/15 min）", fontsize=9)
     ax.set_ylabel("非零负荷样本数（对数轴）", fontsize=9)
     ax.set_xlim(0, 2.5)

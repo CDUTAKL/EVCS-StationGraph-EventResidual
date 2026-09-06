@@ -31,7 +31,7 @@ from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "docs/thesis/thesis-manuscript.md"
 DEFAULT_TEMPLATE = Path("/Users/xushuyuan/Downloads/1.成都理工大学专业学位硕士学位论文模板20230905(1).docx")
-DEFAULT_OUTPUT = ROOT / "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式排版版_41图更新版.docx"
+DEFAULT_OUTPUT = ROOT / "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式排版版_43图优化版.docx"
 
 EAST_ASIA = "宋体"
 ENGLISH = "Times New Roman"

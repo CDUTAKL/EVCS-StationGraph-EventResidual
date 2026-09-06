@@ -1,4 +1,4 @@
-"""论文图 provenance manifest 生成与校验（41 图方案，2026-08-11）。
+"""论文图 provenance manifest 生成与校验（43 图方案，2026-09-06）。
 
 为 32 张数据支撑图建立唯一可追溯入口：图 → 生成脚本(SHA) → 输入工件(SHA) → 输出 SHA
 → git commit → 数据集 SHA。
@@ -36,7 +36,7 @@ MAE_5_MODELS_INPUTS = [
     ("glob", "outputs/experiments/SG-EXP-010/*/seed-*/metrics.json"),
 ]
 
-# 图 → 最终生成脚本。41 幅主文图中，9 幅纯方法示意图不依赖实验工件；
+# 图 → 最终生成脚本。43 幅主文图中，9 幅纯方法示意图不依赖实验工件；
 # fig5_1 虽为衔接示意图，但包含 TE/PCMCI+ 计数，故纳入本 manifest。
 FINAL_SCRIPTS = {
     "fig1_2_roadmap": "batch18_fig1_1_roadmap.py",
@@ -57,6 +57,8 @@ FINAL_SCRIPTS = {
     "fig3_10_mae_by_window": "batch12_chapter3_extra.py",
     "fig3_11_mae_by_node": "batch12_chapter3_extra.py",
     "fig3_12_mechanism_ablation": "batch12_chapter3_extra.py",
+    "fig3_13_gate_residual_detail": "batch22_model_detail_figs.py",
+    "fig3_14_cross_layer_detail": "batch22_model_detail_figs.py",
     "fig4_1_three_layer_framework": "batch16_schematic_figs.py",
     "fig4_2_beta_profile": "batch19_41fig_ch4.py",
     "fig4_3_intervention": "batch5_restyle.py",
@@ -111,6 +113,8 @@ INPUTS_BY_FIGURE = {
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-006/*/children/SG-EXP-006-ablation-*/*/seed-*/metrics.json"),
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/metrics.json"),
     ],
+    "fig3_13_gate_residual_detail": [],
+    "fig3_14_cross_layer_detail": [],
     "fig4_1_three_layer_framework": [],
     "fig4_2_beta_profile": [
         Path("outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2024/model.pt"),
