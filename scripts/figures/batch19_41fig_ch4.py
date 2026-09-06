@@ -5,18 +5,18 @@
 三关系 β（softmax）权重。图中展示每个种子值和均值±跨种子 SD，不将该
 权重观察写成节点级门控或因果效应。
 
-图 4-4：使用 SG-EXP-004 seed-2024 metrics 的四格诊断。A 为各单元 MAE，
-B 为两个集合的样本组成，C 对比样本占比与绝对误差贡献占比。所有 C 面板
-比例均由 count×MAE 从原始 metrics 计算，避免使用四舍五入后的表中数字。
+图 4-4：使用 SG-EXP-003 StaticGraph 三种子锁定证据的四格诊断。A 为各单元
+MAE均值，B 为两个集合的样本组成，C 对比样本占比与绝对误差贡献占比。所有
+比例均由锁定工件的 count×MAE 计算，避免使用四舍五入后的表中数字。
 """
 from __future__ import annotations
 
-import json
 import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import torch
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.gridspec import GridSpec
@@ -47,7 +47,9 @@ GRAY_L = "#C8C8C8"
 GRAY_XL = "#ECEFF1"
 
 STATIC_ROOT = Path("outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821")
-FOUR_CELL_METRICS = Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/metrics.json")
+FOUR_CELL_SUMMARY = Path(
+    "outputs/analysis/SG-EXP-020-legacy-evidence-v1/four_cell_summary.csv"
+)
 
 
 def final(fig: plt.Figure, name: str, size: tuple[float, float]) -> None:
@@ -133,15 +135,19 @@ def plot_beta_profile() -> None:
 
 
 def plot_four_cell_enhanced() -> None:
-    """图4-4：四格 MAE 主矩阵与样本—误差贡献错位点线图。"""
-    metrics = json.loads(FOUR_CELL_METRICS.read_text(encoding="utf-8"))
-    fc = metrics["four_cell"]["cells"]
+    """图4-4：三种子 MRG-GCN 四格 MAE 与误差贡献错位点线图。"""
+    if not FOUR_CELL_SUMMARY.is_file():
+        raise FileNotFoundError(
+            f"缺少锁定四格汇总 {FOUR_CELL_SUMMARY}，请先运行 scripts/lock_legacy_evidence.py"
+        )
     keys = ["target_event_triggered", "target_event_not_triggered",
             "stable_triggered", "stable_not_triggered"]
     labels = ["事件×触发", "事件×未触发", "非事件×触发", "非事件×未触发"]
     colors = [BLUE, ORANGE, "#7C8B92", "#B8C0C4"]
-    counts = np.asarray([fc[k]["count"] for k in keys], dtype=float)
-    maes = np.asarray([fc[k]["mae"] for k in keys], dtype=float)
+    summary = pd.read_csv(FOUR_CELL_SUMMARY).set_index("cell").loc[keys]
+    counts = summary["n"].to_numpy(dtype=float)
+    maes = summary["mae_mean"].to_numpy(dtype=float)
+    mae_sds = summary["mae_sd"].to_numpy(dtype=float)
     contributions = counts * maes
     matrix = np.array([[maes[0], maes[1]], [maes[2], maes[3]]])
     sample_share = counts / counts.sum() * 100
@@ -167,10 +173,12 @@ def plot_four_cell_enhanced() -> None:
             ax.add_patch(Rectangle((j, y0), 1, 1,
                                    facecolor=cmap(value / 0.30), edgecolor="white",
                                    linewidth=2.3))
-            ax.text(j + 0.5, y0 + 0.43, f"{value:.4f}", ha="center", va="center", fontsize=13,
+            ax.text(j + 0.5, y0 + 0.43, f"{value:.4f}", ha="center", va="center", fontsize=12.5,
                     fontweight="bold", color="white" if value > 0.16 else GRAY_D)
             ax.text(j + 0.5, y0 + 0.67, f"n = {int(counts[i * 2 + j]):,}", ha="center", va="center",
                     fontsize=7.4, color="white" if value > 0.16 else GRAY_D)
+            ax.text(j + 0.5, y0 + 0.23, f"s = {mae_sds[i * 2 + j]:.4f}", ha="center", va="center",
+                    fontsize=6.9, color="white" if value > 0.16 else GRAY_M)
     ax.set_xticks([0.5, 1.5], ["规则触发", "规则未触发"], fontsize=9)
     ax.set_yticks([1.5, 0.5], ["标签事件", "标签非事件"], fontsize=9)
     ax.tick_params(length=0)
@@ -210,7 +218,7 @@ def plot_four_cell_enhanced() -> None:
        bbox_to_anchor=(1.0, 1.01))
     panel_label(ax, "B", "样本占比与误差贡献错位")
 
-    fig.text(0.08, 0.055, "注：绝对误差贡献按 n×MAE 计算；四格数据来自 seed-2024。",
+    fig.text(0.08, 0.055, "注：MAE为StaticGraph三种子均值，s为跨种子样本标准差；绝对误差贡献按 n×MAE计算。",
              fontsize=7.5, color=GRAY_M)
     final(fig, "fig4_4_four_cell", (10.0, 5.2))
     plt.close(fig)

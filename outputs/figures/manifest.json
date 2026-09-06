@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-08-11T06:06:57.723160+00:00",
-  "source_commit": "2fa01b5",
+  "generated_at_utc": "2026-09-06T08:26:44.976573+00:00",
+  "source_commit": "3fa59ea",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -807,7 +807,7 @@
     "fig4_2_beta_profile": {
       "script": {
         "path": "batch19_41fig_ch4.py",
-        "sha256": "f72d63bbeb9866816efc23a5bd669ec44f0ba44db7c6af25125a005da940d3b9"
+        "sha256": "ec34da3a45cd5e5f1203d799bbdea85e8bdae53c8a3c690619c315927645d2a8"
       },
       "inputs": [
         {
@@ -825,14 +825,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "69e763b6aa1bb61ea18ecf754d4bad3f17ae2e74db7e6c19b5fd2bfad829ae52",
-          "size_bytes": 25357,
-          "mtime_utc": "2026-08-11T06:06:57.482415+00:00"
+          "sha256": "e6fcd15c0b4a28284fa282699aeaa5655726029688404817af7081b4c1114c7c",
+          "size_bytes": 25467,
+          "mtime_utc": "2026-09-06T08:19:56.869788+00:00"
         },
         "png": {
           "sha256": "87a6f597e5f3b3fd2469b5f4b21ffc49c896bb1794f6cb3ff58eff72a504e425",
           "size_bytes": 1333226,
-          "mtime_utc": "2026-08-10T04:10:18.457873+00:00"
+          "mtime_utc": "2026-09-06T08:19:58.386607+00:00"
         }
       }
     },
@@ -863,24 +863,28 @@
     "fig4_4_four_cell": {
       "script": {
         "path": "batch19_41fig_ch4.py",
-        "sha256": "f72d63bbeb9866816efc23a5bd669ec44f0ba44db7c6af25125a005da940d3b9"
+        "sha256": "ec34da3a45cd5e5f1203d799bbdea85e8bdae53c8a3c690619c315927645d2a8"
       },
       "inputs": [
         {
-          "path": "outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/metrics.json",
-          "sha256": "eca331e67b10ecbdee730d2a1fbe018a04705feacf8d5364719586b7e0d37801"
+          "path": "outputs/analysis/SG-EXP-020-legacy-evidence-v1/four_cell_summary.csv",
+          "sha256": "31529ce47664302a89e9e394ab0475309aae759d22bbb5750389fd0d7891f210"
+        },
+        {
+          "path": "outputs/analysis/SG-EXP-020-legacy-evidence-v1/four_cell_per_seed.csv",
+          "sha256": "ce07a89d64d4ec8da5169f574520f930940fb373566f85e596c4441b1d1a4448"
         }
       ],
       "formats": {
         "svg": {
-          "sha256": "9cc730d2169fe3fe1fd44c7d4f50e3e674378927c30d3ad45db7eda43dd3dad3",
-          "size_bytes": 26104,
-          "mtime_utc": "2026-08-11T06:06:57.490109+00:00"
+          "sha256": "785392c8de8516197a15ee14c3d88463cb240e62bacb70bc5ac4752b23e92da4",
+          "size_bytes": 27368,
+          "mtime_utc": "2026-09-06T08:19:58.572125+00:00"
         },
         "png": {
-          "sha256": "2a599090462a67d6a053496d3918e0901b55de1d7c39188ca5b0ef698f5927dc",
-          "size_bytes": 1032334,
-          "mtime_utc": "2026-08-10T04:10:19.489927+00:00"
+          "sha256": "93b5c09ba30862b7c3bab083c91b74ba2a15543d9426dd5e96e18aea05c4c401",
+          "size_bytes": 1065251,
+          "mtime_utc": "2026-09-06T08:19:59.672832+00:00"
         }
       }
     },

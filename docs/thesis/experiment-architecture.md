@@ -1,5 +1,15 @@
 # 实验架构
 
+## 2026-09-05 新数据协议优先级
+
+下文为旧实验架构留档，包含已退出正式方法的事件残差路线；不据此启动新的正式实验。
+新一轮数据输入以 `SG-DATA-006-visibility-audit-and-protocol.md` 和
+`configs/data/SG-DATA-006-eventtime-v1.json` 为准：行为计数/日历输入→事后能量代理目标，
+严格train/tuning/calibration/test分段，图与标准化只在成熟训练前缀拟合。
+禁止将旧负荷输入、旧全时期占用率/跳变阈值或旧四分量规则混入新schema。
+新版独立eventtime训练入口已接入并通过本地测试；旧engine保持不变、不得用于本套件。
+模型、消融、同协议基线的正式GPU训练已完成并通过本地逐运行工件复核；其中6个运行达到60轮预算上限，因此结果按固定训练预算解释，不宣称渐近收敛。详见本文件末尾便携执行层及交付指南。
+
 ## 数据层
 
 会话记录经字段审计、节点映射和 15 min 重叠分配，生成形状为“时间 × 站内节点 × 特征”的张量。目标是节点代理负荷，未来离站时间、完成充电时间和测试统计不得作为预测输入。
@@ -24,3 +34,12 @@
 - 目标事件 × 规则触发四格诊断；
 - 参数量、训练时间和推理时间；
 - 成组自助法置信区间。
+# SG-EXP-019便携执行层（2026-09-05）
+
+新协议由`eventtime/data.py → models.py → runner.py`独立接入，不使用旧TensorBundle训练入口。
+`scripts/eventtime_experiment.py check`是本套件实际合同检查入口；
+正式配置由`default_config`冻结并在上传包`configs/suite.json`保存和比对，12配置×3种子。
+训练只选tuning原单位MAE；calibration/test预测在完成后导出，四格mask使用冻结新版口径。
+本地CPU测试、AutoDL单GPU训练；用户手动创建实例，运行封装保存证据后默认请求关机。
+原实验/论文图文不覆盖；新结果须经公平性、三种子与时间块核验后再进入论文。
+详细交付与限制见`SG-EXP-019-autodl-handoff.md`和`../../cloud/eventtime/README.md`。

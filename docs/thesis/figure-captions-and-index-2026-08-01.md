@@ -11,8 +11,8 @@
 - 10 幅方法示意图当前为 PNG 构图版；正式送审前须按相同图号完成可编辑 SVG 重绘。
 - 事件评价使用 `target_event=1.43%`；四格诊断和共形路由使用
   `rule_trigger=0.43%`，两者不得混用。
-- 四格图为 seed-2024 诊断：A 为单元 MAE，B 为样本组成，C 为样本占比与
-  `n×MAE` 绝对误差贡献；不外推为三种子统计结论。
+- 四格图改为原正式 MRG-GCN StaticGraph 三种子诊断：A 为四格 MAE 均值及离散度，
+  B 为样本组成与 `n×MAE` 绝对误差贡献；图4-5、图4-6仍是 seed-2024 描述性补充。
 - 知识蒸馏不再单列图，由表 4-3 以 (4\alpha×3) 种子结果承载。
 - 11 幅撤出主文的图保留在
   `outputs/figures/archive/2026-08-10-withdrawn-from-main-text/`，不删除、不进入附录。
@@ -64,8 +64,8 @@
 |---|---|---|---|
 | 图4-1 | `fig4_1_three_layer_framework` | 三层机制诊断协议 | SVG+PNG |
 | 图4-2 | `fig4_2_beta_profile` | StaticGraph 两层关系级 $\beta$ 权重画像（三种子均值±样本标准差） | SVG+PNG |
-| 图4-3 | `fig4_3_intervention` | 关系级 (eta) 参数干预结果 | SVG+PNG |
-| 图4-4 | `fig4_4_four_cell` | 事件标签×规则触发四格诊断；含样本占比—绝对误差贡献配对点线图 | SVG+PNG |
+| 图4-3 | `fig4_3_intervention` | 关系级 $\beta$ 参数干预结果 | SVG+PNG |
+| 图4-4 | `fig4_4_four_cell` | 原正式MRG-GCN三种子事件标签×规则触发四格诊断；含MAE离散度与样本占比—绝对误差贡献配对点线图 | SVG+PNG |
 | 图4-5 | `fig4_5_residual_distribution` | TCN、StaticGraph 与 MLP 的预测残差分布 | SVG+PNG |
 | 图4-6 | `fig4_6_error_vs_event_intensity` | 误差与可见事件分数的关系 | SVG+PNG |
 

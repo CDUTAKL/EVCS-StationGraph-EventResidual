@@ -7,6 +7,13 @@
 关键设计：
 - 因果卷积：padding 只加在左侧，forward 时裁剪右侧，保证时刻 t 的隐表示
   仅依赖 ≤t 的信息
+- dilation>1 的膨胀卷积不走 nn.Conv1d 的 ATen 实现，而是
+  CausalConvBlock._dilated_conv_deterministic 的「左 padding + 分段切片 +
+  matmul 求和」手动实现：torch.use_deterministic_algorithms(True) 下
+  dilated conv 在 CUDA 无确定性算法，会回退 aten::slow_conv_dilated2d，
+  CPU kernel-launch 开销使单 batch 慢 200+ 倍（SG-EXP-019 AutoDL 实测）。
+  手动路径仅用确定性算子，数学上与裁剪后的因果 Conv1d 完全等价，
+  且 state_dict 参数（conv.weight/conv.bias）不变。
 - 扩张因子按 2^level 指数增长。感受野公式：
   RF = 1 + Σ (kernel_size-1) × dilation[level]
   对 levels=3、kernel=3，dilations=[1,2,4]：
@@ -22,6 +29,7 @@
 from __future__ import annotations
 
 import torch
+import torch.nn.functional as F
 from torch import nn
 
 from evcs_station_graph.models.common import ForecastModel
@@ -63,14 +71,49 @@ class CausalConvBlock(nn.Module):
         # 因果卷积通过在左侧加 padding、前向时裁剪右侧来实现：
         # conv(x) 的输出比输入长 padding 个时间步，其中前 padding 个位置
         # 是"看到未来"的结果，因此裁剪掉右侧多余的 padding 个位置
-        value = self.conv(x)
-        if self.padding:
-            value = value[..., :-self.padding]
+        if self.conv.dilation[0] > 1:
+            value = self._dilated_conv_deterministic(x)
+        else:
+            value = self.conv(x)
+            if self.padding:
+                value = value[..., :-self.padding]
         # 逐时间步 LayerNorm：[B, C, T] → [B, T, C] → norm → [B, C, T]
         # 每个时间步的统计量仅来自该步自身，保证逐点因果与理论感受野
         value = self.norm(value.transpose(1, 2)).transpose(1, 2)
         value = self.dropout(self.activation(value))
         return value + self.residual(x)
+
+    def _dilated_conv_deterministic(self, x: torch.Tensor) -> torch.Tensor:
+        """dilation>1 时的手动因果膨胀卷积（与 nn.Conv1d 逐位/近逐位等价）。
+
+        背景（SG-EXP-019）：torch.use_deterministic_algorithms(True) 下，
+        dilation>1 的 Conv1d 在 CUDA 上没有确定性实现，会回退到
+        aten::slow_conv_dilated2d——该路径按 (batch, 输出位置) 逐个 launch
+        CPU kernel，实测单 batch 9.2 s（GPU 实际计算仅 0.8 s，慢 200+ 倍）。
+        因此这里改用确定性算子手动计算：左 pad → 按抽头 k 分段切片 →
+        每个切片与 weight[:, :, k] 做 matmul（einsum 'bct,oc->bot'）→ 求和加 bias。
+        切片/matmul/add 均为确定性算子（不使用 unfold/fold——其反向是
+        非确定性的 atomicAdd）。
+
+        数学定义（与 self.conv(x)[..., :-padding] 完全一致）：
+            out[o, t] = bias[o] + Σ_k Σ_c weight[o, c, k] * x_pad[c, t + k*d]
+        其中 x_pad 为左侧 pad 了 self.padding 个零的输入，输出长度 = 输入长度。
+        右侧 padding 的位置永远不会被裁剪后保留的输出访问，因此只需左 pad。
+        """
+        dilation = self.conv.dilation[0]
+        kernel_size = self.conv.kernel_size[0]
+        time_steps = x.shape[-1]
+        x_pad = F.pad(x, (self.padding, 0))
+        weight = self.conv.weight  # [C_out, C_in, K]
+        value = torch.einsum("bct,oc->bot", x_pad[:, :, 0:time_steps], weight[:, :, 0])
+        for tap in range(1, kernel_size):
+            offset = tap * dilation
+            value = value + torch.einsum(
+                "bct,oc->bot", x_pad[:, :, offset : offset + time_steps], weight[:, :, tap]
+            )
+        if self.conv.bias is not None:
+            value = value + self.conv.bias.view(1, -1, 1)
+        return value
 
 
 class TemporalConvNet(ForecastModel):

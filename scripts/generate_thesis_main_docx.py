@@ -500,7 +500,12 @@ def add_body(doc, source):
         if skip_acknowledgements:
             i += 1
             continue
-        if line.startswith("**图") or line.startswith("**表"):
+        is_named_table_caption = line.startswith((
+            "**数据协议回答范围表**",
+            "**原主实验配置与证据来源表**",
+            "**原主实验时间块误差差复核表**",
+        ))
+        if line.startswith("**图") or line.startswith("**表") or is_named_table_caption:
             text = clean_inline(line)
             split = re.split(r"\s{2,}", text, maxsplit=1)
             title = split[0]

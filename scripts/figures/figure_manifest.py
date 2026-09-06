@@ -118,7 +118,10 @@ INPUTS_BY_FIGURE = {
         Path("outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2026/model.pt"),
     ],
     "fig4_3_intervention": [Path("outputs/analysis/gate_intervention/intervention_summary.json")],
-    "fig4_4_four_cell": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/metrics.json")],
+    "fig4_4_four_cell": [
+        Path("outputs/analysis/SG-EXP-020-legacy-evidence-v1/four_cell_summary.csv"),
+        Path("outputs/analysis/SG-EXP-020-legacy-evidence-v1/four_cell_per_seed.csv"),
+    ],
     "fig4_5_residual_distribution": [
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-2024/predictions.csv.gz"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-002/*/seed-2024/predictions.csv.gz"),
