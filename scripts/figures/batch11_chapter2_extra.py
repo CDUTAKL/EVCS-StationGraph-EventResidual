@@ -117,7 +117,8 @@ def redraw_fig2_9() -> None:
 def redraw_fig2_10() -> None:
     """图 2-10：星期×小时聚合负荷热力图（全节点均值，双周期视图）。"""
     t = BUNDLE.targets  # [T, N]
-    ts = pd.to_datetime(BUNDLE.timestamps)
+    # 时间戳按数据协议以 UTC 存储；星期与小时聚合必须使用站点当地日历。
+    ts = pd.to_datetime(BUNDLE.timestamps_ns, utc=True).tz_convert("America/Los_Angeles")
     df = pd.DataFrame({"load": t.mean(axis=1), "ts": ts})
     df["weekday"] = df["ts"].dt.weekday  # 0=周一
     df["hour"] = df["ts"].dt.hour
@@ -129,7 +130,7 @@ def redraw_fig2_10() -> None:
     cmap = LinearSegmentedColormap.from_list(
         "load_ramp", ["#FFFFFF", "#C9DCE8", "#2C5F8A"])
     im = ax.imshow(mat, cmap=cmap, aspect="auto", zorder=1,
-                   vmin=0, vmax=np.percentile(mat, 99))
+                   vmin=0, vmax=mat.max())
     # 周末不再用暖色底纹覆盖数据色阶；改用同一蓝灰色系的分隔线、标签和独立标识。
     weekend_color = "#5F7890"
     ax.axhline(4.5, color=weekend_color, lw=1.15, alpha=0.82, zorder=3)
@@ -141,14 +142,14 @@ def redraw_fig2_10() -> None:
     for idx in (5, 6):
         ax.get_yticklabels()[idx].set_color(weekend_color)
         ax.get_yticklabels()[idx].set_fontweight("bold")
-    ax.set_xlabel("小时（0–23）", fontsize=8.6)
+    ax.set_xlabel("当地小时（0–23；America/Los_Angeles）", fontsize=8.2)
     ax.set_ylabel("星期", fontsize=8.6)
     ax.tick_params(length=0)
     # 标出 6 小时相位边界，帮助读者快速识别日内节律，但不增加单元格文字。
     for hour in (6, 12, 18):
         ax.axvline(hour - 0.5, color="white", lw=0.8, alpha=0.65, zorder=3)
     cbar = fig.colorbar(im, ax=ax, fraction=0.045, pad=0.03)
-    cbar.set_label("全站负荷均值（kWh/15 min）", fontsize=7.6)
+    cbar.set_label("节点代理负荷均值（kWh/15 min）", fontsize=7.6)
     cbar.ax.tick_params(labelsize=7.5)
     _clean(ax, grid_axis=None)
     _final(fig, "fig2_12_weekday_hour_heatmap", (7.6, 3.6))

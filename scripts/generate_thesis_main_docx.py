@@ -158,6 +158,36 @@ def add_toc_field(paragraph_):
     paragraph_._p.append(end)
 
 
+def add_cached_toc_field(paragraph_, source, page_map=None):
+    """Embed a native TOC field and a cached, page-mapped result.
+
+    Word can update the field, while headless LibreOffice export can render the
+    cached result without leaving an empty contents page in the PDF.
+    """
+    entries = toc_entries(source, page_map)
+    begin = OxmlElement("w:fldChar")
+    begin.set(qn("w:fldCharType"), "begin")
+    paragraph_._p.append(begin)
+    instr = OxmlElement("w:instrText")
+    instr.set(qn("xml:space"), "preserve")
+    instr.text = ' TOC \\o "1-3" \\h \\z \\u '
+    paragraph_._p.append(instr)
+    separate = OxmlElement("w:fldChar")
+    separate.set(qn("w:fldCharType"), "separate")
+    paragraph_._p.append(separate)
+    for index, (level, text, page) in enumerate(entries):
+        run = paragraph_.add_run()
+        indent = "  " * (level - 1)
+        dots = "·" * max(3, 50 - len(text) * 2) if page else ""
+        run.text = f"{indent}{text}{dots}{page}"
+        set_font(run, EAST_ASIA, {1: 11, 2: 10.5, 3: 10}[level], bold=(level == 1))
+        if index < len(entries) - 1:
+            run.add_break()
+    end = OxmlElement("w:fldChar")
+    end.set(qn("w:fldCharType"), "end")
+    paragraph_._p.append(end)
+
+
 def set_cell_border(cell, **kwargs):
     tc_pr = cell._tc.get_or_add_tcPr()
     borders = tc_pr.first_child_found_in("w:tcBorders")
@@ -390,7 +420,7 @@ def toc_entries(source, page_map=None):
 def add_visible_toc(doc, source, page_map=None):
     """Create a readable fallback TOC; Word may replace it by updating the field."""
     for level, text, page in toc_entries(source, page_map):
-        p = doc.add_paragraph()
+        p = doc.add_paragraph(style=f"toc {level}")
         p.paragraph_format.left_indent = Cm({1: 0, 2: 0.65, 3: 1.3}[level])
         set_paragraph_format(p, WD_ALIGN_PARAGRAPH.LEFT, False, before=0, after=0, line=1.0)
         r = p.add_run(text)
@@ -604,12 +634,11 @@ def add_front_matter(doc, source, toc_map=None):
     configure_section(doc.sections[-1], odd_header="目  录", page_format="lowerRoman", start=1)
     toc_heading = add_heading(doc, 1, "目  录", outline=False)
     set_paragraph_format(toc_heading, WD_ALIGN_PARAGRAPH.CENTER, False, before=24, after=18, line=1.0)
-    toc_field = doc.add_paragraph()
-    set_paragraph_format(toc_field, WD_ALIGN_PARAGRAPH.LEFT, False, line=1.0)
-    add_toc_field(toc_field)
-    # Keep only the native Word TOC field in the formal manuscript.  A visible
-    # fallback list would be mistaken for body headings by the CDUT auditor and
-    # would duplicate the TOC after Word refreshes the field.
+    # Keep a native TOC field for Word updates, while embedding its current
+    # page-mapped result so headless PDF export is also populated.
+    toc_field = doc.add_paragraph(style="toc 1")
+    set_paragraph_format(toc_field, WD_ALIGN_PARAGRAPH.LEFT, False, before=0, after=0, line=1.0)
+    add_cached_toc_field(toc_field, source, toc_map)
 
 
 def main():

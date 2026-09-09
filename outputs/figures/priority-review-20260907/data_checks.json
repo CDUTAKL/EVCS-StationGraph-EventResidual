@@ -1,0 +1,101 @@
+{
+  "timezone": "America/Los_Angeles",
+  "first_sample": "2018-04-25 04:00:00-07:00",
+  "first_weekend_offset_days": 2.8333333333333335,
+  "typical_week_first_sample": "2018-05-25 04:00:00-07:00",
+  "typical_week_nodes": [
+    "CA-303",
+    "CA-489",
+    "CA-311"
+  ],
+  "four_week_nodes_top_to_bottom": [
+    "CA-303",
+    "CA-317",
+    "CA-305",
+    "CA-304",
+    "CA-327",
+    "CA-489",
+    "CA-307",
+    "CA-321",
+    "CA-315",
+    "CA-311"
+  ],
+  "test_origin_load_order": [
+    "CA-303",
+    "CA-305",
+    "CA-327",
+    "CA-307",
+    "CA-489",
+    "CA-317",
+    "CA-304",
+    "CA-311",
+    "CA-321",
+    "CA-315"
+  ],
+  "event_hour_counts": [
+    152,
+    73,
+    42,
+    49,
+    36,
+    79,
+    542,
+    802,
+    1580,
+    1260,
+    806,
+    822,
+    1020,
+    882,
+    777,
+    891,
+    1214,
+    1653,
+    1536,
+    1146,
+    998,
+    808,
+    542,
+    241
+  ],
+  "event_hour_peak": 17,
+  "event_hour_peak_percent": 9.208400646203554,
+  "shared_prediction_key_denominator": 712360,
+  "target_event_percent": 1.4262451569431187,
+  "rule_trigger_percent": 0.42955808860688416,
+  "pcmci_inter_node_counts": [
+    44,
+    32,
+    6
+  ],
+  "pcmci_excluded_self_pairs": 10,
+  "dual_definition_counts_verified_from_predictions": {
+    "prediction_keys": 712360,
+    "target_event": 10160,
+    "rule_trigger": 3060
+  },
+  "intensity_bins": {
+    "model": "AdaptiveGraph",
+    "seed": 2024,
+    "q50": 10.968645095825195,
+    "q95": 25.786142444610576,
+    "groups": {
+      "zero": {
+        "count": 697688,
+        "mean": 0.0134730464
+      },
+      "low": {
+        "count": 7496,
+        "mean": 0.0211150443
+      },
+      "mid": {
+        "count": 6440,
+        "mean": 0.0206875536
+      },
+      "high": {
+        "count": 736,
+        "mean": 0.0587296419
+      }
+    }
+  }
+}

@@ -507,7 +507,7 @@ def redraw_fig3_6() -> None:
     groups = [("global", "全局窗口", "2.14M"), ("event_window", "事件窗口", "30,480")]
     fig = plt.figure(figsize=(8.4, 5.05), constrained_layout=False)
     gs = GridSpec(2, 1, figure=fig, height_ratios=[1.0, 1.08],
-                  left=0.18, right=0.975, bottom=0.10, top=0.90, hspace=0.16)
+                  left=0.24, right=0.975, bottom=0.15, top=0.90, hspace=0.60)
     for row, (window, title, n_text) in enumerate(groups):
         ax = fig.add_subplot(gs[row, 0])
         rows = []
@@ -535,8 +535,8 @@ def redraw_fig3_6() -> None:
             ax.set_xlim(-0.010, 0.020)
         else:
             ax.set_xlim(-0.042, 0.041)
-        ax.set_xlabel("MAE 差：基线 − 提议模型（kWh/15 min）\n"
-                      "（正值 = 提议模型更优）", fontsize=7.9)
+        ax.set_xlabel("MAE 差：后者 − 前者（kWh/15 min）\n"
+                      "（正值 = 前者误差更低；比较对象见纵轴）", fontsize=7.9)
         ax.text(0.02, 0.92, f"pooled n={n_text}", transform=ax.transAxes,
                 ha="left", va="top", fontsize=7.0, color=GRAY_M,
                 bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=0.4))

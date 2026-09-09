@@ -197,8 +197,7 @@ def fig5_4_asymmetry() -> None:
     ax_right.text(0.5, 0.95, "TE(j → i)", transform=ax_right.transAxes,
                   ha="center", va="top", fontsize=7.2, color=GRAY_D)
     ax_right.set_xticks([])
-    # 纵轴刻度已由主图提供；右侧边缘图不再重复绘制短刻度，避免形成误读。
-    ax_right.set_yticks([])
+    # 右侧边缘图共享主图 y 坐标；只隐藏右侧边缘的刻度，不清空主轴刻度。
     ax_right.tick_params(axis="y", left=False, right=False, labelleft=False, labelright=False)
 
     final(fig, "fig5_3_asymmetry", (11.2, 8.0))

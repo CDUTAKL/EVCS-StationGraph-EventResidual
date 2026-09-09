@@ -75,47 +75,49 @@ def fig_load_heatmap() -> None:
     mat = BUNDLE.targets[:t].T  # [N, T]
     vmax = mat.max(axis=1, keepdims=True)
     norm = mat / np.maximum(vmax, 1e-9)
-    # 节点按总活跃度排序（高 → 低），让时间模式更有序
+    # 节点按总活跃度排序（高 → 低）。显示时反转数组，使最高负荷节点位于图面顶部；
+    # 热力图、右侧条形和节点标签共享同一 y 坐标，避免旧图中三者错位。
     order = np.argsort(-mat.sum(axis=1))
-    norm = norm[order]
-    node_ids = [BUNDLE.node_ids[i] for i in order]
-    act = mat.sum(axis=1)[order]  # 总负荷，供右侧冗余编码
+    display_order = order[::-1]
+    norm = norm[display_order]
+    node_ids = [BUNDLE.node_ids[i] for i in display_order]
+    act = mat.sum(axis=1)[display_order]  # 总负荷，供右侧冗余编码
 
     fig, ax = plt.subplots(figsize=(7.4, 3.4))
-    im = ax.imshow(norm, aspect="auto", cmap="Blues", extent=[0, t / 96, 0, 10],
-                   vmin=0, vmax=1)
+    im = ax.imshow(norm, aspect="auto", cmap="Blues", origin="lower",
+                   extent=[0, t / 96, 0, 10], vmin=0, vmax=1, interpolation='nearest')
     # 天网格线（每 96 步一条，浅灰不干扰）
     for d in range(1, 29):
         ax.axvline(d, color="0.55", lw=0.5, alpha=0.45, zorder=3)
-    # 周末竖带（每周第 5-6 天，浅橙底纹）
-    for w in range(4):
-        ax.axvspan(5 + 7 * w, 7 + 7 * w, color=ORANGE, alpha=0.10, zorder=1)
+    # 周末竖带按当地日历确定，而不是假定第 6、7 天必为周末。
+    local_ts = pd.to_datetime(BUNDLE.timestamps_ns[:t], utc=True).tz_convert("America/Los_Angeles")
+    x_days = (local_ts - local_ts[0]).total_seconds() / 86400.0
+    first_day = local_ts[0].normalize()
+    for day in pd.date_range(local_ts[0].normalize(), local_ts[-1].normalize(), freq="D"):
+        if day.weekday() >= 5:
+            x0 = (day - local_ts[0]).total_seconds() / 86400.0
+            ax.axvspan(x0, x0 + 1.0, color=ORANGE, alpha=0.10, zorder=1)
     # 行间分隔线（浅灰）
     for r in range(1, 10):
         ax.axhline(r, color="0.55", lw=0.5, alpha=0.35, zorder=3)
-    # 右侧冗余编码：每节点总负荷 mini 条（专用区域 x∈(28,30.5]，不覆盖热力图）
-    ax2 = ax.twinx()
+    # 右侧冗余编码：在同一坐标轴中绘制 mini 条，确保与热力图行严格对齐。
     total_max = act.max()
-    ax2.set_xlim(28, 30.5)
     for r in range(10):
         w_ = 2.1 * act[r] / total_max
-        ax2.barh(r + 0.5, w_, left=28.1, height=0.96, color=BLUE, alpha=0.75,
+        ax.barh(r + 0.5, w_, left=28.1, height=0.86, color=BLUE, alpha=0.75,
                  zorder=4)
-    ax2.set_yticks([])
-    ax2.set_xticks([])
-    for s in ax2.spines.values():
-        s.set_visible(False)
 
     ax.set_yticks(np.arange(10) + 0.5)
     ax.set_yticklabels([n.split("-")[1] for n in node_ids], fontsize=8)
+    ax.set_xlim(0, 30.5)
     ax.set_xticks(range(0, 29, 7))
-    ax.set_xlabel("时间（天，周末浅橙底纹，节点按累计负荷降序）", fontsize=9)
+    ax.set_xlabel("距首个样本的时间（天；浅橙为当地周末）", fontsize=8.6)
     ax.tick_params(labelsize=8)
     cbar = fig.colorbar(im, ax=ax, fraction=0.028, pad=0.02)
     cbar.set_label("归一化负荷（按节点最大值）", fontsize=7.5)
     cbar.ax.tick_params(labelsize=7)
     # mini bar 标签（审查 2026-08-01：明确右侧条形语义，避免误读为时间轴延续）
-    ax.text(29.25, 10.15, "节点累计负荷", fontsize=7.5, color=GRAY_D,
+    ax.text(29.25, 10.15, "累计负荷", fontsize=7.5, color=GRAY_D,
             ha="center")
     final(fig, "fig2_3_load_heatmap", (7.4, 3.4))
 
@@ -125,19 +127,22 @@ def fig_weekly_curves() -> None:
     # 三节点：CA-303 最活跃（深蓝）、CA-489 居中（中灰）、CA-311 最低（浅灰点线）
     nodes = ["CA-303", "CA-489", "CA-311"]
     t0 = 96 * 30
-    t = np.arange(96 * 7) / 96.0
+    local_ts = pd.to_datetime(BUNDLE.timestamps_ns[t0:t0 + 96 * 7], utc=True).tz_convert("America/Los_Angeles")
+    t = (local_ts - local_ts[0]).total_seconds() / 86400.0
     fig, ax = plt.subplots(figsize=(7.0, 3.2))
-    # 夜间底纹：每日 0-6 时浅灰竖带（负荷低谷时段）
-    for d in range(7):
-        ax.axvspan(d, d + 0.25, color="0.88", alpha=0.55, zorder=0)
-    # 周末底纹：第 6-7 天浅橙
-    ax.axvspan(5, 7, color=ORANGE, alpha=0.10, zorder=0)
+    # 夜间与周末按当地时钟绘制，避免起始样本不是周一时发生日历错位。
+    first_day = local_ts[0].normalize()
+    for day in pd.date_range(local_ts[0].normalize(), local_ts[-1].normalize(), freq="D"):
+        x0 = (day - local_ts[0]).total_seconds() / 86400.0
+        ax.axvspan(x0, x0 + 0.25, color="0.88", alpha=0.55, zorder=0)
+        if day.weekday() >= 5:
+            ax.axvspan(x0, x0 + 1.0, color=ORANGE, alpha=0.10, zorder=0)
     for n, c, ls, lw in zip(nodes, [BLUE, GRAY_M, GRAY_D], ["-", "--", "-."],
                             [1.7, 1.4, 1.4]):
         idx = list(BUNDLE.node_ids).index(n)
         ax.plot(t, BUNDLE.targets[t0:t0 + 96 * 7, idx], color=c, ls=ls, lw=lw,
                 label=n)
-    ax.set_xlabel("时间（天；浅灰=夜间低谷时段，浅橙=周末）", fontsize=9)
+    ax.set_xlabel("距首个样本的时间（天；浅灰为当地00–06时，浅橙为周末）", fontsize=9)
     ax.set_ylabel("负荷（kWh/15 min）", fontsize=9)
     ax.set_xlim(0, 7)
     ax.set_xticks(range(8))

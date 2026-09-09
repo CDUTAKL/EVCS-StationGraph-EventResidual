@@ -7,8 +7,8 @@
 ## 使用边界
 
 - 当前 34 幅图同时保留 SVG 与 1200 DPI PNG，并登记于
-  `outputs/figures/manifest.json`；其中图3-13、图3-14为本次新增的模型细节图。
-- 9 幅历史方法示意图仍为 PNG 构图版；其构图已复核，正式送审前如需可编辑源文件，
+  `outputs/figures/manifest.json`；其中图3-13、图3-14为模型细节图。2026-09-07另对16幅优先图进行结构、映射和口径订正，详见 `figure-priority-audit-20260907.md`。
+- 9 幅方法示意图仍为 PNG 构图版；其中6幅本轮使用ImageGen修改并单独记录生成来源，正式送审前如需可编辑源文件，
   应按相同图号完成确定性 SVG 重绘，不能把PNG包装成矢量图。
 - 事件评价使用 `target_event=1.43%`；四格诊断和共形路由使用
   `rule_trigger=0.43%`，两者不得混用。
@@ -36,7 +36,7 @@
 | 图2-5 | `fig2_5_weekly_curves` | 代表节点典型周负荷曲线 | SVG+PNG |
 | 图2-6 | `fig2_6_load_distribution` | 非零节点代理负荷经验分布 | SVG+PNG |
 | 图2-7 | `fig2_7_event_score_flow` | 事件分数与冻结规则事件窗口生成 | 示意图 PNG |
-| 图2-8 | `fig2_8_event_hourly` | 真实事件时间步的日内分布 | SVG+PNG |
+| 图2-8 | `fig2_8_event_hourly` | 标签事件时间步的当地日内分布 | SVG+PNG |
 | 图2-9 | `fig2_9_event_component_composition` | 规则事件窗口内四类行为分量构成 | SVG+PNG |
 | 图2-10 | `fig2_10_dual_window_definition` | `target_event` 与 `rule_trigger` 的双口径定义 | 示意图 PNG |
 | 图2-11 | `fig2_11_feature_correlation` | 输入特征 Spearman 秩相关矩阵 | SVG+PNG |

@@ -126,30 +126,28 @@ def redraw_event_timeline() -> None:
     # 真实峰值（2026-08-01 数据核实）：深夜 0-3 时（6.0%~8.8%）与午后 15-16 时（7.3%/7.4%），
     # 8-11 时仅 ~1%（低谷）——原"早高峰 8-11 时"标注与数据相反，已修正
     ev = BUNDLE.event_labels.any(axis=1)  # [T] 任一节点发生标签事件
-    hours = pd.to_datetime(BUNDLE.timestamps_ns).hour[ev]
+    # 原始时间戳按数据协议以 UTC 存储；日内分布必须先转换到站点当地时区，
+    # 否则深夜/午后峰会整体平移。图中不把代理标签解释为物理事件发生时刻。
+    local_ts = pd.to_datetime(BUNDLE.timestamps_ns, utc=True).tz_convert("America/Los_Angeles")
+    hours = local_ts.hour[ev]
     freq = np.bincount(hours, minlength=24) / max(ev.sum(), 1)  # 各时段事件占比
 
     fig, ax = plt.subplots(figsize=(7.4, 3.7))
     x = np.arange(24)
     # 柱中心对应整数小时；高峰底纹按半小时边界铺开，避免分组与柱形错位。
-    ax.axvspan(-0.5, 3.5, color="0.82", alpha=0.42, zorder=1)
-    ax.axvspan(13.5, 17.5, color=ORANGE, alpha=0.12, zorder=1)
     ax.bar(x, freq * 100, width=0.76, color=BLUE, edgecolor="white",
            linewidth=0.4, zorder=3)
     # 标注放在高峰区域上方的独立留白，避免文字进入柱体。
-    local_night = float(freq[:4].max() * 100)
-    local_afternoon = float(freq[14:18].max() * 100)
     ymax = float(freq.max() * 100) * 1.20
     ax.set_ylim(0, ymax)
     # 两个峰值说明使用同一基线高度，避免缩放后出现一高一低的视觉错位。
     label_y = ymax * 0.88
-    ax.text(1.5, label_y, "深夜高峰\n0–3 时", fontsize=7.4,
+    peak_hour = int(np.argmax(freq))
+    ax.text(peak_hour, label_y, f"{peak_hour:02d}时 · {freq[peak_hour]*100:.1f}%", fontsize=9,
             color=GRAY_D, ha="center", va="bottom")
-    ax.text(15.5, label_y, "午后高峰\n14–17 时", fontsize=7.4,
-            color=ORANGE, ha="center", va="bottom")
     ax.set_xticks(range(0, 24, 2))
     ax.set_xlim(-0.5, 23.5)
-    ax.set_xlabel("小时", fontsize=9)
+    ax.set_xlabel("当地小时（America/Los_Angeles）", fontsize=8.6)
     ax.set_ylabel("事件时间步占比（%）", fontsize=9)
     ax.tick_params(labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)

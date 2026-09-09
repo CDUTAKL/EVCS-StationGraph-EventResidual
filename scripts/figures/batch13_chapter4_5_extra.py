@@ -89,7 +89,7 @@ def redraw_fig4_6() -> None:
     fig, axes = plt.subplots(1, 2, figsize=(8.6, 3.6))
     # 事件窗口残差量级约为全局的 20 倍，两面板各自限定绘图范围
     for win_key, (win_label, xmax) in enumerate(
-            [("全局（非事件样本）", 0.05), ("事件窗口样本", 0.8)]):
+            [("非事件样本（target_event=0）", 0.05), ("标签事件样本（target_event=1）", 0.8)]):
         ax = axes[win_key]
         xs = np.linspace(-xmax, xmax, 300)
         # 三条 KDE 高度重叠（残差集中于 0 附近），颜色 + 线型双编码区分
@@ -142,11 +142,11 @@ def redraw_fig4_7() -> None:
     test["abs_err"] = (test["y_pred"] - test["y_true"]).abs()
 
     # 事件分数分布：97.9% 为零、非零范围约 9–44（4 分量 std 归一化求和）。
-    # 分箱取 0 单独一档 + 非零分数按 50%/95% 分位数分三档（95 分位≈冻结触发阈值）
+    # 分箱取0单独一档；测试非零分数50%/95%分位仅用于描述，不是验证期冻结阈值。
     nz = score_flat[score_flat > 0]
     q50, q95 = np.percentile(nz, [50, 95])
     bins = [0.0, 1e-6, q50, q95, np.inf]
-    labels = ["无事件\n(0)", "弱\n(非零低档)", "中\n(非零中档)", "强\n(≥95 分位≈触发)"]
+    labels = ["分数=0", "非零低档", "非零中档", "非零高档"]
     test["bin"] = pd.cut(test["score"], bins=bins, labels=labels,
                          include_lowest=True)
     fig, ax = plt.subplots(figsize=(6.8, 3.8))
@@ -169,8 +169,11 @@ def redraw_fig4_7() -> None:
     ax.set_ylim(0, ymax_show)
     ax.set_xticks(x)
     ax.set_xticklabels(labels, fontsize=7.6)
-    ax.set_xlabel("事件强度分箱（可见事件分数）", fontsize=8.6)
+    ax.set_xlabel("可见事件分数分箱（测试集非零分数按分位数）", fontsize=8.2)
     ax.set_ylabel("平均绝对误差（kWh/15 min）", fontsize=8.6)
+    ax.text(0.99, 0.98, "描述性分箱；不等同于冻结规则触发标签",
+            transform=ax.transAxes, ha="right", va="top", fontsize=6.8,
+            color=GRAY_M)
     _clean(ax)
     _final(fig, "fig4_6_error_vs_event_intensity", (6.8, 3.8))
     return None

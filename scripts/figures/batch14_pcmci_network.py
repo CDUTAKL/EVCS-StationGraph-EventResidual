@@ -164,8 +164,11 @@ def _node_panel(ax, data: dict) -> None:
         conf_out[s] += 1
     for s, t in data["te_only_edges"]:
         te_out[s] += 1
+    # 与左侧网络保持同一可见边口径：自回归边不进入节点间网络统计。
+    # PCMCI+ 独有的16条中，10条为自回归，只有6条节点间边在本面板呈现。
     for s, t in data["pcmci_only_edges"]:
-        pc_out[s] += 1
+        if s != t:
+            pc_out[s] += 1
     rows = []
     for i, nd in enumerate(NODE_ORDER):
         rows.append((i + 1, nd, conf_out[nd], te_out[nd], pc_out[nd]))
@@ -200,6 +203,9 @@ def _node_panel(ax, data: dict) -> None:
     # 图例置于面板上方（2026-08-04 用户反馈：原右下遮挡条形）
     ax.legend(handles=handles, loc="upper left", bbox_to_anchor=(0.02, 1.05),
               fontsize=6.2, frameon=False, ncol=3, columnspacing=1.0)
+    ax.text(0.02, -0.16, "PCMCI+独有16条：节点间6条；自回归10条未绘制",
+            transform=ax.transAxes, ha="left", va="top", fontsize=6.5,
+            color=GRAY_M)
 
 
 def main() -> None:

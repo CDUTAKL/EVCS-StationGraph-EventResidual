@@ -193,10 +193,14 @@ def redraw_fig3_8() -> None:
 
 
 def redraw_fig3_9() -> None:
-    """图 3-9：逐节点 MAE 热力图（10 节点 × 6 模型，节点按累计负荷排序）。"""
-    # 节点按测试集累计负荷降序（与图 2-3 排序口径一致）
-    node_order = ["CA-303", "CA-304", "CA-305", "CA-307", "CA-311",
-                  "CA-315", "CA-317", "CA-321", "CA-327", "CA-489"]
+    """图 3-9：逐节点 MAE 热力图（10 节点 × 6 模型）。
+
+    节点顺序由同一主张量测试期起点的累计代理负荷确定，并显式写入图注，
+    避免手工顺序与热力图色块/正文节点表不一致。
+    """
+    test_origins = np.asarray(BUNDLE.split_origins["test"], dtype=int)
+    order = np.argsort(-BUNDLE.targets[test_origins].sum(axis=0))
+    node_order = [str(BUNDLE.node_ids[i]) for i in order]
     mat = np.zeros((len(MODELS), len(node_order)))
     for mi, (exp_id, _label, _color) in enumerate(MODELS):
         data = _load_model_metrics(exp_id)
@@ -205,7 +209,7 @@ def redraw_fig3_9() -> None:
             mat[mi, ni] = np.nanmean(vals)
 
     fig, ax = plt.subplots(figsize=(8.0, 3.4))
-    im = ax.imshow(mat, cmap="YlOrRd", aspect="auto",
+    im = ax.imshow(mat, cmap="Blues", aspect="auto",
                    vmin=mat.min(), vmax=mat.max())
     ax.set_xticks(range(len(node_order)))
     ax.set_xticklabels(node_order, fontsize=7.2, rotation=45, ha="right")
@@ -215,7 +219,7 @@ def redraw_fig3_9() -> None:
         for ni in range(mat.shape[1]):
             ax.text(ni, mi, f"{mat[mi, ni]:.3f}", ha="center", va="center",
                     fontsize=6.2,
-                    color="white" if mat[mi, ni] > mat.mean() else GRAY_D)
+                    color="white" if mat[mi, ni] > mat.min() + .58 * (mat.max()-mat.min()) else GRAY_D)
     cbar = fig.colorbar(im, ax=ax, fraction=0.045, pad=0.03)
     cbar.set_label("MAE（kWh/15 min，三种子均值）", fontsize=7.6)
     cbar.ax.tick_params(labelsize=7.2)
