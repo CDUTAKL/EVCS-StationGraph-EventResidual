@@ -39,11 +39,11 @@ MAE_5_MODELS_INPUTS = [
 # 图 → 最终生成脚本。43 幅主文图中，9 幅纯方法示意图不依赖实验工件；
 # fig5_1 虽为衔接示意图，但包含 TE/PCMCI+ 计数，故纳入本 manifest。
 FINAL_SCRIPTS = {
-    # 三幅历史PNG流程图已纳入清单，但仓库当前没有对应的确定性生成脚本；
-    # 不虚构脚本来源，后续若重绘再补登记。
+    # 三幅ImageGen示意图与一幅结果图风格图已在2026-09-11替换；
+    # ImageGen原生资产不伪装为SVG，图4-4由确定性脚本输出SVG+PNG。
     "fig1_1_research_gap_map": None,
-    "fig1_2_roadmap": "batch18_fig1_1_roadmap.py",
-    "fig2_1_data_reconstruction": "batch16_schematic_figs.py",
+    "fig1_2_roadmap": "imagegen_priority_registry.py",
+    "fig2_1_data_reconstruction": "imagegen_priority_registry.py",
     "fig2_2_node_coverage": "batch10_fig2_2_coverage.py",
     "fig2_3_load_heatmap": "batch_priority_results.py",
     "fig2_4_autocorrelation": "batch4_redraw.py",
@@ -60,19 +60,19 @@ FINAL_SCRIPTS = {
     "fig3_2_relation_propagation_unit": "imagegen_priority_registry.py",
     "fig3_3_temporal_skip_fusion": "imagegen_priority_registry.py",
     "fig3_4_lre_construction": "imagegen_priority_registry.py",
-    "fig3_6_train_predict_pipeline": None,
-    "fig3_7_model_mae_comparison": "batch4_redraw.py",
-    "fig3_8_mae_by_horizon": "batch12_chapter3_extra.py",
-    "fig3_9_bootstrap_difference": "batch_priority_results.py",
-    "fig3_10_mae_by_window": "batch12_chapter3_extra.py",
-    "fig3_11_mae_by_node": "batch_priority_results.py",
-    "fig3_12_mechanism_ablation": "batch12_chapter3_extra.py",
-    "fig3_13_gate_residual_detail": "batch22_model_detail_figs.py",
-    "fig3_14_cross_layer_detail": "batch22_model_detail_figs.py",
-    "fig4_1_three_layer_framework": "batch16_schematic_figs.py",
+    "fig3_6_gate_residual_detail": "imagegen_priority_registry.py",
+    "fig3_7_cross_layer_detail": "imagegen_priority_registry.py",
+    "fig3_8_train_predict_pipeline": "imagegen_priority_registry.py",
+    "fig3_9_model_mae_comparison": "batch4_redraw.py",
+    "fig3_10_mae_by_horizon": "batch12_chapter3_extra.py",
+    "fig3_11_bootstrap_difference": "batch_priority_results.py",
+    "fig3_12_mae_by_window": "batch12_chapter3_extra.py",
+    "fig3_13_mae_by_node": "batch_priority_results.py",
+    "fig3_14_mechanism_ablation": "batch12_chapter3_extra.py",
+    "fig4_1_three_layer_framework": "imagegen_priority_registry.py",
     "fig4_2_beta_profile": "batch19_41fig_ch4.py",
     "fig4_3_intervention": "batch5_restyle.py",
-    "fig4_4_four_cell": "batch19_41fig_ch4.py",
+    "fig4_4_four_cell": "redraw_fig4_4_result_style_20260911.py",
     "fig4_5_residual_distribution": "batch_priority_results.py",
     "fig4_6_error_vs_event_intensity": "batch_priority_results.py",
     "fig5_1_te_pcmci_flow": "batch20_fig5_1_compact_flow.py",
@@ -88,14 +88,19 @@ FINAL_SCRIPTS = {
 
 # 仅保留PNG的示意图：其余正式数据图登记SVG与PNG两种格式。
 PNG_ONLY = {
+    "fig2_1_data_reconstruction",
+    "fig3_6_gate_residual_detail",
+    "fig3_7_cross_layer_detail",
+    "fig4_1_three_layer_framework",
     "fig1_1_research_gap_map",
     "fig2_7_event_score_flow",
-    "fig2_10_dual_window_definition",
     "fig3_1_mrggcn_architecture",
     "fig3_2_relation_propagation_unit",
     "fig3_3_temporal_skip_fusion",
     "fig3_4_lre_construction",
-    "fig3_6_train_predict_pipeline",
+    "fig3_8_train_predict_pipeline",
+    "fig1_2_roadmap",
+    "fig2_10_dual_window_definition",
     "fig5_6_conformal_method",
 }
 
@@ -120,7 +125,7 @@ INPUTS_BY_FIGURE = {
     "fig2_9_event_component_composition": [BUNDLE_PATH],
     "fig2_11_feature_correlation": [BUNDLE_PATH],
     "fig2_12_weekday_hour_heatmap": [BUNDLE_PATH],
-    "fig3_7_model_mae_comparison": [
+    "fig3_9_model_mae_comparison": [
         Path("outputs/analysis/traditional_baselines/formal_baselines_locked.json"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-002/*/seed-*/metrics.json"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-003/*/seed-*/metrics.json"),
@@ -135,18 +140,18 @@ INPUTS_BY_FIGURE = {
     "fig3_2_relation_propagation_unit": [],
     "fig3_3_temporal_skip_fusion": [],
     "fig3_4_lre_construction": [],
-    "fig3_6_train_predict_pipeline": [],
+    "fig3_8_train_predict_pipeline": [],
     "fig3_5_lre_matrices": [Path("outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz")],
-    "fig3_8_mae_by_horizon": MAE_5_MODELS_INPUTS,
-    "fig3_9_bootstrap_difference": [Path("outputs/analysis/bootstrap_significance.json")],
-    "fig3_10_mae_by_window": MAE_5_MODELS_INPUTS,
-    "fig3_11_mae_by_node": MAE_5_MODELS_INPUTS,
-    "fig3_12_mechanism_ablation": [
+    "fig3_10_mae_by_horizon": MAE_5_MODELS_INPUTS,
+    "fig3_11_bootstrap_difference": [Path("outputs/analysis/bootstrap_significance.json")],
+    "fig3_12_mae_by_window": MAE_5_MODELS_INPUTS,
+    "fig3_13_mae_by_node": MAE_5_MODELS_INPUTS,
+    "fig3_14_mechanism_ablation": [
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-006/*/children/SG-EXP-006-ablation-*/*/seed-*/metrics.json"),
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/metrics.json"),
     ],
-    "fig3_13_gate_residual_detail": [],
-    "fig3_14_cross_layer_detail": [],
+    "fig3_6_gate_residual_detail": [],
+    "fig3_7_cross_layer_detail": [],
     "fig4_1_three_layer_framework": [],
     "fig4_2_beta_profile": [
         Path("outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2024/model.pt"),

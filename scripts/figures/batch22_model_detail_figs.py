@@ -89,7 +89,7 @@ def tensor(ax, x, y, w, h, *, depth=3.0, fc=BLUE_L, ec=BLUE, label=None,
                 va="top", fontsize=label_fs, color=INK, zorder=5)
 
 
-def fig3_13_gate_residual_detail() -> None:
+def fig3_6_gate_residual_detail() -> None:
     fig, ax = plt.subplots(figsize=(8.8, 4.5))
     ax.set(xlim=(0, 100), ylim=(0, 56))
     ax.axis("off")
@@ -131,10 +131,10 @@ def fig3_13_gate_residual_detail() -> None:
     ax.text(49, 7.5, "节点级 G：决定当前节点保留多少消息", fontsize=9.0,
             color=ROSE, ha="left")
 
-    export(fig, "fig3_13_gate_residual_detail", (8.8, 4.5))
+    export(fig, "fig3_6_gate_residual_detail", (8.8, 4.5))
 
 
-def fig3_14_cross_layer_detail() -> None:
+def fig3_7_cross_layer_detail() -> None:
     fig, ax = plt.subplots(figsize=(8.8, 4.6))
     ax.set(xlim=(0, 100), ylim=(0, 58))
     ax.axis("off")
@@ -185,10 +185,10 @@ def fig3_14_cross_layer_detail() -> None:
     ax.text(67, 7, "$H^{(1,ref)}$不进入跨层拼接", ha="left", va="center",
             fontsize=9.0, color=ROSE)
 
-    export(fig, "fig3_14_cross_layer_detail", (8.8, 4.6))
+    export(fig, "fig3_7_cross_layer_detail", (8.8, 4.6))
 
 
 if __name__ == "__main__":
-    fig3_13_gate_residual_detail()
-    fig3_14_cross_layer_detail()
-    print("generated fig3_13_gate_residual_detail and fig3_14_cross_layer_detail")
+    fig3_6_gate_residual_detail()
+    fig3_7_cross_layer_detail()
+    print("generated fig3_6_gate_residual_detail and fig3_7_cross_layer_detail")

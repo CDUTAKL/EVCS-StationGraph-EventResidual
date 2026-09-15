@@ -16,8 +16,8 @@ SPECS=[('2-3','fig2_3_load_heatmap','连续四周节点负荷'),
 ('3-2','fig3_2_relation_propagation_unit','多关系门控传播'),
 ('3-3','fig3_3_temporal_skip_fusion','时间编码与跨层融合'),
 ('3-4','fig3_4_lre_construction','LRE三关系构建'),
-('3-9','fig3_9_bootstrap_difference','点级Bootstrap误差差'),
-('3-11','fig3_11_mae_by_node','逐节点MAE'),
+('3-11','fig3_11_bootstrap_difference','点级Bootstrap误差差'),
+('3-13','fig3_13_mae_by_node','逐节点MAE'),
 ('4-5','fig4_5_residual_distribution','残差分布'),
 ('4-6','fig4_6_error_vs_event_intensity','事件分数与误差'),
 ('5-3','fig5_3_asymmetry','双向TE不对称性'),
@@ -28,7 +28,7 @@ GEN={'2-10','3-1','3-2','3-3','3-4','5-6'}
 def main():
     rows=[]
     links=['# 16幅订正图查看索引','',
-           '数据图为SVG与1200DPI PNG；6幅ImageGen示意图仅提供原生PNG。旧稿未删除。','',
+           '数据图与本轮四幅重绘图提供SVG与1200DPI PNG；4幅历史ImageGen示意图仍为原生PNG。旧稿未删除。','',
            '| 图号 | 内容 | PNG | SVG |','|---|---|---|---|']
     for num,stem,title in SPECS:
         png=FIG/(stem+'.png')

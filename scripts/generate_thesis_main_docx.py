@@ -21,7 +21,12 @@ from pathlib import Path
 
 from docx import Document
 from docx.enum.section import WD_SECTION
-from docx.enum.text import WD_ALIGN_PARAGRAPH, WD_LINE_SPACING
+from docx.enum.text import (
+    WD_ALIGN_PARAGRAPH,
+    WD_LINE_SPACING,
+    WD_TAB_ALIGNMENT,
+    WD_TAB_LEADER,
+)
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
@@ -31,7 +36,8 @@ from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "docs/thesis/thesis-manuscript.md"
 DEFAULT_TEMPLATE = Path("/Users/xushuyuan/Downloads/1.成都理工大学专业学位硕士学位论文模板20230905(1).docx")
-DEFAULT_OUTPUT = ROOT / "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式排版版_43图优化版.docx"
+DEFAULT_OUTPUT = ROOT / "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx"
+MAX_HAN_CHARACTERS = 51_000
 
 EAST_ASIA = "宋体"
 ENGLISH = "Times New Roman"
@@ -39,7 +45,25 @@ HEADING_FONT = "黑体"
 TITLE = "基于站内多关系图与机制诊断的充电节点短期负荷预测研究"
 NODE = "/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
 MATH_CONVERTER = ROOT / "scripts/latex_to_omml.js"
-MATH_NODE_PATH = "/private/tmp/codex-thesis-math-runtime/node_modules"
+MATH_NODE_PATH = __import__('os').environ.get('THESIS_MATH_NODE_PATH', '/private/tmp/codex-thesis-math-runtime/node_modules')
+
+
+def validate_final_figure_sequence(source_text: str) -> None:
+    """Reject missing, duplicated, or out-of-order manuscript figure numbers."""
+    captions = [(int(ch), int(num)) for ch, num in re.findall(r"\*\*图(\d+)-(\d+)\b", source_text)]
+    image_paths = re.findall(r"!\[[^]]*\]\(([^)]+)\)", source_text)
+    if len(captions) != 43 or len(image_paths) != 43:
+        raise RuntimeError(
+            f"Expected 43 figures and captions, found {len(image_paths)} images and {len(captions)} captions"
+        )
+    expected = []
+    for chapter, count in ((1, 2), (2, 12), (3, 14), (4, 6), (5, 9)):
+        expected.extend((chapter, number) for number in range(1, count + 1))
+    if captions != expected:
+        raise RuntimeError("Figure captions are not in strict chapter order from 图1-1 to 图5-9")
+    for (chapter, number), path in zip(captions, image_paths):
+        if f"fig{chapter}_{number}_" not in Path(path).name:
+            raise RuntimeError(f"Figure path does not match 图{chapter}-{number}: {path}")
 
 
 def set_font(run, name=EAST_ASIA, size=12, bold=None, italic=None):
@@ -158,34 +182,77 @@ def add_toc_field(paragraph_):
     paragraph_._p.append(end)
 
 
-def add_cached_toc_field(paragraph_, source, page_map=None):
-    """Embed a native TOC field and a cached, page-mapped result.
+TOC_TAB_POSITION = Cm(14.66)  # A4 text width under the template's 3.17 cm margins.
+TOC_LEVEL_LAYOUT = {
+    # left indent includes the hanging amount so wrapped lines stay aligned
+    # after the level marker instead of being padded with literal spaces.
+    1: (Cm(0.00), Cm(0.00)),
+    2: (Cm(1.10), Cm(0.35)),
+    3: (Cm(1.85), Cm(0.35)),
+}
+TOC_LEVEL_SIZE = {1: 11, 2: 10.5, 3: 10}
 
-    Word can update the field, while headless LibreOffice export can render the
-    cached result without leaving an empty contents page in the PDF.
-    """
-    entries = toc_entries(source, page_map)
-    begin = OxmlElement("w:fldChar")
-    begin.set(qn("w:fldCharType"), "begin")
-    paragraph_._p.append(begin)
+
+def _append_field_char(paragraph_, field_type):
+    run = OxmlElement("w:r")
+    fld_char = OxmlElement("w:fldChar")
+    fld_char.set(qn("w:fldCharType"), field_type)
+    run.append(fld_char)
+    paragraph_._p.append(run)
+
+
+def _append_field_instruction(paragraph_):
+    run = OxmlElement("w:r")
     instr = OxmlElement("w:instrText")
     instr.set(qn("xml:space"), "preserve")
     instr.text = ' TOC \\o "1-3" \\h \\z \\u '
-    paragraph_._p.append(instr)
-    separate = OxmlElement("w:fldChar")
-    separate.set(qn("w:fldCharType"), "separate")
-    paragraph_._p.append(separate)
+    run.append(instr)
+    paragraph_._p.append(run)
+
+
+def _configure_toc_paragraph(paragraph_, level):
+    """Apply stable paragraph geometry shared by cached and visible TOC rows."""
+    left_indent, hanging_indent = TOC_LEVEL_LAYOUT[level]
+    set_paragraph_format(
+        paragraph_, WD_ALIGN_PARAGRAPH.LEFT, False, before=0, after=0, line=1.0
+    )
+    paragraph_.paragraph_format.left_indent = left_indent
+    paragraph_.paragraph_format.first_line_indent = -hanging_indent
+    paragraph_.paragraph_format.tab_stops.add_tab_stop(
+        TOC_TAB_POSITION, WD_TAB_ALIGNMENT.RIGHT, WD_TAB_LEADER.DOTS
+    )
+
+
+def _add_toc_entry(paragraph_, level, text, page):
+    size = TOC_LEVEL_SIZE[level]
+    run = paragraph_.add_run(text)
+    set_font(run, EAST_ASIA, size, bold=(level == 1))
+    if page:
+        tab = paragraph_.add_run()
+        tab.add_tab()
+        page_run = paragraph_.add_run(page)
+        set_font(page_run, EAST_ASIA, size, bold=(level == 1))
+
+
+def add_cached_toc_field(doc, source, page_map=None):
+    """Embed a native TOC field whose cached result uses one paragraph per row.
+
+    Word/WPS can update the field, while headless LibreOffice can render the
+    cached page-mapped result.  The field result is deliberately split into
+    real paragraphs so TOC styles, hanging indents, and right-aligned leader
+    tabs remain structural rather than simulated with spaces or dot characters.
+    """
+    entries = toc_entries(source, page_map)
     for index, (level, text, page) in enumerate(entries):
-        run = paragraph_.add_run()
-        indent = "  " * (level - 1)
-        dots = "·" * max(3, 50 - len(text) * 2) if page else ""
-        run.text = f"{indent}{text}{dots}{page}"
-        set_font(run, EAST_ASIA, {1: 11, 2: 10.5, 3: 10}[level], bold=(level == 1))
-        if index < len(entries) - 1:
-            run.add_break()
-    end = OxmlElement("w:fldChar")
-    end.set(qn("w:fldCharType"), "end")
-    paragraph_._p.append(end)
+        paragraph_ = doc.add_paragraph(style=f"toc {level}")
+        _configure_toc_paragraph(paragraph_, level)
+        if index == 0:
+            _append_field_char(paragraph_, "begin")
+            _append_field_instruction(paragraph_)
+            _append_field_char(paragraph_, "separate")
+        _add_toc_entry(paragraph_, level, text, page)
+        if index == len(entries) - 1:
+            _append_field_char(paragraph_, "end")
 
 
 def set_cell_border(cell, **kwargs):
@@ -418,17 +485,11 @@ def toc_entries(source, page_map=None):
 
 
 def add_visible_toc(doc, source, page_map=None):
-    """Create a readable fallback TOC; Word may replace it by updating the field."""
+    """Create a readable structural TOC without a native field."""
     for level, text, page in toc_entries(source, page_map):
         p = doc.add_paragraph(style=f"toc {level}")
-        p.paragraph_format.left_indent = Cm({1: 0, 2: 0.65, 3: 1.3}[level])
-        set_paragraph_format(p, WD_ALIGN_PARAGRAPH.LEFT, False, before=0, after=0, line=1.0)
-        r = p.add_run(text)
-        set_font(r, EAST_ASIA, 11 if level == 1 else 10.5, bold=(level == 1))
-        if page:
-            dots = "·" * max(3, 50 - len(text) * 2)
-            r = p.add_run(dots + page)
-            set_font(r, EAST_ASIA, 10.5)
+        _configure_toc_paragraph(p, level)
+        _add_toc_entry(p, level, text, page)
 
 
 def add_figure(doc, path, alt, source_dir):
@@ -437,6 +498,18 @@ def add_figure(doc, path, alt, source_dir):
         png = png.with_suffix(".png")
     if not png.exists():
         raise FileNotFoundError(png)
+    # Approved conversation redraws must not silently regress to script outputs.
+    registry = png.parent / 'priority-review-20260907/imagegen_provenance.json'
+    if registry.exists():
+        import hashlib
+        import json
+        for entry in json.loads(registry.read_text())['entries']:
+            # A later deterministic academic redraw is intentionally allowed
+            # to supersede the earlier ImageGen preview; its current hash is
+            # tracked by outputs/figures/manifest.json instead.
+            if entry['stem'] == png.stem and entry.get('source_type', 'imagegen') == 'imagegen':
+                if hashlib.sha256(png.read_bytes()).hexdigest() != entry['sha256']:
+                    raise ValueError(f'Approved figure hash mismatch: {png}')
     p = doc.add_paragraph()
     set_paragraph_format(p, WD_ALIGN_PARAGRAPH.CENTER, False, before=3, after=3, line=1.0)
     r = p.add_run()
@@ -631,14 +704,21 @@ def add_front_matter(doc, source, toc_map=None):
         else:
             paragraph(doc, x, size=12, font=ENGLISH)
     doc.add_section(WD_SECTION.NEW_PAGE)
-    configure_section(doc.sections[-1], odd_header="目  录", page_format="lowerRoman", start=1)
+    # The body heading supplies the single visible TOC title.  Reusing the same
+    # text as the odd-page header produced a duplicated "目 录" on the first
+    # contents page in WPS/LibreOffice exports.
+    configure_section(
+        doc.sections[-1],
+        odd_header="成都理工大学硕士学位论文",
+        page_format="lowerRoman",
+        start=1,
+    )
     toc_heading = add_heading(doc, 1, "目  录", outline=False)
     set_paragraph_format(toc_heading, WD_ALIGN_PARAGRAPH.CENTER, False, before=24, after=18, line=1.0)
-    # Keep a native TOC field for Word updates, while embedding its current
-    # page-mapped result so headless PDF export is also populated.
-    toc_field = doc.add_paragraph(style="toc 1")
-    set_paragraph_format(toc_field, WD_ALIGN_PARAGRAPH.LEFT, False, before=0, after=0, line=1.0)
-    add_cached_toc_field(toc_field, source, toc_map)
+    # Keep a native TOC field for Word/WPS updates, while embedding its current
+    # page-mapped result so headless PDF export is also populated.  The cached
+    # result is emitted as one actual paragraph per entry.
+    add_cached_toc_field(doc, source, toc_map)
 
 
 def main():
@@ -650,6 +730,14 @@ def main():
     args = parser.parse_args()
     if not args.template.exists():
         raise FileNotFoundError(args.template)
+    source_text = args.source.read_text(encoding="utf-8")
+    han_characters = len(re.findall(r"[\u4e00-\u9fff]", source_text))
+    if han_characters > MAX_HAN_CHARACTERS:
+        raise RuntimeError(
+            f"Thesis exceeds the 51,000-character limit: {han_characters} Chinese characters"
+        )
+    print(f"Chinese character count: {han_characters}/{MAX_HAN_CHARACTERS}")
+    validate_final_figure_sequence(source_text)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     from rebuild_docx_formulas import rebuild
 

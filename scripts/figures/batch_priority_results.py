@@ -131,7 +131,7 @@ def forest():
         ax.spines[['top','right']].set_visible(False)
         ax.text(0,1.06,title,transform=ax.transAxes,fontsize=10)
     fig.text(.63,.025,'MAE(后者) − MAE(前者)（kWh/15 min）',ha='center',fontsize=10)
-    export(fig,'fig3_9_bootstrap_difference',(7.8,5.6))
+    export(fig,'fig3_11_bootstrap_difference',(7.8,5.6))
 
 def main():
     global PREVIEW

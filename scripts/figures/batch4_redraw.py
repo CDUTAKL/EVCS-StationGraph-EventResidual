@@ -201,7 +201,7 @@ def redraw_model_comparison() -> None:
               labels=["本文主模型", "其他模型"], fontsize=8, frameon=False,
               loc="lower right")
     _clean_ax(ax)
-    final(fig, "fig3_7_model_mae_comparison", (7.2, 5.1))
+    final(fig, "fig3_9_model_mae_comparison", (7.2, 5.1))
 
 
 # ========== ⑤ fig3_6 点级 pooled Bootstrap 差异图（描述性） ==========

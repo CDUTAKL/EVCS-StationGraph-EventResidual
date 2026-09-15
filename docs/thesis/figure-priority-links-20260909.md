@@ -1,6 +1,6 @@
 # 16幅订正图查看索引
 
-数据图为SVG与1200DPI PNG；6幅ImageGen示意图仅提供原生PNG。旧稿未删除。
+数据图与本轮四幅重绘图提供SVG与1200DPI PNG；4幅历史ImageGen示意图仍为原生PNG。旧稿未删除。
 
 | 图号 | 内容 | PNG | SVG |
 |---|---|---|---|
@@ -13,8 +13,8 @@
 | 图3-2 | 多关系门控传播 | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_2_relation_propagation_unit.png) | — |
 | 图3-3 | 时间编码与跨层融合 | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_3_temporal_skip_fusion.png) | — |
 | 图3-4 | LRE三关系构建 | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_4_lre_construction.png) | — |
-| 图3-9 | 点级Bootstrap误差差 | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_bootstrap_difference.png) | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_bootstrap_difference.svg) |
-| 图3-11 | 逐节点MAE | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_mae_by_node.png) | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_mae_by_node.svg) |
+| 图3-11 | 点级Bootstrap误差差 | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_bootstrap_difference.png) | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_bootstrap_difference.svg) |
+| 图3-13 | 逐节点MAE | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_mae_by_node.png) | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_mae_by_node.svg) |
 | 图4-5 | 残差分布 | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_5_residual_distribution.png) | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_5_residual_distribution.svg) |
 | 图4-6 | 事件分数与误差 | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_6_error_vs_event_intensity.png) | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_6_error_vs_event_intensity.svg) |
 | 图5-3 | 双向TE不对称性 | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_3_asymmetry.png) | [查看](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_3_asymmetry.svg) |

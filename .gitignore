@@ -44,8 +44,14 @@ outputs/*
 !outputs/figures/
 !outputs/figures/*.svg
 !outputs/figures/*.png
+# 正式论文只保留一个稳定文件名，历史版本由 Git 管理。
+!outputs/thesis/
+outputs/thesis/*
+!outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx
 # 调试脚本残留图不入仓（visualize_adaptive_graph.py 输出，已由正式图取代）
 outputs/figures/fig_adaptive_graph_heatmaps.*
 outputs/figures/fig_alpha_curve.*
 # 未纳入正文的早期示意图源稿留在本地，不进入版本库
 outputs/figures/schematics/
+# 本地保留的图片替换前快照不进入版本库；正式版本由根目录图件和 manifest 锁定。
+outputs/figures/archive-before-*/

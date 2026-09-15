@@ -22,10 +22,11 @@
         }
       ],
       "status": "accepted",
-      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-4ad5f600-a4ed-4027-b8dc-8cbb06e71437.png",
-      "sha256": "e3c1d62a8f5126712ea82a736bf0d4349681c48f91cecf090edd6dbc251739ec",
-      "workspace_output": "outputs/figures/fig3_1_mrggcn_architecture.png",
-      "review_scope": "Topology and labels checked visually against documented computation; cells are schematic, not dimension counts."
+      "selected_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_1_thesis_style_20260909.png",
+      "sha256": "d44f39ba9535ab6b4e872ff570d8cf192169995700991fb1fceddc13b63aa80c",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_1_thesis_style_20260909.png",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "reviewed_at": "2026-09-11"
     },
     {
       "stem": "fig3_2_relation_propagation_unit",
@@ -42,10 +43,11 @@
         }
       ],
       "status": "accepted",
-      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-baef2ecb-38e5-47a5-89b9-95d065d9e6fc.png",
-      "sha256": "c2d7fb53012c641a1137a40dcd92ba5e52ce4b72fb7b109a85880d6f884985db",
-      "workspace_output": "outputs/figures/fig3_2_relation_propagation_unit.png",
-      "review_scope": "Topology and labels checked visually against documented computation; cells are schematic, not dimension counts."
+      "selected_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_2_thesis_style_20260909.png",
+      "sha256": "9095e87c72115d7365da633a18c21321fd0ed8982669af7275eab6dfe130cbf4",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_2_thesis_style_20260909.png",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "reviewed_at": "2026-09-11"
     },
     {
       "stem": "fig3_3_temporal_skip_fusion",
@@ -66,10 +68,11 @@
         }
       ],
       "status": "accepted",
-      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-18ad7f43-f0bf-4c74-9536-41e5fa76926b.png",
-      "sha256": "56f19f023b39e206915af579aa07b743e387fcdf6ec3dca0bbd3cb7d9dcbfeea",
-      "workspace_output": "outputs/figures/fig3_3_temporal_skip_fusion.png",
-      "review_scope": "Topology and labels checked visually against documented computation; cells are schematic, not dimension counts."
+      "selected_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_3_thesis_style_20260909.png",
+      "sha256": "a032dbbc41290cb422285d40e0847722bfa45533ee7322abc88af2238faa0908",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_3_thesis_style_20260909.png",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "reviewed_at": "2026-09-11"
     },
     {
       "stem": "fig3_4_lre_construction",
@@ -97,7 +100,8 @@
     },
     {
       "stem": "fig2_10_dual_window_definition",
-      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/archive/2026-09-07-priority-audit-original/fig2_10_dual_window_definition.png",
+      "source_type": "imagegen_redraw_20260911",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-e058d50b-c22b-4cf9-a4e8-862853564281.png",
       "initial_prompt": "Edit the attached existing Chinese master's thesis scientific diagram, preserving its visual family, pale flat blue/pink/cream fills, white background, fine muted blue-gray strokes, refined tensor slabs where present. Use large sharply legible Chinese Song-style text and Times mathematical symbols. Improve alignment, spacing and typography; no icons, no shadows, no gradients, no title/caption, no tiny footnotes. Arrows must terminate on modules, avoid crossings. Scientific topology below overrides the original mistakes. Landscape 16:9. Preserve two pale horizontal bands blue upper and pale pink lower. Upper chain: 目标侧观测 → target_event (subtitle 标签事件 · 1.43%) → 分层评价. Lower: 预测起点信息 → rule_trigger (subtitle 冻结规则 · 0.43%) → 共形路由. The 1.43% and .43% are annotations INSIDE their respective definition boxes, NOT standalone operations. From the two definition boxes, separate arrows converge into 四格诊断 on right, while only lower rule path goes to routing. Four-cell diagnostic as small labeled 2×2 grid, column headers 触发 / 未触发, row headers 标签事件 / 非事件, cells 11 10 / 01 00. Include all four combinations, don't omit 00. No term 真实事件. No target_event arrow into 共形路由. Exactly two lanes with compact right-side grid, no redundant bottom disclaimer frames.",
       "iterations": [
         {
@@ -107,17 +111,22 @@
         {
           "round": "_v2",
           "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-93e1f485-5326-4eb9-ada8-1df01a38e8c4.png"
+        },
+        {
+          "round": "_circular_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-e058d50b-c22b-4cf9-a4e8-862853564281.png"
         }
       ],
       "status": "accepted",
-      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-93e1f485-5326-4eb9-ada8-1df01a38e8c4.png",
-      "sha256": "68e503757319f54e84baed2c75d295b971315ddb1d004221fc4d5e359482db59",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-e058d50b-c22b-4cf9-a4e8-862853564281.png",
+      "sha256": "78be8db2709670d17aafb90cc4621074fb5f305eec5f24c5a35b45e7f30dbc63",
       "workspace_output": "outputs/figures/fig2_10_dual_window_definition.png",
-      "review_scope": "Topology and labels checked visually against documented computation; cells are schematic, not dimension counts."
+      "review_scope": "Circular-node redesign reviewed for topology, text containment and the separation of evaluation and deployment semantics."
     },
     {
       "stem": "fig5_6_conformal_method",
-      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/archive/2026-09-07-priority-audit-original/fig5_6_conformal_method.png",
+      "source_type": "imagegen_redraw_20260911",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-146bc9c7-e864-472f-9981-35d903a3ba9c.png",
       "initial_prompt": "Edit the attached existing Chinese master's thesis scientific diagram, preserving its visual family, pale flat blue/pink/cream fills, white background, fine muted blue-gray strokes, refined tensor slabs where present. Use large sharply legible Chinese Song-style text and Times mathematical symbols. Improve alignment, spacing and typography; no icons, no shadows, no gradients, no title/caption, no tiny footnotes. Arrows must terminate on modules, avoid crossings. Scientific topology below overrides the original mistakes. Landscape 16:9. Preserve pale blue/pink branch style, substantially repair connections. Left 60% area named 验证期校准, right 40% named 测试期区间. Left upper row 冻结主模型 → 验证集前向 → 绝对残差 r=|y−ŷ| → 冻结规则分组. This group splits DOWN into two parallel independent paths: 规则触发样本 → 90%分位数 → q_evt; 规则未触发样本 → 逐节点90%分位数 → q_stable,n. Both q paths go into right-hand 选择区间半宽. α=0.1 appears as annotation ABOVE the quantile steps, never after output. Right top 测试输入 branches to 冻结模型预测 → ŷ and 冻结规则路由 → 选择区间半宽 (latter also receives both q). The selected q and prediction ŷ each connect to final 预测区间 ŷ±q. No future label input, no oracle, no output→alpha. Keep all edges explicit, rule grouping fed by validation residuals and frozen rule; no isolated lanes. White canvas with pale region fills, no yellow, compact legible type.",
       "iterations": [
         {
@@ -131,13 +140,79 @@
         {
           "round": "_v3",
           "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-f1f5b595-052a-41eb-8900-dea6d68af402.png"
+        },
+        {
+          "round": "_circular_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-146bc9c7-e864-472f-9981-35d903a3ba9c.png"
         }
       ],
       "status": "accepted",
-      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-f1f5b595-052a-41eb-8900-dea6d68af402.png",
-      "sha256": "b751d9d5632aa9ed387fa9d1ceccb8be0325682ba2496f3f6de56e2344fbefef",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-146bc9c7-e864-472f-9981-35d903a3ba9c.png",
+      "sha256": "62271f2939f0ee4cea7c04bda5878a507f281789c6a4d6b6f233024c254430ea",
       "workspace_output": "outputs/figures/fig5_6_conformal_method.png",
-      "review_scope": "Topology and labels checked visually against documented computation; cells are schematic, not dimension counts."
+      "review_scope": "Circular-node redesign reviewed for calibration branches, visible-rule routing, final interval connection and text containment."
+    },
+    {
+      "stem": "fig1_2_roadmap",
+      "source_type": "imagegen_redraw_20260911",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-16d19921-5072-45b6-9e93-56b7e6562428.png",
+      "iterations": [
+        {
+          "round": "_circular_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-16d19921-5072-45b6-9e93-56b7e6562428.png"
+        }
+      ],
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-16d19921-5072-45b6-9e93-56b7e6562428.png",
+      "sha256": "68e6d6b074c399540259c17def92e7950fdb734d6323eac3ed0f5d5e7535352e",
+      "reviewed_at": "2026-09-11",
+      "review_scope": "Circular-node redesign reviewed for the two contribution branches, convergence and boundary statement",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_2_roadmap.png"
+    },
+    {
+      "stem": "fig2_1_data_reconstruction",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig2_1_data_reconstruction.png",
+      "sha256": "d38225b1ee3423efdd8baedcb479bef6d903c697480cd386736f899740ddad70",
+      "reviewed_at": "2026-09-11",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig2_1_data_reconstruction.png"
+    },
+    {
+      "stem": "fig3_8_train_predict_pipeline",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig3_6_train_predict_pipeline.png",
+      "sha256": "4722b1d023dae898d24cf27726e1056f5b2cba188afcd9d098507968b2b023f0",
+      "reviewed_at": "2026-09-11",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig3_6_train_predict_pipeline.png"
+    },
+    {
+      "stem": "fig3_6_gate_residual_detail",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig3_13_gate_residual_detail_v3.png",
+      "sha256": "5c8d83df11dcca8981ac25ae1d016d97a369bb32bd6c16fda80f92591f32a971",
+      "reviewed_at": "2026-09-11",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig3_13_gate_residual_detail_v3.png"
+    },
+    {
+      "stem": "fig3_7_cross_layer_detail",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig3_14_cross_layer_detail_v5.png",
+      "sha256": "8f83956f3d3610322c9e374dcc3c24ff9ae0730ccd95f95356eea2ce2d53edee",
+      "reviewed_at": "2026-09-11",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig3_14_cross_layer_detail_v5.png"
+    },
+    {
+      "stem": "fig4_1_three_layer_framework",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig4_1_three_layer_framework.png",
+      "sha256": "b4ed0403c9969daf893b26ab77fb2e2db5953591bbef8df4cca8552061bcecdd",
+      "reviewed_at": "2026-09-11",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig4_1_three_layer_framework.png"
     }
   ],
   "reviewed_at": "2026-09-09",

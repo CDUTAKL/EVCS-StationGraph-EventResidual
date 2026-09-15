@@ -1,4 +1,4 @@
-# 论文主文配图最终编号映射（43 幅，2026-09-06修订）
+# 论文主文配图最终编号映射（43幅，2026-09-12锁定）
 
 本文件是主文图号、文件名、正文引用与 DOCX 插图的唯一编号基准。主文按章节连续编号；撤出主文的 11 幅图保存在 `outputs/figures/archive/2026-08-10-withdrawn-from-main-text/`，仅作后续追溯，不删除也不进入附录。
 
@@ -20,7 +20,7 @@
 | 图2-5 | `fig2_5_weekly_curves` | 代表性节点典型周负荷曲线 |
 | 图2-6 | `fig2_6_load_distribution` | 非零节点代理负荷经验分布 |
 | 图2-7 | `fig2_7_event_score_flow` | 事件分数与冻结规则事件窗口生成流程 |
-| 图2-8 | `fig2_8_event_hourly` | 真实事件时间步日内分布 |
+| 图2-8 | `fig2_8_event_hourly` | 标签事件时间步日内分布 |
 | 图2-9 | `fig2_9_event_component_composition` | 冻结规则事件窗口分量构成 |
 | 图2-10 | `fig2_10_dual_window_definition` | 标签事件与冻结规则触发的双口径对比 |
 | 图2-11 | `fig2_11_feature_correlation` | 输入特征 Spearman 秩相关矩阵 |
@@ -35,15 +35,15 @@
 | 图3-3 | `fig3_3_temporal_skip_fusion` | 时间编码与跨层融合预测结构 |
 | 图3-4 | `fig3_4_lre_construction` | LRE 三关系构建流程 |
 | 图3-5 | `fig3_5_lre_matrices` | LRE 三类站内关系矩阵 |
-| 图3-6 | `fig3_6_train_predict_pipeline` | 训练—预测—评价流程 |
-| 图3-7 | `fig3_7_model_mae_comparison` | 不同模型全局 MAE |
-| 图3-8 | `fig3_8_mae_by_horizon` | 不同模型逐步长 MAE |
-| 图3-9 | `fig3_9_bootstrap_difference` | 点级 Bootstrap 误差差 |
-| 图3-10 | `fig3_10_mae_by_window` | 不同评价窗口 MAE |
-| 图3-11 | `fig3_11_mae_by_node` | 不同模型逐节点 MAE |
-| 图3-12 | `fig3_12_mechanism_ablation` | 结构消融结果 |
-| 图3-13 | `fig3_13_gate_residual_detail` | 节点门控与残差更新细节 |
-| 图3-14 | `fig3_14_cross_layer_detail` | 跨层表示路径及拼接边界 |
+| 图3-6 | `fig3_6_gate_residual_detail` | 节点门控与残差更新细节 |
+| 图3-7 | `fig3_7_cross_layer_detail` | 跨层表示路径及拼接边界 |
+| 图3-8 | `fig3_8_train_predict_pipeline` | 训练—预测—评价流程 |
+| 图3-9 | `fig3_9_model_mae_comparison` | 不同模型全局 MAE |
+| 图3-10 | `fig3_10_mae_by_horizon` | 不同模型逐步长 MAE |
+| 图3-11 | `fig3_11_bootstrap_difference` | 点级 Bootstrap 误差差 |
+| 图3-12 | `fig3_12_mae_by_window` | 不同评价窗口 MAE |
+| 图3-13 | `fig3_13_mae_by_node` | 不同模型逐节点 MAE |
+| 图3-14 | `fig3_14_mechanism_ablation` | 结构消融结果 |
 
 ## 第4章（6 幅）
 
@@ -73,5 +73,5 @@
 ## 数量与状态
 
 - 第1章 2 幅、第2章 12 幅、第3章 14 幅、第4章 6 幅、第5章 9 幅，主文共 **43 幅**。
-- 当前34幅图具有 SVG + 1200 DPI PNG 及可追溯脚本；其中图3-13和图3-14为新增模型细节图。其余9幅历史方法示意图保留PNG构图预览，正式提交前仍需按需完成确定性SVG重绘。
+- 当前29幅图同时具有SVG与PNG，14幅方法示意图保留高分辨率PNG；图3-6和图3-7为模型细节图。所有正文插图均由本表中的稳定文件名唯一定位。
 - 图4-3知识蒸馏结果由表4-3承载；图4-4 的 B 面板以配对点线对照样本占比与按 `count×MAE` 计算的绝对误差贡献。

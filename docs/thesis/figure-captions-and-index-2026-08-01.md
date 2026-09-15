@@ -1,4 +1,4 @@
-# 论文图表索引与图注口径（43 幅，2026-09-06）
+# 论文图表索引与图注口径（43幅，2026-09-12锁定）
 
 本文件记录主文 43 幅图的文件、图注主题与证据口径；图号和文件名以
 [`figure-renumbering-2026-08-10.md`](figure-renumbering-2026-08-10.md) 为唯一依据，
@@ -6,9 +6,9 @@
 
 ## 使用边界
 
-- 当前 34 幅图同时保留 SVG 与 1200 DPI PNG，并登记于
-  `outputs/figures/manifest.json`；其中图3-13、图3-14为模型细节图。2026-09-07另对16幅优先图进行结构、映射和口径订正，详见 `figure-priority-audit-20260907.md`。
-- 9 幅方法示意图仍为 PNG 构图版；其中6幅本轮使用ImageGen修改并单独记录生成来源，正式送审前如需可编辑源文件，
+- 当前 29 幅图同时保留 SVG 与 1200 DPI PNG，并登记于
+  `outputs/figures/manifest.json`；其中图3-6、图3-7为模型细节图。2026-09-07另对16幅优先图进行结构、映射和口径订正，详见 `figure-priority-audit-20260907.md`。
+- 14 幅方法示意图仍为 PNG 构图版；其中12幅已使用ImageGen修改并单独记录生成来源，正式送审前如需可编辑源文件，
   应按相同图号完成确定性 SVG 重绘，不能把PNG包装成矢量图。
 - 事件评价使用 `target_event=1.43%`；四格诊断和共形路由使用
   `rule_trigger=0.43%`，两者不得混用。
@@ -23,13 +23,13 @@
 | 图号 | 文件基名 | 图注主题 | 状态 |
 |---|---|---|---|
 | 图1-1 | `fig1_1_research_gap_map` | 研究方向与本文关注不足的对应关系 | 示意图 PNG |
-| 图1-2 | `fig1_2_roadmap` | 总体技术路线；图内嵌“方法贡献—机制诊断贡献”两条主线 | SVG+PNG |
+| 图1-2 | `fig1_2_roadmap` | 总体技术路线；图内嵌“方法贡献—机制诊断贡献”两条主线 | ImageGen PNG |
 
 ## 第 2 章
 
 | 图号 | 文件基名 | 图注主题 | 状态 |
 |---|---|---|---|
-| 图2-1 | `fig2_1_data_reconstruction` | 会话记录至节点代理负荷张量的数据重构和划分 | SVG+PNG |
+| 图2-1 | `fig2_1_data_reconstruction` | 会话记录至节点代理负荷张量的数据重构和划分 | ImageGen PNG |
 | 图2-2 | `fig2_2_node_coverage` | 候选节点覆盖率、活跃月份与主分析节点 | SVG+PNG |
 | 图2-3 | `fig2_3_load_heatmap` | 连续四周节点代理负荷热力图 | SVG+PNG |
 | 图2-4 | `fig2_4_autocorrelation` | 代表节点代理负荷自相关 | SVG+PNG |
@@ -38,7 +38,7 @@
 | 图2-7 | `fig2_7_event_score_flow` | 事件分数与冻结规则事件窗口生成 | 示意图 PNG |
 | 图2-8 | `fig2_8_event_hourly` | 标签事件时间步的当地日内分布 | SVG+PNG |
 | 图2-9 | `fig2_9_event_component_composition` | 规则事件窗口内四类行为分量构成 | SVG+PNG |
-| 图2-10 | `fig2_10_dual_window_definition` | `target_event` 与 `rule_trigger` 的双口径定义 | 示意图 PNG |
+| 图2-10 | `fig2_10_dual_window_definition` | `target_event` 与 `rule_trigger` 的双口径定义 | ImageGen PNG |
 | 图2-11 | `fig2_11_feature_correlation` | 输入特征 Spearman 秩相关矩阵 | SVG+PNG |
 | 图2-12 | `fig2_12_weekday_hour_heatmap` | 星期—小时节点代理负荷热力图 | SVG+PNG |
 
@@ -51,21 +51,21 @@
 | 图3-3 | `fig3_3_temporal_skip_fusion` | 时间编码与跨层融合预测结构 | 示意图 PNG |
 | 图3-4 | `fig3_4_lre_construction` | LRE 三关系构建流程 | 示意图 PNG |
 | 图3-5 | `fig3_5_lre_matrices` | 三类固定统计关系矩阵 | SVG+PNG |
-| 图3-6 | `fig3_6_train_predict_pipeline` | 训练—预测—评价流程 | 示意图 PNG |
-| 图3-7 | `fig3_7_model_mae_comparison` | 12 个模型的全局 MAE 对比 | SVG+PNG |
-| 图3-8 | `fig3_8_mae_by_horizon` | 六模型逐预测步长 MAE | SVG+PNG |
-| 图3-9 | `fig3_9_bootstrap_difference` | 点级 pooled Bootstrap 误差差异 | SVG+PNG |
-| 图3-10 | `fig3_10_mae_by_window` | 全局、事件、稳定与非零负荷窗口 MAE | SVG+PNG |
-| 图3-11 | `fig3_11_mae_by_node` | 节点×模型 MAE 热力图 | SVG+PNG |
-| 图3-12 | `fig3_12_mechanism_ablation` | 结构消融结果 | SVG+PNG |
-| 图3-13 | `fig3_13_gate_residual_detail` | 节点门控与残差更新细节 | SVG+PNG |
-| 图3-14 | `fig3_14_cross_layer_detail` | 跨层表示路径及拼接边界 | SVG+PNG |
+| 图3-6 | `fig3_6_gate_residual_detail` | 节点门控与残差更新细节 | ImageGen PNG |
+| 图3-7 | `fig3_7_cross_layer_detail` | 跨层表示路径及拼接边界 | ImageGen PNG |
+| 图3-8 | `fig3_8_train_predict_pipeline` | 训练—预测—评价流程 | 示意图 PNG |
+| 图3-9 | `fig3_9_model_mae_comparison` | 12 个模型的全局 MAE 对比 | SVG+PNG |
+| 图3-10 | `fig3_10_mae_by_horizon` | 六模型逐预测步长 MAE | SVG+PNG |
+| 图3-11 | `fig3_11_bootstrap_difference` | 点级 pooled Bootstrap 误差差异 | SVG+PNG |
+| 图3-12 | `fig3_12_mae_by_window` | 全局、事件、稳定与非零负荷窗口 MAE | SVG+PNG |
+| 图3-13 | `fig3_13_mae_by_node` | 节点×模型 MAE 热力图 | SVG+PNG |
+| 图3-14 | `fig3_14_mechanism_ablation` | 结构消融结果 | SVG+PNG |
 
 ## 第 4 章
 
 | 图号 | 文件基名 | 图注主题 | 状态 |
 |---|---|---|---|
-| 图4-1 | `fig4_1_three_layer_framework` | 三层机制诊断协议 | SVG+PNG |
+| 图4-1 | `fig4_1_three_layer_framework` | 三层机制诊断协议 | ImageGen PNG |
 | 图4-2 | `fig4_2_beta_profile` | StaticGraph 两层关系级 $\beta$ 权重画像（三种子均值±样本标准差） | SVG+PNG |
 | 图4-3 | `fig4_3_intervention` | 关系级 $\beta$ 参数干预结果 | SVG+PNG |
 | 图4-4 | `fig4_4_four_cell` | 原正式MRG-GCN三种子事件标签×规则触发四格诊断；含MAE离散度与样本占比—绝对误差贡献配对点线图 | SVG+PNG |
@@ -81,7 +81,7 @@
 | 图5-3 | `fig5_3_asymmetry` | 双向传递熵与方向不对称性 | SVG+PNG |
 | 图5-4 | `fig5_4_te_vs_relations` | TE 与三类统计关系权重的对应 | SVG+PNG |
 | 图5-5 | `fig5_5_pcmci_validation_network` | PCMCI+ 条件独立核验网络 | SVG+PNG |
-| 图5-6 | `fig5_6_conformal_method` | 冻结规则路由的分层共形方法 | 示意图 PNG |
+| 图5-6 | `fig5_6_conformal_method` | 冻结规则路由的分层共形方法 | ImageGen PNG |
 | 图5-7 | `fig5_7_coverage` | 标准与规则路由共形覆盖率 | SVG+PNG |
 | 图5-8 | `fig5_8_quantile_per_node` | 分层残差分位数与事件层区间膨胀 | SVG+PNG |
 | 图5-9 | `fig5_9_parameter_intervention` | 分层参数干预敏感度 | SVG+PNG |
