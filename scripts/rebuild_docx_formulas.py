@@ -190,7 +190,6 @@ RAW_MATH = {
     "mathbf a^(l)": r"\mathbf{a}^{(l)}",
     "mathbf G": r"\mathbf{G}",
     "mathbf H^(l)": r"\mathbf{H}^{(l)}",
-    "beta": r"\beta",
     "10^-3": r"10^{-3}",
     "10^-4": r"10^{-4}",
     "10^-9": r"10^{-9}",
