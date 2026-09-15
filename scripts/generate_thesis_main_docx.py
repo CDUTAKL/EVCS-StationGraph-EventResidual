@@ -30,7 +30,7 @@ from docx.enum.text import (
 from docx.oxml import OxmlElement, parse_xml
 from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
-from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT
+from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT, WD_TABLE_ALIGNMENT
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -298,6 +298,40 @@ def set_cell_border(cell, **kwargs):
 NONE = {"val": "nil"}
 THIN = {"val": "single", "sz": "6", "color": "000000"}
 THICK = {"val": "single", "sz": "12", "color": "000000"}
+TABLE_WIDTH_CM = 14.66
+TABLE_FONT_SIZE = 10.5
+
+
+def _set_table_width(table, width_cm=TABLE_WIDTH_CM):
+    """Set both table/grid/cell geometry to the template's text width."""
+    table.autofit = False
+    table.alignment = WD_TABLE_ALIGNMENT.CENTER
+    width_twips = int(round(width_cm * 567))
+    tbl_pr = table._tbl.tblPr
+    tbl_w = tbl_pr.first_child_found_in("w:tblW")
+    if tbl_w is None:
+        tbl_w = OxmlElement("w:tblW")
+        tbl_pr.insert(0, tbl_w)
+    tbl_w.set(qn("w:w"), str(width_twips))
+    tbl_w.set(qn("w:type"), "dxa")
+    col_width = width_cm / len(table.columns)
+    for column in table.columns:
+        column.width = Cm(col_width)
+    for row in table.rows:
+        for cell in row.cells:
+            cell.width = Cm(col_width)
+
+
+def _set_table_row_rules(row, *, repeat_header=False):
+    """Repeat the header on continuation pages and keep each row intact."""
+    tr_pr = row._tr.get_or_add_trPr()
+    cant_split = tr_pr.find(qn("w:cantSplit"))
+    if cant_split is None:
+        tr_pr.append(OxmlElement("w:cantSplit"))
+    if repeat_header and tr_pr.find(qn("w:tblHeader")) is None:
+        header = OxmlElement("w:tblHeader")
+        header.set(qn("w:val"), "true")
+        tr_pr.append(header)
 
 
 def add_three_line_table(doc, rows):
@@ -305,22 +339,24 @@ def add_three_line_table(doc, rows):
         return
     cols = max(len(x) for x in rows)
     table = doc.add_table(rows=0, cols=cols)
-    table.autofit = False
-    widths = [Cm(16.15 / cols) for _ in range(cols)]
+    _set_table_width(table)
+    widths = [Cm(TABLE_WIDTH_CM / cols) for _ in range(cols)]
     for ri, values in enumerate(rows):
         cells = table.add_row().cells
+        _set_table_row_rules(table.rows[-1], repeat_header=(ri == 0))
         for ci in range(cols):
             cell = cells[ci]
             cell.width = widths[ci]
             cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
             cell.text = ""
             p = cell.paragraphs[0]
-            set_paragraph_format(p, WD_ALIGN_PARAGRAPH.CENTER if ri == 0 else WD_ALIGN_PARAGRAPH.LEFT, False, line=1.15)
+            set_paragraph_format(p, WD_ALIGN_PARAGRAPH.CENTER, False, line=1.0)
             r = p.add_run(clean_inline(values[ci] if ci < len(values) else ""))
-            set_font(r, EAST_ASIA, 9.5, bold=(ri == 0))
+            set_font(r, EAST_ASIA, TABLE_FONT_SIZE, bold=(ri == 0))
             set_cell_border(cell, top=THICK if ri == 0 else NONE,
                             bottom=THIN if ri == 0 else (THICK if ri == len(rows) - 1 else NONE),
                             left=NONE, right=NONE)
+    _set_table_width(table)
     return table
 
 
@@ -645,6 +681,10 @@ def add_body(doc, source):
             # keep their visual caption but do not create a second numbered target.
             p = doc.add_paragraph()
             set_paragraph_format(p, WD_ALIGN_PARAGRAPH.CENTER, False, before=3, after=3, line=1.0)
+            # Keep a table title with at least the first row; Word/WPS can then
+            # move the table cleanly when a page ends immediately before it.
+            if title.startswith("表") or is_named_table_caption:
+                p.paragraph_format.keep_with_next = True
             r = p.add_run(title + ("：" if is_subfigure else ""))
             set_font(r, HEADING_FONT, 10.5, bold=False)
             if note:
