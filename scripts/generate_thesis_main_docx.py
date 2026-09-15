@@ -184,13 +184,14 @@ def add_toc_field(paragraph_):
 
 TOC_TAB_POSITION = Cm(14.66)  # A4 text width under the template's 3.17 cm margins.
 TOC_LEVEL_LAYOUT = {
-    # left indent includes the hanging amount so wrapped lines stay aligned
-    # after the level marker instead of being padded with literal spaces.
-    1: (Cm(0.00), Cm(0.00)),
-    2: (Cm(1.10), Cm(0.35)),
-    3: (Cm(1.85), Cm(0.35)),
+    # CDUT contents: level 1 flush left, level 2/3 indented by two/four
+    # Chinese characters.  Do not use hanging indents: wrapped rows follow
+    # the same left edge as the entry text.
+    1: Cm(0.00),
+    2: Cm(0.85),
+    3: Cm(1.69),
 }
-TOC_LEVEL_SIZE = {1: 11, 2: 10.5, 3: 10}
+TOC_LEVEL_SIZE = {1: 12, 2: 12, 3: 12}
 
 
 def _append_field_char(paragraph_, field_type):
@@ -212,15 +213,38 @@ def _append_field_instruction(paragraph_):
 
 def _configure_toc_paragraph(paragraph_, level):
     """Apply stable paragraph geometry shared by cached and visible TOC rows."""
-    left_indent, hanging_indent = TOC_LEVEL_LAYOUT[level]
     set_paragraph_format(
-        paragraph_, WD_ALIGN_PARAGRAPH.LEFT, False, before=0, after=0, line=1.0
+        paragraph_, WD_ALIGN_PARAGRAPH.LEFT, False, before=0, after=0, line=1.25
     )
-    paragraph_.paragraph_format.left_indent = left_indent
-    paragraph_.paragraph_format.first_line_indent = -hanging_indent
+    paragraph_.paragraph_format.left_indent = TOC_LEVEL_LAYOUT[level]
+    paragraph_.paragraph_format.first_line_indent = Cm(0)
     paragraph_.paragraph_format.tab_stops.add_tab_stop(
         TOC_TAB_POSITION, WD_TAB_ALIGNMENT.RIGHT, WD_TAB_LEADER.DOTS
     )
+
+
+def configure_toc_styles(doc):
+    """Keep a WPS/Word field refresh from reverting the required TOC format."""
+    for level in (1, 2, 3):
+        style = doc.styles[f"toc {level}"]
+        style.font.name = ENGLISH
+        style.font.size = Pt(12)
+        style.font.bold = level == 1
+        rfonts = style.element.get_or_add_rPr().get_or_add_rFonts()
+        rfonts.set(qn("w:ascii"), ENGLISH)
+        rfonts.set(qn("w:hAnsi"), ENGLISH)
+        rfonts.set(qn("w:cs"), ENGLISH)
+        rfonts.set(qn("w:eastAsia"), EAST_ASIA)
+        pf = style.paragraph_format
+        pf.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        pf.space_before = Pt(0)
+        pf.space_after = Pt(0)
+        pf.line_spacing = 1.25
+        pf.left_indent = TOC_LEVEL_LAYOUT[level]
+        pf.first_line_indent = Cm(0)
+        pf.tab_stops.add_tab_stop(
+            TOC_TAB_POSITION, WD_TAB_ALIGNMENT.RIGHT, WD_TAB_LEADER.DOTS
+        )
 
 
 def _add_toc_entry(paragraph_, level, text, page):
@@ -520,7 +544,9 @@ def add_figure(doc, path, alt, source_dir):
 def add_heading(doc, level, text, outline=True):
     # The supplied template does not define every built-in Heading style.  Set an
     # explicit outline level instead, so Word's TOC field remains reliable.
-    p = doc.add_paragraph(style="Heading 1" if level == 1 else None)
+    # Front-matter labels may look like headings but must remain ordinary
+    # paragraphs; applying Heading 1 makes WPS insert them into the native TOC.
+    p = doc.add_paragraph(style="Heading 1" if level == 1 and outline else None)
     if outline:
         ppr = p._p.get_or_add_pPr()
         outline_level = OxmlElement("w:outlineLvl")
@@ -713,8 +739,12 @@ def add_front_matter(doc, source, toc_map=None):
         page_format="lowerRoman",
         start=1,
     )
-    toc_heading = add_heading(doc, 1, "目  录", outline=False)
+    # The contents title is visually a chapter-level heading, but it must not
+    # inherit Heading 1 or appear as an entry in the navigation pane/TOC.
+    toc_heading = doc.add_paragraph()
     set_paragraph_format(toc_heading, WD_ALIGN_PARAGRAPH.CENTER, False, before=24, after=18, line=1.0)
+    toc_title_run = toc_heading.add_run("目  录")
+    set_font(toc_title_run, HEADING_FONT, 18, bold=True)
     # Keep a native TOC field for Word/WPS updates, while embedding its current
     # page-mapped result so headless PDF export is also populated.  The cached
     # result is emitted as one actual paragraph per entry.
@@ -760,6 +790,7 @@ def main():
             settings.append(update_fields)
         remove_template_body_after_declarations(doc)
         clear_front_matter_headers(doc)
+        configure_toc_styles(doc)
         toc_map = json.loads(args.toc_map.read_text(encoding="utf-8")) if args.toc_map else None
         add_front_matter(doc, args.source, toc_map)
         add_body(doc, args.source)
