@@ -67,6 +67,27 @@ def run_converter(latex: str, node: str, converter: str, node_path: str) -> etre
         raise RuntimeError("converter returned no m:oMath element")
     result = etree.fromstring(etree.tostring(math[0]))
     repair_empty_nary(result)
+    # Without an explicit run size, some renderers carry the preceding
+    # subscript's reduced size into the next ordinary term.
+    for run in result.xpath(".//m:r", namespaces=NS):
+        if run.getparent().tag == f"{M}sub" and run.findtext(f"{M}t") == "lim":
+            # P_lim is a literal variable name, not the limit operator. LO's
+            # math importer otherwise emits red missing-argument placeholders.
+            math_props = run.find(f"{M}rPr")
+            if math_props is None:
+                math_props = etree.Element(f"{M}rPr")
+                run.insert(0, math_props)
+            normal = etree.SubElement(math_props, f"{M}nor")
+            normal.set(f"{M}val", "1")
+        props = run.find(f"{W}rPr")
+        if props is None:
+            props = etree.Element(f"{W}rPr")
+            text_node = run.find(f"{M}t")
+            run.insert(list(run).index(text_node) if text_node is not None else len(run), props)
+        size = props.find(f"{W}sz")
+        if size is None:
+            size = etree.SubElement(props, f"{W}sz")
+        size.set(f"{W}val", "21")
     return result
 
 
@@ -86,16 +107,27 @@ def repair_empty_nary(math: etree._Element) -> None:
         nary_pr = nary.find(f"{M}naryPr")
         chr_node = nary_pr.find(f"{M}chr") if nary_pr is not None else None
         operator = chr_node.get(f"{M}val", "∑") if chr_node is not None else "∑"
-        replacement = etree.Element(f"{M}sSubSup")
-        etree.SubElement(replacement, f"{M}sSubSupPr")
+        scripts = {}
+        for child_name in ("sub", "sup"):
+            child = nary.find(f"{M}{child_name}")
+            if child is not None and (len(child) or (child.text or '').strip()):
+                scripts[child_name] = child
+        # An empty upper/lower script creates a visible square in LO. Select
+        # only the script structure that the source expression actually has.
+        tag = "sSubSup" if len(scripts) == 2 else "sSub" if "sub" in scripts else "sSup" if "sup" in scripts else None
+        if tag is None:
+            replacement = etree.Element(f"{M}r")
+            etree.SubElement(replacement, f"{M}t").text = operator
+            nary.getparent().replace(nary, replacement)
+            continue
+        replacement = etree.Element(f"{M}{tag}")
+        etree.SubElement(replacement, f"{M}{tag}Pr")
         op_e = etree.SubElement(replacement, f"{M}e")
         op_run = etree.SubElement(op_e, f"{M}r")
         op_text = etree.SubElement(op_run, f"{M}t")
         op_text.text = operator
-        for child_name in ("sub", "sup"):
-            child = nary.find(f"{M}{child_name}")
-            if child is not None:
-                replacement.append(child)
+        for child in scripts.values():
+            replacement.append(child)
         nary.getparent().replace(nary, replacement)
 
 

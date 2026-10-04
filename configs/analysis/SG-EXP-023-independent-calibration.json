@@ -1,0 +1,21 @@
+{
+  "analysis_id": "SG-EXP-023",
+  "protocol": "SG-DATA-006-eventtime-v1",
+  "source_root": "outputs/recovered/SG-EXP-019/unpacked/results/formal",
+  "data": "outputs/visibility/SG-DATA-006-eventtime-v1/dataset.npz",
+  "raw_sessions": "/Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit/data/raw/acn_sessions.csv",
+  "seeds": [2024, 2025, 2026],
+  "alpha": 0.1,
+  "calibration_split": "calibration",
+  "calibration_methods": ["node_standard", "behavior_rule_stratified"],
+  "rank_rule": "ceil((n+1)*(1-alpha)); kth order statistic; infinity if k>n",
+  "standard_grouping": "node; pool four horizons",
+  "rule_grouping": "triggered: pool nodes and horizons; untriggered: per node, pool horizons",
+  "rule_source": "frozen SG-DATA-006 three-component behavior rule fitted on tuning, never target_event",
+  "interval": "y_pred +/- q; preserve negative lower endpoints and archived predictions",
+  "innovation_models": ["mrg_full", "tcn_wide", "mrg_self_loop", "mrg_pattern", "mrg_equal_beta", "mrg_fixed_gate", "mrg_no_refine", "mrg_no_skip", "agcrn_full"],
+  "primary_comparisons": ["tcn_wide", "mrg_self_loop"],
+  "bootstrap": {"block_days": 7, "resamples": 2000, "seed": 20261003, "group_by": "America/Los_Angeles origin issue date; consecutive nonoverlapping seven-day blocks; all nodes/horizons/seeds retained"},
+  "scope": "exploratory frozen-prediction supplement; previously inspected retrospective test; no model training or tuning on test",
+  "output": "outputs/analysis/SG-EXP-023-independent-calibration"
+}

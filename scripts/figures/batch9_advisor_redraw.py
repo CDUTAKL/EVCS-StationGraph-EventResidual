@@ -54,6 +54,13 @@ def final(fig, name: str, size: tuple[float, float]) -> None:
         size_inches=size,
         grayscale_preview=False,
     )
+    # Matplotlib 把多行 path 数据写成带行尾空格的行；清理后 SVG 才能通过
+    # 仓库的空白检查（git diff --check）。
+    svg_path = FIG_DIR / f"{name}.svg"
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_path.read_text(encoding="utf-8").splitlines()) + "\n",
+        encoding="utf-8",
+    )
     print(f"  ✅ {name}")
 
 
@@ -79,123 +86,9 @@ def _mean_std(values: list[np.ndarray]) -> tuple[np.ndarray, np.ndarray]:
     return arr.mean(axis=0), arr.std(axis=0, ddof=1)
 
 
-def redraw_fig5_4() -> None:
-    c = json.load(open("outputs/analysis/conformal_prediction/conformal_summary.json"))
-    seeds = c["per_seed"]
-    methods = [
-        ("standard_conformal", "标准共形", GRAY_D, "o", "white"),
-        ("stratified_conformal", "规则路由分层共形", BLUE, "o", BLUE),
-        ("stratified_oracle_upper", "oracle 事后参照", ORANGE, "*", ORANGE),
-    ]
-
-    # 三个面板分别回答：事件窗口的部署覆盖率、全局/稳定窗口比较、逐步长稳定性。
-    # 采用单列三行，给每个证据面板完整的横向空间，避免横向三栏造成标签和误差棒拥挤。
-    fig = plt.figure(figsize=(8.4, 7.8), constrained_layout=False)
-    gs = GridSpec(3, 1, figure=fig, height_ratios=[1.0, 1.0, 1.15],
-                  left=0.16, right=0.965, bottom=0.08, top=0.88, hspace=0.32)
-
-    oracle_note = f"★ oracle {float(np.mean([s['stratified_oracle_upper']['coverage_event_window'] for s in seeds])):.1%}：真实标签事后参照 · 预测时不可用"
-    fig.text(0.50, 0.94, oracle_note, ha="center", va="center", fontsize=8.2,
-             color=ORANGE, bbox=dict(facecolor="white", edgecolor=ORANGE,
-                                      linewidth=0.8, boxstyle="round,pad=0.38"))
-
-    # A：最容易误读的事件窗口单独展开，规则路由与 oracle 不再叠在同一行。
-    ax = fig.add_subplot(gs[0, 0])
-    event_vals = []
-    event_stds = []
-    for key, label, color, marker, face in methods[:2]:
-        vals = np.asarray([s[key]["coverage_event_window"] for s in seeds], dtype=float)
-        event_vals.append(vals.mean())
-        event_stds.append(vals.std(ddof=1))
-    yy = np.array([1, 0])
-    for item, mean, sd, y in zip(methods[:2], event_vals, event_stds, yy):
-        _, label, color, marker, face = item
-        ax.errorbar(mean, y, xerr=sd, fmt=marker, ms=7.0,
-                    mfc=face, mec=color, mew=1.1, ecolor=color, capsize=2.8,
-                    lw=1.0, zorder=4)
-        # 数值标签固定放在点右侧，并使用白底；不再让标签回落到 y 轴左侧。
-        tx = min(mean + sd + 0.012, 0.086)
-        ax.text(tx, y, f"{mean:.1%}", va="center", ha="left", fontsize=8.0,
-                color=color, bbox=dict(facecolor="white", edgecolor="none",
-                                       alpha=0.90, pad=0.3))
-    ax.set_yticks(yy)
-    ax.set_yticklabels([m[1] for m in methods[:2]], fontsize=8.0)
-    ax.set_xlim(0, 0.10)
-    ax.set_ylim(-0.62, 1.62)
-    ax.xaxis.set_major_formatter(FuncFormatter(lambda value, pos: f"{value:.0%}"))
-    ax.set_xlabel("事件窗口覆盖率（放大）", fontsize=8.5)
-    oracle_event = float(np.mean([
-        s["stratified_oracle_upper"]["coverage_event_window"] for s in seeds
-    ]))
-    delta_event = event_vals[1] - event_vals[0]
-    ax.text(0.005, 1.28, f"规则路由相对标准：+{delta_event * 100:.1f} pp",
-            ha="left", va="center", fontsize=7.1, color=ORANGE,
-            transform=ax.transData)
-    clean_ax(ax, "x")
-    ax.text(-0.12, 1.04, "A", transform=ax.transAxes, ha="left", va="bottom",
-            fontsize=11, fontweight="bold", color=GRAY_D)
-    ax.text(-0.02, 1.04, "事件窗口：部署路径放大", transform=ax.transAxes,
-            ha="left", va="bottom", fontsize=8.8, color=GRAY_D)
-
-    # B：只比较全局和稳定窗口；事件窗口已在 A 中单独放大，避免小值被大范围压缩。
-    ax = fig.add_subplot(gs[1, 0])
-    summary_windows = [("overall", "全局"), ("stable_window", "稳定窗口")]
-    yy = np.arange(len(summary_windows))[::-1]
-    for yi, (wk, wk_label) in zip(yy, summary_windows):
-        std_vals = np.asarray([s["standard_conformal"][f"coverage_{wk}"] for s in seeds], dtype=float)
-        rule_vals = np.asarray([s["stratified_conformal"][f"coverage_{wk}"] for s in seeds], dtype=float)
-        std_mean, rule_mean = std_vals.mean(), rule_vals.mean()
-        std_sd, rule_sd = std_vals.std(ddof=1), rule_vals.std(ddof=1)
-        ax.plot([std_mean, rule_mean], [yi, yi], color=GRAY_L, lw=2.6, zorder=2)
-        ax.errorbar(std_mean, yi, xerr=std_sd, fmt="o", ms=6.0, mfc="white", mec=GRAY_D,
-                    ecolor=GRAY_D, capsize=2.3, lw=0.9, zorder=4)
-        ax.errorbar(rule_mean, yi, xerr=rule_sd, fmt="o", ms=6.0, mfc=BLUE, mec=BLUE,
-                    ecolor=BLUE, capsize=2.3, lw=0.9, zorder=4)
-        ax.text((std_mean + rule_mean) / 2, yi + 0.23,
-                f"{std_mean:.1%} → {rule_mean:.1%}", ha="center", va="bottom",
-                fontsize=7.2, color=GRAY_D)
-    ax.set_yticks(yy)
-    ax.set_yticklabels([w[1] for w in summary_windows], fontsize=8.2)
-    ax.set_xlim(0.64, 0.76)
-    ax.set_ylim(-0.58, 1.62)
-    ax.set_xlabel("覆盖率（均值 ± 跨种子 SD）", fontsize=8.3)
-    ax.legend(handles=[Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
-                              markeredgecolor=GRAY_D, markersize=5.5, label="标准共形"),
-                       Line2D([0], [0], marker="o", color="none", markerfacecolor=BLUE,
-                              markeredgecolor=BLUE, markersize=5.5, label="规则路由分层共形")],
-              fontsize=7.0, frameon=False, loc="lower left")
-    clean_ax(ax, "x")
-    ax.text(-0.12, 1.04, "B", transform=ax.transAxes, ha="left", va="bottom",
-            fontsize=11, fontweight="bold", color=GRAY_D)
-    ax.text(-0.02, 1.04, "全局/稳定窗口：标准 vs 规则", transform=ax.transAxes,
-            ha="left", va="bottom", fontsize=8.8, color=GRAY_D)
-
-    # C：预测步长上的全样本覆盖率，阴影明确是三种子范围而非置信区间。
-    ax = fig.add_subplot(gs[2, 0])
-    hx = np.arange(1, 5)
-    for key, label, color, ls in [("standard_conformal", "标准共形", GRAY_D, "--"),
-                                  ("stratified_conformal", "规则路由分层共形", BLUE, "-")]:
-        mat = np.asarray([s[key]["coverage_by_horizon"] for s in seeds], dtype=float)
-        lo, hi = mat.min(axis=0), mat.max(axis=0)
-        ax.fill_between(hx, lo, hi, color=color, alpha=0.13, zorder=1)
-        ax.plot(hx, mat.mean(axis=0), color=color, ls=ls, lw=1.9, marker="o",
-                ms=5.0, label=label, zorder=3)
-    ax.axhline(0.90, color=RED, lw=1.0, ls="--", zorder=2)
-    ax.text(4.03, 0.905, "90%", fontsize=7.0, color=RED, ha="right")
-    ax.set_xticks(hx)
-    ax.set_xlabel("预测步长（规则路由）", fontsize=8.5)
-    ax.set_ylabel("全样本覆盖率", fontsize=8.5)
-    ax.set_ylim(0.55, 0.93)
-    ax.legend(fontsize=7.0, frameon=True, facecolor="white", edgecolor="none",
-              framealpha=0.88, loc="lower right")
-    ax.text(0.02, 0.76, "阴影：3 种子 min–max", transform=ax.transAxes,
-            fontsize=6.8, color=GRAY_M)
-    clean_ax(ax, "y")
-    ax.text(-0.12, 1.04, "C", transform=ax.transAxes, ha="left", va="bottom",
-            fontsize=11, fontweight="bold", color=GRAY_D)
-    ax.text(-0.02, 1.04, "步长稳定性：全样本", transform=ax.transAxes,
-            ha="left", va="bottom", fontsize=8.8, color=GRAY_D)
-    final(fig, "fig5_7_coverage", (8.4, 7.8))
+# fig5_7（共形覆盖率）的生成已迁移至 scripts/figures/batch6_te_coverage_enhance.py
+# 的 fig5_7_coverage()。本脚本原先也写同名文件但产出不同内容（缺 A 面板橙线），
+# 运行它会把正确版本静默覆盖，故删除。
 
 
 def redraw_fig5_5() -> None:
@@ -212,12 +105,17 @@ def redraw_fig5_5() -> None:
     ratio_sd = ratio_all.std(axis=0, ddof=1)
     order = np.argsort(ratio)[::-1]
 
-    fig = plt.figure(figsize=(11.8, 5.35), constrained_layout=False)
-    gs = GridSpec(1, 2, figure=fig, width_ratios=[1.16, 1.0],
-                  left=0.075, right=0.975, bottom=0.20, top=0.80, wspace=0.40)
+    # 画布取论文显示尺寸：版心宽 14.66 cm = 5.77 in，图按 5.59 in 排版，
+    # 故 figsize 直接等于纸面尺寸，fontsize 参数即为纸面字号。
+    # 高度按 10 行节点所需的行高确定（每行约 0.30 in），不按原大画布等比缩放。
+    fig = plt.figure(figsize=(5.769, 4.440), constrained_layout=False)
+    # 用 add_axes 而非 GridSpec：节点标签位于 axes 之外，需显式预留宽度，
+    # 否则缩放后 B 面板的标签会侵入 A 面板的数据区。
+    ax_a = fig.add_axes([0.115, 0.135, 0.355, 0.700])
+    ax_b = fig.add_axes([0.610, 0.135, 0.370, 0.700])
 
     # A：用 log-x 点图展示“全局/未触发”与统一事件层分位数的量级差。
-    ax = fig.add_subplot(gs[0, 0])
+    ax = ax_a
     y = np.arange(len(labels))
     ax.axvspan(max(qe.mean() - qe_sd.mean(), 1e-5), qe.mean() + qe_sd.mean(),
                color=BLUE, alpha=0.10, zorder=0)
@@ -239,7 +137,10 @@ def redraw_fig5_5() -> None:
     ax.invert_yaxis()
     ax.set_xlabel("90% 残差分位数（kWh/15 min，对数轴）", fontsize=8.5)
     clean_ax(ax, "x")
-    panel_label(ax, "A", "节点分位数：事件层是统一值")
+    # 面板标题直接贴 axes 顶边，不用 panel_label 的负 x 偏移（该偏移为大画布设计，
+    # 在小画布上会越出画布边界）。
+    ax.text(0.0, 1.045, "A 节点分位数：事件层是统一值", transform=ax.transAxes,
+            ha="left", va="bottom", fontsize=8.6, fontweight="bold", color=GRAY_D)
 
     # 三类点的图例放入独立顶部区域，不再压在对数轴数据或统一事件层竖线上。
     fig.legend(handles=[Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
@@ -249,11 +150,11 @@ def redraw_fig5_5() -> None:
                         Line2D([0], [0], marker="D", color="none", markerfacecolor=BLUE,
                                markeredgecolor="white", markersize=5.3, label="规则触发层（统一；蓝线）")],
                fontsize=7.3, frameon=False, ncol=3, loc="upper center",
-               bbox_to_anchor=(0.50, 0.965), columnspacing=1.2, handletextpad=0.35)
+               bbox_to_anchor=(0.50, 0.985), columnspacing=1.2, handletextpad=0.35)
     # 统一事件层的含义已由顶部图例和蓝色竖线共同表达；不再在最后一个节点行附近放说明文字。
 
     # B：排序后的膨胀倍数森林图；误差棒和均值线独立表达跨种子变化。
-    ax = fig.add_subplot(gs[0, 1])
+    ax = ax_b
     yy = np.arange(len(order))
     ax.errorbar(ratio[order], yy, xerr=ratio_sd[order], fmt="o", ms=5.4,
                 mfc=BLUE, mec=BLUE, ecolor=GRAY_D, capsize=2.5, lw=0.9,
@@ -275,9 +176,10 @@ def redraw_fig5_5() -> None:
     ax.set_xlim(0, max(ratio + ratio_sd) * 1.25)
     ax.set_xlabel("规则触发层 / 全局分位数（倍数）", fontsize=8.5)
     clean_ax(ax, "x")
-    panel_label(ax, "B", "区间膨胀：事件层相对全局")
+    ax.text(0.0, 1.045, "B 区间膨胀：事件层相对全局", transform=ax.transAxes,
+            ha="left", va="bottom", fontsize=8.6, fontweight="bold", color=GRAY_D)
     # 误差棒口径已由图注说明；底部不再放脚注，避免侵入坐标轴刻度区域。
-    final(fig, "fig5_8_quantile_per_node", (11.8, 5.35))
+    final(fig, "fig5_8_quantile_per_node", (5.769, 4.440))
 
 
 def redraw_fig5_6() -> None:
@@ -607,6 +509,5 @@ if __name__ == "__main__":
     print("=== 批次 9：主文 4 张图重绘 ===")
     redraw_fig3_6()
     redraw_fig4_4()
-    redraw_fig5_4()
     redraw_fig5_5()
     print("批次 9 完成")

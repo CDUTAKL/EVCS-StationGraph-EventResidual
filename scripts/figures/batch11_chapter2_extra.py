@@ -55,9 +55,21 @@ BUNDLE = load_tensor_bundle("data/processed/SG-DATA-005-primary-tensor.npz")
 
 
 def _final(fig, name: str, size: tuple) -> None:
-    """导出 SVG + 1200 DPI PNG。"""
+    """导出 SVG + 1200 DPI PNG，并清理 SVG 行尾空白。
+
+    输入：fig 为 matplotlib Figure，name 为输出基名（不含扩展名），
+    size 为 (宽, 高) 英寸（即论文纸面尺寸）。
+    输出：无返回值，写出 <name>.svg 与 <name>.png。
+    边界：SVG 由 matplotlib 写入时会带行尾空格（多行 path 数据），
+    这里统一 rstrip 以满足仓库空白检查；不修改任何图元内容。
+    """
     export_figure(fig, basename=str(FIG_DIR / name), formats=["svg", "png"],
                   dpi=1200, size_inches=size, grayscale_preview=False)
+    svg_path = FIG_DIR / f"{name}.svg"
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_path.read_text(encoding="utf-8").splitlines()) + "\n",
+        encoding="utf-8",
+    )
     print(f"  ✅ {name}")
 
 
@@ -187,24 +199,36 @@ def redraw_fig2_7() -> None:
             if col_mask.any():
                 per_node[ni, ci] = values[col_mask, ni].mean()
 
-    fig, ax = plt.subplots(figsize=(7.8, 3.9))
-    colors = [BLUE, ORANGE, GREEN, "#7A6FA0"]
-    hatches = ["///", "\\\\", "...", "xx"]
+    # 画布宽度取论文版心宽 5.59 in，figsize 即纸面尺寸，fontsize 即纸面字号。
+    fig, ax = plt.subplots(figsize=(5.59, 3.02))
+    # 四分量沿用事件分数定义的堆叠顺序；配色为低饱和四色——深蓝打底 + 暖橙薄
+    # 分量 + 中灰/浅灰两个主量，相对亮度约 0.11/0.32/0.21/0.58，隔位色差 >0.2，
+    # 灰度打印下四段仍可区分。整图不含任何纹理，避免密集 hatch 缩印后糊成一片。
+    colors = [BLUE, ORANGE, GRAY_M, GRAY_L]
     labels = EVENT_COMPONENT_LABELS
     x = np.arange(len(BUNDLE.node_ids))
     bottom = np.zeros(len(BUNDLE.node_ids))
     for ci, color in enumerate(colors):
-        ax.bar(x, per_node[:, ci], bottom=bottom, color=color, width=0.62,
-               edgecolor="white", linewidth=0.5, hatch=hatches[ci],
-               label=labels[ci], zorder=3)
+        # 白色描边仅用于切分相邻色块，0.45 pt 细线避免吃掉离站这类薄分量。
+        ax.bar(x, per_node[:, ci], bottom=bottom, color=color, width=0.64,
+               edgecolor="white", linewidth=0.45, label=labels[ci], zorder=3)
         bottom += per_node[:, ci]
+    # 柱顶只标注四分量之和（= 事件窗口内归一化事件分数均值）；柱内不再逐段
+    # 标注 10×4 个数值——离站分量仅 0~1.7，标不下且必然与色块边界重叠。
+    for xi, total in zip(x, bottom):
+        ax.text(xi, total + 0.18, f"{total:.1f}", ha="center", va="bottom",
+                fontsize=6.2, color=GRAY_D)
     ax.set_xticks(x)
-    ax.set_xticklabels(BUNDLE.node_ids, fontsize=7.6, rotation=45, ha="right")
-    ax.set_ylabel("归一化分量均值", fontsize=8.6)
-    ax.set_ylim(0, bottom.max() * 1.12)
-    ax.legend(fontsize=7.4, frameon=False, ncol=4, loc="upper right")
+    ax.set_xticklabels(BUNDLE.node_ids, fontsize=6.6, rotation=45, ha="right")
+    ax.set_ylabel("归一化分量均值", fontsize=7.8, labelpad=4)
+    ax.set_ylim(0, bottom.max() * 1.07)
+    # 图例置于绘图区上方，避免与右侧偏高的柱（CA-317/327）互相遮挡。
+    ax.legend(fontsize=6.8, frameon=False, ncol=4, loc="lower center",
+              bbox_to_anchor=(0.5, 1.005), handlelength=1.05, handleheight=0.8,
+              handletextpad=0.45, columnspacing=1.15, borderaxespad=0.0)
     _clean(ax)
-    _final(fig, "fig2_9_event_component_composition", (7.8, 3.9))
+    ax.tick_params(axis="both", labelsize=6.6)
+    _final(fig, "fig2_9_event_component_composition", (5.59, 3.02))
     return None
 
 

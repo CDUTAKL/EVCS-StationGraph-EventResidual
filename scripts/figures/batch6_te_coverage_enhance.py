@@ -1,14 +1,19 @@
-"""论文图批次 6：fig5_3 / fig5_4 高信息密度重设计。
+"""论文图批次 6：fig5_3 方向不对称性 / fig5_7 共形覆盖率 重设计。
 
-fig5_3 方向不对称（v4）：
+函数名与输出文件名一致：fig5_3_asymmetry() -> fig5_3_asymmetry.*，
+fig5_7_coverage() -> fig5_7_coverage.*（历史重编号期间两者曾错位）。
+
+fig5_3 方向不对称（v5：复杂版恢复 + 版心尺寸适配，画布 5.59 in 宽）：
 - 主面板 45° 对称散点：符号化距离配色（线上方 j→i 主导蓝 / 下方 i→j 主导橙 / 对称带灰）
-- 点面积编码平均 TE 强度；显著对有向边实心、非显著空心
-- 近似对称带（±阈值）+ 45° 参考线
-- 顶部 + 右侧边缘直方图明确标注为主图横轴/纵轴分布，并用 1/2/3 编号联动 top 3 不对称对
-- 长节点对名称移至图下，主图仅保留编号，避免文字遮挡散点
-- 统计注释（20/45 对不对称 = 44.4%）置于图下
+- 点面积编码平均 TE 强度
+- 近似对称带（ASYM≤0.30 的比例边界，两条点线界定 + 浅色填充）+ 45° 参考线
+- 顶部 + 右侧边缘直方图（与主图共享坐标轴，明确标注为横轴/纵轴分布）
+- 1/2/3 编号联动：主图带圈编号，两个边缘分布中同位置用红色三角呼应
+- 主面板按等比例坐标铺满正方形面板，45° 线在纸面上确为 45°
+- 45 个无向节点对全部至少一方向达名义阈值 → "两方向均未达阈值"类别为空集，
+  既不绘制也不进图例（空类别照画会让图例宣告数据中不存在的类别）
 
-fig5_4 覆盖率（v3）：
+fig5_7 共形覆盖率（v3）：
 - 左面板哑铃图增强：均值点 + per-seed 三种子散点（抖动）+ Δ 差值标注 + 90% 目标线
 - 右面板 per-horizon 覆盖率：三种子 min-max 阴影带 + 均值线（标准灰虚线 / 分层深蓝实线）
 
@@ -24,6 +29,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.lines import Line2D
+from matplotlib.patches import Rectangle
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/scipilot-figure-skill/scripts"))
 try:
@@ -45,16 +51,33 @@ ORANGE = "#D08A3C"    # 低饱和橙（i→j 主导）
 GRAY_D = "#404040"    # 深灰
 GRAY_M = "#808080"    # 中灰
 GRAY_L = "#C8C8C8"    # 浅灰
-RED_S = "#B05A4A"     # 低饱和红（目标线）
+RED_S = "#B05A4A"     # 低饱和红（目标线 / top 3 编号联动标记）
 BUNDLE = load_tensor_bundle("data/processed/SG-DATA-005-primary-tensor.npz")
 
 
 def final(fig, name: str, size: tuple[float, float]) -> None:
-    """统一导出：SVG 矢量 + PNG 1200 DPI（论文硬性约束）。"""
+    """统一导出：SVG 矢量 + PNG 1200 DPI（论文硬性约束）。
+
+    输入：fig（绘制完成的 Figure）、name（不含扩展名的文件名）、
+          size=(宽, 高)/英寸，取论文版心宽 5.59 in，使 fontsize 即纸面字号。
+    输出：outputs/figures/<name>.svg 与 <name>.png（1200 DPI）。
+    边界：bbox_inches="tight" 会把画布裁到内容外框，成品宽度随之小于 size；
+          这里先铺一层覆盖整张画布的隐形矩形（figure 级 artist，计入 tight bbox），
+          并令 pad_inches=0，导出尺寸才严格等于 size。SVG 中 matplotlib 会写出行尾
+          空格，导出后统一清理以通过仓库空白检查。
+    """
+    fig.set_size_inches(*size)
+    fig.add_artist(Rectangle((0.0, 0.0), 1.0, 1.0, transform=fig.transFigure,
+                             facecolor="none", edgecolor="none", linewidth=0.0))
     export_figure(
         fig, basename=str(FIG_DIR / name),
         formats=["svg", "png"], dpi=1200, size_inches=size,
-        grayscale_preview=False,
+        grayscale_preview=False, pad_inches=0.0,
+    )
+    svg_path = FIG_DIR / f"{name}.svg"
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_path.read_text(encoding="utf-8").splitlines()) + "\n",
+        encoding="utf-8",
     )
     print(f"  ✅ {name}")
 
@@ -71,140 +94,216 @@ def _clean_ax(ax, xlabel=None, ylabel=None):
         ax.set_ylabel(ylabel, fontsize=9)
 
 
-# ========== fig5_3 方向不对称（v4：编号联动主图 + 边缘分布） ==========
-def fig5_4_asymmetry() -> None:
+# ========== fig5_3 方向不对称（v5：复杂版恢复 + 版心尺寸适配） ==========
+def fig5_3_asymmetry() -> None:
+    """绘制 fig5_3：双向传递熵与方向不对称性（画布取论文版心宽 5.59 in）。
+
+    输入：outputs/analysis/transfer_entropy/transfer_entropy_summary.json
+          （训练期 10 节点 TE 矩阵、显著有向边、不对称度 top 对）
+          与 SG-DATA-005 张量的节点清单。
+    输出：outputs/figures/fig5_3_asymmetry.svg 与 .png（1200 DPI）。
+    边界：45 个无向节点对中"两方向均未达名义阈值"在当前数据里为空集，该类别
+          不绘制、不进图例；任何类别为空时一律跳过，绝不画出数据中不存在的类别。
+    """
     te = json.load(open("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"))
-    node_ids = list(BUNDLE.node_ids)
+    node_ids = [str(n) for n in BUNDLE.node_ids]
     te_mat = np.array(te["te_matrix"])
     sig_pairs = {(e["source"], e["target"]) for e in te["significant_edges"]}
 
-    xs, ys, sigs, pairs = [], [], [], []
+    # ========== 阶段 1：整理 45 个无向节点对 ==========
+    # 遍历顺序与 analyze_transfer_entropy.py 完全一致（i < j），
+    # 这样 top 不对称对的下标回查、坐标取值都与分析产物一一对应。
+    xs, ys, pairs = [], [], []
     for i in range(len(node_ids)):
         for j in range(i + 1, len(node_ids)):
             xs.append(te_mat[i, j])
             ys.append(te_mat[j, i])
-            sigs.append((node_ids[i], node_ids[j]) in sig_pairs
-                        or (node_ids[j], node_ids[i]) in sig_pairs)
             pairs.append((node_ids[i], node_ids[j]))
-    xs, ys, sigs = np.array(xs), np.array(ys), np.array(sigs)
-    vmax = max(xs.max(), ys.max())
-    d = ys - xs                      # 符号化距离：正 = j→i 主导
+    xs, ys = np.array(xs), np.array(ys)
+    # 轴上限留 15% 余量，使 45° 线端点与最外侧散点之间仍有余量
+    axis_limit = float(max(xs.max(), ys.max())) * 1.15
+    d = ys - xs                       # 符号化距离：正 = j→i 主导
     asym = np.divide(np.abs(d), np.maximum(xs, ys),
                      out=np.zeros_like(d), where=np.maximum(xs, ys) > 0)
-    avg = (xs + ys) / 2.0            # 平均 TE（点面积编码）
-    asym_threshold = 0.30            # 与正文 ASYM > 0.3 判定完全一致
+    avg = (xs + ys) / 2.0              # 点面积编码：双向平均 TE（绝对强度）
+    asym_threshold = 0.30              # 与正文 ASYM > 0.3 的判定阈值一致
+    both_sig = np.array([(a, b) in sig_pairs and (b, a) in sig_pairs for a, b in pairs])
 
-    fig = plt.figure(figsize=(11.2, 8.0))
-    # 增大主图面积，同时把图例、方向判定条、顶部边缘分布拆成三层。
-    # 方向说明不进入任何数据区，避免文字与直方图/散点发生覆盖。
-    ax = fig.add_axes([0.11, 0.16, 0.68, 0.58])
-    ax_top = fig.add_axes([0.11, 0.79, 0.68, 0.09], sharex=ax)
-    ax_right = fig.add_axes([0.83, 0.16, 0.11, 0.58], sharey=ax)
+    # 版心宽 5.59 in：figsize 直接等于纸面尺寸，fontsize 即纸面字号。
+    # 主面板按等比例坐标取正方形（宽高都用 3.76 in），45° 线在纸面上才是 45°。
+    fig_w, fig_h = 5.59, 5.72
+    ax_left, ax_w, ax_bottom = 0.105, 0.672, 0.168
+    ax_h = (ax_w * fig_w) / fig_h
+    fig = plt.figure(figsize=(fig_w, fig_h))
+    ax = fig.add_axes([ax_left, ax_bottom, ax_w, ax_h])
+    # 顶部/右侧边缘分布与主图共享坐标轴，保证分箱位置与散点位置严格对齐
+    ax_top = fig.add_axes([ax_left, ax_bottom + ax_h + 0.012, ax_w, 0.055], sharex=ax)
+    ax_right = fig.add_axes([0.806, ax_bottom, 0.132, ax_h], sharey=ax)
 
-    # ---- 主面板 ----
-    # 对称带采用 ASYM <= 0.3 的比例边界，而不是固定绝对差带：
-    # y >= x 时 y <= x/(1-0.3)，y < x 时 y >= (1-0.3)x。
-    line_x = np.linspace(0, vmax * 1.15, 200)
+    # ========== 阶段 2：主面板（对称带 / 参考线 / 分类散点） ==========
+    # 对称带取 ASYM <= 阈值的比例边界而非固定绝对差带：y >= x 时 y <= x/(1-阈值)，
+    # y < x 时 y >= (1-阈值)x，带内即 ASYM <= 0.30。
+    line_x = np.linspace(0, axis_limit, 200)
     lower = (1.0 - asym_threshold) * line_x
     upper = line_x / (1.0 - asym_threshold)
-    ax.fill_between(line_x, lower, upper, color="#E3E8EC", alpha=0.34, zorder=1)
-    # 45° 参考线 + ASYM 阈值边界线
-    ax.plot([0, vmax * 1.15], [0, vmax * 1.15], color=GRAY_D, lw=1.1, ls="--", zorder=2)
-    ax.plot(line_x, lower, color=GRAY_L, lw=0.8, ls=":", zorder=1)
-    ax.plot(line_x, upper, color=GRAY_L, lw=0.8, ls=":", zorder=1)
-    # 散点：颜色 = 主导方向，深浅 = 不对称程度；面积 = 平均 TE；实心 = 显著对
-    colors = np.where(asym <= asym_threshold, GRAY_M,
-                      np.where(d > 0, BLUE, ORANGE))
-    alphas = 0.35 + 0.65 * np.abs(d) / max(np.abs(d).max(), 1e-9)
-    sizes = 26 + 130 * avg / max(avg.max(), 1e-9)
-    for x, y, c, a, s, sig in zip(xs, ys, colors, alphas, sizes, sigs):
-        ax.scatter(x, y, s=s, facecolor=c if sig else "white",
-                   edgecolor=c, linewidth=1.0, alpha=a, zorder=4)
-    # 只在主图中标出编号；节点对名称放在图底部，避免长标签压住散点。
-    top3 = te["asymmetry"]["top_asymmetric_pairs"][:3]
-    label_offsets = [(vmax * 0.060, vmax * 0.060),
-                     (vmax * 0.030, vmax * 0.050),
-                     (vmax * 0.050, -vmax * 0.055)]
-    for k, (p, (dx, dy)) in enumerate(zip(top3, label_offsets), start=1):
-        i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
-        px, py = te_mat[i, j], te_mat[j, i]
-        ax.scatter([px], [py], s=105, facecolor="none", edgecolor=RED_S,
-                   linewidth=1.2, zorder=6)
-        ax.annotate(str(k), xy=(px, py), xytext=(px + dx, py + dy),
-                    fontsize=8.0, color=RED_S, fontweight="bold", ha="center", va="center",
-                    bbox=dict(boxstyle="circle,pad=0.18", facecolor="white",
-                              edgecolor=RED_S, linewidth=0.8),
-                    arrowprops=dict(arrowstyle="->", color=GRAY_M, lw=0.8,
-                                    shrinkA=4, shrinkB=2))
-    _clean_ax(ax)
-    ax.set_xlabel("传递熵 TE(i → j)（nats）", fontsize=9)
-    ax.set_ylabel("传递熵 TE(j → i)（nats）", fontsize=9)
-    ax.set_xlim(0, vmax * 1.15)
-    ax.set_ylim(0, vmax * 1.15)
+    ax.fill_between(line_x, lower, upper, color="#DCE4EA", alpha=0.55, lw=0, zorder=1)
+    ax.plot(line_x, lower, color=GRAY_L, lw=0.7, ls=(0, (1.5, 1.5)), zorder=2)
+    ax.plot(line_x, upper, color=GRAY_L, lw=0.7, ls=(0, (1.5, 1.5)), zorder=2)
+    ax.plot([0, axis_limit], [0, axis_limit], color=GRAY_D, lw=1.0, ls="--", zorder=3)
 
-    # 图例置于主图外的上边距，避免遮挡散点。
-    handles = [
-        Line2D([0], [0], marker="o", color="none", markerfacecolor=BLUE,
-               markeredgecolor=BLUE, markersize=6, label="j→i 主导（y>x）"),
-        Line2D([0], [0], marker="o", color="none", markerfacecolor=ORANGE,
-               markeredgecolor=ORANGE, markersize=6, label="i→j 主导（x>y）"),
-        Line2D([0], [0], marker="o", color="none", markerfacecolor=GRAY_M,
-               markeredgecolor=GRAY_M, markersize=6, label="近似对称（ASYM≤0.3）"),
-        Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
-               markeredgecolor=BLUE, markersize=6, label="未入选候选边"),
+    # 类别 = (图例名, 颜色, 掩码)；空掩码直接 continue，既不画点也不进图例。
+    categories = [
+        ("j→i 主导",  BLUE,   (asym > asym_threshold) & (d > 0)),
+        ("i→j 主导",  ORANGE, (asym > asym_threshold) & (d < 0)),
+        ("近似对称（ASYM≤0.30）", GRAY_M, asym <= asym_threshold),
     ]
-    fig.legend(handles=handles, fontsize=7.0, frameon=False, ncol=4,
-               loc="upper center", bbox_to_anchor=(0.47, 0.985),
-               handletextpad=0.3, columnspacing=0.8)
+    sizes = 18.0 + 95.0 * avg / avg.max()
+    legend_handles = []
+    drawn = 0
+    for label, color, mask in categories:
+        if not mask.any():
+            continue
+        ax.scatter(xs[mask], ys[mask], s=sizes[mask], facecolor=color,
+                   edgecolor="white", linewidth=0.6, alpha=0.95, zorder=5)
+        drawn += int(mask.sum())
+        legend_handles.append(
+            Line2D([0], [0], marker="o", color="none", markerfacecolor=color,
+                   markeredgecolor=color, markersize=5, label=label))
+    if drawn != xs.size:
+        raise ValueError(f"分类未覆盖全部节点对：绘制 {drawn} / 共 {xs.size}")
+    # 图例按列优先填充（ncol=3）：与参考线交错后，上行是三类方向、下行是两条参考线
+    ref_handles = [
+        Line2D([0], [0], color=GRAY_D, lw=1.0, ls="--", label="双向相等"),
+        Line2D([0], [0], color=GRAY_L, lw=0.9, ls=(0, (1.5, 1.5)), label="ASYM = 0.30 边界"),
+    ]
+    interleaved = []
+    for idx in range(max(len(legend_handles), len(ref_handles))):
+        interleaved += legend_handles[idx:idx + 1] + ref_handles[idx:idx + 1]
+    legend_handles = interleaved
 
-    # ---- 顶部边缘直方图：明确是主图横轴 TE(i→j) 的分布 ----
-    for s in ax_top.spines.values():
-        s.set_visible(False)
-    top_n, _, _ = ax_top.hist(xs, bins=14, range=(0, vmax * 1.15), color=GRAY_M, alpha=0.75,
+    # ---- top 3 不对称对：主图带圈编号 + 边缘分布三角标记 ----
+    top3 = te["asymmetry"]["top_asymmetric_pairs"][:3]
+    top3_xy, top3_names, top3_ring = [], [], []
+    for p in top3:
+        i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
+        if i > j:                      # 防御：坐标必须按 i<j 的 (x, y) 顺序取用
+            i, j = j, i
+        px, py = te_mat[i, j], te_mat[j, i]
+        top3_xy.append((px, py))
+        # 主导方向按读数判定（不用 top 列表里的方向字段，避免口径漂移）
+        top3_names.append(f"{node_ids[i]} → {node_ids[j]}" if px > py
+                          else f"{node_ids[j]} → {node_ids[i]}")
+        # 红圈取该点自身面积 + 固定外扩量，保证圈始终落在散点之外
+        top3_ring.append(sizes[pairs.index((node_ids[i], node_ids[j]))] + 55.0)
+    # 编号标签用 offset points 定位：主图左上角区域本身空，向左下偏移会压到 y 刻度。
+    # 三个偏移按当前 top 3 的相对位置选（①③相邻、②最靠上），换数据需重新目视核对。
+    label_offsets = [(17, 15), (-24, 7), (20, -14)]
+    for k, ((px, py), (dx, dy), ring) in enumerate(
+            zip(top3_xy, label_offsets, top3_ring), start=1):
+        ax.scatter([px], [py], s=ring, facecolor="none", edgecolor=RED_S,
+                   linewidth=1.1, zorder=6)
+        ax.annotate(str(k), xy=(px, py), xytext=(dx, dy), textcoords="offset points",
+                    fontsize=6.6, color=RED_S, fontweight="bold", ha="center", va="center",
+                    bbox=dict(boxstyle="circle,pad=0.22", facecolor="white",
+                              edgecolor=RED_S, linewidth=0.7),
+                    arrowprops=dict(arrowstyle="-", color=RED_S, lw=0.7,
+                                    shrinkA=5, shrinkB=3), zorder=7)
+
+    ax.set_xlim(0, axis_limit)
+    ax.set_ylim(0, axis_limit)
+    # 刻度步长 0.001 nats：纸面上标签间距约 0.58 in，足够容纳 6.4 pt 的"0.000"
+    ticks = np.arange(0.0, axis_limit, 0.001)
+    ax.set_xticks(ticks)
+    ax.set_yticks(ticks)
+    ax.set_xticklabels([f"{t:.3f}" for t in ticks], fontsize=6.4)
+    ax.set_yticklabels([f"{t:.3f}" for t in ticks], fontsize=6.4)
+    ax.set_xlabel("传递熵 TE(i → j)（nats）", fontsize=7.4, labelpad=2)
+    ax.set_ylabel("传递熵 TE(j → i)（nats）", fontsize=7.4, labelpad=2)
+    ax.spines[["top", "right"]].set_visible(False)
+    for side in ("left", "bottom"):
+        ax.spines[side].set_color(GRAY_D)
+        ax.spines[side].set_linewidth(0.7)
+    ax.tick_params(colors=GRAY_D, length=2.2, width=0.6, pad=1.5)
+
+    # ========== 阶段 3：顶部边缘分布（主图横轴 TE(i→j) 的分布） ==========
+    # 与主图同一组分箱边界，保证柱位与散点横坐标可直接对照
+    bin_edges = np.linspace(0, axis_limit, 15)
+    ax_top.hist(xs, bins=bin_edges, color=GRAY_M, alpha=0.75,
                 edgecolor="white", linewidth=0.3)
-    ax_top.axvline(xs.mean(), color=GRAY_D, lw=0.9, ls="--")
-    for k, p in enumerate(top3, start=1):
-        i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
-        px = te_mat[i, j]
-        # 编号标记放到直方图上方的独立带，不再落在柱顶或柱体内部。
+    # 顶部留 12% 余量：最高柱不顶到轴上沿，下游的三角标记带也不贴着柱顶
+    ax_top.set_ylim(0, float(np.histogram(xs, bins=bin_edges)[0].max()) * 1.12)
+    ax_top.set_yticks([0, 10])
+    # 说明文字放本轴右上角的空白区（该区间柱高仅 1~2 根），不额外占用图外空间
+    ax_top.text(0.985, 0.92, "TE(i → j) 边缘分布", transform=ax_top.transAxes,
+                ha="right", va="top", fontsize=6.3, color=GRAY_D)
+    ax_top.set_ylabel("频数", fontsize=6.3, labelpad=2.5)
+    ax_top.tick_params(axis="x", labelbottom=False, length=0)
+    ax_top.tick_params(axis="y", labelsize=6.0, length=2.0, width=0.6, colors=GRAY_D)
+    for side in ax_top.spines.values():
+        side.set_visible(False)
+    # 三角标记放在轴上方的独立带（clip_on=False），不压在柱体上
+    for k, (px, _) in enumerate(top3_xy, start=1):
         xtrans = ax_top.get_xaxis_transform()
-        ax_top.scatter([px], [1.08], transform=xtrans, marker="v", s=28,
+        ax_top.scatter([px], [1.06], transform=xtrans, marker="v", s=16,
                        color=RED_S, zorder=5, clip_on=False)
-        ax_top.text(px, 1.18, str(k), transform=xtrans, ha="center", va="bottom",
-                    fontsize=7.2, color=RED_S, fontweight="bold", clip_on=False)
-    ax_top.set_ylim(0, max(top_n) * 1.02)
-    # 说明放在顶部直方图之外；方向关系由上方图例中的 y>x / x>y 直接定义。
-    fig.text(0.11, 0.945, "主图横轴边缘分布：TE(i → j)",
-             ha="left", va="top", fontsize=8.0, color=GRAY_D)
-    ax_top.set_ylabel("频数", fontsize=7.0)
-    ax_top.tick_params(axis="x", labelbottom=False)
-    ax_top.tick_params(axis="y", labelsize=6.5)
+        ax_top.text(px, 1.13, str(k), transform=xtrans, ha="center", va="bottom",
+                    fontsize=6.0, color=RED_S, fontweight="bold", clip_on=False)
 
-    # ---- 右侧边缘直方图：明确是主图纵轴 TE(j→i) 的分布 ----
-    for s in ax_right.spines.values():
-        s.set_visible(False)
-    right_n, _, _ = ax_right.hist(ys, bins=14, range=(0, vmax * 1.15), color=GRAY_M, alpha=0.75,
+    # ========== 阶段 4：右侧边缘分布（主图纵轴 TE(j→i) 的分布） ==========
+    ax_right.hist(ys, bins=bin_edges, color=GRAY_M, alpha=0.75,
                   edgecolor="white", linewidth=0.3, orientation="horizontal")
-    ax_right.axhline(ys.mean(), color=GRAY_D, lw=0.9, ls="--")
-    max_right_n = max(right_n)
-    for k, p in enumerate(top3, start=1):
-        i, j = node_ids.index(p["node_i"]), node_ids.index(p["node_j"])
-        py = te_mat[j, i]
-        ax_right.scatter([-max_right_n * 0.16], [py], marker="<", s=24, color=RED_S, zorder=4)
-        ax_right.text(-max_right_n * 0.34, py, str(k), ha="center", va="center",
-                      fontsize=7.2, color=RED_S, fontweight="bold")
-    ax_right.set_xlim(-max_right_n * 0.48, max_right_n * 1.12)
-    ax_right.text(0.5, 0.95, "TE(j → i)", transform=ax_right.transAxes,
-                  ha="center", va="top", fontsize=7.2, color=GRAY_D)
+    right_max_n = float(np.histogram(ys, bins=bin_edges)[0].max())
+    # 左侧留出编号带：三角与数字都画在 0 计数线之外，不覆盖柱体
+    ax_right.set_xlim(-right_max_n * 0.52, right_max_n * 1.10)
     ax_right.set_xticks([])
-    # 右侧边缘图共享主图 y 坐标；只隐藏右侧边缘的刻度，不清空主轴刻度。
+    for side in ax_right.spines.values():
+        side.set_visible(False)
     ax_right.tick_params(axis="y", left=False, right=False, labelleft=False, labelright=False)
+    # 轴名放本轴右侧（旋转 90°），与顶部"TE(i→j) 边缘分布"形成对称标注
+    ax_right.text(1.13, 0.5, "TE(j → i) 边缘分布", transform=ax_right.transAxes,
+                  ha="center", va="center", rotation=90, fontsize=6.3,
+                  color=GRAY_D, clip_on=False)
+    # 编号 1 与 3 的纵坐标仅差约 0.0002（不足一个字号），文字按最小间距错开后
+    # 整体回移保持居中；红色三角仍钉在原始读数处，与主图散点严格对齐。
+    # 最小间距取轴长的 4.2%（纸面约 0.16 in），大于 6 pt 字高即可避让。
+    order = sorted(range(len(top3_xy)), key=lambda idx: top3_xy[idx][1])
+    spread = [top3_xy[idx][1] for idx in order]
+    min_gap = axis_limit * 0.042
+    for r in range(1, len(spread)):
+        spread[r] = max(spread[r], spread[r - 1] + min_gap)
+    shift = (sum(spread) - sum(py for _, py in top3_xy)) / len(spread)
+    text_y = [0.0] * len(top3_xy)
+    for r, idx in enumerate(order):
+        text_y[idx] = spread[r] - shift
+    for k, ((_, py), ty) in enumerate(zip(top3_xy, text_y), start=1):
+        ax_right.scatter([-right_max_n * 0.15], [py], marker="<", s=16,
+                         color=RED_S, clip_on=False, zorder=5)
+        ax_right.text(-right_max_n * 0.32, ty, str(k), ha="center", va="center",
+                      fontsize=6.0, color=RED_S, fontweight="bold")
 
-    final(fig, "fig5_3_asymmetry", (11.2, 8.0))
+    # ========== 阶段 5：图例与图下注记 ==========
+    # 图例放画布顶部（figure 坐标，避免 axes 坐标换算出画布外导致导出被撑高）
+    fig.legend(handles=legend_handles, fontsize=6.2, frameon=False, ncol=3,
+               loc="upper left", bbox_to_anchor=(ax_left, 0.996),
+               bbox_transform=fig.transFigure, handletextpad=0.35,
+               handlelength=1.6, columnspacing=0.9, labelspacing=0.35)
+
+    n_both = int(both_sig.sum())
+    fig.text(ax_left, 0.058,
+             f"{xs.size} 个无向节点对（训练期）；{n_both} 对双向均达名义阈值，"
+             f"{xs.size - n_both} 对仅单方向达阈值；点面积编码双向平均 TE",
+             ha="left", va="center", fontsize=6.2, color=GRAY_D)
+    circled = "①②③"
+    fig.text(ax_left, 0.026,
+             "编号为不对称度最高的三个节点对（主导方向）："
+             + "　".join(f"{circled[k]} {name}" for k, name in enumerate(top3_names)),
+             ha="left", va="center", fontsize=6.2, color=GRAY_D)
+
+    final(fig, "fig5_3_asymmetry", (fig_w, fig_h))
 
 
 # ========== fig5_4 覆盖率（v3：per-seed 散点 + horizon 面板） ==========
-def fig5_8_coverage() -> None:
+def fig5_7_coverage() -> None:
     c = json.load(open("outputs/analysis/conformal_prediction/conformal_summary.json"))
     seeds = c["per_seed"]
     groups = ["全局", "事件窗口", "稳定窗口"]
@@ -212,15 +311,20 @@ def fig5_8_coverage() -> None:
                "稳定窗口": "stable_window"}
 
     # 三层证据结构：A 事件窗口放大，B 全局/稳定窗口，C 逐步长稳定性。
-    fig = plt.figure(figsize=(8.4, 8.25), constrained_layout=False)
+    # 画布取论文显示尺寸（版心宽 14.66 cm = 5.77 in，图按 5.59 in 排版）；
+    # 三个竖排面板约需 6.2 in 高度，此后 fontsize 参数即为纸面字号。
+    fig = plt.figure(figsize=(5.59, 6.20), constrained_layout=False)
     gs = fig.add_gridspec(3, 1, height_ratios=[1.08, 1.0, 1.12],
-                          left=0.14, right=0.975, bottom=0.08, top=0.95,
-                          hspace=0.34)
+                          left=0.225, right=0.975, bottom=0.065, top=0.955,
+                          hspace=0.42)
 
-    def panel_tag(ax, tag: str, title: str) -> None:
-        ax.text(-0.13, 1.08, tag, transform=ax.transAxes, fontsize=13,
-                fontweight="bold", color=GRAY_D, va="top")
-        ax.set_title(title, loc="left", fontsize=10.2, color=GRAY_D, pad=8)
+    def panel_tag(ax, tag: str) -> None:
+        """只画面板字母；A/B/C 的含义由论文图注承载。
+
+        原实现用 set_title 在每面板顶部写长描述句，属项目明令禁止的图内标题。
+        """
+        ax.text(0.015, 0.965, tag, transform=ax.transAxes, fontsize=12,
+                fontweight="bold", color=GRAY_D, va="top", ha="left")
 
     # ---- A：事件窗口可部署覆盖率 + 独立 oracle 参考 ----
     inner = gs[0].subgridspec(1, 2, width_ratios=[2.15, 1.0], wspace=0.24)
@@ -245,7 +349,8 @@ def fig5_8_coverage() -> None:
                      markeredgewidth=1.0, capsize=3.0, lw=1.2, zorder=4)
         axA.text(xi, mean + sd + 0.006, f"{mean:.1%}", ha="center", va="bottom",
                  fontsize=8.2, color=GRAY_D)
-    axA.plot(x, event_means, color=ORANGE, lw=1.2, alpha=0.75, zorder=2)
+    # zorder=1：置于种子点(3)与均值点(4)之下，避免斜线在点群处被切断的观感。
+    axA.plot(x, event_means, color=ORANGE, lw=1.2, alpha=0.75, zorder=1)
     axA.text(0.5, 0.96, f"规则路由相对标准：+{(event_means[1]-event_means[0])*100:.1f} pp",
              transform=axA.transAxes, ha="center", va="top", fontsize=8.5, color=ORANGE)
     axA.set_xticks(x)
@@ -255,7 +360,7 @@ def fig5_8_coverage() -> None:
     axA.set_yticks([0, 0.02, 0.04, 0.06, 0.08, 0.10])
     axA.set_yticklabels(["0%", "2%", "4%", "6%", "8%", "10%"], fontsize=7.8)
     _clean_ax(axA)
-    panel_tag(axA, "A", "事件窗口：可部署覆盖率（放大视图）")
+    panel_tag(axA, "A")
 
     oracle_event = float(np.mean([
         s["stratified_oracle_upper"]["coverage_event_window"] for s in seeds]))
@@ -286,21 +391,24 @@ def fig5_8_coverage() -> None:
         str_v = np.array([s["stratified_conformal"][f"coverage_{key}"] for s in seeds])
         s_mean, v_mean = float(std_v.mean()), float(str_v.mean())
         s_sd, v_sd = float(std_v.std(ddof=1)), float(str_v.std(ddof=1))
-        axB.plot([s_mean, v_mean], [yi, yi], color=GRAY_L, lw=2.4, zorder=1)
-        jitB = np.linspace(-0.10, 0.10, len(seeds))
-        axB.scatter(std_v, yi + jitB, s=28, facecolor="white", edgecolor=GRAY_M,
+        # 两方法均值仅相差约 0.2 pp，若同 y 绘制，ms=8.5 的标记在 x 方向必然
+        # 互相覆盖。故按方法垂直错开半行，灰色斜线连接两者（方向即提升方向）。
+        y_std, y_str = yi + 0.17, yi - 0.17
+        axB.plot([s_mean, v_mean], [y_std, y_str], color=GRAY_L, lw=2.4, zorder=1)
+        jitB = np.linspace(-0.08, 0.08, len(seeds))
+        axB.scatter(std_v, y_std + jitB, s=28, facecolor="white", edgecolor=GRAY_M,
                     linewidth=0.8, zorder=3)
-        axB.scatter(str_v, yi + jitB, s=28, facecolor=BLUE, edgecolor=BLUE,
+        axB.scatter(str_v, y_str + jitB, s=28, facecolor=BLUE, edgecolor=BLUE,
                     linewidth=0.5, alpha=0.7, zorder=3)
-        axB.errorbar(s_mean, yi, xerr=s_sd, fmt="o", ms=8.5, color=GRAY_D,
+        axB.errorbar(s_mean, y_std, xerr=s_sd, fmt="o", ms=8.5, color=GRAY_D,
                      markerfacecolor="white", markeredgecolor=GRAY_D,
                      capsize=3.0, lw=1.1, zorder=4,
                      label="标准共形" if yi == 0 else None)
-        axB.errorbar(v_mean, yi, xerr=v_sd, fmt="o", ms=8.5, color=BLUE,
+        axB.errorbar(v_mean, y_str, xerr=v_sd, fmt="o", ms=8.5, color=BLUE,
                      markerfacecolor=BLUE, markeredgecolor=GRAY_D,
                      capsize=3.0, lw=1.1, zorder=5,
                      label="规则路由分层" if yi == 0 else None)
-        axB.text(0.825, yi, f"Δ{(v_mean-s_mean)*100:+.1f} pp", ha="right",
+        axB.text(0.835, yi, f"Δ{(v_mean-s_mean)*100:+.1f} pp", ha="right",
                  va="center", fontsize=8.2, color=ORANGE)
     axB.set_yticks(yB)
     axB.set_yticklabels(groups_B, fontsize=9.0)
@@ -312,7 +420,7 @@ def fig5_8_coverage() -> None:
     _clean_ax(axB)
     axB.legend(fontsize=7.5, frameon=False, loc="upper right", ncol=2,
                handlelength=1.8, columnspacing=0.8)
-    panel_tag(axB, "B", "全局与稳定窗口：标准/规则路由对比")
+    panel_tag(axB, "B")
 
     # ---- C：逐步长覆盖率及三种子 min–max 范围 ----
     axC = fig.add_subplot(gs[2, 0])
@@ -338,14 +446,15 @@ def fig5_8_coverage() -> None:
     axC.set_xlim(0.8, 4.2)
     _clean_ax(axC)
     axC.legend(fontsize=7.5, frameon=True, facecolor="white", edgecolor="none",
-               framealpha=0.88, loc="upper left", ncol=2,
+               framealpha=0.88, loc="lower left", ncol=2,
                handlelength=1.8, columnspacing=0.8)
-    panel_tag(axC, "C", "逐步长覆盖率：三种子范围与均值")
+    panel_tag(axC, "C")
 
-    final(fig, "fig5_8_coverage", (8.4, 8.25))
+    final(fig, "fig5_7_coverage", (5.59, 6.20))
 
 
 if __name__ == "__main__":
-    print("=== 批次 6：图5-3方向不对称性重设计 ===")
-    fig5_4_asymmetry()
+    print("=== 批次 6：图5-3 方向不对称性 + 图5-7 共形覆盖率 ===")
+    fig5_3_asymmetry()
+    fig5_7_coverage()      # 原漏调用，导致该图只能手工生成后改名
     print("批次 6 完成")

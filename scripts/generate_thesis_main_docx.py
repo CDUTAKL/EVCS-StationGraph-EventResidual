@@ -43,6 +43,7 @@ EAST_ASIA = "宋体"
 ENGLISH = "Times New Roman"
 HEADING_FONT = "黑体"
 TITLE = "基于站内多关系图与机制诊断的充电节点短期负荷预测研究"
+ENGLISH_TITLE = "Short-Term Load Forecasting of Charging Nodes Based on Within-Station Multi-Relation Graphs and Mechanism Diagnosis"
 NODE = "/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
 MATH_CONVERTER = ROOT / "scripts/latex_to_omml.js"
 MATH_NODE_PATH = __import__('os').environ.get('THESIS_MATH_NODE_PATH', '/private/tmp/codex-thesis-math-runtime/node_modules')
@@ -87,6 +88,14 @@ def set_paragraph_format(p, align=None, first_line=True, before=0, after=0, line
     pf.space_before = Pt(before)
     pf.space_after = Pt(after)
     pf.line_spacing = line
+    # The template's 16.3 pt grid can double the requested 15 pt line height
+    # in office renderers. Respect the explicit paragraph spacing instead.
+    ppr = p._p.get_or_add_pPr()
+    snap = ppr.find(qn("w:snapToGrid"))
+    if snap is None:
+        snap = OxmlElement("w:snapToGrid")
+        ppr.append(snap)
+    snap.set(qn("w:val"), "0")
     if first_line:
         pf.first_line_indent = Pt(24)
     else:
@@ -110,6 +119,21 @@ def paragraph(doc, text="", *, align=WD_ALIGN_PARAGRAPH.JUSTIFY, first_line=True
 def add_page_field(paragraph_):
     fld = OxmlElement("w:fldSimple")
     fld.set(qn("w:instr"), "PAGE")
+    run = OxmlElement("w:r")
+    rpr = OxmlElement("w:rPr")
+    fonts = OxmlElement("w:rFonts")
+    fonts.set(qn("w:ascii"), ENGLISH)
+    fonts.set(qn("w:hAnsi"), ENGLISH)
+    fonts.set(qn("w:eastAsia"), EAST_ASIA)
+    rpr.append(fonts)
+    size = OxmlElement("w:sz")
+    size.set(qn("w:val"), "18")
+    rpr.append(size)
+    run.append(rpr)
+    text = OxmlElement("w:t")
+    text.text = "1"  # Cached value; the PAGE field is recalculated on rendering.
+    run.append(text)
+    fld.append(run)
     paragraph_._p.append(fld)
 
 
@@ -154,14 +178,16 @@ def configure_section(section, *, odd_header, even_header="成都理工大学硕
     section.footer_distance = Cm(1.75)
     section.header.is_linked_to_previous = False
     section.even_page_header.is_linked_to_previous = False
-    section.footer.is_linked_to_previous = False
     configure_header(section.header.paragraphs[0], odd_header)
     configure_header(section.even_page_header.paragraphs[0], even_header)
-    fp = section.footer.paragraphs[0]
-    fp.clear()
-    fp.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    if page_number:
-        add_page_field(fp)
+    for footer in (section.footer, section.even_page_footer):
+        footer.is_linked_to_previous = False
+        fp = footer.paragraphs[0]
+        fp.clear()
+        set_paragraph_format(fp, WD_ALIGN_PARAGRAPH.CENTER, False, line=1.0)
+        fp.add_run().font.size = Pt(9)
+        if page_number:
+            add_page_field(fp)
     set_page_number_format(section, page_format, start)
 
 
@@ -240,6 +266,12 @@ def configure_toc_styles(doc):
         pf.space_before = Pt(0)
         pf.space_after = Pt(0)
         pf.line_spacing = 1.25
+        ppr = style.element.get_or_add_pPr()
+        snap = ppr.find(qn("w:snapToGrid"))
+        if snap is None:
+            snap = OxmlElement("w:snapToGrid")
+            ppr.append(snap)
+        snap.set(qn("w:val"), "0")
         pf.left_indent = TOC_LEVEL_LAYOUT[level]
         pf.first_line_indent = Cm(0)
         pf.tab_stops.add_tab_stop(
@@ -351,7 +383,17 @@ def add_three_line_table(doc, rows):
             cell.text = ""
             p = cell.paragraphs[0]
             set_paragraph_format(p, WD_ALIGN_PARAGRAPH.CENTER, False, line=1.0)
-            r = p.add_run(clean_inline(values[ci] if ci < len(values) else ""))
+            # The current thesis tables all fit one page. Keep their rows
+            # together; leave the final row free of the following note.
+            p.paragraph_format.keep_with_next = ri < len(rows) - 1
+            cell_text = clean_inline(values[ci] if ci < len(values) else "")
+            if cols >= 5 and ri > 0:
+                # Break at a semantic boundary, never in a decimal's digits.
+                if re.fullmatch(r"\d+\.\d+±\d+\.\d+", cell_text):
+                    cell_text = cell_text.replace("±", "\n±")
+                elif re.fullmatch(r"mrg_[a-z_]+", cell_text) and len(cell_text) >= 12:
+                    cell_text = cell_text.replace("mrg_", "mrg_\n", 1)
+            r = p.add_run(cell_text)
             set_font(r, EAST_ASIA, TABLE_FONT_SIZE, bold=(ri == 0))
             set_cell_border(cell, top=THICK if ri == 0 else NONE,
                             bottom=THIN if ri == 0 else (THICK if ri == len(rows) - 1 else NONE),
@@ -751,13 +793,13 @@ def add_front_matter(doc, source, toc_map=None):
     cn = source_text.split("# 摘  要", 1)[1].split("# Abstract", 1)[0]
     for x in [x.strip() for x in cn.split("\n\n") if x.strip()]:
         if x.startswith("关键词："):
-            paragraph(doc, x, first_line=False, size=12, bold=True)
+            paragraph(doc, clean_inline(x), first_line=False, size=12, bold=True)
         else:
-            paragraph(doc, x, size=12)
+            paragraph(doc, clean_inline(x), size=12)
     doc.add_section(WD_SECTION.NEW_PAGE)
     # 英文摘要与中文摘要连续使用大写罗马页码，不在本节重新从 I 开始。
     configure_section(doc.sections[-1], odd_header="Abstract", page_format="upperRoman")
-    en_title = add_heading(doc, 1, TITLE, outline=False)
+    en_title = add_heading(doc, 1, ENGLISH_TITLE, outline=False)
     set_paragraph_format(en_title, WD_ALIGN_PARAGRAPH.CENTER, False, before=0, after=0, line=1.0)
     set_font(en_title.runs[0], ENGLISH, 15, bold=True)
     en_heading = add_heading(doc, 1, "Abstract", outline=False)
@@ -766,9 +808,9 @@ def add_front_matter(doc, source, toc_map=None):
     en = source_text.split("# Abstract", 1)[1].split("# 目  录", 1)[0]
     for x in [x.strip() for x in en.split("\n\n") if x.strip()]:
         if x.startswith("Keywords:"):
-            paragraph(doc, x, first_line=False, size=12, bold=True, font=ENGLISH)
+            paragraph(doc, clean_inline(x), first_line=False, size=12, bold=True, font=ENGLISH)
         else:
-            paragraph(doc, x, size=12, font=ENGLISH)
+            paragraph(doc, clean_inline(x), size=12, font=ENGLISH)
     doc.add_section(WD_SECTION.NEW_PAGE)
     # The body heading supplies the single visible TOC title.  Reusing the same
     # text as the odd-page header produced a duplicated "目 录" on the first
@@ -809,10 +851,11 @@ def main():
     print(f"Chinese character count: {han_characters}/{MAX_HAN_CHARACTERS}")
     validate_final_figure_sequence(source_text)
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    from rebuild_docx_formulas import rebuild
+    from rebuild_docx_formulas import extract_tagged_formulas, rebuild
+    expected_display_formulas = len(extract_tagged_formulas(source_text))
 
     # Build and validate off-path, then replace the single canonical output only
-    # after all 23 display equations and every recognized inline expression have
+    # after every tagged display equation and recognized inline expression has
     # been converted successfully.  No versioned intermediate DOCX is retained.
     with tempfile.TemporaryDirectory(prefix="thesis-docx-build-") as build_dir:
         base_docx = Path(build_dir) / "base.docx"
@@ -838,8 +881,15 @@ def main():
         formula_report = rebuild(
             base_docx, args.source, fixed_docx, NODE, MATH_CONVERTER, MATH_NODE_PATH
         )
-        if formula_report["conversion_errors"] or formula_report["display_formulas"] != 23:
-            raise RuntimeError(f"Native formula rebuild failed: {formula_report}")
+        if (
+            formula_report["conversion_errors"]
+            or formula_report["display_formulas"] != expected_display_formulas
+        ):
+            raise RuntimeError(
+                "Native formula rebuild failed: "
+                f"expected {expected_display_formulas} tagged display equations; "
+                f"report={formula_report}"
+            )
         sanitize_review_artifacts(fixed_docx, sanitized_docx)
         shutil.move(sanitized_docx, args.output)
     print(args.output)

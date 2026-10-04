@@ -1,0 +1,16 @@
+{
+  "analysis_id": "SG-EXP-025",
+  "data": "outputs/visibility/SG-DATA-006-eventtime-v1/dataset.npz",
+  "source_root": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_full",
+  "output": "outputs/analysis/SG-EXP-025-rolling-calibration",
+  "seeds": [2024, 2025, 2026],
+  "alpha": 0.1,
+  "lookback_days": [14, 28],
+  "primary_days": 14,
+  "timezone": "America/Los_Angeles",
+  "update": "local midnight; lookback is elapsed 24h days",
+  "eligibility": "prediction issued, target bin ended, and node label_available_at_ns strictly before update; target start >= update-lookback",
+  "empty_fallback": "frozen independent calibration",
+  "insufficient_rank": "infinity",
+  "scope": "post-hoc causal historical replay; not unseen-period confirmation or guaranteed coverage"
+}

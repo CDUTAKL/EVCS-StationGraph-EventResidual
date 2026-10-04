@@ -50,13 +50,41 @@ BUNDLE = load_tensor_bundle("data/processed/SG-DATA-005-primary-tensor.npz")
 
 
 def final(fig, name: str, size: tuple[float, float]) -> None:
-    """统一导出：SVG 矢量 + PNG 1200 DPI（论文硬性约束）。"""
+    """统一导出：SVG 矢量 + PNG 1200 DPI（论文硬性约束）。
+
+    SVG 另做行尾空白清理：matplotlib 写多行 path 数据时会带行尾空格，
+    会触发仓库空白检查（`git diff --check`），故导出后统一 rstrip 再落盘。
+    """
     export_figure(
         fig, basename=str(FIG_DIR / name),
         formats=["svg", "png"], dpi=1200, size_inches=size,
         grayscale_preview=False,
     )
+    # 不做 exists() 兜底：SVG 缺失即抛错，避免"清理被静默跳过"而留下行尾空白
+    svg_path = FIG_DIR / f"{name}.svg"
+    svg_text = svg_path.read_text(encoding="utf-8")
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_text.splitlines()) + "\n",
+        encoding="utf-8",
+    )
     print(f"  ✅ {name}")
+
+
+def _darken(hex_color: str, factor: float = 0.35) -> str:
+    """把十六进制色按比例混入黑色，生成同族深色。
+
+    输入：`hex_color` 形如 "#RRGGBB"；`factor` 为混入黑色的比例（0~1）。
+    输出：加深后的 "#RRGGBB"。用于柱体描边与误差棒，使其与柱体同色系、
+    在浅色柱与深色柱上都保持可辨识（跨族仍能分辨）。
+    边界：入参非 "#RRGGBB" 形式直接抛 ValueError，不静默取错误通道值。
+    """
+    if len(hex_color) != 7 or not hex_color.startswith("#"):
+        raise ValueError(f"颜色须为 #RRGGBB 形式，实际收到 {hex_color!r}")
+    scale = 1.0 - factor  # 各通道保留比例（factor 为混入黑色的比例）
+    r = int(hex_color[1:3], 16)
+    g = int(hex_color[3:5], 16)
+    b = int(hex_color[5:7], 16)
+    return f"#{int(r * scale):02X}{int(g * scale):02X}{int(b * scale):02X}"
 
 
 def _clean_ax(ax, xlabel=None, ylabel=None):
@@ -155,7 +183,7 @@ def redraw_event_timeline() -> None:
     final(fig, "fig2_8_event_hourly", (6.8, 3.4))
 
 
-# ========== ④ fig3_1 误差棒加强（重绘） ==========
+# ========== ④ fig3_9 模型 MAE 对比（重绘：族别配色 + 论文版心尺寸） ==========
 def redraw_model_comparison() -> None:
     # 数值与正文表 3-1 一致；随机模型给出三种子标准差，确定性模型不画误差棒。
     data = [
@@ -176,32 +204,80 @@ def redraw_model_comparison() -> None:
     names = [d[0] for d in data]
     maes = [d[1] for d in data]
     stds = [d[2] for d in data]
-    colors = [BLUE if i == 0 else GRAY_M for i in range(len(names))]
 
-    fig, ax = plt.subplots(figsize=(7.2, 5.1))
+    # ========== 配色语义：族别编码（灰阶 = 与本文主模型的方法距离） ==========
+    # 六族灰度亮度约 212/178/156/128/106/85，相邻档差 ≥20，转灰度仍能分层；
+    # 灰阶由浅到深 = 方法距本文主模型由远到近（与 MAE 排序形成冗余编码）；
+    # 本文变体取蓝灰（色相区别于灰阶），主模型用项目主色 BLUE，是图中唯一饱和色 → 唯一突出。
+    FAMILY_COLOR = {
+        "朴素基线": "#D4D4D4",       # 最浅（亮 212）：仅重复上一时刻
+        "统计与树模型": "#B2B2B2",   # 浅灰（亮 178）：非神经网络基线
+        "无图神经网络": "#808080",   # 中灰（亮 128）：逐节点独立预测
+        "图模型基线": "#6A6A6A",     # 深灰（亮 106）：用图但非本文方案
+        "本文变体": "#7FA3C2",       # 蓝灰（亮 156）：本文方法的对照变体
+        "本文主模型": "#2C5F8A",     # 项目主色（亮 85）：本文主模型
+    }
+    # 描边/误差棒用同族深色：浅灰柱上可勾出轮廓，深蓝柱上仍可读出误差棒。
+    FAMILY_EDGE = {f: _darken(c) for f, c in FAMILY_COLOR.items()}
+    # 模型 → 族别（键为去掉换行符的 y 轴标签；"（简化变体）"限定词保留）
+    FAMILY_OF = {
+        "Persistence": "朴素基线",
+        "ARIMA(2,1,2)": "统计与树模型",
+        "XGBoost": "统计与树模型",
+        "LightGBM": "统计与树模型",
+        "MLP": "无图神经网络",
+        "TCN": "无图神经网络",
+        "GRU": "无图神经网络",
+        "AGCRN（简化变体）": "图模型基线",
+        "GraphWaveNet（简化变体）": "图模型基线",
+        "AdaptiveGraph": "本文变体",
+        "EventResidual": "本文变体",
+        "MRG-GCN": "本文主模型",
+    }
+    families = [FAMILY_OF[n.replace("\n", "")] for n in names]
+    colors = [FAMILY_COLOR[f] for f in families]
+    edge_colors = [FAMILY_EDGE[f] for f in families]
+
+    # ========== 画布：论文版心宽 5.59 in，figsize 即纸面尺寸，fontsize 即纸面字号 ==========
+    fig_w, fig_h = 5.59, 4.15
+    fig, ax = plt.subplots(figsize=(fig_w, fig_h))
+    # 统一轴风格先行：_clean_ax 会重置刻度字号/颜色，故下方自定义必须在其之后
+    _clean_ax(ax)
     y = np.arange(len(names))
-    bars = ax.barh(y, maes, height=0.62, color=colors,
-                   edgecolor=GRAY_D, linewidth=0.5, zorder=3)
+    ax.barh(y, maes, height=0.62, color=colors,
+            edgecolor=edge_colors, linewidth=0.5, zorder=3)
     # 误差棒：仅三种子随机方法有 std；确定性方法（ARIMA/LGBM/XGB/Persistence）无种子
     # 波动是科学事实，不加（审查 2026-08-01：主结果图需展示不确定性）
     for yi, (mae, std) in enumerate(zip(maes, stds)):
         if std is not None:
-            ax.errorbar(mae, yi, xerr=std, fmt="none", ecolor=GRAY_D,
-                        capsize=3, lw=0.9, zorder=4)
-    for yi, mae in enumerate(maes):
-        ax.text(mae + 0.0015, yi, f"{mae:.5f}", va="center", fontsize=8.5,
-                color=GRAY_D)
-    bars[0].set_color(BLUE)
+            ax.errorbar(mae, yi, xerr=std, fmt="none", ecolor=edge_colors[yi],
+                        capsize=2.6, lw=0.9, zorder=4)
+    # 数值标注：全部保留小数标注（不依赖颜色也能读图）；主模型用主色强调
+    for yi, (mae, fam) in enumerate(zip(maes, families)):
+        is_main = fam == "本文主模型"
+        ax.text(mae + 0.0018, yi, f"{mae:.5f}", va="center", fontsize=6.9,
+                color=BLUE if is_main else GRAY_D,
+                fontweight="bold" if is_main else "normal")
+    # 主模型 y 轴标签加粗，与柱色一起构成冗余编码
     ax.set_yticks(y)
-    ax.set_yticklabels(names, fontsize=8.5)
-    ax.set_xlabel("Global MAE（kWh/15 min）", fontsize=9)
-    ax.set_xlim(0, 0.095)
-    ax.legend(handles=[plt.Rectangle((0, 0), 1, 1, color=BLUE),
-                       plt.Rectangle((0, 0), 1, 1, color=GRAY_M)],
-              labels=["本文主模型", "其他模型"], fontsize=8, frameon=False,
-              loc="lower right")
-    _clean_ax(ax)
-    final(fig, "fig3_9_model_mae_comparison", (7.2, 5.1))
+    ax.set_yticklabels(names, fontsize=7.2)
+    for tick_label, fam in zip(ax.get_yticklabels(), families):
+        if fam == "本文主模型":
+            tick_label.set_fontweight("bold")
+            tick_label.set_color(BLUE)
+    ax.tick_params(axis="y", pad=3)
+    ax.set_xlabel("Global MAE（kWh/15 min）", fontsize=7.6)
+    ax.tick_params(axis="x", labelsize=7.0)
+    # x 上限：最长柱 0.07828 + 其数值标注（约 0.008 数据单位）仍留白，不压边
+    ax.set_xlim(0, 0.090)
+    # 族别图例：按"距本文主模型由远及近"排列（与灰阶由浅到深同序）
+    ax.legend(handles=[plt.Rectangle((0, 0), 1, 1, facecolor=FAMILY_COLOR[f],
+                                     edgecolor=FAMILY_EDGE[f], linewidth=0.5)
+                       for f in FAMILY_COLOR],
+              labels=list(FAMILY_COLOR), fontsize=6.3, frameon=False,
+              loc="lower right", handlelength=1.1, handleheight=0.92,
+              labelspacing=0.42, borderpad=0.15, borderaxespad=0.25)
+    final(fig, "fig3_9_model_mae_comparison", (fig_w, fig_h))
 
 
 # ========== ⑤ fig3_6 点级 pooled Bootstrap 差异图（描述性） ==========

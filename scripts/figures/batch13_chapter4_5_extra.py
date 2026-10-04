@@ -56,6 +56,13 @@ def _final(fig, name: str, size: tuple) -> None:
     """导出 SVG + 1200 DPI PNG。"""
     export_figure(fig, basename=str(FIG_DIR / name), formats=["svg", "png"],
                   dpi=1200, size_inches=size, grayscale_preview=False)
+    # Matplotlib 把多行 path 数据写成带行尾空格的行；清理后 SVG 才能通过
+    # 仓库的空白检查（git diff --check）。
+    svg_path = FIG_DIR / f"{name}.svg"
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_path.read_text(encoding="utf-8").splitlines()) + "\n",
+        encoding="utf-8",
+    )
     print(f"  ✅ {name}")
 
 
@@ -241,7 +248,9 @@ def redraw_fig5_11() -> None:
     for i, j in zip(iu, ju):
         pairs.extend([(i, j), (j, i)])
 
-    fig, axes = plt.subplots(1, 3, figsize=(9.6, 3.4))
+    # 画布取论文显示尺寸（版心宽 14.66 cm = 5.77 in，图按 5.59 in 排版），
+    # fontsize 参数即为纸面字号；按 9.6 in 画布绘制再等比缩小会把 7.8pt 压到 4.3pt。
+    fig, axes = plt.subplots(1, 3, figsize=(5.59, 3.25))
     rel_names = [("load", "负荷耦合关系", BLUE),
                  ("event", "行为共现关系", ORANGE),
                  ("pattern", "轮廓相似关系", GREEN)]
@@ -264,16 +273,19 @@ def redraw_fig5_11() -> None:
                    color=GRAY_M, alpha=0.7, zorder=2, label="_nolegend_")
         r, p = stats.spearmanr(w_vals, te_vals)
         # 显著性标注阈值：p<0.01 双星（探索性分析，未做多重比较校正）
-        ax.text(0.97, 0.05, f"Spearman r = {r:.2f}{'**' if p < 0.01 else ''}",
+        # 白底衬托：低权重区散点密集，无底色的标注会被数据点压盖。
+        ax.text(0.97, 0.04, f"Spearman r = {r:.2f}{'**' if p < 0.01 else ''}",
                 transform=ax.transAxes, ha="right", va="bottom",
-                fontsize=7.4, color=GRAY_D)
+                fontsize=7.4, color=GRAY_D,
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.88, pad=1.0))
         ax.set_xlabel(f"{name}权重", fontsize=7.8)
         ax.set_ylabel("TE(i→j)（nats）" if key == "load" else "",
                       fontsize=7.8)
         ax.set_xlim(0, x_limit)
-        ax.set_xticks(np.round(np.linspace(0, x_limit, 5), 2))
+        # 等间距刻度：np.linspace 取整后会出现 0.10/0.16 这类不等间隔的标签。
+        ax.set_xticks(np.arange(0, x_limit + 1e-9, 0.05))
         _clean(ax)
-    _final(fig, "fig5_4_te_vs_relations", (9.6, 3.4))
+    _final(fig, "fig5_4_te_vs_relations", (5.59, 3.25))
     return None
 
 

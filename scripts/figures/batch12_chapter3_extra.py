@@ -115,6 +115,13 @@ def _final(fig, name: str, size: tuple) -> None:
     """导出 SVG + 1200 DPI PNG。"""
     export_figure(fig, basename=str(FIG_DIR / name), formats=["svg", "png"],
                   dpi=1200, size_inches=size, grayscale_preview=False)
+    # Matplotlib 把多行 path 数据写成带行尾空格的行；清理后 SVG 才能通过
+    # 仓库的空白检查（git diff --check）。
+    svg_path = FIG_DIR / f"{name}.svg"
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_path.read_text(encoding="utf-8").splitlines()) + "\n",
+        encoding="utf-8",
+    )
     print(f"  ✅ {name}")
 
 
@@ -158,37 +165,83 @@ def redraw_fig3_4() -> None:
 
 
 def redraw_fig3_8() -> None:
-    """图 3-8：分层窗口 MAE 对比（log 轴分组柱，事件窗口量级远大于稳定窗口）。"""
-    fig, ax = plt.subplots(figsize=(8.0, 4.0))
+    """图 3-8：分层窗口 MAE 对比（log 轴分组柱，事件窗口量级远大于稳定窗口）。
+
+    配色克制化：全部去掉 hatch 纹理，改用「主色 + 灰阶 + 低饱和色」的层次
+    区分 6 个模型——主模型 StaticGraph（MRG-GCN）用 BLUE 突出，其余按
+    灰阶（深→浅）与两个低饱和色（GWN 绿、AGCRN 紫）区分，与本项目
+    fig3_9 / fig4_4 / fig5_2 的素雅风格一致。
+    数值标注：4 窗口 × 6 模型共 24 根柱、柱宽仅约 13 pt，逐柱标注必然
+    与相邻柱或误差棒重叠，故只标注主模型（论文主张所系）在 4 个窗口的
+    MAE，标注置于该组最高柱之上并用细引导线连回主模型柱顶；其余模型的
+    分层数值由正文表 3-2 承载。
+    """
+    # 画布取论文显示尺寸（版心宽 14.66 cm = 5.77 in，图按 5.59 in 排版），
+    # fontsize 参数即为纸面字号；按大画布绘制再等比缩小会把 8pt 压到 3.9pt。
+    fig, ax = plt.subplots(figsize=(5.59, 3.15))
     x = np.arange(len(SCOPES))
     width = 0.15
-    hatches = ["", "///", "\\\\", "...", "xx", "++"]
-    for mi, (exp_id, label, color) in enumerate(MODELS):
+    # 本图专属配色映射（不改 MODELS 常量，以免影响共用它的 fig3_10/fig3_13）：
+    # 主模型 BLUE；AdaptiveGraph 为最强基线 → 深灰；TCN 为无图基线 → 浅灰；
+    # MLP 中灰；GWN / AGCRN 沿用其余章节的低饱和绿、紫。
+    palette = {
+        "SG-EXP-003": BLUE,      # 主模型 StaticGraph（MRG-GCN）
+        "SG-EXP-004": GRAY_D,    # AdaptiveGraph（最强基线）
+        "SG-EXP-009": GRAY_M,    # MLP
+        "SG-EXP-002": GRAY_L,    # TCN（无图基线）
+        "SG-EXP-010": GREEN,     # GWN
+        "SG-EXP-008": PURPLE,    # AGCRN
+    }
+    main_exp = "SG-EXP-003"
+    main_idx = next(i for i, (e, _l, _c) in enumerate(MODELS) if e == main_exp)
+    # 三种子均值 / 样本标准差矩阵，形状 [模型数, 窗口数]
+    means = np.zeros((len(MODELS), len(SCOPES)))
+    sds = np.zeros((len(MODELS), len(SCOPES)))
+    for mi, (exp_id, label, _color) in enumerate(MODELS):
         data = _load_model_metrics(exp_id)
-        means, sds = [], []
-        for scope_key, _cn in SCOPES:
+        for si, (scope_key, _cn) in enumerate(SCOPES):
             vals = np.asarray([data[s]["scopes"][scope_key] for s in SEEDS],
                               dtype=float)
-            means.append(vals.mean())
-            sds.append(vals.std(ddof=1))
-        ax.bar(x + (mi - 2) * width, means, width=width, color=color,
-               edgecolor="white", lw=0.5, hatch=hatches[mi],
-               yerr=sds, capsize=2.2,
-               error_kw=dict(lw=0.8), label=label, zorder=3)
+            means[mi, si] = vals.mean()
+            sds[mi, si] = vals.std(ddof=1)
+        ax.bar(x + (mi - 2) * width, means[mi], width=width,
+               color=palette[exp_id], edgecolor="white", lw=0.45,
+               yerr=sds[mi], capsize=2.0,
+               # 误差棒线宽/颜色须用 elinewidth / ecolor（lw 只作用于数据折线，
+               # 对 bar 的误差棒无效，会退回 1.5 pt 默认值显得笨重）。
+               error_kw=dict(elinewidth=0.7, capthick=0.7, ecolor=GRAY_D),
+               label=label, zorder=3)
     ax.set_yscale("log")
     # Keep only major log labels; unlabeled minor ticks avoid tiny, noisy text
     # when the figure is reduced to the thesis text width.
     ax.yaxis.set_minor_formatter(NullFormatter())
+
+    # 主模型数值标注：抬到本窗口最高柱（含误差棒）之上，避免压住任何柱体；
+    # 细引导线落在主模型柱自身列内，不会穿过相邻柱。
+    label_ys = (means + sds).max(axis=0) * 1.06
+    for gi in range(len(SCOPES)):
+        xc = x[gi] + (main_idx - 2) * width
+        ax.annotate(f"{means[main_idx, gi]:.4f}",
+                    xy=(xc, means[main_idx, gi] + sds[main_idx, gi]),
+                    xytext=(xc, label_ys[gi]), ha="center", va="bottom",
+                    fontsize=6.4, color=BLUE, zorder=6,
+                    arrowprops=dict(arrowstyle="-", color=BLUE, lw=0.6,
+                                    alpha=0.5, shrinkA=0.5, shrinkB=1.5))
+
     ax.set_xticks(x)
     ax.set_xticklabels([cn for _k, cn in SCOPES], fontsize=8.6)
     ax.set_ylabel("MAE（kWh/15 min，对数轴）", fontsize=8.8)
-    ax.set_ylim(0.004, 0.7)
-    ax.legend(fontsize=7.2, frameon=False, ncol=3, loc="upper center",
-              bbox_to_anchor=(0.50, 1.16), columnspacing=0.9,
-              handletextpad=0.35)
+    # 顶端留白按最高标注行的字号高度定（6.4 pt 文字 ≈ 0.11 十倍程），
+    # 保证标注不被上边框裁切。
+    ax.set_ylim(0.004, float(label_ys.max()) * 1.32)
+    # 图例单行横排 6 项，从左到右与每组柱序（TCN→…→AGCRN）完全一致，
+    # 位于数据区上方、不遮挡任何柱或标注。
+    ax.legend(fontsize=7.2, frameon=False, ncol=6, loc="upper center",
+              bbox_to_anchor=(0.50, 1.14), columnspacing=0.85,
+              handlelength=1.9, handletextpad=0.35)
     _clean(ax)
-    fig.subplots_adjust(left=0.12, right=0.98, bottom=0.17, top=0.80)
-    _final(fig, "fig3_12_mae_by_window", (8.0, 4.0))
+    fig.subplots_adjust(left=0.135, right=0.99, bottom=0.175, top=0.775)
+    _final(fig, "fig3_12_mae_by_window", (5.59, 3.15))
     return None
 
 
@@ -197,6 +250,11 @@ def redraw_fig3_9() -> None:
 
     节点顺序由同一主张量测试期起点的累计代理负荷确定，并显式写入图注，
     避免手工顺序与热力图色块/正文节点表不一致。
+
+    画布按论文显示尺寸（5.59 in 版心宽）绘制：figsize 直接取该尺寸后 fontsize
+    参数即为纸面字号。旧版按 8.0×3.4 in 绘制、排版时整体压缩 ×0.69，7.2 pt
+    落到约 5.0 pt（纸面约 1.8 mm）不可读。配色（Blues + 深格白字/浅格黑字）
+    与模型清单沿用旧版，MODELS 常量由 fig3_10/fig3_12 共用，本函数不得改动。
     """
     test_origins = np.asarray(BUNDLE.split_origins["test"], dtype=int)
     order = np.argsort(-BUNDLE.targets[test_origins].sum(axis=0))
@@ -208,23 +266,43 @@ def redraw_fig3_9() -> None:
             vals = [data[s]["by_node"].get(node, float("nan")) for s in SEEDS]
             mat[mi, ni] = np.nanmean(vals)
 
-    fig, ax = plt.subplots(figsize=(8.0, 3.4))
+    # ========== 画布与版面：直接取论文显示尺寸 ==========
+    # 版心宽 14.66 cm = 5.77 in，图按 5.59 in 宽排版；figsize 直接取该量级后，
+    # 下文的 fontsize 参数即为纸面真实字号。旧版按 8.0×3.4 in 绘制再被排版压缩
+    # ×0.69，7.2 pt 落到约 5.0 pt（纸面约 1.8 mm），不可读。
+    fig_w, fig_h = 5.49, 3.60
+    # 手工 add_axes（不用 subplots + fig.colorbar 的分数布局）：y 轴模型名
+    # （最长 "AdaptiveGraph" ≈ 0.79 in）与右侧色标 + 竖排单位标签（≈ 0.59 in）
+    # 都长在 axes 之外，必须显式预留宽度，才能让墨迹恰好铺满 5.49 in 画布；
+    # 交给 tight bbox 自动包含溢出部分会把成品顶出 5.59 in 版心。
+    ax_left, ax_bottom = 0.81, 0.40
+    ax_w, ax_h = 4.01, 3.16
+    fig = plt.figure(figsize=(fig_w, fig_h))
+    ax = fig.add_axes([ax_left / fig_w, ax_bottom / fig_h,
+                       ax_w / fig_w, ax_h / fig_h])
+    cax = fig.add_axes([4.88 / fig_w, ax_bottom / fig_h, 0.132 / fig_w, ax_h / fig_h])
+
+    # ========== 热力图本体（配色与旧版一致：Blues 色阶 + 格内三位小数） ==========
     im = ax.imshow(mat, cmap="Blues", aspect="auto",
                    vmin=mat.min(), vmax=mat.max())
     ax.set_xticks(range(len(node_order)))
-    ax.set_xticklabels(node_order, fontsize=7.2, rotation=45, ha="right")
+    # 节点标签 45° 斜排，字号已按纸面取值，不再依赖排版缩放
+    ax.set_xticklabels(node_order, fontsize=7.8, rotation=45, ha="right")
     ax.set_yticks(range(len(MODELS)))
-    ax.set_yticklabels([lbl for _e, lbl, _c in MODELS], fontsize=7.8)
+    ax.set_yticklabels([lbl for _e, lbl, _c in MODELS], fontsize=8.0)
     for mi in range(mat.shape[0]):
         for ni in range(mat.shape[1]):
+            # 格内数值 8.0 pt：10 列共用 4.01 in → 每列 0.401 in；实测五字符
+            # "0.026" 在 8 pt 下宽 0.284 in，左右各余 0.058 in，相邻数值间
+            # 留白 ≈ 8.4 pt，60 个数值互不挤压（1200 DPI 位图逐格量测复核）
             ax.text(ni, mi, f"{mat[mi, ni]:.3f}", ha="center", va="center",
-                    fontsize=6.2,
+                    fontsize=8.0,
                     color="white" if mat[mi, ni] > mat.min() + .58 * (mat.max()-mat.min()) else GRAY_D)
-    cbar = fig.colorbar(im, ax=ax, fraction=0.045, pad=0.03)
+    cbar = fig.colorbar(im, cax=cax)
     cbar.set_label("MAE（kWh/15 min，三种子均值）", fontsize=7.6)
     cbar.ax.tick_params(labelsize=7.2)
     ax.tick_params(length=0)
-    _final(fig, "fig3_13_mae_by_node", (8.0, 3.4))
+    _final(fig, "fig3_13_mae_by_node", (fig_w, fig_h))
     return None
 
 
@@ -235,15 +313,26 @@ def redraw_fig3_10() -> None:
     注意 no_event_gate 变体的语义（mechanism.py）：gate 关闭后残差修正路径
     **无条件作用于所有样本**（非"无修正"）——其大幅恶化证明门控的选择性
     激活是必要的，而非事件修正本身带来的收益。
+
+    配色编码"相对基线的退化程度"（本图专属，写在函数内以免影响共用 MODELS
+    常量的 fig3_10/fig3_12/fig3_13）：完整模型是全文主张所系 → 全图唯一主色
+    BLUE；仅保留单类关系的两变体相对基线只差 +2.5%/+2.3%（小于三种子标准差
+    量级），语义是"与基线持平" → 浅灰 GRAY_L 后退；无图与门控关闭分别恶化
+    +113.0%、+90.5%，语义是"致命消融" → 深灰 GRAY_D 压重。
+    三级在灰度打印下的亮度序为 深灰(64) < 主色(85) < 浅灰(200)，仍可区分。
     """
+    # 退化程度三级色（语义见 docstring；不使用其它章节的橙/绿/红点缀色）
+    C_BASE, C_MILD, C_SEVERE = BLUE, GRAY_L, GRAY_D
     variants = [
-        ("baseline", "完整模型（基线）", BLUE),
-        ("SG-EXP-006-ablation-no_graph", "无图（TCN 结构）", GRAY_M),
-        ("SG-EXP-006-ablation-static_graph_only", "仅固定图", ORANGE),
-        ("SG-EXP-006-ablation-adaptive_graph_only", "仅自适应图", GREEN),
-        ("SG-EXP-006-ablation-no_event_gate", "门控关闭\n（全样本修正）", RED),
+        ("baseline", "完整模型\n（基线）", C_BASE),
+        ("SG-EXP-006-ablation-no_graph", "无图\n（TCN 结构）", C_SEVERE),
+        ("SG-EXP-006-ablation-static_graph_only", "仅固定图", C_MILD),
+        ("SG-EXP-006-ablation-adaptive_graph_only", "仅自适应图", C_MILD),
+        ("SG-EXP-006-ablation-no_event_gate", "门控关闭\n（全样本修正）", C_SEVERE),
     ]
-    fig, ax = plt.subplots(figsize=(7.8, 3.8))
+    # 画布直接取论文显示尺寸（版心宽 14.66 cm = 5.59 in），fontsize 参数即为
+    # 纸面字号；按大画布绘制再等比缩小会把 8 pt 压到不足 5 pt。
+    fig, ax = plt.subplots(figsize=(5.59, 3.15))
     x = np.arange(len(variants))
     means, sds = [], []
     for xi, (key, label, color) in enumerate(variants):
@@ -259,19 +348,30 @@ def redraw_fig3_10() -> None:
         mean, sd = float(np.mean(vals)), float(np.std(vals, ddof=1))
         means.append(mean)
         sds.append(sd)
-        ax.bar(xi, mean, width=0.56, color=color, edgecolor="white",
-               yerr=sd, capsize=3.0, error_kw=dict(lw=0.9), zorder=3)
-        ax.text(xi, mean + 0.0009, f"{mean:.4f}", ha="center", va="bottom",
-                fontsize=7.2, color=GRAY_D)
-    # ylim 数据定界（审查 C1：固定 0.017 会剪断 no_graph≈0.030 的柱子）
-    ymax = max(m + s for m, s in zip(means, sds)) * 1.15
+        # 误差棒颜色统一用深灰：浅灰柱若误差棒跟随柱色会淡到看不见
+        ax.bar(xi, mean, width=0.55, color=color, edgecolor="white", lw=0.8,
+               yerr=sd, capsize=2.6,
+               error_kw=dict(elinewidth=0.8, capthick=0.8, ecolor=GRAY_D),
+               zorder=3)
+    # 柱顶标注：数值 + 相对基线退化率。0 起点坐标轴会把 +2% 与 +113% 压成
+    # 相近的柱高，百分比是唯一能读出"哪些消融致命"的文字通道（与正文
+    # +113.0% / +90.5% / +2.5% / +2.3% 同口径，均以基线三种子均值为分母）。
+    base = means[0]
+    for xi, (mean, sd) in enumerate(zip(means, sds)):
+        txt = f"{mean:.4f}" if xi == 0 else f"{mean:.4f}  (+{100 * (mean - base) / base:.1f}%)"
+        ax.text(xi, mean + sd + 0.0011, txt, ha="center", va="bottom",
+                fontsize=6.8, color=GRAY_D)
+    # ylim 数据定界（审查 C1：固定 0.017 会剪断 no_graph≈0.030 的柱子）；
+    # 1.22 倍留白容纳误差棒之上的两段标注文字。
+    ymax = max(m + s for m, s in zip(means, sds)) * 1.22
     ax.set_xticks(x)
-    ax.set_xticklabels([lbl for _k, lbl, _c in variants], fontsize=7.6,
-                       rotation=15, ha="right")
+    # 标签分两行书写，避免 15° 斜排（斜排在小版心下既占高又难读）；
+    # 字号交由 _clean() 统一设为 8 pt（须在 _clean 之后不再覆盖）
+    ax.set_xticklabels([lbl for _k, lbl, _c in variants])
     ax.set_ylabel("全局 MAE（kWh/15 min）", fontsize=8.8)
     ax.set_ylim(0, ymax)
     _clean(ax)
-    _final(fig, "fig3_14_mechanism_ablation", (7.8, 3.8))
+    _final(fig, "fig3_14_mechanism_ablation", (5.59, 3.15))
     return None
 
 
