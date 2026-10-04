@@ -2,25 +2,25 @@
 
 # 摘  要
 
-电动汽车充电设施持续扩张，场站内不同节点的负荷差异与短时波动给容量配置、负荷均衡和运行管理带来挑战。现有研究多面向区域、站群或充电站聚合负荷，对站内节点间多类统计关系的利用方式及预测收益来源缺少系统检验。本文以公开充电会话记录重构的节点代理负荷为对象，研究站内充电节点的短期负荷预测与机制诊断。
+场站内充电节点的负荷差异与短时波动给容量配置和运行管理带来挑战。现有研究多面向聚合负荷，对站内多类统计关系及预测收益来源的检验有限。本文以公开会话记录重构的节点代理负荷为对象，研究短期预测与机制诊断。
 
-原始归档包含31,424条充电会话和55个候选节点；筛选出的10个主分析节点涉及11,085条会话，按15 min时间网格形成118,818个时间步的节点代理负荷序列及行为特征。目标侧标签事件`target_event`与旧协议冻结规则触发`rule_trigger`采用不同口径，前者用于事后分层评价，后者用于回溯规则诊断；旧规则含事后重构负荷差分，不解释为实时可见信号。在此基础上，按负荷耦合、行为共现和轮廓相似构建LRE三关系图，并提出以时间卷积网络为骨干、融合关系级和节点级门控的多关系门控图卷积网络（MRG-GCN）。
+公开归档含31,424条会话和55个候选节点；10个主分析节点涉及11,085条会话，形成118,818个15 min时间步。本文从负荷耦合、行为共现和轮廓相似构建LRE三关系图，提出以时间卷积网络为骨干的多关系门控图卷积网络（MRG-GCN），通过关系专属变换、逐层融合和节点级门控组织跨节点信息。目标事件标签用于事后评价，含重构负荷差分的旧规则用于回溯诊断。
 
-旧主协议在相同预测键和三个随机种子的重复实验下，MRG-GCN的全局MAE为0.01376 kWh/15 min，较TCN无图基线降低53.4%，较ARIMA降低39.1%；其MAE最低，并在已报告WAPE的模型中取得最低WAPE（0.2860），但RMSE最低值由AGCRN简化变体取得。三层机制诊断协议（MDP）依次考察关系分配、结构知识吸收和误差样本构成：L1中，所检七种关系级门控替换的MAE均高于学习值基线；L2中，在给定学生架构、蒸馏目标和权重范围内，纯时序学生未弥合与图模型之间的误差差距；L3中，标签事件窗口占测试预测键的1.43%，误差明显高于稳定窗口，冻结规则触发率仅为0.43%。
+在事后均摊代理负荷的旧主协议下，MRG-GCN三种子全局MAE为0.01376 kWh/15 min，较同协议TCN和ARIMA分别降低53.4%和39.1%，取得所检配置最低MAE及最低已报告WAPE；AGCRN简化变体的RMSE最低。这些结果支持离线回溯比较。三层机制诊断协议（MDP）以参数干预、知识蒸馏和四格误差贡献分析关系依赖、时序学生吸收能力及标签—规则错位。
 
-在假设接入、离站事件发生时即可观察的事件时刻输入新协议中，`mrg_full`的MAE为0.03890 kWh/15 min，较容量近似匹配的`tcn_wide`低16.1%，但高于完整AGCRN基线；该改善主要来自零负荷窗口。进一步的同参数量三种子配对训练中，节点级门控相对节点共享门控的平均MAE低2.69%，七日块误差差的描述性95%区间为[0.000747, 0.001378] kWh/15 min。独立校准后，行为分层区间的整体覆盖率为80.04%；采用成熟标签的14天滚动回放后提高至89.01%，平均宽度约增至4.47倍，事件覆盖率仍仅26.71%。充电完成时刻与有限电流样本核查显示，均摊代理保留总电量但会改变时间形态；合成决策算例验证了服务与容量约束下的充电分配接口。上述补充不替换旧主结果，实测功率、事件上报延迟和真实调度收益尚未验证。
+在假设接入、离站事件即时可观察的新协议中，MRG-GCN的MAE为0.03890 kWh/15 min，较容量近似匹配TCN低16.1%，改善主要来自零负荷窗口；完整AGCRN的MAE更低。同参数量配对训练中，节点级门控的MAE较共享门控低2.69%，三种子与时间块分析方向一致，支持节点差异融合；可学习关系权重的正增益未获支持。成熟标签14天滚动回放使行为分层整体覆盖由80.04%升至89.01%，平均宽度为原来的4.47倍，事件覆盖仅26.71%。工程核查揭示均摊的时间形态近似，合成算例验证决策接口；实测功率、上报延迟和现场收益仍待验证。
 
 关键词：充电节点短期负荷预测；LRE；MRG-GCN；MDP；节点代理负荷
 
 # Abstract
 
-With the continued expansion of electric-vehicle charging infrastructure, heterogeneous loads and short-term fluctuations across charging nodes within a station create challenges for capacity allocation, load balancing, and operational management. Existing studies mainly focus on aggregated loads at regional, station-cluster, or station levels, while the use of multiple statistical relationships among within-station nodes and the sources of forecasting gains remain insufficiently examined. This thesis investigates short-term load forecasting and mechanism diagnosis for charging nodes, using proxy loads reconstructed from public charging-session records.
+Heterogeneous charging-node loads and short-term fluctuations challenge station capacity allocation and operation. Existing studies mainly address aggregated loads, with limited examination of within-station relationships and the sources of forecasting gains. This thesis investigates short-term forecasting and mechanism diagnosis using proxy loads reconstructed from public charging sessions.
 
-The source archive contains 31,424 charging sessions across 55 candidate nodes. The 10 selected primary nodes account for 11,085 sessions and yield proxy-load sequences and behavioral features over 118,818 time steps on a 15-minute grid. Target-side labeled events (`target_event`) are distinguished from legacy frozen rule triggers (`rule_trigger`): the former supports post-hoc stratification, while the latter supports retrospective rule diagnosis. The legacy rule includes reconstructed load differences and is not established as observable at forecast time. A relation extraction module is built from load coupling, behavioral co-occurrence, and profile similarity, and a multi-relational gated graph convolutional network (MRG-GCN) is proposed. The model uses a temporal convolutional network as its backbone and combines relation-level and node-level gates across two graph-convolution layers.
+The archive contains 31,424 sessions and 55 candidate nodes. The 10 selected nodes yield 118,818 time steps at 15-minute intervals. Load coupling, behavioral co-occurrence, and profile similarity form three LRE graphs. The proposed multi-relational gated graph convolutional network (MRG-GCN) combines temporal convolutions, relation-specific transformations, layer-specific fusion, and node-level gates. Target events support post-hoc evaluation; the legacy rule includes reconstructed load differences and supports retrospective diagnosis.
 
-Under the old primary protocol, using identical forecast keys and three random seeds, MRG-GCN achieves a global MAE of 0.01376 kWh/15 min, reducing MAE by 53.4% relative to the graph-free TCN and by 39.1% relative to ARIMA. It attains the lowest MAE and the lowest WAPE among models for which WAPE is available (0.2860); the lowest RMSE is achieved by the simplified AGCRN variant. The three-layer mechanism diagnosis protocol (MDP) comprises relation-allocation intervention, structure-knowledge distillation, and four-cell error tracing. All seven examined replacements of relation-level gates yield higher MAE than the learned-weight baseline; the examined purely temporal student does not close the graph-model error gap; labeled event windows account for 1.43% of test forecast keys and have substantially higher error than stable windows, while the frozen rule-trigger rate is only 0.43%.
+Under the retrospective proxy-load protocol, MRG-GCN achieves a three-seed MAE of 0.01376 kWh/15 min, 53.4% below TCN and 39.1% below ARIMA. It has the lowest examined MAE and reported WAPE; simplified AGCRN has the lowest RMSE. These are offline comparisons. The three-layer mechanism diagnosis protocol (MDP) uses parameter intervention, distillation, and four-cell error contributions to examine relation dependence, student absorption, and event–rule mismatch.
 
-Under a separate event-time-input protocol assuming immediate observation of arrival and departure events, `mrg_full` obtains a MAE of 0.03890 kWh/15 min, 16.1% lower than the approximately capacity-matched `tcn_wide`, but higher than the full AGCRN baseline. Most of the gain occurs in zero-load windows. A further equal-parameter comparison across three paired seeds yields a 2.69% lower mean MAE for node-specific gates than for gates shared across nodes, with a descriptive seven-day-block 95% interval of [0.000747, 0.001378] kWh/15 min for the error difference. Behavior-stratified coverage is 80.04% with an independent calibration segment and rises to 89.01% in a 14-day rolling replay using matured labels; mean interval width increases approximately 4.47-fold, while event coverage remains only 26.71%. Completion-time and limited current-shape checks show that uniform allocation preserves total energy but changes its temporal profile. A synthetic decision example verifies a charging-allocation interface subject to service and capacity constraints. These supplements do not replace the old primary result; measured-power accuracy, reporting delays, and realized dispatch benefits remain unverified.
+With immediately observed arrival and departure events, MRG-GCN obtains a MAE of 0.03890 kWh/15 min, 16.1% below approximately capacity-matched TCN, mainly in zero-load windows; full AGCRN has a lower MAE. Equal-parameter paired training gives node-specific gates a 2.69% lower MAE than shared gates, consistently across three seeds and time-block analyses. Learned relation weights show no supported positive gain. A 14-day replay with matured labels raises behavior-stratified coverage from 80.04% to 89.01%, with width 4.47 times the frozen value and event coverage of 26.71%. Engineering checks identify temporal approximations, and a synthetic example verifies a decision interface. Measured-power accuracy, reporting delays, and field benefits remain unverified.
 
 Keywords: short-term charging-node load forecasting; LRE; MRG-GCN; MDP; proxy load
 
@@ -112,7 +112,7 @@ Keywords: short-term charging-node load forecasting; LRE; MRG-GCN; MDP; proxy lo
 
 ## 1.4 研究目标与主要内容
 
-本文以单站多充电节点的节点代理负荷为对象，目标是构建利用站内多类统计关系的短期预测模型，并建立可复核的诊断流程，分析关系依赖、结构可替代性和误差来源。研究主线为“公开ACN会话→15 min节点代理负荷→LRE三关系图→MRG-GCN→MDP→第5章探索”。结论限于会话重构的代理负荷、既定协议和所检配置，不等同于电表实测功率或在线调度效果。
+本文以单站充电节点的代理负荷为对象，研究多类统计关系如何补充时间编码、节点差异如何影响消息融合，以及预测误差来自哪些窗口。研究主线为“公开ACN会话→15 min节点代理负荷→LRE三关系图→MRG-GCN→MDP→预测支持探索”。预测方法与机制诊断构成两项主要贡献：前者通过同协议比较和组件对照检验，后者通过冻结干预、蒸馏和四格还原检验。旧协议承担事后重构序列的回溯比较，新协议进一步检验行为输入下的关系与节点门控作用；现场功率与调度效果另需量测和运行条件验证。
 
 围绕上述目标，本文开展以下四方面研究。
 
@@ -205,11 +205,11 @@ y_{t,i}=\sum_{s:i_s=i,\,t\in\mathcal{B}_s}\frac{E_s}{|\mathcal{B}_s|}.
 
 ### 2.1.1 旧主实验与事件时刻可见协议的任务边界
 
-本文同时保留两套有明确边界的数据协议，二者回答的问题不同，不能把测试误差直接拼接为同一条性能曲线。旧主实验采用`SG-DATA-005-primary-tensor`和登记号`SG-EXP-002`～`SG-EXP-018`，其目标是：在固定节点、固定时间切分和统一预测键上，比较已执行模型与诊断配置在“事后重构节点代理负荷”上的相对表现。该协议的历史窗口包含由会话最终交付电量和断开时间均匀分摊形成的代理负荷，因此属于离线回溯性比较，不等同于预测时刻已经可获得的在线功率输入。
+旧主实验在固定节点、时间切分和统一预测键上，比较不同模型在事后均摊代理序列上的预测及诊断结果。历史片值由会话最终交付电量和断开时间构造；对于预测原点尚未结束的会话，这些最终字段可能在后来才确定。因此，历史窗口的时间索引早于原点，并不足以证明片值在当时可获得。该协议支持事后重构序列上的离线回溯比较，0.01376 kWh/15 min及相应基线降幅均按这一任务解释。旧上游全时期统计的处理范围见2.1节。
 
-针对这一边界，另行冻结事件时刻协议`SG-DATA-006-eventtime-v1`；`SG-EXP-019`记录其数据核验及后续phase1/phase2共36次模型运行。新协议在预测原点只使用已发生的接入、离站、活跃计数和日历编码，删除旧代理负荷、需求强度、占用率与负荷跳变输入；目标仍为事后会话能量代理，用于检验收紧输入权限后的相对价值。该组已重新训练，结果在3.7.5节单独报告，不覆盖旧主实验，也不等同于实测功率验证。
+事件时刻输入新协议在原点只使用已发生的接入、离站、活跃计数和日历编码，删除旧代理负荷及相关派生输入，目标仍为事后会话能量代理。该协议的36次模型运行见3.7.5节，同参数量门控对照见3.7.6节，分别检验行为输入下关系路径和节点差异的价值。两套协议的输入、切分与测试键不同，各自的相对比较应在所属协议内解释。
 
-旧历史窗口中尚未结束的会话可能依赖后来才确定的最终字段；字段可见性核验不用于估计MAE偏差，旧结果仅解释为离线回溯比较。新协议沿用旧筛选的10节点，并假设接入、离站事件发生时即可被系统观察；原始归档未提供上报到达时间戳，因此尚未核验通信延迟。旧训练与验证各有4个原点的目标窗口跨段，验证与测试各有95个原点的历史窗口进入前一段；历史使用过去信息本身不等于未来泄漏，但旧协议不满足完整输入和目标都留在各段的严格约定。新协议采用完整窗口留段、训练/调参/校准/测试四段划分，测试时期仍为已查看过数据上的回溯验证。两套协议的输入契约、目标定义和可回答问题见表2-2。
+字段可见性核验反映最终字段的潜在暴露，不估计MAE偏差。新协议沿用旧筛选的10节点，并假设接入、离站事件发生时即可观察；原始归档缺上报到达时间戳，通信延迟尚未核验。旧训练与验证各有4个原点的目标窗口跨段，验证与测试各有95个原点的历史窗口进入前一段；使用过去历史本身不等于未来泄漏，但旧协议不满足完整窗口留段约定。新协议按完整窗口划分训练、调参、校准和测试，测试时期仍已查看。两套协议的回答范围见表2-2。
 
 **表2-2 两套数据协议的回答范围**
 
@@ -673,7 +673,7 @@ MAE和RMSE单位均为kWh/15 min，WAPE无量纲。测试键中零负荷约占87
 
 注：MAE与RMSE单位为kWh/15 min，WAPE无量纲。随机初始化模型为三种子均值，标准差为$n=3$样本标准差，计算时分母为$n-1$，对应自由度为2；确定性基线标“—”。ARIMA正式结果未提供WAPE。各列加粗值为该指标的最小值。
 
-MRG-GCN的全局MAE为0.01376，较TCN、ARIMA、MLP、GWN和AGCRN分别降低53.4%、39.1%、34.8%、22.4%和33.1%。在本实验协议下，MRG-GCN完整配置的全局绝对误差低于无图时序模型及所检图模型。不同指标的最优模型并不完全相同：MRG-GCN的MAE最低，并在已报告WAPE的模型中取得最低WAPE；AGCRN的RMSE最低。因而本章不以单一模型概括全部指标排序。
+旧协议离线回溯比较中，MRG-GCN的全局MAE为0.01376，较TCN、ARIMA、MLP、GWN简化变体和AGCRN简化变体分别降低53.4%、39.1%、34.8%、22.4%和33.1%。其最低MAE和最低已报告WAPE表明，多关系完整配置在该代理序列上减少了平均绝对误差。AGCRN简化变体取得最低RMSE，说明平均绝对误差与大误差惩罚衡量的排序不同。上述降幅限定于表3-2所检实现，完整AGCRN在新协议中的比较另见3.7.5节。
 
 MRG-GCN、EventResidual和AdaptiveGraph的MAE差仅为0.00014～0.00020，与三者的跨种子标准差处于同一量级，三次重复不足以建立稳定次序，正文不使用“显著优于”。EventResidual保留在表中，是为了完整记录已执行的探索路线，并不将其列为正式方法贡献。各模型的MAE及其离散度见图3-9。
 
@@ -844,7 +844,7 @@ top-$k$实验中，$k=5$和$k=7$的MAE分别为0.01391和0.01448，较密的$k=7
 
 旧主实验的代理负荷输入由会话最终电量和最终断开时间重构，不能直接代表预测原点可获得的信息。为检验这一信息权限变化对模型结论的影响，另行冻结`SG-DATA-006-eventtime-v1`并登记为`SG-EXP-019`。该协议在预测原点只使用已发生的接入、离站、活跃计数和当地日历七通道，目标仍为事后会话能量代理；数据按训练、调参、校准和测试四段严格切分，输入历史长度为96步，输出为4步。它回答的是“在更严格的行为可见输入下，关系结构和内部组件是否仍保留相对价值”，不是对SG-EXP-003旧主结果的替换，也不是实测功率验证。
 
-该协议共完成12种配置、每种配置3个随机种子，训练预算和模型选择规则保持一致。结果见表3-9。为避免把完整能力基线和容量公平基线混在一起，表中同时报告可训练参数量和最优轮次/实际停止轮次。`tcn_wide`与`mrg_full`分别为32,674和32,714个可训练参数，参数差约0.12%，可作为容量匹配的无图对照；`agcrn_full`为199,912个参数，约为`mrg_full`的6.1倍，只能作为完整能力基线。
+该协议共完成12种配置、每种配置3个随机种子，采用共同训练预算上限与模型选择规则。表3-9同时报告误差、可训练参数量和最优/停止轮次。`tcn_wide`与`mrg_full`分别含32,674和32,714个参数，差约0.12%，用于容量近似匹配的无图比较；完整AGCRN含199,912个参数，用于检验更大模型规模下的预测表现。参数量描述模型规模，训练成本与推理效率还需实测。
 
 **表3-9 事件时刻输入协议下的正式结果与内部消融**
 
@@ -865,7 +865,11 @@ top-$k$实验中，$k=5$和$k=7$的MAE分别为0.01391和0.01448，较密的$k=7
 
 注：数值单位为kWh/15 min；均值和标准差来自2024、2025、2026三种子，标准差为样本标准差。最优轮次为验证集原单位MAE最低的轮次，实际停止轮次为训练日志最后一轮；两者均按seed-2024/2025/2026顺序列出。该表使用新协议测试集708,560个预测键，与旧主实验712,360个预测键不具有直接数值可比性。
 
-在同一新协议下，`mrg_full`比参数量近似匹配的`tcn_wide`低16.1%的全局MAE；与参数量相同的`mrg_self_loop`相比，MAE低约15.6%，该对照更直接地支持跨节点关系路径在本协议中的补充价值。这里的比较只在新协议内部成立，不将其解释为删除旧代理负荷输入所造成的因果变化。另一方面，`agcrn_full`比`mrg_full`低3.9%，但参数量约为其6.1倍，因此该差异只作为完整能力基线结果，不解释为结构公平比较。内部消融的全局MAE从低到高依次为`mrg_equal_beta`、`mrg_full`、`mrg_no_skip`、`mrg_no_refine`、`mrg_pattern`、`mrg_fixed_gate`、`mrg_load`和`mrg_event`。其中固定门值退化最明显，去除跨层拼接和精炼的变化较小；三个单关系变体均劣于三关系融合，轮廓关系优于负荷关系，负荷关系又优于行为关系，支持关系互补性的窄结论。由于固定门值变体参数量较少，且部分种子达到最大训练轮次，该结果只支持门控在给定协议和预算下具有功能作用，不作为严格净增益估计。`mrg_equal_beta`略低于`mrg_full`，其均值差与三种子波动同级；本节后续时间块分析进一步检查该历史时期差异，不将种子离散度直接当作等效性判据，也不主张可学习$\beta$的正向净增益。需要注意，`mrg_equal_beta`是从头训练的等权模型，与旧协议中保持其他参数不变的训练后$\beta$替换不是同一实验：前者检验模型能否重新适应等权约束，后者检验既有模型对已学习关系分配的依赖。
+在同一新协议下，`mrg_full`较容量近似匹配的`tcn_wide`降低16.1%的全局MAE，较参数量相同的自环变体降低约15.6%，支持跨节点关系路径的补充价值。完整AGCRN的MAE为0.03743，低于MRG-GCN的0.03890；按AGCRN为分母，MRG-GCN的MAE高约3.9%，参数量为其16.4%。这一结果呈现了所检配置的模型规模与误差取舍，尚不能据参数量推断运行效率，也不能归因于单一结构差异。本文以同协议的预测误差、模型规模及组件证据评价方法，不主张在全部基线或指标上领先。
+
+内部消融中，三个单关系变体的全局均值均高于三关系完整模型，单关系依次为轮廓、负荷和行为。该观察支持本设置下联合关系的价值，未证明每类关系分别必需。固定门值变体退化较大，但同时减少参数量且部分种子达到训练上限；节点门值差异的受控证据由3.7.6节补充。去除跨层拼接和精炼后的变化较小，其必要性按后续时间块区间解释。
+
+等权$\beta$重训练取得略低的全局MAE，现有证据不支持学习$\beta$的正向精度净增益。它允许各关系变换重新适应等权约束；旧协议L1则固定其他参数，只在推理时替换$\beta$。前者检验参数化选择，后者检验既有模型的功能依赖，二者的差异由4.2.5节结合关系变换的尺度解释。
 
 本压力测试不改变旧主实验的结论层级，也不补齐新协议下的全部公平基线。严格意义上，行为输入GRU/MLP或线性下界，以及参数量匹配的AGCRN仍未在该协议中执行；旧协议的GRU、MLP和传统基线不能直接搬入表3-9。
 
@@ -896,16 +900,16 @@ top-$k$实验中，$k=5$和$k=7$的MAE分别为0.01391和0.01448，较密的$k=7
 
 ## 3.8 方法设计及证据边界
 
-本章的方法设计主要体现在面向站内充电节点任务的关系构造、门控组合和统一验证协议，而非声称图卷积、TCN或门控机制本身首次出现。各组件对应的实验证据及适用边界见表3-11。
+本文的方法贡献集中在站内关系的语义化构造、节点差异的消息融合及可复核诊断。三者分别回答“哪些关联可进入图”“同一融合消息是否应对各节点作相同更新”“预测收益和误差来自哪里”。表3-11按组件列出证据强弱，其中节点级门控已取得同参数量配对增量证据；关系级参数化、精炼和跨层融合则按各自对照解释。基础图卷积、TCN和门控算子沿用已有方法。
 
 **表3-11 方法设计组件与证据对照**
 
 | 组件 | 本文实现 | 现有证据与边界 |
 |---|---|---|
-| LRE三关系图 | 训练期负荷耦合、行为共现、轮廓相似关系 | 旧子协议单关系接近；新协议三关系均值较低，整体改善主要来自零目标组；未证明三类均有独立增量 |
-| 关系级$\beta$门控 | 两层独立Softmax关系权重 | 旧7种冻结干预均退化；新等权重训及配对统计未支持可学习β正向净增益 |
-| 节点级$G$门控 | 按样本、节点和特征融合自身与邻域消息 | 新协议同参数量配对对照中整体MAE低2.69%，七日块区间为正；旧主协议独立重训练消融仍未补齐 |
-| 双层传播与跨层融合 | 融合$H^{(0)}$、$H^{(1)}$和$H^{(2)}$ | 由完整模型结果支持，未穷举层数和融合形式 |
+| LRE三关系图 | 训练期负荷耦合、行为共现、轮廓相似关系 | 新协议完整配置优于所检单关系和等参数自环；相对TCN改善主要来自零目标组，旧子协议单关系接近 |
+| 关系级$\beta$门控 | 两层独立Softmax关系权重 | 旧7种冻结替换均退化，反映与关系变换的联合依赖；新等权重训未支持学习β的正增益 |
+| 节点级$G$门控 | 按样本、节点和特征融合自身与邻域消息 | 同参数配对三种子均改善，整体MAE低2.69%，周块区间为正；结论限于新协议及共同预算规则 |
+| 双层传播与跨层融合 | 融合$H^{(0)}$、$H^{(1)}$和$H^{(2)}$ | 去跨层拼接差的周块区间跨零；精炼去除的条件差异较小，未证明所有模块均必要 |
 | 关系随机失活 | 训练时整类屏蔽并至少保留一种关系 | 所检$p=0.2/0.4$未见实质收益，主模型关闭 |
 | 统一诊断接口 | 同键评价、四格还原及参数干预 | 为第4章三层机制诊断提供可复核接口，不等同于因果识别 |
 
@@ -913,15 +917,15 @@ top-$k$实验中，$k=5$和$k=7$的MAE分别为0.01391和0.01448，较密的$k=7
 
 旧主实验使用会话最终电量和断开时间重构的节点代理负荷，回答“在固定离线重构序列上，多关系模型能否改善节点短期预测”；事件时刻输入协议只使用预测原点前已发生的行为信号，回答“输入权限收紧后，关系结构及其组件是否仍有相对价值”。两者虽均采用96步输入和4步输出，但切分方式、可见信息与预测键不同。旧、新协议分别包含712,360和708,560个测试预测键，绝对MAE不能直接相减并解释为性能退化。
 
-旧协议承担主要预测与诊断结论，AGCRN、GWN的简化实现已披露。新协议用于压力测试，3.7.5节分析改善来源，3.7.6节补等参数门控对照，不回填旧消融。原36次运行均通过核验；达到轮次上限的配置只作固定预算比较，不宣称渐近收敛。新协议完整排行榜仍需同输入、同调参预算及容量控制的基线，不能用旧结果补空缺。
+旧协议支持回溯代理序列上的主要比较与机制诊断，其中AGCRN、GWN采用所披露的简化实现；新协议检验行为输入下的组件作用，完整AGCRN参与其能力比较。相对容量近似匹配TCN和等参数自环的误差优势，以及同参数节点门控的配对增量，构成新协议的正向证据。达到轮次上限的配置按固定预算解释；容量匹配AGCRN及更全面的同预算调参比较仍待补齐。
 
 ## 3.9 本章小结
 
-本章面向10个站内充电节点的节点代理负荷短期预测，构建LRE三种训练期统计关系，并提出以TCN为时间骨干、以关系级$\beta$和节点级$G$为核心的双层MRG-GCN。模型在相同预测键上的全局MAE为0.01376 kWh/15 min，较TCN下降53.4%，较ARIMA下降39.1%；其MAE和WAPE最低，而RMSE最低值由AGCRN简化变体取得。头部三种图模型的MAE差距与种子波动同级，故不建立稳定排序。
+本章面向10个站内充电节点，构建LRE统计关系，并以TCN、关系专属变换与节点级门控形成双层MRG-GCN。在旧协议事后均摊代理序列上，模型全局MAE为0.01376 kWh/15 min，较同协议TCN和ARIMA分别降低53.4%和39.1%；MAE及已报告WAPE最低，AGCRN简化变体的RMSE最低。头部图配置的MAE差距与种子波动同级，不能建立稳定排序。
 
 分层结果显示，事件窗口误差约为稳定窗口的28倍，且事件窗口最低MAE来自GWN简化变体，说明全局优势并未解决稀有事件预测。在事件残差修正实验组内，无图变体的退化最大；关系权重干预则支持模型对所学习层间分配的功能依赖。与此同时，单关系与三关系表现接近，关系随机失活未见实质收益。新协议同参数量门控对照进一步显示，保留节点差异的整体MAE低2.69%，三个配对种子及一日、七日块区间方向一致。下一章将区分此类重训练增量证据与冻结参数功能干预，并按干预归因、蒸馏验证和四格溯源组织机制诊断。
 
-为核查输入信息权限的影响，本文另按`SG-DATA-006-eventtime-v1`完成36项新协议运行。该组只作可见性边界和内部设计压力测试：行为可见输入下，MRG相对容量匹配TCN仍有相对优势，但完整AGCRN能力基线更低，且等权$\beta$未劣于学习$\beta$，可学习权重的正向净增益未获支持；旧协议仍承担主要预测结论，两组结果不合并排名。
+事件时刻输入新协议的36次运行显示，MRG-GCN相对容量近似匹配TCN降低16.1%的全局MAE，主要改善零负荷窗口；完整AGCRN取得更低MAE，MRG-GCN则使用其16.4%的参数。等权关系重训练未支持学习$\beta$的正增益，精炼与跨层模块证据较弱。因此，本文将性能贡献集中于所检关系路径与节点差异融合，不把每项结构设计都解释为必要组件。
 
 # 第4章  三层机制诊断协议（MDP）与模型可解释性分析
 
@@ -1302,9 +1306,9 @@ $$
 
 注：三种子均值，同一708,560个测试键；宽度与区间分数单位为kWh/15 min，分数越小越好。14天行为分层整体覆盖为89.01%±0.05%，事件覆盖为26.71%±0.12%，标准差只描述种子波动。窗口固定后报告全部方案，不按测试覆盖挑选最优配置。
 
-14天行为分层相对冻结行为分层的整体覆盖提高8.97个百分点，但平均宽度约增至4.47倍。区间分数由0.73214降至0.66952，表明在给定评分方式下，减小越界惩罚部分抵消了增宽成本；它不等于业务净收益。逐节点路径的整体覆盖也达到89.03%，故总体改善主要支持历史残差更新的作用，不能归功于行为分层独有的优势。28天回看给出较窄区间，但覆盖略低，体现窗口长度与响应速度之间的折中。
+14天行为分层相对冻结行为分层的整体覆盖提高8.97个百分点，标签事件覆盖提高20.79个百分点，区间分数由0.73214降至0.66952，约下降8.6%。这些变化支持成熟历史残差更新能够缓解所检时期的区间失配。平均宽度为原来的4.47倍，说明改善需要明显的增宽代价，能否被业务接受还需运行约束判断。逐节点路径整体覆盖为89.03%，故主要证据指向滚动更新的作用，尚未确认行为分层的独有增益。28天窗口给出较窄区间及略低覆盖，体现窗口长度与响应速度的折中。
 
-即使动态更新后，标签事件覆盖仍约为四分之一，明显低于90%目标。成熟标签等待、事件稀疏与规则漏触发可能共同限制区间对突变的响应，本实验没有将三者的因果作用分离。旧协议验证集复用的问题也不会因新协议回放而消失：旧协议独立校准仍需保留校准段后重训，或取得真正未参与开发的后续时期。现有本地2022—2026年导出文件为空，公开静态快照止于2020年，均不能充当新的确认时期。
+滚动区间的整体覆盖仍低于90%，标签事件覆盖仅26.71%，因此不能作为困难事件的可靠防护依据。成熟标签等待、事件稀疏与规则漏触发可能共同限制突变响应，三者作用尚未分离。后续应在独立场站或未见时期冻结校准方案，同时报告总体、事件覆盖与区间宽度；旧协议另需保留独立校准段。现有材料尚未提供真正新的确认时期，本节结果限定为已查看历史数据上的成熟标签回放。
 
 ## 5.4 门控分配的分层参数干预敏感度
 
@@ -1474,19 +1478,19 @@ $$
 
 ## 主要研究结论
 
-（1）旧主协议中，正式MRG-GCN（StaticGraph）全局MAE为0.01376 kWh/15 min，WAPE为0.2860；相较TCN和ARIMA，MAE分别降低53.4%和39.1%。MRG-GCN的MAE最低，已报告WAPE中也最低；AGCRN简化变体的RMSE最低。MRG-GCN、AdaptiveGraph和EventResidual的MAE差异与跨种子波动同级，不能建立稳定头部次序；单关系与三关系接近，未证明三类关系各有独立正增量。
+（1）旧主协议的事后均摊代理序列上，MRG-GCN全局MAE为0.01376 kWh/15 min，WAPE为0.2860；相较同协议TCN和ARIMA，MAE分别降低53.4%和39.1%。它取得所检配置最低MAE及最低已报告WAPE，AGCRN简化变体取得最低RMSE。该结果支持回溯代理预测的相对优势；头部图配置的稳定次序及各关系的独立正增量尚未确立。
 
 （2）MDP给出三类互补证据：L1中，旧协议训练后前向替换的7种关系级$\boldsymbol\beta$干预均使MAE退化95.9%～233.6%；L2中，所检四个蒸馏权重下TCN学生MAE约为0.029，未弥合与StaticGraph教师0.01376的差距；L3中，`target_event`标签事件窗口占测试预测键1.43%，误差约为稳定窗口28倍，`rule_trigger`触发率为0.43%，且四格加权MAE可还原全局结果。
 
-（3）新协议中，`mrg_full`的MAE为0.03890 kWh/15 min，较参数量近似匹配的`tcn_wide`（0.04634 kWh/15 min）低16.1%；但完整能力基线`agcrn_full`为0.03743 kWh/15 min，比`mrg_full`低3.9%。因此，新协议下不能写成MRG-GCN优胜；它只支持“输入权限收紧后，MRG-GCN相对容量匹配TCN仍有价值”的限定判断。
+（3）新协议中，MRG-GCN全局MAE为0.03890 kWh/15 min，较容量近似匹配TCN低16.1%，较等参数自环变体低约15.6%，支持关系路径在行为输入下的补充价值。完整AGCRN为0.03743 kWh/15 min；MRG-GCN的MAE相对其高约3.9%，参数量为其16.4%。现有比较体现所检模型规模与误差的取舍，未建立MRG-GCN在所有基线上领先的结论。
 
 补充分层将上述新协议改善主要定位到占87.25%的零目标键；非零及标签事件组并未优于等宽TCN。独立校准下，标准与行为分层的整体覆盖分别为79.55%和80.04%，事件覆盖分别为3.87%和5.92%，均未达90%。关系路径对常态误差的改善和稀有困难窗口的可靠性是两个需要分别评价的问题。
 
-同参数量门控配对实验另得节点级门控和节点共享门控MAE分别为0.038677±0.000289与0.039744±0.000142 kWh/15 min，平均差0.001067，即相对低2.69%。三个配对种子方向一致；七日块描述性95%区间为[0.000747, 0.001378]，一日块检查方向相同。该对照支持新协议下保留节点门值差异的条件性价值，控制了参数数量及训练规则，但实际早停时长与优化路径仍不同。
+同参数量门控配对实验中，节点级门控与共享门控MAE分别为0.038677±0.000289和0.039744±0.000142 kWh/15 min，相对低2.69%。三个配对种子及一日、七日块分析方向一致，七日块描述性95%区间为[0.000747, 0.001378]。该结果将增量证据落实到节点差异的消息融合，排除了参数数量不同的解释；实际早停时长与优化轨迹仍不同。可学习$\beta$未获得正增益支持，跨层拼接与精炼证据较弱，均不承担已证实的独立性能贡献。
 
 （4）第5章的探索结果均是边界证据：TE得到76/90条名义候选，其中44/76经PCMCI+后仍达到名义阈值，未作多重比较校正；规则路由将标签事件窗口经验覆盖率从1.9%提高到3.9%，oracle为86.1%，仍低于90%目标；参数替换的稳定窗口相对退化132.1%～316.6%，事件窗口为5.5%～35.6%。
 
-成熟标签约束下的14天滚动行为分层将整体覆盖提高至89.01%，事件覆盖提高至26.71%，平均宽度为冻结行为分层的4.47倍；逐节点更新有相近整体覆盖，未确认行为分层独有优势。完成时刻核查显示，原均摊规则在完成之后的完整片分配了10节点总电量的30.66%；8条匹配电流样本也显示均匀份额与实际电流积分形态不同。这些结果具体界定代理重构的时间近似，并未建立实测功率准确性。合成充电分配进一步验证服务与容量约束下的可行计划，计划成本只按人工记账价格计算。
+成熟标签14天滚动行为分层使整体、事件覆盖分别提高8.97和20.79个百分点，区间分数下降约8.6%；平均宽度为冻结行为分层的4.47倍。总体覆盖89.01%和事件覆盖26.71%仍不足以证明90%可靠性，逐节点更新也有相近总体表现。完成时刻及8条电流样本核查揭示代理重构的时间形态近似，合成充电分配验证服务与容量约束衔接；两者分别为工程边界与决策接口提供证据。
 
 ## 工程含义与适用范围
 
@@ -1498,9 +1502,11 @@ $$
 
 ## 研究局限与后续工作
 
-旧协议的0.01376与新协议的0.03890来自不同输入权限、切分方式和测试预测键，不能直接相减或合并成一条性能曲线；新协议的`agcrn_full`略低于`mrg_full`，也不能据此把新协议写成MRG-GCN领先。新协议仍以事后会话能量代理为目标，不是实测功率验证，且未补齐同输入、同预算和参数量控制下的全部基线。仅在新协议内部，MRG-GCN相对等宽TCN降低16.1%、相对参数量相同的自环变体降低约15.6%，因此可将关系路径的相对价值作为限定性结论，而不能写成跨协议的绝对性能提升。
+数据方面，旧协议依赖会话最终字段和部分全时期预处理统计，其0.01376只支持既定回溯口径；新协议仍以事后会话能量代理为目标，并假设行为事件即时可观察。完成时刻与电流形态核查尚未建立实测功率误差或实际接收延迟。两协议的输入、切分及预测键不同，绝对MAE不直接相减；独立场站与未见时期的模型验证仍待完成。
 
-本文不能据此推断统计关系等同于物理充电桩、馈线或配电拓扑，不能把TE、PCMCI+或参数干预解释为物理因果，也不能把当前共形覆盖结果写成达到90%保证或实际调度收益。三层诊断分别受有限关系替换、单一TCN学生及蒸馏目标、稀少事件和规则错位限制；新协议已补同参数量节点门控对照，但旧主协议独立门控重训练消融仍未设置。15节点预测、输入长度及规则参数系统网格，旧协议独立校准和真正未见时期验证仍未完成。方向性候选尚未回灌模型。
+模型方面，同参数量节点门控证据限于新协议；旧主协议独立门控重训、容量匹配AGCRN和更全面的调参预算比较仍缺。β需与关系变换共同解释，未获独立正增益；精炼与跨层融合尚缺稳定增量支持。15节点预测、输入长度及规则参数系统网格未完成，方向性候选尚未回灌模型。诊断结果受所检关系替换、TCN学生和稀少事件约束，不识别物理拓扑或因果效应。
+
+区间与应用方面，滚动校准改善了所检时期的经验覆盖和区间分数，但增宽明显、事件覆盖仍低；旧协议独立校准仍待补齐。合成计划检验了决策约束接口，真实收益还需电表量测、车辆请求、电价及现场执行核验。
 
 因此，进入业务使用前仍需用真实量测数据核验代理负荷映射，在独立场站和未见时期重做筛选、构图、校准与基线比较，并用预测时可见信号检验事件路由及具体决策增益。当前结论止于单站节点代理负荷上的离线预测、机制诊断和边界识别。
 
