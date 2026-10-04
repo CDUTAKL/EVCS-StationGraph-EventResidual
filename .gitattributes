@@ -11,3 +11,6 @@
 *.pdf binary
 *.docx binary
 *.pptx binary
+
+# Preserve hash-verified analysis CSV bytes across checkout (CSV writer uses CRLF).
+outputs/analysis/SG-EXP-027-time-block/*.csv -text whitespace=cr-at-eol

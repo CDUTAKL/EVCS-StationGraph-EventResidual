@@ -1,0 +1,67 @@
+{
+  "checks": [
+    {
+      "block_days": 7,
+      "group": "all",
+      "max_block_sum_difference": 7.105427357601002e-14,
+      "status": "PASS"
+    },
+    {
+      "block_days": 7,
+      "group": "event",
+      "max_block_sum_difference": 4.3298697960381105e-15,
+      "status": "PASS"
+    },
+    {
+      "block_days": 7,
+      "group": "stable",
+      "max_block_sum_difference": 4.263256414560601e-14,
+      "status": "PASS"
+    },
+    {
+      "block_days": 7,
+      "group": "zero",
+      "max_block_sum_difference": 1.7763568394002505e-14,
+      "status": "PASS"
+    },
+    {
+      "block_days": 7,
+      "group": "nonzero",
+      "max_block_sum_difference": 5.684341886080802e-14,
+      "status": "PASS"
+    },
+    {
+      "block_days": 1,
+      "group": "all",
+      "max_block_sum_difference": 1.0658141036401503e-14,
+      "status": "PASS"
+    },
+    {
+      "block_days": 1,
+      "group": "event",
+      "max_block_sum_difference": 1.27675647831893e-15,
+      "status": "PASS"
+    },
+    {
+      "block_days": 1,
+      "group": "stable",
+      "max_block_sum_difference": 8.881784197001252e-15,
+      "status": "PASS"
+    },
+    {
+      "block_days": 1,
+      "group": "zero",
+      "max_block_sum_difference": 1.7763568394002505e-15,
+      "status": "PASS"
+    },
+    {
+      "block_days": 1,
+      "group": "nonzero",
+      "max_block_sum_difference": 1.0658141036401503e-14,
+      "status": "PASS"
+    }
+  ],
+  "method": "Direct paired seed differences, direct origin slices, percentile recomputation; not an independent external reviewer",
+  "source_hashes": 81,
+  "status": "PASS"
+}

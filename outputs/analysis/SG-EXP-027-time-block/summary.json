@@ -1,0 +1,216 @@
+{
+  "aggregates": [
+    {
+      "group": "all",
+      "mae_mean": 0.03867693272955805,
+      "mae_sd": 0.0002886422857533759,
+      "model": "mrg_full"
+    },
+    {
+      "group": "event",
+      "mae_mean": 0.3794619323326653,
+      "mae_sd": 0.0005560871180847343,
+      "model": "mrg_full"
+    },
+    {
+      "group": "stable",
+      "mae_mean": 0.03369756671000626,
+      "mae_sd": 0.00030030820109228144,
+      "model": "mrg_full"
+    },
+    {
+      "group": "zero",
+      "mae_mean": 0.00418241870586518,
+      "mae_sd": 0.00019286193877520908,
+      "model": "mrg_full"
+    },
+    {
+      "group": "nonzero",
+      "mae_mean": 0.2746839112091612,
+      "mae_sd": 0.0035828027217665315,
+      "model": "mrg_full"
+    },
+    {
+      "group": "all",
+      "mae_mean": 0.039744166359965964,
+      "mae_sd": 0.0001424415400915974,
+      "model": "mrg_shared_gate"
+    },
+    {
+      "group": "event",
+      "mae_mean": 0.3807011988745707,
+      "mae_sd": 0.0006041364550762285,
+      "model": "mrg_shared_gate"
+    },
+    {
+      "group": "stable",
+      "mae_mean": 0.034762286688596315,
+      "mae_sd": 0.00014601267655233648,
+      "model": "mrg_shared_gate"
+    },
+    {
+      "group": "zero",
+      "mae_mean": 0.004630219392162362,
+      "mae_sd": 0.0003301352197830314,
+      "model": "mrg_shared_gate"
+    },
+    {
+      "group": "nonzero",
+      "mae_mean": 0.2799892244776789,
+      "mae_sd": 0.0011763894546880785,
+      "model": "mrg_shared_gate"
+    }
+  ],
+  "comparisons": [
+    {
+      "block_days": 7,
+      "blocks": 27,
+      "estimate": 0.0010672336304079248,
+      "group": "all",
+      "high": 0.0013777679427587142,
+      "low": 0.0007466376478760768,
+      "n": 708560,
+      "primary": true,
+      "valid_resamples": 10000
+    },
+    {
+      "block_days": 7,
+      "blocks": 27,
+      "estimate": 0.0012392665419053842,
+      "group": "event",
+      "high": 0.002412707069643612,
+      "low": 4.5216302979949915e-05,
+      "n": 10204,
+      "primary": false,
+      "valid_resamples": 10000
+    },
+    {
+      "block_days": 7,
+      "blocks": 27,
+      "estimate": 0.0010647199785900553,
+      "group": "stable",
+      "high": 0.0013688022156860625,
+      "low": 0.000753486434680744,
+      "n": 698356,
+      "primary": false,
+      "valid_resamples": 10000
+    },
+    {
+      "block_days": 7,
+      "blocks": 27,
+      "estimate": 0.0004478006862971812,
+      "group": "zero",
+      "high": 0.0004938516842144619,
+      "low": 0.00039907476857859624,
+      "n": 618204,
+      "primary": false,
+      "valid_resamples": 10000
+    },
+    {
+      "block_days": 7,
+      "blocks": 27,
+      "estimate": 0.005305313268517601,
+      "group": "nonzero",
+      "high": 0.007860675118462545,
+      "low": 0.0028689925078163297,
+      "n": 90356,
+      "primary": false,
+      "valid_resamples": 10000
+    },
+    {
+      "block_days": 1,
+      "blocks": 185,
+      "estimate": 0.0010672336304079248,
+      "group": "all",
+      "high": 0.0013340232427161262,
+      "low": 0.0007994293878970725,
+      "n": 708560,
+      "primary": false,
+      "valid_resamples": 10000
+    },
+    {
+      "block_days": 1,
+      "blocks": 185,
+      "estimate": 0.0012392665419053842,
+      "group": "event",
+      "high": 0.002450455670415676,
+      "low": 1.294511652071983e-05,
+      "n": 10204,
+      "primary": false,
+      "valid_resamples": 10000
+    },
+    {
+      "block_days": 1,
+      "blocks": 185,
+      "estimate": 0.0010647199785900553,
+      "group": "stable",
+      "high": 0.001327925229674403,
+      "low": 0.0008005592362664012,
+      "n": 698356,
+      "primary": false,
+      "valid_resamples": 10000
+    },
+    {
+      "block_days": 1,
+      "blocks": 185,
+      "estimate": 0.00044780068629718135,
+      "group": "zero",
+      "high": 0.0004935815160149853,
+      "low": 0.0004010167112726519,
+      "n": 618204,
+      "primary": false,
+      "valid_resamples": 10000
+    },
+    {
+      "block_days": 1,
+      "blocks": 185,
+      "estimate": 0.005305313268517603,
+      "group": "nonzero",
+      "high": 0.007336969939089036,
+      "low": 0.0032447754746619327,
+      "n": 90356,
+      "primary": false,
+      "valid_resamples": 10000
+    }
+  ],
+  "config": {
+    "analysis_id": "SG-EXP-027-TIME-BLOCK",
+    "bootstrap": {
+      "block_days": [
+        7,
+        1
+      ],
+      "difference": "shared gate absolute error minus node gate absolute error",
+      "primary_block_days": 7,
+      "resamples": 10000,
+      "seed": 20261004,
+      "seed_handling": "average paired per-key errors over the three fixed training seeds",
+      "timezone": "America/Los_Angeles",
+      "unit": "forecast-origin publication date; retain all horizons and nodes"
+    },
+    "data": "outputs/visibility/SG-DATA-006-eventtime-v1/dataset.npz",
+    "groups": [
+      "all",
+      "event",
+      "stable",
+      "zero",
+      "nonzero"
+    ],
+    "models": [
+      "mrg_full",
+      "mrg_shared_gate"
+    ],
+    "output": "outputs/analysis/SG-EXP-027-time-block",
+    "scope": "post-hoc descriptive paired nonoverlapping-block percentile intervals on the already observed test period; no cross-site or future-period claim",
+    "seeds": [
+      2024,
+      2025,
+      2026
+    ],
+    "source_root": "outputs/experiments/SG-EXP-027/recovered/formal"
+  },
+  "first_date": "2021-03-13",
+  "keys_per_run": 708560,
+  "last_date": "2021-09-13",
+  "verified_runs": 6
+}

@@ -70,8 +70,8 @@ def run_converter(latex: str, node: str, converter: str, node_path: str) -> etre
     # Without an explicit run size, some renderers carry the preceding
     # subscript's reduced size into the next ordinary term.
     for run in result.xpath(".//m:r", namespaces=NS):
-        if run.getparent().tag == f"{M}sub" and run.findtext(f"{M}t") == "lim":
-            # P_lim is a literal variable name, not the limit operator. LO's
+        if run.getparent().tag in {f"{M}sub", f"{M}sup"} and run.findtext(f"{M}t") == "lim":
+            # P_lim / P^lim are literal variable names, not limit operators. LO's
             # math importer otherwise emits red missing-argument placeholders.
             math_props = run.find(f"{M}rPr")
             if math_props is None:

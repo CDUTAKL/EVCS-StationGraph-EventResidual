@@ -780,6 +780,16 @@ def clear_front_matter_headers(doc):
                 p.clear()
 
 
+def compact_outer_cover_spacing(doc):
+    """Keep the template date on the outer cover without changing its content."""
+    for index in (2, 6, 7):
+        p = doc.paragraphs[index]
+        if not p.text and not p._p.xpath('.//w:drawing | .//w:sectPr'):
+            p.paragraph_format.space_before = Pt(0)
+            p.paragraph_format.space_after = Pt(0)
+            p.paragraph_format.line_spacing = Pt(14)
+
+
 def add_front_matter(doc, source, toc_map=None):
     doc.add_section(WD_SECTION.NEW_PAGE)
     configure_section(doc.sections[-1], odd_header="摘  要", page_format="upperRoman", start=1)
@@ -873,6 +883,7 @@ def main():
             settings.append(update_fields)
         remove_template_body_after_declarations(doc)
         clear_front_matter_headers(doc)
+        compact_outer_cover_spacing(doc)
         configure_toc_styles(doc)
         toc_map = json.loads(args.toc_map.read_text(encoding="utf-8")) if args.toc_map else None
         add_front_matter(doc, args.source, toc_map)

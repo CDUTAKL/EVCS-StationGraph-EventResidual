@@ -9,6 +9,18 @@ import generate_thesis_main_docx as builder
 from rebuild_docx_formulas import run_converter, NS
 
 
+def test_outer_cover_spacing_preserves_text_and_compacts_only_empty_lines():
+    from docx.shared import Pt
+    doc = Document()
+    for i in range(19):
+        doc.add_paragraph('date' if i == 18 else '')
+    before = [p.text for p in doc.paragraphs]
+    builder.compact_outer_cover_spacing(doc)
+    assert [p.text for p in doc.paragraphs] == before
+    assert all(doc.paragraphs[i].paragraph_format.line_spacing == Pt(14) for i in (2, 6, 7))
+    assert doc.paragraphs[18].paragraph_format.line_spacing is None
+
+
 @pytest.mark.parametrize("latex,base,script_tag,script_text", [
     (r"10^{-3}", "10", "sSup", "−3"),
     (r"\mathbf H^{(1)}", "H", "sSup", "(1)"),
@@ -42,12 +54,22 @@ def test_math_runs_have_explicit_size_instead_of_inheriting_a_script_size():
     assert all(run.xpath("./w:rPr/w:sz/@w:val", namespaces=NS) == ["21"] for run in runs)
 
 
-def test_limit_name_in_a_variable_subscript_is_not_a_limit_operator():
+@pytest.mark.parametrize('latex,tag', [(r"P_{\mathrm{lim}}-R", 'sub'), (r"P^{\mathrm{lim}}-R", 'sup')])
+def test_limit_name_in_a_variable_script_is_not_a_limit_operator(latex, tag):
     runtime = "/private/tmp/codex-thesis-temml-runtime/node_modules:/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
-    math = run_converter(r"P_{\mathrm{lim}}-R", builder.NODE, str(builder.MATH_CONVERTER), runtime)
-    literal = math.xpath(".//m:sub/m:r[m:t='lim']", namespaces=NS)
+    math = run_converter(latex, builder.NODE, str(builder.MATH_CONVERTER), runtime)
+    literal = math.xpath(f".//m:{tag}/m:r[m:t='lim']", namespaces=NS)
     assert len(literal) == 1
     assert literal[0].xpath("./m:rPr/m:nor/@m:val", namespaces=NS) == ["1"]
+
+
+def test_optimization_variable_remains_below_minimum_operator():
+    runtime = "/private/tmp/codex-thesis-temml-runtime/node_modules:/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
+    math = run_converter(r"\min_{\{p_{j,h}\}}\sum_h p_{j,h}", builder.NODE, str(builder.MATH_CONVERTER), runtime)
+    low = math.xpath('.//m:limLow', namespaces=NS)
+    assert len(low) == 1
+    assert low[0].xpath('./m:e//m:t/text()', namespaces=NS) == ['min']
+    assert 'p' in low[0].xpath('./m:lim//m:t/text()', namespaces=NS)
 
 
 @pytest.mark.parametrize("latex,script_tag,has_upper", [

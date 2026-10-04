@@ -15,7 +15,7 @@ from evcs_station_graph.eventtime.models import MODELS
 from evcs_station_graph.eventtime.runner import default_config
 
 
-def build(out):
+def build(out, gate_control=False):
     if out.exists():
         raise FileExistsError(f'Refusing overwrite: {out}')
     data = ROOT/'data/eventtime/dataset.npz'
@@ -28,6 +28,17 @@ def build(out):
              'cloud/eventtime/run_autodl.sh', 'cloud/eventtime/README.md']
     for name in paths:
         files[name] = (ROOT/name).read_bytes()
+    if gate_control:
+        from gate_control_experiment import config, NAMES, SEEDS
+        for name in ('scripts/gate_control_experiment.py', 'tests/test_gate_control.py',
+                     'cloud/eventtime/run_gate_control.sh', 'docs/thesis/SG-EXP-027-paired-gate-control.md'):
+            files[name] = (ROOT/name).read_bytes()
+        files['configs/gate_control.json'] = json.dumps(
+            [config(n, s, 'formal') for s in SEEDS for n in NAMES], indent=2).encode()
+        files['GATE_CONTROL_PROVENANCE.json'] = json.dumps(dict(experiment='SG-EXP-027',
+            source_base='2eb44c2', formal_runs=6, data_sha256=frozen.digest,
+            definition='sigmoid(mean_node(W_gate([H,M]))); same active parameters',
+            configuration_frozen_before_training=True), indent=2).encode()
     files['README.md'] = (ROOT/'cloud/eventtime/README.md').read_bytes()
     files['data/eventtime/dataset.npz'] = data.read_bytes()
     files['pytest.ini'] = b'[pytest]\npythonpath = src .\ntestpaths = tests\naddopts = -q\n'
@@ -56,4 +67,6 @@ def build(out):
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--out', type=Path, required=True)
-    build(p.parse_args().out)
+    p.add_argument('--gate-control', action='store_true')
+    args = p.parse_args()
+    build(args.out, gate_control=args.gate_control)

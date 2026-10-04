@@ -134,6 +134,12 @@ def matched_width():
 
 
 def build_model(name, graphs):
+    if name == 'mrg_shared_gate':
+        from .gate_control import SharedNodeGate
+        model = AblatedMRG('mrg_full', graphs)
+        model.gcn1 = SharedNodeGate(model.gcn1)
+        model.gcn2 = SharedNodeGate(model.gcn2)
+        return model
     if name not in MODELS:
         raise ValueError(f'Unknown model: {name}')
     if name == 'agcrn_full':

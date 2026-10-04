@@ -17,13 +17,18 @@ def norm(s):
     return re.sub(r'\s+', '', unicodedata.normalize('NFKC', s))
 
 
-def body_heading_positions(pdf, entries):
+def body_heading_positions(pdf, entries, body_pages=None):
     """Exclude running headers and match wrapped headings in page order."""
     bbox = subprocess.check_output(['pdftotext', '-bbox-layout', str(pdf), '-'])
     tree = etree.fromstring(bbox)
     pages = tree.xpath('//*[local-name()="page"]')
     candidates = []
     for page_index, page in enumerate(pages):
+        # Updated native TOCs may expose heading and page number as separate
+        # PDF lines. Match headings only on Arabic-numbered body pages, not
+        # against the Roman-numbered cached TOC itself.
+        if body_pages is not None and page_index not in body_pages:
+            continue
         lines = []
         for line in page.xpath('.//*[local-name()="line"]'):
             y = float(line.get('yMin'))
@@ -108,7 +113,12 @@ def main():
     entries=toc_entries(source)
     layout=subprocess.check_output(['pdftotext','-layout',str(args.pdf),'-']).decode().split('\f')
     if not layout[-1].strip(): layout.pop()
-    start, positions = body_heading_positions(args.pdf, entries)
+    body_pages = set()
+    for i, page in enumerate(layout):
+        nonempty = [line.strip() for line in page.splitlines() if line.strip()]
+        if nonempty and re.fullmatch(r'\d+', nonempty[-1]):
+            body_pages.add(i)
+    start, positions = body_heading_positions(args.pdf, entries, body_pages)
     page_map={}
     heading_pages={}
     for _,heading,_ in entries:

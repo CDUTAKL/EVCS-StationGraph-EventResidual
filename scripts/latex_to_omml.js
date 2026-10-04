@@ -22,6 +22,7 @@ function convertPreservingAccents(mathml) {
   const parser = new XMLParser(options);
   const builder = new XMLBuilder(options);
   const accents = new Map();
+  const lowerLimits = new Map();
   const glyphs = new Map([['ˆ', '\u0302'], ['^', '\u0302'], ['~', '\u0303'], ['˜', '\u0303'], ['¯', '\u0304'], ['→', '\u20d7']]);
   const tagOf = node => Object.keys(node).find(key => key !== ':@' && key !== 'text');
   const plain = nodes => nodes.map(node => node.text || plain(node[tagOf(node)] || [])).join('');
@@ -35,6 +36,13 @@ function convertPreservingAccents(mathml) {
         accents.set(token, { base: children[0], glyph: glyphs.get(plain([children[1]])) });
         return { mi: [{ text: token }] };
       }
+      // The bundled walker flattens munder for textual operators. Preserve
+      // the optimization variable underneath min/max as editable OMML.
+      if (tag === 'munder' && children.length === 2 && ['min', 'max'].includes(plain([children[0]]))) {
+        const token = `NATIVELOWERLIMIT${lowerLimits.size}TOKEN`;
+        lowerLimits.set(token, { base: children[0], lower: children[1] });
+        return { mi: [{ text: token }] };
+      }
       return { ...node, [tag]: children };
     });
   }
@@ -44,6 +52,18 @@ function convertPreservingAccents(mathml) {
     if (component.rootKey === 'm:r') {
       const text = component.root.filter(child => child.rootKey === 'm:t').flatMap(child => child.root).join('');
       const payload = accents.get(text);
+      const lower = lowerLimits.get(text);
+      if (lower) {
+        const limit = new XmlComponent('m:limLow');
+        limit.root.push(new XmlComponent('m:limLowPr'));
+        for (const [tag, value] of [['m:e', lower.base], ['m:lim', lower.lower]]) {
+          const expression = new XmlComponent(tag);
+          const fragment = `<math><mrow>${builder.build([value])}</mrow></math>`;
+          expression.root.push(...mathmlToDocxChildren(fragment, { libreOfficeCompat: false }).map(restore));
+          limit.root.push(expression);
+        }
+        return limit;
+      }
       if (payload) {
         const accent = new XmlComponent('m:acc');
         const properties = new XmlComponent('m:accPr');

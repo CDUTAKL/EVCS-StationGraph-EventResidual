@@ -33,6 +33,14 @@ def test_plain_text_around_math_is_checked_as_separate_segments():
     assert cell_text_segments(cell) == ['关系级', '门控']
 
 
+def test_front_matter_toc_heading_is_excluded_by_body_page_filter(monkeypatch):
+    bbox = b'''<html><page><line yMin="100" xMin="90"><word>Chapter one</word></line></page>
+      <page><line yMin="100" xMin="90"><word>Chapter one</word></line></page></html>'''
+    monkeypatch.setattr('audit_supplement_docx.subprocess.check_output', lambda command: bbox)
+    start, pages = body_heading_positions('unused.pdf', [(1, 'Chapter one', '')], {1})
+    assert start == 1 and pages == {'Chapter one': 1}
+
+
 def test_toc_page_sync_preserves_other_zip_parts_and_body(tmp_path):
     path = tmp_path / 'single.docx'
     document = Document()

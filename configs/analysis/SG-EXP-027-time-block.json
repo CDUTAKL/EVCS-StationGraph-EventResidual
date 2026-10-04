@@ -1,0 +1,20 @@
+{
+  "analysis_id": "SG-EXP-027-TIME-BLOCK",
+  "data": "outputs/visibility/SG-DATA-006-eventtime-v1/dataset.npz",
+  "source_root": "outputs/experiments/SG-EXP-027/recovered/formal",
+  "output": "outputs/analysis/SG-EXP-027-time-block",
+  "seeds": [2024, 2025, 2026],
+  "models": ["mrg_full", "mrg_shared_gate"],
+  "groups": ["all", "event", "stable", "zero", "nonzero"],
+  "bootstrap": {
+    "primary_block_days": 7,
+    "block_days": [7, 1],
+    "resamples": 10000,
+    "seed": 20261004,
+    "timezone": "America/Los_Angeles",
+    "unit": "forecast-origin publication date; retain all horizons and nodes",
+    "difference": "shared gate absolute error minus node gate absolute error",
+    "seed_handling": "average paired per-key errors over the three fixed training seeds"
+  },
+  "scope": "post-hoc descriptive paired nonoverlapping-block percentile intervals on the already observed test period; no cross-site or future-period claim"
+}
