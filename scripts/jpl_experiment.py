@@ -136,10 +136,11 @@ def smoke_config() -> dict:
 
 def preflight() -> None:
     manifest = verify_bundle()
-    spec = validate_training_spec()
+    validate_training_spec()
+    freeze = load_json(FREEZE_PATH)
     data = FrozenJPLData(DATA_PATH)
-    if data.digest != spec["dataset_sha256"]:
-        raise ValueError("Dataset hash differs between frozen experiment config and tensor")
+    if data.digest != freeze["dataset_sha256"]:
+        raise ValueError("Dataset hash differs between frozen JPL record and tensor")
     params = {}
     for name in MODELS:
         model = build_model(name, data.arrays["graphs"])
