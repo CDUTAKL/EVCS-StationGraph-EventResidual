@@ -1,0 +1,25 @@
+{
+  "figure": "fig3_15_jpl_mae_primary",
+  "data_files": {
+    "per_seed.csv": "28bd950173dd42288371e27301813f24c3570ab2abe637244f32b004fa99feca",
+    "paired_intervals.csv": "8c0b44d1acd30cf5d6a61855f31dadf70369f7b9b35691f060509ff68f237682",
+    "model_summary.csv": "cc78a8802cec9e63a731cbf5b2c538dba44617308ba0419b24951eb70e7341bc"
+  },
+  "python": "3.12.14",
+  "matplotlib": "3.11.0",
+  "pandas": "2.2.3",
+  "numpy": "2.3.5",
+  "left_panel": "整体 MAE：三种子点 + 均值 ± 样本 SD（per_seed.csv::mae）",
+  "right_panel": "paired_intervals.csv block_days=7；区间列 ci98_333333_*；差值方向 baseline − MRG；24 个 7 日块；10,000 次重采样",
+  "model_order": [
+    "mrg_full",
+    "tcn_wide",
+    "agcrn_full",
+    "mrg_shared_gate"
+  ],
+  "seeds": [
+    2024,
+    2025,
+    2026
+  ]
+}

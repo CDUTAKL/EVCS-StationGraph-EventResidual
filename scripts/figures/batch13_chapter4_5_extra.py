@@ -85,9 +85,9 @@ def redraw_fig4_6() -> None:
     图中改用差异更大的 MLP 展示残差结构差异。
     """
     resids = {}
-    for exp, label, color in [("SG-EXP-002", "TCN", GRAY_M),
-                              ("SG-EXP-003", "StaticGraph", ORANGE),
-                              ("SG-EXP-009", "MLP", RED)]:
+    for exp, label, color in [("SG-EXP-002", "TCN", "#8C979E"),
+                              ("SG-EXP-003", "StaticGraph", "#2C5F8A"),
+                              ("SG-EXP-009", "MLP", "#55606A")]:
         df = pd.read_csv(_pred_path(exp))
         df["resid"] = df["y_pred"] - df["y_true"]
         resids[label] = (df[~df["target_event"]]["resid"].to_numpy(),
@@ -100,13 +100,13 @@ def redraw_fig4_6() -> None:
         ax = axes[win_key]
         xs = np.linspace(-xmax, xmax, 300)
         # 三条 KDE 高度重叠（残差集中于 0 附近），颜色 + 线型双编码区分
-        for label, color, ls in [("TCN", GRAY_M, "-"),
-                                 ("StaticGraph", ORANGE, "--"),
-                                 ("MLP", RED, "-.")]:
+        for label, color, ls, lw in [("TCN", "#8C979E", "--", 1.5),
+                                     ("StaticGraph", "#2C5F8A", "-", 2.0),
+                                     ("MLP", "#55606A", "-.", 1.5)]:
             r_global, r_evt = resids[label]
             r = r_global if win_key == 0 else r_evt
             kde = stats.gaussian_kde(r)
-            ax.plot(xs, kde(xs), lw=1.5, ls=ls, label=label, color=color)
+            ax.plot(xs, kde(xs), lw=lw, ls=ls, label=label, color=color)
         ax.set_xlabel("预测残差（kWh/15 min）", fontsize=8.4)
         ax.set_ylabel("核密度", fontsize=8.4)
         ax.set_xlim(-xmax, xmax)

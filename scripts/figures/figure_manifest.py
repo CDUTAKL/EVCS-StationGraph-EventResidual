@@ -69,6 +69,8 @@ FINAL_SCRIPTS = {
     "fig3_12_mae_by_window": "batch12_chapter3_extra.py",
     "fig3_13_mae_by_node": "batch12_chapter3_extra.py",
     "fig3_14_mechanism_ablation": "batch12_chapter3_extra.py",
+    "fig3_15_jpl_mae_primary": "batch23_jpl_figs.py",
+    "fig3_16_jpl_stratified_mae": "batch23_jpl_figs.py",
     "fig4_1_three_layer_framework": "imagegen_priority_registry.py",
     "fig4_2_beta_profile": "batch19_41fig_ch4.py",
     "fig4_3_intervention": "batch5_restyle.py",
@@ -149,6 +151,15 @@ INPUTS_BY_FIGURE = {
     "fig3_14_mechanism_ablation": [
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-006/*/children/SG-EXP-006-ablation-*/*/seed-*/metrics.json"),
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/metrics.json"),
+    ],
+    "fig3_15_jpl_mae_primary": [
+        Path("outputs/SG-EXP-028-analysis/per_seed.csv"),
+        Path("outputs/SG-EXP-028-analysis/paired_intervals.csv"),
+        Path("outputs/SG-EXP-028-analysis/model_summary.csv"),
+    ],
+    "fig3_16_jpl_stratified_mae": [
+        Path("outputs/SG-EXP-028-analysis/per_seed.csv"),
+        Path("outputs/SG-EXP-028-analysis/model_summary.csv"),
     ],
     "fig3_6_gate_residual_detail": [],
     "fig3_7_cross_layer_detail": [],

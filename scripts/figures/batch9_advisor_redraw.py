@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 from matplotlib.gridspec import GridSpec
 from matplotlib.lines import Line2D
-from matplotlib.ticker import FuncFormatter
+from matplotlib.ticker import FuncFormatter, LogFormatterSciNotation
 
 sys.path.insert(0, str(Path.home() / ".claude/skills/scipilot-figure-skill/scripts"))
 try:
@@ -127,11 +127,12 @@ def redraw_fig5_5() -> None:
         ax.errorbar(values, y, xerr=sds, fmt=marker, ms=5.2, mfc="white",
                     mec=color, ecolor=color, capsize=2.0, lw=0.8, label=label,
                     zorder=4)
-    ax.scatter(np.repeat(qe.mean(), len(y)), y, s=30, marker="D", color=BLUE,
-               edgecolor="white", linewidth=0.45, label="规则触发层（统一）", zorder=5)
+    # 事件层是所有节点共享的统一值：画一条蓝色竖线（含跨种子 SD 淡色带）
+    # 即可完整表达；旧版另在每个节点行上叠一颗蓝色菱形，既冗余又让图例
+    # 写着“蓝线”而图上是一列菱形，图文不符，故删去。
     ax.set_xscale("log")
     ax.set_xlim(8e-5, 1.05)
-    ax.xaxis.set_major_formatter(FuncFormatter(lambda value, pos: f"{value:.0e}"))
+    ax.xaxis.set_major_formatter(LogFormatterSciNotation())
     ax.set_yticks(y)
     ax.set_yticklabels(labels, fontsize=7.8)
     ax.invert_yaxis()
@@ -142,13 +143,13 @@ def redraw_fig5_5() -> None:
     ax.text(0.0, 1.045, "A 节点分位数：事件层是统一值", transform=ax.transAxes,
             ha="left", va="bottom", fontsize=8.6, fontweight="bold", color=GRAY_D)
 
-    # 三类点的图例放入独立顶部区域，不再压在对数轴数据或统一事件层竖线上。
+    # 三类符号的图例放入独立顶部区域：事件层样张改为蓝线，与图面一致。
     fig.legend(handles=[Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
                                markeredgecolor=GRAY_D, markersize=5.3, label="全局"),
                         Line2D([0], [0], marker="s", color="none", markerfacecolor="white",
                                markeredgecolor=GRAY_M, markersize=5.3, label="规则未触发层"),
-                        Line2D([0], [0], marker="D", color="none", markerfacecolor=BLUE,
-                               markeredgecolor="white", markersize=5.3, label="规则触发层（统一；蓝线）")],
+                        Line2D([0], [0], color=BLUE, lw=1.6,
+                               label="规则触发层（统一值；蓝线）")],
                fontsize=7.3, frameon=False, ncol=3, loc="upper center",
                bbox_to_anchor=(0.50, 0.985), columnspacing=1.2, handletextpad=0.35)
     # 统一事件层的含义已由顶部图例和蓝色竖线共同表达；不再在最后一个节点行附近放说明文字。

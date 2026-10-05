@@ -1,10 +1,10 @@
 # 实验架构
 
-## 2026-10-05 JPL独立场站预登记
+## 2026-10-05 JPL另一场站固定协议验证（SG-EXP-028）
 
-SG-EXP-028使用SG-DATA-007新快照及独立划分。接口必要元数据→全量字段与节点身份QC→训练期车位选择→事件时间输入/成熟代理目标→训练期scaler与LRE图→MRG/等容量TCN/完整AGCRN及共享门控三种子比较→封存best后单次测试→周块统计与次要共形验证。配置、数据门禁、复现命令和降级路线见`SG-EXP-028-jpl-independent-site-validation.md`。
+SG-EXP-028使用SG-DATA-007冻结张量和独立划分，完成“元数据与节点QC→训练期节点筛选→事件时间输入/成熟代理目标→训练期scaler与LRE图→四模型×三种子训练→封存best后单次测试→七日块配对统计”。12次运行、逐键预测和主要MAE判据均已核验；三组Bonferroni校正区间均高于零。完整AGCRN在固定预算下参与比较，TCN与MRG-GCN的参数量近似匹配。结果、指标权衡、复现来源和解释限制见`experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md`。
 
-当前只获取、核查、冻结设计与数据，不运行训练，不改旧实验或正式论文。JPL资产不得传给原Caltech硬编码FrozenData；新的严格loader、上传包、远端smoke与用户正式训练授权均为后续执行门禁。主要模型与训练预算保持已核验的eventtime实现，单独冻结代码哈希，不复用Caltech拟合参数或权重。
+预登记阶段曾限定不训练、不改正文；该门禁在取得用户正式执行授权后解除。正式结果已按授权同步论文唯一正式DOCX及Markdown源稿。JPL专用严格loader、独立数据哈希与代码冻结保持不变；没有复用Caltech拟合参数或权重。JPL共形区间、同硬件推理时延与MDP三层诊断尚未完成。
 
 ## 2026-09-05 新数据协议优先级
 

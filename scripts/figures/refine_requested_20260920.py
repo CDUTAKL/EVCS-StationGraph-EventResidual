@@ -131,9 +131,9 @@ def intensity():
     return {'prediction_source':str(hits[0].relative_to(ROOT)),'sha256':hashlib.sha256(hits[0].read_bytes()).hexdigest(),'q50':float(q50),'q95':float(q95),'counts':n.tolist(),'mae':mae.tolist(),'sample_percent':pop.tolist(),'absolute_error_percent':contribution.tolist()}
 
 def horizon():
-    models=[('002','TCN','#919AA2','o','--'),('003','MRG-GCN',BLUE,'s','-'),
-            ('004','AdaptiveGraph',GOLD,'D','--'),('009','MLP','#AF7975','^','-.'),
-            ('010','GWN','#6C8C80','P',':'),('008','AGCRN','#8C80A3','X','--')]
+    models=[('002','TCN','#AEB6BC','o','--'),('003','MRG-GCN','#2C5F8A','s','-'),
+            ('004','AdaptiveGraph','#8EABC0','D','--'),('009','MLP','#8C979E','^','-.'),
+            ('010','GWN','#6E7A81','P',':'),('008','AGCRN','#55606A','X','--')]
     fig,ax=plt.subplots(figsize=(7.5,4.1))
     fig.subplots_adjust(left=.12,right=.96,bottom=.16,top=.80)
     hs=np.arange(1,5); records={}

@@ -376,7 +376,7 @@ def fig_transfer_entropy() -> None:
     vals = [ov["undirected_pairs"], ov["covered_by_any_statistical_graph"],
             ov["exclusive_to_causal"]]
     bars = ax2.bar(["TE 候选对", "统计图覆盖对", "统计图未覆盖对"], vals,
-                   color=[GRAY_D, GRAY_M, GRAY_L], edgecolor="white",
+                   color=["#55606A", "#8C979E", "#C8C8C8"], edgecolor="white",
                    linewidth=0.6, width=0.55, zorder=3)
     for b, v in zip(bars, vals):
         ax2.text(b.get_x() + b.get_width() / 2, v + 1.2, str(v), ha="center",

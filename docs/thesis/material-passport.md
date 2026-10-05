@@ -6,7 +6,8 @@
 |---|---|---|---|---|
 | DATA-JPL-METADATA-20261005 | 官方JPL普通会话API全量必要元数据，337页33,638会话 | acquisition逐页响应哈希；本地快照SHA256 68480c71451dfaa0e2ca3a27cefb2fa229c76eac31fc541ccef56af7a9af3af4；52设备/52车位映射 | 本地教育研究；未存用户字段或令牌；原始记录不进Git，再分发未确认 | 外部场站代理任务来源，不认证实测功率/采集在线率 |
 | SG-DATA-007-JPL | 10训练期筛选车位，事件时间输入、事后代理目标 | dataset SHA256 1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af；1,060,960行节点时间格独立核验；完整manifest和身份/节点筛选记录 | 张量只本地研究及后续授权云端处理，不进Git | 另一场站重新训练的固定数据资产，非真正新时期/零样本迁移 |
-| MAT-JPL-PREREG-20261005 | SG-EXP-028冻结协议/完整基线/统计与区间次要验证计划 | 配置、方案及代码/来源摘要见JPL-validation-freeze-20261005.json；4模型×3种子共12次 | 可复核研究设计，不含个人数据 | 未训练、无模型测试结果；需专用loader、上传包、远端smoke和正式授权 |
+| MAT-JPL-PREREG-20261005 | SG-EXP-028冻结协议与比较设计 | 配置、方案及代码/来源摘要见JPL-validation-freeze-20261005.json；4模型×3种子共12次 | 可复核研究设计，不含个人数据 | 预登记材料；性能证据见MAT-JPL-RESULT-20261005及正式实验报告 |
+| MAT-JPL-RESULT-20261005 | SG-EXP-028十二次正式训练、测试预测和派生统计 | 12/12运行通过；归档SHA256 `50e7beb581c7cd4e3099fa0661d5a1cf3c1f79935516739eae693ba0234d4966`；数据张量SHA256与SG-DATA-007一致；逐键复核见实验报告 | 仅本地研究；原始会话、检查点和逐键预测不进入公开附件 | JPL固定协议点预测比较与条件时间块差异；不是实测功率、零样本迁移或未来时期证据 |
 | DATA-JPL-FEASIBILITY-20261004 | ACN-Data-Static JPL固定156条探查 + 官方API元数据跨期抽样113条及1个时序页 | 静态commit abb7cf15cc7108913e965d4375cc7270d532b65f；API报33,638条，抽样50个stationID与静态52候选中50个字符串匹配；`api_authenticated_crosswalk_probe.json`含逐页响应哈希，manifest记录脚本/摘要SHA256；无原始API记录 | 仅本地研究核查；教育研究条款；再分发待明确；令牌未保存 | 外部站点候选；非全量节点盘点，时序页0/25有电流，不是实测kW、正式跨站或新时期性能验证 |
 | MAT-024-SUPPORT | 原会话主10节点及SG-DATA-006固定目标；脚本audit_proxy_engineering.py | sources.json与manifest.json；替代重构仅派生 | 原始数据不进入Git；只保留本地证据 | 支持范围/总量，不是实测负荷 |
 | DATA-024-CURRENT-PROBE | ACN-Data Static公开历史Caltech会话；预定10个、8个质量通过 | selection.json、各通过文件URL/SHA256，元数据及派生份额manifest | 原文件不保存/再分发；许可需遵守官方条款 | 归一化电流形态，非实测能量、新时期或在线性能 |

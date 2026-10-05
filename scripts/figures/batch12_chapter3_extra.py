@@ -173,24 +173,26 @@ def redraw_fig3_8() -> None:
     fig3_9 / fig4_4 / fig5_2 的素雅风格一致。
     数值标注：4 窗口 × 6 模型共 24 根柱、柱宽仅约 13 pt，逐柱标注必然
     与相邻柱或误差棒重叠，故只标注主模型（论文主张所系）在 4 个窗口的
-    MAE，标注置于该组最高柱之上并用细引导线连回主模型柱顶；其余模型的
-    分层数值由正文表 3-2 承载。
+    MAE，白字竖排直接写入蓝色柱体内部；其余模型的分层数值由正文表 3-2
+    承载。
     """
     # 画布取论文显示尺寸（版心宽 14.66 cm = 5.77 in，图按 5.59 in 排版），
     # fontsize 参数即为纸面字号；按大画布绘制再等比缩小会把 8pt 压到 3.9pt。
     fig, ax = plt.subplots(figsize=(5.59, 3.15))
     x = np.arange(len(SCOPES))
     width = 0.15
-    # 本图专属配色映射（不改 MODELS 常量，以免影响共用它的 fig3_10/fig3_13）：
-    # 主模型 BLUE；AdaptiveGraph 为最强基线 → 深灰；TCN 为无图基线 → 浅灰；
-    # MLP 中灰；GWN / AGCRN 沿用其余章节的低饱和绿、紫。
+    # 本图专属配色映射（不改 MODELS 常量，以免影响共用它的 fig3_10/fig3_13）。
+    # 与图 3-9 同一「灰阶承载基线、蓝色只给本文模型」的方案：
+    # 主模型 StaticGraph 深蓝；本文变体 AdaptiveGraph 浅蓝（同 fig3_9 的
+    # “本文变体”色）；四个基线为蓝灰阶（浅→深：TCN/MLP 为无图基线，
+    # GWN/AGCRN 为图模型基线），相邻柱靠明度阶差 + 白边区分。
     palette = {
-        "SG-EXP-003": BLUE,      # 主模型 StaticGraph（MRG-GCN）
-        "SG-EXP-004": GRAY_D,    # AdaptiveGraph（最强基线）
-        "SG-EXP-009": GRAY_M,    # MLP
-        "SG-EXP-002": GRAY_L,    # TCN（无图基线）
-        "SG-EXP-010": GREEN,     # GWN
-        "SG-EXP-008": PURPLE,    # AGCRN
+        "SG-EXP-003": BLUE,        # 主模型 StaticGraph（MRG-GCN）
+        "SG-EXP-004": "#8EABC0",   # AdaptiveGraph（本文变体，浅蓝）
+        "SG-EXP-002": "#AEB6BC",   # TCN（无图基线，浅蓝灰）
+        "SG-EXP-009": "#8C979E",   # MLP（无图基线，中浅蓝灰）
+        "SG-EXP-010": "#6E7A81",   # GWN（图模型基线，中深蓝灰）
+        "SG-EXP-008": "#55606A",   # AGCRN（图模型基线，深蓝灰）
     }
     main_exp = "SG-EXP-003"
     main_idx = next(i for i, (e, _l, _c) in enumerate(MODELS) if e == main_exp)
@@ -216,24 +218,21 @@ def redraw_fig3_8() -> None:
     # when the figure is reduced to the thesis text width.
     ax.yaxis.set_minor_formatter(NullFormatter())
 
-    # 主模型数值标注：抬到本窗口最高柱（含误差棒）之上，避免压住任何柱体；
-    # 细引导线落在主模型柱自身列内，不会穿过相邻柱。
-    label_ys = (means + sds).max(axis=0) * 1.06
+    # 主模型数值标注：白字竖排写在主模型（蓝色）柱体内部，自柱顶向下排布。
+    # 旧版把标注抬到全组最高柱之上再用细引导线连回主模型柱顶，悬空的蓝字
+    # 与引导线视觉上像“游离元素”；柱内竖排标注不占用组间空隙，也不会与
+    # 相邻柱的误差棒相交（事件窗口组各柱高度接近时尤为重要）。
     for gi in range(len(SCOPES)):
         xc = x[gi] + (main_idx - 2) * width
-        ax.annotate(f"{means[main_idx, gi]:.4f}",
-                    xy=(xc, means[main_idx, gi] + sds[main_idx, gi]),
-                    xytext=(xc, label_ys[gi]), ha="center", va="bottom",
-                    fontsize=6.4, color=BLUE, zorder=6,
-                    arrowprops=dict(arrowstyle="-", color=BLUE, lw=0.6,
-                                    alpha=0.5, shrinkA=0.5, shrinkB=1.5))
+        ax.text(xc, means[main_idx, gi] * 0.90, f"{means[main_idx, gi]:.4f}",
+                ha="center", va="top", rotation=90, fontsize=6.4,
+                color="white", zorder=6)
 
     ax.set_xticks(x)
     ax.set_xticklabels([cn for _k, cn in SCOPES], fontsize=8.6)
     ax.set_ylabel("MAE（kWh/15 min，对数轴）", fontsize=8.8)
-    # 顶端留白按最高标注行的字号高度定（6.4 pt 文字 ≈ 0.11 十倍程），
-    # 保证标注不被上边框裁切。
-    ax.set_ylim(0.004, float(label_ys.max()) * 1.32)
+    # 无柱上标注后顶端只需为最高柱的误差棒留少量余量。
+    ax.set_ylim(0.004, float((means + sds).max()) * 1.18)
     # 图例单行横排 6 项，从左到右与每组柱序（TCN→…→AGCRN）完全一致，
     # 位于数据区上方、不遮挡任何柱或标注。
     ax.legend(fontsize=7.2, frameon=False, ncol=6, loc="upper center",
@@ -317,12 +316,14 @@ def redraw_fig3_10() -> None:
     配色编码"相对基线的退化程度"（本图专属，写在函数内以免影响共用 MODELS
     常量的 fig3_10/fig3_12/fig3_13）：完整模型是全文主张所系 → 全图唯一主色
     BLUE；仅保留单类关系的两变体相对基线只差 +2.5%/+2.3%（小于三种子标准差
-    量级），语义是"与基线持平" → 浅灰 GRAY_L 后退；无图与门控关闭分别恶化
-    +113.0%、+90.5%，语义是"致命消融" → 深灰 GRAY_D 压重。
-    三级在灰度打印下的亮度序为 深灰(64) < 主色(85) < 浅灰(200)，仍可区分。
+    量级），语义是"与基线持平" → 浅蓝灰 #AEB6BC 后退；无图与门控关闭分别恶化
+    +113.0%、+90.5%，语义是"致命消融" → 深蓝灰 #55606A 压重（与图 3-12 的
+    蓝灰阶一致，避免近黑与浅灰的明暗跨度过大）。
+    三级在灰度打印下的亮度序为 深蓝灰(约95) < 主色档 < 浅蓝灰(约182)，
+    仍单调可区分。
     """
     # 退化程度三级色（语义见 docstring；不使用其它章节的橙/绿/红点缀色）
-    C_BASE, C_MILD, C_SEVERE = BLUE, GRAY_L, GRAY_D
+    C_BASE, C_MILD, C_SEVERE = BLUE, "#AEB6BC", "#55606A"
     variants = [
         ("baseline", "完整模型\n（基线）", C_BASE),
         ("SG-EXP-006-ablation-no_graph", "无图\n（TCN 结构）", C_SEVERE),
