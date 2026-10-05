@@ -1,0 +1,52 @@
+{
+  "experiment": "SG-EXP-028",
+  "protocol": "SG-DATA-007-jpl-eventtime-v1",
+  "locked_at_utc": "2026-10-05T04:13:25.591719+00:00",
+  "base_git_commit": "a44829c8d300740d71315ae7a37a3b93376e6cd3",
+  "status": "data_and_design_frozen_no_training",
+  "planned_runs": 12,
+  "primary_metric": "pooled MAE over all common origin x horizon x node keys",
+  "models": [
+    "mrg_full",
+    "tcn_wide",
+    "agcrn_full",
+    "mrg_shared_gate"
+  ],
+  "seeds": [
+    2024,
+    2025,
+    2026
+  ],
+  "data_manifest_sha256": "4af41f894ac0c8c2933beba2b3411c4f3844f63d22d9bad211af5fce292a65dc",
+  "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+  "source_snapshot_sha256": "68480c71451dfaa0e2ca3a27cefb2fa229c76eac31fc541ccef56af7a9af3af4",
+  "independent_verification_sha256": "5abd51a55cf7a817c96d287c9bcf9ecdcce8bccff302458977f70f16bd22259e",
+  "frozen_files": {
+    "configs/data/SG-DATA-007-jpl-eventtime-v1.json": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+    "configs/experiments/SG-EXP-028-jpl-independent-site.json": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+    "docs/thesis/SG-EXP-028-jpl-independent-site-validation.md": "46cd54af45c80c50149f1749fea3d5ed291dcd765522b8e101df57bf1b318603",
+    "scripts/fetch_jpl_sessions.py": "f84077a36b08849effb4dbd310841b2d584efd24ece5f65cc1e202e20b1a4d74",
+    "scripts/prepare_jpl_validation.py": "80129a1b01fb2b7f04a1e2a5e33457578a7f14e397938595b290118213099135",
+    "scripts/verify_jpl_validation.py": "33597acdd0a185eeccaddeb8fc237942d5d63bb86b05e3b02f8aafa523700601",
+    "scripts/freeze_jpl_protocol.py": "a5545b9bc1ce7173a6089b333018c010477b60a5a98ee67726fd22d5db55b55d",
+    "tests/test_jpl_validation.py": "71b654d06a67d0063bd02d2dbf3a4f68ec0238479137f876ca5889cf5c88e632",
+    "src/evcs_station_graph/data/visibility_v2.py": "09785fc1027d0506d57bf650a482036eccd1b89f91902ec39f7121fd20e0658c",
+    "src/evcs_station_graph/graphs/relations.py": "513c65611e922d8cc2f8911df91dbe244f2a287c6a7a851b2aed90629dc024ba",
+    "src/evcs_station_graph/eventtime/models.py": "aad5bbe04a1bc1527deb289d899e7287a75ca29a54369de922db80fd403be7bb",
+    "src/evcs_station_graph/eventtime/gate_control.py": "1cf89b3cc00e6cae6ce9ff90916319d390e6af81bed00726d7ff4e6d91cabe95",
+    "src/evcs_station_graph/eventtime/runner.py": "cc4692209a5eb4fc0e662fe71150685c99e3a5f38a35fc2dc94f3307122025a7",
+    "src/evcs_station_graph/models/graph.py": "32bc62ace86a140b5b5ec7be12aed8fac8d00e5ea13c043656ffb221d50a3937",
+    "src/evcs_station_graph/models/tcn.py": "8c51e62d97be86c340d668d6b6b19e93c5bc957a594e37caaaaa28b6366b260c",
+    "src/evcs_station_graph/models/common.py": "3c91e3d476a7b7a61b0c1080fec7d8d40f8eefccb6df4dbdc4431438421bdbbf"
+  },
+  "no_model_test_results": true,
+  "no_training": true,
+  "permissions": "later explicit training authorization and GPU smoke required",
+  "remaining_execution_gates": [
+    "JPL-specific strict loader",
+    "portable upload bundle",
+    "remote GPU smoke",
+    "explicit formal-training approval"
+  ],
+  "change_policy": "before-test amendments require reason and new dated lock; after-test changes exploratory only, no overwriting original evidence"
+}
