@@ -1,0 +1,16 @@
+{
+  "all_18_weights_equal_previous_generator": true,
+  "all_76_te_candidates_preserved": true,
+  "top15_selection_identical": true,
+  "coverage_counts": [
+    45,
+    33,
+    12
+  ],
+  "preflight": {
+    "pass": 13,
+    "warn": 1,
+    "fail": 0,
+    "warning_explanation": "146.6 mm matches this thesis figure width; journal widths are not the layout target."
+  }
+}

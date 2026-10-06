@@ -1,0 +1,23 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-06",
+  "source_commit": "5dac84e",
+  "generated_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-46331b1a-f54f-4d50-9020-fb95837e8e5b.png",
+  "output": "outputs/figures/fig1_2_roadmap.png",
+  "sha256": "cf983d1abb903ae3b22fab2f5dcc548ad82da877c1760060e06ce5fbc60927af",
+  "size_px": [
+    1671,
+    941
+  ],
+  "prompt_record": "docs/thesis/roadmap-evaluation-grid-polish-20261006.md",
+  "generation_mode": "edit",
+  "inputs": [
+    "outputs/figures/archive/2026-10-06-roadmap-evaluation-grid-polish/fig1_2_roadmap.png"
+  ],
+  "previous_source_record": "outputs/figures/archive/2026-10-06-roadmap-evaluation-grid-polish/fig1_2_roadmap_source.json",
+  "scientific_inputs": [
+    "outputs/figures/archive/2026-10-06-jpl-imagegen-update/fig1_2_roadmap.png"
+  ],
+  "reference_image": "outputs/figures/archive/2026-10-06-roadmap-evaluation-grid-polish/fig1_2_roadmap.png",
+  "visual_review": "Selected native output reviewed by primary and independent review agent; labels, layout and scientific topology accepted."
+}

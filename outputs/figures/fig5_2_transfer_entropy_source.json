@@ -1,0 +1,165 @@
+{
+  "backend": "Python / matplotlib",
+  "archetype": "quantitative grid",
+  "script": "scripts/figures/batch25_beta_te_results_20261006.py",
+  "sources": [
+    {
+      "path": "outputs/analysis/transfer_entropy/transfer_entropy_summary.json",
+      "sha256": "2a49c60679c2aed7e3b4cf326a928bfa381c026ab2a1f4189dd8e6112baadb44"
+    }
+  ],
+  "outputs": {
+    "png": "1028c2139a18bd7c24f0c0845e2af23e7a7c37dc9d8501351db1c5f74405df5c",
+    "svg": "bdb057122e2191a80b9402b012fbdee7bb63c565bbfb86af4401dde17f1dbc66",
+    "pdf": "af7808f1eb55209d2efe85252b6f6ce2e43484cfabd05c6c44aa99110e1e3ea0",
+    "tiff": "1dde45b1e9c7ad0fcd164663977ba2e2edc2045e916bb7f30df6d01f95e8ca12"
+  },
+  "claim": "TE候选结构与统计关系部分重合，同时包含未覆盖的节点对。",
+  "all_directed_candidates": 76,
+  "shown_directed_candidates": 15,
+  "display_selection": "highest TE 15; identical selection to previous figure",
+  "other_directed_candidates_not_drawn": 61,
+  "all_candidates_retained_in_source_csv": true,
+  "circular_node_order": [
+    "CA-303",
+    "CA-304",
+    "CA-317",
+    "CA-305",
+    "CA-311",
+    "CA-321",
+    "CA-327",
+    "CA-307",
+    "CA-489",
+    "CA-315"
+  ],
+  "layout_score": 123,
+  "layout": "enlarged network and wider coverage panel with reduced horizontal gap",
+  "shown_edges": [
+    {
+      "lag": 2,
+      "p_value": 0.009900990099009901,
+      "source": "CA-327",
+      "target": "CA-311",
+      "te": 0.003049138252343037
+    },
+    {
+      "lag": 1,
+      "p_value": 0.009900990099009901,
+      "source": "CA-303",
+      "target": "CA-317",
+      "te": 0.0030977358845254545
+    },
+    {
+      "lag": 4,
+      "p_value": 0.009900990099009901,
+      "source": "CA-311",
+      "target": "CA-327",
+      "te": 0.0030998691443451173
+    },
+    {
+      "lag": 2,
+      "p_value": 0.009900990099009901,
+      "source": "CA-327",
+      "target": "CA-321",
+      "te": 0.0031534745843842466
+    },
+    {
+      "lag": 4,
+      "p_value": 0.009900990099009901,
+      "source": "CA-304",
+      "target": "CA-303",
+      "te": 0.0031750035782036686
+    },
+    {
+      "lag": 4,
+      "p_value": 0.009900990099009901,
+      "source": "CA-327",
+      "target": "CA-307",
+      "te": 0.0031770641622949885
+    },
+    {
+      "lag": 2,
+      "p_value": 0.039603960396039604,
+      "source": "CA-315",
+      "target": "CA-489",
+      "te": 0.0033046751881234183
+    },
+    {
+      "lag": 4,
+      "p_value": 0.009900990099009901,
+      "source": "CA-489",
+      "target": "CA-307",
+      "te": 0.003414573728072472
+    },
+    {
+      "lag": 1,
+      "p_value": 0.009900990099009901,
+      "source": "CA-327",
+      "target": "CA-317",
+      "te": 0.003540859294722292
+    },
+    {
+      "lag": 2,
+      "p_value": 0.009900990099009901,
+      "source": "CA-489",
+      "target": "CA-327",
+      "te": 0.003698408960788457
+    },
+    {
+      "lag": 1,
+      "p_value": 0.009900990099009901,
+      "source": "CA-489",
+      "target": "CA-315",
+      "te": 0.003897139600928346
+    },
+    {
+      "lag": 4,
+      "p_value": 0.04950495049504951,
+      "source": "CA-315",
+      "target": "CA-303",
+      "te": 0.0047118835941291105
+    },
+    {
+      "lag": 2,
+      "p_value": 0.019801980198019802,
+      "source": "CA-327",
+      "target": "CA-489",
+      "te": 0.005075964711204602
+    },
+    {
+      "lag": 2,
+      "p_value": 0.009900990099009901,
+      "source": "CA-327",
+      "target": "CA-315",
+      "te": 0.005570066145014891
+    },
+    {
+      "lag": 1,
+      "p_value": 0.009900990099009901,
+      "source": "CA-489",
+      "target": "CA-317",
+      "te": 0.00565974479918071
+    }
+  ],
+  "coverage_counts": [
+    45,
+    33,
+    12
+  ],
+  "coverage_unit": "undirected node pair; complete set of candidates",
+  "statistics": "100 circular-shift permutations; no multiplicity correction; no error bars",
+  "interpretation": "directional statistical candidates, not physical causality",
+  "pre_1200dpi_sha256": "d5a7f5e2fb6863dc83952513ccc2672f6ad1a3a93e7f9526737deedec03ac312",
+  "delivery": {
+    "size_px": [
+      6720,
+      4164
+    ],
+    "metadata_dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "effective_dpi_at_word_size": 1202.0281690140846,
+    "method": "native pixels; added 1200 dpi metadata"
+  }
+}

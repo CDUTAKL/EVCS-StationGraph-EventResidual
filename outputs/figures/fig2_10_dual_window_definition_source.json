@@ -1,0 +1,29 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-06",
+  "source_commit": "5dac84e",
+  "generated_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-f6f734c3-31a3-4e6c-a04e-da17de1a0685.png",
+  "output": "outputs/figures/fig2_10_dual_window_definition.png",
+  "sha256": "0138d4eaf4e0a80517c84e3f57b7294e28a1d0dc98d1f5138cbbb25a3b2e47fd",
+  "size_px": [
+    1672,
+    941
+  ],
+  "prompt_record": "docs/thesis/flowchart-annotation-cleanup-20261006.md",
+  "generation_mode": "edit",
+  "reference_image": "outputs/figures/archive/2026-10-06-flowchart-caption-cleanup/fig2_10_dual_window_definition.png",
+  "pre_1200dpi_sha256": "0138d4eaf4e0a80517c84e3f57b7294e28a1d0dc98d1f5138cbbb25a3b2e47fd",
+  "outputs": {},
+  "delivery": {
+    "size_px": [
+      6709,
+      3776
+    ],
+    "metadata_dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "effective_dpi_at_word_size": 1200.0605633802818,
+    "method": "Lanczos interpolation from raster-only source; no new source detail"
+  }
+}

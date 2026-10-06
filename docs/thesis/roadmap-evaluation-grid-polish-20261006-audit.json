@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-06",
+  "tool": "built-in ImageGen",
+  "figure_count": 46,
+  "caption_counts_by_chapter": {
+    "1": 2,
+    "2": 13,
+    "3": 16,
+    "4": 6,
+    "5": 9
+  },
+  "ordered_hash_match": true,
+  "changed_figure_media_parts": [
+    "word/media/image8.png",
+    "word/media/image21.png"
+  ],
+  "document_text_unchanged": true,
+  "all_native_equation_xml_unchanged": true,
+  "numbered_native_equations": 27,
+  "total_omml": 248,
+  "styles_relationships_and_other_nonmedia_parts_unchanged": true,
+  "primary_and_independent_visual_review": "accepted",
+  "updated_figures": [
+    "fig1_2_roadmap",
+    "fig2_13_jpl_validation_protocol"
+  ],
+  "manifest_repository_check": "passed",
+  "imagegen_registry_check": "passed",
+  "page_render_review": "not performed",
+  "archive": "outputs/figures/archive/2026-10-06-roadmap-evaluation-grid-polish",
+  "docx": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+  "docx_sha256": "068834fec6168dfb081a61aa35eafdbbc56669cebc1715786b6b29409f2e0d3f",
+  "selected_images": [
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_2_roadmap.png",
+      "sha256": "cf983d1abb903ae3b22fab2f5dcc548ad82da877c1760060e06ce5fbc60927af"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_13_jpl_validation_protocol.png",
+      "sha256": "b58f60645653804397011e9de2551072fc4b8e305c7de555251b7a05a6aaebe1"
+    }
+  ]
+}

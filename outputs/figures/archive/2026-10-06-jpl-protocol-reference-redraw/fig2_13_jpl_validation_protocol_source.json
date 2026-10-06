@@ -1,0 +1,24 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-06",
+  "source_commit": "5dac84e",
+  "generated_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-eaaf20a1-95e4-48e3-b828-85706ebbc52a.png",
+  "output": "outputs/figures/fig2_13_jpl_validation_protocol.png",
+  "sha256": "658969e2fefee44aca57309a3f15fd4504a6d07eaf4fed34487a8374de0ddbd5",
+  "size_px": [
+    1672,
+    940
+  ],
+  "prompt_record": "docs/thesis/JPL-imagegen-style-redraw-20261006.md",
+  "generation_mode": "edit",
+  "inputs": [
+    "outputs/figures/archive/2026-10-06-jpl-imagegen-style-redraw/fig2_13_jpl_validation_protocol.png",
+    "outputs/figures/fig5_6_conformal_method.png"
+  ],
+  "previous_source_record": "outputs/figures/archive/2026-10-06-jpl-imagegen-style-redraw/fig2_13_jpl_validation_protocol_source.json",
+  "scientific_inputs": [
+    "configs/data/SG-DATA-007-jpl-eventtime-v1.json",
+    "configs/experiments/SG-EXP-028-jpl-independent-site.json",
+    "docs/thesis/JPL-validation-freeze-20261005.json"
+  ]
+}

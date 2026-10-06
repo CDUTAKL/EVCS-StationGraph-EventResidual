@@ -1,0 +1,378 @@
+meta:
+  profile: "academic-paper"
+  figureType: "workflow"
+  source: "edited"
+  theme: "academic-color"
+  layout: "horizontal"
+  canvas: "1000x710"
+  routing: "orthogonal"
+  title: "三层机制诊断协议（MDP）"
+  description: "按L1干预归因、L2蒸馏验证和L3四格溯源呈现逐层证据与判定边界。"
+  legend: "横向箭头只连接同一行的诊断问题、操作、证据与判定。"
+  font:
+    primary: "Times New Roman"
+    cjk: "Songti SC"
+    formula: "Times New Roman"
+  replication:
+    colorMode: preserve-original
+    background: "#FFFFFF"
+    palette:
+      - hex: "#E8EFF3"
+        role: "主体流程节点填充"
+        appliesTo: nodes
+        confidence: high
+      - hex: "#F2EAE3"
+        role: "数据与结果节点填充"
+        appliesTo: nodes
+        confidence: high
+      - hex: "#FBF5E9"
+        role: "判断节点填充"
+        appliesTo: nodes
+        confidence: high
+      - hex: "#56798E"
+        role: "主流程连线"
+        appliesTo: edges
+        confidence: high
+    confidenceNotes:
+      - "保留论文蓝灰、暖灰色彩语义；重画节点、箭头与文字，不沿用旧图的像素几何。"
+
+nodes:
+  - id: title
+    label: "三层机制诊断协议（MDP）"
+    type: text
+    bounds: { x: 35, y: 16, width: 930, height: 34 }
+    style:
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: left
+      verticalAlign: middle
+  - id: sub
+    label: "每一层的操作、证据和结论逐行对应"
+    type: text
+    bounds: { x: 36, y: 52, width: 920, height: 24 }
+    style:
+      fontColor: "#68757D"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: left
+      verticalAlign: middle
+  - id: h0
+    label: "层级"
+    type: text
+    bounds: { x: 35, y: 102, width: 90, height: 34 }
+    style:
+      fontColor: "#68757D"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: h1
+    label: "诊断问题"
+    type: text
+    bounds: { x: 145, y: 102, width: 160, height: 34 }
+    style:
+      fontColor: "#68757D"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: h2
+    label: "操作"
+    type: text
+    bounds: { x: 325, y: 102, width: 220, height: 34 }
+    style:
+      fontColor: "#68757D"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: h3
+    label: "关键证据"
+    type: text
+    bounds: { x: 565, y: 102, width: 200, height: 34 }
+    style:
+      fontColor: "#68757D"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: h4
+    label: "判定边界"
+    type: text
+    bounds: { x: 785, y: 102, width: 180, height: 34 }
+    style:
+      fontColor: "#68757D"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r0c0
+    label: "L1\n干预归因"
+    type: terminal
+    bounds: { x: 35, y: 150, width: 90, height: 120 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r0c1
+    label: "关系级 β 分配\n是否有功能依赖？"
+    type: process
+    bounds: { x: 145, y: 150, width: 160, height: 120 }
+    style:
+      fillColor: "#F3F5F6"
+      strokeColor: "#BAC2C7"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r0c2
+    label: "观察两层 β\n冻结权重前向干预\n7种配置 × 3种子"
+    type: process
+    bounds: { x: 325, y: 150, width: 220, height: 120 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r0c3
+    label: "7/7干预均退化\nMAE +95.9%–+233.6%"
+    type: process
+    bounds: { x: 565, y: 150, width: 200, height: 120 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r0c4
+    label: "支持所检关系权重\n存在功能依赖"
+    type: terminal
+    bounds: { x: 785, y: 150, width: 180, height: 120 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#A08B7D"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r1c0
+    label: "L2\n蒸馏验证"
+    type: terminal
+    bounds: { x: 35, y: 316, width: 90, height: 120 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r1c1
+    label: "所检时序学生能否\n吸收图模型知识？"
+    type: process
+    bounds: { x: 145, y: 316, width: 160, height: 120 }
+    style:
+      fillColor: "#F3F5F6"
+      strokeColor: "#BAC2C7"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r1c2
+    label: "StaticGraph 教师\n→ TCN 学生\n4个权重 × 3种子"
+    type: process
+    bounds: { x: 325, y: 316, width: 220, height: 120 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r1c3
+    label: "TCN MAE ≈ 0.029\n教师 0.01376\n所检设置未弥合差距"
+    type: process
+    bounds: { x: 565, y: 316, width: 200, height: 120 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r1c4
+    label: "结论限于所检学生、\n蒸馏目标与权重范围"
+    type: terminal
+    bounds: { x: 785, y: 316, width: 180, height: 120 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#A08B7D"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r2c0
+    label: "L3\n四格溯源"
+    type: terminal
+    bounds: { x: 35, y: 482, width: 90, height: 120 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r2c1
+    label: "不同窗口如何贡献\n全局预测误差？"
+    type: process
+    bounds: { x: 145, y: 482, width: 160, height: 120 }
+    style:
+      fillColor: "#F3F5F6"
+      strokeColor: "#BAC2C7"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r2c2
+    label: "target_event × rule_trigger\n四格分层；按样本量加权"
+    type: process
+    bounds: { x: 325, y: 482, width: 220, height: 120 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r2c3
+    label: "四格加权 MAE\n还原全局 MAE\n事件格误差约为稳定格28倍"
+    type: process
+    bounds: { x: 565, y: 482, width: 200, height: 120 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: r2c4
+    label: "定位误差来源；\n不作因果解释"
+    type: terminal
+    bounds: { x: 785, y: 482, width: 180, height: 120 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#A08B7D"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: boundary
+    label: "共同边界：旧 Caltech 主协议；L2结论仅适用于图示的学生架构、蒸馏目标和权重范围。"
+    type: text
+    bounds: { x: 40, y: 655, width: 920, height: 34 }
+    style:
+      fontColor: "#68757D"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: left
+      verticalAlign: middle
+
+edges:
+  - from: r0c1
+    to: r0c2
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 1
+  - from: r0c2
+    to: r0c3
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 1
+  - from: r0c3
+    to: r0c4
+    type: primary
+    style:
+      strokeColor: "#A08B7D"
+      strokeWidth: 1
+  - from: r1c1
+    to: r1c2
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 1
+  - from: r1c2
+    to: r1c3
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 1
+  - from: r1c3
+    to: r1c4
+    type: primary
+    style:
+      strokeColor: "#A08B7D"
+      strokeWidth: 1
+  - from: r2c1
+    to: r2c2
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 1
+  - from: r2c2
+    to: r2c3
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 1
+  - from: r2c3
+    to: r2c4
+    type: primary
+    style:
+      strokeColor: "#A08B7D"
+      strokeWidth: 1

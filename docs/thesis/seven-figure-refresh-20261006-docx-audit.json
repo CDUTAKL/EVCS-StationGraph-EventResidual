@@ -1,0 +1,428 @@
+{
+  "candidate": "/private/tmp/seven-figures-final-0510xbpl/synced.docx",
+  "figures_synced": 46,
+  "cover_mark_preserved": true,
+  "captions_in_order": true,
+  "all_payload_hashes_match": true,
+  "figures": [
+    {
+      "figure": "图1-1",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_1_research_gap_map.png",
+      "sha256": "16e09326cce503a1c2551a09d80354abce088d2944b4ca083e6df86c64ed1c03",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图1-2",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_2_roadmap.png",
+      "sha256": "d8bbeed90b80cf0ec45ac1bd8e0f898f5724cf3a1259416e37562ce1308ec491",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图2-1",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_1_data_reconstruction.png",
+      "sha256": "b0885de453888360baef7ab7416fc19c805715ae3ead366758cb36608f891511",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图2-2",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_2_node_coverage.png",
+      "sha256": "5821cbbcc24712f9b5a99123352eaaa3973b79add3029421d7e3da90d02968e0",
+      "display_cm": [
+        14.2,
+        11.023
+      ]
+    },
+    {
+      "figure": "图2-3",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_3_load_heatmap.png",
+      "sha256": "69857c2941965f182727c22c3438a4e6d1b3a85eacb712053d8733fa72928403",
+      "display_cm": [
+        14.2,
+        6.645
+      ]
+    },
+    {
+      "figure": "图2-4",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_4_autocorrelation.png",
+      "sha256": "4e171160fe42260a6028b4aa43a1f1bc0ef1a6d5fd587c7ae749c0135f53b632",
+      "display_cm": [
+        14.2,
+        6.7
+      ]
+    },
+    {
+      "figure": "图2-5",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_5_weekly_curves.png",
+      "sha256": "abed2497680c8ea02d68183165ee87c54bf27fc5916b74b5ad596a16032d539e",
+      "display_cm": [
+        14.2,
+        6.684
+      ]
+    },
+    {
+      "figure": "图2-6",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_6_load_distribution.png",
+      "sha256": "8cc0076209a270b13172b9cf5ed06bcd5bc2d68080b8f096340679bc27ae0ed1",
+      "display_cm": [
+        14.2,
+        7.56
+      ]
+    },
+    {
+      "figure": "图2-7",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_7_event_score_flow.png",
+      "sha256": "871f4213da51348c640ce820c8aa5722accad5833b8468b4436e45b30e0de093",
+      "display_cm": [
+        14.2,
+        7.983
+      ]
+    },
+    {
+      "figure": "图2-8",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_8_event_hourly.png",
+      "sha256": "e902d1bb78607ae350dbf68b619d6723ebae9d029fbc09551f5d0d7192e116cc",
+      "display_cm": [
+        14.2,
+        7.219
+      ]
+    },
+    {
+      "figure": "图2-9",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_9_event_component_composition.png",
+      "sha256": "bfc8f35674a2e9cffe03c7d9eebf3e26bddae1b2188b58360aef20bb0d8ed5d0",
+      "display_cm": [
+        14.2,
+        7.69
+      ]
+    },
+    {
+      "figure": "图2-10",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_10_dual_window_definition.png",
+      "sha256": "0138d4eaf4e0a80517c84e3f57b7294e28a1d0dc98d1f5138cbbb25a3b2e47fd",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图2-11",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_11_feature_correlation.png",
+      "sha256": "f4ed5204c59860ce86868664af52bc0cce28e7527cc8ef1e0cc944bd4824eef9",
+      "display_cm": [
+        14.2,
+        11.929
+      ]
+    },
+    {
+      "figure": "图2-12",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_12_weekday_hour_heatmap.png",
+      "sha256": "a03752b171286bbf544a8f35af7fada28556fe9f9e1d289d5148ea75c56cbd8e",
+      "display_cm": [
+        14.2,
+        6.843
+      ]
+    },
+    {
+      "figure": "图2-13",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_13_jpl_validation_protocol.png",
+      "sha256": "b58f60645653804397011e9de2551072fc4b8e305c7de555251b7a05a6aaebe1",
+      "display_cm": [
+        14.2,
+        7.983
+      ]
+    },
+    {
+      "figure": "图3-1",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_1_mrggcn_architecture.png",
+      "sha256": "d44f39ba9535ab6b4e872ff570d8cf192169995700991fb1fceddc13b63aa80c",
+      "display_cm": [
+        14.2,
+        18.933
+      ]
+    },
+    {
+      "figure": "图3-2",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_2_relation_propagation_unit.png",
+      "sha256": "9095e87c72115d7365da633a18c21321fd0ed8982669af7275eab6dfe130cbf4",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图3-3",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_3_temporal_skip_fusion.png",
+      "sha256": "a032dbbc41290cb422285d40e0847722bfa45533ee7322abc88af2238faa0908",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图3-4",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_4_lre_construction.png",
+      "sha256": "5ac2f726804a4d7599cf78f1491d5926936c504099afbe6d5ac59c5461330eea",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图3-5",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_5_lre_matrices.png",
+      "sha256": "1fde04f02728963e3949972005ac1accf836b4d498df0827c056727f9ee4d1af",
+      "display_cm": [
+        14.2,
+        4.702
+      ]
+    },
+    {
+      "figure": "图3-6",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_6_gate_residual_detail.png",
+      "sha256": "5c8d83df11dcca8981ac25ae1d016d97a369bb32bd6c16fda80f92591f32a971",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图3-7",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_7_cross_layer_detail.png",
+      "sha256": "7c1aeacf81d44b1b01808d5f16444142a7914cb66a8f960743821bcb826365d4",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图3-8",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_8_train_predict_pipeline.png",
+      "sha256": "364bb9c8528291da3706014564a112b36d425efd19d19af898af6cd381dbad3c",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图3-9",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_model_mae_comparison.png",
+      "sha256": "6a11c04dc6caec115e93fff71f2cca0ad0613ea6cc68e0ef1c729269638c6928",
+      "display_cm": [
+        14.2,
+        10.552
+      ]
+    },
+    {
+      "figure": "图3-10",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_mae_by_horizon.png",
+      "sha256": "7936eb2dd5dae16edbe85b6499f2b7c8a143bdfb4045ab8901273387923cffeb",
+      "display_cm": [
+        14.2,
+        7.763
+      ]
+    },
+    {
+      "figure": "图3-11",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_bootstrap_difference.png",
+      "sha256": "5f2908c7d145bf6a3269754e614d8bd12a107b81399506f679271680bb9ba0f6",
+      "display_cm": [
+        14.2,
+        11.983
+      ]
+    },
+    {
+      "figure": "图3-12",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_window.png",
+      "sha256": "2d0484eaddec24eec480ab1a0f64ece39b6730fc656ae1758fa0e158d0f73d62",
+      "display_cm": [
+        14.2,
+        8.019
+      ]
+    },
+    {
+      "figure": "图3-13",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_mae_by_node.png",
+      "sha256": "a1670cde16a0bf6835378a24e268322b11938af509ea7912782c8ed13897b63e",
+      "display_cm": [
+        14.2,
+        9.354
+      ]
+    },
+    {
+      "figure": "图3-14",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mechanism_ablation.png",
+      "sha256": "5f2042e941db4dd123be39dffef7a74a8804f705984a2ecc469a81b4e37fbfd7",
+      "display_cm": [
+        14.2,
+        8.019
+      ]
+    },
+    {
+      "figure": "图3-15",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_jpl_mae_primary.png",
+      "sha256": "c687893e281ba4b7ed86b7cec8fece32b85d073b9774151edba5666f8a0d330f",
+      "display_cm": [
+        14.2,
+        6.335
+      ]
+    },
+    {
+      "figure": "图3-16",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_jpl_stratified_mae.png",
+      "sha256": "42f7fd8c515094c80b699a5c64540484a1c308c900779c6b58abae8dd1c65b7a",
+      "display_cm": [
+        14.2,
+        8.723
+      ]
+    },
+    {
+      "figure": "图4-1",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_1_three_layer_framework.png",
+      "sha256": "1b8dfd4e09256e03ebb37e04ea81b665a8ad7e6650072dd4d4800c61984d2aa9",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图4-2",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_2_beta_profile.png",
+      "sha256": "87a6f597e5f3b3fd2469b5f4b21ffc49c896bb1794f6cb3ff58eff72a504e425",
+      "display_cm": [
+        14.2,
+        7.349
+      ]
+    },
+    {
+      "figure": "图4-3",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_3_intervention.png",
+      "sha256": "d9ba3fcc8f3d9137fd5e803f00e99148c8eeb89c2ee0a94e6000fd5a1c8ca998",
+      "display_cm": [
+        14.2,
+        8.696
+      ]
+    },
+    {
+      "figure": "图4-4",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_4_four_cell.png",
+      "sha256": "f581ee413fa4b776bedd2d77c5e44f1c3f03273ca4d997f8883507c69b073766",
+      "display_cm": [
+        14.2,
+        6.107
+      ]
+    },
+    {
+      "figure": "图4-5",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_5_residual_distribution.png",
+      "sha256": "e543f1eee377243e638e0e56b1669a8c72859a20fcffcd0fad41173f11c05eb5",
+      "display_cm": [
+        14.2,
+        6.054
+      ]
+    },
+    {
+      "figure": "图4-6",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_6_error_vs_event_intensity.png",
+      "sha256": "7f327f3a79c8ad30766a45847a1c095fde1d2d5987e812994d2e7fffdad26806",
+      "display_cm": [
+        14.2,
+        6.911
+      ]
+    },
+    {
+      "figure": "图5-1",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_1_te_pcmci_flow.png",
+      "sha256": "791a32a9154316a20ec395aebe6cb57f989a8ddcf04d96694867ccb6c8d663a9",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图5-2",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_2_transfer_entropy.png",
+      "sha256": "5dd43b06f1878a2a04c4b54d453ba7a963f67f60e3f6f64a60d015cc47d04171",
+      "display_cm": [
+        14.2,
+        8.762
+      ]
+    },
+    {
+      "figure": "图5-3",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_3_asymmetry.png",
+      "sha256": "ef307c715d64af0f5bf6a1d8f3bd9dfe0f429bad49202d320df7d1f5832a3c5c",
+      "display_cm": [
+        14.2,
+        14.53
+      ]
+    },
+    {
+      "figure": "图5-4",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_4_te_vs_relations.png",
+      "sha256": "04af2212d346702f9aeaf659f8b5456a93f9cd0dbe7cf7ed87bcf669e2494d54",
+      "display_cm": [
+        14.2,
+        8.273
+      ]
+    },
+    {
+      "figure": "图5-5",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_5_pcmci_validation_network.png",
+      "sha256": "5f03b89f612484c491141ba95fee9b1541056521a6de111e296cf4d8ba8957f6",
+      "display_cm": [
+        14.2,
+        8.709
+      ]
+    },
+    {
+      "figure": "图5-6",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_6_conformal_method.png",
+      "sha256": "ec259b9d2e1e66e8ce81bec82a39821c8d4e55ad57f10d67d4d4d7f2f399a8d9",
+      "display_cm": [
+        14.2,
+        7.992
+      ]
+    },
+    {
+      "figure": "图5-7",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_7_coverage.png",
+      "sha256": "7bf6ad8c0340a605ac005de2b2003fcc5b3b92fe09f574ca1c01595467fece7a",
+      "display_cm": [
+        14.2,
+        15.75
+      ]
+    },
+    {
+      "figure": "图5-8",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_8_quantile_per_node.png",
+      "sha256": "c03350c7a05421c8b85d80ea656d98d4d0d05fd6cf163370599e4a199e398655",
+      "display_cm": [
+        14.2,
+        10.672
+      ]
+    },
+    {
+      "figure": "图5-9",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_9_parameter_intervention.png",
+      "sha256": "9ee5f54ece5e1cbfe6c73bae3b3e4491aadd108aebfcd0d05205b7e6b62922ef",
+      "display_cm": [
+        14.2,
+        15.699
+      ]
+    }
+  ],
+  "formal_document": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+  "previous_document_sha256": "90c1553c6e061cfc333b4220da996132cf4ea8026ea74ee720ef910f7d5aefbc",
+  "caption_paragraphs_updated": 2,
+  "previous_document_archive": "outputs/thesis/archive/2026-10-06-seven-figure-refresh/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+  "final_document_sha256": "8996f9b19a49f2ac064453ffbd3d5e34cc87534ad5f2d482f72a511053da87b7"
+}

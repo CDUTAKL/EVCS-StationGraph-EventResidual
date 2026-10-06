@@ -1,0 +1,363 @@
+{
+  "tool": "ImageGen",
+  "date": "2026-09-07",
+  "note": "Native raster edits; not vector SVG. Subsequent edits correct connector and symbol defects; outputs reviewed separately.",
+  "entries": [
+    {
+      "stem": "fig3_1_mrggcn_architecture",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/archive/2026-09-07-priority-audit-original/fig3_1_mrggcn_architecture.png",
+      "initial_prompt": "Edit the attached existing Chinese master's thesis scientific diagram, preserving its visual family, pale flat blue/pink/cream fills, white background, fine muted blue-gray strokes, refined tensor slabs where present. Use large sharply legible Chinese Song-style text and Times mathematical symbols. Improve alignment, spacing and typography; no icons, no shadows, no gradients, no title/caption, no tiny footnotes. Arrows must terminate on modules, avoid crossings. Scientific topology below overrides the original mistakes. Portrait 3:4. Keep the four-tier overall architecture and tensor/slab rendering. At top input X → 因果扩张TCN ×6 (three representative slabs only) → H⁽⁰⁾. Below first relation propagation and second separated by residual MLP: H0 → 第一层关系传播 → H1 → 残差MLP (Linear→GELU→Dropout→Linear with H1 bypass added) → H⁽¹,ref⁾ → 第二层关系传播 → H2. Three small labels 负荷关系 / 行为关系 / 轮廓关系 feed each layer's message aggregation, not output. Each layer can be one compact box with β₁融合→节点门控→残差归一化 (β₂ for second). Below separate H0 H1 H2 tensors with independent arrows to 跨层拼接. H1ref has NO concat arrow. Then 跨层融合 with Linear→LayerNorm→GELU→Dropout, then separate 预测头 Linear, then Ŷ with B×4×10 and exactly FOUR time columns t+1..t+4. Hidden tensor blocks must all have identical shape/grid (three front columns with matching top divisions); output has four. Large text, balanced compact layout.",
+      "iterations": [
+        {
+          "round": "_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-72a708bd-0b2e-4078-ae08-352147712e0c.png"
+        },
+        {
+          "round": "_v2",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-36e5ff7f-4973-49ab-98fd-bb5906b12e94.png"
+        },
+        {
+          "round": "_v3",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-8c0ddb63-56b8-4561-bcae-cd270a8e699a.png"
+        }
+      ],
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_1_thesis_style_20260909.png",
+      "sha256": "d44f39ba9535ab6b4e872ff570d8cf192169995700991fb1fceddc13b63aa80c",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_1_thesis_style_20260909.png",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "stem": "fig3_2_relation_propagation_unit",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/archive/2026-09-07-priority-audit-original/fig3_2_relation_propagation_unit.png",
+      "initial_prompt": "Edit the attached existing Chinese master's thesis scientific diagram, preserving its visual family, pale flat blue/pink/cream fills, white background, fine muted blue-gray strokes, refined tensor slabs where present. Use large sharply legible Chinese Song-style text and Times mathematical symbols. Improve alignment, spacing and typography; no icons, no shadows, no gradients, no title/caption, no tiny footnotes. Arrows must terminate on modules, avoid crossings. Scientific topology below overrides the original mistakes. Landscape 16:9. Keep input left, three parallel message branches centre-left, beta fusion centre, gate and residual right. Change input symbol to Z⁽ˡ⁾. Three paths each labeled 负荷关系 / 行为关系 / 轮廓关系, each through small matrix slab and W_r into M_load / M_event / M_pattern. Merge into β⁽ˡ⁾ 关系融合 then M. M enters 节点门控混合. Add independent Z bypass entering this gate from below (gate uses BOTH Z and M). Gate block includes compact G=σ([Z∥M]Wg+bg), U=G⊙M+(1−G)⊙Z. U → Dropout → ⊕ with independent Z residual bypass → LayerNorm → H⁽ˡ⁾. Do not omit residual addition. Input/output tensor exactly same grid and size. Bottom one short label Z⁽¹⁾=H⁽⁰⁾，Z⁽²⁾=H⁽¹,ref⁾. Eliminate original empty bottom slogan. Keep block count economical, generous legible type.",
+      "iterations": [
+        {
+          "round": "_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-69119ca2-4dbb-4951-b59d-995f27f80577.png"
+        },
+        {
+          "round": "_v3",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-baef2ecb-38e5-47a5-89b9-95d065d9e6fc.png"
+        }
+      ],
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_2_thesis_style_20260909.png",
+      "sha256": "9095e87c72115d7365da633a18c21321fd0ed8982669af7275eab6dfe130cbf4",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_2_thesis_style_20260909.png",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "stem": "fig3_3_temporal_skip_fusion",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/archive/2026-09-07-priority-audit-original/fig3_3_temporal_skip_fusion.png",
+      "initial_prompt": "Edit the attached existing Chinese master's thesis scientific diagram, preserving its visual family, pale flat blue/pink/cream fills, white background, fine muted blue-gray strokes, refined tensor slabs where present. Use large sharply legible Chinese Song-style text and Times mathematical symbols. Improve alignment, spacing and typography; no icons, no shadows, no gradients, no title/caption, no tiny footnotes. Arrows must terminate on modules, avoid crossings. Scientific topology below overrides the original mistakes. Landscape 16:9. Keep existing pale 3D tensors and feature slabs but correct topology. Left input X → 因果扩张TCN ×6 (one short stack, no unlabelled extra stack). Across upper row: H⁽⁰⁾ → 第一层传播 → H⁽¹⁾ → 残差MLP → H⁽¹,ref⁾ → 第二层传播 → H⁽²⁾. All four states SAME tensor size and subdivisions. Lower row: three separate arrows from H0, ORIGINAL H1 and H2 into a segmented 跨层拼接 [H⁽⁰⁾∥H⁽¹⁾∥H⁽²⁾]. NO arrow from refined H1 to concat. Then 跨层融合 (Linear→LayerNorm→GELU→Dropout), 预测头 Linear, output Ŷ B×4×10. Output exactly four time columns t+1 t+2 t+3 t+4 and matching top face strips. Do NOT draw H1 and H2 directly generated as parallel branches from H0. Topological correctness and spacious large text are essential.",
+      "iterations": [
+        {
+          "round": "_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-1faa7f29-0fca-475a-a775-18863fdf1a72.png"
+        },
+        {
+          "round": "_v2",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-821e1bc0-f14e-413c-a848-9a246b5169b3.png"
+        },
+        {
+          "round": "_v3",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-06016f47-e300-4635-917e-fd3a22fba0ad.png"
+        }
+      ],
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_3_thesis_style_20260909.png",
+      "sha256": "a032dbbc41290cb422285d40e0847722bfa45533ee7322abc88af2238faa0908",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/priority-review-20260907/fig3_3_thesis_style_20260909.png",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "reviewed_at": "2026-09-11"
+    },
+    {
+      "stem": "fig3_4_lre_construction",
+      "source_type": "imagegen_house_style_polish_20260922",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-a38895ea-6f22-48b4-a63f-8f0a0988ad50.png",
+      "initial_prompt": "Edit the attached existing Chinese master's thesis scientific diagram, preserving its visual family, pale flat blue/pink/cream fills, white background, fine muted blue-gray strokes, refined tensor slabs where present. Use large sharply legible Chinese Song-style text and Times mathematical symbols. Improve alignment, spacing and typography; no icons, no shadows, no gradients, no title/caption, no tiny footnotes. Arrows must terminate on modules, avoid crossings. Scientific topology below overrides the original mistakes. Landscape 4:3. Preserve THREE parallel pale-colored vertical columns with small sequence sketches at top and matrix tiles below. CRUCIAL remove ALL horizontal merging buses: no line may connect different columns. Each column fully independently flows top to bottom. Left: 训练期负荷序列 → 绝对Pearson → Top-k稀疏化 → 无向并集 → 对称归一化 → Â_load matrix. Middle: 训练期行为信号 → 余弦相似 → Top-k稀疏化 → 无向并集 → 对称归一化 → Â_event matrix. Right: 训练期96步轮廓 → 欧氏指数核 → Top-k稀疏化 → 无向并集 → 对称归一化 → Â_pattern matrix. No numerical k since protocols differ. Matrices clearly schematic, all use same symmetric 4×4 banded pattern (diagonal plus immediately adjacent entries), colors blue/pink/cream corresponding to branches; small label 矩阵示意 once. No fabricated detailed numeric weights. Large text aligned rows. Avoid giant boxed panels.",
+      "iterations": [
+        {
+          "round": "_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-e4ca94c4-1451-47ae-9b05-683de5cc9e3a.png"
+        },
+        {
+          "round": "_v2",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-96f20307-42c2-4453-898e-53ad95985184.png"
+        },
+        {
+          "round": "_v3",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-244a7146-d07e-43ef-8531-534d4ef86c88.png"
+        }
+      ],
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-a38895ea-6f22-48b4-a63f-8f0a0988ad50.png",
+      "sha256": "5ac2f726804a4d7599cf78f1491d5926936c504099afbe6d5ac59c5461330eea",
+      "reviewed_at": "2026-09-22",
+      "prompt_record": "docs/thesis/three-figure-polish-20260922.md",
+      "workspace_output": "outputs/figures/fig3_4_lre_construction.png",
+      "review_scope": "Topology and labels checked visually against documented computation; cells are schematic, not dimension counts."
+    },
+    {
+      "stem": "fig2_10_dual_window_definition",
+      "source_type": "imagegen_house_style_polish_20260922",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-3af0e615-b0ba-4bd9-83a5-1b75491234fa.png",
+      "initial_prompt": "Edit the attached existing Chinese master's thesis scientific diagram, preserving its visual family, pale flat blue/pink/cream fills, white background, fine muted blue-gray strokes, refined tensor slabs where present. Use large sharply legible Chinese Song-style text and Times mathematical symbols. Improve alignment, spacing and typography; no icons, no shadows, no gradients, no title/caption, no tiny footnotes. Arrows must terminate on modules, avoid crossings. Scientific topology below overrides the original mistakes. Landscape 16:9. Preserve two pale horizontal bands blue upper and pale pink lower. Upper chain: 目标侧观测 → target_event (subtitle 标签事件 · 1.43%) → 分层评价. Lower: 预测起点信息 → rule_trigger (subtitle 冻结规则 · 0.43%) → 共形路由. The 1.43% and .43% are annotations INSIDE their respective definition boxes, NOT standalone operations. From the two definition boxes, separate arrows converge into 四格诊断 on right, while only lower rule path goes to routing. Four-cell diagnostic as small labeled 2×2 grid, column headers 触发 / 未触发, row headers 标签事件 / 非事件, cells 11 10 / 01 00. Include all four combinations, don't omit 00. No term 真实事件. No target_event arrow into 共形路由. Exactly two lanes with compact right-side grid, no redundant bottom disclaimer frames.",
+      "iterations": [
+        {
+          "round": "_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-7e933751-2d91-4048-91ac-61251ed727aa.png"
+        },
+        {
+          "round": "_v2",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-93e1f485-5326-4eb9-ada8-1df01a38e8c4.png"
+        },
+        {
+          "round": "_circular_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-e058d50b-c22b-4cf9-a4e8-862853564281.png"
+        },
+        {
+          "round": "_lifangning_style_20260921",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-030b1a5a-c298-4b12-a652-1089bd7e2643.png"
+        }
+      ],
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-3af0e615-b0ba-4bd9-83a5-1b75491234fa.png",
+      "sha256": "840cdeec4f296ecc4e217a70d625b0e6954c7bb46b2f1e473774a688209e5840",
+      "reviewed_at": "2026-10-03",
+      "prompt_record": "docs/thesis/imagegen-errata-20261003.md",
+      "workspace_output": "outputs/figures/fig2_10_dual_window_definition.png",
+      "review_scope": "ImageGen-only local errata; approved 16:9 house style retained. Old rule is retrospective, not online-visible. Target-event annotation has no arrow into routing; 1.43%, 0.43%, 712360 and four cells preserved."
+    },
+    {
+      "stem": "fig5_6_conformal_method",
+      "source_type": "imagegen_house_style_polish_20260922",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-42ae88fa-04e5-4009-ad54-f9a1389a2302.png",
+      "initial_prompt": "Edit the attached existing Chinese master's thesis scientific diagram, preserving its visual family, pale flat blue/pink/cream fills, white background, fine muted blue-gray strokes, refined tensor slabs where present. Use large sharply legible Chinese Song-style text and Times mathematical symbols. Improve alignment, spacing and typography; no icons, no shadows, no gradients, no title/caption, no tiny footnotes. Arrows must terminate on modules, avoid crossings. Scientific topology below overrides the original mistakes. Landscape 16:9. Preserve pale blue/pink branch style, substantially repair connections. Left 60% area named 验证期校准, right 40% named 测试期区间. Left upper row 冻结主模型 → 验证集前向 → 绝对残差 r=|y−ŷ| → 冻结规则分组. This group splits DOWN into two parallel independent paths: 规则触发样本 → 90%分位数 → q_evt; 规则未触发样本 → 逐节点90%分位数 → q_stable,n. Both q paths go into right-hand 选择区间半宽. α=0.1 appears as annotation ABOVE the quantile steps, never after output. Right top 测试输入 branches to 冻结模型预测 → ŷ and 冻结规则路由 → 选择区间半宽 (latter also receives both q). The selected q and prediction ŷ each connect to final 预测区间 ŷ±q. No future label input, no oracle, no output→alpha. Keep all edges explicit, rule grouping fed by validation residuals and frozen rule; no isolated lanes. White canvas with pale region fills, no yellow, compact legible type.",
+      "iterations": [
+        {
+          "round": "_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-e2c9d269-80d3-4222-be7d-5dfb8822edb5.png"
+        },
+        {
+          "round": "_v2",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-4f591004-52e9-49a4-a775-63ffd54516e9.png"
+        },
+        {
+          "round": "_v3",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-f1f5b595-052a-41eb-8900-dea6d68af402.png"
+        },
+        {
+          "round": "_circular_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-146bc9c7-e864-472f-9981-35d903a3ba9c.png"
+        },
+        {
+          "round": "_lifangning_style_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-6dab00d3-0f73-4d30-bdb4-746aac0f0735.png"
+        },
+        {
+          "round": "_lifangning_style_v2_connector_fix",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-2e094452-9405-4e93-9d3c-2082b35ac10b.png"
+        }
+      ],
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-42ae88fa-04e5-4009-ad54-f9a1389a2302.png",
+      "sha256": "ec259b9d2e1e66e8ce81bec82a39821c8d4e55ad57f10d67d4d4d7f2f399a8d9",
+      "reviewed_at": "2026-10-03",
+      "prompt_record": "docs/thesis/imagegen-errata-20261003.md",
+      "workspace_output": "outputs/figures/fig5_6_conformal_method.png",
+      "review_scope": "ImageGen-only local text errata with unchanged approved house style and routing topology. Right rule box now reads 冻结回溯规则. Quantile and interval formulas, calibration links and short non-overlapping group title visually checked. Not a validated deployment diagram."
+    },
+    {
+      "stem": "fig1_2_roadmap",
+      "source_type": "imagegen",
+      "source": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-7deebec7-b343-4c70-836b-0f7993f4b485.png",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-7deebec7-b343-4c70-836b-0f7993f4b485.png",
+      "status": "accepted",
+      "sha256": "53e5200bc31cf9f30535185e3594b5af9402f14f83889fd0ea9beba6b098fccc",
+      "reviewed_at": "2026-10-06",
+      "prompt_record": "docs/thesis/JPL-imagegen-style-redraw-20261006.md",
+      "review_scope": "16:9 layout, concise labels, house-style hierarchy, orthogonal connectors, independent JPL refit; Chinese text reviewed",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_2_roadmap.png",
+      "iterations": [
+        {
+          "round": "_circular_v1",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-16d19921-5072-45b6-9e93-56b7e6562428.png"
+        },
+        {
+          "round": "_lifangning_style_final",
+          "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-99f57063-8441-4555-b6c4-999c59616fd9.png"
+        },
+        {
+          "stem": "fig1_2_roadmap",
+          "source_type": "imagegen_house_style_polish_20260922",
+          "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-ac344886-b9b8-4d58-a574-fea0a06dae25.png",
+          "status": "accepted",
+          "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-ac344886-b9b8-4d58-a574-fea0a06dae25.png",
+          "sha256": "fcd4029c3aec347cb6ae3636526ecb7267bdffb1588f4fc714a241f385b91a12",
+          "reviewed_at": "2026-09-22",
+          "prompt_record": "docs/thesis/flowchart-house-style-polish-20260922.md",
+          "review_scope": "Li-style rectangular roadmap; main route, two contribution regions, evidence closure and chapter-five boundary checked.",
+          "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_2_roadmap.png"
+        },
+        {
+          "stem": "fig1_2_roadmap",
+          "source_type": "imagegen",
+          "source": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-46de60cb-fea8-47c5-9e0c-eda15494e8f5.png",
+          "selected_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-46de60cb-fea8-47c5-9e0c-eda15494e8f5.png",
+          "status": "superseded_after_user_style_feedback",
+          "sha256": "5257801b102579234e95426ede9dcab19dd0b92278bbe15b19ee52b551a703aa",
+          "reviewed_at": "2026-10-06",
+          "prompt_record": "docs/thesis/JPL-imagegen-diagrams-20261006.md",
+          "review_scope": "Chinese labels, arrows, independent JPL refit, retrospective target and fixed-protocol limits",
+          "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_2_roadmap.png"
+        }
+      ]
+    },
+    {
+      "stem": "fig2_1_data_reconstruction",
+      "source_type": "imagegen_house_style_polish_20260922",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-32df80e8-7af5-4fac-b087-01d7bffb1b01.png",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-32df80e8-7af5-4fac-b087-01d7bffb1b01.png",
+      "sha256": "1964ddcd3e0357d9d96e76106d8ba25ca6e164a32e44f4185045df1188e08828",
+      "reviewed_at": "2026-09-22",
+      "prompt_record": "docs/thesis/flowchart-house-style-polish-20260922.md",
+      "review_scope": "Two-stage reconstruction and split workflow checked; training, validation and test objects remain separated without test-to-fit arrows.",
+      "workspace_output": "outputs/figures/fig2_1_data_reconstruction.png"
+    },
+    {
+      "stem": "fig3_8_train_predict_pipeline",
+      "source_type": "imagegen_house_style_polish_20260922",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-8dfb315f-5e61-4749-8ab8-b87dfb56e8ef.png",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-8dfb315f-5e61-4749-8ab8-b87dfb56e8ef.png",
+      "sha256": "2f8f2b9c66d7f941c5715520fcee74f67ac9449b8b7ddccb978c6b36785aaab9",
+      "reviewed_at": "2026-09-22",
+      "prompt_record": "docs/thesis/flowchart-house-style-polish-20260922.md",
+      "review_scope": "Three-stage left-to-right workflow; fixed split counts, 96-to-4 window, three seeds, validation early stopping and six evaluation views checked.",
+      "workspace_output": "outputs/figures/fig3_8_train_predict_pipeline.png"
+    },
+    {
+      "stem": "fig3_6_gate_residual_detail",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig3_13_gate_residual_detail_v3.png",
+      "sha256": "5c8d83df11dcca8981ac25ae1d016d97a369bb32bd6c16fda80f92591f32a971",
+      "reviewed_at": "2026-09-11",
+      "review_scope": "Restore conversation-reviewed ImageGen original; topology and labels visually checked",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/2026-08-01/019f6b74-a345-7470-8376-6c8a037940f3/imagegen-redraw-20260906/fig3_13_gate_residual_detail_v3.png"
+    },
+    {
+      "stem": "fig3_7_cross_layer_detail",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-1c95301f-55a3-4bf4-ae84-6c2a6ad55d68.png",
+      "sha256": "6d4d85af488741218a1521121d4cc07e869689701f705a5d878d3ae9f3ee2d23",
+      "reviewed_at": "2026-09-20",
+      "review_scope": "User-requested ImageGen redraw; checked against graph.py: original h0/h1/h2 concatenation, refinement feeds gcn2 only, fusion operators and four-step output. Raster accepted for this requested edit; not vector.",
+      "prompt_record": "docs/thesis/figure-revision-20260920.md",
+      "workspace_output": "outputs/figures/fig3_7_cross_layer_detail.png"
+    },
+    {
+      "stem": "fig4_1_three_layer_framework",
+      "source_type": "imagegen_house_style_polish_20260922",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-59f1c2f5-92a7-433d-a551-105ad2b4cfbd.png",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-59f1c2f5-92a7-433d-a551-105ad2b4cfbd.png",
+      "sha256": "6486a95f87a8caf0ee991f55f9c99c2b1518f607b8b26c38c4d3427eaa486e7f",
+      "reviewed_at": "2026-09-22",
+      "prompt_record": "docs/thesis/flowchart-house-style-polish-20260922.md",
+      "review_scope": "Three stacked diagnostic layers and shared evidence spine checked against the chapter definitions.",
+      "workspace_output": "outputs/figures/fig4_1_three_layer_framework.png"
+    },
+    {
+      "stem": "fig1_1_research_gap_map",
+      "source_type": "imagegen_house_style_polish_20260922",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-b8a25259-266b-44d7-8399-2a83162542e3.png",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-b8a25259-266b-44d7-8399-2a83162542e3.png",
+      "sha256": "16e09326cce503a1c2551a09d80354abce088d2944b4ca083e6df86c64ed1c03",
+      "reviewed_at": "2026-09-22",
+      "prompt_record": "docs/thesis/three-figure-polish-20260922.md",
+      "review_scope": "Four one-to-one mappings retained; wording aligned with section 1.3 and no absolute research-gap claim introduced.",
+      "workspace_output": "outputs/figures/fig1_1_research_gap_map.png"
+    },
+    {
+      "stem": "fig2_7_event_score_flow",
+      "source_type": "imagegen_house_style_polish_20260922",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-57e4b6cc-ae31-438e-bdb5-fbf532cd12c9.png",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-57e4b6cc-ae31-438e-bdb5-fbf532cd12c9.png",
+      "sha256": "6c4fcec00246d052b32f4efdb93e9236287481bd9959fad261b45989b32d1892",
+      "reviewed_at": "2026-09-22",
+      "prompt_record": "docs/thesis/flowchart-house-style-polish-20260922.md",
+      "review_scope": "Four event-score components, training-only standard deviations, validation quantile and future-only two-step expansion checked.",
+      "workspace_output": "outputs/figures/fig2_7_event_score_flow.png"
+    },
+    {
+      "stem": "fig5_1_te_pcmci_flow",
+      "source_type": "imagegen_house_style_polish_20260922",
+      "source": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-dbec6443-46c9-4c99-8de3-96ce3bcda1e4.png",
+      "status": "accepted",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-dbec6443-46c9-4c99-8de3-96ce3bcda1e4.png",
+      "sha256": "63c944ce39ffd0a4bb08324d82183fe938b35aea19328e55507643b080729275",
+      "reviewed_at": "2026-09-22",
+      "prompt_record": "docs/thesis/flowchart-house-style-polish-20260922.md",
+      "review_scope": "Compact circular-link workflow checked; nominal-significance categories are shown without unstable edge counts and the multiple-testing limitation is explicit.",
+      "workspace_output": "outputs/figures/fig5_1_te_pcmci_flow.png"
+    },
+    {
+      "stem": "fig2_13_jpl_validation_protocol",
+      "source_type": "imagegen",
+      "source": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-efd06fef-ab27-4c16-b3cf-ef7339c139b8.png",
+      "selected_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-efd06fef-ab27-4c16-b3cf-ef7339c139b8.png",
+      "status": "accepted",
+      "sha256": "f3b07469705da2a1e63db6a94ab0f47d2a860c89419a10a3909116e3dc3d2183",
+      "reviewed_at": "2026-10-06",
+      "prompt_record": "docs/thesis/JPL-protocol-lifangning-layout-study-20261006.md",
+      "review_scope": "Actual reference PDF figures studied; user palette; 16:9; training/tuning/test responsibilities; model branch merge; early-stop loop; overall versus stratified evaluation checked",
+      "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_13_jpl_validation_protocol.png",
+      "iterations": [
+        {
+          "stem": "fig2_13_jpl_validation_protocol",
+          "source_type": "imagegen",
+          "source": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-f87afb93-1640-4e8c-9693-9cde2d7f8a62.png",
+          "selected_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-f87afb93-1640-4e8c-9693-9cde2d7f8a62.png",
+          "status": "superseded_after_user_style_feedback",
+          "sha256": "b5f04ff425b5e08094cf5a111ecd9826e29505a04d4768416b1fca058b64a57b",
+          "reviewed_at": "2026-10-06",
+          "prompt_record": "docs/thesis/JPL-imagegen-diagrams-20261006.md",
+          "review_scope": "Chinese labels, arrows, independent JPL refit, retrospective target and fixed-protocol limits",
+          "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_13_jpl_validation_protocol.png"
+        },
+        {
+          "stem": "fig2_13_jpl_validation_protocol",
+          "source_type": "imagegen",
+          "source": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-eaaf20a1-95e4-48e3-b828-85706ebbc52a.png",
+          "selected_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-eaaf20a1-95e4-48e3-b828-85706ebbc52a.png",
+          "status": "superseded_after_user_layout_feedback",
+          "sha256": "658969e2fefee44aca57309a3f15fd4504a6d07eaf4fed34487a8374de0ddbd5",
+          "reviewed_at": "2026-10-06",
+          "prompt_record": "docs/thesis/JPL-imagegen-style-redraw-20261006.md",
+          "review_scope": "16:9 layout, concise labels, house-style hierarchy, orthogonal connectors, independent JPL refit; Chinese text reviewed",
+          "workspace_output": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_13_jpl_validation_protocol.png"
+        }
+      ]
+    }
+  ],
+  "reviewed_at": "2026-10-06",
+  "final_edit_prompts": [
+    {
+      "stem": "fig3_1_mrggcn_architecture",
+      "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-350a2a37-dac5-44e2-97ce-39a47d81ff56.png",
+      "prompt": "Edit this Chinese thesis figure. Keep3:4 portrait, pale blue tensor blocks and pink MLP, large legible serif Chinese. Repair ONLY the middle module hierarchy by replacing section2 with a simple centered vertical chain: H0 tensor -> 第一层关系传播 -> H1 tensor -> 残差MLP精炼 -> H1ref tensor -> 第二层关系传播 -> H2 tensor. Every successive node joined by one short downward arrow. Put three short parallel relationship inputs (负荷关系,行为关系,轮廓关系) from left into each relation propagation box. Inside each propagation box retain β融合→节点门控→残差归一化 small sequence. All hidden tensors exactlysame3column2row schematic glyph. Preserve upper input/TCN and bottom section3 three independent H0,H1,H2 inputs into concat, followed by cross-layer fusion Linear→LayerNorm→GELU→Dropout and separateLinear head to Ŷ B×4×10 with4timecolumns. No wire linking middle secondlayer to bottom originalH1. No long bypasses. Neat compact academic layout."
+    },
+    {
+      "stem": "fig3_3_temporal_skip_fusion",
+      "path": "/Users/xushuyuan/.codex/generated_images/019fbc07-5fdc-7370-9125-9f30595f130f/exec-1ce0ef15-568a-48d7-b855-6d6453dee15f.png",
+      "prompt": "Edit existing scientific diagram, preserve16:9, all colors/shapes/fonts/upper serial pathway. REMOVE ALL long downward connectors from top row into lower row, including all4 vertical arrows. Replace lower LEFT half with3 small equally sized tensor glyphs in a horizontal row labelled H⁽⁰⁾,H⁽¹⁾,H⁽²⁾. Each has its own short downward arrow into a broad box directly below labelled 跨层拼接 [H⁽⁰⁾∥H⁽¹⁾∥H⁽²⁾]. Do NOT draw connections between upper and lower rows: repeated tensor labels unambiguously identify states. Bottom concat box continues horizontally right into unchanged 跨层融合 (Linear→LayerNorm→GELU→Dropout), then 预测头 Linear, then output Ŷ∈R^(B×4×10). Upper row remains X→TCN×6→H0→第一层传播→H1→残差MLP→H1ref→第二层传播→H2. RefinedH1ref must not be lower row. Elegant tensor stacking, clear diagrams, no title or footnote."
+    }
+  ]
+}

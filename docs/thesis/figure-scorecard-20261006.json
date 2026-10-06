@@ -1,0 +1,1882 @@
+{
+  "metadata": {
+    "schema_version": "1.0",
+    "review_date": "2026-10-06",
+    "generated_at": "2026-10-06T18:25:56+08:00",
+    "scope": "当前正式论文图1-1至图5-9，共46幅。归档旧版、候选图、演示文稿图和重复导出格式不另计。",
+    "manuscript": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/thesis-manuscript.md",
+    "formal_docx": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+    "method": "逐图视觉审阅并对照现稿图注；第3、4、5章分别委派审阅，主审交叉复核重点问题。按正式DOCX中14.2 cm幅宽估算SVG字号。",
+    "score_units": "10分制，分项相加得到综合分，保留一位小数。",
+    "rubric": {
+      "layout": {
+        "label": "布局与层级",
+        "maximum": 2.5
+      },
+      "readability": {
+        "label": "字体与缩印可读性",
+        "maximum": 2
+      },
+      "color": {
+        "label": "配色与论文一致性",
+        "maximum": 1.5
+      },
+      "notation": {
+        "label": "连线、坐标与图例规范",
+        "maximum": 2
+      },
+      "fidelity": {
+        "label": "信息表达与正文一致性",
+        "maximum": 2
+      }
+    },
+    "aesthetic_formula": "(layout + readability + color) / 6 × 10；综合分与审美分不能再相加。",
+    "priority_definitions": {
+      "P1必改": "明确的流程连线/判断错误，或主要标注在论文幅宽下明显过小；允许优先级与总分不单调。",
+      "P2精修": "存在可读性、标签、版式或论文风格一致性方面的明显改进空间。",
+      "P3可保留": "可以沿用，列出的修改为局部精修建议。"
+    },
+    "interpretation_notes": [
+      "分数属于审图判断，0.1–0.3分差异不宜视为客观质量排名。",
+      "不依据模型是否获胜或效应大小加减分；结果呈现的清楚、准确和范围限定属于评分内容。",
+      "本轮不重新计算实验结果，不进行项目测试；不据此证明原始数据或统计计算全部正确。",
+      "本轮没有重新渲染整本DOCX/PDF；字号为源SVG与正文显示宽度推算，栅格流程图通过当前图件视觉审阅评价。",
+      "中文论文字体及用户规定的蓝灰、暖灰配色作为风格基础，不强行套用英文期刊字体。",
+      "本轮只新增评分文档，未修改图件、论文正文或正式DOCX。",
+      "SHA256记录评分时的当前PNG，用于以后判断是否已替换版本；结果图正式稿链接可为SVG。"
+    ]
+  },
+  "summary": {
+    "count": 46,
+    "schematic_count": 16,
+    "result_count": 30,
+    "mean_score": 8.28,
+    "mean_aesthetic_score": 8.37,
+    "chapter_summary": [
+      {
+        "chapter": 1,
+        "count": 2,
+        "mean_score": 8.05,
+        "mean_aesthetic_score": 8.1
+      },
+      {
+        "chapter": 2,
+        "count": 13,
+        "mean_score": 8.37,
+        "mean_aesthetic_score": 8.48
+      },
+      {
+        "chapter": 3,
+        "count": 16,
+        "mean_score": 8.24,
+        "mean_aesthetic_score": 8.28
+      },
+      {
+        "chapter": 4,
+        "count": 6,
+        "mean_score": 8.1,
+        "mean_aesthetic_score": 8.12
+      },
+      {
+        "chapter": 5,
+        "count": 9,
+        "mean_score": 8.39,
+        "mean_aesthetic_score": 8.6
+      }
+    ],
+    "confirmed_flow_issues": [
+      "2-7",
+      "3-8",
+      "4-1",
+      "5-1"
+    ],
+    "print_legibility_priority": [
+      "3-5",
+      "4-2",
+      "4-5"
+    ],
+    "P1": [
+      "2-7",
+      "3-5",
+      "3-8",
+      "4-1",
+      "4-2",
+      "4-5",
+      "5-1"
+    ],
+    "score_at_least_9": [
+      "3-4",
+      "3-15",
+      "5-3",
+      "5-5",
+      "5-6"
+    ],
+    "priority_counts": {
+      "P1必改": 7,
+      "P2精修": 30,
+      "P3可保留": 9
+    }
+  },
+  "figures": [
+    {
+      "id": "1-1",
+      "chapter": 1,
+      "number": 1,
+      "title": "研究方向与本文关注不足的对应关系",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_1_research_gap_map.png",
+      "caption": "从时间序列预测、多节点关系建模、行为事件建模和机制解释四个方向，归纳本文所关注的站内节点关系语义、结构贡献边界、双事件口径和诊断证据链问题。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_1_research_gap_map.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "16e09326cce503a1c2551a09d80354abce088d2944b4ca083e6df86c64ed1c03",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 1.9,
+        "readability": 1.7,
+        "color": 1.3,
+        "notation": 1.6,
+        "fidelity": 1.6
+      },
+      "score": 8.1,
+      "strength": "四类研究方向与本文问题一一对应，阅读顺序清楚。",
+      "issue": "重复虚线框和大块文字使画面接近展开的表格，标题“本文关注不足”也不够自然。",
+      "action": "压缩框体和留白，突出“已有研究—待解决问题—本文切入点”的对应关系，修订标题措辞。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.2,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "1-2",
+      "chapter": 1,
+      "number": 2,
+      "title": "本文总体技术路线与双贡献主线",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_2_roadmap.png",
+      "caption": "Caltech主线依次完成代理序列重构、LRE构图、MRG-GCN预测及MDP三层诊断；JPL支线使用本站数据重新筛选节点、构图和训练，补充检验点预测与同参数门控增量。两项核心贡献为预测方法和机制诊断，各项证据在相应协议边界内汇总；JPL具体流程和结果分别见图2-13及3.8.2节。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_2_roadmap.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "d8bbeed90b80cf0ec45ac1bd8e0f898f5724cf3a1259416e37562ce1308ec491",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.0,
+        "readability": 1.6,
+        "color": 1.2,
+        "notation": 1.5,
+        "fidelity": 1.7
+      },
+      "score": 8.0,
+      "strength": "四阶段主线、时间输入与LRE输入、机制诊断及JPL验证的关系较完整。",
+      "issue": "方法区右上留白偏大，建模区与诊断区网格不够均衡；部分青蓝边框偏亮，缩到正文宽度后小标签偏细。",
+      "action": "重新平衡两区宽度、模块中心线与留白，统一蓝灰边框，放大LRE及支路标签，强化预测与诊断两条贡献主线。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.0,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "2-1",
+      "chapter": 2,
+      "number": 1,
+      "title": "数据重构与数据划分流程",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_1_data_reconstruction.png",
+      "caption": "原始归档含31,424条会话；10个主分析节点对应11,085条会话，均匀分配至覆盖的15 min时间片以形成节点代理负荷。节点筛选、z-score参数和冻结触发阈值分别由训练期或验证期确定；旧上游占用率分母与跳变标记阈值另使用全时期统计，范围见2.1.1节。本图不表示在线电表功率测量。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_1_data_reconstruction.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "b0885de453888360baef7ab7416fc19c805715ae3ead366758cb36608f891511",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.7,
+        "color": 1.4,
+        "notation": 1.4,
+        "fidelity": 1.5
+      },
+      "score": 8.2,
+      "strength": "纵向主干与训练、验证、测试三路对称，蓝灰和暖灰分工清楚。",
+      "issue": "“固定时间边界”采用判断菱形但并非二元判断；多类下游对象汇入“统一预测键”，对象职责容易混淆。",
+      "action": "改用划分节点，分清冻结参数、预测记录与评价键；在图注交代样本计数单位。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.8,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "2-2",
+      "chapter": 2,
+      "number": 2,
+      "title": "候选节点覆盖率与筛选结果",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_2_node_coverage.png",
+      "caption": "（a）55个候选节点在训练、验证和测试阶段的活跃月份比例，横向参考线给出主分析门槛0.50和敏感性门槛0.25；（b）主分析节点、敏感性专属节点和未入选节点的筛选结果。按日历月份计，三个阶段分别涉及30、7和7个自然月，首尾月份可能不完整。节点清单只依据训练期与验证期统计量冻结，测试期覆盖率仅用于可评价性检查。该图为全量描述性统计，不含抽样误差棒。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_2_node_coverage.svg",
+      "size_px": [
+        6714,
+        5212
+      ],
+      "sha256": "5821cbbcc24712f9b5a99123352eaaa3973b79add3029421d7e3da90d02968e0",
+      "docx_display_cm": [
+        14.2,
+        11.023
+      ],
+      "effective_ppi": 1201,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.6,
+        "color": 1.3,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 8.5,
+      "strength": "三个时间段覆盖率和最终筛选数量相互对应，颜色与标记共同编码。",
+      "issue": "55个候选点较密，匿名节点序号与较长时期标签增大检索成本。",
+      "action": "适当标注最终选中节点，缩短时期标签，统一三个面板的留白和轴标题位置。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.3,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.79,
+        "maximum": 8.19,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "2-3",
+      "chapter": 2,
+      "number": 3,
+      "title": "连续四周节点负荷热力图",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_3_load_heatmap.png",
+      "caption": "颜色表示各节点相对于自身最大负荷的归一化值，节点自上而下按同期累计负荷降序排列，右侧条带表示同期累计负荷的相对规模。横轴为距首个样本的时间，周末底纹按America/Los_Angeles当地日历对齐。图中使用所示四周的完整时间片，不含误差棒，节点排序不表示物理拓扑。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_3_load_heatmap.svg",
+      "size_px": [
+        9016,
+        4219
+      ],
+      "sha256": "69857c2941965f182727c22c3438a4e6d1b3a85eacb712053d8733fa72928403",
+      "docx_display_cm": [
+        14.2,
+        6.645
+      ],
+      "effective_ppi": 1613,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.5,
+        "color": 1.3,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 8.5,
+      "strength": "统一色阶、节点排序与侧边累计负荷提供了完整的四周概览。",
+      "issue": "时间单元密集，部分刻度缩印后约5.2 pt；周末背景与蓝色热力图混合，侧边累计量缺少就地数值尺度。",
+      "action": "放大刻度，将周末提示移到时间轴上方，并明确累计负荷的绝对或相对尺度。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.3,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 5.21,
+        "maximum": 6.7,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "2-4",
+      "chapter": 2,
+      "number": 4,
+      "title": "代表性节点代理负荷的自相关函数",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_4_autocorrelation.png",
+      "caption": "展示CA-303、CA-327和CA-489在不同滞后步长下的样本自相关，虚线标示96步（24 h）和672步（168 h）。三节点在两个周期位置均呈正相关，但相关系数约为0.19～0.27，因此仅说明日、周滞后具有可利用的统计依赖，不表示强确定性周期。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_4_autocorrelation.svg",
+      "size_px": [
+        8179,
+        3859
+      ],
+      "sha256": "4e171160fe42260a6028b4aa43a1f1bc0ef1a6d5fd587c7ae749c0135f53b632",
+      "docx_display_cm": [
+        14.2,
+        6.7
+      ],
+      "effective_ppi": 1463,
+      "components": {
+        "layout": 2.0,
+        "readability": 1.6,
+        "color": 1.2,
+        "notation": 1.6,
+        "fidelity": 1.8
+      },
+      "score": 8.2,
+      "strength": "24 h与168 h参考线使日、周周期容易识别，三条自相关曲线有统一坐标。",
+      "issue": "灰色虚线较接近，较小周期峰在完整纵轴范围内不够突出。",
+      "action": "区分灰色线型，在主要周期峰添加数值或局部放大窗，保留完整纵轴上下文。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.0,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.15,
+        "maximum": 7.38,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "2-5",
+      "chapter": 2,
+      "number": 5,
+      "title": "代表性节点典型周负荷曲线",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_5_weekly_curves.png",
+      "caption": "曲线为CA-303、CA-489和CA-311自第2,880个时间片起连续7日的实际代理负荷序列，并非跨周聚合均值。横轴为距该段首个样本的时间；浅灰表示当地00—06时，浅橙表示当地周末，时区为America/Los_Angeles。图中不含误差棒，用于描述所选时段的节点差异，不代表全年平均节律。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_5_weekly_curves.svg",
+      "size_px": [
+        8539,
+        3979
+      ],
+      "sha256": "14555ef99bcdfcbccc56a222d6c1efe6aebc4107d1152b1ad46d2d5258999561",
+      "docx_display_cm": [
+        14.2,
+        6.617
+      ],
+      "effective_ppi": 1527,
+      "components": {
+        "layout": 1.9,
+        "readability": 1.6,
+        "color": 1.2,
+        "notation": 1.5,
+        "fidelity": 1.8
+      },
+      "score": 8.0,
+      "strength": "真实一周曲线与夜间、周末背景共同呈现节点行为差异，图注限定了观察范围。",
+      "issue": "三条阶梯曲线重叠，两类背景及相近灰色线型使局部区域拥挤。",
+      "action": "可改为共享坐标的小面板，或增加曲线直接标签；简化背景图例和轴说明。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 7.8,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.28,
+        "maximum": 7.07,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "2-6",
+      "chapter": 2,
+      "number": 6,
+      "title": "非零节点代理负荷经验分布",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_6_load_distribution.png",
+      "caption": "统计对象为10个主分析节点全时段的非零节点代理负荷，横轴单位为kWh/15 min，纵轴采用对数刻度以展示低频右尾。图中为完整样本的经验频数，不含误差棒；横轴显示范围用于突出主要分布区域，不改变表2-4中的全量最大值统计。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_6_load_distribution.svg",
+      "size_px": [
+        7699,
+        4099
+      ],
+      "sha256": "8cc0076209a270b13172b9cf5ed06bcd5bc2d68080b8f096340679bc27ae0ed1",
+      "docx_display_cm": [
+        14.2,
+        7.56
+      ],
+      "effective_ppi": 1377,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.7,
+        "color": 1.3,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 8.7,
+      "strength": "非零比例、对数纵轴及右尾截断范围都有交代，分布口径清楚。",
+      "issue": "大块实心蓝柱略显沉重，分箱宽度未直接说明。",
+      "action": "减轻填充，在图注补充分箱宽度；如右尾与论证有关，再增设小型尾部视窗。",
+      "priority": "P3可保留",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.7,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 4.88,
+        "maximum": 7.84,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "2-7",
+      "chapter": 2,
+      "number": 7,
+      "title": "事件分数与冻结规则事件窗口生成流程",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_7_event_score_flow.png",
+      "caption": "接入、离站、活跃变化和负荷变化四个分量经逐节点标准差归一化后求和，采用验证集95%分位阈值触发，并仅向未来扩展2步。标准差来自训练集，测试集不参与阈值估计。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_7_event_score_flow.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "8a78f582a6911d7da80b7f31ded82c7f442ca3e7ac3557e13458fd2a3391fefd",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.7,
+        "color": 1.4,
+        "notation": 0.7,
+        "fidelity": 1.1
+      },
+      "score": 7.1,
+      "strength": "阶段布局整齐，蓝灰、暖灰配色和中心轴均较成熟。",
+      "issue": "阈值虚线接入“否”分支的共用折线，菱形右侧箭头向内，使阈值输入与未触发输出混线。",
+      "action": "将验证集阈值单独接入判断输入端；从菱形向外发出“否”箭头，再连接“保持未触发”。",
+      "priority": "P1必改",
+      "confirmed_semantic_issue": true,
+      "evidence": "现图菱形右端箭头向内，阈值虚线接入同一否支路；正文2.4及图注规定验证集阈值作为判断输入，未超过阈值后保持未触发。已独立复核连线方向。",
+      "aesthetic_score": 8.8,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "2-8",
+      "chapter": 2,
+      "number": 8,
+      "title": "标签事件时间步的日内分布",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_8_event_hourly.png",
+      "caption": "在全部118,818个时间步中，将任一主分析节点具有目标侧事件标签的时间步按America/Los_Angeles当地小时汇总；柱高表示该小时事件时间步数占全部事件时间步数的比例，峰值标记由同一统计数组计算。该图不区分事件类型，柱高也不是分类准确率或条件事件概率；全量描述性统计不含误差棒。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_8_event_hourly.svg",
+      "size_px": [
+        8299,
+        4219
+      ],
+      "sha256": "e902d1bb78607ae350dbf68b619d6723ebae9d029fbc09551f5d0d7192e116cc",
+      "docx_display_cm": [
+        14.2,
+        7.219
+      ],
+      "effective_ppi": 1484,
+      "components": {
+        "layout": 2.3,
+        "readability": 1.7,
+        "color": 1.3,
+        "notation": 1.8,
+        "fidelity": 1.8
+      },
+      "score": 8.9,
+      "strength": "24小时分布、峰值标注与事件占比单位清楚，画面简洁。",
+      "issue": "次高峰缺少就地提示，长时区说明和部分留白可进一步收紧。",
+      "action": "统一时区说明位置，酌情标注次高峰，保持现有柱图结构。",
+      "priority": "P3可保留",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.8,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.47,
+        "maximum": 7.27,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "2-9",
+      "chapter": 2,
+      "number": 9,
+      "title": "冻结规则事件窗口的分量构成",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_9_event_component_composition.png",
+      "caption": "对测试集冻结规则事件窗口内的接入、离站、活跃变化和负荷变化四个标准化分量按节点取平均。事件窗口包含原始阈值触发点及其向未来扩展的两个时间片；阈值由验证集冻结，测试集仅执行规则。图中为完整窗口样本的描述性均值，不含误差棒。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_9_event_component_composition.svg",
+      "size_px": [
+        6727,
+        3643
+      ],
+      "sha256": "bfc8f35674a2e9cffe03c7d9eebf3e26bddae1b2188b58360aef20bb0d8ed5d0",
+      "docx_display_cm": [
+        14.2,
+        7.69
+      ],
+      "effective_ppi": 1203,
+      "components": {
+        "layout": 2.0,
+        "readability": 1.6,
+        "color": 1.2,
+        "notation": 1.6,
+        "fidelity": 1.8
+      },
+      "score": 8.2,
+      "strength": "十节点四分量均值和柱顶总量共同呈现规则分数组成，色彩较克制。",
+      "issue": "上层分量没有共同基线，小橙色分量和相近灰色分量缩印后不易辨认。",
+      "action": "增强灰色分量的线型或纹理区分；若重点比较各分量差异，可补共享基线的点图。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.0,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.18,
+        "maximum": 7.78,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "2-10",
+      "chapter": 2,
+      "number": 10,
+      "title": "标签事件与冻结规则触发的双口径对比",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_10_dual_window_definition.png",
+      "caption": "`target_event`用于事后评价，旧`rule_trigger`用于回溯分层及规则路由；两者共同定义四格诊断，标签事件不进入规则路由。原始张量分别为[S,H,N]与[S,N]，后者广播到预测步后，1.43%和0.43%均以712,360个测试预测键为分母。旧标签的负荷跳变阈值采用全时期统计，旧规则含事后重构负荷差分，均不能解释为实时事件识别效果。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_10_dual_window_definition.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "0138d4eaf4e0a80517c84e3f57b7294e28a1d0dc98d1f5138cbbb25a3b2e47fd",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.8,
+        "color": 1.4,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 8.9,
+      "strength": "双口径来源、四格矩阵与实际可用的规则路由分开呈现，语义与正文一致。",
+      "issue": "矩阵区留白和底部长虚线略多，局部线长还能缩短。",
+      "action": "保留现有拓扑，收紧矩阵外围留白并缩短规则路由连接线。",
+      "priority": "P3可保留",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 9.0,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "2-11",
+      "chapter": 2,
+      "number": 11,
+      "title": "输入特征Spearman秩相关矩阵",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_11_feature_correlation.png",
+      "caption": "相关系数由118,818个时间步、10个主分析节点的7维特征展平计算，颜色和单元格数字共同表示相关方向与大小。该图为全量描述性统计，不含误差棒；大量零值造成并列秩，因而不将相关系数解释为独立贡献或因果关系。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_11_feature_correlation.svg",
+      "size_px": [
+        7665,
+        6439
+      ],
+      "sha256": "f4ed5204c59860ce86868664af52bc0cce28e7527cc8ef1e0cc944bd4824eef9",
+      "docx_display_cm": [
+        14.2,
+        11.929
+      ],
+      "effective_ppi": 1371,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.7,
+        "color": 1.3,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 8.7,
+      "strength": "相关系数和色阶共同编码，数字与背景对比度较好，特征关系可逐格核对。",
+      "issue": "完整对称矩阵重复信息较多，1.00附近数值占据视觉中心，两位小数也掩盖了部分细微区别。",
+      "action": "可仅保留一个三角，按特征族分组；对高度相关项保持适当精度并在正文解释。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.7,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.65,
+        "maximum": 7.7,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "2-12",
+      "chapter": 2,
+      "number": 12,
+      "title": "全站节点代理负荷的星期—小时聚合热力图",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_12_weekday_hour_heatmap.png",
+      "caption": "每个单元格为10个主分析节点在对应当地星期和小时上的平均节点代理负荷，并非节点负荷之和；时区为America/Los_Angeles。色阶覆盖完整聚合值范围，周末以分隔线区分。该图由全时段样本直接聚合，不含误差棒，颜色不表示事件发生概率。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_12_weekday_hour_heatmap.svg",
+      "size_px": [
+        9253,
+        4459
+      ],
+      "sha256": "a03752b171286bbf544a8f35af7fada28556fe9f9e1d289d5148ea75c56cbd8e",
+      "docx_display_cm": [
+        14.2,
+        6.843
+      ],
+      "effective_ppi": 1655,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.5,
+        "color": 1.4,
+        "notation": 1.6,
+        "fidelity": 1.8
+      },
+      "score": 8.5,
+      "strength": "星期、小时与负荷均值三者关系直观，工作日和周末有明确分隔。",
+      "issue": "完整24小时刻度与色条文字缩印后偏小，浅色区域的差异较弱。",
+      "action": "减少小时刻度标注密度、放大色条字体，必要时就地标注主要高值区。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.5,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 5.44,
+        "maximum": 6.53,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "2-13",
+      "chapter": 2,
+      "number": 13,
+      "title": "JPL固定协议重新拟合验证流程",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_13_jpl_validation_protocol.png",
+      "caption": "输入为接入、离站、活跃计数及当地日历编码，假设事件即时上报；目标为会话电量在接入至断开区间内均匀分摊的代理能量。训练、调参、校准和测试按时间分段，96步历史窗与4步目标窗完整留段。四种模型各运行三个种子，以调参集原单位MAE选择检查点；全部检查点锁定后，每次训练运行仅导出一次测试预测，在632,640个共同预测键上评价，整体MAE另按24个七日块进行配对比较。训练预算与早停规则见3.8.2节。校准段在本轮保留，尚未用于JPL共形区间评价；该流程对应另一ACN场站的重新拟合验证。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_13_jpl_validation_protocol.png",
+      "size_px": [
+        1672,
+        940
+      ],
+      "sha256": "b58f60645653804397011e9de2551072fc4b8e305c7de555251b7a05a6aaebe1",
+      "docx_display_cm": [
+        14.2,
+        7.983
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.6,
+        "color": 1.4,
+        "notation": 1.6,
+        "fidelity": 1.7
+      },
+      "score": 8.4,
+      "strength": "数据契约、训练选择与评价分区明确，冻结模型和测试输入的路径分开，底部评价网格更规整。",
+      "issue": "参数选择连线绕行较长，模块文字层级与紧凑卡片仍有差异，局部走线占用分区间隙。",
+      "action": "统一卡片字体与内边距，缩短参数选择回路，整理跨区连线入口及出口对齐。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.5,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "3-1",
+      "chapter": 3,
+      "number": 1,
+      "title": "MRG-GCN整体架构",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_1_mrggcn_architecture.png",
+      "caption": "历史输入依次经过因果扩张TCN、第一层多关系传播、残差MLP精炼和第二层多关系传播。原始H⁽⁰⁾、H⁽¹⁾与H⁽²⁾经跨层拼接、融合映射和线性预测头输出未来4步节点代理负荷，精炼表示不直接参与跨层拼接。三类固定关系仅由训练集构建。分区中重复的状态符号指同一表示而非额外计算层；张量网格为示意，隐藏状态的实际形状均为[B,N,32]。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_1_mrggcn_architecture.png",
+      "size_px": [
+        1086,
+        1448
+      ],
+      "sha256": "d44f39ba9535ab6b4e872ff570d8cf192169995700991fb1fceddc13b63aa80c",
+      "docx_display_cm": [
+        14.2,
+        18.933
+      ],
+      "effective_ppi": 194,
+      "components": {
+        "layout": 1.9,
+        "readability": 1.7,
+        "color": 1.0,
+        "notation": 1.5,
+        "fidelity": 1.8
+      },
+      "score": 7.9,
+      "strength": "四个阶段和精炼后第二层传播路径完整，主干与跨层融合均可识别。",
+      "issue": "纵向总览占19 cm高度，三维张量反复出现且上下同名状态缺少视觉对应，194 ppi栅格细字与近期蓝灰图的风格也不一致。",
+      "action": "压缩重复张量示意，用明确跨层支路替代下方重复状态；按最终14.2 cm幅宽重绘并提升原生分辨率。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 7.7,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "3-2",
+      "chapter": 3,
+      "number": 2,
+      "title": "多关系门控传播单元",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_2_relation_propagation_unit.png",
+      "caption": "三类关系消息经关系级权重融合后，由节点级门控与该层实际输入混合，并通过残差连接与层归一化形成层输出。两层传播单元结构相同、参数独立；第二层实际输入为精炼表示$H^{(1,\\mathrm{ref})}$。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_2_relation_propagation_unit.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "9095e87c72115d7365da633a18c21321fd0ed8982669af7275eab6dfe130cbf4",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.8,
+        "color": 1.1,
+        "notation": 1.8,
+        "fidelity": 1.9
+      },
+      "score": 8.7,
+      "strength": "三路消息、关系融合、节点门控及独立残差旁路可顺序阅读，公式与正文一致。",
+      "issue": "三个消息张量的装饰较多，底部旁路偏长，暖橙边框与近期论文暖灰配色尚未统一。",
+      "action": "保留完整运算拓扑，缩小张量示意并统一线宽与暖灰填充，使节点门控成为最突出的模块。",
+      "priority": "P3可保留",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.3,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "3-3",
+      "chapter": 3,
+      "number": 3,
+      "title": "时间编码与跨层融合预测结构",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_3_temporal_skip_fusion.png",
+      "caption": "上部展示时间编码与两层传播，下部以同名状态重复展示拼接输入，不表示新增模型分支。跨层融合使用原始$H^{(0)}$、$H^{(1)}$和$H^{(2)}$，经融合映射与线性预测头得到4步输出；精炼状态$H^{(1,\\mathrm{ref})}$仅作为第二层传播输入。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_3_temporal_skip_fusion.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "a032dbbc41290cb422285d40e0847722bfa45533ee7322abc88af2238faa0908",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.0,
+        "readability": 1.6,
+        "color": 1.1,
+        "notation": 1.5,
+        "fidelity": 1.8
+      },
+      "score": 8.0,
+      "strength": "明确区分原始H(1)与精炼状态，拼接输入没有误接精炼表示。",
+      "issue": "上下两区重复展示H(0)/H(1)/H(2)而无连接，需依赖图注理解；TCN堆叠和多个立体张量占用较多宽度。",
+      "action": "将三层原始状态的细支路直接接入拼接母线，收缩TCN示意，并统一中英文模块字体层级。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 7.8,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "3-4",
+      "chapter": 3,
+      "number": 4,
+      "title": "LRE三关系构建流程",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_4_lre_construction.png",
+      "caption": "训练期负荷序列、行为信号和96步轮廓分别形成负荷耦合、行为共现和轮廓相似关系，随后经Top-k稀疏化、无向并集和对称归一化得到三类固定邻接矩阵。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_4_lre_construction.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "5ac2f726804a4d7599cf78f1491d5926936c504099afbe6d5ac59c5461330eea",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.3,
+        "readability": 1.8,
+        "color": 1.4,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 9.0,
+      "strength": "三类关系等宽并列、运算步骤对齐，颜色与列语义对应，整体规整。",
+      "issue": "字体略重且共同操作在三列重复，归一化之前加入单位自环的步骤仅由正文公式补足。",
+      "action": "可在“对称归一化”中简写“加自环并归一化”，适度减轻边框和标题字重。",
+      "priority": "P3可保留",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 9.2,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "3-5",
+      "chapter": 3,
+      "number": 5,
+      "title": "LRE三类站内关系矩阵",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_5_lre_matrices.png",
+      "caption": "三个面板依次表示负荷耦合、行为共现和轮廓相似关系，并采用统一色阶。矩阵由训练集一次性构建，不含跨种子误差棒。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_5_lre_matrices.svg",
+      "size_px": [
+        9127,
+        3541
+      ],
+      "sha256": "7b79e4f3bd1fb28af1983e2afc12b34600a83b67422e9c9d2c8ff8031ed67e30",
+      "docx_display_cm": [
+        14.2,
+        5.509
+      ],
+      "effective_ppi": 1633,
+      "components": {
+        "layout": 2.0,
+        "readability": 0.9,
+        "color": 1.1,
+        "notation": 1.6,
+        "fidelity": 1.8
+      },
+      "score": 7.4,
+      "strength": "三矩阵共享节点顺序与色阶，训练期三关系差异可直接比较。",
+      "issue": "三个10×10面板挤在14.2 cm幅宽，节点标签打印后约4.6 pt，深色自环占据主要视觉动态范围。",
+      "action": "按实际版心幅宽重新排版，节点标签改为303等短编号并在图注声明CA前缀，纸面字号至少7 pt；必要时另设非对角关系显示面板。",
+      "priority": "P1必改",
+      "confirmed_semantic_issue": false,
+      "evidence": "scripts/figures/batch5_restyle.py关系矩阵绘图使用7.6 in画布、6.2 pt节点标签；正式DOCX幅宽14.2 cm（5.59 in），缩放后约4.6 pt。",
+      "aesthetic_score": 6.7,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 4.56,
+        "maximum": 5.51,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "3-6",
+      "chapter": 3,
+      "number": 6,
+      "title": "节点门控与残差更新细节",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_6_gate_residual_detail.png",
+      "caption": "三类关系消息先形成融合消息$\\mathbf M^{(l)}$，再与层输入$\\mathbf Z^{(l)}$共同生成节点门值；门控混合后通过残差更新和LayerNorm得到$\\mathbf H^{(l)}$。底部身份路径表示输入状态直接参与残差更新，不表示额外的关系边。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_6_gate_residual_detail.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "5c8d83df11dcca8981ac25ae1d016d97a369bb32bd6c16fda80f92591f32a971",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.8,
+        "color": 0.9,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 8.3,
+      "strength": "门值生成、双支路混合及残差加和的计算顺序清楚，恒等路径明确。",
+      "issue": "消息M采用粉色，偏离当前蓝灰/暖灰专属配色；两个加和符号显示形态略杂，阶段标题偏重。",
+      "action": "将M改为暖灰或米白，统一所有加和节点为清晰的圆形加号，减轻阶段标题字重。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.0,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "3-7",
+      "chapter": 3,
+      "number": 7,
+      "title": "跨层表示路径",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_7_cross_layer_detail.png",
+      "caption": "第一层输出$\\mathbf H^{(1)}$经残差MLP得到$\\mathbf H^{(1,\\mathrm{ref})}$后进入第二层传播；跨层拼接仅接收$\\mathbf H^{(0)}$、原始$\\mathbf H^{(1)}$和$\\mathbf H^{(2)}$。图中下方重复的状态块表示三层原始状态分别作为拼接输入，不表示新增模型分支，也不将$\\mathbf H^{(1,\\mathrm{ref})}$接入跨层拼接。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_7_cross_layer_detail.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "6d4d85af488741218a1521121d4cc07e869689701f705a5d878d3ae9f3ee2d23",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.0,
+        "readability": 1.5,
+        "color": 0.9,
+        "notation": 1.6,
+        "fidelity": 1.9
+      },
+      "score": 7.9,
+      "strength": "原始H(1)的拼接支路与精炼后输入第二层的路径分开，张量形状齐全。",
+      "issue": "跨层融合小模块文字紧凑，H(2)支路横跨半幅图，绿色拼接张量与近期专属配色不一致。",
+      "action": "缩短外侧汇合支路，把融合操作组合为紧凑统一模块，将拼接三部分改为蓝灰/暖灰/米白。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 7.3,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "3-8",
+      "chapter": 3,
+      "number": 8,
+      "title": "训练—预测—评价流程",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_8_train_predict_pipeline.png",
+      "caption": "数据按固定时间边界划分后构造96步输入与4步输出窗口，随机初始化模型采用2024、2025和2026三种子训练并以验证集早停；测试集仅执行冻结模型预测，结果按全局、事件、稳定、节点、步长和四格口径评价。输入与目标标准化参数及LRE图由训练集拟合，测试集不参与这些对象的估计；旧上游全时期统计及跨段窗口的具体限制见2.1.1节，本图不表示旧协议已满足完整窗口留段约定。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_8_train_predict_pipeline.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "5fdcceb2fc21af044fefb8696970d3f842d3d725cbe49fbaf246419bd9188eac",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.8,
+        "color": 1.3,
+        "notation": 0.7,
+        "fidelity": 0.9
+      },
+      "score": 6.8,
+      "strength": "左右训练选择与冻结评价两区分工明确，评价口径对齐且文字清晰。",
+      "issue": "早停判断的“否”回接训练集归一化，错误表示循环重做预处理与三种子训练；图示另未列出60轮上限，属于流程表达不完整。",
+      "action": "把归一化及窗口构造放在一次性准备区；每个种子的迭代仅回接“下一训练轮”，并统一设置早停或60轮上限出口。",
+      "priority": "P1必改",
+      "confirmed_semantic_issue": true,
+      "evidence": "正文3.2明确验证/测试沿用训练期冻结归一化参数；3.5.7及表3-1规定最多60轮、patience=8。src/evcs_station_graph/training/engine.py:235的循环仅执行_train_epoch与验证，未重做归一化；278行达到patience后退出。 确认问题为图中循环入口错接；未画60轮上限不表示实际训练预算错误。",
+      "aesthetic_score": 8.7,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "3-9",
+      "chapter": 3,
+      "number": 9,
+      "title": "不同模型的全局MAE",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_model_mae_comparison.png",
+      "caption": "随机初始化模型显示三种子均值和标准差；确定性基线无误差棒。所有结果使用相同预测键和kWh/15 min口径。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_model_mae_comparison.svg",
+      "size_px": [
+        6727,
+        4999
+      ],
+      "sha256": "6a11c04dc6caec115e93fff71f2cca0ad0613ea6cc68e0ef1c729269638c6928",
+      "docx_display_cm": [
+        14.2,
+        10.552
+      ],
+      "effective_ppi": 1203,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.8,
+        "color": 1.3,
+        "notation": 1.5,
+        "fidelity": 1.8
+      },
+      "score": 8.6,
+      "strength": "横向排序和五位数标签支持精确读取，主模型突出且确定性基线没有虚构误差棒。",
+      "issue": "六类模型家族图例占较多空间，四档灰色区分较弱，EventResidual探索记录在图内未标明。",
+      "action": "缩减图例家族分类，把EventResidual标为探索记录，保持主模型深蓝与其他模型中性灰的简单编码。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.8,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.28,
+        "maximum": 7.58,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "3-10",
+      "chapter": 3,
+      "number": 10,
+      "title": "不同模型的逐步长MAE",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_mae_by_horizon.png",
+      "caption": "曲线为三种子均值，阴影为跨种子样本标准差；横轴15、30、45、60 min分别对应$h1$～$h4$。实心方形标记表示MRG-GCN（StaticGraph），GWN和AGCRN为本文所检简化变体。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_mae_by_horizon.svg",
+      "size_px": [
+        9000,
+        4920
+      ],
+      "sha256": "7936eb2dd5dae16edbe85b6499f2b7c8a143bdfb4045ab8901273387923cffeb",
+      "docx_display_cm": [
+        14.2,
+        7.763
+      ],
+      "effective_ppi": 1610,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.6,
+        "color": 1.3,
+        "notation": 1.5,
+        "fidelity": 1.9
+      },
+      "score": 8.5,
+      "strength": "提前量用分钟直接标注，多模型同时用线型和标记区分，主模型容易定位。",
+      "issue": "MRG-GCN与AdaptiveGraph几乎覆盖，MLP与AGCRN也接近，单靠浅色阴影难以读取局部差异。",
+      "action": "增加主模型与自适应图的局部放大或误差差小面板，继续保留真实标准差带，并直接标注末端模型名称。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.5,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.71,
+        "maximum": 6.71,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "3-11",
+      "chapter": 3,
+      "number": 11,
+      "title": "模型误差差的点级Bootstrap",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_bootstrap_difference.png",
+      "caption": "每行纵轴按“前者vs后者”列出比较模型，点为MAE(后者)−MAE(前者)，正值表示前者误差更低；并非所有行都以MRG-GCN为比较对象。误差棒为10,000次重采样的95%百分位区间。预测键存在时间、节点及种子内相关性，该区间仅作点级误差差描述，不作跨种子显著性判断。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_bootstrap_difference.svg",
+      "size_px": [
+        6847,
+        5778
+      ],
+      "sha256": "5f2908c7d145bf6a3269754e614d8bd12a107b81399506f679271680bb9ba0f6",
+      "docx_display_cm": [
+        14.2,
+        11.983
+      ],
+      "effective_ppi": 1225,
+      "components": {
+        "layout": 1.9,
+        "readability": 1.8,
+        "color": 1.3,
+        "notation": 1.4,
+        "fidelity": 1.9
+      },
+      "score": 8.3,
+      "strength": "森林图零线与差值公式明确，图注正确限制点级Bootstrap的统计解释。",
+      "issue": "多行比较对象方向变化需反复核对，近零差值的区间几乎被圆点遮挡，图内未提示“点级描述”。",
+      "action": "在面板标题加入“点级描述”，补近零区间数值或小放大窗；在可保持原分析的前提下统一比较方向。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "现图与正文3.6.2均未使用显著性星号或跨种子显著性断言；图注明确预测键相关性，因此不认定点级区间本身构成图文语义错误。",
+      "aesthetic_score": 8.3,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 7.23,
+        "maximum": 9.28,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "3-12",
+      "chapter": 3,
+      "number": 12,
+      "title": "不同评价窗口的MAE",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_window.png",
+      "caption": "柱高为三种子均值，误差棒为跨种子标准差；纵轴采用对数尺度，以同时显示事件和稳定窗口的量级差异。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_window.svg",
+      "size_px": [
+        6727,
+        3799
+      ],
+      "sha256": "2d0484eaddec24eec480ab1a0f64ece39b6730fc656ae1758fa0e158d0f73d62",
+      "docx_display_cm": [
+        14.2,
+        8.019
+      ],
+      "effective_ppi": 1203,
+      "components": {
+        "layout": 2.0,
+        "readability": 1.7,
+        "color": 1.2,
+        "notation": 1.5,
+        "fidelity": 1.6
+      },
+      "score": 8.0,
+      "strength": "对数轴同时展示事件和稳定量级，主模型数值标注在柱内避免悬浮。",
+      "issue": "24根相近灰色柱需要频繁查图例，主模型又标为StaticGraph，与邻近图的MRG-GCN命名不统一；对数柱的长度阅读也不直观。",
+      "action": "统一显示名称为MRG-GCN（StaticGraph），改为四分面点区间图或对数点图，保留同一纵轴范围和种子标准差。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.2,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 5.58,
+        "maximum": 8.77,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "3-13",
+      "chapter": 3,
+      "number": 13,
+      "title": "不同模型的逐节点MAE",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_mae_by_node.png",
+      "caption": "热力图为10个节点和6个模型的三种子均值；节点按主张量测试预测起点对应时刻的累计代理负荷降序排列。颜色与数值使用同一节点映射，颜色表示误差大小，不表示节点间关系；GWN与AGCRN为原主实验的简化变体。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_mae_by_node.svg",
+      "size_px": [
+        6695,
+        4410
+      ],
+      "sha256": "a1670cde16a0bf6835378a24e268322b11938af509ea7912782c8ed13897b63e",
+      "docx_display_cm": [
+        14.2,
+        9.354
+      ],
+      "effective_ppi": 1198,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.8,
+        "color": 1.2,
+        "notation": 1.6,
+        "fidelity": 1.8
+      },
+      "score": 8.6,
+      "strength": "颜色与三位小数共同编码，节点顺序和数值映射一致，深浅底色采用不同文字色。",
+      "issue": "TCN大值把其余模型色差压得很浅，主模型仍标为StaticGraph且未形成清楚的主模型行层级。",
+      "action": "统一为MRG-GCN名称并轻描主模型行边框；可增设相对主模型误差差热图，原绝对MAE图保留统一色阶。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "",
+      "aesthetic_score": 8.7,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 7.22,
+        "maximum": 8.02,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "3-14",
+      "chapter": 3,
+      "number": 14,
+      "title": "结构消融结果",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mechanism_ablation.png",
+      "caption": "柱高为三种子均值，误差棒为跨种子标准差。百分比均相对于消融套件的0.01390内部基线，不与表3-2主模型直接换算。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mechanism_ablation.svg",
+      "size_px": [
+        6727,
+        3799
+      ],
+      "sha256": "5f2042e941db4dd123be39dffef7a74a8804f705984a2ecc469a81b4e37fbfd7",
+      "docx_display_cm": [
+        14.2,
+        8.019
+      ],
+      "effective_ppi": 1203,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.8,
+        "color": 1.3,
+        "notation": 1.5,
+        "fidelity": 1.4
+      },
+      "score": 8.1,
+      "strength": "柱高、离散度和相对内部基线百分比同时呈现，完整读数与正文表3-7一致。",
+      "issue": "图内“完整模型（基线）”容易被误读为正式MRG-GCN，“门控关闭”也未标明它属于复合重训练变体。",
+      "action": "将首项改为“事件残差组合配置（内部基线）”，末项改为“全样本联合修正（复合变体）”，图题明确组合配置消融。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "正文3.7.1和现图注明确0.01390为事件残差组合配置内部基线；“门控关闭”同时取消选择性触发、联合更新主模型并作用于全样本。数据没有矛盾，问题在图内标签不足。",
+      "aesthetic_score": 8.7,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.78,
+        "maximum": 8.77,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "3-15",
+      "chapter": 3,
+      "number": 15,
+      "title": "JPL整体MAE与七日时间块配对比较",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_jpl_mae_primary.png",
+      "caption": "左侧显示四种模型在2024、2025、2026三个种子下的整体MAE，汇总为均值±样本标准差；右侧显示基线减MRG-GCN的MAE差及Bonferroni校正98.33%置信区间。时间块分析基于24个非重叠七日块和10,000次配对重采样，差值为正表示MRG-GCN误差较低。两类误差棒分别反映种子离散度与固定测试期的时间块差异，不作相同统计解释。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_jpl_mae_primary.svg",
+      "size_px": [
+        7715,
+        3442
+      ],
+      "sha256": "c687893e281ba4b7ed86b7cec8fece32b85d073b9774151edba5666f8a0d330f",
+      "docx_display_cm": [
+        14.2,
+        6.335
+      ],
+      "effective_ppi": 1380,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.7,
+        "color": 1.4,
+        "notation": 1.8,
+        "fidelity": 1.9
+      },
+      "score": 9.0,
+      "strength": "种子均值±SD与七日块校正区间分为两个面板，差值方向、零线和三类对照均明确。",
+      "issue": "右侧长方法注释悬在较大的底部留白，两个面板的视觉密度略不均衡；A面板AGCRN名称未直接写完整。",
+      "action": "把时间块和校正信息收进B面板标题或图注，减少底部留白，A面板统一写“完整AGCRN”。",
+      "priority": "P3可保留",
+      "confirmed_semantic_issue": false,
+      "evidence": "与正文3.8.2的24个七日块、10000次配对重采样及98.33%Bonferroni区间对应；未把种子SD解释成置信区间。",
+      "aesthetic_score": 8.8,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.09,
+        "maximum": 7.83,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "3-16",
+      "chapter": 3,
+      "number": 16,
+      "title": "JPL分层MAE比较",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_jpl_stratified_mae.png",
+      "caption": "四个面板分别显示标签事件、稳定、零目标与非零目标预测键上的MAE，散点为三个种子，汇总为均值±样本标准差；各模型使用相同的冻结分层掩码。各面板纵轴独立设置范围，下限均不为零，跨面板比较须依据刻度。分层结果用于界定整体MAE优势的范围，不表示各层均由MRG-GCN取得最低误差。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_jpl_stratified_mae.svg",
+      "size_px": [
+        6559,
+        4029
+      ],
+      "sha256": "42f7fd8c515094c80b699a5c64540484a1c308c900779c6b58abae8dd1c65b7a",
+      "docx_display_cm": [
+        14.2,
+        8.723
+      ],
+      "effective_ppi": 1173,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.7,
+        "color": 1.4,
+        "notation": 1.6,
+        "fidelity": 1.9
+      },
+      "score": 8.8,
+      "strength": "四种分层在相同模型顺序下展示三个种子及离散度，未掩盖事件和非零目标层的对照优势。",
+      "issue": "四面板缺A–D编号和就地符号图例，标题只写“事件”而未直接写“标签事件”，独立纵轴尺度需要读者仔细辨认。",
+      "action": "补A–D编号、单种子与均值±SD的共用小图例，标题改为标签事件，并在图内简注各面板独立纵轴。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "正文3.8.2及图注已明确各面板独立纵轴、下限不为零；散点图可截取纵轴，故不把非零下限认定为错误。",
+      "aesthetic_score": 8.8,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 7.16,
+        "maximum": 8.69,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "4-1",
+      "chapter": 4,
+      "number": 1,
+      "title": "三层机制诊断协议",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_1_three_layer_framework.png",
+      "caption": "从L1关系分配、L2结构知识传递到L3误差分层，依次对应参数干预、知识蒸馏和四格还原。图中仅表示三层诊断的操作顺序与证据汇合关系；L2结论限定于所检学生架构、蒸馏目标和权重范围，具体汇总读数见表4-1及相关结果表。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_1_three_layer_framework.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "6486a95f87a8caf0ee991f55f9c99c2b1518f607b8b26c38c4d3427eaa486e7f",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 1.8,
+        "readability": 1.7,
+        "color": 1.3,
+        "notation": 1.1,
+        "fidelity": 1.4
+      },
+      "score": 7.3,
+      "strength": "L1干预、L2师生蒸馏及L3四格操作完整，主链层次清楚，蓝灰填充与论文流程图一致。",
+      "issue": "左下L3的“贡献还原”折线绕到下方“关系使用”框底且无箭头，使误差溯源证据接到L1职责；扩展区未直接标L1/L2/L3，证据汇合用菱形也容易被当作决策。",
+      "action": "将L3输出直接接入证据汇合，或明确接向“误差来源”；三个扩展区标出层号，汇合节点改为普通汇合框，整理底部折线。",
+      "priority": "P1必改",
+      "confirmed_semantic_issue": true,
+      "evidence": "实际PNG左下“贡献还原”线从该框底部向下折返，终点为“关系使用”框下沿。thesis-manuscript.md:987–991 表4-1将L1列为关系分配、L3列为全局误差构成；4.5节说明三层分别回答内部依赖、收益吸收及总体误差构成。此处为图的连线职责错位，不是机制实验结果强弱。",
+      "aesthetic_score": 8.0,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "4-2",
+      "chapter": 4,
+      "number": 2,
+      "title": "两层关系级β门控权重画像",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_2_beta_profile.png",
+      "caption": "StaticGraph正式三种子中，空心点表示各随机种子的Softmax权重，实心点与误差棒表示均值±跨种子样本标准差。每层三类固定关系权重之和为1；该图为观察性参数画像，不等同于节点级门控或关系因果效应。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_2_beta_profile.svg",
+      "size_px": [
+        10819,
+        5599
+      ],
+      "sha256": "87a6f597e5f3b3fd2469b5f4b21ffc49c896bb1794f6cb3ff58eff72a504e425",
+      "docx_display_cm": [
+        14.2,
+        7.349
+      ],
+      "effective_ppi": 1935,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.0,
+        "color": 1.3,
+        "notation": 1.6,
+        "fidelity": 1.8
+      },
+      "score": 7.8,
+      "strength": "空心种子点、实心均值、SD及等权参考线同时呈现，图注清楚限定β为观察性关系级权重，数值与表4-2相符。",
+      "issue": "按正式14.2 cm宽度缩放，实际SVG字号约4.46–5.46 pt；第二层0.322、0.325标签压在误差棒范围内，种子连接线与主曲线交叉也增加辨读负担。",
+      "action": "按14.2 cm版心重设画布与字号，使最终数字至少7 pt、轴与图例约8 pt；数值移到误差棒外，种子保留散点或进一步弱化连接线。",
+      "priority": "P1必改",
+      "confirmed_semantic_issue": false,
+      "evidence": "SVG根宽649.19952 pt，text字号7.2–8.8 px；14.2 cm对应402.51969 pt，按同比缩放约4.46–5.46 pt。batch19_41fig_ch4.py plot_beta_profile中第二层数值固定mean-0.010，而SD为0.0252/0.0207，造成标签与误差棒区域重叠。",
+      "aesthetic_score": 7.3,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 4.46,
+        "maximum": 5.46,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "4-3",
+      "chapter": 4,
+      "number": 3,
+      "title": "关系级门控参数干预结果",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_3_intervention.png",
+      "caption": "蓝色为学习值基线，其他配置强制替换两层$\\boldsymbol\\beta$后仅作前向推理。柱高为三种子均值，误差棒为跨种子标准差；百分比相对于学习值基线，正值表示退化。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_3_intervention.svg",
+      "size_px": [
+        6703,
+        4105
+      ],
+      "sha256": "d9ba3fcc8f3d9137fd5e803f00e99148c8eeb89c2ee0a94e6000fd5a1c8ca998",
+      "docx_display_cm": [
+        14.2,
+        8.696
+      ],
+      "effective_ppi": 1199,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.8,
+        "color": 1.4,
+        "notation": 1.6,
+        "fidelity": 1.7
+      },
+      "score": 8.7,
+      "strength": "基线唯一深蓝，干预为中性灰；水平柱、SD和相对退化在同一视野内，正式缩放后字体约8–9 pt，可读性较好。",
+      "issue": "图内“模式关系/事件关系”与正文“轮廓相似/行为共现”名称不统一；“GCN1=负荷关系”“GCN2=模式关系”未在图内注明另层保持学习值，读者需借助正文识别配置。",
+      "action": "统一三关系名称，将混合配置写成“第1层负荷耦合/第2层学习值”等紧凑双层表达；百分比保留适当精度即可。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "thesis-manuscript.md:1022说明最小退化来自第一层学习值、第二层轮廓相似；4.2.2明确包含保留一层学习值而固定另一层的配置。图中短标签省略了另层状态，数值本身与正文相符。",
+      "aesthetic_score": 9.0,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 8.01,
+        "maximum": 9.01,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "4-4",
+      "chapter": 4,
+      "number": 4,
+      "title": "事件标签与规则触发的四格诊断",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_4_four_cell.png",
+      "caption": "A为原正式MRG-GCN三种子四格MAE热图及数值标注，B展示各格样本占比，C展示绝对误差贡献。贡献先逐种子按各格$n\\times\\mathrm{MAE}$占总绝对误差的比例计算，再汇总均值及离散度；四格计数来自共同预测键，标签与规则均沿用旧协议定义。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_4_four_cell.svg",
+      "size_px": [
+        6713,
+        2887
+      ],
+      "sha256": "f581ee413fa4b776bedd2d77c5e44f1c3f03273ca4d997f8883507c69b073766",
+      "docx_display_cm": [
+        14.2,
+        6.107
+      ],
+      "effective_ppi": 1201,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.6,
+        "color": 1.3,
+        "notation": 1.6,
+        "fidelity": 1.6
+      },
+      "score": 8.2,
+      "strength": "MAE、预测键占比及绝对误差贡献分为三个独立证据面板，稀有困难组与大量低误差组的错位清楚；四格计数与表4-4一致。",
+      "issue": "三栏在14.2 cm内较紧，浅蓝格白字及灰色底注对比偏低；C只显示贡献均值，底注笼统写“三种子均值±样本标准差”，需明确该±SD用于A，避免读者以为C也显示离散度。B的极小比例主要靠文字而非柱形辨认。",
+      "action": "提高浅蓝格数字及底注对比度，略精简重复行标签；把底注写为“A：MAE均值±SD；C：贡献均值”，或给C补已存在的贡献SD，并在图注准确限定。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "redraw_fig4_4_result_style_20260911.py:88–92读取mae_sd与contribution_percent_mean；159–179条形函数没有xerr；182–184底注统写三种子均值±样本标准差。均值与贡献计算没有确认错误，问题为离散度展示范围不够明确。",
+      "aesthetic_score": 8.3,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.6,
+        "maximum": 8.8,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "4-5",
+      "chapter": 4,
+      "number": 5,
+      "title": "不同模型的残差分布",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_5_residual_distribution.png",
+      "caption": "曲线为seed-2024中TCN、StaticGraph和MLP的预测残差密度；左、右面板分别为非事件与事件窗口。该图为描述性比较，不含误差棒。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_5_residual_distribution.svg",
+      "size_px": [
+        10459,
+        4459
+      ],
+      "sha256": "e543f1eee377243e638e0e56b1669a8c72859a20fcffcd0fad41173f11c05eb5",
+      "docx_display_cm": [
+        14.2,
+        6.054
+      ],
+      "effective_ppi": 1871,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.1,
+        "color": 1.4,
+        "notation": 1.6,
+        "fidelity": 1.8
+      },
+      "score": 8.1,
+      "strength": "双面板直接对照标签事件与非事件，蓝色主模型和灰色基线采用不同线型，灰度下仍可辨；图注明确seed-2024描述性用途，无需机械添加误差棒。",
+      "issue": "正式宽度下图例与坐标文字约5.13–5.77 pt，纸面偏小；轴名“预测残差”未直接定义正负方向，两面板显示范围差异很大但图注未说明截取范围。",
+      "action": "按版心加大字号、减少刻度，必要时改上下双面板；图注明确残差为预测减目标及两个展示范围，不把限定显示范围解释为完整尾部分布。",
+      "priority": "P1必改",
+      "confirmed_semantic_issue": false,
+      "evidence": "SVG根宽627.59952 pt，text字号8–9 px，按14.2 cm缩放约5.13–5.77 pt；batch13_chapter4_5_extra.py:91–92以y_pred-y_true计算残差，100–102/115设置非事件±0.05、事件±0.8的显示范围。图下注明单种子，未按研究设计扣分。",
+      "aesthetic_score": 7.8,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 5.13,
+        "maximum": 5.77,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "4-6",
+      "chapter": 4,
+      "number": 6,
+      "title": "误差与回溯事件分数的关系",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_6_error_vs_event_intensity.png",
+      "caption": "使用AdaptiveGraph的seed-2024测试预测键，按预测起点的旧代理事件分数分为零分数和三个非零组；非零分界为测试期非零分数的50%和95%分位数，仅用于描述，不用于规则拟合。A展示组内MAE；B以对数坐标对照样本占比与绝对误差贡献，后者按各组$n\\times\\mathrm{MAE}$占总绝对误差的比例计算，行标注为预测键数。两面板按相同分箱顺序排列，不含跨种子误差棒。零分数不等于目标侧非事件，最高分数组不等于冻结触发组；该图不证明实时可见性或因果作用。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_6_error_vs_event_intensity.svg",
+      "size_px": [
+        9000,
+        4380
+      ],
+      "sha256": "7f327f3a79c8ad30766a45847a1c095fde1d2d5987e812994d2e7fffdad26806",
+      "docx_display_cm": [
+        14.2,
+        6.911
+      ],
+      "effective_ppi": 1610,
+      "components": {
+        "layout": 2.3,
+        "readability": 1.3,
+        "color": 1.4,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 8.5,
+      "strength": "左右共用分箱顺序，A为绝对MAE，B为对数坐标的样本/误差贡献双符号；n和seed-2024、AdaptiveGraph及描述性限制均显式披露，信息组织成熟。",
+      "issue": "按正式14.2 cm缩放，最小数字与图例约5.59 pt，底部注记也偏小；B仅给n，跨面板对应依赖同一行，阅读时略需回看；高档的具体分数阈值未呈现在图注数值中。",
+      "action": "提高最终数字、图例至至少7 pt；保留紧凑两栏，可在B重复简短分箱标签并将n放右侧；实际分位阈值可入图注，避免额外增加图内说明。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "SVG根宽540 pt，text字号7.5–10 px，按14.2 cm缩放约5.59–7.45 pt。refine_requested_20260920.py:88–95按测试非零分数50%、95%分位做描述分箱，98–100按n×MAE归一化贡献；与caption一致，未将此当作规则拟合或跨种子证据。",
+      "aesthetic_score": 8.3,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 5.59,
+        "maximum": 7.45,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "5-1",
+      "chapter": 5,
+      "number": 1,
+      "title": "TE候选生成与PCMCI+条件独立核验流程",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_1_te_pcmci_flow.png",
+      "caption": "训练期10节点负荷序列先经传递熵检验形成方向性候选，再由PCMCI+进行条件独立核验。流程用于条件滞后依赖结构发现，未进行多重比较校正。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_1_te_pcmci_flow.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "63c944ce39ffd0a4bb08324d82183fe938b35aea19328e55507643b080729275",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.8,
+        "color": 1.3,
+        "notation": 0.6,
+        "fidelity": 0.7
+      },
+      "score": 6.5,
+      "strength": "两阶段分区清楚，正文边界“未校正/不作物理因果”已在图底明确，字号与留白总体可读。",
+      "issue": "右侧同一菱形有两条“是”分支，其中一条却通向“仅TE支持”，“否”又通向“PCMCI+独有”，三类输出与二元问题不相容。上游只传入TE候选也无法解释PCMCI+独有节点对的来源。",
+      "action": "重画检验职责：训练序列分别进入TE和PCMCI+，按二者名义阈值结果做交集/差集分类；或使用两级判断。共同、仅TE、仅PCMCI+的输出必须与条件唯一对应。TE的分箱、滞后与置换参数宜作为检验输入，避免画成检验之后才执行的输出步骤。",
+      "priority": "P1必改",
+      "confirmed_semantic_issue": true,
+      "evidence": "当前PNG右侧判断菱形“另一检验达到名义阈值？”的左/中/右连线分别标“是（两者均显著）”“是（仅TE显著）”“否（仅PCMCI+显著）”。docs/thesis/thesis-manuscript.md:1207：PCMCI+输入为完整训练段83,198观测，在76条TE候选中共同44、仅TE32，另检出6个节点间独有候选（及10个自回归对）。不能由仅TE候选输入生成PCMCI+独有节点对。",
+      "aesthetic_score": 8.7,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "5-2",
+      "chapter": 5,
+      "number": 2,
+      "title": "传递熵方向性候选结构",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_2_transfer_entropy.png",
+      "caption": "基于seed-2024训练期数据，左图展示TE值较高的15条候选边，右图汇总候选边被三类统计关系覆盖的情况。箭头表示方向性候选，线宽表示TE强度；100次循环平移置换未做多重比较校正，无误差棒。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_2_transfer_entropy.svg",
+      "size_px": [
+        6643,
+        4099
+      ],
+      "sha256": "5dd43b06f1878a2a04c4b54d453ba7a963f67f60e3f6f64a60d015cc47d04171",
+      "docx_display_cm": [
+        14.2,
+        8.762
+      ],
+      "effective_ppi": 1188,
+      "components": {
+        "layout": 1.9,
+        "readability": 1.5,
+        "color": 1.2,
+        "notation": 1.2,
+        "fidelity": 1.8
+      },
+      "score": 7.6,
+      "strength": "只展示最强15条候选，保留完整76条总量说明；右侧45/33/12的覆盖计数与正文口径一致，图注说明有向边和无向对的区别。",
+      "issue": "网络中多条长弧在中心及327/315附近交叉重叠，部分双向箭头难区分；线宽同时随透明度变化但没有数值样尺，右纵轴“边数”不够明确。底部两段灰色说明缩到14.2cm时偏轻。",
+      "action": "调整节点排序或用独立双向曲率，减轻327附近交叉；增加2–3档TE线宽样尺，统一透明度；右纵轴改“无向节点对数”，底部说明压缩并加深颜色。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "scripts/figures/batch5_restyle.py:338起：主图edges_sorted[-15:]，线宽0.4+2.6*rel且alpha同步变化；右图取undirected_pairs、covered_by_any_statistical_graph、exclusive_to_causal。正文5.2.4与表5-1为45个无向对中33覆盖、12未覆盖。",
+      "aesthetic_score": 7.7,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.47,
+        "maximum": 9.09,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "5-3",
+      "chapter": 5,
+      "number": 3,
+      "title": "双向传递熵与方向不对称性",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_3_asymmetry.png",
+      "caption": "45个点分别对应10节点的无向节点对，横纵轴为该对两个方向的TE读数，等比例坐标中的45°虚线表示双向相等。颜色区分主导方向，灰色表示$\\mathrm{ASYM}\\leq0.30$的近似对称带；图中45个无向节点对均至少有一个方向达到名义阈值，因此未另行设置“两方向均未达到阈值”的符号类别。标注给出不对称度最高的三个节点对。该图为训练期探索性统计，未作多重比较校正。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_3_asymmetry.svg",
+      "size_px": [
+        6708,
+        6864
+      ],
+      "sha256": "ef307c715d64af0f5bf6a1d8f3bd9dfe0f429bad49202d320df7d1f5832a3c5c",
+      "docx_display_cm": [
+        14.2,
+        14.53
+      ],
+      "effective_ppi": 1200,
+      "components": {
+        "layout": 2.2,
+        "readability": 1.8,
+        "color": 1.4,
+        "notation": 1.8,
+        "fidelity": 1.9
+      },
+      "score": 9.1,
+      "strength": "等比例坐标、45°基准线与ASYM对称带准确匹配双向比较；点面积、颜色、三组引线编号与边缘分布形成完整证据，底部明确45对及训练期探索口径。",
+      "issue": "顶部/右侧边缘分布和编号说明较多；点面积表示平均TE但没有大小数值样尺，核心散点附近的编号占一定空间。",
+      "action": "可保留。若最终统一排版，增加简短点面积样尺或把面积编码改等大点，适当缩短底部编号说明；无需改变主体。",
+      "priority": "P3可保留",
+      "confirmed_semantic_issue": false,
+      "evidence": "当前PNG与图注一致：灰色ASYM≤0.30，蓝/橙表示两个主导方向，45个无向对，编号对应不对称度最高三对。",
+      "aesthetic_score": 9.0,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.0,
+        "maximum": 7.4,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "5-4",
+      "chapter": 5,
+      "number": 4,
+      "title": "TE与统计关系权重的对应",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_4_te_vs_relations.png",
+      "caption": "90条有向节点对分别与三类固定统计关系权重比较，Spearman系数标注于图内。灰色叉号表示TE为零的边；该图为单种子、未校正的探索性比较。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_4_te_vs_relations.svg",
+      "size_px": [
+        6727,
+        3919
+      ],
+      "sha256": "04af2212d346702f9aeaf659f8b5456a93f9cd0dbe7cf7ed87bcf669e2494d54",
+      "docx_display_cm": [
+        14.2,
+        8.273
+      ],
+      "effective_ppi": 1203,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.7,
+        "color": 1.2,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 8.5,
+      "strength": "三个面板统一坐标，Spearman读数直观且无因果措辞；低权重区数据完整保留，三类关系比较清楚。",
+      "issue": "不少关系权重为0的点恰落在左边界，只显示半个符号；密集区点重叠，蓝/橙/绿与近期蓝灰配色的一致性略弱。",
+      "action": "横轴左端增加小幅留白以完整显示0权重点；采用更小点或稍低透明度；三关系用论文统一蓝灰序列区分，保留统一坐标。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "scripts/figures/batch13_chapter4_5_extra.py:239起对90有向对绘制，set_xlim(0,x_limit)使0权重符号位于边界。读取transfer_entropy_summary.json的90个非对角TE均>0（最小0.00030547），因此本图没有灰色零TE叉号不构成数据遗漏。",
+      "aesthetic_score": 8.3,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 7.38,
+        "maximum": 7.98,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "5-5",
+      "chapter": 5,
+      "number": 5,
+      "title": "PCMCI+条件独立核验结果",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_5_pcmci_validation_network.png",
+      "caption": "A以行为源节点、列为目标节点，颜色与符号区分双检验达到名义阈值的44对、仅TE达到阈值的32对和仅PCMCI+达到阈值的6对，空白格表示两者均未达到阈值。B按相同节点顺序汇总82个节点间候选有向对的出边与入边构成，各行上条为出边、下条为入边。C汇总全部90个节点间有向对，其中8对在两种检验中均未达到阈值。10个自回归对均排除，对角线短横线表示不纳入本图比较。输入为训练段83,198个原始时间观测，采用ParCorr、最大滞后4步和$\\alpha=0.05$，未进行多重比较校正。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_5_pcmci_validation_network.svg",
+      "size_px": [
+        9000,
+        5520
+      ],
+      "sha256": "5f03b89f612484c491141ba95fee9b1541056521a6de111e296cf4d8ba8957f6",
+      "docx_display_cm": [
+        14.2,
+        8.709
+      ],
+      "effective_ppi": 1610,
+      "components": {
+        "layout": 2.3,
+        "readability": 1.8,
+        "color": 1.3,
+        "notation": 1.8,
+        "fidelity": 1.9
+      },
+      "score": 9.1,
+      "strength": "矩阵、节点出入计数与总交集构成三层对应，颜色并配符号可兼顾灰阶，90对及自回归排除口径在图注明确，数字44/32/6/8易核对。",
+      "issue": "B面板出边/入边采用上下条及深浅色，图内没有直接解释“上出下入”，需读图注；浅色入边与灰色类别有一定混淆。",
+      "action": "可保留主体；在B标题旁补小型“上：出边／下：入边”说明，或用统一类别色加线型区分出入，减少只依靠颜色深浅。",
+      "priority": "P3可保留",
+      "confirmed_semantic_issue": false,
+      "evidence": "正文5.2.5、图5-5图注及当前矩阵/汇总条一致：44共同、32仅TE、6仅PCMCI+、8均未达阈值，共90节点间有向对；10自回归对排除。",
+      "aesthetic_score": 9.0,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 5.96,
+        "maximum": 7.45,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "5-6",
+      "chapter": 5,
+      "number": 6,
+      "title": "冻结规则路由的分层共形方法",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_6_conformal_method.png",
+      "caption": "左侧为验证期校准：冻结主模型生成绝对残差，触发层合并节点估计90%经验分位数，未触发层逐节点校准。右侧为测试期回溯路由：冻结旧规则选择半宽$q$，与点预测$\\hat y$共同形成区间。目标侧标签事件不参与规则路由；旧规则含事后代理负荷差分，不表述为在线可见，90%经验分位数不等同于测试覆盖保证。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_6_conformal_method.png",
+      "size_px": [
+        1672,
+        941
+      ],
+      "sha256": "ec259b9d2e1e66e8ce81bec82a39821c8d4e55ad57f10d67d4d4d7f2f399a8d9",
+      "docx_display_cm": [
+        14.2,
+        7.992
+      ],
+      "effective_ppi": 299,
+      "components": {
+        "layout": 2.3,
+        "readability": 1.8,
+        "color": 1.3,
+        "notation": 1.8,
+        "fidelity": 1.9
+      },
+      "score": 9.1,
+      "strength": "验证校准与测试路由清楚分区，训练模型冻结、合并/逐节点分位数、冻结半宽库及测试选择半宽的责任线完整；图注准确限定回溯路由且不承诺90%测试覆盖。",
+      "issue": "左右各有一组分支，校准库到两种测试半宽的蓝色长虚线略抢眼；右阶段标题“测试期路由”未在图内直接标出“回溯”。",
+      "action": "可保留。最终精修可将标题改“测试期回溯路由”，库传递线使用更细的统一蓝灰虚线；保持目标标签不进入路由的职责。",
+      "priority": "P3可保留",
+      "confirmed_semantic_issue": false,
+      "evidence": "docs/thesis/thesis-manuscript.md:1226起：验证集绝对残差经验90%分位数、触发层跨节点统一q、未触发逐节点q；旧规则含事后代理负荷差分且验证段非独立校准。当前图注已明确这些限制。",
+      "aesthetic_score": 9.0,
+      "figure_type": "结构/流程/模型图"
+    },
+    {
+      "id": "5-7",
+      "chapter": 5,
+      "number": 7,
+      "title": "共形覆盖率比较",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_7_coverage.png",
+      "caption": "A比较标签事件窗口中的标准、规则路由和oracle结果；B比较整体与稳定窗口；C为规则路由下各预测步长的整体覆盖率。散点为单种子读数，误差棒为跨种子标准差，阴影为min–max范围。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_7_coverage.svg",
+      "size_px": [
+        6708,
+        7440
+      ],
+      "sha256": "7bf6ad8c0340a605ac005de2b2003fcc5b3b92fe09f574ca1c01595467fece7a",
+      "docx_display_cm": [
+        14.2,
+        15.75
+      ],
+      "effective_ppi": 1200,
+      "components": {
+        "layout": 2.0,
+        "readability": 1.8,
+        "color": 1.3,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 8.6,
+      "strength": "诚实呈现事件1.9%/3.9%的低覆盖；oracle86.1%另置80–92%参照轴并写不可部署，C清楚显示90%目标与未达标差距，种子散点/标准差/min–max口径完整。",
+      "issue": "三组面板间纵向空白偏多；C实际含标准共形与规则路由两条线，但横轴括号及图注只写规则路由，不完全描述图内比较。",
+      "action": "收紧A/B/C间距；C横轴简化为“预测步长”，图注改为“标准共形与规则路由的逐步长整体覆盖率”；保留各面板不同刻度和不可部署oracle说明。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "scripts/figures/batch6_te_coverage_enhance.py:425起C同时绘制std_mats、str_mats；正文图5-7图注仅称C为规则路由下各步长覆盖率，属于说明不足而非数据错误。未因覆盖不达标扣分。",
+      "aesthetic_score": 8.5,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 7.5,
+        "maximum": 12.0,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "5-8",
+      "chapter": 5,
+      "number": 8,
+      "title": "分层残差分位数与区间膨胀",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_8_quantile_per_node.png",
+      "caption": "A比较全局、规则未触发层和规则触发层的90%残差分位数；B给出触发层相对全局分位数的倍数。点和误差棒为三种子均值±标准差；规则触发层使用统一分位数。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_8_quantile_per_node.svg",
+      "size_px": [
+        6730,
+        5058
+      ],
+      "sha256": "c03350c7a05421c8b85d80ea656d98d4d0d05fd6cf163370599e4a199e398655",
+      "docx_display_cm": [
+        14.2,
+        10.672
+      ],
+      "effective_ppi": 1204,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.8,
+        "color": 1.3,
+        "notation": 1.5,
+        "fidelity": 1.7
+      },
+      "score": 8.4,
+      "strength": "A用对数尺度及统一触发层竖线清楚表达量级差，B按膨胀倍数排序并保留标准差，数值及单位充分，无截断误差棒。",
+      "issue": "A的全局空心圆和未触发空心方形同一节点位置重叠，几乎只能看见方形，两个校准值很难分辨；标题使用“事件层”而图例/图注是“规则触发层”，易与目标事件标签混淆。",
+      "action": "全局与未触发符号在y方向小幅错位，保留同一节点分组；标题统一“规则触发层”，统一半宽线旁可加q值；保留log轴与排序森林图。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "scripts/figures/batch9_advisor_redraw.py:117起在完全相同y位置依次绘制qg空心圆和qs空心方形，后者遮盖前者；143/180行标题仍写事件层。图注明确实际分层为冻结规则，故不判为数据定义错误。",
+      "aesthetic_score": 8.7,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 5.58,
+        "maximum": 8.57,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    },
+    {
+      "id": "5-9",
+      "chapter": 5,
+      "number": 9,
+      "title": "分层参数干预敏感度",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_9_parameter_intervention.png",
+      "caption": "左图比较全局、标签事件窗口和稳定窗口的相对MAE变化，右图展示7种干预在10个节点上的相对变化。正值表示相对学习值基线退化；三种子分层汇总结果未提供离散度，因此无误差棒。",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_9_parameter_intervention.svg",
+      "size_px": [
+        6737,
+        7448
+      ],
+      "sha256": "9ee5f54ece5e1cbfe6c73bae3b3e4491aadd108aebfcd0d05205b7e6b62922ef",
+      "docx_display_cm": [
+        14.2,
+        15.699
+      ],
+      "effective_ppi": 1205,
+      "components": {
+        "layout": 2.1,
+        "readability": 1.7,
+        "color": 1.3,
+        "notation": 1.7,
+        "fidelity": 1.8
+      },
+      "score": 8.6,
+      "strength": "分层条形图与逐节点热图对应完整，正值含义、单位和各格数值清楚；“参数干预敏感度”措辞恰当，未把模型参数替换当作现实物理因果。",
+      "issue": "实际是上下两个面板而图注写左图/右图；“全事件关系”“全模式关系”等旧称谓与正文“行为共现”“轮廓相似”不完全统一；70格热图在正文缩放后较密。",
+      "action": "图注改上图/下图；干预标签与LRE三关系名称统一；可保留数据，只减轻网格并控制数值字号，若版心允许略增加热图行距。",
+      "priority": "P2精修",
+      "confirmed_semantic_issue": false,
+      "evidence": "docs/thesis/thesis-manuscript.md:1376起、表5-7与当前图数值匹配。1401图注写左图/右图但PNG为上下布局；正文5.4.5已明确参数失配不是现实负荷干预响应，无物理因果夸大。未机械要求已明确不保留逐种子离散度的结果补误差棒。",
+      "aesthetic_score": 8.5,
+      "figure_type": "结果图",
+      "estimated_svg_font_range_pt_at_docx_width": {
+        "minimum": 6.47,
+        "maximum": 8.56,
+        "method": "现稿SVG字号乘以14.2 cm对应的402.52 pt与SVG原始幅宽之比。包括图注小字及指数；并非每幅图的主文字都等于最小值。"
+      }
+    }
+  ]
+}

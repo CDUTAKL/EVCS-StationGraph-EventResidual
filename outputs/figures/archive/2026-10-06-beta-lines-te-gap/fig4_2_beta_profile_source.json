@@ -1,0 +1,61 @@
+{
+  "backend": "Python / matplotlib",
+  "archetype": "quantitative grid",
+  "script": "scripts/figures/batch25_beta_te_results_20261006.py",
+  "sources": [
+    {
+      "path": "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2024/model.pt",
+      "sha256": "c8a25c1d96ecc74429b7288b9512b9c3c2d30f5cf6b7af5f8acea1fb3ee7c9a5"
+    },
+    {
+      "path": "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2025/model.pt",
+      "sha256": "59e023a2d981167af4f7177f1513763d5c547bb3952ddb1ac83c184c4bf2df60"
+    },
+    {
+      "path": "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2026/model.pt",
+      "sha256": "86cc888c323f02cf17f7a46a9dd1fead934d5c170d41d865ddd4dfb675ddb814"
+    }
+  ],
+  "outputs": {
+    "png": "5cdf4d21b2ba984693bc16b6f2066bfdbbdb7964dae76104794a4a0c73141ad9",
+    "svg": "dc0f5ae5d19237f8947a7fa8eb4008290d5ce8c900d9268d3ddcad887968c853",
+    "pdf": "4840dfa4e0a104ae9e865fe4b14be5fb7d6732d793160bb2546f8cf1d6267835",
+    "tiff": "ede8e67cf47c4ea373a1528d4823cd40358748233144c7a77da0e6faf78d714a"
+  },
+  "claim": "第一层侧重行为共现，第二层的三关系分配更接近。",
+  "replicates": [
+    2024,
+    2025,
+    2026
+  ],
+  "n": 3,
+  "center": "mean",
+  "spread": "sample SD (ddof=1)",
+  "observations_plotted": 18,
+  "means": [
+    [
+      0.34334733088811237,
+      0.40223904450734455,
+      0.2544136345386505
+    ],
+    [
+      0.35250861446062726,
+      0.32216761509577435,
+      0.3253237803777059
+    ]
+  ],
+  "sd": [
+    [
+      0.004734652669492649,
+      0.003472194913331645,
+      0.0035967993691974716
+    ],
+    [
+      0.005512289756327706,
+      0.025190996384295325,
+      0.02069504459278652
+    ]
+  ],
+  "exclusions": [],
+  "interpretation": "observational parameter profile; not causal effects"
+}

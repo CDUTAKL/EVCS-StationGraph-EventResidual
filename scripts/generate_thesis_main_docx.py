@@ -53,12 +53,14 @@ def validate_final_figure_sequence(source_text: str) -> None:
     """Reject missing, duplicated, or out-of-order manuscript figure numbers."""
     captions = [(int(ch), int(num)) for ch, num in re.findall(r"\*\*图(\d+)-(\d+)\b", source_text)]
     image_paths = re.findall(r"!\[[^]]*\]\(([^)]+)\)", source_text)
-    if len(captions) != 43 or len(image_paths) != 43:
+    chapter_counts = ((1, 2), (2, 13), (3, 16), (4, 6), (5, 9))
+    figure_count = sum(count for _, count in chapter_counts)
+    if len(captions) != figure_count or len(image_paths) != figure_count:
         raise RuntimeError(
-            f"Expected 43 figures and captions, found {len(image_paths)} images and {len(captions)} captions"
+            f"Expected {figure_count} figures and captions, found {len(image_paths)} images and {len(captions)} captions"
         )
     expected = []
-    for chapter, count in ((1, 2), (2, 12), (3, 14), (4, 6), (5, 9)):
+    for chapter, count in chapter_counts:
         expected.extend((chapter, number) for number in range(1, count + 1))
     if captions != expected:
         raise RuntimeError("Figure captions are not in strict chapter order from 图1-1 to 图5-9")

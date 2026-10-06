@@ -1,0 +1,35 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-06",
+  "source_commit": "5dac84e",
+  "generated_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-efd06fef-ab27-4c16-b3cf-ef7339c139b8.png",
+  "output": "outputs/figures/fig2_13_jpl_validation_protocol.png",
+  "sha256": "f3b07469705da2a1e63db6a94ab0f47d2a860c89419a10a3909116e3dc3d2183",
+  "size_px": [
+    1672,
+    941
+  ],
+  "prompt_record": "docs/thesis/JPL-protocol-lifangning-layout-study-20261006.md",
+  "generation_mode": "edit",
+  "previous_source_record": "outputs/figures/archive/2026-10-06-jpl-protocol-reference-redraw/fig2_13_jpl_validation_protocol_source.json",
+  "layout_reference": {
+    "pdf": "/Users/xushuyuan/Downloads/基于深度学习组合模型的电动汽车换电站负荷预测研究_李芳凝.pdf",
+    "sha256": "af597281d085a079bd0265bf33e56a3501d167f337283a8e716a333c2c0dc03e",
+    "figures": [
+      "3-1",
+      "3-3",
+      "4-3"
+    ],
+    "pdf_pages_1based": [
+      46,
+      53,
+      75
+    ],
+    "purpose": "layout hierarchy, aligned branches, nested groups and iteration routing; user palette retained"
+  },
+  "scientific_inputs": [
+    "configs/data/SG-DATA-007-jpl-eventtime-v1.json",
+    "configs/experiments/SG-EXP-028-jpl-independent-site.json",
+    "docs/thesis/JPL-validation-freeze-20261005.json"
+  ]
+}

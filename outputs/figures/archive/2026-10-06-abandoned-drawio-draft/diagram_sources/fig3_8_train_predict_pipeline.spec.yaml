@@ -1,0 +1,350 @@
+meta:
+  profile: "academic-paper"
+  figureType: "workflow"
+  source: "edited"
+  theme: "academic-color"
+  layout: "horizontal"
+  canvas: "1000x720"
+  routing: "orthogonal"
+  title: "训练—预测—评价流程"
+  description: "保持训练、验证与测试分工，并明确同一运行内的早停反馈。"
+  legend: "实线表示训练和推理；虚线表示验证或冻结检查点信息。"
+  font:
+    primary: "Times New Roman"
+    cjk: "Songti SC"
+    formula: "Times New Roman"
+  replication:
+    colorMode: preserve-original
+    background: "#FFFFFF"
+    palette:
+      - hex: "#E8EFF3"
+        role: "主体流程节点填充"
+        appliesTo: nodes
+        confidence: high
+      - hex: "#F2EAE3"
+        role: "数据与结果节点填充"
+        appliesTo: nodes
+        confidence: high
+      - hex: "#FBF5E9"
+        role: "判断节点填充"
+        appliesTo: nodes
+        confidence: high
+      - hex: "#56798E"
+        role: "主流程连线"
+        appliesTo: edges
+        confidence: high
+    confidenceNotes:
+      - "保留论文蓝灰、暖灰色彩语义；重画节点、箭头与文字，不沿用旧图的像素几何。"
+
+nodes:
+  - id: title
+    label: "训练、检查点选择与测试评价流程"
+    type: text
+    bounds: { x: 40, y: 16, width: 920, height: 36 }
+    style:
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: left
+      verticalAlign: middle
+  - id: split
+    label: "固定时间切分\n合法预测起点"
+    type: process
+    bounds: { x: 390, y: 66, width: 220, height: 62 }
+    style:
+      fillColor: "#F3F5F6"
+      strokeColor: "#BAC2C7"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: train_set
+    label: "训练集\n83,103"
+    type: process
+    bounds: { x: 45, y: 168, width: 245, height: 70 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: val_set
+    label: "验证集\n17,807"
+    type: process
+    bounds: { x: 377, y: 168, width: 245, height: 70 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#A08B7D"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: test_set
+    label: "测试集\n17,809"
+    type: process
+    bounds: { x: 710, y: 168, width: 245, height: 70 }
+    style:
+      fillColor: "#F3F5F6"
+      strokeColor: "#BAC2C7"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: scale
+    label: "仅训练段拟合归一化参数\n相同变换用于验证和测试"
+    type: process
+    bounds: { x: 45, y: 278, width: 245, height: 76 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: windows
+    label: "96步历史 → 4步目标\n滑动预测窗口"
+    type: process
+    bounds: { x: 45, y: 390, width: 245, height: 76 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: epoch
+    label: "每个种子训练一轮\n2024 · 2025 · 2026"
+    type: process
+    bounds: { x: 365, y: 282, width: 235, height: 76 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: val_mae
+    label: "验证 MAE\n更新最优检查点与耐心计数"
+    type: process
+    bounds: { x: 365, y: 392, width: 235, height: 76 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#A08B7D"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: stop
+    label: "连续8轮无改进\n或达到60轮?"
+    type: decision
+    bounds: { x: 385, y: 500, width: 195, height: 100 }
+    style:
+      fillColor: "#FBF5E9"
+      strokeColor: "#B39A61"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: best
+    label: "恢复该种子\n验证 MAE 最优权重"
+    type: terminal
+    bounds: { x: 710, y: 528, width: 245, height: 70 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#A08B7D"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: infer
+    label: "测试集前向推理\n直接输出未来4步"
+    type: process
+    bounds: { x: 710, y: 285, width: 245, height: 76 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: eval
+    label: "按统一预测键评价\n全局 · 分层 · 节点 · 步长"
+    type: terminal
+    bounds: { x: 710, y: 402, width: 245, height: 80 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#A08B7D"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: scope
+    label: "“否”回到同一训练运行的下一轮；验证用于早停与选点，测试只作最终评价。"
+    type: text
+    bounds: { x: 48, y: 670, width: 910, height: 28 }
+    style:
+      fontColor: "#68757D"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: left
+      verticalAlign: middle
+
+edges:
+  - from: split
+    to: train_set
+    type: primary
+    waypoints:
+      - x: 500
+        y: 146
+      - x: 168
+        y: 146
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: split
+    to: val_set
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: split
+    to: test_set
+    type: primary
+    waypoints:
+      - x: 500
+        y: 146
+      - x: 832
+        y: 146
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: train_set
+    to: scale
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: scale
+    to: windows
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: windows
+    to: epoch
+    type: primary
+    waypoints:
+      - x: 325
+        y: 428
+      - x: 325
+        y: 320
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: val_set
+    to: val_mae
+    type: data
+    waypoints:
+      - x: 655
+        y: 203
+      - x: 655
+        y: 430
+    style:
+      strokeColor: "#A08B7D"
+      strokeWidth: 2
+      dashed: true
+      dashPattern: "7 4"
+  - from: epoch
+    to: val_mae
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: val_mae
+    to: stop
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: stop
+    to: epoch
+    type: primary
+    label: "否：下一轮"
+    labelOffset:
+      x: -10
+      y: -14
+    waypoints:
+      - x: 335
+        y: 550
+      - x: 335
+        y: 320
+    style:
+      strokeColor: "#2C5F8A"
+      strokeWidth: 2
+  - from: stop
+    to: best
+    type: primary
+    label: "是：停止"
+    labelOffset:
+      x: 0
+      y: -14
+    waypoints:
+      - x: 635
+        y: 550
+    style:
+      strokeColor: "#A08B7D"
+      strokeWidth: 2
+  - from: test_set
+    to: infer
+    type: data
+    style:
+      strokeColor: "#858D92"
+      strokeWidth: 2
+      dashed: true
+      dashPattern: "7 4"
+  - from: best
+    to: infer
+    type: data
+    waypoints:
+      - x: 975
+        y: 563
+      - x: 975
+        y: 323
+    style:
+      strokeColor: "#A08B7D"
+      strokeWidth: 2
+      dashed: true
+      dashPattern: "7 4"
+  - from: infer
+    to: eval
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2

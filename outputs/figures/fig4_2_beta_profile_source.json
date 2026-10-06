@@ -1,0 +1,75 @@
+{
+  "backend": "Python / matplotlib",
+  "archetype": "quantitative grid",
+  "script": "scripts/figures/batch25_beta_te_results_20261006.py",
+  "sources": [
+    {
+      "path": "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2024/model.pt",
+      "sha256": "c8a25c1d96ecc74429b7288b9512b9c3c2d30f5cf6b7af5f8acea1fb3ee7c9a5"
+    },
+    {
+      "path": "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2025/model.pt",
+      "sha256": "59e023a2d981167af4f7177f1513763d5c547bb3952ddb1ac83c184c4bf2df60"
+    },
+    {
+      "path": "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2026/model.pt",
+      "sha256": "86cc888c323f02cf17f7a46a9dd1fead934d5c170d41d865ddd4dfb675ddb814"
+    }
+  ],
+  "outputs": {
+    "png": "55e284fcfb9db5ffdd15b6a2aa4763aa48cc5c24a4d0f980a874773a7560eb23",
+    "svg": "07555a91848e32ed6f636b92fefd3f1ab3a50f70fd5815b80a72a01cceacded4",
+    "pdf": "12a7228c6acbf65f1a602e88c8b984937c07e85765a96b801a1ef463b03346c2",
+    "tiff": "248c79ccb3daaf65fe6bd9c3f67b7b1a371c5d97bc109b2b9a64bbba279124d2"
+  },
+  "claim": "第一层侧重行为共现，第二层的三关系分配更接近。",
+  "replicates": [
+    2024,
+    2025,
+    2026
+  ],
+  "n": 3,
+  "center": "mean",
+  "spread": "sample SD (ddof=1)",
+  "observations_plotted": 18,
+  "means": [
+    [
+      0.34334733088811237,
+      0.40223904450734455,
+      0.2544136345386505
+    ],
+    [
+      0.35250861446062726,
+      0.32216761509577435,
+      0.3253237803777059
+    ]
+  ],
+  "sd": [
+    [
+      0.004734652669492649,
+      0.003472194913331645,
+      0.0035967993691974716
+    ],
+    [
+      0.005512289756327706,
+      0.025190996384295325,
+      0.02069504459278652
+    ]
+  ],
+  "layout": "layer mean profiles connected across fixed relation categories; solid blue / dashed warm gray",
+  "exclusions": [],
+  "interpretation": "observational parameter profile; not causal effects",
+  "pre_1200dpi_sha256": "7b2389218d0cf4282eefd4e52adbefcb19a6353ed8de0caed7b819da8dec5935",
+  "delivery": {
+    "size_px": [
+      6709,
+      3360
+    ],
+    "metadata_dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "effective_dpi_at_word_size": 1200.0605633802818,
+    "method": "rasterized from companion SVG at target dimensions"
+  }
+}

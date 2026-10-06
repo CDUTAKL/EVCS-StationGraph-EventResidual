@@ -1,0 +1,29 @@
+{
+  "tool": "image_gen.imagegen",
+  "generated_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-655fd4a2-0130-481b-85c9-9f3199d35356.png",
+  "output": "outputs/figures/fig4_1_three_layer_framework.png",
+  "sha256": "1b8dfd4e09256e03ebb37e04ea81b665a8ad7e6650072dd4d4800c61984d2aa9",
+  "size_px": [
+    1672,
+    941
+  ],
+  "source_commit": "5dac84e",
+  "date": "2026-10-06",
+  "prompt_record": "docs/thesis/seven-figure-refresh-20261006-imagegen.json",
+  "generation_mode": "edit",
+  "reference_image": "outputs/figures/archive/2026-10-06-targeted-seven-figure-refresh/fig4_1_three_layer_framework.png",
+  "pre_1200dpi_sha256": "1b8dfd4e09256e03ebb37e04ea81b665a8ad7e6650072dd4d4800c61984d2aa9",
+  "outputs": {},
+  "delivery": {
+    "size_px": [
+      6709,
+      3776
+    ],
+    "metadata_dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "effective_dpi_at_word_size": 1200.0605633802818,
+    "method": "Lanczos interpolation from raster-only source; no new source detail"
+  }
+}

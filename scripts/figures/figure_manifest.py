@@ -1,4 +1,4 @@
-"""论文图 provenance manifest 生成与校验（43 图方案，2026-09-06）。
+"""论文图 provenance manifest 生成与校验（46 图方案，2026-10-06）。
 
 为主文图建立唯一可追溯入口：图 → 生成脚本(SHA)（若为历史PNG示意图则明确标记缺失）
 → 输入工件(SHA) → 输出 SHA → git commit → 数据集 SHA。
@@ -36,7 +36,7 @@ MAE_5_MODELS_INPUTS = [
     ("glob", "outputs/experiments/SG-EXP-010/*/seed-*/metrics.json"),
 ]
 
-# 图 → 最终生成脚本。43 幅主文图中，9 幅纯方法示意图不依赖实验工件；
+# 图 → 最终生成脚本。方法示意图登记生成提示词或来源核验脚本；
 # fig5_1 虽为衔接示意图，但包含 TE/PCMCI+ 计数，故纳入本 manifest。
 FINAL_SCRIPTS = {
     # 三幅ImageGen示意图与一幅结果图风格图已在2026-09-11替换；
@@ -47,15 +47,16 @@ FINAL_SCRIPTS = {
     "fig2_2_node_coverage": "batch10_fig2_2_coverage.py",
     "fig2_3_load_heatmap": "batch_priority_results.py",
     "fig2_4_autocorrelation": "batch4_redraw.py",
-    "fig2_5_weekly_curves": "batch_priority_results.py",
+    "fig2_5_weekly_curves": "batch24_result_figures_20261006.py",
     "fig2_6_load_distribution": "batch4_redraw.py",
-    "fig2_7_event_score_flow": None,
+    "fig2_7_event_score_flow": "imagegen_priority_registry.py",
     "fig2_8_event_hourly": "batch_priority_results.py",
     "fig2_10_dual_window_definition": "imagegen_priority_registry.py",
     "fig2_9_event_component_composition": "batch11_chapter2_extra.py",
     "fig2_11_feature_correlation": "batch11_chapter2_extra.py",
     "fig2_12_weekday_hour_heatmap": "batch_priority_results.py",
-    "fig3_5_lre_matrices": "batch5_restyle.py",
+    "fig2_13_jpl_validation_protocol": "imagegen_priority_registry.py",
+    "fig3_5_lre_matrices": "batch24_result_figures_20261006.py",
     "fig3_1_mrggcn_architecture": "imagegen_priority_registry.py",
     "fig3_2_relation_propagation_unit": "imagegen_priority_registry.py",
     "fig3_3_temporal_skip_fusion": "imagegen_priority_registry.py",
@@ -72,13 +73,13 @@ FINAL_SCRIPTS = {
     "fig3_15_jpl_mae_primary": "batch23_jpl_figs.py",
     "fig3_16_jpl_stratified_mae": "batch23_jpl_figs.py",
     "fig4_1_three_layer_framework": "imagegen_priority_registry.py",
-    "fig4_2_beta_profile": "batch19_41fig_ch4.py",
+    "fig4_2_beta_profile": "batch25_beta_te_results_20261006.py",
     "fig4_3_intervention": "batch5_restyle.py",
     "fig4_4_four_cell": "redraw_fig4_4_result_style_20260911.py",
     "fig4_5_residual_distribution": "batch_priority_results.py",
     "fig4_6_error_vs_event_intensity": "refine_requested_20260920.py",
-    "fig5_1_te_pcmci_flow": "batch20_fig5_1_compact_flow.py",
-    "fig5_2_transfer_entropy": "batch5_restyle.py",
+    "fig5_1_te_pcmci_flow": "imagegen_priority_registry.py",
+    "fig5_2_transfer_entropy": "batch25_beta_te_results_20261006.py",
     "fig5_3_asymmetry": "batch6_te_coverage_enhance.py",
     "fig5_4_te_vs_relations": "batch13_chapter4_5_extra.py",
     "fig5_5_pcmci_validation_network": "refine_requested_20260920.py",
@@ -90,7 +91,9 @@ FINAL_SCRIPTS = {
 
 # 仅保留PNG的示意图：其余正式数据图登记SVG与PNG两种格式。
 PNG_ONLY = {
+    "fig5_1_te_pcmci_flow",
     "fig2_1_data_reconstruction",
+    "fig2_13_jpl_validation_protocol",
     "fig3_6_gate_residual_detail",
     "fig3_7_cross_layer_detail",
     "fig4_1_three_layer_framework",
@@ -114,19 +117,48 @@ PNG_ONLY = {
 # --check-repository 的输入登记完整性检查。
 INPUTS_BY_FIGURE = {
     "fig1_1_research_gap_map": [],
-    "fig1_2_roadmap": [],
-    "fig2_1_data_reconstruction": [],
+    "fig1_2_roadmap": [
+        Path("docs/thesis/JPL-imagegen-diagrams-20261006.md"),
+        Path("docs/thesis/JPL-imagegen-style-redraw-20261006.md"),
+        Path("docs/thesis/roadmap-evaluation-grid-polish-20261006.md"),
+        Path("docs/thesis/roadmap-four-stage-redesign-20261006.md"),
+        Path("outputs/figures/fig1_2_roadmap_source.json"),
+    ],
+    "fig2_1_data_reconstruction": [
+        Path("docs/thesis/flowchart-annotation-cleanup-20261006.md"),
+        Path("outputs/figures/fig2_1_data_reconstruction_source.json"),
+    ],
     "fig2_2_node_coverage": [Path("data/processed/SG-DATA-002-node-coverage-stability.csv")],
     "fig2_3_load_heatmap": [BUNDLE_PATH],
     "fig2_4_autocorrelation": [BUNDLE_PATH],
-    "fig2_5_weekly_curves": [BUNDLE_PATH],
+    "fig2_5_weekly_curves": [BUNDLE_PATH,
+        Path("outputs/figures/fig2_5_weekly_curves_source.json"),
+        Path("outputs/figures/fig2_5_weekly_curves_source.csv")],
     "fig2_6_load_distribution": [BUNDLE_PATH],
-    "fig2_7_event_score_flow": [],
+    "fig2_7_event_score_flow": [
+        Path("docs/thesis/seven-figure-refresh-20261006-imagegen.json"),
+        Path("outputs/figures/fig2_7_event_score_flow_source.json"),
+    ],
     "fig2_8_event_hourly": [BUNDLE_PATH],
-    "fig2_10_dual_window_definition": [],
+    "fig2_10_dual_window_definition": [
+        Path("docs/thesis/flowchart-annotation-cleanup-20261006.md"),
+        Path("outputs/figures/fig2_10_dual_window_definition_source.json"),
+    ],
     "fig2_9_event_component_composition": [BUNDLE_PATH],
     "fig2_11_feature_correlation": [BUNDLE_PATH],
     "fig2_12_weekday_hour_heatmap": [BUNDLE_PATH],
+    "fig2_13_jpl_validation_protocol": [
+        Path("docs/thesis/JPL-imagegen-diagrams-20261006.md"),
+        Path("docs/thesis/JPL-imagegen-style-redraw-20261006.md"),
+        Path("docs/thesis/JPL-protocol-lifangning-layout-study-20261006.md"),
+        Path("docs/thesis/flowchart-annotation-cleanup-20261006.md"),
+        Path("outputs/figures/fig2_13_jpl_validation_protocol_source.json"),
+        Path("docs/thesis/roadmap-evaluation-grid-polish-20261006.md"),
+        Path("configs/data/SG-DATA-007-jpl-eventtime-v1.json"),
+        Path("configs/experiments/SG-EXP-028-jpl-independent-site.json"),
+        Path("docs/thesis/JPL-validation-freeze-20261005.json"),
+        Path("docs/thesis/experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md"),
+    ],
     "fig3_9_model_mae_comparison": [
         Path("outputs/analysis/traditional_baselines/formal_baselines_locked.json"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-002/*/seed-*/metrics.json"),
@@ -142,8 +174,16 @@ INPUTS_BY_FIGURE = {
     "fig3_2_relation_propagation_unit": [],
     "fig3_3_temporal_skip_fusion": [],
     "fig3_4_lre_construction": [],
-    "fig3_8_train_predict_pipeline": [],
-    "fig3_5_lre_matrices": [Path("outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz")],
+    "fig3_8_train_predict_pipeline": [
+        Path("docs/thesis/seven-figure-refresh-20261006-imagegen.json"),
+        Path("outputs/figures/fig3_8_train_predict_pipeline_source.json"),
+    ],
+    "fig3_5_lre_matrices": [BUNDLE_PATH,
+        Path("outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz"),
+        Path("outputs/experiments/SG-EXP-004/20260731-102456/manifest.json"),
+        Path("outputs/figures/fig3_5_lre_matrices_alignment_audit.json"),
+        Path("outputs/figures/fig3_5_lre_matrices_source.json"),
+        Path("outputs/figures/fig3_5_lre_matrices_source.csv")],
     "fig3_10_mae_by_horizon": MAE_5_MODELS_INPUTS,
     "fig3_11_bootstrap_difference": [Path("outputs/analysis/bootstrap_significance.json")],
     "fig3_12_mae_by_window": MAE_5_MODELS_INPUTS,
@@ -162,12 +202,18 @@ INPUTS_BY_FIGURE = {
         Path("outputs/SG-EXP-028-analysis/model_summary.csv"),
     ],
     "fig3_6_gate_residual_detail": [],
-    "fig3_7_cross_layer_detail": [],
-    "fig4_1_three_layer_framework": [],
+    "fig3_7_cross_layer_detail": [
+        Path("docs/thesis/seven-figure-refresh-20261006-imagegen.json"),
+        Path("outputs/figures/fig3_7_cross_layer_detail_source.json")],
+    "fig4_1_three_layer_framework": [
+        Path("docs/thesis/seven-figure-refresh-20261006-imagegen.json"),
+        Path("outputs/figures/fig4_1_three_layer_framework_source.json")],
     "fig4_2_beta_profile": [
         Path("outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2024/model.pt"),
         Path("outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2025/model.pt"),
         Path("outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2026/model.pt"),
+        Path("outputs/figures/fig4_2_beta_profile_source.csv"),
+        Path("outputs/figures/fig4_2_beta_profile_source.json"),
     ],
     "fig4_3_intervention": [Path("outputs/analysis/gate_intervention/intervention_summary.json")],
     "fig4_4_four_cell": [
@@ -181,10 +227,15 @@ INPUTS_BY_FIGURE = {
     ],
     "fig4_6_error_vs_event_intensity": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/predictions.csv.gz")],
     "fig5_1_te_pcmci_flow": [
+        Path("docs/thesis/seven-figure-refresh-20261006-imagegen.json"),
+        Path("outputs/figures/fig5_1_te_pcmci_flow_source.json"),
         Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"),
         Path("outputs/analysis/pcmci/pcmci_summary.json"),
     ],
-    "fig5_2_transfer_entropy": [Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json")],
+    "fig5_2_transfer_entropy": [
+        Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"),
+        Path("outputs/figures/fig5_2_transfer_entropy_source.csv"),
+        Path("outputs/figures/fig5_2_transfer_entropy_source.json")],
     "fig5_3_asymmetry": [Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json")],
     "fig5_4_te_vs_relations": [
         Path("outputs/analysis/transfer_entropy/transfer_entropy_summary.json"),

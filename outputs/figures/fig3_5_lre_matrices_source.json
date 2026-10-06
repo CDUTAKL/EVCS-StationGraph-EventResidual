@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-06",
+  "tool": "Python/matplotlib",
+  "generator": "scripts/figures/batch24_result_figures_20261006.py",
+  "source_commit": "5dac84e",
+  "inputs": [
+    "data/processed/SG-DATA-005-primary-tensor.npz",
+    "outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz"
+  ],
+  "source_data": "outputs/figures/fig3_5_lre_matrices_source.csv",
+  "note": "Three unchanged 10-by-10 frozen relation matrices; full node IDs and original ordering; one linear scale [0,max(all matrices)]. No clipping, masking, normalization, resampling or exclusion.",
+  "size_px": [
+    8546,
+    2814
+  ],
+  "exports": {
+    "png": "5c254a9d412909f03fcbf9ea6a7c091cfef3e5c318aff8595da8aafa7d231669",
+    "svg": "40ba8091801ecd3ad47e6eb55644c29f40805611284985502f79e812906b571b",
+    "pdf": "727b50ec7d1fc9549f96c139534f32e2d6f32e0f0aa083c8043a26c6b29d9a52",
+    "tiff": "de47a653c4704cbd8c70e6dc452c9e037df1ceac6707f189d55cae4850977a06"
+  },
+  "alignment_audit": "outputs/figures/fig3_5_lre_matrices_alignment_audit.json",
+  "review_record": "docs/thesis/fig3-5-node-alignment-review-20261006.md",
+  "label_layout": "Full source node IDs in fixed-width type; vertical centered column labels; vertically centered row labels",
+  "pre_1200dpi_sha256": "5c254a9d412909f03fcbf9ea6a7c091cfef3e5c318aff8595da8aafa7d231669",
+  "outputs": {},
+  "delivery": {
+    "size_px": [
+      8546,
+      2814
+    ],
+    "metadata_dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "effective_dpi_at_word_size": 1528.6507042253522,
+    "method": "native pixels; added 1200 dpi metadata"
+  }
+}

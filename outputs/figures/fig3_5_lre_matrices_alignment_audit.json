@@ -1,0 +1,349 @@
+{
+  "node_order": [
+    "CA-303",
+    "CA-304",
+    "CA-305",
+    "CA-307",
+    "CA-311",
+    "CA-315",
+    "CA-317",
+    "CA-321",
+    "CA-327",
+    "CA-489"
+  ],
+  "training_dataset_sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4",
+  "frozen_source_match": true,
+  "identical_panel_geometry": true,
+  "label_checks": [
+    {
+      "matrix": "load",
+      "node": "CA-303",
+      "index": 0,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "load",
+      "node": "CA-304",
+      "index": 1,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "load",
+      "node": "CA-305",
+      "index": 2,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "load",
+      "node": "CA-307",
+      "index": 3,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "load",
+      "node": "CA-311",
+      "index": 4,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "load",
+      "node": "CA-315",
+      "index": 5,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "load",
+      "node": "CA-317",
+      "index": 6,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "load",
+      "node": "CA-321",
+      "index": 7,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "load",
+      "node": "CA-327",
+      "index": 8,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "load",
+      "node": "CA-489",
+      "index": 9,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "event",
+      "node": "CA-303",
+      "index": 0,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "event",
+      "node": "CA-304",
+      "index": 1,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "event",
+      "node": "CA-305",
+      "index": 2,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "event",
+      "node": "CA-307",
+      "index": 3,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "event",
+      "node": "CA-311",
+      "index": 4,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "event",
+      "node": "CA-315",
+      "index": 5,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "event",
+      "node": "CA-317",
+      "index": 6,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "event",
+      "node": "CA-321",
+      "index": 7,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "event",
+      "node": "CA-327",
+      "index": 8,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "event",
+      "node": "CA-489",
+      "index": 9,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "pattern",
+      "node": "CA-303",
+      "index": 0,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "pattern",
+      "node": "CA-304",
+      "index": 1,
+      "column_label_error_px": 5.684341886080802e-14,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "pattern",
+      "node": "CA-305",
+      "index": 2,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "pattern",
+      "node": "CA-307",
+      "index": 3,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "pattern",
+      "node": "CA-311",
+      "index": 4,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "pattern",
+      "node": "CA-315",
+      "index": 5,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "pattern",
+      "node": "CA-317",
+      "index": 6,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "pattern",
+      "node": "CA-321",
+      "index": 7,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "pattern",
+      "node": "CA-327",
+      "index": 8,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    },
+    {
+      "matrix": "pattern",
+      "node": "CA-489",
+      "index": 9,
+      "column_label_error_px": 0.0,
+      "row_label_error_px": 0.0
+    }
+  ],
+  "exported_svg_checks": [
+    {
+      "panel": "axes_1",
+      "checks": {
+        "xtick_": {
+          "labels": [
+            "CA-303",
+            "CA-304",
+            "CA-305",
+            "CA-307",
+            "CA-311",
+            "CA-315",
+            "CA-317",
+            "CA-321",
+            "CA-327",
+            "CA-489"
+          ],
+          "uniform_tick_spacing": true,
+          "consistent_text_offset": true,
+          "shared_label_baseline": true
+        },
+        "ytick_": {
+          "labels": [
+            "CA-303",
+            "CA-304",
+            "CA-305",
+            "CA-307",
+            "CA-311",
+            "CA-315",
+            "CA-317",
+            "CA-321",
+            "CA-327",
+            "CA-489"
+          ],
+          "uniform_tick_spacing": true,
+          "consistent_text_offset": true,
+          "shared_label_baseline": true
+        }
+      }
+    },
+    {
+      "panel": "axes_2",
+      "checks": {
+        "xtick_": {
+          "labels": [
+            "CA-303",
+            "CA-304",
+            "CA-305",
+            "CA-307",
+            "CA-311",
+            "CA-315",
+            "CA-317",
+            "CA-321",
+            "CA-327",
+            "CA-489"
+          ],
+          "uniform_tick_spacing": true,
+          "consistent_text_offset": true,
+          "shared_label_baseline": true
+        },
+        "ytick_": {
+          "labels": [
+            "CA-303",
+            "CA-304",
+            "CA-305",
+            "CA-307",
+            "CA-311",
+            "CA-315",
+            "CA-317",
+            "CA-321",
+            "CA-327",
+            "CA-489"
+          ],
+          "uniform_tick_spacing": true,
+          "consistent_text_offset": true,
+          "shared_label_baseline": true
+        }
+      }
+    },
+    {
+      "panel": "axes_3",
+      "checks": {
+        "xtick_": {
+          "labels": [
+            "CA-303",
+            "CA-304",
+            "CA-305",
+            "CA-307",
+            "CA-311",
+            "CA-315",
+            "CA-317",
+            "CA-321",
+            "CA-327",
+            "CA-489"
+          ],
+          "uniform_tick_spacing": true,
+          "consistent_text_offset": true,
+          "shared_label_baseline": true
+        },
+        "ytick_": {
+          "labels": [
+            "CA-303",
+            "CA-304",
+            "CA-305",
+            "CA-307",
+            "CA-311",
+            "CA-315",
+            "CA-317",
+            "CA-321",
+            "CA-327",
+            "CA-489"
+          ],
+          "uniform_tick_spacing": true,
+          "consistent_text_offset": true,
+          "shared_label_baseline": true
+        }
+      }
+    }
+  ],
+  "svg_export_label_checks_passed": true
+}

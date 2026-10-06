@@ -1,0 +1,192 @@
+meta:
+  profile: "academic-paper"
+  figureType: "workflow"
+  source: "edited"
+  theme: "academic-color"
+  layout: "horizontal"
+  canvas: "1000x710"
+  routing: "orthogonal"
+  title: "TE候选与PCMCI+条件独立核验流程"
+  description: "两个检验共享完整训练序列，输出按有向节点对汇总并比较。"
+  legend: "主线表示两项检验共享训练数据；图中的44/76表示同序列上的方法一致性。"
+  font:
+    primary: "Times New Roman"
+    cjk: "Songti SC"
+    formula: "Times New Roman"
+  replication:
+    colorMode: preserve-original
+    background: "#FFFFFF"
+    palette:
+      - hex: "#E8EFF3"
+        role: "主体流程节点填充"
+        appliesTo: nodes
+        confidence: high
+      - hex: "#F2EAE3"
+        role: "数据与结果节点填充"
+        appliesTo: nodes
+        confidence: high
+      - hex: "#FBF5E9"
+        role: "判断节点填充"
+        appliesTo: nodes
+        confidence: high
+      - hex: "#56798E"
+        role: "主流程连线"
+        appliesTo: edges
+        confidence: high
+    confidenceNotes:
+      - "保留论文蓝灰、暖灰色彩语义；重画节点、箭头与文字，不沿用旧图的像素几何。"
+
+nodes:
+  - id: title
+    label: "TE候选生成与PCMCI+条件独立核验"
+    type: text
+    bounds: { x: 40, y: 18, width: 920, height: 34 }
+    style:
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: left
+      verticalAlign: middle
+  - id: input
+    label: "同一训练段\n10节点负荷序列"
+    type: terminal
+    bounds: { x: 35, y: 230, width: 205, height: 95 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#A08B7D"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: te
+    label: "传递熵（TE）筛选\n8分位分箱 · 滞后1/2/4\n100次循环平移置换"
+    type: process
+    bounds: { x: 310, y: 105, width: 280, height: 105 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: pcmci
+    label: "PCMCI+ 条件独立检验\n完整训练序列输入\nParCorr · 最大滞后4\n名义 α = 0.05"
+    type: process
+    bounds: { x: 310, y: 355, width: 280, height: 115 }
+    style:
+      fillColor: "#F3F5F6"
+      strokeColor: "#BAC2C7"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: te_out
+    label: "76 / 90\n名义TE候选有向对"
+    type: terminal
+    bounds: { x: 675, y: 105, width: 270, height: 90 }
+    style:
+      fillColor: "#F2EAE3"
+      strokeColor: "#A08B7D"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: pcmci_out
+    label: "80 条名义显著滞后\n再按有向节点对去重"
+    type: terminal
+    bounds: { x: 675, y: 365, width: 270, height: 90 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: compare
+    label: "在全部90个节点间有向对上逐对对照\n44/76 同时达阈值 · 32 未达PCMCI+阈值\n另有6个仅PCMCI+达到阈值的节点间对"
+    type: process
+    bounds: { x: 280, y: 525, width: 600, height: 105 }
+    style:
+      fillColor: "#E8EFF3"
+      strokeColor: "#56798E"
+      fontColor: "#303C44"
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: caveat
+    label: "同一训练序列上的方法交叉核验，不是独立数据复现；未作多重比较校正，不解释为物理因果。"
+    type: text
+    bounds: { x: 42, y: 665, width: 915, height: 26 }
+    style:
+      fontColor: "#68757D"
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: left
+      verticalAlign: middle
+
+edges:
+  - from: input
+    to: te
+    type: primary
+    waypoints:
+      - x: 260
+        y: 275
+      - x: 260
+        y: 158
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: input
+    to: pcmci
+    type: primary
+    waypoints:
+      - x: 260
+        y: 275
+      - x: 260
+        y: 412
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: te
+    to: te_out
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: pcmci
+    to: pcmci_out
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: te_out
+    to: compare
+    type: primary
+    waypoints:
+      - x: 810
+        y: 230
+      - x: 810
+        y: 505
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2
+  - from: pcmci_out
+    to: compare
+    type: primary
+    style:
+      strokeColor: "#56798E"
+      strokeWidth: 2

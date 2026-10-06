@@ -1,0 +1,22 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-06",
+  "source_commit": "5dac84e",
+  "generated_path": "/Users/xushuyuan/.codex/generated_images/01a10a6b-4ba7-7f72-8036-ea5cf8ea9990/exec-7deebec7-b343-4c70-836b-0f7993f4b485.png",
+  "output": "outputs/figures/fig1_2_roadmap.png",
+  "sha256": "53e5200bc31cf9f30535185e3594b5af9402f14f83889fd0ea9beba6b098fccc",
+  "size_px": [
+    1671,
+    941
+  ],
+  "prompt_record": "docs/thesis/JPL-imagegen-style-redraw-20261006.md",
+  "generation_mode": "edit",
+  "inputs": [
+    "outputs/figures/archive/2026-10-06-jpl-imagegen-style-redraw/fig1_2_roadmap.png",
+    "outputs/figures/fig5_6_conformal_method.png"
+  ],
+  "previous_source_record": "outputs/figures/archive/2026-10-06-jpl-imagegen-style-redraw/fig1_2_roadmap_source.json",
+  "scientific_inputs": [
+    "outputs/figures/archive/2026-10-06-jpl-imagegen-update/fig1_2_roadmap.png"
+  ]
+}

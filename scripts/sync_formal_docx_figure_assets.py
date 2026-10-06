@@ -3,7 +3,7 @@
 
 The script writes only to the requested candidate path. It preserves the DOCX
 template, paragraph/style XML, captions, relationships, and image placement
-widths; only the 43 figure media payloads and their proportional drawing heights
+widths; only the manuscript figure media payloads and their proportional drawing heights
 are updated. A leading cover/logo drawing is retained untouched.
 """
 from __future__ import annotations
@@ -56,10 +56,10 @@ def source_figures(source: Path) -> tuple[list[Path], list[tuple[int, int]]]:
     text = source.read_text(encoding="utf-8")
     links = re.findall(r"!\[[^\]]*\]\(([^)]+)\)", text)
     captions = [(int(ch), int(num)) for ch, num in re.findall(r"\*\*图(\d+)-(\d+)\b", text)]
-    expected = [(ch, num) for ch, count in ((1, 2), (2, 12), (3, 14), (4, 6), (5, 9))
+    expected = [(ch, num) for ch, count in ((1, 2), (2, 13), (3, 16), (4, 6), (5, 9))
                 for num in range(1, count + 1)]
-    if len(links) != 43 or captions != expected:
-        raise ValueError(f"Expected 43 ordered figures/captions; got {len(links)} links and {len(captions)} captions")
+    if len(links) != len(expected) or captions != expected:
+        raise ValueError(f"Expected {len(expected)} ordered figures/captions; got {len(links)} links and {len(captions)} captions")
     paths = []
     for (chapter, number), link in zip(captions, links):
         path = (source.parent / link).resolve()
@@ -156,13 +156,13 @@ def main() -> None:
 
     with zipfile.ZipFile(input_path, "r") as zin:
         doc, refs = read_image_refs(zin)
-        if len(refs) != 44:
-            raise ValueError(f"Expected one cover mark plus 43 figure embeds; found {len(refs)}")
+        if len(refs) != len(figures) + 1:
+            raise ValueError(f"Expected one cover mark plus {len(figures)} figure embeds; found {len(refs)}")
         if refs[0]["target"].lower().endswith(".png"):
             raise ValueError("Expected the first document image to be the untouched non-figure cover mark")
         figure_refs = refs[1:]
         if any(not ref["target"].lower().endswith(".png") for ref in figure_refs):
-            raise ValueError("Expected all 43 manuscript figures to use PNG media parts")
+            raise ValueError("Expected all manuscript figures to use PNG media parts")
         targets = [ref["target"] for ref in figure_refs]
         if len(set(targets)) != len(targets):
             raise ValueError("A figure media part is reused; refusing ambiguous ordered replacement")

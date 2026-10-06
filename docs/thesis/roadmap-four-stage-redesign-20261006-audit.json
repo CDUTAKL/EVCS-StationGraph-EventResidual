@@ -1,0 +1,37 @@
+{
+  "date": "2026-10-06",
+  "tool": "built-in ImageGen",
+  "figure_count": 46,
+  "caption_counts_by_chapter": {
+    "1": 2,
+    "2": 13,
+    "3": 16,
+    "4": 6,
+    "5": 9
+  },
+  "ordered_hash_match": true,
+  "changed_figure_media_parts": [
+    "word/media/image8.png"
+  ],
+  "document_text_unchanged": true,
+  "all_native_equation_xml_unchanged": true,
+  "numbered_native_equations": 27,
+  "total_omml": 248,
+  "styles_relationships_and_other_nonmedia_parts_unchanged": true,
+  "primary_and_independent_visual_review": "accepted final native output exec-c4ed956f-d20d-4e6b-abb8-960d41c5405d.png",
+  "updated_figures": [
+    "fig1_2_roadmap"
+  ],
+  "manifest_repository_check": "passed",
+  "imagegen_registry_check": "passed",
+  "page_render_review": "not performed",
+  "archive": "outputs/figures/archive/2026-10-06-roadmap-four-stage-redesign",
+  "docx": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+  "docx_sha256": "90c1553c6e061cfc333b4220da996132cf4ea8026ea74ee720ef910f7d5aefbc",
+  "selected_images": [
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_2_roadmap.png",
+      "sha256": "d8bbeed90b80cf0ec45ac1bd8e0f898f5724cf3a1259416e37562ce1308ec491"
+    }
+  ]
+}

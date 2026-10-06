@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-06",
+  "tool": "Python/matplotlib",
+  "generator": "scripts/figures/batch24_result_figures_20261006.py",
+  "source_commit": "5dac84e",
+  "inputs": [
+    "data/processed/SG-DATA-005-primary-tensor.npz",
+    "outputs/experiments/SG-EXP-004/20260731-102456/relation_matrices.npz"
+  ],
+  "source_data": "outputs/figures/fig3_5_lre_matrices_source.csv",
+  "note": "Three unchanged 10-by-10 frozen relation matrices; full node IDs and original ordering; one linear scale [0,max(all matrices)]. No clipping, masking, normalization, resampling or exclusion.",
+  "size_px": [
+    8601,
+    2848
+  ],
+  "exports": {
+    "png": "1fde04f02728963e3949972005ac1accf836b4d498df0827c056727f9ee4d1af",
+    "svg": "263b1da1ab6f1ad30d6f1665359eae4fdf59d8ebeca8db74dd634809746904ab",
+    "pdf": "95fdfd4f9f6e41bd1b7fa3125a8215dbb5d9addd5a07a8bac3c34f8f3bec81fd",
+    "tiff": "9d9be954c83dc15124f11daadecd797e1ebfa8dcfc23093c4e8e99032e8beab5"
+  }
+}

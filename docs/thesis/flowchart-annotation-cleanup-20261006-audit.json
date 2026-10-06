@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-06",
+  "figure_count": 46,
+  "caption_counts_by_chapter": {
+    "1": 2,
+    "2": 13,
+    "3": 16,
+    "4": 6,
+    "5": 9
+  },
+  "ordered_hash_match": true,
+  "numbered_native_equations": 27,
+  "total_omml": 248,
+  "updated_figures": [
+    "fig2_1_data_reconstruction",
+    "fig2_7_event_score_flow",
+    "fig2_10_dual_window_definition",
+    "fig3_8_train_predict_pipeline",
+    "fig2_13_jpl_validation_protocol"
+  ],
+  "updated_captions": [
+    "3-8",
+    "2-13"
+  ],
+  "jpl_wording_and_once_only_rule_in_caption": true,
+  "legacy_window_boundary_exceptions_in_caption": true,
+  "docx": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+  "docx_sha256": "b3b41711a407e1d3cdb3e5b9fee0e8568bdbd6fb992ec458bcc6f72bae12b94a",
+  "selected_pngs_visual_review": "Completed on all five selected native ImageGen outputs.",
+  "page_render_review": "not performed",
+  "caption_notes": {
+    "2-13": "注：输入为接入、离站、活跃计数及当地日历编码，假设事件即时上报；目标为会话电量在接入至断开区间内均匀分摊的代理能量。训练、调参、校准和测试按时间分段，96步历史窗与4步目标窗完整留段。四种模型各运行三个种子，以调参集原单位MAE选择检查点；全部检查点锁定后，每次训练运行仅导出一次测试预测，在632,640个共同预测键上评价，整体MAE另按24个七日块进行配对比较。训练预算与早停规则见3.8.2节。校准段在本轮保留，尚未用于JPL共形区间评价；该流程对应另一ACN场站的重新拟合验证。",
+    "3-8": "注：数据按固定时间边界划分后构造96步输入与4步输出窗口，随机初始化模型采用2024、2025和2026三种子训练并以验证集早停；测试集仅执行冻结模型预测，结果按全局、事件、稳定、节点、步长和四格口径评价。输入与目标标准化参数及LRE图由训练集拟合，测试集不参与这些对象的估计；旧上游全时期统计及跨段窗口的具体限制见2.1.1节，本图不表示旧协议已满足完整窗口留段约定。"
+  }
+}

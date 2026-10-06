@@ -1,0 +1,170 @@
+{
+  "version": 1,
+  "title": "事件分数与冻结规则事件窗口生成流程",
+  "type": "academic-diagram",
+  "source": "edited",
+  "profile": "academic-paper",
+  "theme": "academic-color",
+  "layout": "horizontal",
+  "counts": {
+    "nodes": 12,
+    "edges": 9,
+    "modules": 0
+  },
+  "nodes": [
+    {
+      "id": "title",
+      "label": "冻结规则事件窗口：分数、阈值与执行",
+      "type": "text"
+    },
+    {
+      "id": "scope",
+      "label": "训练段估计逐节点标准差；验证段冻结非零分数95%分位阈值；测试段只应用规则",
+      "type": "text"
+    },
+    {
+      "id": "signals",
+      "label": "接入数 · 离站数\n|活跃变化| · |负荷变化|",
+      "type": "process"
+    },
+    {
+      "id": "scale",
+      "label": "逐节点标准差归一化\nσ 仅由训练段估计",
+      "type": "process"
+    },
+    {
+      "id": "score",
+      "label": "四分量求和\n当前分数 q(t,i)",
+      "type": "process"
+    },
+    {
+      "id": "val",
+      "label": "验证段：筛选 q(t,i)>0",
+      "type": "process"
+    },
+    {
+      "id": "quantile",
+      "label": "逐节点计算95%分位数",
+      "type": "process"
+    },
+    {
+      "id": "threshold",
+      "label": "冻结阈值 θᵢ",
+      "type": "terminal"
+    },
+    {
+      "id": "compare",
+      "label": "q(t,i) > θᵢ ?",
+      "type": "decision"
+    },
+    {
+      "id": "trigger",
+      "label": "是：记录触发点 t\n并向未来扩展2步",
+      "type": "process"
+    },
+    {
+      "id": "no_trigger",
+      "label": "否：该起点不触发",
+      "type": "process"
+    },
+    {
+      "id": "windows",
+      "label": "合并段内相邻或重叠窗口\n输出冻结规则事件窗口",
+      "type": "terminal"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "from": "signals",
+      "to": "scale",
+      "type": "primary"
+    },
+    {
+      "id": "edge-2",
+      "from": "scale",
+      "to": "score",
+      "type": "primary"
+    },
+    {
+      "id": "edge-3",
+      "from": "val",
+      "to": "quantile",
+      "type": "primary"
+    },
+    {
+      "id": "edge-4",
+      "from": "quantile",
+      "to": "threshold",
+      "type": "primary"
+    },
+    {
+      "id": "edge-5",
+      "from": "score",
+      "to": "compare",
+      "type": "primary",
+      "label": "当前 q(t,i)"
+    },
+    {
+      "id": "edge-6",
+      "from": "threshold",
+      "to": "compare",
+      "type": "data",
+      "label": "冻结 θᵢ"
+    },
+    {
+      "id": "edge-7",
+      "from": "compare",
+      "to": "trigger",
+      "type": "primary",
+      "label": "是"
+    },
+    {
+      "id": "edge-8",
+      "from": "compare",
+      "to": "no_trigger",
+      "type": "primary",
+      "label": "否"
+    },
+    {
+      "id": "edge-9",
+      "from": "trigger",
+      "to": "windows",
+      "type": "primary"
+    }
+  ],
+  "modules": [],
+  "replication": {
+    "colorMode": "preserve-original",
+    "background": "#FFFFFF",
+    "palette": [
+      {
+        "hex": "#E8EFF3",
+        "role": "主体流程节点填充",
+        "appliesTo": "nodes",
+        "confidence": "high"
+      },
+      {
+        "hex": "#F2EAE3",
+        "role": "数据与结果节点填充",
+        "appliesTo": "nodes",
+        "confidence": "high"
+      },
+      {
+        "hex": "#FBF5E9",
+        "role": "判断节点填充",
+        "appliesTo": "nodes",
+        "confidence": "high"
+      },
+      {
+        "hex": "#56798E",
+        "role": "主流程连线",
+        "appliesTo": "edges",
+        "confidence": "high"
+      }
+    ],
+    "confidenceNotes": [
+      "保留论文蓝灰、暖灰色彩语义；重画节点、箭头与文字，不沿用旧图的像素几何。"
+    ]
+  }
+}

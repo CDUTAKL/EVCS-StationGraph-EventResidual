@@ -1,0 +1,339 @@
+meta:
+  profile: academic-paper
+  figureType: workflow
+  source: edited
+  theme: academic-color
+  layout: horizontal
+  canvas: 1000x840
+  routing: orthogonal
+  title: 事件分数与冻结规则事件窗口生成流程
+  description: 训练标准差、验证阈值冻结和逐点规则执行的审计流程。
+  legend: 实线为分数或规则流程；虚线表示由验证段确定并冻结的阈值输入。
+  font:
+    primary: Times New Roman
+    cjk: Songti SC
+    formula: Times New Roman
+  replication:
+    colorMode: preserve-original
+    background: '#FFFFFF'
+    palette:
+      - hex: '#E8EFF3'
+        role: 主体流程节点填充
+        appliesTo: nodes
+        confidence: high
+      - hex: '#F2EAE3'
+        role: 数据与结果节点填充
+        appliesTo: nodes
+        confidence: high
+      - hex: '#FBF5E9'
+        role: 判断节点填充
+        appliesTo: nodes
+        confidence: high
+      - hex: '#56798E'
+        role: 主流程连线
+        appliesTo: edges
+        confidence: high
+    confidenceNotes:
+      - 保留论文蓝灰、暖灰色彩语义；重画节点、箭头与文字，不沿用旧图的像素几何。
+nodes:
+  - id: title
+    label: 冻结规则事件窗口：分数、阈值与执行
+    type: text
+    bounds:
+      x: 40
+      'y': 18
+      width: 920
+      height: 34
+    style:
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: left
+      verticalAlign: middle
+  - id: scope
+    label: 训练段估计逐节点标准差；验证段冻结非零分数95%分位阈值；测试段只应用规则
+    type: text
+    bounds:
+      x: 42
+      'y': 55
+      width: 915
+      height: 28
+    style:
+      fontColor: '#68757D'
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: left
+      verticalAlign: middle
+  - id: signals
+    label: |-
+      接入数 · 离站数
+      |活跃变化| · |负荷变化|
+    type: process
+    bounds:
+      x: 42
+      'y': 120
+      width: 260
+      height: 80
+    style:
+      fillColor: '#E8EFF3'
+      strokeColor: '#56798E'
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: scale
+    label: |-
+      逐节点标准差归一化
+      σ 仅由训练段估计
+    type: process
+    bounds:
+      x: 42
+      'y': 230
+      width: 260
+      height: 76
+    style:
+      fillColor: '#E8EFF3'
+      strokeColor: '#56798E'
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: score
+    label: |-
+      四分量求和
+      当前分数 q(t,i)
+    type: process
+    bounds:
+      x: 42
+      'y': 340
+      width: 260
+      height: 76
+    style:
+      fillColor: '#E8EFF3'
+      strokeColor: '#56798E'
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: val
+    label: 验证段：筛选 q(t,i)>0
+    type: process
+    bounds:
+      x: 370
+      'y': 120
+      width: 260
+      height: 80
+    style:
+      fillColor: '#F2EAE3'
+      strokeColor: '#A08B7D'
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: quantile
+    label: 逐节点计算95%分位数
+    type: process
+    bounds:
+      x: 370
+      'y': 230
+      width: 260
+      height: 76
+    style:
+      fillColor: '#E8EFF3'
+      strokeColor: '#56798E'
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: threshold
+    label: 冻结阈值 θᵢ
+    type: terminal
+    bounds:
+      x: 370
+      'y': 340
+      width: 260
+      height: 76
+    style:
+      fillColor: '#F2EAE3'
+      strokeColor: '#A08B7D'
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: compare
+    label: q(t,i) > θᵢ ?
+    type: decision
+    bounds:
+      x: 420
+      'y': 470
+      width: 160
+      height: 100
+    style:
+      fillColor: '#FBF5E9'
+      strokeColor: '#B39A61'
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: trigger
+    label: |-
+      是：记录触发点 t
+      并向未来扩展2步
+    type: process
+    bounds:
+      x: 105
+      'y': 635
+      width: 330
+      height: 70
+    style:
+      fillColor: '#E8EFF3'
+      strokeColor: '#56798E'
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: no_trigger
+    label: 否：该起点不触发
+    type: process
+    bounds:
+      x: 585
+      'y': 635
+      width: 310
+      height: 70
+    style:
+      fillColor: '#F3F5F6'
+      strokeColor: '#BAC2C7'
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 0
+      rounded: true
+      align: center
+      verticalAlign: middle
+  - id: windows
+    label: |-
+      合并段内相邻或重叠窗口
+      输出冻结规则事件窗口
+    type: terminal
+    bounds:
+      x: 105
+      'y': 750
+      width: 420
+      height: 68
+    style:
+      fillColor: '#F2EAE3'
+      strokeColor: '#A08B7D'
+      fontColor: '#303C44'
+      fontSize: 10
+      fontStyle: 1
+      rounded: true
+      align: center
+      verticalAlign: middle
+edges:
+  - from: signals
+    to: scale
+    type: primary
+    style:
+      strokeColor: '#56798E'
+      strokeWidth: 2
+  - from: scale
+    to: score
+    type: primary
+    style:
+      strokeColor: '#56798E'
+      strokeWidth: 2
+  - from: val
+    to: quantile
+    type: primary
+    style:
+      strokeColor: '#56798E'
+      strokeWidth: 2
+  - from: quantile
+    to: threshold
+    type: primary
+    style:
+      strokeColor: '#56798E'
+      strokeWidth: 2
+  - from: score
+    to: compare
+    type: primary
+    label: 当前 q(t,i)
+    labelOffset:
+      x: 0
+      'y': -12
+    waypoints:
+      - x: 175
+        'y': 438
+      - x: 350
+        'y': 438
+      - x: 350
+        'y': 520
+    style:
+      strokeColor: '#56798E'
+      strokeWidth: 2
+  - from: threshold
+    to: compare
+    type: data
+    label: 冻结 θᵢ
+    labelOffset:
+      x: 18
+      'y': 0
+    style:
+      strokeColor: '#A08B7D'
+      strokeWidth: 2
+      dashed: true
+      dashPattern: 7 4
+  - from: compare
+    to: trigger
+    type: primary
+    label: 是
+    labelOffset:
+      x: 0
+      'y': -12
+    waypoints:
+      - x: 500
+        'y': 600
+      - x: 270
+        'y': 600
+    style:
+      strokeColor: '#2C5F8A'
+      strokeWidth: 2
+  - from: compare
+    to: no_trigger
+    type: primary
+    label: 否
+    labelOffset:
+      x: 0
+      'y': -12
+    waypoints:
+      - x: 500
+        'y': 600
+      - x: 740
+        'y': 600
+    style:
+      strokeColor: '#858D92'
+      strokeWidth: 2
+  - from: trigger
+    to: windows
+    type: primary
+    style:
+      strokeColor: '#2C5F8A'
+      strokeWidth: 2
+modules: []
