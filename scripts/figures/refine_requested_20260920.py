@@ -102,21 +102,28 @@ def intensity():
     assert n.sum()==len(df)==712360
     pop=n/n.sum()*100; contribution=n*mae/(n*mae).sum()*100
     labels=['分数为零','非零低档','非零中档','非零高档']
+    # 字体与全篇统一为 PingFang SC（本文件模块级 rcParams 用的 Arial Unicode MS
+    # 是 fig3_10/fig5_5 的历史样式；本图单独切换，导出后还原以免影响同文件
+    # 其他图）。主色改用房屋蓝 #2C5F8A（模块级 BLUE=#476F8B 偏浅，与第4章
+    # 其余图不一致）；GOLD 保留作"非零高档"语义强调。
+    _family = plt.rcParams['font.family']
+    plt.rcParams['font.family'] = ['PingFang SC', 'Arial Unicode MS', 'DejaVu Sans']
+    HOUSE_BLUE = '#2C5F8A'
     fig,axes=plt.subplots(1,2,figsize=(7.5,3.65),gridspec_kw={'width_ratios':[1,1.15]})
     fig.subplots_adjust(left=.12,right=.97,bottom=.23,top=.83,wspace=.47)
-    a,b=axes; colors=[GRAY,BLUE,BLUE,GOLD]
+    a,b=axes; colors=[GRAY,HOUSE_BLUE,HOUSE_BLUE,GOLD]
     for i in range(4):
         a.hlines(i,0,mae[i],color=colors[i],lw=2.5)
         a.scatter(mae[i],i,s=54,color=colors[i],zorder=3)
         a.text(mae[i]+.002,i,f'{mae[i]:.4f}',va='center',fontsize=8)
     a.set_yticks(range(4),labels); a.set_ylim(3.5,-.6); a.set_xlim(0,.075)
     a.set_xticks([0,.02,.04,.06]); a.set_xlabel('MAE（kWh/15 min）'); clean(a)
-    a.set_title('A  各分箱误差水平',loc='left',pad=15)
+    a.set_title('A  各分箱误差水平',loc='left',pad=10)
     y=np.arange(4)
     for i in range(4):
         b.plot([pop[i],contribution[i]],[i-.16,i+.16],color='#CBD4DB',lw=1.2,zorder=2)
-    b.scatter(pop,y-.16,s=42,facecolor='white',edgecolor=BLUE,label='样本占比',zorder=3)
-    b.scatter(contribution,y+.16,s=42,color=BLUE,marker='D',label='绝对误差贡献',zorder=3)
+    b.scatter(pop,y-.16,s=42,facecolor='white',edgecolor=HOUSE_BLUE,label='样本占比',zorder=3)
+    b.scatter(contribution,y+.16,s=42,color=HOUSE_BLUE,marker='D',label='绝对误差贡献',zorder=3)
     b.set_xscale('log'); b.set_xlim(.06,190); b.set_xticks([.1,1,10,100],['0.1','1','10','100'])
     b.minorticks_off()
     for off,vals in [(-.16,pop),(.16,contribution)]:
@@ -124,10 +131,11 @@ def intensity():
             b.annotate(f'{v:.2f}',(v,i+off),xytext=(6,0),textcoords='offset points',va='center',fontsize=7.5)
     b.set_yticks(y,[f'n = {v:,}' for v in n]); b.set_ylim(3.5,-.6)
     b.set_xlabel('占比（%，对数坐标）'); clean(b)
-    b.set_title('B  样本量与误差贡献',loc='left',pad=15)
+    b.set_title('B  样本量与误差贡献',loc='left',pad=10)
     b.legend(loc='upper center',bbox_to_anchor=(.45,1.04),ncol=2,fontsize=7.5,frameon=False)
     fig.text(.12,.055,'AdaptiveGraph · seed-2024   |   非零分数按50%与95%分位分箱，仅用于描述性分析。',fontsize=8,color='#66737C')
     save(fig,'fig4_6_error_vs_event_intensity')
+    plt.rcParams['font.family'] = _family
     return {'prediction_source':str(hits[0].relative_to(ROOT)),'sha256':hashlib.sha256(hits[0].read_bytes()).hexdigest(),'q50':float(q50),'q95':float(q95),'counts':n.tolist(),'mae':mae.tolist(),'sample_percent':pop.tolist(),'absolute_error_percent':contribution.tolist()}
 
 def horizon():

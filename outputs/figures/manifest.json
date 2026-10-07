@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-10-06T11:47:50.642180+00:00",
-  "source_commit": "5dac84e",
+  "generated_at_utc": "2026-10-07T03:43:41.548346+00:00",
+  "source_commit": "6de2845",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -872,7 +872,7 @@
     "fig3_10_mae_by_horizon": {
       "script": {
         "path": "refine_requested_20260920.py",
-        "sha256": "5d7c0a177a9733db3afa10d7471e1eed34d5be9c607d3d79a8847c91b3484db8"
+        "sha256": "a7e67838ffcfd8c41fbff10cc4bf64ecf25b8ab939971b26d6393949eeb03163"
       },
       "inputs": [
         {
@@ -1280,7 +1280,7 @@
     "fig3_15_jpl_mae_primary": {
       "script": {
         "path": "batch23_jpl_figs.py",
-        "sha256": "3e6868f091eaa1a4da201141f9d1a5d4599118cdc85533444c5fe86c30fcce2a"
+        "sha256": "19aaedf423b5e0580fd3600af3c816019ef1f1e76eec72776bdef47a8abfd968"
       },
       "inputs": [
         {
@@ -1298,21 +1298,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "20aba63b6a395e53da50838c06f40cfb27f8c3140ce6b9851996f266086209ef",
-          "size_bytes": 29461,
-          "mtime_utc": "2026-10-05T11:54:10.534601+00:00"
+          "sha256": "34d7300923b72dd712b55469583e483aa162c2245b5ed76211053b83672c2d7f",
+          "size_bytes": 29247,
+          "mtime_utc": "2026-10-07T03:42:58.147504+00:00"
         },
         "png": {
-          "sha256": "62e8acb39776d1b93fbf9576399d96fb4e2d8d8cad9c7072f67582949c8750e1",
-          "size_bytes": 512299,
-          "mtime_utc": "2026-10-06T11:46:59.289144+00:00"
+          "sha256": "df9273bb831e7af62fbdbf782bfc6a49bf4d3c179b53071cfb498dcade5ede59",
+          "size_bytes": 436586,
+          "mtime_utc": "2026-10-07T03:42:58.146465+00:00"
         }
       }
     },
     "fig3_16_jpl_stratified_mae": {
       "script": {
         "path": "batch23_jpl_figs.py",
-        "sha256": "3e6868f091eaa1a4da201141f9d1a5d4599118cdc85533444c5fe86c30fcce2a"
+        "sha256": "19aaedf423b5e0580fd3600af3c816019ef1f1e76eec72776bdef47a8abfd968"
       },
       "inputs": [
         {
@@ -1326,14 +1326,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "24dd0981fa95c0418f747e8676a762f4c825dbe1a3cdfb17bed7c463a7ec8559",
-          "size_bytes": 50525,
-          "mtime_utc": "2026-10-05T11:54:11.112870+00:00"
+          "sha256": "70bfdd1c410409d97a22d480c72e8c48acd069a3a7332ec6e310eb7aca9dbf65",
+          "size_bytes": 50529,
+          "mtime_utc": "2026-10-07T03:42:58.739988+00:00"
         },
         "png": {
-          "sha256": "6e870f24394b68cedd9c6b45972f2709460218df4d4f8ed33f56ec8977a05345",
-          "size_bytes": 559452,
-          "mtime_utc": "2026-10-06T11:47:01.039148+00:00"
+          "sha256": "79cd5ff559643024296438e102ba4183baef1af94b1f7ae84a054e6c014ba330",
+          "size_bytes": 537962,
+          "mtime_utc": "2026-10-07T03:42:58.738735+00:00"
         }
       }
     },
@@ -1523,7 +1523,7 @@
     "fig4_6_error_vs_event_intensity": {
       "script": {
         "path": "refine_requested_20260920.py",
-        "sha256": "5d7c0a177a9733db3afa10d7471e1eed34d5be9c607d3d79a8847c91b3484db8"
+        "sha256": "a7e67838ffcfd8c41fbff10cc4bf64ecf25b8ab939971b26d6393949eeb03163"
       },
       "inputs": [
         {
@@ -1533,14 +1533,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "991c200b0505c2494b64b705995f9a5a7c578aab8132d2f2156b2e8cc10d5f51",
-          "size_bytes": 21718,
-          "mtime_utc": "2026-09-20T11:16:32.422748+00:00"
+          "sha256": "7e9a5c884190c7d4da5be213d58af9d270e93dda9e1a032ee471365e49aa4870",
+          "size_bytes": 22175,
+          "mtime_utc": "2026-10-07T03:43:01.538459+00:00"
         },
         "png": {
-          "sha256": "2f54fb348af27cc06d412ff9b1cf7a60d05a7056a959427d08b4be9f621ba281",
-          "size_bytes": 755807,
-          "mtime_utc": "2026-10-06T11:47:08.921966+00:00"
+          "sha256": "22892fa0181255d5b1c04f99caa8e5365bb40ccdccbbe21564814a7276a6a096",
+          "size_bytes": 780387,
+          "mtime_utc": "2026-10-07T03:43:01.535893+00:00"
         }
       }
     },
@@ -1670,7 +1670,7 @@
     "fig5_5_pcmci_validation_network": {
       "script": {
         "path": "refine_requested_20260920.py",
-        "sha256": "5d7c0a177a9733db3afa10d7471e1eed34d5be9c607d3d79a8847c91b3484db8"
+        "sha256": "a7e67838ffcfd8c41fbff10cc4bf64ecf25b8ab939971b26d6393949eeb03163"
       },
       "inputs": [
         {

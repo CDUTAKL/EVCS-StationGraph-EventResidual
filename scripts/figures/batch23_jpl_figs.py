@@ -74,11 +74,14 @@ BASELINES = [
     ("agcrn_full", "完整 AGCRN"),
     ("mrg_shared_gate", "共享门控"),
 ]
+# STRATA 第三元为 y 轴刻度格式：统一按面板量级固定小数位，避免 %.4g 在
+# 同一根轴上混排 "0.42" 与 "0.426" 这类不同精度（数据已被契约断言冻结，
+# 按面板写死精度是显式而安全的）。
 STRATA = [
-    ("event_mae", "事件"),
-    ("stable_mae", "稳定"),
-    ("zero_mae", "零目标"),
-    ("nonzero_mae", "非零目标"),
+    ("event_mae", "事件", "%.3f"),
+    ("stable_mae", "稳定", "%.4f"),
+    ("zero_mae", "零目标", "%.3f"),
+    ("nonzero_mae", "非零目标", "%.3f"),
 ]
 
 
@@ -194,7 +197,10 @@ def fig3_15() -> None:
     fig = plt.figure(figsize=(FIG_W, FIG_H))
     fig.set_layout_engine("none")
     ax_l = fig.add_axes([0.088, 0.195, 0.40, 0.66])
-    ax_r = fig.add_axes([0.625, 0.195, 0.365, 0.66])
+    # 右面板左移并收窄：xlabel 以面板中心对齐，全宽括号/减号经 CJK 回退字体
+    # 渲染时 matplotlib 的 tight bbox 度量偏小，旧版靠底注把画布撑宽才未露馅；
+    # 底注删除后须让 xlabel 真实宽度落在画布内（中心 0.769，右端约 5.47 in）。
+    ax_r = fig.add_axes([0.599, 0.195, 0.34, 0.66])
 
     # ---- 左面板：四模型整体 MAE ----
     _draw_seed_panel(ax_l, df, "mae", "整体 MAE（kWh/15 min）")
@@ -235,14 +241,17 @@ def fig3_15() -> None:
     ax_r.set_yticklabels([label for _, label in BASELINES], fontsize=7.4)
     ax_r.set_ylim(-0.6, len(BASELINES) - 0.4)
     ax_r.set_xlim(-0.0006, 0.0068)
-    ax_r.set_xlabel("MAE 差值（对照 − MRG-GCN）（kWh/15 min）", fontsize=8.0)
+    # 两行书写 xlabel：单行全宽括号/减号经 CJK 回退字体渲染时 matplotlib 的
+    # tight bbox 度量偏小，右端会被裁掉 1–2 字符；拆成两行后每行真实宽度都
+    # 落在纯 ASCII 数值标注（度量准确）定义的画布右缘之内，且保持居中。
+    ax_r.set_xlabel("MAE 差值（对照 − MRG-GCN）\n（kWh/15 min）", fontsize=8.0)
     _clean(ax_r, grid_axis="x")
     ax_r.tick_params(axis="x", labelsize=7.2)
     ax_r.text(0.0, 1.07, "B  配对差值与预登记区间", transform=ax_r.transAxes,
               fontsize=9, fontweight="bold", color="#2B2B2B")
-    # 区间语义小注：预登记 7 日块、Bonferroni 校正，避免被误读为种子间区间
-    ax_r.text(0.0, -0.50, "7 日块（24 块）配对 bootstrap，Bonferroni 校正 98.33% 区间",
-              transform=ax_r.transAxes, fontsize=7.0, color="#6B6B6B")
+    # 区间语义（7 日块、24 块、10,000 次重采样、Bonferroni 98.33%）由论文
+    # 图 3-15 图注承载，图内不再置底注（底注会拖出大面积空白）；机器可核对的
+    # 同口径信息仍写入 fig3_15_jpl_mae_primary_source.json。
 
     _final(fig, "fig3_15_jpl_mae_primary", (FIG_W, FIG_H))
     _write_source("fig3_15_jpl_mae_primary", {
@@ -268,7 +277,7 @@ def fig3_16() -> None:
             for r in range(2) for c in range(2)]
 
     from matplotlib.ticker import FormatStrFormatter, MaxNLocator
-    for ax, (col, title) in zip(axes, STRATA):
+    for ax, (col, title, fmt) in zip(axes, STRATA):
         _draw_seed_panel(ax, df, col, None, show_xticklabels=True,
                          dot_dx=0.22, mean_dx=0.40)
         ax.set_title(title, fontsize=8.5, color="#2B2B2B", pad=4.0)
@@ -282,7 +291,7 @@ def fig3_16() -> None:
         pad = 0.15 * (hi - lo)
         ax.set_ylim(lo - pad, hi + pad)
         ax.yaxis.set_major_locator(MaxNLocator(4))
-        ax.yaxis.set_major_formatter(FormatStrFormatter("%.4g"))
+        ax.yaxis.set_major_formatter(FormatStrFormatter(fmt))
         ax.tick_params(axis="x", labelsize=7.0)
     axes[0].set_ylabel("MAE（kWh/15 min）", fontsize=8.0)
     axes[2].set_ylabel("MAE（kWh/15 min）", fontsize=8.0)
@@ -291,7 +300,7 @@ def fig3_16() -> None:
     _final(fig, "fig3_16_jpl_stratified_mae", (FIG_W, FIG_H))
     _write_source("fig3_16_jpl_stratified_mae", {
         "panels": {col: f"per_seed.csv::{col}；三种子点 + 均值 ± 样本 SD"
-                   for col, _t in STRATA},
+                   for col, _t, _f in STRATA},
         "strata_definition": "冻结事件/稳定掩码与零/非零目标分层，"
                              "定义以 SG-DATA-007 协议与测试导出为准",
         "y_axis": "四面板独立量程（数据范围 ±15% 留白），非零起点，刻度显式；"
