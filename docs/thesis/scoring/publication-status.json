@@ -1,0 +1,87 @@
+{
+  "active_protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "current_authoritative_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+  "current_state": "authoritative_v2_paired_revision",
+  "assessments": {
+    "FORMAL-20261017-CURRENT": {
+      "status": "suspended_pending_paired_calibration",
+      "date": "2026-10-17",
+      "reason": "已有旧稿却全部重设baseline；未拆分评分校准与修订效应，部分既有限制被重复定价。",
+      "record": "docs/thesis/scoring/correction-20261017.md",
+      "original_raw_score": 71,
+      "original_normalized_score": 78.89,
+      "original_files_preserved": true
+    },
+    "FORMAL-20261017-PAIRED-CALIBRATION": {
+      "status": "publishable",
+      "date": "2026-10-17",
+      "reason": "完成同一旧稿与当前稿的v2配对校准；三个隔离视角、证据包、逐组件算术、校准/修订效应及独立核验报告均通过发布检查。",
+      "record": "docs/thesis/content-review-20261017-calibration-pair/scorecard.json",
+      "raw_score": 74.0,
+      "normalized_score": 82.22,
+      "baseline_reassessed_score": 73.5,
+      "revision_delta_raw": 0.5,
+      "calibration_delta_raw": -2.5,
+      "baseline_assessment_id": "FORMAL-20261016-NONEXPERIMENTAL"
+    },
+    "FORMAL-20261019-PAIRED-REVIEW": {
+      "status": "publishable",
+      "date": "2026-10-19",
+      "reason": "按EVCS-THESIS-REVIEW-2.0完成同稿范围的配对修订复评；保留10月17日正式分项基线，三个隔离视角、证据包、哈希、算术和修订效应核验通过。",
+      "record": "docs/thesis/content-review-20261019-paired/scorecard.json",
+      "raw_score": 75.5,
+      "normalized_score": 83.89,
+      "baseline_assessment_id": "FORMAL-20261017-PAIRED-CALIBRATION",
+      "revision_delta_raw": 1.5,
+      "calibration_delta_raw": 0.0
+    },
+    "FORMAL-20261019-NONTRAIN-CALIBRATION-PAIR": {
+      "status": "publishable",
+      "date": "2026-10-19",
+      "reason": "按EVCS-THESIS-REVIEW-2.0完成三视角盲评、配对校准、逐项主评裁定及证据/哈希/算术发布检查；当前稿75.5/90。实际修订+1.0与历史分校准−1.0抵消。",
+      "record": "docs/thesis/revision-20261019-nontraining/paired-calibration-scorecard.json",
+      "raw_score": 75.5,
+      "normalized_score": 83.89,
+      "baseline_assessment_id": "FORMAL-20261019-PAIRED-REVIEW",
+      "baseline_reassessed_score": 74.5,
+      "revision_delta_raw": 1.0,
+      "calibration_delta_raw": -1.0
+    },
+    "FORMAL-20261020-PAIRED-REVIEW": {
+      "status": "publishable",
+      "date": "2026-10-20",
+      "reason": "完成EVCS-THESIS-REVIEW-2.0三视角配对修订、正文/证据哈希核验及逐项裁定；76.5/90。",
+      "record": "docs/thesis/revision-20261020-delivery/paired-scorecard.json",
+      "raw_score": 76.5,
+      "normalized_score": 85.0,
+      "baseline_assessment_id": "FORMAL-20261019-NONTRAIN-CALIBRATION-PAIR",
+      "revision_delta_raw": 1.0,
+      "calibration_delta_raw": 0.0
+    },
+    "FORMAL-20261020-LANGUAGE-PAIRED-REVIEW": {
+      "status": "publishable",
+      "date": "2026-10-20",
+      "reason": "完成同量表paired_revision；三个隔离视角、冻结证据、逐项差异和算术/哈希发布检查通过。",
+      "record": "docs/thesis/content-review-20261020-language-paired/scorecard.json",
+      "raw_score": 78.0,
+      "normalized_score": 86.67,
+      "baseline_assessment_id": "FORMAL-20261020-PAIRED-REVIEW",
+      "revision_delta_raw": 1.5,
+      "calibration_delta_raw": 0.0
+    },
+    "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW": {
+      "status": "publishable",
+      "date": "2026-10-21",
+      "reason": "按EVCS-THESIS-REVIEW-2.0完成与78.0/90正式基线的配对复评；三视角、冻结证据、哈希和算术检查通过。本轮只重排既有证据并收窄表述，未新增可改变已评分锚点的证据，正式分维持78.0/90。",
+      "record": "docs/thesis/content-review-20261020-final-patch/scorecard.json",
+      "raw_score": 78.0,
+      "normalized_score": 86.67,
+      "baseline_assessment_id": "FORMAL-20261020-LANGUAGE-PAIRED-REVIEW",
+      "revision_delta_raw": 0.0,
+      "calibration_delta_raw": 0.0
+    }
+  },
+  "latest_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+  "latest_authoritative_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+  "current_score_status": "authoritative_v2_paired_revision"
+}

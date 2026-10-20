@@ -1,0 +1,141 @@
+{
+  "assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 78.0,
+  "raw_maximum": 90.0,
+  "normalized_score": 86.67,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "FORMAL-20261020-LANGUAGE-PAIRED-REVIEW",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 0.0,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-02",
+        "old": 5.0,
+        "new": 5.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-04",
+        "old": 5,
+        "new": 5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9,
+        "new": 9,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-10",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.0,
+        "new": 3.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      },
+      {
+        "id": "BR-12",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮主要改变已有证据的顺序和表述；对应结果及解释在上轮正式稿中已存在，未新增足以改变此项锚点的证据或实质判断。依paired_revision保留上一正式分项。"
+      }
+    ]
+  },
+  "publication_status": "publishable",
+  "publication_decision": {
+    "status": "publishable",
+    "date": "2026-10-21",
+    "reason": "按EVCS-THESIS-REVIEW-2.0完成与78.0/90正式基线的配对复评；三视角、冻结证据、哈希和算术检查通过。本轮只重排既有证据并收窄表述，未新增可改变已评分锚点的证据，正式分维持78.0/90。",
+    "record": "docs/thesis/content-review-20261020-final-patch/scorecard.json",
+    "raw_score": 78.0,
+    "normalized_score": 86.67,
+    "baseline_assessment_id": "FORMAL-20261020-LANGUAGE-PAIRED-REVIEW",
+    "revision_delta_raw": 0.0,
+    "calibration_delta_raw": 0.0
+  },
+  "publication": {
+    "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+    "status": "publishable",
+    "problems": [],
+    "raw_score": 78.0,
+    "normalized_score": 86.67,
+    "revision_delta_raw": 0.0,
+    "calibration_delta_raw": 0.0,
+    "recommendation": "advisor_review",
+    "checked_file_count": 35,
+    "note": "发布条件核验不证明证据真实、学术判断正确或评分具有测量精度。"
+  },
+  "record_validation_status": "valid"
+}

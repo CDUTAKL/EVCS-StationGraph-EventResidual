@@ -1,0 +1,384 @@
+{
+  "changed_sections": [
+    {
+      "key": "Abstract [1]",
+      "title": "Abstract",
+      "before_line": 17,
+      "current_line": 17
+    },
+    {
+      "key": "摘  要 [1]",
+      "title": "摘  要",
+      "before_line": 3,
+      "current_line": 3
+    },
+    {
+      "key": "第3章  基于多关系门控图卷积的节点短期负荷预测 / 3.6 主要预测结果与回溯补充 / 3.6.3 JPL重拟合协议：另一场站的点预测比较 [1]",
+      "title": "3.6.3 JPL重拟合协议：另一场站的点预测比较",
+      "before_line": 708,
+      "current_line": 708
+    },
+    {
+      "key": "第3章  基于多关系门控图卷积的节点短期负荷预测 / 3.7 组件增量与协议敏感性 / 3.7.2 关系路径、关系子集与敏感性 [1]",
+      "title": "3.7.2 关系路径、关系子集与敏感性",
+      "before_line": 895,
+      "current_line": 895
+    },
+    {
+      "key": "第3章  基于多关系门控图卷积的节点短期负荷预测 / 3.8 证据综合与适用范围 / 3.8.1 方法组件与目标敏感性证据综合 [1]",
+      "title": "3.8.1 方法组件与目标敏感性证据综合",
+      "before_line": 983,
+      "current_line": 980
+    },
+    {
+      "key": "第3章  基于多关系门控图卷积的节点短期负荷预测 / 3.8 证据综合与适用范围 / 3.8.4 完成时刻截断目标敏感性（SG-EXP-032） [1]",
+      "title": "3.8.4 完成时刻截断目标敏感性（SG-EXP-032）",
+      "before_line": 1039,
+      "current_line": 1036
+    },
+    {
+      "key": "第3章  基于多关系门控图卷积的节点短期负荷预测 / 3.9 本章小结 [1]",
+      "title": "3.9 本章小结",
+      "before_line": 1061,
+      "current_line": 1058
+    },
+    {
+      "key": "第4章  三层机制诊断协议（MDP）与模型可解释性分析 / 4.2 L1干预归因层（IA）：关系分配的功能依赖 / 4.2.1 观察操作 [1]",
+      "title": "4.2.1 观察操作",
+      "before_line": 1085,
+      "current_line": 1082
+    },
+    {
+      "key": "第4章  三层机制诊断协议（MDP）与模型可解释性分析 / 4.2 L1干预归因层（IA）：关系分配的功能依赖 / 4.2.2 干预操作 [1]",
+      "title": "4.2.2 干预操作",
+      "before_line": 1089,
+      "current_line": 1086
+    },
+    {
+      "key": "第4章  三层机制诊断协议（MDP）与模型可解释性分析 / 4.2 L1干预归因层（IA）：关系分配的功能依赖 / 4.2.4 干预证据 [1]",
+      "title": "4.2.4 干预证据",
+      "before_line": 1110,
+      "current_line": 1107
+    },
+    {
+      "key": "第5章  模型结构与可靠性边界分析 / 5.3 事件感知的区间预测：分层共形预测 / 5.3.2 分层共形方法 [1]",
+      "title": "5.3.2 分层共形方法",
+      "before_line": 1411,
+      "current_line": 1408
+    },
+    {
+      "key": "第5章  模型结构与可靠性边界分析 / 5.5 本章小结 [1]",
+      "title": "5.5 本章小结",
+      "before_line": 1614,
+      "current_line": 1611
+    },
+    {
+      "key": "结  论 / 主要研究结论 [1]",
+      "title": "主要研究结论",
+      "before_line": 1635,
+      "current_line": 1632
+    }
+  ],
+  "unmapped_changed_sections": [
+    {
+      "key": "第3章  基于多关系门控图卷积的节点短期负荷预测 / 3.9 本章小结 [1]",
+      "title": "3.9 本章小结",
+      "before_line": 1061,
+      "current_line": 1058
+    },
+    {
+      "key": "第5章  模型结构与可靠性边界分析 / 5.5 本章小结 [1]",
+      "title": "5.5 本章小结",
+      "before_line": 1614,
+      "current_line": 1611
+    }
+  ],
+  "affected_criteria": [
+    "BR-01",
+    "BR-02",
+    "BR-03",
+    "BR-04",
+    "BR-05",
+    "BR-06",
+    "BR-07",
+    "BR-08",
+    "BR-09",
+    "BR-10",
+    "BR-11",
+    "BR-12"
+  ],
+  "full_review_fallback": true,
+  "claims": [
+    {
+      "id": "problem_protocol",
+      "summary": "研究对象、预测协议、代理目标与范围边界",
+      "sections": [
+        "第1章",
+        "2.1",
+        "3.2"
+      ],
+      "evidence_ids": [
+        "QUALITY",
+        "S31",
+        "S32",
+        "S31AUDIT",
+        "S32AUDIT",
+        "LANGUAGE_AUDIT",
+        "LANGUAGE_REVIEW"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-01",
+        "BR-02",
+        "BR-04",
+        "BR-05",
+        "BR-08",
+        "BR-09"
+      ],
+      "depends_on": [],
+      "review_reasons": [],
+      "status": "reread_required"
+    },
+    {
+      "id": "literature_novelty",
+      "summary": "最接近工作比较与创新边界",
+      "sections": [
+        "1.2",
+        "1.3",
+        "1.4",
+        "3.5.8"
+      ],
+      "evidence_ids": [
+        "NEAR",
+        "NEAR2",
+        "NEAR_20261016",
+        "NEAR76",
+        "LANGUAGE_AUDIT",
+        "LANGUAGE_REVIEW"
+      ],
+      "source_ids": [
+        "SRC12",
+        "SRC13",
+        "SRC67",
+        "SRC70",
+        "SRC71",
+        "SRC72",
+        "SRC73",
+        "SRC76"
+      ],
+      "criteria": [
+        "BR-03",
+        "BR-10",
+        "BR-12"
+      ],
+      "depends_on": [],
+      "review_reasons": [],
+      "status": "reread_required"
+    },
+    {
+      "id": "prediction_findings",
+      "summary": "整体、非零与事件组结果及主张边界",
+      "sections": [
+        "3.6.2",
+        "3.6.3",
+        "3.8.1"
+      ],
+      "evidence_ids": [
+        "S31",
+        "S32",
+        "S31AUDIT",
+        "S32AUDIT",
+        "RECOMP",
+        "QUALITY",
+        "LANGUAGE_AUDIT",
+        "LANGUAGE_REVIEW"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-05",
+        "BR-08",
+        "BR-09",
+        "BR-10"
+      ],
+      "depends_on": [],
+      "review_reasons": [
+        "manuscript_section_changed"
+      ],
+      "status": "reread_required"
+    },
+    {
+      "id": "relation_increment_budget",
+      "summary": "关系增量、门控效应、训练预算与替代解释",
+      "sections": [
+        "3.7.1",
+        "3.7.2",
+        "3.7.3",
+        "3.8.1",
+        "3.8.3"
+      ],
+      "evidence_ids": [
+        "S31",
+        "S31AUDIT",
+        "MRECOMP",
+        "NZ",
+        "RECOMP",
+        "LANGUAGE_AUDIT",
+        "LANGUAGE_REVIEW"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-05",
+        "BR-06",
+        "BR-08",
+        "BR-09",
+        "BR-10"
+      ],
+      "depends_on": [],
+      "review_reasons": [
+        "manuscript_section_changed"
+      ],
+      "status": "reread_required"
+    },
+    {
+      "id": "target_sensitivity",
+      "summary": "完成时刻截断目标敏感性",
+      "sections": [
+        "2.1.2",
+        "3.8.4"
+      ],
+      "evidence_ids": [
+        "S32",
+        "S32AUDIT",
+        "QUALITY",
+        "LANGUAGE_AUDIT",
+        "LANGUAGE_REVIEW"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-01",
+        "BR-04",
+        "BR-05",
+        "BR-08",
+        "BR-09"
+      ],
+      "depends_on": [],
+      "review_reasons": [
+        "manuscript_section_changed"
+      ],
+      "status": "reread_required"
+    },
+    {
+      "id": "mdp_diagnostics",
+      "summary": "MDP三层诊断、结果与判断变化",
+      "sections": [
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4",
+        "4.5",
+        "4.6"
+      ],
+      "evidence_ids": [
+        "MDP",
+        "MRECOMP",
+        "RECOMP",
+        "S31",
+        "S32",
+        "LANGUAGE_AUDIT",
+        "LANGUAGE_REVIEW"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-02",
+        "BR-04",
+        "BR-05",
+        "BR-06",
+        "BR-08",
+        "BR-09",
+        "BR-10",
+        "BR-12"
+      ],
+      "depends_on": [],
+      "review_reasons": [
+        "manuscript_section_changed"
+      ],
+      "status": "reread_required"
+    },
+    {
+      "id": "reliability_practice",
+      "summary": "可靠性、方向性分析、校准与决策接口",
+      "sections": [
+        "5.2",
+        "5.3",
+        "5.4"
+      ],
+      "evidence_ids": [
+        "CAL",
+        "MAP",
+        "DATA_AVAIL",
+        "PASSPORT",
+        "QUALITY",
+        "NZ",
+        "LANGUAGE_AUDIT",
+        "LANGUAGE_REVIEW"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-05",
+        "BR-06",
+        "BR-08",
+        "BR-09",
+        "BR-11",
+        "BR-12"
+      ],
+      "depends_on": [],
+      "review_reasons": [
+        "manuscript_section_changed"
+      ],
+      "status": "reread_required"
+    },
+    {
+      "id": "summary_claims",
+      "summary": "中英文摘要及结论对核心贡献和限制的概括",
+      "sections": [
+        "摘",
+        "Abstract",
+        "结"
+      ],
+      "evidence_ids": [
+        "S31",
+        "S32",
+        "NEAR76",
+        "MDP",
+        "MAP",
+        "LANGUAGE_AUDIT",
+        "LANGUAGE_REVIEW"
+      ],
+      "source_ids": [
+        "SRC76"
+      ],
+      "criteria": [
+        "BR-01",
+        "BR-02",
+        "BR-08",
+        "BR-09",
+        "BR-10",
+        "BR-12"
+      ],
+      "depends_on": [
+        "problem_protocol",
+        "literature_novelty",
+        "prediction_findings",
+        "relation_increment_budget",
+        "target_sensitivity",
+        "mdp_diagnostics",
+        "reliability_practice"
+      ],
+      "review_reasons": [
+        "manuscript_section_changed"
+      ],
+      "status": "reread_required"
+    }
+  ],
+  "note": "Routing only; formal independent reading, forensic adjudication and publication checks remain required."
+}

@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "effective_date": "2026-10-09",
+  "status": "unofficial_simulation",
+  "scope": "thesis_content",
+  "raw_maximum": 90,
+  "display_maximum": 100,
+  "normalization": "sum(scores) / 90 * 100",
+  "score_step": 0.5,
+  "display_decimals": 2,
+  "rounding": "ROUND_HALF_UP",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "name": "选题意义与问题定义",
+      "maximum": 5,
+      "strong_anchor": "问题具体，研究对象与需求有可查依据",
+      "adequate_anchor": "需求仍需量化，问题动机略泛"
+    },
+    {
+      "id": "BR-02",
+      "name": "研究问题、范围与题目一致性",
+      "maximum": 5,
+      "strong_anchor": "题目、问题、方法、结果和结论一致",
+      "adequate_anchor": "存在可修复的题目或范围漂移"
+    },
+    {
+      "id": "BR-03",
+      "name": "文献综述与缺口定位",
+      "maximum": 5,
+      "strong_anchor": "以原文比较最近工作，差异维度直接支持研究缺口",
+      "adequate_anchor": "覆盖充分但近邻原文比较或论据核验不足"
+    },
+    {
+      "id": "BR-04",
+      "name": "理论基础与专业知识",
+      "maximum": 5,
+      "strong_anchor": "概念、公式、单位和方法假设准确并融入研究",
+      "adequate_anchor": "知识总体正确但有局部假设或解释缺口"
+    },
+    {
+      "id": "BR-05",
+      "name": "方法与实验设计",
+      "maximum": 10,
+      "strong_anchor": "对照、信息条件、容量、预算和选模适合回答问题",
+      "adequate_anchor": "设计总体合理但若干对照或控制未齐"
+    },
+    {
+      "id": "BR-06",
+      "name": "可复现性与方法严谨性",
+      "maximum": 5,
+      "strong_anchor": "数据、划分、配置、预测键和结果产物可追溯",
+      "adequate_anchor": "主要结果可复查，但记录或独立复算不完整"
+    },
+    {
+      "id": "BR-07",
+      "name": "工作量与解决问题能力",
+      "maximum": 10,
+      "strong_anchor": "完成有难度的研究并体现独立分析与问题解决",
+      "adequate_anchor": "工作量达到硕士要求，部分研究分析较浅"
+    },
+    {
+      "id": "BR-08",
+      "name": "结果与证据充分性",
+      "maximum": 10,
+      "strong_anchor": "核心结论有一致的直接证据，对照覆盖主要替代解释",
+      "adequate_anchor": "主结论有支持，但组件、外部或确认验证不足"
+    },
+    {
+      "id": "BR-09",
+      "name": "统计解释与结论边界",
+      "maximum": 10,
+      "strong_anchor": "不确定性、负结果、限制和结论范围处理严谨",
+      "adequate_anchor": "边界多数合理，但探索性与统计不确定性仍有缺口"
+    },
+    {
+      "id": "BR-10",
+      "name": "贡献与创新",
+      "maximum": 10,
+      "strong_anchor": "与既有工作的差异明确，并有证据验证新增价值",
+      "adequate_anchor": "可信的增量或组合贡献，独立新增能力验证有限"
+    },
+    {
+      "id": "BR-11",
+      "name": "专业实践价值",
+      "maximum": 5,
+      "strong_anchor": "真实约束、量测或业务评价支持实际使用价值",
+      "adequate_anchor": "价值合理但现场量测、业务约束或效益验证有限"
+    },
+    {
+      "id": "BR-12",
+      "name": "结构、表达与学术规范",
+      "maximum": 10,
+      "strong_anchor": "全文推进连贯，表达简洁，术语、引文和图表内容可靠",
+      "adequate_anchor": "可以读懂但有重复、组织或学术规范问题"
+    }
+  ],
+  "bands": [
+    {
+      "lower": 90,
+      "label": "内容强"
+    },
+    {
+      "lower": 80,
+      "label": "内容良好"
+    },
+    {
+      "lower": 70,
+      "label": "需较大修订"
+    },
+    {
+      "lower": 60,
+      "label": "证据或设计较弱"
+    },
+    {
+      "lower": 0,
+      "label": "存在高风险问题"
+    }
+  ]
+}
