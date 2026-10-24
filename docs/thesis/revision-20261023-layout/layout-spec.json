@@ -1,0 +1,26 @@
+{
+  "baseline_docx": "../revision-20261022-delivery/thesis-evidence-final-1200dpi.docx",
+  "baseline_docx_sha256": "e5c3373740602e960e786bc820e06a330f1a4b4602b818929d8a5651b3e5b9cc",
+  "manuscript_sha256_unchanged": "8ac58074c2a53835883c6635cdf7d6f0044e7971e67af6de36e3f4248e75d9d5",
+  "body_and_table_font_sizes_preserved": true,
+  "table_width_twip": 8310,
+  "column_widths_twip": {
+    "1-1": [1050, 2200, 2200, 2860],
+    "2-1": [1950, 3150, 3210],
+    "3-14": [2580, 660, 1060, 1900, 2110],
+    "5-1": [3000, 950, 4360],
+    "5-9": [1850, 1600, 2330, 2530]
+  },
+  "table_cell_horizontal_margin_twip": 60,
+  "table_3_14": {
+    "controlled_breaks": ["protocol/config separator", "selection-metric separator", "best/stopping-epoch separator"],
+    "configuration_identifiers_preserved": true,
+    "continuation": "split before first SG-EXP-031 row; new page labelled 续上表, repeated header"
+  },
+  "chapter_3_summary": "keep the complete summary paragraph on one page",
+  "chapter_5_summary": "heading before 12pt / after 6pt; introductory sentence kept with table5-9",
+  "te_float_placement": "move section5.2.4 heading and its first paragraph between figure5-2 note and figure5-3; preserve figure order and all prose",
+  "font_cleanup": "replace inherited 等线/等线 Light/Calibri/Palatino Linotype references in unused template styles with school fonts; remove their unused fontTable entries; set theme Latin defaults to Times New Roman",
+  "native_math_objects": 269,
+  "original_figures": 46
+}

@@ -14,3 +14,5 @@
 # Preserve hash-verified analysis CSV bytes across checkout (CSV writer uses CRLF).
 outputs/analysis/SG-EXP-027-time-block/*.csv -text whitespace=cr-at-eol
 /outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx filter=lfs diff=lfs merge=lfs -text
+/docs/thesis/revision-20261023-layout/thesis-layout-final-1200dpi.docx filter=lfs diff=lfs merge=lfs -text
+/docs/thesis/revision-20261023-layout/thesis-layout-final-1200ppi.pdf filter=lfs diff=lfs merge=lfs -text
