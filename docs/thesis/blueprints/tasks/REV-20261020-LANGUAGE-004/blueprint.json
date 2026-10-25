@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261020-LANGUAGE-004",
+  "title": "全文逻辑递进与学术表达二次收束",
+  "task_type": "content_revision",
+  "workflow_stage": "第11步：内容修订与协作复核",
+  "objective": "依据独立语言审阅和当前冻结证据，对论文全文进行第二轮有边界的语言凝练与逻辑递进优化。重点收束第一章分工、第三章证据主次、第四章诊断判断和第五章结构—可靠性—运行条件递进，并统一中英文摘要核心术语。不得改变科学结果、数据口径或结论权限。",
+  "context_sources": [
+    {
+      "path": "docs/thesis/thesis-brief.md",
+      "locator": {"kind": "markdown_heading", "value": "当前贡献定位"},
+      "purpose": "锁定论文核心贡献及其适用边界"
+    },
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "locator": {"kind": "markdown_heading", "value": "论文核心结论权限"},
+      "purpose": "约束各项结论与对应证据的强度"
+    },
+    {
+      "path": "docs/thesis/terminology-ledger.md",
+      "locator": {"kind": "markdown_heading", "value": "模型与方法"},
+      "purpose": "统一模型、关系和门控名称"
+    },
+    {
+      "path": "docs/thesis/terminology-ledger.md",
+      "locator": {"kind": "markdown_heading", "value": "数据与口径"},
+      "purpose": "统一代理目标、事件标签与可见规则的边界"
+    },
+    {
+      "path": "docs/thesis/terminology-ledger.md",
+      "locator": {"kind": "markdown_heading", "value": "指标"},
+      "purpose": "统一指标名称、单位和统计口径"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/writing-guidance.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "遵循已确定的凝练、结论先行和学术中文写作要求"
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/language-review-v2/language-review.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "落实独立语言审阅中关于篇章分工、主次递进、重复限定和术语统一的建议"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {"kind": "line_range", "start": 1, "end": 430},
+      "purpose": "审查中英文摘要、第1章及第2章的研究问题、近邻比较、贡献分工和转章逻辑"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {"kind": "line_range", "start": 431, "end": 1052},
+      "purpose": "审查第3章方法、主要结果、关系组件增量和敏感性证据的先后与层级"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {"kind": "line_range", "start": 1053, "end": 1308},
+      "purpose": "审查第4章MDP三层诊断的递进、结论权限与重复解释"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {"kind": "line_range", "start": 1309, "end": 1762},
+      "purpose": "审查第5章、结论及附录的主次安排、实践边界和全文收束"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "核对关系替换比较对象、分层性质和训练预算边界"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "核对替代目标、完整模型非零组表现及已查看测试期边界"
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": ["docs/thesis/thesis-manuscript.md"],
+  "locked_claims": [
+    "节点预测目标由ACN会话记录重构，不是同步电表实测功率；完成时刻截断目标仍是替代代理目标。",
+    "负荷关系相对自环的关系组件增量与完整MRG-GCN对TCN的模型比较是两个不同问题；完整模型在非零目标组尚未胜过TCN。",
+    "SG-EXP-031和SG-EXP-032是在已查看固定测试期上的补充分析；SG-EXP-031的非零组关系差异是事后分层且未作多重校正，不能表述为独立确认。",
+    "行为关系的独立增量仍不确定；不得以关系权重大小直接证明关系贡献或因果作用。",
+    "target_event仅用于事后评价与分层；rule_trigger是预测起点可见的冻结规则触发。",
+    "MDP改变关系解释、受检学生替代性和误差构成的研究判断与报告方式；没有证据证明诊断指导改模提高了预测性能。",
+    "不新增、删改或推算实验结果、数字、统计口径、文献、引文、公式、图表编号、训练预算或应用收益主张。"
+  ],
+  "steps": [
+    "阅读全文包中的四个正文片段、贡献与结论权限、术语表、写作准则、独立语言审阅及SG-EXP-031/032报告；先用精简提纲概括全文‘问题—方法—证据—诊断—使用边界’主线。",
+    "按论文类型（方法/算法比较为主，含机制诊断和实证分析）检查各章是否各司其职；特别检查第1章研究现状、研究不足、贡献、技术路线和章节导览是否重复承担同一功能。",
+    "围绕‘受控关系组件增量—完整模型在不同目标组的表现—MDP改变的判断—可靠性与使用边界’组织叙述；在第3.7.2及相关小结中显式区分JPL关系替换主证据与Caltech历史配置/敏感性补充。",
+    "检查第4章是否先说明观察或干预证据，再解释它改变了什么判断；合并相邻重复的限制说明，但保留足以阻止误读的局部边界。",
+    "检查第5章是否形成‘方向性结构候选—区间可靠性—运行使用条件’递进，突出家族校正后候选未保留、事件覆盖不足和运行算例仅为接口/合成约束验证等关键阴性结果；压缩5.5及结论中的重复枚举。",
+    "统一中英文摘要中代理负荷/能量概念的对应表述，并按术语台账统一MRG-GCN、StaticGraph、target_event、rule_trigger、节点级/共享门控、top-k及样本标准差等术语；不修改标题、表格、公式、图题图注和参考文献。",
+    "仅对能明确改善准确性、句法、逻辑顺序或信息密度的说明性正文作改动。完成后逐处对照冻结证据，检查数值、单位、模型排序、比较方向、模态、引文归属和限制均保持不变。",
+    "在execution-report.json列出实际检查章节、逐处修改定位及其读者收益、未改问题及原因；明确报告数字/引文/公式/图表/结论权限是否改变。任务状态必须保持pending_codex_review。"
+  ],
+  "acceptance_criteria": [
+    "工作区唯一论文正文变更为docs/thesis/thesis-manuscript.md；只改说明性文字，不改标题、表格、公式、图题图注、引文编号、参考文献或其他文件。",
+    "摘要、引言、方法、结果、诊断、第五章和结论形成清楚递进；研究现状、贡献、路线、章节导览和章节小结不重复讲同一组信息。",
+    "全文明确保持关系组件增量与完整模型排序的区分，完整MRG-GCN非零目标组未胜过TCN这一事实不被弱化或改写。",
+    "代理目标、已查看测试期、JPL重新拟合、预算触顶、事后分层、事件标签和运行收益等证据边界与锁定主张一致。",
+    "除修正明确的语言术语对应错误外，数字、单位、统计量、样本数、种子、预算、模型顺序、引用标记和结论强度全部保持。",
+    "改动须逐段可说明其删除的重复、澄清的指代、改善的逻辑关系或降低的信息负荷；不以增加篇幅或机械替换词语充当改进。",
+    "执行报告包含变更清单、证据核对、语言规范检查和未解决项；不得宣布Codex验收、评分提升或Word/PDF交付完成。"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [],
+    "network_domains": []
+  },
+  "deliverables": [
+    "仅包含授权范围正文语言修订的docs/thesis/thesis-manuscript.md",
+    "execution-report.json：涵盖章节、逐处变更、证据核对及未解决项"
+  ]
+}

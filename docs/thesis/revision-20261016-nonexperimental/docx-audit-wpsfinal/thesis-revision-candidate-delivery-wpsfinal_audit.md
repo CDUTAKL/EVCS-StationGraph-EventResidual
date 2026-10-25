@@ -1,0 +1,5951 @@
+# 成都理工大学专业硕士论文格式审计报告
+
+- 审计时间：2026-10-17T00:21:58+08:00
+- 输入文件：`/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261016-nonexperimental/thesis-revision-candidate-delivery-wpsfinal.docx`
+- SHA-256：`2aca098a41d0aa011915f305ee91a618515c432b5c6aaa42e198db3510eb5aa5`
+- 只读完整性：通过
+- 已执行检查：5821
+- 问题统计：blocker 0，major 2，minor 132，advisory 3
+
+## 结论
+
+未发现阻断性问题，但存在主要格式问题，需要修复并重新审计。
+
+## 发现的问题
+
+| 严重程度 | 规则 | 类别 | 位置 | 问题 | 期望 | 实际 | 可修复性 |
+|---|---|---|---|---|---|---|---|
+| major | REF-MIXED-SYSTEM | 引用与参考文献 | 参考文献 | 参考文献列表同时使用顺序编码制和著者—出版年制。正式论文必须统一。 | "单一制式" | ["author_year", "numeric"] | manual |
+| major | XREF-TARGET-DUPLICATE | 图表公式交叉引用 | 段落 274；段落 276 | 2-1 存在重复目标。 | "目标编号唯一" | 2 | review |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 225「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图…」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 250「图1-2概括本文主线与补充验证。」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 450「图3-6给出与的计算位置。冻结替换改变而保留关系变换，检验联合配置…」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 477「表3-2显示，MRG-GCN较容量近似TCN低16.1%全局MAE…」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 501「表3-4中MRG-GCN的MAE为0.01376 kWh/15 m…」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 516「表3-5中正值表示MRG-GCN误差较低。MRG-GCN相对TCN…」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 536「表3-8记录所检实现的参数规模和训练耗时，硬件、图聚合及早停轮次均…」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 578「表3-13按对照类型归纳组件证据及其权限。节点门控和两类关系仅在所…」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 585「表3-14汇总主要模型对照、同参数门控及关系替换训练的输入、容量和…」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 591「表3-15显示，替代目标下MRG-GCN全局MAE仍低于容量近似T…」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 758「表5-4显示，标准与规则路由的事件覆盖仅1.9%和3.9%，远低于…」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-CJK | 字体 | 段落 804「表5-9汇总本章三类分析：方向性候选、区间可靠性和运行接口。」 | caption 的中文字体不符合规则。 | "黑体" | ["宋体"] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 225「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图…」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 250「图1-2概括本文主线与补充验证。」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 450「图3-6给出与的计算位置。冻结替换改变而保留关系变换，检验联合配置…」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 477「表3-2显示，MRG-GCN较容量近似TCN低16.1%全局MAE…」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 501「表3-4中MRG-GCN的MAE为0.01376 kWh/15 m…」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 516「表3-5中正值表示MRG-GCN误差较低。MRG-GCN相对TCN…」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 536「表3-8记录所检实现的参数规模和训练耗时，硬件、图聚合及早停轮次均…」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 578「表3-13按对照类型归纳组件证据及其权限。节点门控和两类关系仅在所…」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 585「表3-14汇总主要模型对照、同参数门控及关系替换训练的输入、容量和…」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 591「表3-15显示，替代目标下MRG-GCN全局MAE仍低于容量近似T…」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 758「表5-4显示，标准与规则路由的事件覆盖仅1.9%和3.9%，远低于…」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-CAPTION-SIZE | 字体 | 段落 804「表5-9汇总本章三类分析：方向性候选、区间可靠性和运行接口。」 | caption 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-REFERENCE_ENTRY-CJK | 字体 | 段落 915「附录A Caltech事件时刻协议完整组件结果」 | reference_entry 的中文字体不符合规则。 | "宋体" | ["黑体"] | safe |
+| minor | FONT-REFERENCE_ENTRY-CJK | 字体 | 段落 917「表A-1 Caltech事件时刻协议完整配置与组件结果」 | reference_entry 的中文字体不符合规则。 | "宋体" | ["黑体"] | safe |
+| minor | FONT-REFERENCE_ENTRY-SIZE | 字体 | 段落 915「附录A Caltech事件时刻协议完整组件结果」 | reference_entry 存在不符合规则的字号。 | 10.5 | [18.0] | safe |
+| minor | FONT-REFERENCE_ENTRY-SIZE | 字体 | 段落 916「附表A-1保存SG-EXP-019全部12种配置的原结果，供3.7…」 | reference_entry 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | FONT-REFERENCE_ENTRY-SIZE | 字体 | 段落 918「注：数值单位为kWh/15 min；均值和标准差来自2024、20…」 | reference_entry 存在不符合规则的字号。 | 10.5 | [12.0] | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 225「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图…」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 250「图1-2概括本文主线与补充验证。」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 450「图3-6给出与的计算位置。冻结替换改变而保留关系变换，检验联合配置…」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 477「表3-2显示，MRG-GCN较容量近似TCN低16.1%全局MAE…」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 501「表3-4中MRG-GCN的MAE为0.01376 kWh/15 m…」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 516「表3-5中正值表示MRG-GCN误差较低。MRG-GCN相对TCN…」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 536「表3-8记录所检实现的参数规模和训练耗时，硬件、图聚合及早停轮次均…」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 578「表3-13按对照类型归纳组件证据及其权限。节点门控和两类关系仅在所…」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 585「表3-14汇总主要模型对照、同参数门控及关系替换训练的输入、容量和…」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 591「表3-15显示，替代目标下MRG-GCN全局MAE仍低于容量近似T…」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 758「表5-4显示，标准与规则路由的事件覆盖仅1.9%和3.9%，远低于…」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-ALIGN | 段落 | 段落 804「表5-9汇总本章三类分析：方向性候选、区间可靠性和运行接口。」 | caption 对齐方式不符合规则。 | "center" | "JUSTIFY (3)" | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 225「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图…」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 250「图1-2概括本文主线与补充验证。」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 450「图3-6给出与的计算位置。冻结替换改变而保留关系变换，检验联合配置…」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 477「表3-2显示，MRG-GCN较容量近似TCN低16.1%全局MAE…」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 501「表3-4中MRG-GCN的MAE为0.01376 kWh/15 m…」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 516「表3-5中正值表示MRG-GCN误差较低。MRG-GCN相对TCN…」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 536「表3-8记录所检实现的参数规模和训练耗时，硬件、图聚合及早停轮次均…」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 578「表3-13按对照类型归纳组件证据及其权限。节点门控和两类关系仅在所…」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 585「表3-14汇总主要模型对照、同参数门控及关系替换训练的输入、容量和…」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 591「表3-15显示，替代目标下MRG-GCN全局MAE仍低于容量近似T…」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 758「表5-4显示，标准与规则路由的事件覆盖仅1.9%和3.9%，远低于…」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-LINE | 段落 | 段落 804「表5-9汇总本章三类分析：方向性候选、区间可靠性和运行接口。」 | caption 的行距倍数不符合规则。 | 1.0 | 1.25 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 225「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图…」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 250「图1-2概括本文主线与补充验证。」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 450「图3-6给出与的计算位置。冻结替换改变而保留关系变换，检验联合配置…」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 477「表3-2显示，MRG-GCN较容量近似TCN低16.1%全局MAE…」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 501「表3-4中MRG-GCN的MAE为0.01376 kWh/15 m…」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 516「表3-5中正值表示MRG-GCN误差较低。MRG-GCN相对TCN…」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 536「表3-8记录所检实现的参数规模和训练耗时，硬件、图聚合及早停轮次均…」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 578「表3-13按对照类型归纳组件证据及其权限。节点门控和两类关系仅在所…」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 585「表3-14汇总主要模型对照、同参数门控及关系替换训练的输入、容量和…」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 591「表3-15显示，替代目标下MRG-GCN全局MAE仍低于容量近似T…」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 758「表5-4显示，标准与规则路由的事件覆盖仅1.9%和3.9%，远低于…」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_AFTER_PT | 段落 | 段落 804「表5-9汇总本章三类分析：方向性候选、区间可靠性和运行接口。」 | caption 的段后不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 225「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图…」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 250「图1-2概括本文主线与补充验证。」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 450「图3-6给出与的计算位置。冻结替换改变而保留关系变换，检验联合配置…」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 477「表3-2显示，MRG-GCN较容量近似TCN低16.1%全局MAE…」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 501「表3-4中MRG-GCN的MAE为0.01376 kWh/15 m…」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 516「表3-5中正值表示MRG-GCN误差较低。MRG-GCN相对TCN…」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 536「表3-8记录所检实现的参数规模和训练耗时，硬件、图聚合及早停轮次均…」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 578「表3-13按对照类型归纳组件证据及其权限。节点门控和两类关系仅在所…」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 585「表3-14汇总主要模型对照、同参数门控及关系替换训练的输入、容量和…」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 591「表3-15显示，替代目标下MRG-GCN全局MAE仍低于容量近似T…」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 758「表5-4显示，标准与规则路由的事件覆盖仅1.9%和3.9%，远低于…」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-CAPTION-SPACE_BEFORE_PT | 段落 | 段落 804「表5-9汇总本章三类分析：方向性候选、区间可靠性和运行接口。」 | caption 的段前不符合规则。 | 3 | 0.0 | safe |
+| minor | PARA-REFERENCE_ENTRY-ALIGN | 段落 | 段落 915「附录A Caltech事件时刻协议完整组件结果」 | reference_entry 对齐方式不符合规则。 | "left" | "CENTER (1)" | safe |
+| minor | PARA-REFERENCE_ENTRY-ALIGN | 段落 | 段落 916「附表A-1保存SG-EXP-019全部12种配置的原结果，供3.7…」 | reference_entry 对齐方式不符合规则。 | "left" | "JUSTIFY (3)" | safe |
+| minor | PARA-REFERENCE_ENTRY-ALIGN | 段落 | 段落 917「表A-1 Caltech事件时刻协议完整配置与组件结果」 | reference_entry 对齐方式不符合规则。 | "left" | "CENTER (1)" | safe |
+| minor | PARA-REFERENCE_ENTRY-ALIGN | 段落 | 段落 918「注：数值单位为kWh/15 min；均值和标准差来自2024、20…」 | reference_entry 对齐方式不符合规则。 | "left" | "JUSTIFY (3)" | safe |
+| minor | PARA-REFERENCE_ENTRY-LINE | 段落 | 段落 915「附录A Caltech事件时刻协议完整组件结果」 | reference_entry 的行距倍数不符合规则。 | 1.25 | 1.0 | safe |
+| minor | PARA-REFERENCE_ENTRY-LINE | 段落 | 段落 917「表A-1 Caltech事件时刻协议完整配置与组件结果」 | reference_entry 的行距倍数不符合规则。 | 1.25 | 1.0 | safe |
+| minor | PARA-REFERENCE_ENTRY-SPACE_AFTER_PT | 段落 | 段落 915「附录A Caltech事件时刻协议完整组件结果」 | reference_entry 的段后不符合规则。 | 0 | 3.0 | safe |
+| minor | PARA-REFERENCE_ENTRY-SPACE_AFTER_PT | 段落 | 段落 917「表A-1 Caltech事件时刻协议完整配置与组件结果」 | reference_entry 的段后不符合规则。 | 0 | 3.0 | safe |
+| minor | PARA-REFERENCE_ENTRY-SPACE_BEFORE_PT | 段落 | 段落 915「附录A Caltech事件时刻协议完整组件结果」 | reference_entry 的段前不符合规则。 | 0 | 12.0 | safe |
+| minor | PARA-REFERENCE_ENTRY-SPACE_BEFORE_PT | 段落 | 段落 917「表A-1 Caltech事件时刻协议完整配置与组件结果」 | reference_entry 的段前不符合规则。 | 0 | 3.0 | safe |
+| minor | REF-AUTHOR-TRUNCATION | 引用与参考文献 | 参考文献段落 833 | 作者超过 3 人但未检测到“等”或“et al.”。 | "前三名作者后使用等/et al." | "张延宇, 张智铭, 刘春阳, 张西镚, 周毅" | review |
+| minor | REF-AUTHOR-TRUNCATION | 引用与参考文献 | 参考文献段落 892 | 作者超过 3 人但未检测到“等”或“et al.”。 | "前三名作者后使用等/et al." | "FENG D, LI D, ZHOU Y, ZHAO J, ZHANG K" | review |
+| minor | REF-FIELD-TITLE | 引用与参考文献 | 参考文献段落 918 | 参考文献缺少或无法解析题名。 | "题名" | null | review |
+| minor | REF-FIELD-TYPE | 引用与参考文献 | 参考文献段落 918 | 参考文献缺少文献类型标识。 | ["A", "C", "CP/DK", "D", "D/OL", "DB/OL", "EB/OL", "G", "J", "J/OL", "M", "M/CD", "M/OL", "N", "N/OL", "P", "R", "S", "Z"] | null | review |
+| minor | REF-JOURNAL-VOLUME-PAGES | 引用与参考文献 | 参考文献段落 845 | 期刊文献缺少可识别的卷(期):页码。 | "卷(期):页码" | ". arXiv, 2018[2026-10-7]. https://arxiv.org/abs/1803.01271. DOI: 10.48550/arXiv.1803.01271." | review |
+| minor | REF-JOURNAL-VOLUME-PAGES | 引用与参考文献 | 参考文献段落 850 | 期刊文献缺少可识别的卷(期):页码。 | "卷(期):页码" | ". 计算机应用, 2024, 44(S1): 337-342." | review |
+| minor | REF-JOURNAL-VOLUME-PAGES | 引用与参考文献 | 参考文献段落 883 | 期刊文献缺少可识别的卷(期):页码。 | "卷(期):页码" | ". 计算机应用, 2025, 45(S1): 329-333." | review |
+| minor | REF-JOURNAL-VOLUME-PAGES | 引用与参考文献 | 参考文献段落 889 | 期刊文献缺少可识别的卷(期):页码。 | "卷(期):页码" | ". International Journal of Electrical Power & Energy Systems, 2025, 173: 111387. DOI: 10.1016/j.ijepes.2025.111387." | review |
+| minor | REF-JOURNAL-VOLUME-PAGES | 引用与参考文献 | 参考文献段落 890 | 期刊文献缺少可识别的卷(期):页码。 | "卷(期):页码" | ". Applied Energy, 2026, 406: 127262. DOI: 10.1016/j.apenergy.2025.127262." | review |
+| minor | REF-JOURNAL-VOLUME-PAGES | 引用与参考文献 | 参考文献段落 891 | 期刊文献缺少可识别的卷(期):页码。 | "卷(期):页码" | ". Renewable and Sustainable Energy Reviews, 2024, 206: 114855. DOI: 10.1016/j.rser.2024.114855." | review |
+| minor | REF-JOURNAL-VOLUME-PAGES | 引用与参考文献 | 参考文献段落 893 | 期刊文献缺少可识别的卷(期):页码。 | "卷(期):页码" | ". Applied Soft Computing, 2023, 146: 110629. DOI: 10.1016/j.asoc.2023.110629." | review |
+| minor | REF-JOURNAL-VOLUME-PAGES | 引用与参考文献 | 参考文献段落 896 | 期刊文献缺少可识别的卷(期):页码。 | "卷(期):页码" | ". IEEE Access, 2026, 14: 52360-52370. DOI: 10.1109/ACCESS.2026.3679962." | review |
+| minor | REF-JOURNAL-VOLUME-PAGES | 引用与参考文献 | 参考文献段落 909 | 期刊文献缺少可识别的卷(期):页码。 | "卷(期):页码" | ". Science Advances, 2019, 5(11): eaau4996." | review |
+| minor | REF-PUNCTUATION | 引用与参考文献 | 参考文献段落 918 | 参考文献使用了全角著录标点，需与所选 GB/T 样式统一。 | "统一的著录标点" | ["。", "，", "：", "；"] | safe |
+| minor | REF-UNPARSED | 引用与参考文献 | 参考文献 | 参考文献区域存在无法解析为文献条目的段落。 | "每段对应一条可识别文献" | ["段落 915「附录A Caltech事件时刻协议完整组件结果」", "段落 916「附表A-1保存SG-EXP-019全部12种配置的原结果，供3.7节组件分析追溯。…」", "段落 917「表A-1 Caltech事件时刻协议完整配置与组件结果」"] | review |
+| minor | REF-UNUSED-AUTHOR-YEAR | 引用与参考文献 | 参考文献 | 著者—出版年制列表中存在未被正文、图表或脚注引用的条目。 | "每条均被引用" | [["注数值单位为", "2024", "参考文献段落 918"]] | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 330 | 2-2 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 388 | 3-1 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 390 | 3-2 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 399 | 3-3 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 404 | 3-4 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 408 | 3-5 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 412 | 3-6 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 419 | 3-7 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 426 | 3-8 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 430 | 3-9 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 434 | 3-10 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 435 | 3-11 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 441 | 3-12 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 445 | 3-13 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 465 | 3-14 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 466 | 3-15 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 573 | 3-16 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 629 | 4-1 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 670 | 4-2 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 684 | 表4-7 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 689 | 表4-8 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 707 | 5-1 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 711 | 5-2 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 738 | 5-3 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 745 | 表5-2 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 774 | 表5-6 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 781 | 5-4 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 783 | 5-5 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| minor | XREF-TARGET-UNMENTIONED | 图表公式交叉引用 | 段落 796 | 5-7 存在，但正文未识别到对应提及。 | "至少一处正文交叉引用" | 0 | review |
+| advisory | REF-METADATA-UNVERIFIED | 引用与参考文献 | 参考文献 | 当前仅检查 DOCX 内的著录结构，尚未联网或通过文献库核验题名、作者、年份、来源和 DOI 的真实性。 | "重要文献元数据经权威来源核验" | "未核验" | manual |
+| advisory | STRUCTURE-VISUAL-001 | 复杂对象 | DOCX 包 | 检测到文本框或浮动对象；其内容和位置必须在 Word/PDF 中目视确认。 | "逐页视觉验收" | {"text_boxes": 16, "floating_drawings": 29} | manual |
+| advisory | TABLE-CROSSPAGE-REVIEW | 表格 | 表格 22 | 该长表可能跨页，需在 Word/PDF 中确认第二页是否标注“续上表”。 | "续上表" | "19 行" | manual |
+
+## 正文引用—文献列表闭环
+
+- 正文引用制式：numeric
+- 参考文献制式：author_year、numeric
+- 引用域/来源：{"page": 50}
+- 模板示例模式：否
+
+### 引用出现与解析
+
+| 制式 | 原始标记 | 解析键 | 来源 | 位置 | 显示位置 |
+|---|---|---|---|---|---|
+| numeric | [1] | [1] | body | 正文「我国电动汽车保有量及配套充电设施持续增长。截至2024年底，全国公共充电桩保有量达…」 | superscript |
+| numeric | [2-4] | [2, 3, 4] | body | 正文「我国电动汽车保有量及配套充电设施持续增长。截至2024年底，全国公共充电桩保有量达…」 | superscript |
+| numeric | [2-3] | [2, 3] | body | 正文「现有研究多以区域、站群或单个充电站的聚合负荷为预测对象，其结果能够支持电网侧调度和…」 | superscript |
+| numeric | [5-6] | [5, 6] | body | 正文「现有研究多以区域、站群或单个充电站的聚合负荷为预测对象，其结果能够支持电网侧调度和…」 | superscript |
+| numeric | [7-9] | [7, 8, 9] | body | 正文「充电运营平台的数据通常以离散会话记录形式保存，每条记录包含充电节点标识、接入时刻、…」 | superscript |
+| numeric | [10-11] | [10, 11] | body | 正文「同一场站内的充电节点处于共同的用户到达过程和运行环境中，其负荷变化并非完全相互独立…」 | superscript |
+| numeric | [10,12-13] | [10, 12, 13] | body | 正文「同一场站内的充电节点处于共同的用户到达过程和运行环境中，其负荷变化并非完全相互独立…」 | superscript |
+| numeric | [14-17] | [14, 15, 16, 17] | body | 正文「除周期性变化外，充电节点还会出现由接入、离站、活跃会话变化或负荷跳变构成的稀疏变化…」 | superscript |
+| numeric | [2-4,18-19] | [2, 3, 4, 18, 19] | body | 正文「电动汽车充电负荷预测已形成从统计方法、机器学习到深度学习和组合预测的方法谱系。相关…」 | superscript |
+| numeric | [20] | [20] | body | 正文「电动汽车充电负荷预测已形成从统计方法、机器学习到深度学习和组合预测的方法谱系。相关…」 | superscript |
+| numeric | [21] | [21] | body | 正文「电动汽车充电负荷预测已形成从统计方法、机器学习到深度学习和组合预测的方法谱系。相关…」 | superscript |
+| numeric | [22] | [22] | body | 正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」 | superscript |
+| numeric | [23] | [23] | body | 正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」 | superscript |
+| numeric | [24] | [24] | body | 正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」 | superscript |
+| numeric | [25] | [25] | body | 正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」 | superscript |
+| numeric | [7,26-30] | [7, 26, 27, 28, 29, 30] | body | 正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」 | superscript |
+| numeric | [5,11,29,31] | [5, 11, 29, 31] | body | 正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」 | superscript |
+| numeric | [32-35] | [32, 33, 34, 35] | body | 正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」 | superscript |
+| numeric | [36] | [36] | body | 正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」 | superscript |
+| numeric | [37-41] | [37, 38, 39, 40, 41] | body | 正文「近年来，中文研究还从多时间尺度深度学习、规模化行为建模、半监督学习、场景聚类和在线…」 | superscript |
+| numeric | [42-46] | [42, 43, 44, 45, 46] | body | 正文「近年来，中文研究还从多时间尺度深度学习、规模化行为建模、半监督学习、场景聚类和在线…」 | superscript |
+| numeric | [47] | [47] | body | 正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」 | superscript |
+| numeric | [48] | [48] | body | 正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」 | superscript |
+| numeric | [49] | [49] | body | 正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」 | superscript |
+| numeric | [50] | [50] | body | 正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」 | superscript |
+| numeric | [51] | [51] | body | 正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」 | superscript |
+| numeric | [52] | [52] | body | 正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」 | superscript |
+| numeric | [53-55] | [53, 54, 55] | body | 正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」 | superscript |
+| numeric | [56-63] | [56, 57, 58, 59, 60, 61, 62, 63] | body | 正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」 | superscript |
+| numeric | [6,8,64-70] | [6, 8, 64, 65, 66, 67, 68, 69, 70] | body | 正文「EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接E…」 | superscript |
+| numeric | [12,13,67,70] | [12, 13, 67, 70] | body | 正文「EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接E…」 | superscript |
+| numeric | [10] | [10] | body | 正文「EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接E…」 | superscript |
+| numeric | [71] | [71] | body | 正文「EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接E…」 | superscript |
+| numeric | [12-13,67,70] | [12, 13, 67, 70] | table_caption | 正文「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图融合[12-13…」 | superscript |
+| numeric | [71] | [71] | table_caption | 正文「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图融合[12-13…」 | superscript |
+| numeric | [72] | [72] | table_caption | 正文「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图融合[12-13…」 | superscript |
+| numeric | [73] | [73] | table_caption | 正文「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图融合[12-13…」 | superscript |
+| numeric | [5,7,9,11,26,31] | [5, 7, 9, 11, 26, 31] | body | 正文「用户接入、离站、停留和充电需求是形成充电负荷波动的直接行为来源。现有研究通常将相关…」 | superscript |
+| numeric | [14-17] | [14, 15, 16, 17] | body | 正文「用户接入、离站、停留和充电需求是形成充电负荷波动的直接行为来源。现有研究通常将相关…」 | superscript |
+| numeric | [74] | [74] | body | 正文「在非日历事件方面，已有研究开始关注事件数据对极端预测误差的影响[74]，也出现了“…」 | superscript |
+| numeric | [75-76] | [75, 76] | body | 正文「在非日历事件方面，已有研究开始关注事件数据对极端预测误差的影响[74]，也出现了“…」 | superscript |
+| numeric | [77] | [77] | body | 正文「负荷预测模型的解释研究主要包括外部归因和内部信号分析两类路径。外部归因通常利用SH…」 | superscript |
+| numeric | [62,78] | [62, 78] | body | 正文「负荷预测模型的解释研究主要包括外部归因和内部信号分析两类路径。外部归因通常利用SH…」 | superscript |
+| numeric | [79] | [79] | body | 正文「负荷预测模型的解释研究主要包括外部归因和内部信号分析两类路径。外部归因通常利用SH…」 | superscript |
+| numeric | [80] | [80] | body | 正文「负荷预测模型的解释研究主要包括外部归因和内部信号分析两类路径。外部归因通常利用SH…」 | superscript |
+| numeric | [81] | [81] | body | 正文「误差价值分析也已有相关路径。Guastavino等[81]针对二分类事件预测提出价…」 | superscript |
+| numeric | [82] | [82] | body | 正文「本文采用公开的ACN-Data电动汽车充电数据集。该数据集由加州理工学院发布，记录…」 | superscript |
+| numeric | [82-83] | [82, 83] | body | 正文「此外，利用ACN-Data公开历史静态快照[82-83]核查同一节点会话的电流形态…」 | superscript |
+| numeric | [82] | [82] | body | 正文「为检验模型比较能否在另一充电场站重现，本文依据ACN官方JPL普通会话数据建立独立…」 | superscript |
+| numeric | [24] | [24] | body | 正文「时间骨干采用TCN[24]。对每个节点独立处理96片历史输入，六层一维卷积的膨胀率…」 | superscript |
+| numeric | [51] | [51] | body | 正文「相关方法先例及本文的任务化定位见1.2.2节。Graph WaveNet[51]和…」 | superscript |
+| numeric | [52] | [52] | body | 正文「相关方法先例及本文的任务化定位见1.2.2节。Graph WaveNet[51]和…」 | superscript |
+| numeric | [84] | [84] | body | 正文「本节保留包括ARIMA[84]在内的回溯历史比较，供配置追溯及第4章诊断使用。GW…」 | superscript |
+| numeric | [80] | [80] | body | 正文「预测精度和权重画像不能完整解释关系使用及误差来源[80]。本文据此建立三层机制诊断…」 | superscript |
+| numeric | [85] | [85] | body | 正文「在保持其余模型参数不变的条件下，将两层强制替换为指定组合，仅在测试集前向推理。设置…」 | superscript |
+| numeric | [86] | [86] | body | 正文「L2采用知识蒸馏[86]检验图模型预测信号能否被纯时序学生吸收。教师为冻结的Sta…」 | superscript |
+| numeric | [87] | [87] | body | 正文「采用传递熵（transfer entropy，TE）[87]衡量给定目标历史后，源…」 | superscript |
+| numeric | [88-89] | [88, 89] | body | 正文「为检查TE候选与条件独立检验是否给出相近的方向对，进一步采用PCMCI+[88-8…」 | superscript |
+| numeric | [90-92] | [90, 91, 92] | body | 正文「整体点预测误差不能反映困难样本的区间覆盖。本节按独立校准、成熟标签滚动更新和回溯规…」 | superscript |
+| numeric | [91] | [91] | body | 正文「本分析复用三种子冻结预测；模型由调参段选定，校准和测试完整窗口、目标时间片互不重叠…」 | superscript |
+| numeric | [92] | [92] | body | 正文「本分析复用三种子冻结预测；模型由调参段选定，校准和测试完整窗口、目标时间片互不重叠…」 | superscript |
+| numeric | [91-92] | [91, 92] | body | 正文「每种窗口均报告逐节点标准路径和行为分层路径，规则触发仅用于后者的分组与路由，目标事…」 | superscript |
+
+### 参考文献条目映射
+
+| 条目标识 | 作者 | 年份 | 文献类型 | 题名 | 引用状态 | 位置 |
+|---|---|---|---|---|---|---|
+| [1] | 中国电动汽车充电基础设施促进联盟 | 2024 | EB/OL | 2024年全国电动汽车充换电基础设施运行情况 | 已匹配 | 参考文献段落 822 |
+| [2] | 陈丽丹, 张尧, FIGUEIREDO A | 2019 | J | 电动汽车充放电负荷预测研究综述 | 已匹配 | 参考文献段落 823 |
+| [3] | 张夏韦, 梁军, 王要强, 等 | 2023 | J | 电动汽车充电负荷时空分布预测研究综述 | 已匹配 | 参考文献段落 824 |
+| [4] | 崔一诺, 罗配明, 李攀硕, 等 | 2026 | J | 电动汽车充放电负荷时-空分布预测研究综述 | 已匹配 | 参考文献段落 825 |
+| [5] | 韩林阳, 叶承晋, 朱超, 等 | 2024 | J | 高温天气下计及用户意愿的城市充电负荷空间引导策略 | 已匹配 | 参考文献段落 826 |
+| [6] | 田礼彬 | 2025 | D | 电动汽车负荷时空预测及有序充放电优化调度 | 已匹配 | 参考文献段落 827 |
+| [7] | 王哲, 万宝, 凌天晗, 等 | 2021 | J | 基于谱聚类和LSTM神经网络的电动公交车充电负荷预测方法 | 已匹配 | 参考文献段落 828 |
+| [8] | 陈闯 | 2022 | D | 基于图卷积网络及排队论的电动汽车充电负荷预测研究 | 已匹配 | 参考文献段落 829 |
+| [9] | 奚圣宽 | 2023 | D | 基于深度学习的电动汽车充电桩负荷预测方法研究 | 已匹配 | 参考文献段落 830 |
+| [10] | 黄南天, 孙赫宏, 王圣元, 等 | 2025 | J | 计及多公共充电站差异化耦合关联的电动汽车充电负荷时-空短期预测 | 已匹配 | 参考文献段落 831 |
+| [11] | 张美霞, 孙铨杰, 杨秀 | 2022 | J | 考虑多源信息实时交互和用户后悔心理的电动汽车充电负荷预测 | 已匹配 | 参考文献段落 832 |
+| [12] | 张延宇, 张智铭, 刘春阳, 张西镚, 周毅 | 2024 | J | 基于动态自适应图神经网络的电动汽车充电负荷预测 | 已匹配 | 参考文献段落 833 |
+| [13] | 黄健, 陈建红, 何剑杰, 等 | 2024 | J | 基于GCN-LSTM的电动汽车负荷预测方法 | 已匹配 | 参考文献段落 834 |
+| [14] | 陈培垠, 方彦军 | 2020 | J | 基于卡尔曼滤波预测节假日逐点增长率的电力系统短期负荷预测 | 已匹配 | 参考文献段落 835 |
+| [15] | 潘良军, 王楷, 赵宏炎, 等 | 2020 | J | 基于春节影响时期分析的中期负荷智能预测 | 已匹配 | 参考文献段落 836 |
+| [16] | 陈梓行, 金涛, 郑熙东, 等 | 2022 | J | 基于新型日期映射法和ISGU混合模型的短期电力负荷预测 | 已匹配 | 参考文献段落 837 |
+| [17] | 巫朝越 | 2024 | D | 考虑特殊事件影响的单体用户短期负荷预测组合模型 | 已匹配 | 参考文献段落 838 |
+| [18] | 韩富佳, 王晓辉, 乔骥, 等 | 2023 | J | 基于人工智能技术的新型电力系统负荷预测研究综述 | 已匹配 | 参考文献段落 839 |
+| [19] | 黄运有, 詹剑锋 | 2021 | J | 基于深度学习的短期负荷预测综述 | 已匹配 | 参考文献段落 840 |
+| [20] | KE G, MENG Q, FINLEY T, et al | 2017 | C | LightGBM: a highly efficient gradient boosting decision tree | 已匹配 | 参考文献段落 841 |
+| [21] | CHEN T, GUESTRIN C | 2016 | C | XGBoost: a scalable tree boosting system | 已匹配 | 参考文献段落 842 |
+| [22] | HOCHREITER S, SCHMIDHUBER J | 1997 | J | Long short-term memory | 已匹配 | 参考文献段落 843 |
+| [23] | CHO K, VAN MERRIËNBOER B, GULCEHRE C, et al | 2014 | C | Learning phrase representations using RNN encoder-decoder for statistical machine translation | 已匹配 | 参考文献段落 844 |
+| [24] | BAI S, KOLTER J Z, KOLTUN V | 2018 | J/OL | An empirical evaluation of generic convolutional and recurrent networks for sequence modeling | 已匹配 | 参考文献段落 845 |
+| [25] | VASWANI A, SHAZEER N, PARMAR N, et al | 2017 | C | Attention is all you need | 已匹配 | 参考文献段落 846 |
+| [26] | 王华彪, 李小勇 | 2022 | J | 基于融合注意力机制改进双向长短时记忆网络在电动汽车充电负荷中的预测研究 | 已匹配 | 参考文献段落 847 |
+| [27] | 王琨, 高敬更, 张勇红, 等 | 2019 | J | 基于LSTM神经网络的复合变量电动汽车充电负荷预测方法技术研究 | 已匹配 | 参考文献段落 848 |
+| [28] | 张昌鸿, 曾祥智 | 2025 | J | 基于拉丁超立方及CNN-LSTM-ATTENTION的电动汽车负荷预测 | 已匹配 | 参考文献段落 849 |
+| [29] | 顾玮, 段敬, 张栋, 等 | 2024 | J | 分时电价下的充电站负荷预测 | 已匹配 | 参考文献段落 850 |
+| [30] | 袁溪, 张邵欣, 张超, 等 | 2025 | J | 基于Transformer的电动汽车充电站能耗预测研究 | 已匹配 | 参考文献段落 851 |
+| [31] | 王强, 毕宇豪, 高超, 等 | 2025 | J | 融合多方信息的电动汽车充电负荷时空分布预测 | 已匹配 | 参考文献段落 852 |
+| [32] | 赵子鋆, 彭清文, 邓铭, 等 | 2024 | J | 考虑多因素影响与误差修正的充电站负荷预测 | 已匹配 | 参考文献段落 853 |
+| [33] | 温子健, 李伟风, 刘泽晖, 等 | 2026 | J | 基于时间特征分类与误差修正的电动汽车充电负荷预测 | 已匹配 | 参考文献段落 854 |
+| [34] | 蒋建东, 韩文轩, 赵云飞, 等 | 2026 | J | 基于优化VMD二次分解的短期电力负荷预测 | 已匹配 | 参考文献段落 855 |
+| [35] | 张翾, 李红月 | 2025 | J | 基于优化VMD与TCN-ISE-Pyraformer的短期电力负荷预测 | 已匹配 | 参考文献段落 856 |
+| [36] | 韩宇昊, 刘鸿鹏 | 2025 | J | 基于FMD-LSTM-Bootstrap的电动汽车充电负荷区间预测 | 已匹配 | 参考文献段落 857 |
+| [37] | 朱俊丞 | 2020 | D | 基于深度学习的多时间尺度电动汽车充电负荷预测模型设计 | 已匹配 | 参考文献段落 858 |
+| [38] | 陈勇, 江颖达, 徐刚, 等 | 2022 | J | 规模化电动汽车充电负荷预测 | 已匹配 | 参考文献段落 859 |
+| [39] | 闫威, 李南, 沈月秀, 等 | 2023 | J | 基于CNN-GAN与半监督回归的电动汽车充电负荷预测 | 已匹配 | 参考文献段落 860 |
+| [40] | 赵伟博, 范旭东, 孙胜博, 等 | 2025 | J | 电动汽车充电负荷场景化分析与超短期预测方法 | 已匹配 | 参考文献段落 861 |
+| [41] | 毛建斌, 杨少兵, 杨湘彦, 等 | 2025 | J | 基于有限混合模型的规模化电动汽车充电负荷在线预测方法 | 已匹配 | 参考文献段落 862 |
+| [42] | 吴钉捷, 李晓露 | 2020 | J | 基于实时出行需求和交通路况的电动汽车充电负荷预测 | 已匹配 | 参考文献段落 863 |
+| [43] | 丁乐言, 柯松, 张帆, 等 | 2024 | J | 考虑出行需求和引导策略的电动汽车充电负荷预测 | 已匹配 | 参考文献段落 864 |
+| [44] | 张琳娟, 李文峰, 许长清, 等 | 2025 | J | 计及充电排队与实时SOC的电动汽车充电负荷时空分布预测 | 已匹配 | 参考文献段落 865 |
+| [45] | 李宏伟, 宋玉峰, 李帅兵, 等 | 2025 | J | 基于ArcGIS路网结构与交通拥挤度分析的电动汽车充电负荷预测方法 | 已匹配 | 参考文献段落 866 |
+| [46] | 葛乐, 陆颖, 王明深, 等 | 2025 | J | 考虑用户决策更新的电动汽车充换电负荷预测 | 已匹配 | 参考文献段落 867 |
+| [47] | KIPF T N, WELLING M | 2017 | C | Semi-supervised classification with graph convolutional networks | 已匹配 | 参考文献段落 868 |
+| [48] | VELIČKOVIĆ P, CUCURULL G, CASANOVA A, et al | 2018 | C | Graph attention networks | 已匹配 | 参考文献段落 869 |
+| [49] | SCHLICHTKRULL M, KIPF T N, BLOEM P, et al | 2018 | C | Modeling relational data with graph convolutional networks | 已匹配 | 参考文献段落 870 |
+| [50] | YU B, YIN H, ZHU Z | 2018 | C | Spatio-temporal graph convolutional networks: a deep learning framework for traffic forecasting | 已匹配 | 参考文献段落 871 |
+| [51] | WU Z, PAN S, LONG G, et al | 2019 | C | Graph WaveNet: deep spatial-temporal graph modeling | 已匹配 | 参考文献段落 872 |
+| [52] | BAI L, YAO L, LI C, et al | 2020 | C | Adaptive graph convolutional recurrent network for traffic forecasting | 已匹配 | 参考文献段落 873 |
+| [53] | 叶宝林, 戴本岙, 张鸣剑, 等 | 2024 | J | 基于图卷积网络的交通流预测方法综述 | 已匹配 | 参考文献段落 874 |
+| [54] | 闫佳和, 李红辉, 孙婧, 等 | 2025 | J | 面向交通流预测的时空图神经网络发展综述 | 已匹配 | 参考文献段落 875 |
+| [55] | 李志帅, 吕宜生, 熊刚 | 2019 | J | 基于图卷积神经网络和注意力机制的短时交通流量预测 | 已匹配 | 参考文献段落 876 |
+| [56] | 董雷, 陈振平, 韩富佳, 等 | 2023 | J | 基于图卷积神经网络与K-means聚类的居民用户集群短期负荷预测 | 已匹配 | 参考文献段落 877 |
+| [57] | 张鹏飞, 胡博, 何金松, 等 | 2023 | J | 基于时空图卷积网络的短期空间负荷预测方法 | 已匹配 | 参考文献段落 878 |
+| [58] | 吴兴扬, 戴剑丰 | 2025 | J | 基于多尺度自适应时空图卷积网络与BERT模型的多节点短期负荷预测 | 已匹配 | 参考文献段落 879 |
+| [59] | 张艺涵, 杨萌, 刘军会, 等 | 2024 | J | 基于时间图卷积网络的短期电力负荷时空预测方法 | 已匹配 | 参考文献段落 880 |
+| [60] | 高昆仑, 姚铁锤, 刘思言, 等 | 2026 | J | 面向电网分析计算的图神经网络技术综述 | 已匹配 | 参考文献段落 881 |
+| [61] | 赵紫昱, 陈渊睿, 陈霆威, 等 | 2024 | J | 基于时空图注意力网络的超短期区域负荷预测 | 已匹配 | 参考文献段落 882 |
+| [62] | 原野, 王海燕, 袁新平, 等 | 2025 | J | 基于可解释动态图注意力网络的短期电力负荷预测 | 已匹配 | 参考文献段落 883 |
+| [63] | 孟衡, 张涛, 王金, 等 | 2024 | J | 基于多尺度时空图卷积网络与Transformer融合的多节点短期电力负荷预测方法 | 已匹配 | 参考文献段落 884 |
+| [64] | 贠昕尧 | 2024 | D | 基于多图融合的电动汽车充电站群负荷时空预测方法研究 | 已匹配 | 参考文献段落 885 |
+| [65] | 王进世 | 2025 | D | 基于图注意力网络的电动汽车充电站负荷预测方法研究 | 已匹配 | 参考文献段落 886 |
+| [66] | 王圣元 | 2023 | D | 基于图神经网络的短期负荷时空预测 | 已匹配 | 参考文献段落 887 |
+| [67] | HUANG Y, WU S, WANG Z, et al | 2025 | J | Causality-aware multi-graph convolutional networks with critical node dynamics for electric vehicle charging station load forecasting | 已匹配 | 参考文献段落 888 |
+| [68] | ZHANG L, JIAO Z, ZHAO C | 2025 | J | Load probabilistic forecasting for electric vehicle charging station cluster: adaptive multivariate spatiotemporal graph fusion technology | 已匹配 | 参考文献段落 889 |
+| [69] | HE J, LIU Q Y, HU Y L, et al | 2026 | J | Short-term regional EV charging load forecasting based on GAT and GRU with trip distribution estimation | 已匹配 | 参考文献段落 890 |
+| [70] | XIE T, YUN X, ZHANG G, et al | 2024 | J | Charging station cluster load prediction: spatiotemporal multi-graph fusion technology | 已匹配 | 参考文献段落 891 |
+| [71] | FENG D, LI D, ZHOU Y, ZHAO J, ZHANG K | 2024 | J | STGNet: short-term residential load forecasting with spatial-temporal gated fusion network | 已匹配 | 参考文献段落 892 |
+| [72] | WANG Y, RUI L, MA J, et al | 2023 | J | A short-term residential load forecasting scheme based on the multiple correlation-temporal graph neural networks | 已匹配 | 参考文献段落 893 |
+| [73] | ZHANG T, JIAO W, YU J, et al | 2025 | J | Short-term residential load forecasting framework based on spatial-temporal fusion adaptive gated graph convolution networks | 已匹配 | 参考文献段落 894 |
+| [74] | 高洪超, 陈启鑫, 雷振, 等 | 2023 | J | 考虑事件数据的产消者负荷预测方法及极端误差抑制策略 | 已匹配 | 参考文献段落 895 |
+| [75] | HWANG J, SUH D | 2026 | J | PAR-LLM: peak-aware residual LLM over anchor for EV charging station demand | 已匹配 | 参考文献段落 896 |
+| [76] | LIANG Y | 2026 | J | Forecast-time-safe load forecasting for connected and automated EV charging operation: periodicity-aware residual correction on a processed distribution load proxy with public EV charging validation | 已匹配 | 参考文献段落 897 |
+| [77] | LUNDBERG S M, LEE S I | 2017 | C | A unified approach to interpreting model predictions | 已匹配 | 参考文献段落 898 |
+| [78] | 孙飞虎 | 2025 | D | 基于注意力机制的配电网电力负荷预测方法研究 | 已匹配 | 参考文献段落 899 |
+| [79] | JAIN S, WALLACE B C | 2019 | C | Attention is not explanation | 已匹配 | 参考文献段落 900 |
+| [80] | ARABZADEH V, FRANK R | 2025 | J | A four-dimensional analysis of explainable AI in energy forecasting: a domain-specific systematic review | 已匹配 | 参考文献段落 901 |
+| [81] | GUASTAVINO S, PIANA M, BENVENUTO F | 2024 | J | Bad and good errors: value-weighted skill scores in deep ensemble learning | 已匹配 | 参考文献段落 902 |
+| [82] | LEE Z J, LI T, LOW S H | 2019 | C | ACN-Data: Analysis and applications of an open EV charging dataset | 已匹配 | 参考文献段落 903 |
+| [83] | LI T | 2026 | EB/OL | ACN-Data Static | 已匹配 | 参考文献段落 904 |
+| [84] | BOX G E P, JENKINS G M | 1970 | M | Time series analysis: forecasting and control | 已匹配 | 参考文献段落 905 |
+| [85] | NAM A, CONKLIN H, YANG Y, et al | 2025 | C | Causal head gating: a framework for interpreting roles of attention heads in transformers | 已匹配 | 参考文献段落 906 |
+| [86] | HINTON G, VINYALS O, DEAN J | 2014 | C | Distilling the knowledge in a neural network | 已匹配 | 参考文献段落 907 |
+| [87] | SCHREIBER T | 2000 | J | Measuring information transfer | 已匹配 | 参考文献段落 908 |
+| [88] | RUNGE J, NOWACK P, KRETSCHMER M, et al | 2019 | J | Detecting and quantifying causal associations in large nonlinear time series datasets | 已匹配 | 参考文献段落 909 |
+| [89] | RUNGE J | 2020 | C | Discovering contemporaneous and lagged causal relations in autocorrelated nonlinear time series datasets | 已匹配 | 参考文献段落 910 |
+| [90] | VOVK V, GAMMERMAN A, SHAFER G | 2005 | M | Algorithmic learning in a random world | 已匹配 | 参考文献段落 911 |
+| [91] | LEI J, G'SELL M, RINALDO A, et al | 2018 | J | Distribution-free predictive inference for regression | 已匹配 | 参考文献段落 912 |
+| [92] | GIBBS I, CANDÈS E | 2021 | C | Adaptive conformal inference under distribution shift | 已匹配 | 参考文献段落 913 |
+| 注数值单位为，2024 | 注：数值单位为kWh/15 min；均值和标准差来自 | 2024 | 缺失 | 无法解析 | 未引用 | 参考文献段落 918 |
+
+## 文档结构摘要
+
+```json
+{
+  "sections": 13,
+  "page_number_sections": [
+    {
+      "section": 3,
+      "format": "upperRoman",
+      "start": "1"
+    },
+    {
+      "section": 4,
+      "format": "upperRoman",
+      "start": null
+    },
+    {
+      "section": 5,
+      "format": "lowerRoman",
+      "start": "1"
+    },
+    {
+      "section": 6,
+      "format": "decimal",
+      "start": "1"
+    },
+    {
+      "section": 7,
+      "format": "decimal",
+      "start": null
+    },
+    {
+      "section": 8,
+      "format": "decimal",
+      "start": null
+    },
+    {
+      "section": 9,
+      "format": "decimal",
+      "start": null
+    },
+    {
+      "section": 10,
+      "format": "decimal",
+      "start": null
+    },
+    {
+      "section": 11,
+      "format": "decimal",
+      "start": null
+    },
+    {
+      "section": 12,
+      "format": "decimal",
+      "start": null
+    },
+    {
+      "section": 13,
+      "format": "decimal",
+      "start": null
+    }
+  ],
+  "different_odd_even_headers": true,
+  "paragraphs": 918,
+  "nonempty_paragraphs": 833,
+  "tables": 41,
+  "inline_shapes": 47,
+  "semantic_paragraphs": {
+    "abstract_zh_heading": 1,
+    "abstract_en_heading": 1,
+    "toc_heading": 1,
+    "heading1": 7,
+    "heading2": 34,
+    "heading3": 74,
+    "body": 250,
+    "caption": 98,
+    "heading4": 3,
+    "reference_entry": 96
+  },
+  "formulas": [
+    {
+      "paragraph": 274,
+      "location": "段落 274",
+      "type": "omml",
+      "number": {
+        "chapter": 2,
+        "sequence": 1
+      },
+      "current_chapter": 2
+    },
+    {
+      "paragraph": 330,
+      "location": "段落 330",
+      "type": "omml",
+      "number": {
+        "chapter": 2,
+        "sequence": 2
+      },
+      "current_chapter": 2
+    },
+    {
+      "paragraph": 388,
+      "location": "段落 388",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 1
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 390,
+      "location": "段落 390",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 2
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 399,
+      "location": "段落 399",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 3
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 404,
+      "location": "段落 404",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 4
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 408,
+      "location": "段落 408",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 5
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 412,
+      "location": "段落 412",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 6
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 419,
+      "location": "段落 419",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 7
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 426,
+      "location": "段落 426",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 8
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 430,
+      "location": "段落 430",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 9
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 434,
+      "location": "段落 434",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 10
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 435,
+      "location": "段落 435",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 11
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 441,
+      "location": "段落 441",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 12
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 445,
+      "location": "段落 445",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 13
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 465,
+      "location": "段落 465",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 14
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 466,
+      "location": "段落 466",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 15
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 573,
+      "location": "段落 573",
+      "type": "omml",
+      "number": {
+        "chapter": 3,
+        "sequence": 16
+      },
+      "current_chapter": 3
+    },
+    {
+      "paragraph": 629,
+      "location": "段落 629",
+      "type": "omml",
+      "number": {
+        "chapter": 4,
+        "sequence": 1
+      },
+      "current_chapter": 4
+    },
+    {
+      "paragraph": 670,
+      "location": "段落 670",
+      "type": "omml",
+      "number": {
+        "chapter": 4,
+        "sequence": 2
+      },
+      "current_chapter": 4
+    },
+    {
+      "paragraph": 707,
+      "location": "段落 707",
+      "type": "omml",
+      "number": {
+        "chapter": 5,
+        "sequence": 1
+      },
+      "current_chapter": 5
+    },
+    {
+      "paragraph": 711,
+      "location": "段落 711",
+      "type": "omml",
+      "number": {
+        "chapter": 5,
+        "sequence": 2
+      },
+      "current_chapter": 5
+    },
+    {
+      "paragraph": 738,
+      "location": "段落 738",
+      "type": "omml",
+      "number": {
+        "chapter": 5,
+        "sequence": 3
+      },
+      "current_chapter": 5
+    },
+    {
+      "paragraph": 781,
+      "location": "段落 781",
+      "type": "omml",
+      "number": {
+        "chapter": 5,
+        "sequence": 4
+      },
+      "current_chapter": 5
+    },
+    {
+      "paragraph": 783,
+      "location": "段落 783",
+      "type": "omml",
+      "number": {
+        "chapter": 5,
+        "sequence": 5
+      },
+      "current_chapter": 5
+    },
+    {
+      "paragraph": 787,
+      "location": "段落 787",
+      "type": "omml",
+      "number": {
+        "chapter": 5,
+        "sequence": 6
+      },
+      "current_chapter": 5
+    },
+    {
+      "paragraph": 796,
+      "location": "段落 796",
+      "type": "omml",
+      "number": {
+        "chapter": 5,
+        "sequence": 7
+      },
+      "current_chapter": 5
+    }
+  ],
+  "table_audit": {
+    "tables": [
+      {
+        "index": 1,
+        "rows": 9,
+        "columns": 4,
+        "header": [
+          "文献",
+          "节点粒度与关系来源",
+          "模型路径",
+          "已报告的验证范围及本文比较边界"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 2,
+        "rows": 10,
+        "columns": 3,
+        "header": [
+          "项目",
+          "审计结果",
+          "口径说明"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 3,
+        "rows": 4,
+        "columns": 5,
+        "header": [
+          "协议",
+          "预测时输入",
+          "目标与评价",
+          "主要回答的问题",
+          "不支持的结论"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 4,
+        "rows": 7,
+        "columns": 4,
+        "header": [
+          "筛选条件",
+          "主分析门槛",
+          "敏感性门槛",
+          "主分析条件下未通过节点数"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 5,
+        "rows": 11,
+        "columns": 6,
+        "header": [
+          "节点",
+          "均值/(kWh/15min)",
+          "非零率/%",
+          "最大值/(kWh/15min)",
+          "标准差/(kWh/15min)",
+          "峰均比"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 6,
+        "rows": 4,
+        "columns": 3,
+        "header": [
+          "节点",
+          "96片（24h）",
+          "672片（168h）"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 7,
+        "rows": 11,
+        "columns": 5,
+        "header": [
+          "节点",
+          "验证集非零分数占比/%",
+          "冻结阈值",
+          "验证集触发点占比/%",
+          "验证集前向窗口占比/%"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 8,
+        "rows": 8,
+        "columns": 5,
+        "header": [
+          "特征",
+          "含义",
+          "非零率/%",
+          "均值",
+          "最大值"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 9,
+        "rows": 4,
+        "columns": 4,
+        "header": [
+          "协议",
+          "输入与用途",
+          "正式配置/实验",
+          "测试预测键"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 10,
+        "rows": 5,
+        "columns": 6,
+        "header": [
+          "模型",
+          "全局MAE",
+          "零目标MAE",
+          "非零目标MAE",
+          "标签事件MAE",
+          "参数量"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 11,
+        "rows": 5,
+        "columns": 4,
+        "header": [
+          "模型",
+          "MAE（kWh/15min）",
+          "RMSE（kWh/15min）",
+          "可训练参数"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 12,
+        "rows": 13,
+        "columns": 5,
+        "header": [
+          "模型",
+          "MAE/(kWh/15min)",
+          "MAE标准差",
+          "RMSE/(kWh/15min)",
+          "WAPE"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 13,
+        "rows": 3,
+        "columns": 6,
+        "header": [
+          "对照（基线−MRG-GCN）",
+          "平均误差差",
+          "1日块95%区间",
+          "正差块",
+          "7日块95%区间",
+          "正差块"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 14,
+        "rows": 13,
+        "columns": 4,
+        "header": [
+          "模型",
+          "事件窗口",
+          "稳定窗口",
+          "非零负荷"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 15,
+        "rows": 6,
+        "columns": 6,
+        "header": [
+          "目标片区间（min）",
+          "MAE",
+          "节点",
+          "MAE",
+          "节点",
+          "MAE"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 16,
+        "rows": 8,
+        "columns": 4,
+        "header": [
+          "模型",
+          "可训练参数量",
+          "单种子训练耗时均值/min",
+          "全局MAE"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 17,
+        "rows": 3,
+        "columns": 4,
+        "header": [
+          "模型",
+          "整体MAE",
+          "标签事件MAE",
+          "稳定MAE"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 18,
+        "rows": 9,
+        "columns": 4,
+        "header": [
+          "实验组",
+          "配置",
+          "全局MAE",
+          "组内结论"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 19,
+        "rows": 4,
+        "columns": 6,
+        "header": [
+          "替换配置",
+          "完整模型相对替换配置的整体MAE差（kWh/15min）",
+          "相对替换配置MAE",
+          "Bonferroni98.333%七日块区间（kWh/15min）",
+          "同向种子",
+          "结论"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 20,
+        "rows": 6,
+        "columns": 3,
+        "header": [
+          "配置",
+          "全局MAE",
+          "相对内部基线"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 21,
+        "rows": 8,
+        "columns": 4,
+        "header": [
+          "组件",
+          "直接证据及定位",
+          "可以支持的判断",
+          "尚未建立的判断"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 22,
+        "rows": 19,
+        "columns": 5,
+        "header": [
+          "协议/配置",
+          "输入",
+          "可训练参数",
+          "上限/耐心；选模指标",
+          "最佳轮次；停止轮次"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 23,
+        "rows": 8,
+        "columns": 3,
+        "header": [
+          "指标",
+          "MRG-GCN",
+          "容量近似TCN"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 24,
+        "rows": 4,
+        "columns": 4,
+        "header": [
+          "层次",
+          "研究问题",
+          "操作与证据",
+          "本文判定及边界"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 25,
+        "rows": 7,
+        "columns": 7,
+        "header": [
+          "层次",
+          "关系",
+          "seed-2024",
+          "seed-2025",
+          "seed-2026",
+          "均值",
+          "样本标准差"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 26,
+        "rows": 8,
+        "columns": 4,
+        "header": [
+          "干预配置",
+          "全局MAE",
+          "标签事件窗口MAE",
+          "稳定窗口MAE"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 27,
+        "rows": 5,
+        "columns": 6,
+        "header": [
+          "蒸馏权重",
+          "seed-2024",
+          "seed-2025",
+          "seed-2026",
+          "均值±SD",
+          "相对教师倍数"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 28,
+        "rows": 6,
+        "columns": 6,
+        "header": [
+          "分组",
+          "target_event",
+          "rule_trigger",
+          "样本量",
+          "占比",
+          "MAE（均值±SD）"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 29,
+        "rows": 4,
+        "columns": 4,
+        "header": [
+          "层次",
+          "原解释",
+          "诊断结果",
+          "修订后的研究判断与可支持的决策"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 30,
+        "rows": 9,
+        "columns": 5,
+        "header": [
+          "配置",
+          "整体MAE",
+          "标签事件MAE",
+          "稳定MAE",
+          "整体变化/%"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 31,
+        "rows": 5,
+        "columns": 5,
+        "header": [
+          "样本格",
+          "预测键数",
+          "样本占比/%",
+          "MAE（均值±样本标准差）",
+          "绝对误差份额/%"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 32,
+        "rows": 9,
+        "columns": 3,
+        "header": [
+          "项目",
+          "数值",
+          "说明"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 33,
+        "rows": 3,
+        "columns": 6,
+        "header": [
+          "路径",
+          "整体覆盖率/%",
+          "事件覆盖率/%",
+          "稳定覆盖率/%",
+          "平均宽度",
+          "区间分数"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 34,
+        "rows": 7,
+        "columns": 5,
+        "header": [
+          "校准方式",
+          "整体覆盖/%",
+          "事件覆盖/%",
+          "平均宽度",
+          "区间分数"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 35,
+        "rows": 4,
+        "columns": 5,
+        "header": [
+          "校准与路由方式",
+          "整体覆盖率",
+          "标签事件窗口覆盖率",
+          "稳定窗口覆盖率",
+          "解释"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 36,
+        "rows": 11,
+        "columns": 2,
+        "header": [
+          "节点",
+          "区间宽度/(kWh/15min)"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 37,
+        "rows": 8,
+        "columns": 4,
+        "header": [
+          "诊断量",
+          "验证期或标准路径",
+          "测试期或规则路径",
+          "解释"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 38,
+        "rows": 5,
+        "columns": 4,
+        "header": [
+          "目标片起点",
+          "目标片起点相对发布时刻/min",
+          "预测代理需求/实际代理需求（kWh/15min）",
+          "预测/实际区间平均代理功率（kW）"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 39,
+        "rows": 6,
+        "columns": 5,
+        "header": [
+          "项目",
+          "第1片",
+          "第2片",
+          "第3片",
+          "第4片"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 40,
+        "rows": 7,
+        "columns": 4,
+        "header": [
+          "问题",
+          "操作",
+          "主要观察",
+          "结论边界"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      },
+      {
+        "index": 41,
+        "rows": 13,
+        "columns": 6,
+        "header": [
+          "配置",
+          "全局MAE",
+          "事件段MAE",
+          "平稳段MAE",
+          "参数量",
+          "最优轮次/实际停止轮次"
+        ],
+        "repeat_header": true,
+        "continuation": false
+      }
+    ],
+    "continuations": 0
+  },
+  "cross_references": {
+    "targets_by_kind": {
+      "表": 40,
+      "图": 46,
+      "公式": 28
+    },
+    "mentions_by_kind": {
+      "表": 57,
+      "图": 52,
+      "公式": 2
+    },
+    "targets": [
+      {
+        "kind": "表",
+        "label": "表1-1",
+        "chapter": 1,
+        "sequence": 1,
+        "location": "段落 224",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图1-1",
+        "chapter": 1,
+        "sequence": 1,
+        "location": "段落 241",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图1-2",
+        "chapter": 1,
+        "sequence": 2,
+        "location": "段落 252",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "2-1",
+        "chapter": 2,
+        "sequence": 1,
+        "location": "段落 274",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "2-1",
+        "chapter": 2,
+        "sequence": 1,
+        "location": "段落 276",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "图",
+        "label": "图2-1",
+        "chapter": 2,
+        "sequence": 1,
+        "location": "段落 280",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表2-1",
+        "chapter": 2,
+        "sequence": 1,
+        "location": "段落 282",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表2-2",
+        "chapter": 2,
+        "sequence": 2,
+        "location": "段落 288",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表2-3",
+        "chapter": 2,
+        "sequence": 3,
+        "location": "段落 302",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-2",
+        "chapter": 2,
+        "sequence": 2,
+        "location": "段落 305",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-3",
+        "chapter": 2,
+        "sequence": 3,
+        "location": "段落 312",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-4",
+        "chapter": 2,
+        "sequence": 4,
+        "location": "段落 315",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表2-4",
+        "chapter": 2,
+        "sequence": 4,
+        "location": "段落 318",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表2-5",
+        "chapter": 2,
+        "sequence": 5,
+        "location": "段落 320",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-5",
+        "chapter": 2,
+        "sequence": 5,
+        "location": "段落 323",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-6",
+        "chapter": 2,
+        "sequence": 6,
+        "location": "段落 326",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "2-2",
+        "chapter": 2,
+        "sequence": 2,
+        "location": "段落 330",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "图",
+        "label": "图2-7",
+        "chapter": 2,
+        "sequence": 7,
+        "location": "段落 333",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-8",
+        "chapter": 2,
+        "sequence": 8,
+        "location": "段落 337",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-9",
+        "chapter": 2,
+        "sequence": 9,
+        "location": "段落 340",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-10",
+        "chapter": 2,
+        "sequence": 10,
+        "location": "段落 344",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表2-6",
+        "chapter": 2,
+        "sequence": 6,
+        "location": "段落 347",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表2-7",
+        "chapter": 2,
+        "sequence": 7,
+        "location": "段落 351",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-11",
+        "chapter": 2,
+        "sequence": 11,
+        "location": "段落 354",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-12",
+        "chapter": 2,
+        "sequence": 12,
+        "location": "段落 358",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图2-13",
+        "chapter": 2,
+        "sequence": 13,
+        "location": "段落 365",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-1",
+        "chapter": 3,
+        "sequence": 1,
+        "location": "段落 377",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-2",
+        "chapter": 3,
+        "sequence": 2,
+        "location": "段落 381",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-3",
+        "chapter": 3,
+        "sequence": 3,
+        "location": "段落 384",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "3-1",
+        "chapter": 3,
+        "sequence": 1,
+        "location": "段落 388",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-2",
+        "chapter": 3,
+        "sequence": 2,
+        "location": "段落 390",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "图",
+        "label": "图3-4",
+        "chapter": 3,
+        "sequence": 4,
+        "location": "段落 395",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "3-3",
+        "chapter": 3,
+        "sequence": 3,
+        "location": "段落 399",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-4",
+        "chapter": 3,
+        "sequence": 4,
+        "location": "段落 404",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-5",
+        "chapter": 3,
+        "sequence": 5,
+        "location": "段落 408",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-6",
+        "chapter": 3,
+        "sequence": 6,
+        "location": "段落 412",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "图",
+        "label": "图3-5",
+        "chapter": 3,
+        "sequence": 5,
+        "location": "段落 415",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "3-7",
+        "chapter": 3,
+        "sequence": 7,
+        "location": "段落 419",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-8",
+        "chapter": 3,
+        "sequence": 8,
+        "location": "段落 426",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-9",
+        "chapter": 3,
+        "sequence": 9,
+        "location": "段落 430",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-10",
+        "chapter": 3,
+        "sequence": 10,
+        "location": "段落 434",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-11",
+        "chapter": 3,
+        "sequence": 11,
+        "location": "段落 435",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-12",
+        "chapter": 3,
+        "sequence": 12,
+        "location": "段落 441",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-13",
+        "chapter": 3,
+        "sequence": 13,
+        "location": "段落 445",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "图",
+        "label": "图3-6",
+        "chapter": 3,
+        "sequence": 6,
+        "location": "段落 452",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-7",
+        "chapter": 3,
+        "sequence": 7,
+        "location": "段落 457",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-1",
+        "chapter": 3,
+        "sequence": 1,
+        "location": "段落 462",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "3-14",
+        "chapter": 3,
+        "sequence": 14,
+        "location": "段落 465",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "3-15",
+        "chapter": 3,
+        "sequence": 15,
+        "location": "段落 466",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "图",
+        "label": "图3-8",
+        "chapter": 3,
+        "sequence": 8,
+        "location": "段落 469",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-2",
+        "chapter": 3,
+        "sequence": 2,
+        "location": "段落 475",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-3",
+        "chapter": 3,
+        "sequence": 3,
+        "location": "段落 482",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-9",
+        "chapter": 3,
+        "sequence": 9,
+        "location": "段落 488",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-10",
+        "chapter": 3,
+        "sequence": 10,
+        "location": "段落 492",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-4",
+        "chapter": 3,
+        "sequence": 4,
+        "location": "段落 497",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-11",
+        "chapter": 3,
+        "sequence": 11,
+        "location": "段落 504",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-12",
+        "chapter": 3,
+        "sequence": 12,
+        "location": "段落 508",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-13",
+        "chapter": 3,
+        "sequence": 13,
+        "location": "段落 512",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-5",
+        "chapter": 3,
+        "sequence": 5,
+        "location": "段落 515",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-6",
+        "chapter": 3,
+        "sequence": 6,
+        "location": "段落 519",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-14",
+        "chapter": 3,
+        "sequence": 14,
+        "location": "段落 523",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-7",
+        "chapter": 3,
+        "sequence": 7,
+        "location": "段落 526",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-15",
+        "chapter": 3,
+        "sequence": 15,
+        "location": "段落 530",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-8",
+        "chapter": 3,
+        "sequence": 8,
+        "location": "段落 534",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-9",
+        "chapter": 3,
+        "sequence": 9,
+        "location": "段落 542",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-10",
+        "chapter": 3,
+        "sequence": 10,
+        "location": "段落 550",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-11",
+        "chapter": 3,
+        "sequence": 11,
+        "location": "段落 555",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-12",
+        "chapter": 3,
+        "sequence": 12,
+        "location": "段落 567",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图3-16",
+        "chapter": 3,
+        "sequence": 16,
+        "location": "段落 569",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "3-16",
+        "chapter": 3,
+        "sequence": 16,
+        "location": "段落 573",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "表",
+        "label": "表3-13",
+        "chapter": 3,
+        "sequence": 13,
+        "location": "段落 579",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-14",
+        "chapter": 3,
+        "sequence": 14,
+        "location": "段落 586",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表3-15",
+        "chapter": 3,
+        "sequence": 15,
+        "location": "段落 593",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图4-1",
+        "chapter": 4,
+        "sequence": 1,
+        "location": "段落 602",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表4-1",
+        "chapter": 4,
+        "sequence": 1,
+        "location": "段落 604",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表4-2",
+        "chapter": 4,
+        "sequence": 2,
+        "location": "段落 612",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图4-2",
+        "chapter": 4,
+        "sequence": 2,
+        "location": "段落 617",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图4-3",
+        "chapter": 4,
+        "sequence": 3,
+        "location": "段落 620",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "4-1",
+        "chapter": 4,
+        "sequence": 1,
+        "location": "段落 629",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "表",
+        "label": "表4-3",
+        "chapter": 4,
+        "sequence": 3,
+        "location": "段落 633",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图4-4",
+        "chapter": 4,
+        "sequence": 4,
+        "location": "段落 637",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表4-4",
+        "chapter": 4,
+        "sequence": 4,
+        "location": "段落 646",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表4-5",
+        "chapter": 4,
+        "sequence": 5,
+        "location": "段落 656",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图4-5",
+        "chapter": 4,
+        "sequence": 5,
+        "location": "段落 660",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图4-6",
+        "chapter": 4,
+        "sequence": 6,
+        "location": "段落 663",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图4-7",
+        "chapter": 4,
+        "sequence": 7,
+        "location": "段落 666",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "4-2",
+        "chapter": 4,
+        "sequence": 2,
+        "location": "段落 670",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "表",
+        "label": "表4-6",
+        "chapter": 4,
+        "sequence": 6,
+        "location": "段落 677",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表4-7",
+        "chapter": 4,
+        "sequence": 7,
+        "location": "段落 684",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表4-8",
+        "chapter": 4,
+        "sequence": 8,
+        "location": "段落 689",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图5-1",
+        "chapter": 5,
+        "sequence": 1,
+        "location": "段落 701",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "5-1",
+        "chapter": 5,
+        "sequence": 1,
+        "location": "段落 707",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "5-2",
+        "chapter": 5,
+        "sequence": 2,
+        "location": "段落 711",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "图",
+        "label": "图5-2",
+        "chapter": 5,
+        "sequence": 2,
+        "location": "段落 714",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图5-3",
+        "chapter": 5,
+        "sequence": 3,
+        "location": "段落 717",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表5-1",
+        "chapter": 5,
+        "sequence": 1,
+        "location": "段落 721",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图5-4",
+        "chapter": 5,
+        "sequence": 4,
+        "location": "段落 723",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图5-5",
+        "chapter": 5,
+        "sequence": 5,
+        "location": "段落 728",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "5-3",
+        "chapter": 5,
+        "sequence": 3,
+        "location": "段落 738",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "图",
+        "label": "图5-6",
+        "chapter": 5,
+        "sequence": 6,
+        "location": "段落 741",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表5-2",
+        "chapter": 5,
+        "sequence": 2,
+        "location": "段落 745",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表5-3",
+        "chapter": 5,
+        "sequence": 3,
+        "location": "段落 751",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表5-4",
+        "chapter": 5,
+        "sequence": 4,
+        "location": "段落 759",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图5-7",
+        "chapter": 5,
+        "sequence": 7,
+        "location": "段落 764",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "图",
+        "label": "图5-8",
+        "chapter": 5,
+        "sequence": 8,
+        "location": "段落 767",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表5-5",
+        "chapter": 5,
+        "sequence": 5,
+        "location": "段落 770",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表5-6",
+        "chapter": 5,
+        "sequence": 6,
+        "location": "段落 774",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "5-4",
+        "chapter": 5,
+        "sequence": 4,
+        "location": "段落 781",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "5-5",
+        "chapter": 5,
+        "sequence": 5,
+        "location": "段落 783",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "公式",
+        "label": "5-6",
+        "chapter": 5,
+        "sequence": 6,
+        "location": "段落 787",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "表",
+        "label": "表5-7",
+        "chapter": 5,
+        "sequence": 7,
+        "location": "段落 791",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "公式",
+        "label": "5-7",
+        "chapter": 5,
+        "sequence": 7,
+        "location": "段落 796",
+        "source_kind": "body",
+        "target_type": "equation"
+      },
+      {
+        "kind": "表",
+        "label": "表5-8",
+        "chapter": 5,
+        "sequence": 8,
+        "location": "段落 799",
+        "source_kind": "body",
+        "target_type": "caption"
+      },
+      {
+        "kind": "表",
+        "label": "表5-9",
+        "chapter": 5,
+        "sequence": 9,
+        "location": "段落 805",
+        "source_kind": "body",
+        "target_type": "caption"
+      }
+    ],
+    "mentions": [
+      {
+        "kind": "表",
+        "label": "表1-1",
+        "chapter": 1,
+        "sequence": 1,
+        "location": "段落 223",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表1-1",
+        "chapter": 1,
+        "sequence": 1,
+        "location": "段落 225",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图1-1",
+        "chapter": 1,
+        "sequence": 1,
+        "location": "段落 239",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图1-2",
+        "chapter": 1,
+        "sequence": 2,
+        "location": "段落 250",
+        "source_kind": "body"
+      },
+      {
+        "kind": "公式",
+        "label": "2-1",
+        "chapter": 2,
+        "sequence": 1,
+        "location": "段落 272",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-1",
+        "chapter": 2,
+        "sequence": 1,
+        "location": "段落 278",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表2-1",
+        "chapter": 2,
+        "sequence": 1,
+        "location": "段落 278",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表2-2",
+        "chapter": 2,
+        "sequence": 2,
+        "location": "段落 287",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-13",
+        "chapter": 2,
+        "sequence": 13,
+        "location": "段落 297",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表2-3",
+        "chapter": 2,
+        "sequence": 3,
+        "location": "段落 301",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-2",
+        "chapter": 2,
+        "sequence": 2,
+        "location": "段落 303",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-3",
+        "chapter": 2,
+        "sequence": 3,
+        "location": "段落 310",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-4",
+        "chapter": 2,
+        "sequence": 4,
+        "location": "段落 310",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表2-4",
+        "chapter": 2,
+        "sequence": 4,
+        "location": "段落 317",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表2-5",
+        "chapter": 2,
+        "sequence": 5,
+        "location": "段落 319",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-5",
+        "chapter": 2,
+        "sequence": 5,
+        "location": "段落 321",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-6",
+        "chapter": 2,
+        "sequence": 6,
+        "location": "段落 321",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表2-4",
+        "chapter": 2,
+        "sequence": 4,
+        "location": "段落 321",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表2-4",
+        "chapter": 2,
+        "sequence": 4,
+        "location": "段落 327",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-7",
+        "chapter": 2,
+        "sequence": 7,
+        "location": "段落 331",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-8",
+        "chapter": 2,
+        "sequence": 8,
+        "location": "段落 335",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-9",
+        "chapter": 2,
+        "sequence": 9,
+        "location": "段落 335",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-10",
+        "chapter": 2,
+        "sequence": 10,
+        "location": "段落 342",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表2-6",
+        "chapter": 2,
+        "sequence": 6,
+        "location": "段落 346",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表2-7",
+        "chapter": 2,
+        "sequence": 7,
+        "location": "段落 350",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-11",
+        "chapter": 2,
+        "sequence": 11,
+        "location": "段落 352",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-12",
+        "chapter": 2,
+        "sequence": 12,
+        "location": "段落 356",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图2-13",
+        "chapter": 2,
+        "sequence": 13,
+        "location": "段落 363",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-1",
+        "chapter": 3,
+        "sequence": 1,
+        "location": "段落 375",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-2",
+        "chapter": 3,
+        "sequence": 2,
+        "location": "段落 379",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-3",
+        "chapter": 3,
+        "sequence": 3,
+        "location": "段落 379",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-4",
+        "chapter": 3,
+        "sequence": 4,
+        "location": "段落 393",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-5",
+        "chapter": 3,
+        "sequence": 5,
+        "location": "段落 413",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-1",
+        "chapter": 3,
+        "sequence": 1,
+        "location": "段落 442",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-2",
+        "chapter": 3,
+        "sequence": 2,
+        "location": "段落 442",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-3",
+        "chapter": 3,
+        "sequence": 3,
+        "location": "段落 442",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-14",
+        "chapter": 3,
+        "sequence": 14,
+        "location": "段落 446",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-6",
+        "chapter": 3,
+        "sequence": 6,
+        "location": "段落 450",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-7",
+        "chapter": 3,
+        "sequence": 7,
+        "location": "段落 455",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-1",
+        "chapter": 3,
+        "sequence": 1,
+        "location": "段落 461",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-8",
+        "chapter": 3,
+        "sequence": 8,
+        "location": "段落 464",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-2",
+        "chapter": 3,
+        "sequence": 2,
+        "location": "段落 474",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-14",
+        "chapter": 3,
+        "sequence": 14,
+        "location": "段落 476",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-2",
+        "chapter": 3,
+        "sequence": 2,
+        "location": "段落 477",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-2",
+        "chapter": 3,
+        "sequence": 2,
+        "location": "段落 478",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-3",
+        "chapter": 3,
+        "sequence": 3,
+        "location": "段落 481",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-3",
+        "chapter": 3,
+        "sequence": 3,
+        "location": "段落 485",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-9",
+        "chapter": 3,
+        "sequence": 9,
+        "location": "段落 486",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-10",
+        "chapter": 3,
+        "sequence": 10,
+        "location": "段落 490",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-11",
+        "chapter": 3,
+        "sequence": 11,
+        "location": "段落 495",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-3",
+        "chapter": 3,
+        "sequence": 3,
+        "location": "段落 495",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-3",
+        "chapter": 3,
+        "sequence": 3,
+        "location": "段落 495",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-4",
+        "chapter": 3,
+        "sequence": 4,
+        "location": "段落 501",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-11",
+        "chapter": 3,
+        "sequence": 11,
+        "location": "段落 502",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-12",
+        "chapter": 3,
+        "sequence": 12,
+        "location": "段落 506",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-13",
+        "chapter": 3,
+        "sequence": 13,
+        "location": "段落 510",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-5",
+        "chapter": 3,
+        "sequence": 5,
+        "location": "段落 516",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-6",
+        "chapter": 3,
+        "sequence": 6,
+        "location": "段落 518",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-14",
+        "chapter": 3,
+        "sequence": 14,
+        "location": "段落 521",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-7",
+        "chapter": 3,
+        "sequence": 7,
+        "location": "段落 525",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-15",
+        "chapter": 3,
+        "sequence": 15,
+        "location": "段落 528",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-8",
+        "chapter": 3,
+        "sequence": 8,
+        "location": "段落 533",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-8",
+        "chapter": 3,
+        "sequence": 8,
+        "location": "段落 536",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-9",
+        "chapter": 3,
+        "sequence": 9,
+        "location": "段落 541",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-2",
+        "chapter": 3,
+        "sequence": 2,
+        "location": "段落 543",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-10",
+        "chapter": 3,
+        "sequence": 10,
+        "location": "段落 548",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-2",
+        "chapter": 3,
+        "sequence": 2,
+        "location": "段落 559",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-10",
+        "chapter": 3,
+        "sequence": 10,
+        "location": "段落 559",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-15",
+        "chapter": 3,
+        "sequence": 15,
+        "location": "段落 559",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-4",
+        "chapter": 3,
+        "sequence": 4,
+        "location": "段落 564",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-4",
+        "chapter": 3,
+        "sequence": 4,
+        "location": "段落 565",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-12",
+        "chapter": 3,
+        "sequence": 12,
+        "location": "段落 565",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图3-16",
+        "chapter": 3,
+        "sequence": 16,
+        "location": "段落 566",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-4",
+        "chapter": 3,
+        "sequence": 4,
+        "location": "段落 570",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-13",
+        "chapter": 3,
+        "sequence": 13,
+        "location": "段落 578",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-14",
+        "chapter": 3,
+        "sequence": 14,
+        "location": "段落 585",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-15",
+        "chapter": 3,
+        "sequence": 15,
+        "location": "段落 591",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图4-1",
+        "chapter": 4,
+        "sequence": 1,
+        "location": "段落 600",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表4-1",
+        "chapter": 4,
+        "sequence": 1,
+        "location": "段落 600",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表4-1",
+        "chapter": 4,
+        "sequence": 1,
+        "location": "段落 603",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表4-2",
+        "chapter": 4,
+        "sequence": 2,
+        "location": "段落 611",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图4-2",
+        "chapter": 4,
+        "sequence": 2,
+        "location": "段落 615",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图4-3",
+        "chapter": 4,
+        "sequence": 3,
+        "location": "段落 615",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表3-9",
+        "chapter": 3,
+        "sequence": 9,
+        "location": "段落 625",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表4-3",
+        "chapter": 4,
+        "sequence": 3,
+        "location": "段落 632",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图4-4",
+        "chapter": 4,
+        "sequence": 4,
+        "location": "段落 634",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表4-4",
+        "chapter": 4,
+        "sequence": 4,
+        "location": "段落 645",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表4-5",
+        "chapter": 4,
+        "sequence": 5,
+        "location": "段落 655",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图4-5",
+        "chapter": 4,
+        "sequence": 5,
+        "location": "段落 658",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图4-6",
+        "chapter": 4,
+        "sequence": 6,
+        "location": "段落 658",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图4-7",
+        "chapter": 4,
+        "sequence": 7,
+        "location": "段落 658",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表4-6",
+        "chapter": 4,
+        "sequence": 6,
+        "location": "段落 676",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图5-1",
+        "chapter": 5,
+        "sequence": 1,
+        "location": "段落 699",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图5-2",
+        "chapter": 5,
+        "sequence": 2,
+        "location": "段落 712",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图5-3",
+        "chapter": 5,
+        "sequence": 3,
+        "location": "段落 712",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表5-1",
+        "chapter": 5,
+        "sequence": 1,
+        "location": "段落 720",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图5-4",
+        "chapter": 5,
+        "sequence": 4,
+        "location": "段落 720",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图5-5",
+        "chapter": 5,
+        "sequence": 5,
+        "location": "段落 726",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图5-5",
+        "chapter": 5,
+        "sequence": 5,
+        "location": "段落 730",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图5-6",
+        "chapter": 5,
+        "sequence": 6,
+        "location": "段落 739",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表5-4",
+        "chapter": 5,
+        "sequence": 4,
+        "location": "段落 746",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表5-3",
+        "chapter": 5,
+        "sequence": 3,
+        "location": "段落 750",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表5-4",
+        "chapter": 5,
+        "sequence": 4,
+        "location": "段落 758",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图5-7",
+        "chapter": 5,
+        "sequence": 7,
+        "location": "段落 762",
+        "source_kind": "body"
+      },
+      {
+        "kind": "图",
+        "label": "图5-8",
+        "chapter": 5,
+        "sequence": 8,
+        "location": "段落 762",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表5-5",
+        "chapter": 5,
+        "sequence": 5,
+        "location": "段落 769",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表5-4",
+        "chapter": 5,
+        "sequence": 4,
+        "location": "段落 773",
+        "source_kind": "body"
+      },
+      {
+        "kind": "公式",
+        "label": "5-6",
+        "chapter": 5,
+        "sequence": 6,
+        "location": "段落 788",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表5-7",
+        "chapter": 5,
+        "sequence": 7,
+        "location": "段落 790",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表5-8",
+        "chapter": 5,
+        "sequence": 8,
+        "location": "段落 798",
+        "source_kind": "body"
+      },
+      {
+        "kind": "表",
+        "label": "表5-9",
+        "chapter": 5,
+        "sequence": 9,
+        "location": "段落 804",
+        "source_kind": "body"
+      }
+    ],
+    "word_fields": {
+      "bookmarks": 4,
+      "ref_fields": 0,
+      "ref_targets_missing": [],
+      "visible_broken_reference_parts": []
+    },
+    "closure": {
+      "unmentioned_targets": 29,
+      "missing_targets": 0,
+      "duplicate_targets": 1
+    }
+  },
+  "citation_reference": {
+    "template_example_mode": false,
+    "detected_citation_systems": [
+      "numeric"
+    ],
+    "detected_reference_systems": [
+      "author_year",
+      "numeric"
+    ],
+    "field_systems": {
+      "page": 50
+    },
+    "field_details": {
+      "field_counts": {
+        "page": 50
+      },
+      "citation_manager_counts": {},
+      "fields": [
+        {
+          "part": "word/footer8.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "14",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer8.xml",
+          "field_index": 2,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "14",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer8.xml",
+          "field_index": 3,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "14",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer8.xml",
+          "field_index": 4,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "14",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer7.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "12",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer7.xml",
+          "field_index": 2,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "12",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer7.xml",
+          "field_index": 3,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "12",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer7.xml",
+          "field_index": 4,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "12",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer6.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "15",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer6.xml",
+          "field_index": 2,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "15",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer6.xml",
+          "field_index": 3,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "15",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer6.xml",
+          "field_index": 4,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "15",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer4.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "II",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer4.xml",
+          "field_index": 2,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "II",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer4.xml",
+          "field_index": 3,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "II",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer4.xml",
+          "field_index": 4,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "II",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer3.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "I",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer3.xml",
+          "field_index": 2,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "I",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer3.xml",
+          "field_index": 3,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "I",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer3.xml",
+          "field_index": 4,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "I",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer2.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "II",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer2.xml",
+          "field_index": 2,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "II",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer2.xml",
+          "field_index": 3,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "II",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer2.xml",
+          "field_index": 4,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "II",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer1.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "I",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer1.xml",
+          "field_index": 2,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "I",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer1.xml",
+          "field_index": 3,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "I",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer1.xml",
+          "field_index": 4,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE \\* MERGEFORMAT",
+          "result_text": "I",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer9.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer10.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer11.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer12.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer13.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer14.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer15.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer16.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer17.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer18.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer19.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer20.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer21.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer22.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer23.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer24.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer25.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer26.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer27.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer28.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer29.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        },
+        {
+          "part": "word/footer30.xml",
+          "field_index": 1,
+          "field_type": "page",
+          "manager": "word",
+          "instruction": "PAGE",
+          "result_text": "1",
+          "item_ids": [],
+          "citation_keys": [],
+          "titles": [],
+          "authors": [],
+          "years": [],
+          "parse_status": "not_applicable"
+        }
+      ],
+      "unparsed_citation_fields": []
+    },
+    "citation_counts_by_source": {
+      "body": 58,
+      "table_caption": 4
+    },
+    "citations": [
+      {
+        "system": "numeric",
+        "raw": "[1]",
+        "keys": [
+          1
+        ],
+        "location": "正文「我国电动汽车保有量及配套充电设施持续增长。截至2024年底，全国公共充电桩保有量达…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[2-4]",
+        "keys": [
+          2,
+          3,
+          4
+        ],
+        "location": "正文「我国电动汽车保有量及配套充电设施持续增长。截至2024年底，全国公共充电桩保有量达…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[2-3]",
+        "keys": [
+          2,
+          3
+        ],
+        "location": "正文「现有研究多以区域、站群或单个充电站的聚合负荷为预测对象，其结果能够支持电网侧调度和…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[5-6]",
+        "keys": [
+          5,
+          6
+        ],
+        "location": "正文「现有研究多以区域、站群或单个充电站的聚合负荷为预测对象，其结果能够支持电网侧调度和…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[7-9]",
+        "keys": [
+          7,
+          8,
+          9
+        ],
+        "location": "正文「充电运营平台的数据通常以离散会话记录形式保存，每条记录包含充电节点标识、接入时刻、…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[10-11]",
+        "keys": [
+          10,
+          11
+        ],
+        "location": "正文「同一场站内的充电节点处于共同的用户到达过程和运行环境中，其负荷变化并非完全相互独立…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[10,12-13]",
+        "keys": [
+          10,
+          12,
+          13
+        ],
+        "location": "正文「同一场站内的充电节点处于共同的用户到达过程和运行环境中，其负荷变化并非完全相互独立…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[14-17]",
+        "keys": [
+          14,
+          15,
+          16,
+          17
+        ],
+        "location": "正文「除周期性变化外，充电节点还会出现由接入、离站、活跃会话变化或负荷跳变构成的稀疏变化…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[2-4,18-19]",
+        "keys": [
+          2,
+          3,
+          4,
+          18,
+          19
+        ],
+        "location": "正文「电动汽车充电负荷预测已形成从统计方法、机器学习到深度学习和组合预测的方法谱系。相关…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[20]",
+        "keys": [
+          20
+        ],
+        "location": "正文「电动汽车充电负荷预测已形成从统计方法、机器学习到深度学习和组合预测的方法谱系。相关…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[21]",
+        "keys": [
+          21
+        ],
+        "location": "正文「电动汽车充电负荷预测已形成从统计方法、机器学习到深度学习和组合预测的方法谱系。相关…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[22]",
+        "keys": [
+          22
+        ],
+        "location": "正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[23]",
+        "keys": [
+          23
+        ],
+        "location": "正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[24]",
+        "keys": [
+          24
+        ],
+        "location": "正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[25]",
+        "keys": [
+          25
+        ],
+        "location": "正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[7,26-30]",
+        "keys": [
+          7,
+          26,
+          27,
+          28,
+          29,
+          30
+        ],
+        "location": "正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[5,11,29,31]",
+        "keys": [
+          5,
+          11,
+          29,
+          31
+        ],
+        "location": "正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[32-35]",
+        "keys": [
+          32,
+          33,
+          34,
+          35
+        ],
+        "location": "正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[36]",
+        "keys": [
+          36
+        ],
+        "location": "正文「随着深度学习在时序预测中的应用，LSTM[22]、GRU[23]、时间卷积网络[2…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[37-41]",
+        "keys": [
+          37,
+          38,
+          39,
+          40,
+          41
+        ],
+        "location": "正文「近年来，中文研究还从多时间尺度深度学习、规模化行为建模、半监督学习、场景聚类和在线…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[42-46]",
+        "keys": [
+          42,
+          43,
+          44,
+          45,
+          46
+        ],
+        "location": "正文「近年来，中文研究还从多时间尺度深度学习、规模化行为建模、半监督学习、场景聚类和在线…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[47]",
+        "keys": [
+          47
+        ],
+        "location": "正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[48]",
+        "keys": [
+          48
+        ],
+        "location": "正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[49]",
+        "keys": [
+          49
+        ],
+        "location": "正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[50]",
+        "keys": [
+          50
+        ],
+        "location": "正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[51]",
+        "keys": [
+          51
+        ],
+        "location": "正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[52]",
+        "keys": [
+          52
+        ],
+        "location": "正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[53-55]",
+        "keys": [
+          53,
+          54,
+          55
+        ],
+        "location": "正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[56-63]",
+        "keys": [
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ],
+        "location": "正文「图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[6,8,64-70]",
+        "keys": [
+          6,
+          8,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70
+        ],
+        "location": "正文「EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接E…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[12,13,67,70]",
+        "keys": [
+          12,
+          13,
+          67,
+          70
+        ],
+        "location": "正文「EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接E…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[10]",
+        "keys": [
+          10
+        ],
+        "location": "正文「EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接E…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[71]",
+        "keys": [
+          71
+        ],
+        "location": "正文「EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接E…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[12-13,67,70]",
+        "keys": [
+          12,
+          13,
+          67,
+          70
+        ],
+        "location": "正文「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图融合[12-13…」",
+        "source_kind": "table_caption",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[71]",
+        "keys": [
+          71
+        ],
+        "location": "正文「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图融合[12-13…」",
+        "source_kind": "table_caption",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[72]",
+        "keys": [
+          72
+        ],
+        "location": "正文「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图融合[12-13…」",
+        "source_kind": "table_caption",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[73]",
+        "keys": [
+          73
+        ],
+        "location": "正文「表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图融合[12-13…」",
+        "source_kind": "table_caption",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[5,7,9,11,26,31]",
+        "keys": [
+          5,
+          7,
+          9,
+          11,
+          26,
+          31
+        ],
+        "location": "正文「用户接入、离站、停留和充电需求是形成充电负荷波动的直接行为来源。现有研究通常将相关…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[14-17]",
+        "keys": [
+          14,
+          15,
+          16,
+          17
+        ],
+        "location": "正文「用户接入、离站、停留和充电需求是形成充电负荷波动的直接行为来源。现有研究通常将相关…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[74]",
+        "keys": [
+          74
+        ],
+        "location": "正文「在非日历事件方面，已有研究开始关注事件数据对极端预测误差的影响[74]，也出现了“…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[75-76]",
+        "keys": [
+          75,
+          76
+        ],
+        "location": "正文「在非日历事件方面，已有研究开始关注事件数据对极端预测误差的影响[74]，也出现了“…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[77]",
+        "keys": [
+          77
+        ],
+        "location": "正文「负荷预测模型的解释研究主要包括外部归因和内部信号分析两类路径。外部归因通常利用SH…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[62,78]",
+        "keys": [
+          62,
+          78
+        ],
+        "location": "正文「负荷预测模型的解释研究主要包括外部归因和内部信号分析两类路径。外部归因通常利用SH…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[79]",
+        "keys": [
+          79
+        ],
+        "location": "正文「负荷预测模型的解释研究主要包括外部归因和内部信号分析两类路径。外部归因通常利用SH…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[80]",
+        "keys": [
+          80
+        ],
+        "location": "正文「负荷预测模型的解释研究主要包括外部归因和内部信号分析两类路径。外部归因通常利用SH…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[81]",
+        "keys": [
+          81
+        ],
+        "location": "正文「误差价值分析也已有相关路径。Guastavino等[81]针对二分类事件预测提出价…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[82]",
+        "keys": [
+          82
+        ],
+        "location": "正文「本文采用公开的ACN-Data电动汽车充电数据集。该数据集由加州理工学院发布，记录…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[82-83]",
+        "keys": [
+          82,
+          83
+        ],
+        "location": "正文「此外，利用ACN-Data公开历史静态快照[82-83]核查同一节点会话的电流形态…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[82]",
+        "keys": [
+          82
+        ],
+        "location": "正文「为检验模型比较能否在另一充电场站重现，本文依据ACN官方JPL普通会话数据建立独立…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[24]",
+        "keys": [
+          24
+        ],
+        "location": "正文「时间骨干采用TCN[24]。对每个节点独立处理96片历史输入，六层一维卷积的膨胀率…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[51]",
+        "keys": [
+          51
+        ],
+        "location": "正文「相关方法先例及本文的任务化定位见1.2.2节。Graph WaveNet[51]和…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[52]",
+        "keys": [
+          52
+        ],
+        "location": "正文「相关方法先例及本文的任务化定位见1.2.2节。Graph WaveNet[51]和…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[84]",
+        "keys": [
+          84
+        ],
+        "location": "正文「本节保留包括ARIMA[84]在内的回溯历史比较，供配置追溯及第4章诊断使用。GW…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[80]",
+        "keys": [
+          80
+        ],
+        "location": "正文「预测精度和权重画像不能完整解释关系使用及误差来源[80]。本文据此建立三层机制诊断…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[85]",
+        "keys": [
+          85
+        ],
+        "location": "正文「在保持其余模型参数不变的条件下，将两层强制替换为指定组合，仅在测试集前向推理。设置…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[86]",
+        "keys": [
+          86
+        ],
+        "location": "正文「L2采用知识蒸馏[86]检验图模型预测信号能否被纯时序学生吸收。教师为冻结的Sta…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[87]",
+        "keys": [
+          87
+        ],
+        "location": "正文「采用传递熵（transfer entropy，TE）[87]衡量给定目标历史后，源…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[88-89]",
+        "keys": [
+          88,
+          89
+        ],
+        "location": "正文「为检查TE候选与条件独立检验是否给出相近的方向对，进一步采用PCMCI+[88-8…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[90-92]",
+        "keys": [
+          90,
+          91,
+          92
+        ],
+        "location": "正文「整体点预测误差不能反映困难样本的区间覆盖。本节按独立校准、成熟标签滚动更新和回溯规…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[91]",
+        "keys": [
+          91
+        ],
+        "location": "正文「本分析复用三种子冻结预测；模型由调参段选定，校准和测试完整窗口、目标时间片互不重叠…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[92]",
+        "keys": [
+          92
+        ],
+        "location": "正文「本分析复用三种子冻结预测；模型由调参段选定，校准和测试完整窗口、目标时间片互不重叠…」",
+        "source_kind": "body",
+        "position": "superscript"
+      },
+      {
+        "system": "numeric",
+        "raw": "[91-92]",
+        "keys": [
+          91,
+          92
+        ],
+        "location": "正文「每种窗口均报告逐节点标准路径和行为分层路径，规则触发仅用于后者的分组与路由，目标事…」",
+        "source_kind": "body",
+        "position": "superscript"
+      }
+    ],
+    "references": [
+      {
+        "location": "参考文献段落 822",
+        "raw": "[1] 中国电动汽车充电基础设施促进联盟. 2024年全国电动汽车充换电基础设施运行情况[EB/OL]. (2025-01-23)[2026-8-4]. https://www.evcipa.org.cn/newsinfo/8137834.html.",
+        "system": "numeric",
+        "number": 1,
+        "authors": "中国电动汽车充电基础设施促进联盟",
+        "author_key": "中国电动汽车充电基础设施促进联盟",
+        "year": "2024",
+        "title": "2024年全国电动汽车充换电基础设施运行情况",
+        "type_marker": "EB/OL",
+        "doi": null,
+        "url": "https://www.evcipa.org.cn/newsinfo/8137834.html"
+      },
+      {
+        "location": "参考文献段落 823",
+        "raw": "[2] 陈丽丹, 张尧, FIGUEIREDO A. 电动汽车充放电负荷预测研究综述[J]. 电力系统自动化, 2019, 43(10): 177-197.",
+        "system": "numeric",
+        "number": 2,
+        "authors": "陈丽丹, 张尧, FIGUEIREDO A",
+        "author_key": "陈丽丹",
+        "year": "2019",
+        "title": "电动汽车充放电负荷预测研究综述",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 824",
+        "raw": "[3] 张夏韦, 梁军, 王要强, 等. 电动汽车充电负荷时空分布预测研究综述[J]. 电力建设, 2023, 44(12): 161-173.",
+        "system": "numeric",
+        "number": 3,
+        "authors": "张夏韦, 梁军, 王要强, 等",
+        "author_key": "张夏韦",
+        "year": "2023",
+        "title": "电动汽车充电负荷时空分布预测研究综述",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 825",
+        "raw": "[4] 崔一诺, 罗配明, 李攀硕, 等. 电动汽车充放电负荷时-空分布预测研究综述[J]. 电气工程学报, 2026, 21(2): 371-385.",
+        "system": "numeric",
+        "number": 4,
+        "authors": "崔一诺, 罗配明, 李攀硕, 等",
+        "author_key": "崔一诺",
+        "year": "2026",
+        "title": "电动汽车充放电负荷时-空分布预测研究综述",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 826",
+        "raw": "[5] 韩林阳, 叶承晋, 朱超, 等. 高温天气下计及用户意愿的城市充电负荷空间引导策略[J]. 电力系统自动化, 2024, 48(10): 139-150.",
+        "system": "numeric",
+        "number": 5,
+        "authors": "韩林阳, 叶承晋, 朱超, 等",
+        "author_key": "韩林阳",
+        "year": "2024",
+        "title": "高温天气下计及用户意愿的城市充电负荷空间引导策略",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 827",
+        "raw": "[6] 田礼彬. 电动汽车负荷时空预测及有序充放电优化调度[D]. 吉林: 东北电力大学, 2025.",
+        "system": "numeric",
+        "number": 6,
+        "authors": "田礼彬",
+        "author_key": "田礼彬",
+        "year": "2025",
+        "title": "电动汽车负荷时空预测及有序充放电优化调度",
+        "type_marker": "D",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 828",
+        "raw": "[7] 王哲, 万宝, 凌天晗, 等. 基于谱聚类和LSTM神经网络的电动公交车充电负荷预测方法[J]. 电力建设, 2021, 42(6): 58-66.",
+        "system": "numeric",
+        "number": 7,
+        "authors": "王哲, 万宝, 凌天晗, 等",
+        "author_key": "王哲",
+        "year": "2021",
+        "title": "基于谱聚类和LSTM神经网络的电动公交车充电负荷预测方法",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 829",
+        "raw": "[8] 陈闯. 基于图卷积网络及排队论的电动汽车充电负荷预测研究[D]. 深圳: 哈尔滨工业大学(深圳), 2022.",
+        "system": "numeric",
+        "number": 8,
+        "authors": "陈闯",
+        "author_key": "陈闯",
+        "year": "2022",
+        "title": "基于图卷积网络及排队论的电动汽车充电负荷预测研究",
+        "type_marker": "D",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 830",
+        "raw": "[9] 奚圣宽. 基于深度学习的电动汽车充电桩负荷预测方法研究[D]. 北京: 华北电力大学, 2023.",
+        "system": "numeric",
+        "number": 9,
+        "authors": "奚圣宽",
+        "author_key": "奚圣宽",
+        "year": "2023",
+        "title": "基于深度学习的电动汽车充电桩负荷预测方法研究",
+        "type_marker": "D",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 831",
+        "raw": "[10] 黄南天, 孙赫宏, 王圣元, 等. 计及多公共充电站差异化耦合关联的电动汽车充电负荷时-空短期预测[J]. 中国电机工程学报, 2025, 45(4): 1424-1436. DOI: 10.13334/j.0258-8013.pcsee.231589.",
+        "system": "numeric",
+        "number": 10,
+        "authors": "黄南天, 孙赫宏, 王圣元, 等",
+        "author_key": "黄南天",
+        "year": "2025",
+        "title": "计及多公共充电站差异化耦合关联的电动汽车充电负荷时-空短期预测",
+        "type_marker": "J",
+        "doi": "10.13334/j.0258-8013.pcsee.231589.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 832",
+        "raw": "[11] 张美霞, 孙铨杰, 杨秀. 考虑多源信息实时交互和用户后悔心理的电动汽车充电负荷预测[J]. 电网技术, 2022, 46(2): 632-641.",
+        "system": "numeric",
+        "number": 11,
+        "authors": "张美霞, 孙铨杰, 杨秀",
+        "author_key": "张美霞",
+        "year": "2022",
+        "title": "考虑多源信息实时交互和用户后悔心理的电动汽车充电负荷预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 833",
+        "raw": "[12] 张延宇, 张智铭, 刘春阳, 张西镚, 周毅. 基于动态自适应图神经网络的电动汽车充电负荷预测[J]. 电力系统自动化, 2024, 48(7): 86-93. DOI: 10.7500/AEPS20230611001.",
+        "system": "numeric",
+        "number": 12,
+        "authors": "张延宇, 张智铭, 刘春阳, 张西镚, 周毅",
+        "author_key": "张延宇",
+        "year": "2024",
+        "title": "基于动态自适应图神经网络的电动汽车充电负荷预测",
+        "type_marker": "J",
+        "doi": "10.7500/AEPS20230611001.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 834",
+        "raw": "[13] 黄健, 陈建红, 何剑杰, 等. 基于GCN-LSTM的电动汽车负荷预测方法[J]. 浙江电力, 2024, 43(12): 59-67. DOI: 10.19585/j.zjdl.202412006.",
+        "system": "numeric",
+        "number": 13,
+        "authors": "黄健, 陈建红, 何剑杰, 等",
+        "author_key": "黄健",
+        "year": "2024",
+        "title": "基于GCN-LSTM的电动汽车负荷预测方法",
+        "type_marker": "J",
+        "doi": "10.19585/j.zjdl.202412006.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 835",
+        "raw": "[14] 陈培垠, 方彦军. 基于卡尔曼滤波预测节假日逐点增长率的电力系统短期负荷预测[J]. 武汉大学学报(工学版), 2020, 53(2): 139-144.",
+        "system": "numeric",
+        "number": 14,
+        "authors": "陈培垠, 方彦军",
+        "author_key": "陈培垠",
+        "year": "2020",
+        "title": "基于卡尔曼滤波预测节假日逐点增长率的电力系统短期负荷预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 836",
+        "raw": "[15] 潘良军, 王楷, 赵宏炎, 等. 基于春节影响时期分析的中期负荷智能预测[J]. 智慧电力, 2020, 48(9): 75-80,117.",
+        "system": "numeric",
+        "number": 15,
+        "authors": "潘良军, 王楷, 赵宏炎, 等",
+        "author_key": "潘良军",
+        "year": "2020",
+        "title": "基于春节影响时期分析的中期负荷智能预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 837",
+        "raw": "[16] 陈梓行, 金涛, 郑熙东, 等. 基于新型日期映射法和ISGU混合模型的短期电力负荷预测[J]. 电力系统保护与控制, 2022, 50(15): 72-80.",
+        "system": "numeric",
+        "number": 16,
+        "authors": "陈梓行, 金涛, 郑熙东, 等",
+        "author_key": "陈梓行",
+        "year": "2022",
+        "title": "基于新型日期映射法和ISGU混合模型的短期电力负荷预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 838",
+        "raw": "[17] 巫朝越. 考虑特殊事件影响的单体用户短期负荷预测组合模型[D]. 南京: 东南大学, 2024.",
+        "system": "numeric",
+        "number": 17,
+        "authors": "巫朝越",
+        "author_key": "巫朝越",
+        "year": "2024",
+        "title": "考虑特殊事件影响的单体用户短期负荷预测组合模型",
+        "type_marker": "D",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 839",
+        "raw": "[18] 韩富佳, 王晓辉, 乔骥, 等. 基于人工智能技术的新型电力系统负荷预测研究综述[J]. 中国电机工程学报, 2023, 43(22): 8569-8591.",
+        "system": "numeric",
+        "number": 18,
+        "authors": "韩富佳, 王晓辉, 乔骥, 等",
+        "author_key": "韩富佳",
+        "year": "2023",
+        "title": "基于人工智能技术的新型电力系统负荷预测研究综述",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 840",
+        "raw": "[19] 黄运有, 詹剑锋. 基于深度学习的短期负荷预测综述[J]. 高技术通讯, 2021, 31(3): 240-248.",
+        "system": "numeric",
+        "number": 19,
+        "authors": "黄运有, 詹剑锋",
+        "author_key": "黄运有",
+        "year": "2021",
+        "title": "基于深度学习的短期负荷预测综述",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 841",
+        "raw": "[20] KE G, MENG Q, FINLEY T, et al. LightGBM: a highly efficient gradient boosting decision tree[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 3146-3154.",
+        "system": "numeric",
+        "number": 20,
+        "authors": "KE G, MENG Q, FINLEY T, et al",
+        "author_key": "ke",
+        "year": "2017",
+        "title": "LightGBM: a highly efficient gradient boosting decision tree",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 842",
+        "raw": "[21] CHEN T, GUESTRIN C. XGBoost: a scalable tree boosting system[C]//Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. 2016: 785-794.",
+        "system": "numeric",
+        "number": 21,
+        "authors": "CHEN T, GUESTRIN C",
+        "author_key": "chen",
+        "year": "2016",
+        "title": "XGBoost: a scalable tree boosting system",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 843",
+        "raw": "[22] HOCHREITER S, SCHMIDHUBER J. Long short-term memory[J]. Neural Computation, 1997, 9(8): 1735-1780.",
+        "system": "numeric",
+        "number": 22,
+        "authors": "HOCHREITER S, SCHMIDHUBER J",
+        "author_key": "hochreiter",
+        "year": "1997",
+        "title": "Long short-term memory",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 844",
+        "raw": "[23] CHO K, VAN MERRIËNBOER B, GULCEHRE C, et al. Learning phrase representations using RNN encoder-decoder for statistical machine translation[C]//Proceedings of EMNLP. 2014: 1724-1734.",
+        "system": "numeric",
+        "number": 23,
+        "authors": "CHO K, VAN MERRIËNBOER B, GULCEHRE C, et al",
+        "author_key": "cho",
+        "year": "2014",
+        "title": "Learning phrase representations using RNN encoder-decoder for statistical machine translation",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 845",
+        "raw": "[24] BAI S, KOLTER J Z, KOLTUN V. An empirical evaluation of generic convolutional and recurrent networks for sequence modeling[J/OL]. arXiv, 2018[2026-10-7]. https://arxiv.org/abs/1803.01271. DOI: 10.48550/arXiv.1803.01271.",
+        "system": "numeric",
+        "number": 24,
+        "authors": "BAI S, KOLTER J Z, KOLTUN V",
+        "author_key": "bai",
+        "year": "2018",
+        "title": "An empirical evaluation of generic convolutional and recurrent networks for sequence modeling",
+        "type_marker": "J/OL",
+        "doi": "10.48550/arXiv.1803.01271.",
+        "url": "https://arxiv.org/abs/1803.01271"
+      },
+      {
+        "location": "参考文献段落 846",
+        "raw": "[25] VASWANI A, SHAZEER N, PARMAR N, et al. Attention is all you need[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 5998-6008.",
+        "system": "numeric",
+        "number": 25,
+        "authors": "VASWANI A, SHAZEER N, PARMAR N, et al",
+        "author_key": "vaswani",
+        "year": "2017",
+        "title": "Attention is all you need",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 847",
+        "raw": "[26] 王华彪, 李小勇. 基于融合注意力机制改进双向长短时记忆网络在电动汽车充电负荷中的预测研究[J]. 电网与清洁能源, 2022, 38(6): 104-112.",
+        "system": "numeric",
+        "number": 26,
+        "authors": "王华彪, 李小勇",
+        "author_key": "王华彪",
+        "year": "2022",
+        "title": "基于融合注意力机制改进双向长短时记忆网络在电动汽车充电负荷中的预测研究",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 848",
+        "raw": "[27] 王琨, 高敬更, 张勇红, 等. 基于LSTM神经网络的复合变量电动汽车充电负荷预测方法技术研究[J]. 工业仪表与自动化装置, 2019(1): 27-31.",
+        "system": "numeric",
+        "number": 27,
+        "authors": "王琨, 高敬更, 张勇红, 等",
+        "author_key": "王琨",
+        "year": "2019",
+        "title": "基于LSTM神经网络的复合变量电动汽车充电负荷预测方法技术研究",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 849",
+        "raw": "[28] 张昌鸿, 曾祥智. 基于拉丁超立方及CNN-LSTM-ATTENTION的电动汽车负荷预测[J]. 电工技术, 2025(10): 125-129.",
+        "system": "numeric",
+        "number": 28,
+        "authors": "张昌鸿, 曾祥智",
+        "author_key": "张昌鸿",
+        "year": "2025",
+        "title": "基于拉丁超立方及CNN-LSTM-ATTENTION的电动汽车负荷预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 850",
+        "raw": "[29] 顾玮, 段敬, 张栋, 等. 分时电价下的充电站负荷预测[J]. 计算机应用, 2024, 44(S1): 337-342.",
+        "system": "numeric",
+        "number": 29,
+        "authors": "顾玮, 段敬, 张栋, 等",
+        "author_key": "顾玮",
+        "year": "2024",
+        "title": "分时电价下的充电站负荷预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 851",
+        "raw": "[30] 袁溪, 张邵欣, 张超, 等. 基于Transformer的电动汽车充电站能耗预测研究[J]. 计算机技术与发展, 2025, 35(2): 213-220.",
+        "system": "numeric",
+        "number": 30,
+        "authors": "袁溪, 张邵欣, 张超, 等",
+        "author_key": "袁溪",
+        "year": "2025",
+        "title": "基于Transformer的电动汽车充电站能耗预测研究",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 852",
+        "raw": "[31] 王强, 毕宇豪, 高超, 等. 融合多方信息的电动汽车充电负荷时空分布预测[J]. 电力建设, 2025, 46(6): 24-37. DOI: 10.12204/j.issn.1000-7229.2025.06.003.",
+        "system": "numeric",
+        "number": 31,
+        "authors": "王强, 毕宇豪, 高超, 等",
+        "author_key": "王强",
+        "year": "2025",
+        "title": "融合多方信息的电动汽车充电负荷时空分布预测",
+        "type_marker": "J",
+        "doi": "10.12204/j.issn.1000-7229.2025.06.003.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 853",
+        "raw": "[32] 赵子鋆, 彭清文, 邓铭, 等. 考虑多因素影响与误差修正的充电站负荷预测[J]. 浙江电力, 2024, 43(4): 21-28.",
+        "system": "numeric",
+        "number": 32,
+        "authors": "赵子鋆, 彭清文, 邓铭, 等",
+        "author_key": "赵子鋆",
+        "year": "2024",
+        "title": "考虑多因素影响与误差修正的充电站负荷预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 854",
+        "raw": "[33] 温子健, 李伟风, 刘泽晖, 等. 基于时间特征分类与误差修正的电动汽车充电负荷预测[J]. 浙江电力, 2026, 45(5): 69-78. DOI: 10.19585/j.zjdl.202605007.",
+        "system": "numeric",
+        "number": 33,
+        "authors": "温子健, 李伟风, 刘泽晖, 等",
+        "author_key": "温子健",
+        "year": "2026",
+        "title": "基于时间特征分类与误差修正的电动汽车充电负荷预测",
+        "type_marker": "J",
+        "doi": "10.19585/j.zjdl.202605007.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 855",
+        "raw": "[34] 蒋建东, 韩文轩, 赵云飞, 等. 基于优化VMD二次分解的短期电力负荷预测[J]. 郑州大学学报(工学版), 2026, 47(1): 124-130.",
+        "system": "numeric",
+        "number": 34,
+        "authors": "蒋建东, 韩文轩, 赵云飞, 等",
+        "author_key": "蒋建东",
+        "year": "2026",
+        "title": "基于优化VMD二次分解的短期电力负荷预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 856",
+        "raw": "[35] 张翾, 李红月. 基于优化VMD与TCN-ISE-Pyraformer的短期电力负荷预测[J]. 安徽工业大学学报(自然科学版), 2025, 42(3): 263-275. DOI: 10.12415/j.issn.1671-7872.25006.",
+        "system": "numeric",
+        "number": 35,
+        "authors": "张翾, 李红月",
+        "author_key": "张翾",
+        "year": "2025",
+        "title": "基于优化VMD与TCN-ISE-Pyraformer的短期电力负荷预测",
+        "type_marker": "J",
+        "doi": "10.12415/j.issn.1671-7872.25006.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 857",
+        "raw": "[36] 韩宇昊, 刘鸿鹏. 基于FMD-LSTM-Bootstrap的电动汽车充电负荷区间预测[J]. 东北电力大学学报, 2025, 45(6): 51-59.",
+        "system": "numeric",
+        "number": 36,
+        "authors": "韩宇昊, 刘鸿鹏",
+        "author_key": "韩宇昊",
+        "year": "2025",
+        "title": "基于FMD-LSTM-Bootstrap的电动汽车充电负荷区间预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 858",
+        "raw": "[37] 朱俊丞. 基于深度学习的多时间尺度电动汽车充电负荷预测模型设计[D]. 郑州: 郑州大学, 2020.",
+        "system": "numeric",
+        "number": 37,
+        "authors": "朱俊丞",
+        "author_key": "朱俊丞",
+        "year": "2020",
+        "title": "基于深度学习的多时间尺度电动汽车充电负荷预测模型设计",
+        "type_marker": "D",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 859",
+        "raw": "[38] 陈勇, 江颖达, 徐刚, 等. 规模化电动汽车充电负荷预测[J]. 电力需求侧管理, 2022, 24(5): 71-77. DOI: 10.3969/j.issn.1009-1831.2022.05.012.",
+        "system": "numeric",
+        "number": 38,
+        "authors": "陈勇, 江颖达, 徐刚, 等",
+        "author_key": "陈勇",
+        "year": "2022",
+        "title": "规模化电动汽车充电负荷预测",
+        "type_marker": "J",
+        "doi": "10.3969/j.issn.1009-1831.2022.05.012.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 860",
+        "raw": "[39] 闫威, 李南, 沈月秀, 等. 基于CNN-GAN与半监督回归的电动汽车充电负荷预测[J]. 浙江电力, 2023, 42(2): 83-89. DOI: 10.19585/j.zjdl.202302011.",
+        "system": "numeric",
+        "number": 39,
+        "authors": "闫威, 李南, 沈月秀, 等",
+        "author_key": "闫威",
+        "year": "2023",
+        "title": "基于CNN-GAN与半监督回归的电动汽车充电负荷预测",
+        "type_marker": "J",
+        "doi": "10.19585/j.zjdl.202302011.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 861",
+        "raw": "[40] 赵伟博, 范旭东, 孙胜博, 等. 电动汽车充电负荷场景化分析与超短期预测方法[J]. 电力信息与通信技术, 2025, 23(2): 28-37. DOI: 10.16543/j.2095-641x.electric.power.ict.2025.02.04.",
+        "system": "numeric",
+        "number": 40,
+        "authors": "赵伟博, 范旭东, 孙胜博, 等",
+        "author_key": "赵伟博",
+        "year": "2025",
+        "title": "电动汽车充电负荷场景化分析与超短期预测方法",
+        "type_marker": "J",
+        "doi": "10.16543/j.2095-641x.electric.power.ict.2025.02.04.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 862",
+        "raw": "[41] 毛建斌, 杨少兵, 杨湘彦, 等. 基于有限混合模型的规模化电动汽车充电负荷在线预测方法[J]. 电网技术, 2025, 49(5): 1931-1940. DOI: 10.13335/j.1000-3673.pst.2024.0241.",
+        "system": "numeric",
+        "number": 41,
+        "authors": "毛建斌, 杨少兵, 杨湘彦, 等",
+        "author_key": "毛建斌",
+        "year": "2025",
+        "title": "基于有限混合模型的规模化电动汽车充电负荷在线预测方法",
+        "type_marker": "J",
+        "doi": "10.13335/j.1000-3673.pst.2024.0241.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 863",
+        "raw": "[42] 吴钉捷, 李晓露. 基于实时出行需求和交通路况的电动汽车充电负荷预测[J]. 电力建设, 2020, 41(8): 57-67. DOI: 10.12204/j.issn.1000-7229.2020.08.008.",
+        "system": "numeric",
+        "number": 42,
+        "authors": "吴钉捷, 李晓露",
+        "author_key": "吴钉捷",
+        "year": "2020",
+        "title": "基于实时出行需求和交通路况的电动汽车充电负荷预测",
+        "type_marker": "J",
+        "doi": "10.12204/j.issn.1000-7229.2020.08.008.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 864",
+        "raw": "[43] 丁乐言, 柯松, 张帆, 等. 考虑出行需求和引导策略的电动汽车充电负荷预测[J]. 电力建设, 2024, 45(6): 10-26. DOI: 10.12204/j.issn.1000-7229.2024.06.002.",
+        "system": "numeric",
+        "number": 43,
+        "authors": "丁乐言, 柯松, 张帆, 等",
+        "author_key": "丁乐言",
+        "year": "2024",
+        "title": "考虑出行需求和引导策略的电动汽车充电负荷预测",
+        "type_marker": "J",
+        "doi": "10.12204/j.issn.1000-7229.2024.06.002.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 865",
+        "raw": "[44] 张琳娟, 李文峰, 许长清, 等. 计及充电排队与实时SOC的电动汽车充电负荷时空分布预测[J]. 电力建设, 2025, 46(8): 54-66. DOI: 10.12204/j.issn.1000-7229.2025.08.006.",
+        "system": "numeric",
+        "number": 44,
+        "authors": "张琳娟, 李文峰, 许长清, 等",
+        "author_key": "张琳娟",
+        "year": "2025",
+        "title": "计及充电排队与实时SOC的电动汽车充电负荷时空分布预测",
+        "type_marker": "J",
+        "doi": "10.12204/j.issn.1000-7229.2025.08.006.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 866",
+        "raw": "[45] 李宏伟, 宋玉峰, 李帅兵, 等. 基于ArcGIS路网结构与交通拥挤度分析的电动汽车充电负荷预测方法[J]. 电网技术, 2025, 49(5): 1920-1930. DOI: 10.13335/j.1000-3673.pst.2023.1420.",
+        "system": "numeric",
+        "number": 45,
+        "authors": "李宏伟, 宋玉峰, 李帅兵, 等",
+        "author_key": "李宏伟",
+        "year": "2025",
+        "title": "基于ArcGIS路网结构与交通拥挤度分析的电动汽车充电负荷预测方法",
+        "type_marker": "J",
+        "doi": "10.13335/j.1000-3673.pst.2023.1420.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 867",
+        "raw": "[46] 葛乐, 陆颖, 王明深, 等. 考虑用户决策更新的电动汽车充换电负荷预测[J]. 浙江电力, 2025, 44(10): 152-164. DOI: 10.19585/j.zjdl.202510013.",
+        "system": "numeric",
+        "number": 46,
+        "authors": "葛乐, 陆颖, 王明深, 等",
+        "author_key": "葛乐",
+        "year": "2025",
+        "title": "考虑用户决策更新的电动汽车充换电负荷预测",
+        "type_marker": "J",
+        "doi": "10.19585/j.zjdl.202510013.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 868",
+        "raw": "[47] KIPF T N, WELLING M. Semi-supervised classification with graph convolutional networks[C]//Proceedings of the 5th International Conference on Learning Representations (ICLR). Toulon, 2017.",
+        "system": "numeric",
+        "number": 47,
+        "authors": "KIPF T N, WELLING M",
+        "author_key": "kipf",
+        "year": "2017",
+        "title": "Semi-supervised classification with graph convolutional networks",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 869",
+        "raw": "[48] VELIČKOVIĆ P, CUCURULL G, CASANOVA A, et al. Graph attention networks[C]//Proceedings of the 6th International Conference on Learning Representations (ICLR). 2018.",
+        "system": "numeric",
+        "number": 48,
+        "authors": "VELIČKOVIĆ P, CUCURULL G, CASANOVA A, et al",
+        "author_key": "velikovi",
+        "year": "2018",
+        "title": "Graph attention networks",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 870",
+        "raw": "[49] SCHLICHTKRULL M, KIPF T N, BLOEM P, et al. Modeling relational data with graph convolutional networks[C]//European Semantic Web Conference (ESWC). 2018: 593-607.",
+        "system": "numeric",
+        "number": 49,
+        "authors": "SCHLICHTKRULL M, KIPF T N, BLOEM P, et al",
+        "author_key": "schlichtkrull",
+        "year": "2018",
+        "title": "Modeling relational data with graph convolutional networks",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 871",
+        "raw": "[50] YU B, YIN H, ZHU Z. Spatio-temporal graph convolutional networks: a deep learning framework for traffic forecasting[C]//Proceedings of the 27th International Joint Conference on Artificial Intelligence (IJCAI). 2018: 3634-3640.",
+        "system": "numeric",
+        "number": 50,
+        "authors": "YU B, YIN H, ZHU Z",
+        "author_key": "yu",
+        "year": "2018",
+        "title": "Spatio-temporal graph convolutional networks: a deep learning framework for traffic forecasting",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 872",
+        "raw": "[51] WU Z, PAN S, LONG G, et al. Graph WaveNet: deep spatial-temporal graph modeling[C]//Proceedings of the 28th International Joint Conference on Artificial Intelligence (IJCAI). 2019: 1907-1913.",
+        "system": "numeric",
+        "number": 51,
+        "authors": "WU Z, PAN S, LONG G, et al",
+        "author_key": "wu",
+        "year": "2019",
+        "title": "Graph WaveNet: deep spatial-temporal graph modeling",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 873",
+        "raw": "[52] BAI L, YAO L, LI C, et al. Adaptive graph convolutional recurrent network for traffic forecasting[C]//Advances in Neural Information Processing Systems (NeurIPS). 2020: 17804-17815.",
+        "system": "numeric",
+        "number": 52,
+        "authors": "BAI L, YAO L, LI C, et al",
+        "author_key": "bai",
+        "year": "2020",
+        "title": "Adaptive graph convolutional recurrent network for traffic forecasting",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 874",
+        "raw": "[53] 叶宝林, 戴本岙, 张鸣剑, 等. 基于图卷积网络的交通流预测方法综述[J]. 南京信息工程大学学报(自然科学版), 2024, 16(3): 291-310.",
+        "system": "numeric",
+        "number": 53,
+        "authors": "叶宝林, 戴本岙, 张鸣剑, 等",
+        "author_key": "叶宝林",
+        "year": "2024",
+        "title": "基于图卷积网络的交通流预测方法综述",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 875",
+        "raw": "[54] 闫佳和, 李红辉, 孙婧, 等. 面向交通流预测的时空图神经网络发展综述[J]. 计算机工程与应用, 2025, 61(22): 1-19.",
+        "system": "numeric",
+        "number": 54,
+        "authors": "闫佳和, 李红辉, 孙婧, 等",
+        "author_key": "闫佳和",
+        "year": "2025",
+        "title": "面向交通流预测的时空图神经网络发展综述",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 876",
+        "raw": "[55] 李志帅, 吕宜生, 熊刚. 基于图卷积神经网络和注意力机制的短时交通流量预测[J]. 交通工程, 2019, 19(4): 15-19, 28.",
+        "system": "numeric",
+        "number": 55,
+        "authors": "李志帅, 吕宜生, 熊刚",
+        "author_key": "李志帅",
+        "year": "2019",
+        "title": "基于图卷积神经网络和注意力机制的短时交通流量预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 877",
+        "raw": "[56] 董雷, 陈振平, 韩富佳, 等. 基于图卷积神经网络与K-means聚类的居民用户集群短期负荷预测[J]. 电网技术, 2023, 47(10): 4291-4301.",
+        "system": "numeric",
+        "number": 56,
+        "authors": "董雷, 陈振平, 韩富佳, 等",
+        "author_key": "董雷",
+        "year": "2023",
+        "title": "基于图卷积神经网络与K-means聚类的居民用户集群短期负荷预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 878",
+        "raw": "[57] 张鹏飞, 胡博, 何金松, 等. 基于时空图卷积网络的短期空间负荷预测方法[J]. 电力系统自动化, 2023, 47(13): 78-85.",
+        "system": "numeric",
+        "number": 57,
+        "authors": "张鹏飞, 胡博, 何金松, 等",
+        "author_key": "张鹏飞",
+        "year": "2023",
+        "title": "基于时空图卷积网络的短期空间负荷预测方法",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 879",
+        "raw": "[58] 吴兴扬, 戴剑丰. 基于多尺度自适应时空图卷积网络与BERT模型的多节点短期负荷预测[J]. 电网技术, 2025, 49(9): 3756-3766. DOI: 10.13335/j.1000-3673.pst.2024.1895.",
+        "system": "numeric",
+        "number": 58,
+        "authors": "吴兴扬, 戴剑丰",
+        "author_key": "吴兴扬",
+        "year": "2025",
+        "title": "基于多尺度自适应时空图卷积网络与BERT模型的多节点短期负荷预测",
+        "type_marker": "J",
+        "doi": "10.13335/j.1000-3673.pst.2024.1895.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 880",
+        "raw": "[59] 张艺涵, 杨萌, 刘军会, 等. 基于时间图卷积网络的短期电力负荷时空预测方法[J]. 电网与清洁能源, 2024, 40(12): 27-35.",
+        "system": "numeric",
+        "number": 59,
+        "authors": "张艺涵, 杨萌, 刘军会, 等",
+        "author_key": "张艺涵",
+        "year": "2024",
+        "title": "基于时间图卷积网络的短期电力负荷时空预测方法",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 881",
+        "raw": "[60] 高昆仑, 姚铁锤, 刘思言, 等. 面向电网分析计算的图神经网络技术综述[J]. 电网技术, 2026, 50(3): 909-921.",
+        "system": "numeric",
+        "number": 60,
+        "authors": "高昆仑, 姚铁锤, 刘思言, 等",
+        "author_key": "高昆仑",
+        "year": "2026",
+        "title": "面向电网分析计算的图神经网络技术综述",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 882",
+        "raw": "[61] 赵紫昱, 陈渊睿, 陈霆威, 等. 基于时空图注意力网络的超短期区域负荷预测[J]. 电力系统自动化, 2024, 48(12): 147-155.",
+        "system": "numeric",
+        "number": 61,
+        "authors": "赵紫昱, 陈渊睿, 陈霆威, 等",
+        "author_key": "赵紫昱",
+        "year": "2024",
+        "title": "基于时空图注意力网络的超短期区域负荷预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 883",
+        "raw": "[62] 原野, 王海燕, 袁新平, 等. 基于可解释动态图注意力网络的短期电力负荷预测[J]. 计算机应用, 2025, 45(S1): 329-333.",
+        "system": "numeric",
+        "number": 62,
+        "authors": "原野, 王海燕, 袁新平, 等",
+        "author_key": "原野",
+        "year": "2025",
+        "title": "基于可解释动态图注意力网络的短期电力负荷预测",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 884",
+        "raw": "[63] 孟衡, 张涛, 王金, 等. 基于多尺度时空图卷积网络与Transformer融合的多节点短期电力负荷预测方法[J]. 电网技术, 2024, 48(10): 4297-4305. DOI: 10.13335/j.1000-3673.pst.2024.0168.",
+        "system": "numeric",
+        "number": 63,
+        "authors": "孟衡, 张涛, 王金, 等",
+        "author_key": "孟衡",
+        "year": "2024",
+        "title": "基于多尺度时空图卷积网络与Transformer融合的多节点短期电力负荷预测方法",
+        "type_marker": "J",
+        "doi": "10.13335/j.1000-3673.pst.2024.0168.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 885",
+        "raw": "[64] 贠昕尧. 基于多图融合的电动汽车充电站群负荷时空预测方法研究[D]. 西安: 西安理工大学, 2024.",
+        "system": "numeric",
+        "number": 64,
+        "authors": "贠昕尧",
+        "author_key": "贠昕尧",
+        "year": "2024",
+        "title": "基于多图融合的电动汽车充电站群负荷时空预测方法研究",
+        "type_marker": "D",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 886",
+        "raw": "[65] 王进世. 基于图注意力网络的电动汽车充电站负荷预测方法研究[D]. 兰州: 西北师范大学, 2025.",
+        "system": "numeric",
+        "number": 65,
+        "authors": "王进世",
+        "author_key": "王进世",
+        "year": "2025",
+        "title": "基于图注意力网络的电动汽车充电站负荷预测方法研究",
+        "type_marker": "D",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 887",
+        "raw": "[66] 王圣元. 基于图神经网络的短期负荷时空预测[D]. 吉林: 东北电力大学, 2023.",
+        "system": "numeric",
+        "number": 66,
+        "authors": "王圣元",
+        "author_key": "王圣元",
+        "year": "2023",
+        "title": "基于图神经网络的短期负荷时空预测",
+        "type_marker": "D",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 888",
+        "raw": "[67] HUANG Y, WU S, WANG Z, et al. Causality-aware multi-graph convolutional networks with critical node dynamics for electric vehicle charging station load forecasting[J]. IEEE Transactions on Smart Grid, 2025, 16(4): 3210-3225. DOI: 10.1109/TSG.2025.3570955.",
+        "system": "numeric",
+        "number": 67,
+        "authors": "HUANG Y, WU S, WANG Z, et al",
+        "author_key": "huang",
+        "year": "2025",
+        "title": "Causality-aware multi-graph convolutional networks with critical node dynamics for electric vehicle charging station load forecasting",
+        "type_marker": "J",
+        "doi": "10.1109/TSG.2025.3570955.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 889",
+        "raw": "[68] ZHANG L, JIAO Z, ZHAO C. Load probabilistic forecasting for electric vehicle charging station cluster: adaptive multivariate spatiotemporal graph fusion technology[J]. International Journal of Electrical Power & Energy Systems, 2025, 173: 111387. DOI: 10.1016/j.ijepes.2025.111387.",
+        "system": "numeric",
+        "number": 68,
+        "authors": "ZHANG L, JIAO Z, ZHAO C",
+        "author_key": "zhang",
+        "year": "2025",
+        "title": "Load probabilistic forecasting for electric vehicle charging station cluster: adaptive multivariate spatiotemporal graph fusion technology",
+        "type_marker": "J",
+        "doi": "10.1016/j.ijepes.2025.111387.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 890",
+        "raw": "[69] HE J, LIU Q Y, HU Y L, et al. Short-term regional EV charging load forecasting based on GAT and GRU with trip distribution estimation[J]. Applied Energy, 2026, 406: 127262. DOI: 10.1016/j.apenergy.2025.127262.",
+        "system": "numeric",
+        "number": 69,
+        "authors": "HE J, LIU Q Y, HU Y L, et al",
+        "author_key": "he",
+        "year": "2026",
+        "title": "Short-term regional EV charging load forecasting based on GAT and GRU with trip distribution estimation",
+        "type_marker": "J",
+        "doi": "10.1016/j.apenergy.2025.127262.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 891",
+        "raw": "[70] XIE T, YUN X, ZHANG G, et al. Charging station cluster load prediction: spatiotemporal multi-graph fusion technology[J]. Renewable and Sustainable Energy Reviews, 2024, 206: 114855. DOI: 10.1016/j.rser.2024.114855.",
+        "system": "numeric",
+        "number": 70,
+        "authors": "XIE T, YUN X, ZHANG G, et al",
+        "author_key": "xie",
+        "year": "2024",
+        "title": "Charging station cluster load prediction: spatiotemporal multi-graph fusion technology",
+        "type_marker": "J",
+        "doi": "10.1016/j.rser.2024.114855.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 892",
+        "raw": "[71] FENG D, LI D, ZHOU Y, ZHAO J, ZHANG K. STGNet: short-term residential load forecasting with spatial-temporal gated fusion network[J]. Energy Science & Engineering, 2024, 12(3): 541-560. DOI: 10.1002/ese3.1633.",
+        "system": "numeric",
+        "number": 71,
+        "authors": "FENG D, LI D, ZHOU Y, ZHAO J, ZHANG K",
+        "author_key": "feng",
+        "year": "2024",
+        "title": "STGNet: short-term residential load forecasting with spatial-temporal gated fusion network",
+        "type_marker": "J",
+        "doi": "10.1002/ese3.1633.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 893",
+        "raw": "[72] WANG Y, RUI L, MA J, et al. A short-term residential load forecasting scheme based on the multiple correlation-temporal graph neural networks[J]. Applied Soft Computing, 2023, 146: 110629. DOI: 10.1016/j.asoc.2023.110629.",
+        "system": "numeric",
+        "number": 72,
+        "authors": "WANG Y, RUI L, MA J, et al",
+        "author_key": "wang",
+        "year": "2023",
+        "title": "A short-term residential load forecasting scheme based on the multiple correlation-temporal graph neural networks",
+        "type_marker": "J",
+        "doi": "10.1016/j.asoc.2023.110629.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 894",
+        "raw": "[73] ZHANG T, JIAO W, YU J, et al. Short-term residential load forecasting framework based on spatial-temporal fusion adaptive gated graph convolution networks[J]. IEEE Transactions on Neural Networks and Learning Systems, 2025, 36(9): 17004-17018. DOI: 10.1109/TNNLS.2025.3551778.",
+        "system": "numeric",
+        "number": 73,
+        "authors": "ZHANG T, JIAO W, YU J, et al",
+        "author_key": "zhang",
+        "year": "2025",
+        "title": "Short-term residential load forecasting framework based on spatial-temporal fusion adaptive gated graph convolution networks",
+        "type_marker": "J",
+        "doi": "10.1109/TNNLS.2025.3551778.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 895",
+        "raw": "[74] 高洪超, 陈启鑫, 雷振, 等. 考虑事件数据的产消者负荷预测方法及极端误差抑制策略[J]. 电力系统自动化, 2023, 47(13): 47-55.",
+        "system": "numeric",
+        "number": 74,
+        "authors": "高洪超, 陈启鑫, 雷振, 等",
+        "author_key": "高洪超",
+        "year": "2023",
+        "title": "考虑事件数据的产消者负荷预测方法及极端误差抑制策略",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 896",
+        "raw": "[75] HWANG J, SUH D. PAR-LLM: peak-aware residual LLM over anchor for EV charging station demand[J]. IEEE Access, 2026, 14: 52360-52370. DOI: 10.1109/ACCESS.2026.3679962.",
+        "system": "numeric",
+        "number": 75,
+        "authors": "HWANG J, SUH D",
+        "author_key": "hwang",
+        "year": "2026",
+        "title": "PAR-LLM: peak-aware residual LLM over anchor for EV charging station demand",
+        "type_marker": "J",
+        "doi": "10.1109/ACCESS.2026.3679962.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 897",
+        "raw": "[76] LIANG Y. Forecast-time-safe load forecasting for connected and automated EV charging operation: periodicity-aware residual correction on a processed distribution load proxy with public EV charging validation[J]. World Electric Vehicle Journal, 2026, 17(7): 336. DOI: 10.3390/wevj17070336.",
+        "system": "numeric",
+        "number": 76,
+        "authors": "LIANG Y",
+        "author_key": "liang",
+        "year": "2026",
+        "title": "Forecast-time-safe load forecasting for connected and automated EV charging operation: periodicity-aware residual correction on a processed distribution load proxy with public EV charging validation",
+        "type_marker": "J",
+        "doi": "10.3390/wevj17070336.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 898",
+        "raw": "[77] LUNDBERG S M, LEE S I. A unified approach to interpreting model predictions[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 4765-4774.",
+        "system": "numeric",
+        "number": 77,
+        "authors": "LUNDBERG S M, LEE S I",
+        "author_key": "lundberg",
+        "year": "2017",
+        "title": "A unified approach to interpreting model predictions",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 899",
+        "raw": "[78] 孙飞虎. 基于注意力机制的配电网电力负荷预测方法研究[D]. 桂林: 桂林电子科技大学, 2025.",
+        "system": "numeric",
+        "number": 78,
+        "authors": "孙飞虎",
+        "author_key": "孙飞虎",
+        "year": "2025",
+        "title": "基于注意力机制的配电网电力负荷预测方法研究",
+        "type_marker": "D",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 900",
+        "raw": "[79] JAIN S, WALLACE B C. Attention is not explanation[C]//Proceedings of NAACL-HLT. 2019: 3543-3556.",
+        "system": "numeric",
+        "number": 79,
+        "authors": "JAIN S, WALLACE B C",
+        "author_key": "jain",
+        "year": "2019",
+        "title": "Attention is not explanation",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 901",
+        "raw": "[80] ARABZADEH V, FRANK R. A four-dimensional analysis of explainable AI in energy forecasting: a domain-specific systematic review[J]. Machine Learning and Knowledge Extraction, 2025, 7(4): 153.",
+        "system": "numeric",
+        "number": 80,
+        "authors": "ARABZADEH V, FRANK R",
+        "author_key": "arabzadeh",
+        "year": "2025",
+        "title": "A four-dimensional analysis of explainable AI in energy forecasting: a domain-specific systematic review",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 902",
+        "raw": "[81] GUASTAVINO S, PIANA M, BENVENUTO F. Bad and good errors: value-weighted skill scores in deep ensemble learning[J]. IEEE Transactions on Neural Networks and Learning Systems, 2024, 35(2): 1993-2002. DOI: 10.1109/TNNLS.2022.3186068.",
+        "system": "numeric",
+        "number": 81,
+        "authors": "GUASTAVINO S, PIANA M, BENVENUTO F",
+        "author_key": "guastavino",
+        "year": "2024",
+        "title": "Bad and good errors: value-weighted skill scores in deep ensemble learning",
+        "type_marker": "J",
+        "doi": "10.1109/TNNLS.2022.3186068.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 903",
+        "raw": "[82] LEE Z J, LI T, LOW S H. ACN-Data: Analysis and applications of an open EV charging dataset[C]//Proceedings of the Tenth ACM International Conference on Future Energy Systems. New York: ACM, 2019: 139-149. DOI: 10.1145/3307772.3328313.",
+        "system": "numeric",
+        "number": 82,
+        "authors": "LEE Z J, LI T, LOW S H",
+        "author_key": "lee",
+        "year": "2019",
+        "title": "ACN-Data: Analysis and applications of an open EV charging dataset",
+        "type_marker": "C",
+        "doi": "10.1145/3307772.3328313.",
+        "url": null
+      },
+      {
+        "location": "参考文献段落 904",
+        "raw": "[83] LI T. ACN-Data Static[EB/OL]. [2026-10-4]. https://github.com/tongxin-li/ACN-Data-Static.",
+        "system": "numeric",
+        "number": 83,
+        "authors": "LI T",
+        "author_key": "li",
+        "year": "2026",
+        "title": "ACN-Data Static",
+        "type_marker": "EB/OL",
+        "doi": null,
+        "url": "https://github.com/tongxin-li/ACN-Data-Static"
+      },
+      {
+        "location": "参考文献段落 905",
+        "raw": "[84] BOX G E P, JENKINS G M. Time series analysis: forecasting and control[M]. San Francisco: Holden-Day, 1970.",
+        "system": "numeric",
+        "number": 84,
+        "authors": "BOX G E P, JENKINS G M",
+        "author_key": "box",
+        "year": "1970",
+        "title": "Time series analysis: forecasting and control",
+        "type_marker": "M",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 906",
+        "raw": "[85] NAM A, CONKLIN H, YANG Y, et al. Causal head gating: a framework for interpreting roles of attention heads in transformers[C]//Advances in Neural Information Processing Systems. 2025, 38.",
+        "system": "numeric",
+        "number": 85,
+        "authors": "NAM A, CONKLIN H, YANG Y, et al",
+        "author_key": "nam",
+        "year": "2025",
+        "title": "Causal head gating: a framework for interpreting roles of attention heads in transformers",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 907",
+        "raw": "[86] HINTON G, VINYALS O, DEAN J. Distilling the knowledge in a neural network[C]//NeurIPS 2014 Deep Learning Workshop. 2015.",
+        "system": "numeric",
+        "number": 86,
+        "authors": "HINTON G, VINYALS O, DEAN J",
+        "author_key": "hinton",
+        "year": "2014",
+        "title": "Distilling the knowledge in a neural network",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 908",
+        "raw": "[87] SCHREIBER T. Measuring information transfer[J]. Physical Review Letters, 2000, 85(2): 461-464.",
+        "system": "numeric",
+        "number": 87,
+        "authors": "SCHREIBER T",
+        "author_key": "schreiber",
+        "year": "2000",
+        "title": "Measuring information transfer",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 909",
+        "raw": "[88] RUNGE J, NOWACK P, KRETSCHMER M, et al. Detecting and quantifying causal associations in large nonlinear time series datasets[J]. Science Advances, 2019, 5(11): eaau4996.",
+        "system": "numeric",
+        "number": 88,
+        "authors": "RUNGE J, NOWACK P, KRETSCHMER M, et al",
+        "author_key": "runge",
+        "year": "2019",
+        "title": "Detecting and quantifying causal associations in large nonlinear time series datasets",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 910",
+        "raw": "[89] RUNGE J. Discovering contemporaneous and lagged causal relations in autocorrelated nonlinear time series datasets[C]//Proceedings of the 36th Conference on Uncertainty in Artificial Intelligence (UAI). PMLR, 2020, 124: 1388-1397.",
+        "system": "numeric",
+        "number": 89,
+        "authors": "RUNGE J",
+        "author_key": "runge",
+        "year": "2020",
+        "title": "Discovering contemporaneous and lagged causal relations in autocorrelated nonlinear time series datasets",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 911",
+        "raw": "[90] VOVK V, GAMMERMAN A, SHAFER G. Algorithmic learning in a random world[M]. New York: Springer, 2005.",
+        "system": "numeric",
+        "number": 90,
+        "authors": "VOVK V, GAMMERMAN A, SHAFER G",
+        "author_key": "vovk",
+        "year": "2005",
+        "title": "Algorithmic learning in a random world",
+        "type_marker": "M",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 912",
+        "raw": "[91] LEI J, G'SELL M, RINALDO A, et al. Distribution-free predictive inference for regression[J]. Journal of the American Statistical Association, 2018, 113(523): 1094-1111.",
+        "system": "numeric",
+        "number": 91,
+        "authors": "LEI J, G'SELL M, RINALDO A, et al",
+        "author_key": "lei",
+        "year": "2018",
+        "title": "Distribution-free predictive inference for regression",
+        "type_marker": "J",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 913",
+        "raw": "[92] GIBBS I, CANDÈS E. Adaptive conformal inference under distribution shift[C]//Advances in Neural Information Processing Systems. 2021, 34: 1660-1672.",
+        "system": "numeric",
+        "number": 92,
+        "authors": "GIBBS I, CANDÈS E",
+        "author_key": "gibbs",
+        "year": "2021",
+        "title": "Adaptive conformal inference under distribution shift",
+        "type_marker": "C",
+        "doi": null,
+        "url": null
+      },
+      {
+        "location": "参考文献段落 918",
+        "raw": "注：数值单位为kWh/15 min；均值和标准差来自2024、2025、2026三种子，标准差为样本标准差。最优轮次为验证集原单位MAE最低的轮次，实际停止轮次为训练日志最后一轮；两者均按seed-2024/2025/2026顺序列出。该表使用Caltech事件时刻协议的708,560个测试预测键，与Caltech回溯协议的712,360个预测键不具有直接数值可比性。",
+        "system": "author_year",
+        "number": null,
+        "authors": "注：数值单位为kWh/15 min；均值和标准差来自",
+        "author_key": "注数值单位为",
+        "year": "2024",
+        "title": null,
+        "type_marker": null,
+        "doi": null,
+        "url": null
+      }
+    ],
+    "mapping": {
+      "missing_numeric_references": [],
+      "unused_numeric_references": [],
+      "missing_author_year_references": [],
+      "unused_author_year_references": [
+        [
+          "注数值单位为",
+          "2024",
+          "参考文献段落 918"
+        ]
+      ],
+      "first_seen_numeric_order": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92
+      ]
+    },
+    "metadata_verification": "not_performed"
+  },
+  "package": {
+    "comments": 0,
+    "tracked_insertions": 0,
+    "tracked_deletions": 0,
+    "red_text_markers": 0,
+    "toc_fields": 1,
+    "page_fields": 14,
+    "styleref_fields": 0,
+    "text_boxes": 16,
+    "floating_drawings": 29,
+    "inline_drawings": 47,
+    "omml_math": 267,
+    "ole_objects": 0,
+    "footnotes": 2,
+    "endnotes": 0,
+    "header_parts": 43,
+    "footer_parts": 30,
+    "document_protection": 0
+  }
+}
+```
+
+## 必须人工完成的验收门
+
+- 使用 Microsoft Word 更新全部域和目录后，核对目录实际页码。
+- 导出 PDF 后逐页核对奇偶页页眉和三套页码体系。
+- 逐页检查标题孤立、异常空白、图表裁切和公式显示。
+- 在最终分页中确认公式主体位置、编号右对齐及上下标均完整显示。
+- 在最终分页中确认所有实际跨页表的第二段均有“续上表”并重复表头。
+
+本报告只读取 DOCX 结构与格式属性，不等同于最终 Word/PDF 视觉验收。

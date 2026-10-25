@@ -1,0 +1,22 @@
+{
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "issues": [
+    {
+      "id": "LANG-EN-PROXY-LOAD-ENERGY",
+      "kind": "defect",
+      "status": "partly_supported",
+      "severity": "minor",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": false,
+      "primary_criterion": "BR-12",
+      "secondary_impacts": [],
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "LANGUAGE_REVIEW"
+      ],
+      "summary": "英文摘要称“node proxy energy”，英文关键词称“node proxy load”。前者对应15分钟能量目标，后者对应预测任务名称，含义可解释但术语对应仍可统一。本轮已把关键词从“proxy load”改为“node proxy load”；剩余差异登记为小修，不影响本轮加分或扣分。"
+    }
+  ]
+}

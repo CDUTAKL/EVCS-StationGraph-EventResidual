@@ -1,0 +1,446 @@
+{
+  "schema_version": 1,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "FORMAL-20261016-FINAL-REAUDIT",
+  "assessment_kind": "formal",
+  "review_date": "2026-10-16",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "PACKET-20261016-FINAL-REAUDIT",
+    "manuscript_path": "docs/thesis/content-review-20261016-final-reaudit/packet/manuscript.md",
+    "manuscript_sha256": "76cc39ad351c7e6bf9a86014b320b80076b4d23a1b795d29ccc2dbe231a8df96",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "evidence": [
+      {
+        "id": "A",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/manuscript.md",
+        "locator": "冻结全文1766行，双语摘要、五章、结论、参考文献与附录；SHA256见packet-manifest.json",
+        "reviewed": true
+      },
+      {
+        "id": "MAP",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/MAP.md",
+        "locator": "冻结证据材料 MAP；清单SHA256 abf6a2860e925ea4d60724b7547c1957315b7fa17a0c4948263059bfcc63eeae",
+        "reviewed": true
+      },
+      {
+        "id": "S31",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/S31.md",
+        "locator": "冻结证据材料 S31；清单SHA256 d93dd099dbc4a55385fa4e3122323ca1c8ee5f4ddc205562ebc4fd69d57519d9",
+        "reviewed": true
+      },
+      {
+        "id": "S31AUDIT",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/S31AUDIT.json",
+        "locator": "冻结证据材料 S31AUDIT；清单SHA256 8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475",
+        "reviewed": true
+      },
+      {
+        "id": "NZ",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/NZ.json",
+        "locator": "冻结证据材料 NZ；清单SHA256 4f566d54cc6284679dd642bfce52d2251a9deea8fe97e319ebc2804995421345",
+        "reviewed": true
+      },
+      {
+        "id": "S32",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/S32.md",
+        "locator": "冻结证据材料 S32；清单SHA256 9585428a9501321944ba38efcfacaa3978d8c2514149c6eedfe0a46fd25b0f8a",
+        "reviewed": true
+      },
+      {
+        "id": "S32AUDIT",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/S32AUDIT.json",
+        "locator": "冻结证据材料 S32AUDIT；清单SHA256 11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/NEAR.md",
+        "locator": "冻结证据材料 NEAR；清单SHA256 a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR2",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/NEAR2.md",
+        "locator": "冻结证据材料 NEAR2；清单SHA256 2ca238e2e2214e2d526f2782c46fbd437db35a74f0f05113f1b5f7672f4a9048",
+        "reviewed": true
+      },
+      {
+        "id": "MDP",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/MDP.md",
+        "locator": "冻结证据材料 MDP；清单SHA256 f65ce5d985d71fc61bdc9d76c92be53d634c70bb2c66a91f584e22033739d371",
+        "reviewed": true
+      },
+      {
+        "id": "CAL",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/CAL.md",
+        "locator": "冻结证据材料 CAL；清单SHA256 da74215ccdc23de4aa0901efa6eec09693ca03233be5befb29eae620c702352a",
+        "reviewed": true
+      },
+      {
+        "id": "ADAPT",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/ADAPT.md",
+        "locator": "冻结证据材料 ADAPT；清单SHA256 380427dbca21f32cdf80eb261587e1800ee9182f062adb6535cab5ba719b3774",
+        "reviewed": true
+      },
+      {
+        "id": "ADAPTAUDIT",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/ADAPTAUDIT.json",
+        "locator": "冻结证据材料 ADAPTAUDIT；清单SHA256 76499e6f387d971e33df08acb75479109aabb70d7b407f1b9520b6bb53891e84",
+        "reviewed": true
+      },
+      {
+        "id": "QUALITY",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/QUALITY.md",
+        "locator": "冻结证据材料 QUALITY；清单SHA256 06a6b9a43fc675e7527646aaa81a92d13aa4c91802b72ae8f4f07314fde5862b",
+        "reviewed": true
+      },
+      {
+        "id": "PASSPORT",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/PASSPORT.md",
+        "locator": "冻结证据材料 PASSPORT；清单SHA256 33ecc45c11775788fc9e6979949ef78fef5900a1583d8b01df5feb030681c2ea",
+        "reviewed": true
+      },
+      {
+        "id": "RECOMP",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/RECOMP.json",
+        "locator": "冻结证据材料 RECOMP；清单SHA256 388d838f54ae9e8f35ec8f049d226977956327d30cb5d80f42d8974e5c007294",
+        "reviewed": true
+      },
+      {
+        "id": "MRECOMP",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/MRECOMP.json",
+        "locator": "冻结证据材料 MRECOMP；清单SHA256 deb2356b5c32d3b054cd8bd2eeb3e50e946adb43a38523a041e08c939ae40bde",
+        "reviewed": true
+      },
+      {
+        "id": "DECISION",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/DECISION.json",
+        "locator": "冻结证据材料 DECISION；清单SHA256 483716413395c390480f4651d9678fa6592bdf6d965252ead93771dc60e4b352",
+        "reviewed": true
+      },
+      {
+        "id": "FRESH",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/fresh-array-recompute.json",
+        "locator": "本轮对019/031/032共27份逐键测试预测数组复算总体、零/非零及事件MAE/RMSE",
+        "reviewed": true
+      },
+      {
+        "id": "INTEGRITY",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/reviewer-integrity.md",
+        "locator": "全文一致性隔离审阅；摘要、主要表格、跨章结论与剩余结构问题",
+        "reviewed": true
+      },
+      {
+        "id": "METHODS",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/reviewer-methods.md",
+        "locator": "方法与统计隔离审阅；设计、公式符号、训练预算、数值口径",
+        "reviewed": true
+      },
+      {
+        "id": "ORIGINALITY",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/reviewer-originality.md",
+        "locator": "文献、贡献和实践隔离审阅；近邻材料层级与应用证据",
+        "reviewed": true
+      }
+    ]
+  },
+  "reviewer_reports": [
+    "docs/thesis/content-review-20261016-final-reaudit/reviewer-methods.md",
+    "docs/thesis/content-review-20261016-final-reaudit/reviewer-originality.md",
+    "docs/thesis/content-review-20261016-final-reaudit/reviewer-integrity.md"
+  ],
+  "forensic_report": "docs/thesis/content-review-20261016-final-reaudit/forensic-review.md",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": 4.5,
+      "manuscript_location": "§1.1.1—1.1.3、§1.3；§2.3表2-4；§3.6.2表3-2",
+      "evidence_ids": [
+        "A"
+      ],
+      "rationale": "节点稀疏、异质性及全局误差掩盖非零/事件表现构成具体可检验问题。扣0.5：实际场站需求、精度门槛和服务/成本影响仍未量化，代理目标与运行对象的联系有限。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮修订未增加现场需求或成本证据。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-02",
+      "score": 4.5,
+      "manuscript_location": "题名、摘要；§1.4—1.6；表2-2；§3.8；表4-6；结论",
+      "evidence_ids": [
+        "A",
+        "MAP",
+        "MDP"
+      ],
+      "rationale": "研究问题、协议、结果和结论总体闭合，完整模型与组件证据、重新拟合与迁移、诊断与预测收益均已区分。扣0.5：题名未提示代理能量口径；第5章方向性筛查及合成LP与核心预测问题连接较弱。",
+      "na_reason": null,
+      "change": {
+        "type": "recalibration",
+        "reason": "复核统一锚点后，对题目范围提示和第五章外围内容作小幅校准；不是本轮文字修订造成退步。",
+        "evidence_ids": [
+          "A",
+          "MAP",
+          "MDP"
+        ]
+      }
+    },
+    {
+      "id": "BR-03",
+      "score": 4.0,
+      "manuscript_location": "§1.2.2—1.2.4、表1-1；[12]、[13]、[67]、[70]—[73]",
+      "evidence_ids": [
+        "A",
+        "NEAR",
+        "NEAR2"
+      ],
+      "rationale": "已比较EV站群、代理会话重构及住宅多图/门控先例，准确限定站内节点差异且不作跨文性能排名。扣1.0：若干最近工作仅摘要或索引正文可读，[72]/[73]完整实验和门控细节未知；[71]原文支撑在冻结包中较弱，缺少足以强区分任务增量的全面近邻核查。",
+      "na_reason": null,
+      "change": {
+        "type": "recalibration",
+        "reason": "来源可读层级与原文覆盖缺口在稿中和证据包中持续存在；此前满分高估了“边界披露”对“文献比较完整度”的补偿。",
+        "evidence_ids": [
+          "A",
+          "NEAR",
+          "NEAR2"
+        ]
+      }
+    },
+    {
+      "id": "BR-04",
+      "score": 4.5,
+      "manuscript_location": "式(2-1)、式(3-3)—(3-13)；§4.2.5、§4.3.3；§5.2—5.4",
+      "evidence_ids": [
+        "A",
+        "QUALITY",
+        "RECOMP",
+        "MRECOMP",
+        "CAL"
+      ],
+      "rationale": "核心概念、能量/功率口径、图关系语义、β与关系变换尺度、共形秩及统计候选边界总体准确。扣0.5：式3-5的中心化轮廓符号和3.5.7早停指标说明尚有局部不自足，部分方向性结果实际解释价值有限。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮精修未改变理论和公式证据；局部符号表达问题经本次复核确认。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-05",
+      "score": 8.0,
+      "manuscript_location": "§2.1；表3-2、3-3、3-9、3-11、3-14、3-15；§3.8",
+      "evidence_ids": [
+        "A",
+        "S31",
+        "S31AUDIT",
+        "S32",
+        "S32AUDIT",
+        "MRECOMP"
+      ],
+      "rationale": "事件时刻输入、近容量TCN、同参数门控、保留关系槽位的自环替换及目标敏感性各能回答限定问题。扣2.0：门控对照各站有一个种子触及预算上限；AGCRN未容量匹配，行为GRU缺失，L2学生容量/信息路径不匹配，032固定原图；未查看时期验证不足。",
+      "na_reason": null,
+      "change": {
+        "type": "recalibration",
+        "reason": "按统一“强设计”锚点重新权衡预算充分性与替代解释；这些限制并非本轮文本修改造成。",
+        "evidence_ids": [
+          "A",
+          "S31",
+          "S31AUDIT",
+          "S32",
+          "S32AUDIT",
+          "MRECOMP"
+        ]
+      }
+    },
+    {
+      "id": "BR-06",
+      "score": 4.5,
+      "manuscript_location": "§2.1.1—2.1.3、§3.6.4、§3.8.3；证据包",
+      "evidence_ids": [
+        "A",
+        "PASSPORT",
+        "QUALITY",
+        "ADAPT",
+        "ADAPTAUDIT",
+        "RECOMP",
+        "MRECOMP",
+        "S31AUDIT",
+        "S32AUDIT",
+        "FRESH"
+      ],
+      "rationale": "数据/运行合同、输入和预测键、检查点、训练日志及结果复算有较好追踪。本轮直接复算27份归档预测统计与正文一致。扣0.5：历史训练Git标识及部分环境来源缺失，前向重放不等于从头训练重现；本轮未从原会话数据重新生成全链路。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "精修未补齐历史训练来源或原始数据端到端重现；现有复算支持保留4.5。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-07",
+      "score": 9.0,
+      "manuscript_location": "第2—5章，重点§2.1.2、§3.6—3.8、§4.2—4.6、§5.3",
+      "evidence_ids": [
+        "A",
+        "S31",
+        "S32",
+        "MDP",
+        "CAL",
+        "ADAPT",
+        "FRESH"
+      ],
+      "rationale": "完成数据和代理标签审计、两场站协议、预测与组件控制、目标敏感性、机制诊断、校准及误差复核，体现持续且有难度的问题解决。扣1：多项补充复用已查看时期；尚无诊断指导改模闭环或真实现场验证。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "文字凝练不代表新增研究工作量，本轮不按字数或运行次数计分。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-08",
+      "score": 8.0,
+      "manuscript_location": "表3-2、3-3、3-9、3-11、3-15；§3.7.2；表4-6；§5.3",
+      "evidence_ids": [
+        "A",
+        "S31AUDIT",
+        "NZ",
+        "S32AUDIT",
+        "MRECOMP",
+        "RECOMP",
+        "CAL",
+        "FRESH"
+      ],
+      "rationale": "整体模型比较及负荷/轮廓关系相对自环的条件性整体增量有直接数值支持；行为关系不确定。非零组负荷关系组件差0.004893与完整MRG-GCN未胜TCN的模型级差异是两个不同比较，本轮数组复算和原审计均支持两者同时成立。扣2：非零分层为已查看测试期上的事后描述，未校正；整体收益主要由零组驱动，活跃目标模型表现未领先；无独立未来期和计量验证。",
+      "na_reason": null,
+      "change": {
+        "type": "recalibration",
+        "reason": "再次按“结果支持主要结论且覆盖主要替代解释”的锚点裁定；先前8.5对事后分层及代理效度的限制计分偏宽。",
+        "evidence_ids": [
+          "A",
+          "S31AUDIT",
+          "NZ",
+          "S32AUDIT",
+          "MRECOMP",
+          "RECOMP",
+          "CAL",
+          "FRESH"
+        ]
+      }
+    },
+    {
+      "id": "BR-09",
+      "score": 8.5,
+      "manuscript_location": "§3.6—3.8；§4.2.5、§4.4—4.6；§5.2—5.3；结论",
+      "evidence_ids": [
+        "A",
+        "S31AUDIT",
+        "S32AUDIT",
+        "NZ",
+        "MDP",
+        "CAL",
+        "RECOMP",
+        "MRECOMP"
+      ],
+      "rationale": "对多重比较、三种子、测试期已查看、时间块区间权限、事后分层、规则与事件差别及现场外推均处理较严谨。扣1.5：固定测试期反复分析后的整体选择不确定性未被局部校正消除；训练随机性仅三种子，时间块推断条件于种子均值，缺未见时期确认。",
+      "na_reason": null,
+      "change": {
+        "type": "recalibration",
+        "reason": "前次满分区间边界评分未充分计入已查看测试期反复使用与跨种子不确定性；本轮按固定统计锚点校准。",
+        "evidence_ids": [
+          "A",
+          "S31AUDIT",
+          "S32AUDIT",
+          "NZ",
+          "MDP",
+          "CAL",
+          "RECOMP",
+          "MRECOMP"
+        ]
+      }
+    },
+    {
+      "id": "BR-10",
+      "score": 7.5,
+      "manuscript_location": "§1.2—1.4；§3.5.8、3.7.1—3.7.2；表4-6；结论",
+      "evidence_ids": [
+        "A",
+        "NEAR",
+        "NEAR2",
+        "S31",
+        "S31AUDIT",
+        "NZ",
+        "MDP",
+        "MRECOMP"
+      ],
+      "rationale": "贡献可定位为单站代理任务的关系定义、同参数控制所得有限增量和区分不同诊断证据的框架；关系非零组结果增加了经验知识，MDP改变关系取舍与分层评价判断。扣2.5：图时序、门控、蒸馏及分组方法均有先例；行为关系/β独立增益不成立；诊断尚未证明改模收益，创新属可信的任务化增量而非新算法。",
+      "na_reason": null,
+      "change": {
+        "type": "recalibration",
+        "reason": "评阅更清楚地区分“诊断改变研究判断”与“带来新预测能力”；此前8.5高估了组合与任务迁移的创新权重。",
+        "evidence_ids": [
+          "A",
+          "NEAR",
+          "NEAR2",
+          "S31",
+          "S31AUDIT",
+          "NZ",
+          "MDP",
+          "MRECOMP"
+        ]
+      }
+    },
+    {
+      "id": "BR-11",
+      "score": 3.0,
+      "manuscript_location": "§2.1.2；§5.4表5-7、表5-8；结论",
+      "evidence_ids": [
+        "A",
+        "DECISION",
+        "PASSPORT",
+        "QUALITY",
+        "CAL",
+        "S32"
+      ],
+      "rationale": "模型筛查、局部低估暴露、代理接口和采数优先级具有有限实践价值。人工LP仅验证合成输入可行性；没有同步电表、实际车辆/设备约束、影子运行或观测成本收益。此为3/5“价值合理但验证有限”锚点。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "精修后的应用表述更克制，但无新增现场材料，分数不变。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-12",
+      "score": 8.5,
+      "manuscript_location": "中英文摘要；§1.2—1.4；§3.5.1、3.5.6—3.5.10；§4.5—4.6；§5.2—5.5；结论",
+      "evidence_ids": [
+        "A",
+        "INTEGRITY",
+        "METHODS"
+      ],
+      "rationale": "本轮压缩重复文字并把组件/模型比较写得更清楚；章节总体可读，术语和图表口径较可靠。扣1.5：模型跨层路径仍在§3.5及多图反复说明；摘要数字密集，第五章方向性统计与应用LP较外围，JPL区间结果分散；式3-5符号与3.5.7选模措辞有局部歧义。文字变短改善可读性，但不足以满分。",
+      "na_reason": null,
+      "change": {
+        "type": "recalibration",
+        "reason": "本轮内容确有精简改善，但全稿仍存在可定位的结构重复和结果分散；此前满分10对“可读、规范”要求给得过满。",
+        "evidence_ids": [
+          "A",
+          "INTEGRITY",
+          "METHODS"
+        ]
+      }
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "未重新训练或重放检查点；本轮独立从019/031/032归档预测数组复算27份全局及分层指标，但其他结果引用冻结审计记录。",
+    "三份评阅为隔离AI侧重视角，不是三名现实专家或学校评阅者；主评逐项裁定，不对总分作机械平均。",
+    "未重读全部92篇文献全文，且图像实体/Word版式/逐页可读性不在本次内容分内。",
+    "补充关系、目标敏感性和部分校准均复用已查看测试期；非零关系分层为事后未校正分析。",
+    "代理目标没有同步电表效度校准；无真实运行收益验证。"
+  ]
+}

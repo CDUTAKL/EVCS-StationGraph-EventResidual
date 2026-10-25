@@ -1,0 +1,35 @@
+{
+  "allowed_headings": [
+    "摘  要",
+    "Abstract",
+    "1.2.2 多节点负荷与时空图预测",
+    "1.5 技术路线",
+    "1.6 论文组织结构",
+    "3.5.4 节点级门控",
+    "5.1 引言",
+    "5.4.1 预测量与运行量的对应",
+    "5.4.5 证据边界与应用验证要求",
+    "5.5 本章小结",
+    "研究判断与使用条件",
+    "研究局限与后续工作"
+  ],
+  "table_rows_locked": true,
+  "display_equations_locked": true,
+  "reference_entries_locked": true,
+  "permitted_numeric_changes": {
+    "摘  要": [
+      "0.03890",
+      "1.82%",
+      "1.52%"
+    ],
+    "1.2.2 多节点负荷与时空图预测": [
+      "citation range only: exclude 74/75 from table summary"
+    ],
+    "3.5.4 节点级门控": [
+      "section cross reference only: 3.6.2 -> 3.7.2; appendix A-1"
+    ],
+    "5.4.1 节点集合需求与预测输出对应": [
+      "inline tau/h/15-min definition only"
+    ]
+  }
+}

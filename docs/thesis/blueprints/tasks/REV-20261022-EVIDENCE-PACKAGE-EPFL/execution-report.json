@@ -1,0 +1,41 @@
+{
+  "task_id": "REV-20261022-EVIDENCE-PACKAGE-EPFL",
+  "executor": "Claude Code; Codex recovery and independent review",
+  "model": "deepseek-flash[1m]",
+  "user_reported_model": "DeepSeek",
+  "summary": "Claude generated the V2 protocol and two audit scripts. Interactive run was interrupted before its report and documentation were completed. Codex corrected archive-relative checksum resolution, enforced all manifest gates, validated both EPFL sheets/fields, added protocol-required per-CCS summaries, and reran the two scoped commands.",
+  "changed_paths": [
+    "scripts/replay_sgexp031_032_evidence.py",
+    "scripts/audit_epfl_proxy_shape_v2.py",
+    "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-protocol.md",
+    "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2.json",
+    "docs/thesis/revision-20261022-evidence/reproducibility-package.json"
+  ],
+  "evidence_used": [
+    "SG-EXP-031/032 frozen source and result archives and run manifests",
+    "EPFL local workbooks, README and LICENSE; hashes in V2 protocol"
+  ],
+  "claim_or_number_changes": [
+    "No manuscript changes in this evidence phase. EPFL: 1878 matched, 1620 eligible, 258 below 15 min; equal-session TV median 0.07360134856713525; exploratory only."
+  ],
+  "checks": [
+    {
+      "command": "python3 scripts/replay_sgexp031_032_evidence.py --out docs/thesis/revision-20261022-evidence/reproducibility-package.json",
+      "status": "PASS",
+      "performed_by": "Codex final review"
+    },
+    {
+      "command": "python3 scripts/audit_epfl_proxy_shape_v2.py --session data/external/epfl-l3-20261021/Session_data.xlsx --measurements data/external/epfl-l3-20261021/Measurement_data.xlsx --out docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2.json",
+      "status": "SHAPE_COMPUTED_EXPLORATORY",
+      "performed_by": "Codex final review"
+    }
+  ],
+  "unresolved": [
+    "Documentation and manuscript consolidation move to a bounded recovery task.",
+    "P meter boundary and naive timestamp semantics unresolved.",
+    "Saved-prediction metric replay is not checkpoint forward replay or retraining.",
+    "031 entrypoint was untracked; 032 lacks verified historical Git identity."
+  ],
+  "blockers": [],
+  "report_written_by": "Codex after interrupted Claude process; not represented as a completed Claude report"
+}

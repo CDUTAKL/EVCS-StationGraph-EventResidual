@@ -12,7 +12,7 @@
   "prompt_record": "docs/thesis/seven-figure-refresh-20261006-imagegen.json",
   "generation_mode": "edit",
   "reference_image": "outputs/figures/archive/2026-10-06-targeted-seven-figure-refresh/fig3_8_train_predict_pipeline.png",
-  "pre_1200dpi_sha256": "364bb9c8528291da3706014564a112b36d425efd19d19af898af6cd381dbad3c",
+  "pre_1200dpi_sha256": "70d1a1760f995c245403f368b66a5629c4028a4c589db6a98c25b7a49f418a99",
   "outputs": {},
   "delivery": {
     "size_px": [
@@ -24,6 +24,6 @@
       1199.9976
     ],
     "effective_dpi_at_word_size": 1200.0605633802818,
-    "method": "Lanczos interpolation from raster-only source; no new source detail"
+    "method": "native pixels; added 1200 dpi metadata"
   }
 }

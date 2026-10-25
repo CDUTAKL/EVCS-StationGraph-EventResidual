@@ -1,0 +1,141 @@
+{
+  "assessment_id": "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 79.5,
+  "raw_maximum": 90.0,
+  "normalized_score": 88.33,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 1.67,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮新增材料没有改变本项的既有评价锚点；按paired_revision固定上一正式分项，不把独立评阅者较低的绝对复评分数误记为稿件退步。"
+      },
+      {
+        "id": "BR-02",
+        "old": 5.0,
+        "new": 5.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮新增材料没有改变本项的既有评价锚点；按paired_revision固定上一正式分项，不把独立评阅者较低的绝对复评分数误记为稿件退步。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮新增材料没有改变本项的既有评价锚点；按paired_revision固定上一正式分项，不把独立评阅者较低的绝对复评分数误记为稿件退步。"
+      },
+      {
+        "id": "BR-04",
+        "old": 5,
+        "new": 5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮新增材料没有改变本项的既有评价锚点；按paired_revision固定上一正式分项，不把独立评阅者较低的绝对复评分数误记为稿件退步。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮新增材料没有改变本项的既有评价锚点；按paired_revision固定上一正式分项，不把独立评阅者较低的绝对复评分数误记为稿件退步。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 5.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "本轮新增哈希锁定的SG-EXP-031/032源文件、逐运行配置/环境与结果工件清单，并复核18次既有预测指标。支持来源/配置可追溯性提高0.5；不等于前向或训练复现。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9,
+        "new": 9.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "EPFL V2报告记录了键不兼容后的方案诊断与修正、数据质量核验和形态结果；按锚点计入实际问题解决过程0.5，而非按工作量计分。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮新增材料没有改变本项的既有评价锚点；按paired_revision固定上一正式分项，不把独立评阅者较低的绝对复评分数误记为稿件退步。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮新增材料没有改变本项的既有评价锚点；按paired_revision固定上一正式分项，不把独立评阅者较低的绝对复评分数误记为稿件退步。"
+      },
+      {
+        "id": "BR-10",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮新增材料没有改变本项的既有评价锚点；按paired_revision固定上一正式分项，不把独立评阅者较低的绝对复评分数误记为稿件退步。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.0,
+        "new": 3.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "新增真实外部功率轨迹及站级运行字段，改进真实输入背景证据0.5；其与ACN不兼容，业务价值评价仍不变。"
+      },
+      {
+        "id": "BR-12",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮新增材料没有改变本项的既有评价锚点；按paired_revision固定上一正式分项，不把独立评阅者较低的绝对复评分数误记为稿件退步。"
+      }
+    ]
+  },
+  "publication_status": "publishable",
+  "publication_decision": {
+    "status": "publishable",
+    "date": "2026-10-22",
+    "reason": "按EVCS-THESIS-REVIEW-2.0完成与78.0/90正式基线的配对复评；冻结包、三隔离视角、逐项裁定、哈希与算术发布检查均通过。BR-06、BR-07、BR-11各+0.5，总修订效应+1.5/90，校准效应0。",
+    "record": "docs/thesis/content-review-20261022-paired-review/scorecard.json",
+    "raw_score": 79.5,
+    "normalized_score": 88.33,
+    "baseline_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+    "revision_delta_raw": 1.5,
+    "calibration_delta_raw": 0.0
+  },
+  "publication": {
+    "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+    "status": "publishable",
+    "problems": [],
+    "raw_score": 79.5,
+    "normalized_score": 88.33,
+    "revision_delta_raw": 1.5,
+    "calibration_delta_raw": 0.0,
+    "recommendation": "advisor_review",
+    "checked_file_count": 40,
+    "note": "发布条件核验不证明证据真实、学术判断正确或评分具有测量精度。"
+  },
+  "record_validation_status": "valid"
+}

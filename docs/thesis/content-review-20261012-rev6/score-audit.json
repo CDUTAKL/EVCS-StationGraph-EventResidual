@@ -1,0 +1,116 @@
+{
+  "assessment_id": "FORMAL-20261012-REV6",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 79.0,
+  "raw_maximum": 90.0,
+  "normalized_score": 87.78,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "EVCS-CONTENT-20261012-REV5-FORMAL",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 0.56,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-02",
+        "old": 5,
+        "new": 5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-04",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8,
+        "new": 8,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9,
+        "new": 9,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.5,
+        "new": 9.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-10",
+        "old": 7.5,
+        "new": 7.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.5,
+        "new": 3.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。"
+      },
+      {
+        "id": "BR-12",
+        "old": 9.5,
+        "new": 10,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "四项局部学术表达与转引问题均已修正，并由本轮局部审计核验通过。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "audit_id": "KIT-LF-MEASURED-PROFILE-20261021",
+  "status": "COMPUTED",
+  "retrieved_or_queried_utc_date": "2026-10-21",
+  "source": {
+    "doi": "10.5281/zenodo.17866847",
+    "url": "https://zenodo.org/api/records/17866847/files/ev-charging_lf.parquet/content",
+    "published_size_bytes": 422470722,
+    "published_md5": "0327dae2664c79ecde0bd07166bf6b1d",
+    "local_source_sha256": null,
+    "dataset_license": "CC BY 4.0 (KITopen record; Zenodo rendered license field was blank, API reports cc-by-4.0)",
+    "source_dates": [
+      "2025-10-28",
+      "2025-12-02"
+    ],
+    "metering_semantics": "phase active power calculated from recorded phase voltage/current; voltage/current are measured"
+  },
+  "runtime": {
+    "duckdb": "1.5.6"
+  },
+  "method": {
+    "integration": "trapezoidal integration between adjacent samples; intervals >5x per-session median spacing are excluded",
+    "active_window": "first through last sample with summed phase active power >100 W",
+    "binning": "15-minute bins relative to first active sample; segment energy assigned by segment midpoint",
+    "uniform_counterfactual": "same integrated energy distributed in proportion to each 15-minute bin's overlap with the observed active window",
+    "inclusion": "active window >= 900 s, valid-time coverage >= 95%, positive energy, and >=2 relative bins",
+    "shape_metric": "total variation distance = sum absolute per-bin energy differences / (2 * integrated session energy); 0 means identical binned shape",
+    "limitations": [
+      "not ACN or a station-level multi-node dataset",
+      "no connection/done/disconnect timestamps to reproduce the thesis target construction",
+      "no same-node mapping, ACN graph or compatible input tensor for frozen-checkpoint inference",
+      "does not validate forecast accuracy, meter calibration or dispatch/application benefit",
+      "controlled measurement sessions do not represent ordinary station operation"
+    ]
+  },
+  "quality": {
+    "sessions_in_source_metadata": 18,
+    "lf_session_count": 18,
+    "sessions_in_shape_summary": 18,
+    "sessions_excluded": 0,
+    "session_date_min_max": [
+      "2025-10-28",
+      "2025-12-02"
+    ],
+    "valid_time_coverage_min": 0.9999617990099875,
+    "valid_time_coverage_median": 1.0000007250969722,
+    "total_variation_median": 0.09494360420108024,
+    "total_variation_iqr": [
+      0.06337946767684186,
+      0.1582021938307106
+    ],
+    "mae_kwh_per_bin_median": 0.22673766767029954,
+    "peak_bin_energy_ratio_median": 1.3034389809100564
+  }
+}

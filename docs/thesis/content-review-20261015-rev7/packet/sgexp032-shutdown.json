@@ -1,0 +1,15 @@
+{
+  "experiment": "SG-EXP-032",
+  "instance_id": "autodl-container-38a84e9a75-8c21d369",
+  "provider": "AutoDL",
+  "control_plane": "https://www.autodl.com/console/instance/list",
+  "shutdown_action": "关机 submitted through AutoDL console after local recovery and independent audit passed",
+  "control_plane_status": "已关机",
+  "control_plane_status_confirmed": true,
+  "status_observed_at_utc": "2026-10-15T02:49:14Z",
+  "pre_shutdown_remote_gpu": "RTX 4090 D, 1 MiB used, 0% utilization, no running GPU process",
+  "training_pid_absent": true,
+  "local_recovery_verification": "outputs/experiments/SG-EXP-032/recovery-verification.json",
+  "local_recovery_status": "PASS",
+  "evidence_note": "Control-plane instance list displayed target instance 38a84e9a75-8c21d369 as 已关机; SSH disconnect is not used as the shutdown proof."
+}

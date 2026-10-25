@@ -30,6 +30,7 @@
 - [实现与验证记录](docs/experiments/implementation-validation-report.md)
 - [代码样式与修改协议](docs/development/code-style-and-change-protocol.md)
 - [Git 版本管理工作流](docs/development/git-workflow.md)
+  - [正式论文稿件发布与哈希清单](docs/development/git-workflow.md#7-正式论文稿件的版本发布)
 
 ## 已实现模块
 

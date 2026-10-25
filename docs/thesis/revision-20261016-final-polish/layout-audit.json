@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "pdf_pages": 106,
+  "printed_body_pages": 96,
+  "printed_body_page_range": [
+    1,
+    96
+  ],
+  "toc_entries": 121,
+  "all_toc_entries_match_source_and_pdf_page": true,
+  "english_abstract_with_keywords_one_page": true,
+  "figure_count": 46,
+  "ordered_figure_hash_match": true,
+  "table_count": 41,
+  "all_table_cell_text_recovered": true,
+  "docx_sha256": "fd557fcf884f65a78fa913c5b2c2210f217cd95a8085f86beee4cb4db9e03649",
+  "pdf_sha256": "4968776bd0029db8938284e7edab3bf6d58f0c458dcf25ba9c2def4f4832d680",
+  "image_restoration_preserves_document_xml": true,
+  "orphan_heading_pages": [],
+  "final_visual_sample_pages": [
+    89
+  ],
+  "visual_scope": "Final PDF page 89 inspected after final reflow; earlier intermediate layout samples inspected separately."
+}

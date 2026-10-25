@@ -1,4 +1,4 @@
-# 论文主文配图最终编号映射（46幅，2026-10-06同步）
+# 论文主文配图当前编号映射（46幅，2026-10-11同步）
 
 本文件是主文图号、文件名、正文引用与 DOCX 插图的唯一编号基准。主文按章节连续编号；撤出主文的 11 幅图保存在 `outputs/figures/archive/2026-08-10-withdrawn-from-main-text/`，仅作后续追溯，不删除也不进入附录。
 
@@ -39,48 +39,49 @@
 | 图3-6 | `fig3_6_gate_residual_detail` | 节点门控与残差更新细节 |
 | 图3-7 | `fig3_7_cross_layer_detail` | 跨层表示路径及拼接边界 |
 | 图3-8 | `fig3_8_train_predict_pipeline` | 训练—预测—评价流程 |
-| 图3-9 | `fig3_9_model_mae_comparison` | 不同模型全局 MAE |
-| 图3-10 | `fig3_10_mae_by_horizon` | 不同模型逐步长 MAE |
-| 图3-11 | `fig3_11_bootstrap_difference` | 点级 Bootstrap 误差差 |
-| 图3-12 | `fig3_12_mae_by_window` | 不同评价窗口 MAE |
-| 图3-13 | `fig3_13_mae_by_node` | 不同模型逐节点 MAE |
-| 图3-14 | `fig3_14_mechanism_ablation` | 结构消融结果 |
-| 图3-15 | `fig3_15_jpl_mae_primary` | JPL整体MAE与七日时间块配对比较 |
-| 图3-16 | `fig3_16_jpl_stratified_mae` | JPL分层MAE比较 |
+| 图3-9 | `fig3_9_jpl_mae_primary` | JPL整体MAE与七日时间块配对比较 |
+| 图3-10 | `fig3_10_jpl_stratified_mae` | JPL分层MAE比较 |
+| 图3-11 | `fig3_11_model_mae_comparison` | 不同模型全局 MAE |
+| 图3-12 | `fig3_12_mae_by_horizon` | 不同模型逐步长 MAE |
+| 图3-13 | `fig3_13_bootstrap_difference` | 点级 Bootstrap 误差差 |
+| 图3-14 | `fig3_14_mae_by_window` | 不同评价窗口 MAE |
+| 图3-15 | `fig3_15_mae_by_node` | 不同模型逐节点 MAE |
+| 图3-16 | `fig3_16_mechanism_ablation` | 结构消融结果 |
 
-## 第4章（6 幅）
+## 第4章（7 幅）
 
 | 图号 | 文件基名 | 内容 |
 |---|---|---|
 | 图4-1 | `fig4_1_three_layer_framework` | 三层机制诊断协议 |
 | 图4-2 | `fig4_2_beta_profile` | 两层关系级 β 门控权重画像 |
 | 图4-3 | `fig4_3_intervention` | 关系级门控参数干预结果 |
-| 图4-4 | `fig4_4_four_cell` | 事件标签与规则触发的四格诊断（含误差贡献） |
-| 图4-5 | `fig4_5_residual_distribution` | 不同模型预测残差分布 |
-| 图4-6 | `fig4_6_error_vs_event_intensity` | 误差与可见事件分数的关系 |
+| 图4-4 | `fig4_4_parameter_intervention` | L1分层参数干预敏感度 |
+| 图4-5 | `fig4_5_four_cell` | 事件标签与规则触发的四格诊断（含误差贡献） |
+| 图4-6 | `fig4_6_residual_distribution` | 不同模型预测残差分布 |
+| 图4-7 | `fig4_7_error_vs_event_intensity` | 误差与回溯事件分数的关系 |
 
-## 第5章（9 幅）
+## 第5章（8 幅）
 
 | 图号 | 文件基名 | 内容 |
 |---|---|---|
-| 图5-1 | `fig5_1_te_pcmci_flow` | TE→PCMCI+条件滞后依赖结构发现流程 |
+| 图5-1 | `fig5_1_te_pcmci_flow` | TE候选筛查与PCMCI+条件独立检验对照流程 |
 | 图5-2 | `fig5_2_transfer_entropy` | 传递熵方向性候选结构 |
-| 图5-3 | `fig5_3_asymmetry` | 双向传递熵与方向不对称性 |
+| 图5-3 | `fig5_3_asymmetry` | 双向传递熵与描述性不对称度；按和分母定义 |
 | 图5-4 | `fig5_4_te_vs_relations` | TE 与统计关系权重的对应 |
 | 图5-5 | `fig5_5_pcmci_validation_network` | PCMCI+条件独立核验结果 |
 | 图5-6 | `fig5_6_conformal_method` | 冻结规则路由的分层共形方法 |
 | 图5-7 | `fig5_7_coverage` | 共形覆盖率比较 |
 | 图5-8 | `fig5_8_quantile_per_node` | 分层残差分位数与区间膨胀 |
-| 图5-9 | `fig5_9_parameter_intervention` | 分层参数干预敏感度 |
 
 ## 数量与状态
 
-- 第1章 2 幅、第2章 13 幅、第3章 16 幅、第4章 6 幅、第5章 9 幅，主文共 **46 幅**。
+- 第1章 2 幅、第2章 13 幅、第3章 16 幅、第4章 7 幅、第5章 8 幅，主文共 **46 幅**。
 - 当前31幅图同时具有SVG与PNG，15幅方法示意图保留原生PNG；图3-6和图3-7为模型细节图。所有正文插图均由本表中的稳定文件名唯一定位。
-- 2026-10-06以ImageGen更新图1-2并新增图2-13，提示词、生成路径与审阅记录见 `JPL-imagegen-diagrams-20261006.md`；同时补齐已提交的图3-15、图3-16正文引用。
+- 2026-10-06以ImageGen更新图1-2并新增图2-13，提示词、生成路径与审阅记录见 `JPL-imagegen-diagrams-20261006.md`；当时补齐的JPL图3-15、图3-16正文引用在2026-10-07重排后现为图3-9、图3-10。
 - 同日按用户审美反馈再次重绘图1-2、图2-13：恢复16:9，补齐路线图中部方法模块，精简JPL协议文字并按数据段职责分区；当前选定版本及提示词见 `JPL-imagegen-style-redraw-20261006.md`。
 - 图2-13随后依据李芳凝论文图3-1、3-3、4-3的实际版式重新组织，增加四模型分支、训练反馈及两条评价路径，保留用户专属配色；该图当前版本见 `JPL-protocol-lifangning-layout-study-20261006.md`。
 - 最新图2-13将训练控制细节移入图注，精简为固定预算训练—调参MAE选模—锁定检查点；同时清理图2-1、2-7、2-10、3-8旁注。当前记录见 `flowchart-annotation-cleanup-20261006.md`，总数和编号不变。
 - 随后以ImageGen整理图1-2下部与图2-13评价区：取消路线图长回折线，改为右侧矩形结论；评价区统一宽框、双列分支及汇合网格。当前两图见 `roadmap-evaluation-grid-polish-20261006.md`，总数和编号不变。
 - 图1-2后续以ImageGen整图重构为数据基础、预测方法、MDP诊断、JPL补充四个横向阶段；当前选定版本见 `roadmap-four-stage-redesign-20261006.md`。图2-13及图号、总数不变。
-- 图4-3知识蒸馏结果由表4-3承载；图4-4 的 B 面板以配对点线对照样本占比与按 `count×MAE` 计算的绝对误差贡献。
+- L1分层参数敏感度现并入第4章，位于关系干预之后；图4-4、表4-3承载该结果。后续L2蒸馏和L3四格结果顺延为表4-4、表4-5；原四格图及两幅描述性图顺排为图4-5至图4-7。图4-5的B面板以配对点线对照样本占比与按 `count×MAE` 计算的绝对误差贡献。
+- 2026-10-07随第3章证据重排更新：图3-9、3-10改为JPL整体与分层结果；原图3-9至3-14依次顺延为图3-11至3-16。图像内容及1200 DPI栅格数据不变，仅文件编号、正文次序和索引同步。

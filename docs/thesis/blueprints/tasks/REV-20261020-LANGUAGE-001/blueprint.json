@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261020-LANGUAGE-001",
+  "title": "正文语言收束：贡献与证据边界",
+  "task_type": "content_revision",
+  "workflow_stage": "第11步：内容修订与协作复核",
+  "objective": "按锁定术语和证据边界，对当前主稿十处高优先级段落作凝练和逻辑顺序调整，不改任何数据、公式、引文、图表或结论权限。",
+  "context_sources": [
+    {
+      "path": "docs/thesis/thesis-brief.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "当前贡献定位"
+      },
+      "purpose": "锁定当前论文贡献与创新定位"
+    },
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "论文核心结论权限"
+      },
+      "purpose": "锁定各项结论可说到的证据范围"
+    },
+    {
+      "path": "docs/thesis/terminology-ledger.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "数据与口径"
+      },
+      "purpose": "确保目标事件、规则触发及代理目标等术语一致"
+    },
+    {
+      "path": "docs/thesis/terminology-ledger.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "模型与方法"
+      },
+      "purpose": "确保MRG-GCN、关系级β门控与节点级G门控命名一致"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/writing-guidance.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "遵循学术中文、结论先行、压缩重复且不改证据口径的写作要求"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "摘  要"
+      },
+      "purpose": "凝练摘要，清楚区分关系组件分层与完整模型表现"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "1.1.3 站内节点关系建模与事件窗口预测意义"
+      },
+      "purpose": "收束事件窗口定义、预测时输入可见性和研究必要性"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "1.4 研究目标与主要内容"
+      },
+      "purpose": "减少与研究不足及章节内容重复的贡献铺垫"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "3.6.3 JPL重拟合协议：另一场站的点预测比较"
+      },
+      "purpose": "按模型整理JPL全局与分层结果并分开预算限制和区间方法"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "3.7.2 关系路径、关系子集与敏感性"
+      },
+      "purpose": "突出组件内负荷关系差异与完整MRG-GCN对TCN的比较属于不同问题"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "3.8.1 方法组件与目标敏感性证据综合"
+      },
+      "purpose": "压缩表前重复叙述，让汇总表承载各组件细节"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "3.8.4 完成时刻截断目标敏感性（SG-EXP-032）"
+      },
+      "purpose": "删除重复解读且保持替代代理目标边界"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "4.5 MDP诊断结果与适用边界"
+      },
+      "purpose": "压缩诊断价值和未验证项的重复表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "5.5 本章小结"
+      },
+      "purpose": "精简章节结尾，不新增实践收益主张"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "结  论"
+      },
+      "purpose": "按数据与实测效度、门控预算、模型比较和运行验证梳理局限及后续工作"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "复核SG-EXP-031配置、结果、分层性质与结论边界"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "复核替代目标、全局与非零组结果及固定图/已查看测试期限制"
+    }
+  ],
+  "claude_skills": [
+    "research-paper-writing"
+  ],
+  "allowed_paths": [
+    "docs/thesis/thesis-manuscript.md"
+  ],
+  "locked_claims": [
+    "SG-EXP-031负荷关系相对自环的整体条件性增量来自已查看JPL测试期的受控组件比较；非零组0.004893 kWh/15 min差异为事后分层，未作多重校正。",
+    "负荷关系组件相对自环的分层差异，不等价于完整MRG-GCN在非零组胜过TCN；JPL、Caltech事件时刻及完成时刻截断目标的完整模型非零组结果均不得写成胜过TCN。",
+    "SG-EXP-031与SG-EXP-032是已查看固定测试期上的补充分析，不构成独立未查看时期确认。",
+    "预测对象是由会话记录重构的节点代理负荷/能量，不是电表实测功率；替代完成时刻截断目标也不是实测功率真值。",
+    "target_event仅用于事后评价与分层；rule_trigger为预测起点可见的冻结规则触发。",
+    "关系级β门控与节点级G门控是不同机制；不得将关系权重解释为独立贡献证明或因果效应。",
+    "MDP改变的是对关系、学生替代及误差构成的判断与报告重点；没有证据表明诊断指导改模已经提高预测性能。",
+    "不新增数字、文献、引用、公式、图表/表号或实验结果；所有原有数值、统计口径与结论权限锁定。"
+  ],
+  "steps": [
+    "先通读任务包的锁定主张、术语及两份实验报告，再逐段判断冗余、长句、主谓关系和读者容易混淆的比较层级。",
+    "只在授权的主稿中调整十个指定小节的说明性文字；可采用任务包中的候选句，但须对照当前原文和证据，避免生硬替换。",
+    "优先让段落首句给出结果或判断，再说明比较对象、适用范围；把组件差异、完整模型排名和预算/统计限制分开写。",
+    "压缩套话、连续限定语及表格内容的复述，保留必要的不确定性说明；不作机械禁词替换，不追求AI检测器结果。",
+    "完成后报告具体修改位置、修改前后逻辑、是否触碰数字/引文/结论（应均为否），并列出未修改项及原因。"
+  ],
+  "acceptance_criteria": [
+    "所有改动仅发生于docs/thesis/thesis-manuscript.md，且限于十个指定小节内的解释性正文。",
+    "数字串、统计值、单位、样本/种子/区间口径、引文标记、公式、表格、图注和表号均保持不变。",
+    "明确区分“负荷关系相对自环的非零组事后组件差异”与“完整MRG-GCN非零组仍未胜过TCN”，不得暗示后者获胜。",
+    "摘要、JPL结果、完成时刻截断结果、MDP和结论的表述与冻结证据一致，不扩大独立验证、现场效益或实测功率主张。",
+    "中文表达简洁、学术、自然；删除确属重复的句子，不以增加字数替代论证。",
+    "execution-report.json列明证据来源、实际改动段落、核查过程与限制；交接状态保持pending_codex_review，不能自行宣布验收。"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [],
+    "network_domains": []
+  },
+  "deliverables": [
+    "仅限授权范围的正文语言修订",
+    "execution-report.json（含修改位置和数字/引文不变声明）"
+  ]
+}

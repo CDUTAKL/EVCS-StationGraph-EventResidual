@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "reviewer_id": "isolated-reviewer-originality",
+  "context_id": "orig-calibration-pair-b161b9da-2c59-48e5-9bee-c481571d800e",
+  "emphasis": "originality",
+  "historical_scores_exposed": false,
+  "packet_path": "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet",
+  "packet_fingerprint": "1fa7aba697bb3663f5c2beb7298bf12d6f3ca11ffd46495a9dc4741a6a84f080",
+  "before_manuscript_sha256": "62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66",
+  "current_manuscript_sha256": "451642e15e0fc51343acabf84e727b5079d8a1f2243c0ab8d8542adeed8b9b42",
+  "raw_report_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261019-nontraining/paired-review-reports/originality/originality-review.md",
+  "raw_report_sha256": "94e2cc7b3bd90cc4ed4bbc293ef1a683b74234b4a4c085cb5b311d166a3fbc4b",
+  "declared_before_total": 77.5,
+  "declared_total": 78.5,
+  "criteria": [
+    {
+      "id": "BR-01",
+      "before_score": 4.5,
+      "score": 4.5,
+      "before_component_scores": {
+        "problem": 2,
+        "significance": 1.5,
+        "need": 1
+      },
+      "component_scores": {
+        "problem": 2,
+        "significance": 1.5,
+        "need": 1
+      },
+      "findings": {
+        "locator": {
+          "baseline": "§1.1.1–1.1.3（第35–57行）；§2.1（第178–213行）",
+          "current": "§1.1.1–1.1.3（第35–57行）；§2.1（第178–213行）"
+        },
+        "evidence": [
+          "evidence/QUALITY.md",
+          "evidence/DATA_AVAIL.md",
+          "evidence/ACN_DECISION.md"
+        ],
+        "rationale": "问题组件2/2：对象、15 min粒度、节点级会话代理能量以及对站内容量核查和协调的使用问题具体。动机组件1.5/2：公共充电规模与稀疏、异质节点特征提供了可查背景，但本研究的具体运行需求仍主要由文献和数据形态推导，没有量化现场需求或成本阈值。任务匹配1/1：会话记录确实能支持所定义的代理目标预测。基线与当前对题目、对象和需求论证相同，故同分；未把缺电表映射重复扣在本项。",
+        "concern_class": "局部证据不足与已声明范围限制",
+        "uncertainty": "具体现场需求强度未由本包材料量化；这限制动机实证力度，但不影响所定义代理预测问题成立。"
+      }
+    },
+    {
+      "id": "BR-02",
+      "before_score": 4.5,
+      "score": 4.5,
+      "before_component_scores": {
+        "alignment": 2,
+        "progression": 1.5,
+        "closure": 1
+      },
+      "component_scores": {
+        "alignment": 2,
+        "progression": 1.5,
+        "closure": 1
+      },
+      "findings": {
+        "locator": {
+          "baseline": "摘要（第3–13行）；§1.3–1.6（第110–168行）；结论（第1615–1637行）",
+          "current": "摘要（第3–13行）；§1.3–1.6（第110–168行）；结论（第1615–1637行）"
+        },
+        "evidence": [
+          "evidence/MAP.md",
+          "evidence/MDP.md",
+          "evidence/S31.md",
+          "evidence/S32.md"
+        ],
+        "rationale": "题目、研究问题、三关系图与MRG-GCN、MDP以及总结中的代理负荷边界一致，摘要和结论闭合回答了受控增量与诊断判断。章节推进1.5/2：第5章加入方向候选、区间校准和决策接口，主线仍以可靠性边界统摄，但相对关系增量和MDP主问题较宽。当前结论把两项贡献具体命名，基线已有同一研究主线和结论限制，因此这项改写提高了表达清晰度，却不足以改变主线闭合的半分档位。",
+        "concern_class": "已声明范围限制",
+        "uncertainty": "第5章各补充分析与主贡献的篇幅权重是否适合最终学位稿，单凭文本不能完全判断；未见题目与结论之间的实质范围冲突。"
+      }
+    },
+    {
+      "id": "BR-03",
+      "before_score": 4,
+      "score": 4,
+      "before_component_scores": {
+        "coverage": 1,
+        "sources": 1.5,
+        "gap": 1.5
+      },
+      "component_scores": {
+        "coverage": 1,
+        "sources": 1.5,
+        "gap": 1.5
+      },
+      "findings": {
+        "locator": {
+          "baseline": "§1.2.2表1-1及其后比较（第71–91行）；§1.2.3（第93–99行）；§1.2.4（第101–109行）",
+          "current": "§1.2.2表1-1及其后比较（第71–91行）；§1.2.3（第93–99行）；§1.2.4（第101–109行）"
+        },
+        "evidence": [
+          "evidence/NEAR.md",
+          "evidence/NEAR2.md",
+          "evidence/NEAR76.md",
+          "evidence/NEAR_20261016.md"
+        ],
+        "rationale": "关键先例覆盖1/1：表1-1含EV站间图、住宅图门控、多关系时序方法及最接近的会话重构EV直接/残差预测[76]。原文来源组件1.5/2：比较标明官方摘要、索引片段或全文的可读范围，并对未知实验细节保持克制；仍有若干近邻只能从摘要或部分索引核实。缺口组件1.5/2：明确区分目标/节点粒度、关系控制、输入和验证，并说明[76]已有会话代理EV预测及直接/残差路径；但MDP的最近诊断类先例未形成与[76]同等细致的逐项比较。baseline/current均已含主要近邻区别，当前只收窄一处概括句引用范围，未改变评分档。",
+        "concern_class": "来源范围局限与包内核查说明不一致",
+        "uncertainty": "NEAR76.md的说明称正文缺少正面比较，但本包两稿§1.2.2表1-1、§1.2.3和§1.3确有对[76]的直接概括及差异说明；这是证据备注与稿件文字之间的包内不一致，本评阅按实际稿件文字判断。未逐篇重读论文原文，依赖包内近邻核查记录。"
+      }
+    },
+    {
+      "id": "BR-04",
+      "before_score": 4.5,
+      "score": 4.5,
+      "before_component_scores": {
+        "concepts": 2,
+        "formulas": 1.5,
+        "knowledge": 1
+      },
+      "component_scores": {
+        "concepts": 2,
+        "formulas": 1.5,
+        "knowledge": 1
+      },
+      "findings": {
+        "locator": {
+          "baseline": "§2.1式（2-1）与§2.1.1–2.1.2（第178–242行）；§3.3–3.5（第470–642行）；§4.2.5、§4.6（第1071–1157、1260–1285行）",
+          "current": "§2.1式（2-1）与§2.1.1–2.1.2（第178–242行）；§3.3–3.5（第470–642行）；§4.2.5、§4.6（第1071–1157、1260–1285行）"
+        },
+        "evidence": [
+          "evidence/S32.md",
+          "evidence/MDP.md",
+          "evidence/QUALITY.md"
+        ],
+        "rationale": "概念、符号和量纲2/2：代理能量与功率、15 min单位、关系和事件口径均有区分。公式/假设1.5/2：会话均摊定义及替代终点、图消息与门控、四格误差还原均清楚；片末行为可见性是明确假设而非已测量事实。专业知识1/1：充电会话成熟度、误差稀疏性和关系消息对照用于解释具体问题。两稿核心理论文字一致，故同分。",
+        "concern_class": "已声明的建模假设与测量限制",
+        "uncertainty": "行为计数的实际上报延迟以及代理标签与实测功率的关系未核验；稿件已明确保留为假设/待测边界，不能据此判为概念或公式错误。"
+      }
+    },
+    {
+      "id": "BR-05",
+      "before_score": 9,
+      "score": 9,
+      "before_component_scores": {
+        "information_split": 2.5,
+        "comparators": 2,
+        "controls": 3,
+        "selection_budget": 1.5
+      },
+      "component_scores": {
+        "information_split": 2.5,
+        "comparators": 2,
+        "controls": 3,
+        "selection_budget": 1.5
+      },
+      "findings": {
+        "locator": {
+          "baseline": "§2.1.1–2.1.3（第216–250行）；§3.6.1–3.6.3（第644–733行）；§3.7.1–3.7.2及表3-9、表3-11（第864–927行）；§3.8.3–3.8.4（第996–1049行）",
+          "current": "§2.1.1–2.1.3（第216–250行）；§3.6.1–3.6.3（第644–733行）；§3.7.1–3.7.2及表3-9、表3-11（第864–927行）；§3.8.3–3.8.4（第996–1049行）"
+        },
+        "evidence": [
+          "evidence/S31.md",
+          "evidence/S32.md",
+          "evidence/QUALITY.md",
+          "evidence/MAP.md"
+        ],
+        "rationale": "信息与划分2.5/3：四段留窗、标签成熟、预测键和行为输入边界明确；计数片末可见仍是假设，历史回溯协议的全时期统计也已披露。比较器2/2：包括近容量TCN、完整AGCRN、共享门控及关系自环替换，容量与输入权限明确。控制3/3：同参门控和三关系逐项自环替换能识别所声称的条件增量；未把门值冻结干预、删分支消融和重训练混为同一因果结论。选模与预算1.5/2：固定种子、训练预算和tuning规则可检查，但共享门控运行曾触及轮数上限，较长预算稳定性未证。两稿实验事实与设计相同。",
+        "concern_class": "已声明设计边界",
+        "uncertainty": "关系替换及目标敏感性是已查看测试期上的事后补充，不能承担盲测确认；相对于稿件限定的固定协议问题，设计仍提供了直接对照，不要求额外算子或部署实验。"
+      }
+    },
+    {
+      "id": "BR-06",
+      "before_score": 4.5,
+      "score": 4.5,
+      "before_component_scores": {
+        "data_split": 1,
+        "source_config": 1,
+        "keys_metrics": 1.5,
+        "environment_package": 1
+      },
+      "component_scores": {
+        "data_split": 1,
+        "source_config": 1,
+        "keys_metrics": 1.5,
+        "environment_package": 1
+      },
+      "findings": {
+        "locator": {
+          "baseline": "§2.1–2.1.3（第178–250行）；§3.6.1、§3.6.4（第644–675、735–760行）；§3.7.1–3.7.2（第864–927行）；§4.6.1（第1260–1264行）",
+          "current": "§2.1–2.1.3（第178–250行）；§3.6.1、§3.6.4（第644–675、735–760行）；§3.7.1–3.7.2（第864–927行）；§4.6.1（第1260–1264行）"
+        },
+        "evidence": [
+          "evidence/PASSPORT.md",
+          "evidence/QUALITY.md",
+          "evidence/S31.md",
+          "evidence/S32.md",
+          "evidence/ADAPT.md"
+        ],
+        "rationale": "数据/切分1/1：来源、节点、时间边界和预测键可追溯。源码/配置1/1.5：新关系替换与目标敏感实验的入口、配置、哈希和审计路径具体；扣0.5是部分历史AdaptiveGraph训练Git身份缺失。键与指标1.5/1.5：逐键共同样本、指标复算和归档审计记录清楚。环境与材料1/1：关键环境、固定检查点重放和结果包哈希有记录。baseline/current均陈述相同复现状态；未要求第三方从头重训，也未把正文SHA变化等同于实验失效。",
+        "concern_class": "已证实的历史来源记录缺口",
+        "uncertainty": "训练Git标识缺失针对既有AdaptiveGraph运行，不据此推翻后来匹配环境的检查点重放；当前核心补充实验的独立第三方全流程复跑未在包内展示。"
+      }
+    },
+    {
+      "id": "BR-07",
+      "before_score": 10,
+      "score": 10,
+      "before_component_scores": {
+        "technical_work": 4,
+        "problem_solving": 4,
+        "integration": 2
+      },
+      "component_scores": {
+        "technical_work": 4,
+        "problem_solving": 4,
+        "integration": 2
+      },
+      "findings": {
+        "locator": {
+          "baseline": "§2–§5，重点§3.6–3.8（第644–1049行）、第4章（第1053–1304行）、§5.2–5.4（第1313–1598行）",
+          "current": "§2–§5，重点§3.6–3.8（第644–1049行）、第4章（第1053–1304行）、§5.2–5.4（第1313–1598行）"
+        },
+        "evidence": [
+          "evidence/S31.md",
+          "evidence/S32.md",
+          "evidence/MDP.md",
+          "evidence/ADAPT.md",
+          "evidence/CAL.md",
+          "evidence/QUALITY.md"
+        ],
+        "rationale": "技术工作4/4：完成多关系建模、多协议训练、关系/门控配对控制、替代目标重训、校准与方向候选分析。问题解决4/4：针对权重可识别性、关系条件增量、标签敏感、复算差异和事件误差解释提出可检查诊断并修订结论。整合2/2：数据协议、模型比较、诊断和使用边界组成完整证据链。工作量和解决问题过程在两稿相同；没有因缺新数据家族、实测部署或诊断后精度提升扣分，因为它们不是已声称贡献的必要条件。",
+        "concern_class": "已声明范围限制",
+        "uncertainty": "外部数据和实测部署未纳入本研究；这会限制外推与实践效度，不削弱已完成技术工作的难度。"
+      }
+    },
+    {
+      "id": "BR-08",
+      "before_score": 9.5,
+      "score": 9.5,
+      "before_component_scores": {
+        "claim_support": 4,
+        "alternatives": 3,
+        "robustness_scope": 2.5
+      },
+      "component_scores": {
+        "claim_support": 4,
+        "alternatives": 3,
+        "robustness_scope": 2.5
+      },
+      "findings": {
+        "locator": {
+          "baseline": "§3.6表3-2、表3-3（第677–733行）；§3.7表3-9、表3-11（第864–927行）；§3.8.4表3-15（第1027–1049行）；§4.5表4-6（第1244–1256行）",
+          "current": "§3.6表3-2、表3-3（第677–733行）；§3.7表3-9、表3-11（第864–927行）；§3.8.4表3-15（第1027–1049行）；§4.5表4-6（第1244–1256行）"
+        },
+        "evidence": [
+          "evidence/S31.md",
+          "evidence/S32.md",
+          "evidence/MDP.md",
+          "evidence/CAL.md",
+          "evidence/MAP.md"
+        ],
+        "rationale": "主张支持4/4：同键、同参数、时间块区间和复算结果直接支持条件关系增量、整体/分层差异和目标敏感性。替代解释3/3：近容量TCN、AGCRN、共享门控、自环替换、不同目标以及模型内外比较，覆盖主要被声称差异。稳健性/范围2.5/3：固定测试期块区间、JPL同源场站及替代代理目标提供与限定主张相称的多角度证据；扣0.5因关系与目标补充共用已查看时期，不能作独立确认。正文明确限制故不是对未声称泛化的重复扣分。",
+        "concern_class": "已声明验证范围限制",
+        "uncertainty": "时间块和三种子不代表新站点、时期或完整训练随机性总体；图像内容未按packet manifest视觉验收。"
+      }
+    },
+    {
+      "id": "BR-09",
+      "before_score": 9,
+      "score": 9,
+      "before_component_scores": {
+        "uncertainty": 3.5,
+        "multiplicity": 1.5,
+        "interpretation": 4
+      },
+      "component_scores": {
+        "uncertainty": 3.5,
+        "multiplicity": 1.5,
+        "interpretation": 4
+      },
+      "findings": {
+        "locator": {
+          "baseline": "§3.6.3（第713–729行）；§3.7.2表3-11（第913–927行）；§3.8.4（第1027–1049行）；§4.4–4.6（第1190–1304行）；§5.3.4–5.3.7（第1432–1524行）",
+          "current": "§3.6.3（第713–729行）；§3.7.2表3-11（第913–927行）；§3.8.4（第1027–1049行）；§4.4–4.6（第1190–1304行）；§5.3.4–5.3.7（第1432–1524行）"
+        },
+        "evidence": [
+          "evidence/S31.md",
+          "evidence/S32.md",
+          "evidence/S32AUDIT.json",
+          "evidence/MDP.md",
+          "evidence/CAL.md",
+          "evidence/MAP.md"
+        ],
+        "rationale": "不确定性3.5/4：时间块重采样、种子离散、共同键和代理目标边界均有解释；仍只有三个种子和既有测试期，不能覆盖训练种子或场站总体不确定性。多重性1.5/2：关系三项全局比较采用Bonferroni，探索性分层、方向候选和事后分析均标明未校正/未预登记；扣0.5因为多个探索性终点仍并存。解释4/4：阴性关系结果、RMSE/活跃组负结果、未见期/实测功率限制和推断边界一致。两稿统计证据与解释相同。",
+        "concern_class": "已声明统计与验证限制",
+        "uncertainty": "本文使用的固定测试期已看过；时间块区间只描述该期。现有材料不能量化未纳入的训练随机性或其他站点差异。"
+      }
+    },
+    {
+      "id": "BR-10",
+      "before_score": 7.5,
+      "score": 8,
+      "before_component_scores": {
+        "prior_difference": 2.5,
+        "contribution": 2.5,
+        "demonstration": 2.5
+      },
+      "component_scores": {
+        "prior_difference": 2.5,
+        "contribution": 3,
+        "demonstration": 2.5
+      },
+      "findings": {
+        "locator": {
+          "baseline": "摘要（第7–13行）；§1.2.2–1.4（第71–136行）；§3.7.1–3.7.2表3-9、表3-11（第864–927行）；§3.8.1表3-13（第971–987行）；§4.5表4-6（第1244–1256行）；结论（第1617–1637行）",
+          "current": "摘要（第7–13行）；§1.2.2–1.4（第71–136行）；§3.7.1–3.7.2表3-9、表3-11（第864–927行）；§3.8.1表3-13（第971–987行）；§4.5表4-6（第1244–1256行）；结论（第1617–1637行）"
+        },
+        "evidence": [
+          "evidence/NEAR.md",
+          "evidence/NEAR2.md",
+          "evidence/NEAR76.md",
+          "evidence/NEAR_20261016.md",
+          "evidence/S31.md",
+          "evidence/S32.md",
+          "evidence/MDP.md",
+          "evidence/MAP.md"
+        ],
+        "rationale": "近邻差异2.5/3：明确承认住宅与EV领域已有图门控、多关系、时序组合及[76]会话代理直接/残差预测，贡献收窄到单场站节点代理任务的关系替换增量与MDP证据区分；少0.5因方法/诊断近邻比较仍不如[76]的任务差异表格化。新增贡献2.5→3/3：两稿正文已有具体经验知识（负荷/轮廓关系相对自环有条件整体增量，行为关系不确定；MDP分开联合参数敏感度、特定学生替代和误差构成），不依赖新算子或诊断后精度提升。当前摘要新增精确1.82%/1.52%并在结论明确命名两项贡献，提升了新增知识的可辨识度，故加0.5；没有新实验，不提高证据展示分。",
+        "concern_class": "已声明贡献边界",
+        "uncertainty": "关系与MDP结论主要针对已查看Caltech/JPL协议，且JPL与Caltech同属ACN体系；不支持新数据家族或未来期普遍化。尚未证明诊断指导改模提高精度，稿件也未声称已证明。"
+      }
+    },
+    {
+      "id": "BR-11",
+      "before_score": 3,
+      "score": 3.5,
+      "before_component_scores": {
+        "use_case": 1,
+        "real_inputs": 1,
+        "value_evaluation": 0.5,
+        "usable_outputs": 0.5
+      },
+      "component_scores": {
+        "use_case": 1,
+        "real_inputs": 1,
+        "value_evaluation": 0.5,
+        "usable_outputs": 1
+      },
+      "findings": {
+        "locator": {
+          "baseline": "§5.4.1–5.4.5（第1528–1598行）；结论研究判断与局限（第1631–1637行）",
+          "current": "§5.4.1–5.4.5（第1528–1598行）；结论研究判断与局限（第1631–1637行）"
+        },
+        "evidence": [
+          "evidence/ACN_DECISION.md",
+          "evidence/DATA_AVAIL.md",
+          "evidence/PASSPORT.md",
+          "evidence/CAL.md",
+          "evidence/S32.md"
+        ],
+        "rationale": "使用场景1/1：节点代理负荷支持容量核查、充电协调的接口问题定义明确。真实输入1/1.5：使用真实会话和行为记录，但缺同步电表、到达时间、设备/车辆约束的兼容关系。价值评价0.5/1.5：完成固定轨迹示例、合成LP约束核验和离线模型筛选；没有现场成本或运行效果证据。可用输出0.5→1/1：基线已给出采数、校准、影子运行路径；当前结论进一步写入ACN范围核验未见2021年后接入记录和Office 1节点/字段核查待办，使后续采数判断更可操作，故加0.5。实际部署价值仍未建立。",
+        "concern_class": "已声明的应用范围限制",
+        "uncertainty": "ACN_DECISION仅支持官方普通会话元数据端点在核验时点的接入时间范围，不能证明新数据源均不可得或Office 1可运行；这些边界已在证据和正文中限定。"
+      }
+    },
+    {
+      "id": "BR-12",
+      "before_score": 7.5,
+      "score": 7.5,
+      "before_component_scores": {
+        "structure": 2.5,
+        "writing": 2,
+        "scholarly_content": 2,
+        "terminology": 1
+      },
+      "component_scores": {
+        "structure": 2.5,
+        "writing": 2,
+        "scholarly_content": 2,
+        "terminology": 1
+      },
+      "findings": {
+        "locator": {
+          "baseline": "全文章节组织；重点§1.2与§3.7–3.8、§4.5–4.6、§5.2–5.4（第71–1598行）",
+          "current": "全文章节组织；重点§1.2与§3.7–3.8、§4.5–4.6、§5.2–5.4（第71–1598行）"
+        },
+        "evidence": [
+          "evidence/NEAR.md",
+          "evidence/NEAR_20261016.md",
+          "evidence/MAP.md",
+          "evidence/QUALITY.md"
+        ],
+        "rationale": "结构2.5/3：主线和章节交叉引用清楚，但第3–5章补充分析密集。表达2/3：技术定义、限制和数字可读，长篇重复边界说明较多。学术内容2/3：近邻来源范围和图表口径注释细；扣分依据是不同可读级别的文献材料与若干探索性结果使阅读负担较高。术语1/1：代理量、关系类型、目标/规则事件、门控及时间口径总体稳定。current修正了时间片标记定义并细化结论，但总体密度没有达到半分档变化。",
+        "concern_class": "未核验材料范围",
+        "uncertainty": "packet manifest限定为caption-only：我未检查图像内容或整页视觉验收；不将未检查图像记为通过，也不据此推定正文图表错误。分页、PPI等交付门槛不计入内容分。"
+      }
+    }
+  ],
+  "manuscript_sha256": "451642e15e0fc51343acabf84e727b5079d8a1f2243c0ab8d8542adeed8b9b42"
+}

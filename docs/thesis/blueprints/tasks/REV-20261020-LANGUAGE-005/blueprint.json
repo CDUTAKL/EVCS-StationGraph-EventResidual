@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261020-LANGUAGE-005",
+  "title": "关键章节递进与表达凝练修订",
+  "task_type": "content_revision",
+  "workflow_stage": "第11步：内容修订与协作复核",
+  "objective": "承接已有全文审阅，对当前最影响可读性的关键位置做定点修订：统一中英文摘要的目标术语，压实第1章研究现状—缺口—贡献—路线的分工，先呈现第3章关系组件的主证据并区别历史敏感性材料，减少第4章重复解释，按结构候选—区间可靠性—运行条件收束第5章及结论。仅处理审阅报告定位的正文段落，不重复通读或重写已清楚内容。",
+  "context_sources": [
+    {"path": "docs/thesis/thesis-brief.md", "locator": {"kind": "markdown_heading", "value": "当前贡献定位"}, "purpose": "锁定本稿贡献和证据边界"},
+    {"path": "docs/thesis/claim-evidence-map.md", "locator": {"kind": "markdown_heading", "value": "论文核心结论权限"}, "purpose": "防止表达修订扩大结论强度"},
+    {"path": "docs/thesis/terminology-ledger.md", "locator": {"kind": "markdown_heading", "value": "模型与方法"}, "purpose": "统一模型与门控术语"},
+    {"path": "docs/thesis/terminology-ledger.md", "locator": {"kind": "markdown_heading", "value": "数据与口径"}, "purpose": "统一目标负荷、事件标签和可见规则表述"},
+    {"path": "docs/thesis/terminology-ledger.md", "locator": {"kind": "markdown_heading", "value": "指标"}, "purpose": "保持指标与统计量表述一致"},
+    {"path": "docs/thesis/revision-20261020-delivery/language-review-v2/language-review.md", "locator": {"kind": "whole_file"}, "purpose": "落实已有全篇语言与结构审阅中仍需处理的具体问题"}
+  ],
+  "evidence_sources": [
+    {"path": "docs/thesis/thesis-manuscript.md", "locator": {"kind": "line_range", "start": 1, "end": 170}, "purpose": "核对双语摘要和第1章的节间分工与研究主线"},
+    {"path": "docs/thesis/thesis-manuscript.md", "locator": {"kind": "line_range", "start": 885, "end": 1052}, "purpose": "核对关系组件主检验、历史敏感性补充与综合结论的顺序"},
+    {"path": "docs/thesis/thesis-manuscript.md", "locator": {"kind": "line_range", "start": 1081, "end": 1306}, "purpose": "核对MDP观察、干预、判断和适用范围是否递进且不重复"},
+    {"path": "docs/thesis/thesis-manuscript.md", "locator": {"kind": "line_range", "start": 1307, "end": 1639}, "purpose": "核对第5章与结论的主次安排、限制去重和全篇收束"},
+    {"path": "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md", "locator": {"kind": "whole_file"}, "purpose": "确认关系替换证据及事后分层边界"},
+    {"path": "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md", "locator": {"kind": "whole_file"}, "purpose": "确认替代目标敏感性和测试期边界"}
+  ],
+  "claude_skills": [],
+  "allowed_paths": ["docs/thesis/thesis-manuscript.md"],
+  "locked_claims": [
+    "预测对象是由会话记录重构的节点代理负荷，不是同步电表实测功率；完成时刻截断仅是另一代理目标。",
+    "负荷关系相对自环的组件增量与完整MRG-GCN和TCN的模型排序是不同比较；完整MRG-GCN在非零目标组仍未胜过TCN。",
+    "行为关系增量不确定；SG-EXP-031/032均复用已查看测试期，SG-EXP-031非零组关系差异为未校正事后分层，不是独立确认。",
+    "节点门控与共享门控结论受既有预算约束；不得删去触及训练上限的限制或暗示已排除预算解释。",
+    "target_event是事后评价标签；rule_trigger由预测起点可见信息和冻结规则产生。",
+    "MDP描述参数敏感度、受检学生替代性及误差构成；未证明诊断指导改模提高预测性能。",
+    "不得新增或改动结果数字、统计口径、引用、公式、图表、模型排序或现场收益主张。"
+  ],
+  "steps": [
+    "阅读冻结的审阅建议、术语与结论权限；本任务只执行已明确定位的遗留项，不重新打开已经解决的科学问题。",
+    "在第1章中保持研究现状、研究不足、研究目标/贡献、技术路线和章节导览各自职责；减少对近邻工作、核心缺口和结果主线的重复复述。摘要中英术语须语义对应，数字与结论顺序不变。",
+    "在第3.7.2节用短引导语或段落顺序清晰区分JPL关系替换主检验与Caltech历史配置/敏感性补充；组件差异、完整模型排序和预算/多重比较限制分别表述。不要移动或修改表格本体、数字或编号。",
+    "在第4章只合并确属相邻重复的解释；让各层结果先给观察/判断，再给解释与边界。保留‘非因果’、学生范围和预算限制等决定证据等级的信息。",
+    "第5章开篇明确结构候选、区间可靠性、运行使用条件的递进；突出多重校正后候选保留情况、事件覆盖不足及运行算例的合成性质。将第5.5和结论的功能分开，避免重复逐表枚举。",
+    "仅修改说明性正文，不改表、公式、标题、引文标记、图题图注、参考文献或附录数据。没有明确收益的段落保持原样。",
+    "完成后对照锁定主张和原文，逐处核实比较对象、方向、模态、数字、单位、引文归属和限制不变；在执行报告中列出章节、定位、编辑理由和未处理项。状态保持pending_codex_review。"
+  ],
+  "acceptance_criteria": [
+    "只修改docs/thesis/thesis-manuscript.md中上述范围的说明性正文，任何其他工作区路径变化均需如实报告。",
+    "第1章研究现状—缺口—贡献—路线—组织结构之间分工清楚，不重复铺陈同一缺口或结果。",
+    "JPL关系替换是组件内比较，完整模型对TCN是模型比较；其测试期、事后分层、统计校正和预算条件保持准确。",
+    "第4章MDP各层的观察、干预、解释和判断形成递进，不把参数敏感度写成因果贡献。",
+    "第5章形成结构候选—区间可靠性—运行条件顺序，5.5与结论减少重复但不丢关键阴性结果和适用限制。",
+    "中英文摘要中代理目标含义一致；模型、事件、规则和门控术语符合术语台账。",
+    "数值、单位、统计口径、模型排序、引用、公式、图表、标题和结论权限均未变化；execution-report列出检查依据及尚未解决事项。"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [],
+    "network_domains": []
+  },
+  "deliverables": [
+    "限定范围内的主稿说明性语言修订",
+    "execution-report.json：逐处记录变更、证据核对、未解决项"
+  ]
+}

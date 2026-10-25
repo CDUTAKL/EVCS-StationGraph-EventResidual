@@ -1,0 +1,14 @@
+{
+  "archive": "outputs/evidence/checkpoint-evidence-20261012.tar.gz",
+  "archive_bytes": 676830584,
+  "archive_sha256": "9f2a628d607bcc17c63302a6614f55e6b760fbe1c20c2d3dd622e288ee35c9a5",
+  "delivery_manifest_sha256": "bad75774d04a064716a7b427fa7ba2f9087d23177ca7d9817542b31518fbd389",
+  "payload_files_in_delivery_manifest": 1046,
+  "frozen_input_manifest_sha256": "1e881063a63addbf6a627d14fabe2c372d507a1fe6465f8ae8aaa5c0a37c9f62",
+  "manuscript_sha256": "21e54e81244e6dc07721dfb1395fe31ba7ba71f7e8d99de805d8ebf61e021350",
+  "docx_sha256": "489ebf1b68a47f0184b4c1ec34c1ac99a79cdc685de490a1d59af55dcc60df79",
+  "checkpoint_forward_passed": 60,
+  "checkpoint_forward_failed": 3,
+  "archived_metric_passed": 63,
+  "retraining_performed": false
+}

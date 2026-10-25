@@ -12,7 +12,7 @@
   "prompt_record": "docs/thesis/seven-figure-refresh-20261006-imagegen.json",
   "generation_mode": "edit",
   "reference_image": "outputs/figures/archive/2026-10-06-targeted-seven-figure-refresh/fig4_1_three_layer_framework.png",
-  "pre_1200dpi_sha256": "1b8dfd4e09256e03ebb37e04ea81b665a8ad7e6650072dd4d4800c61984d2aa9",
+  "pre_1200dpi_sha256": "e85dfc81755f2fa1215beb917be20f9bfb81a2ba8a3f9c89e7a80f1000751188",
   "outputs": {},
   "delivery": {
     "size_px": [
@@ -24,6 +24,6 @@
       1199.9976
     ],
     "effective_dpi_at_word_size": 1200.0605633802818,
-    "method": "Lanczos interpolation from raster-only source; no new source detail"
+    "method": "native pixels; added 1200 dpi metadata"
   }
 }

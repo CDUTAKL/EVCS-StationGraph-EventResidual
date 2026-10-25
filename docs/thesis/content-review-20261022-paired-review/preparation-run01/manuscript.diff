@@ -1,0 +1,158 @@
+--- baseline
++++ current
+@@ -231,7 +231,7 @@
+ | Caltech事件时刻协议（`SG-DATA-006-eventtime-v1`） | 接入、离站、活跃计数及当地日历编码 | 仍为事后代理目标；完整窗口留段 | 片末可见假设下行为输入的相对价值与协议敏感性 | 与回溯协议MAE直接合并、证明实际上报无延迟或证明实测部署性能 |
+ | JPL重拟合协议（`SG-DATA-007-JPL`） | JPL接入、离站、活跃计数及当地日历编码 | JPL会话总电量的事后均匀分摊代理；独立场站四段留窗 | 在同属ACN体系的另一场站独立筛选节点、构图和训练后，核验整体MAE及节点级门控相对共享门控的差异能否重现 | 零样本迁移、未来时期或不同数据家族泛化、实测功率精度及真实运行收益 |
+ 
+-### 2.1.2 分摊支持范围与电流形态核查
++### 2.1.2 分摊支持范围与实测形态核查
+ 
+ 为检验均摊终点的影响，先核对10节点的充电完成时刻。11,085条会话中，10,399条的完成时刻位于接入与断开之间，420条缺失，266条不满足这一顺序条件。合法记录从完成充电到断开的停留时间中位数为62.67 min。6,967条会话在完成之后仍包含完整15 min时间片，原分摊规则向这些片分配了28,403.239 kWh，占10节点总交付电量的30.66%。
+ 
+@@ -248,6 +248,10 @@
+ 对通过门禁的8条记录，以分段左常数积分计算各15 min片的电流积分，再除以该会话积分总量，得到无量纲片份额，与原等片份额比较。两种份额分布的总变差距离为0.0645～0.5957，实际电流积分的最大片份额为均匀份额的1.10～4.38倍。这些读数表明部分会话的过程集中程度会被均摊压低。
+ 
+ 由于所匹配记录的电压、功率列均缺失，电流积分未换算为kWh，也不用于估计场站功率峰值或模型实测误差。完成时刻核查与电流形态检查共同说明：代理负荷保留能量总量，但对充电过程作了近似。原始归档仍缺事件接收时间戳，采样间隔门禁不能代替实际通信延迟验证。
++
++另以EPFL Level-3两CCS端口记录作探索性形态参照[84]。以端口及会话首末时间连接，不以电量或跨表会话编号作键，1,878条会话全部一一匹配；经连续一分钟覆盖、非负功率与正能量等检查后，1,620条时长不少于15 min的会话纳入，258条短会话排除。将表内P字段作梯形积分，以会话接入为锚分为15 min片，并与按时长均匀分配的电量各自归一化，总变差距离中位数为0.0736，四分位数为0.0308、0.1276。
++
++P积分与会话电量之比中位数为1.1492，累计电量首末差与会话电量之比为0.9943，计量边界尚不明确。该核查描述外部直流快充记录中的形态差异；其会话锚定分箱、按时长分配口径也不同于本文固定时钟等片目标，不能据此校准ACN标签或评价模型实测精度。
+ 
+ ### 2.1.3 JPL另一场站数据与验证口径
+ 
+@@ -763,7 +767,7 @@
+ 
+ 注：MAE与RMSE单位为kWh/15 min，WAPE无量纲。随机初始化模型为三种子均值，标准差为$n=3$样本标准差，计算时分母为$n-1$，对应自由度为2；确定性基线标“—”。ARIMA正式结果未提供WAPE。各列加粗值为该指标的最小值。
+ 
+-本节保留包括ARIMA[84]在内的回溯历史比较，供配置追溯及第4章诊断使用。GWN仅作一步图聚合，AGCRN共享门参数且未实现节点参数池，两者均为简化变体；EventResidual只作探索记录。
++本节保留包括ARIMA[85]在内的回溯历史比较，供配置追溯及第4章诊断使用。GWN仅作一步图聚合，AGCRN共享门参数且未实现节点参数池，两者均为简化变体；EventResidual只作探索记录。
+ 
+ AdaptiveGraph的三个既有检查点在匹配PyTorch 2.4.1/CUDA 12.1环境下通过逐键复算，与归档预测的最大绝对差为7.47×10⁻⁷，低于5×10⁻⁶容差。原生CPU有7、8、9行邻接选择与CUDA不同，均位于top-k截断并列候选；固定CUDA邻接后，CPU预测最大差低于9.27×10⁻⁷。这支持并列选边解释本轮后端偏差。历史macOS/PyTorch 2.13失败记录和缺失训练Git标识仍保留，不将检查点重放称为从头训练复现。
+ 
+@@ -1033,6 +1037,8 @@
+ 
+ Caltech门控配对及JPL共享门控seed-2024触及60轮上限（JPL最佳59轮、停止60轮）；门控增量因此限于该预算。参数量相近不代表推理时延或能耗相同。
+ 
++SG-EXP-031/032的训练源码、逐运行配置与环境、检查点和预测文件已按哈希清单封存。两项源码包分别核验67、91项，18次运行的已有预测指标复算通过。031入口未受历史Git记录覆盖，032缺可验证的历史提交号，源码身份依冻结文件清单确定。本轮复算不加载检查点，也不重建训练过程。
++
+ ### 3.8.4 完成时刻截断目标敏感性（SG-EXP-032）
+ 
+ SG-EXP-032仅改变代理目标：有效完成时刻作为分摊终点，缺失或非法时回退至断开时刻，并保持会话电量守恒。输入、原图、切分和预测键固定，目标标准化参数按新训练前缀重算；两个近似等参数模型各训练三种子。测试期已查看，本实验属于事后敏感性分析。
+@@ -1085,7 +1091,7 @@
+ 
+ ### 4.2.2 干预操作
+ 
+-基于上述Caltech回溯协议检查点，在同一测试预测键上保持其余模型参数不变，将两层$\boldsymbol\beta$强制替换为指定组合，仅作前向推理。设置包括两层固定为单一关系、两层等权、两层学习值交换，以及保留一层学习值而固定另一层，共7种干预组合；学习值作为第8种基线配置。该操作属于模型内部的参数干预敏感度分析，借鉴“改变内部单元并观察输出”的解释思路[85]，不识别数据生成过程中的因果效应。
++基于上述Caltech回溯协议检查点，在同一测试预测键上保持其余模型参数不变，将两层$\boldsymbol\beta$强制替换为指定组合，仅作前向推理。设置包括两层固定为单一关系、两层等权、两层学习值交换，以及保留一层学习值而固定另一层，共7种干预组合；学习值作为第8种基线配置。该操作属于模型内部的参数干预敏感度分析，借鉴“改变内部单元并观察输出”的解释思路[86]，不识别数据生成过程中的因果效应。
+ 
+ ### 4.2.3 观察证据
+ 
+@@ -1172,7 +1178,7 @@
+ 
+ ### 4.3.1 协议操作
+ 
+-L2采用知识蒸馏[86]检验图模型预测信号能否被纯时序学生吸收。教师为冻结的StaticGraph，学生为不含图输入的TCN；教师参数在训练期间始终固定。目标值、教师预测和学生预测均处于训练集目标标准化空间，学生损失为$\mathcal L_{\mathrm{KD}}=\mathcal L_1(\hat y_s,y)+\alpha\operatorname{MSE}(\hat y_s,\hat y_t)$，其中$\hat y_s$和$\hat y_t$分别为学生与教师预测。蒸馏权重取$\alpha\in\{0.1,0.5,1.0,2.0\}$，每一权重重复三种子，共12次训练；模型选择仍依据验证集目标值MAE。该层检验的是“所检学生和目标能否逼近教师”，而不是图结构在任何模型中是否可替代。
++L2采用知识蒸馏[87]检验图模型预测信号能否被纯时序学生吸收。教师为冻结的StaticGraph，学生为不含图输入的TCN；教师参数在训练期间始终固定。目标值、教师预测和学生预测均处于训练集目标标准化空间，学生损失为$\mathcal L_{\mathrm{KD}}=\mathcal L_1(\hat y_s,y)+\alpha\operatorname{MSE}(\hat y_s,\hat y_t)$，其中$\hat y_s$和$\hat y_t$分别为学生与教师预测。蒸馏权重取$\alpha\in\{0.1,0.5,1.0,2.0\}$，每一权重重复三种子，共12次训练；模型选择仍依据验证集目标值MAE。该层检验的是“所检学生和目标能否逼近教师”，而不是图结构在任何模型中是否可替代。
+ 
+ ### 4.3.2 诊断实验
+ 
+@@ -1333,7 +1339,7 @@
+ 
+ ### 5.2.2 传递熵方向性检验
+ 
+-采用传递熵（transfer entropy，TE）[87]衡量给定目标历史后，源节点滞后取值对目标当前值提供的条件信息：
++采用传递熵（transfer entropy，TE）[88]衡量给定目标历史后，源节点滞后取值对目标当前值提供的条件信息：
+ 
+ $$
+ \operatorname{TE}_{X\rightarrow Y}(\ell)
+@@ -1387,7 +1393,7 @@
+ 
+ ### 5.2.5 PCMCI+条件独立检验与版本敏感性
+ 
+-为检查TE候选与条件独立检验是否给出相近的方向对，进一步采用PCMCI+[88-89]。历史归档输入为训练段10个节点的83,198个原始时间观测，而非窗口化后的83,103个预测起点；采用ParCorr、最大滞后4片和$\alpha=0.05$。归档记录80个达到名义阈值的滞后单元；按有向节点对汇总，76条TE候选中44条同时出现在PCMCI+名义结果中（57.9%），32条未出现。PCMCI+另记录16个TE汇总中未出现的有向对，包括6个节点间对和10个自回归对；这些都是未校正历史计数，同一节点对可对应多个滞后，不能将对数与滞后单元数等同。图5-5仍按历史归档结果绘制。
++为检查TE候选与条件独立检验是否给出相近的方向对，进一步采用PCMCI+[89-90]。历史归档输入为训练段10个节点的83,198个原始时间观测，而非窗口化后的83,103个预测起点；采用ParCorr、最大滞后4片和$\alpha=0.05$。归档记录80个达到名义阈值的滞后单元；按有向节点对汇总，76条TE候选中44条同时出现在PCMCI+名义结果中（57.9%），32条未出现。PCMCI+另记录16个TE汇总中未出现的有向对，包括6个节点间对和10个自回归对；这些都是未校正历史计数，同一节点对可对应多个滞后，不能将对数与滞后单元数等同。图5-5仍按历史归档结果绘制。
+ 
+ ![PCMCI+条件独立核验结果](../../outputs/figures/fig5_5_pcmci_validation_network.svg)
+ 
+@@ -1403,7 +1409,7 @@
+ 
+ ### 5.3.1 问题与动机
+ 
+-整体点预测误差不足以判断区间可靠性。本节依次报告独立校准、成熟标签滚动更新和回溯规则设置下Caltech与JPL的区间表现，并用标签事件参照检查覆盖失配[90-92]。
++整体点预测误差不足以判断区间可靠性。本节依次报告独立校准、成熟标签滚动更新和回溯规则设置下Caltech与JPL的区间表现，并用标签事件参照检查覆盖失配[91-93]。
+ 
+ ### 5.3.2 分层共形方法
+ 
+@@ -1425,7 +1431,7 @@
+ 
+ ### 5.3.3 事件时刻输入协议下的独立校准补充
+ 
+-本分析复用三种子冻结预测；模型由调参段选定，校准和测试完整窗口、目标时间片互不重叠。标准路径逐节点校准，行为分层路径将触发组跨节点汇聚、未触发组逐节点校准，目标事件标签仅用于评价。半宽取秩$k_g=\lceil(n_g+1)(1-\alpha)\rceil$的残差，$\alpha=0.1$；各节点标准组含35,220个校准键，触发组含2,964个[91]。重叠窗口依赖与分布变化仍可能影响测试覆盖，独立校准段本身不保证90%覆盖[92]。
++本分析复用三种子冻结预测；模型由调参段选定，校准和测试完整窗口、目标时间片互不重叠。标准路径逐节点校准，行为分层路径将触发组跨节点汇聚、未触发组逐节点校准，目标事件标签仅用于评价。半宽取秩$k_g=\lceil(n_g+1)(1-\alpha)\rceil$的残差，$\alpha=0.1$；各节点标准组含35,220个校准键，触发组含2,964个[92]。重叠窗口依赖与分布变化仍可能影响测试覆盖，独立校准段本身不保证90%覆盖[93]。
+ 
+ **表5-2 新协议独立校准的覆盖与区间质量**
+ 
+@@ -1442,7 +1448,7 @@
+ 
+ 为缓解独立校准的覆盖失配，保持点预测、行为规则和$\alpha=0.1$不变，改用随时间更新的历史残差。事先固定14天为主要回看窗口、28天为窗口敏感性，每个洛杉矶当地零点更新一次；回看长度按经过的14或28个24 h计算。残差纳入须满足：预测已发布、目标片已结束、关联会话断开后节点标签已成熟，且目标片起点位于回看窗口内。若无合格样本，回退至原独立校准半宽；有限样本秩超过样本数时取无穷大，本次回放未出现无穷区间。
+ 
+-每种窗口均报告逐节点标准路径和行为分层路径，规则触发仅用于后者的分组与路由，目标事件标签仅用于事后评价。结果见表5-3。更新只利用发布时刻前已经成熟的标签，这是遵守时间先后的历史回放；由于测试时期已查看，且序列与重叠目标具有依赖性，不将其称为未见时期验证或具有交换性保证的独立样本实验[91-92]。
++每种窗口均报告逐节点标准路径和行为分层路径，规则触发仅用于后者的分组与路由，目标事件标签仅用于事后评价。结果见表5-3。更新只利用发布时刻前已经成熟的标签，这是遵守时间先后的历史回放；由于测试时期已查看，且序列与重叠目标具有依赖性，不将其称为未见时期验证或具有交换性保证的独立样本实验[92-93]。
+ 
+ **表5-3 新协议成熟标签滚动校准回放结果**
+ 
+@@ -1606,7 +1612,7 @@
+ 
+ ### 5.4.5 证据边界与应用验证要求
+ 
+-下一步需同步采集节点及全站电表、输入到达时间戳、设备限额、车辆请求和电价；先校准代理—实测映射并核验预测时可见性，再预先固定事件定义、告警阈值和调度基线开展影子回放，评价覆盖、误报漏报、约束越限、需求满足及成本。在这些材料取得前，本章证据仅支持运行接口定义与合成约束可行性核验。
++EPFL数据提供172.5 kW站级限额、两车共享规则及功率控制字段，2.1.2节据此完成有限形态核查；其节点与计量口径尚不能对齐ACN。运行验证仍需同步节点及全站电表、输入到达时间、设备限额、预测时已知车辆请求和电价。取得这些材料后，再固定事件定义、告警阈值与调度基线开展影子回放，评价覆盖、漏报、越限、需求满足与成本。现有证据支持运行接口定义与合成约束可行性核验。
+ 
+ ## 5.5 本章小结
+ 
+@@ -1652,7 +1658,7 @@
+ [待写：由作者在终稿阶段填写。]
+ 
+ # 参考文献
+-[1] 中国电动汽车充电基础设施促进联盟. 2024年全国电动汽车充换电基础设施运行情况[EB/OL]. (2025-01-23)[2026-8-4]. https://www.evcipa.org.cn/newsinfo/8137834.html.
++[1] 中国电动汽车充电基础设施促进联盟. 2024年全国电动汽车充换电基础设施运行情况[EB/OL]. (2025-01-23)[2026-10-22]. https://www.evcipa.org.cn/newsinfo/8137834.html.
+ [2] 陈丽丹, 张尧, FIGUEIREDO A. 电动汽车充放电负荷预测研究综述[J]. 电力系统自动化, 2019, 43(10): 177-197.
+ [3] 张夏韦, 梁军, 王要强, 等. 电动汽车充电负荷时空分布预测研究综述[J]. 电力建设, 2023, 44(12): 161-173.
+ [4] 崔一诺, 罗配明, 李攀硕, 等. 电动汽车充放电负荷时-空分布预测研究综述[J]. 电气工程学报, 2026, 21(2): 371-385.
+@@ -1675,7 +1681,7 @@
+ [21] CHEN T, GUESTRIN C. XGBoost: a scalable tree boosting system[C]//Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining. 2016: 785-794.
+ [22] HOCHREITER S, SCHMIDHUBER J. Long short-term memory[J]. Neural Computation, 1997, 9(8): 1735-1780.
+ [23] CHO K, VAN MERRIËNBOER B, GULCEHRE C, et al. Learning phrase representations using RNN encoder-decoder for statistical machine translation[C]//Proceedings of EMNLP. 2014: 1724-1734.
+-[24] BAI S, KOLTER J Z, KOLTUN V. An empirical evaluation of generic convolutional and recurrent networks for sequence modeling[J/OL]. arXiv, 2018[2026-10-7]. https://arxiv.org/abs/1803.01271. DOI: 10.48550/arXiv.1803.01271.
++[24] BAI S, KOLTER J Z, KOLTUN V. An empirical evaluation of generic convolutional and recurrent networks for sequence modeling[J/OL]. arXiv, 2018[2026-10-22]. https://arxiv.org/abs/1803.01271. DOI: 10.48550/arXiv.1803.01271.
+ [25] VASWANI A, SHAZEER N, PARMAR N, et al. Attention is all you need[C]//Advances in Neural Information Processing Systems (NeurIPS). 2017: 5998-6008.
+ [26] 王华彪, 李小勇. 基于融合注意力机制改进双向长短时记忆网络在电动汽车充电负荷中的预测研究[J]. 电网与清洁能源, 2022, 38(6): 104-112.
+ [27] 王琨, 高敬更, 张勇红, 等. 基于LSTM神经网络的复合变量电动汽车充电负荷预测方法技术研究[J]. 工业仪表与自动化装置, 2019(1): 27-31.
+@@ -1734,16 +1740,17 @@
+ [80] ARABZADEH V, FRANK R. A four-dimensional analysis of explainable AI in energy forecasting: a domain-specific systematic review[J]. Machine Learning and Knowledge Extraction, 2025, 7(4): 153.
+ [81] GUASTAVINO S, PIANA M, BENVENUTO F. Bad and good errors: value-weighted skill scores in deep ensemble learning[J]. IEEE Transactions on Neural Networks and Learning Systems, 2024, 35(2): 1993-2002. DOI: 10.1109/TNNLS.2022.3186068.
+ [82] LEE Z J, LI T, LOW S H. ACN-Data: Analysis and applications of an open EV charging dataset[C]//Proceedings of the Tenth ACM International Conference on Future Energy Systems. New York: ACM, 2019: 139-149. DOI: 10.1145/3307772.3328313.
+-[83] LI T. ACN-Data Static[EB/OL]. [2026-10-4]. https://github.com/tongxin-li/ACN-Data-Static.
+-[84] BOX G E P, JENKINS G M. Time series analysis: forecasting and control[M]. San Francisco: Holden-Day, 1970.
+-[85] NAM A, CONKLIN H, YANG Y, et al. Causal head gating: a framework for interpreting roles of attention heads in transformers[C]//Advances in Neural Information Processing Systems. 2025, 38.
+-[86] HINTON G, VINYALS O, DEAN J. Distilling the knowledge in a neural network[C]//NeurIPS 2014 Deep Learning Workshop. 2015.
+-[87] SCHREIBER T. Measuring information transfer[J]. Physical Review Letters, 2000, 85(2): 461-464.
+-[88] RUNGE J, NOWACK P, KRETSCHMER M, et al. Detecting and quantifying causal associations in large nonlinear time series datasets[J]. Science Advances, 2019, 5(11): eaau4996.
+-[89] RUNGE J. Discovering contemporaneous and lagged causal relations in autocorrelated nonlinear time series datasets[C]//Proceedings of the 36th Conference on Uncertainty in Artificial Intelligence (UAI). PMLR, 2020, 124: 1388-1397.
+-[90] VOVK V, GAMMERMAN A, SHAFER G. Algorithmic learning in a random world[M]. New York: Springer, 2005.
+-[91] LEI J, G'SELL M, RINALDO A, et al. Distribution-free predictive inference for regression[J]. Journal of the American Statistical Association, 2018, 113(523): 1094-1111.
+-[92] GIBBS I, CANDÈS E. Adaptive conformal inference under distribution shift[C]//Advances in Neural Information Processing Systems. 2021, 34: 1660-1672.
++[83] LI T. ACN-Data Static[EB/OL]. [2026-10-22]. https://github.com/tongxin-li/ACN-Data-Static.
++[84] DESL-EPFL. Level 3 electric vehicle charging dataset[DB/OL]. [2026-10-22]. https://github.com/DESL-EPFL/Level-3-EV-charging-dataset.
++[85] BOX G E P, JENKINS G M. Time series analysis: forecasting and control[M]. San Francisco: Holden-Day, 1970.
++[86] NAM A, CONKLIN H, YANG Y, et al. Causal head gating: a framework for interpreting roles of attention heads in transformers[C]//Advances in Neural Information Processing Systems. 2025, 38.
++[87] HINTON G, VINYALS O, DEAN J. Distilling the knowledge in a neural network[C]//NeurIPS 2014 Deep Learning Workshop. 2015.
++[88] SCHREIBER T. Measuring information transfer[J]. Physical Review Letters, 2000, 85(2): 461-464.
++[89] RUNGE J, NOWACK P, KRETSCHMER M, et al. Detecting and quantifying causal associations in large nonlinear time series datasets[J]. Science Advances, 2019, 5(11): eaau4996.
++[90] RUNGE J. Discovering contemporaneous and lagged causal relations in autocorrelated nonlinear time series datasets[C]//Proceedings of the 36th Conference on Uncertainty in Artificial Intelligence (UAI). PMLR, 2020, 124: 1388-1397.
++[91] VOVK V, GAMMERMAN A, SHAFER G. Algorithmic learning in a random world[M]. New York: Springer, 2005.
++[92] LEI J, G'SELL M, RINALDO A, et al. Distribution-free predictive inference for regression[J]. Journal of the American Statistical Association, 2018, 113(523): 1094-1111.
++[93] GIBBS I, CANDÈS E. Adaptive conformal inference under distribution shift[C]//Advances in Neural Information Processing Systems. 2021, 34: 1660-1672.
+ # 附录A  Caltech事件时刻协议完整组件结果
+ 
+ 附表A-1保存SG-EXP-019全部12种配置的原结果，供3.7节组件分析追溯。主结果见表3-2；两表使用同一组预测键。

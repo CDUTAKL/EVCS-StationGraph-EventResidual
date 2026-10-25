@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "kind": "thesis-release-manifest",
+  "release_id": "thesis-candidate-2026-10-17-rev3",
+  "status": "candidate",
+  "created_at_utc": "2026-10-17T13:54:03+00:00",
+  "repository": {
+    "branch": "feat/multi-relation-gated-gcn",
+    "source_commit": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+    "worktree_before_manifest": {
+      "clean": false,
+      "path_count": 1205,
+      "paths_sha256": "089fc5223d536ebfd6aef4d76ce4c8fc69f4525b6040eac83a39b0a74a86727f"
+    }
+  },
+  "artifacts": [
+    {
+      "role": "manuscript",
+      "path": "docs/thesis/thesis-manuscript.md",
+      "bytes": 194776,
+      "sha256": "5da3c63f5fb6397b7a7e08403dcd4b28294eb9202e4fd58b96622a55e4105bf4",
+      "git_tracked": true,
+      "git_status": "modified"
+    },
+    {
+      "role": "evidence-map",
+      "path": "docs/thesis/claim-evidence-map.md",
+      "bytes": 11173,
+      "sha256": "2f7bc80ddbcd3c552aac9ac1681911f704baef15ad2e30433feb998ef8df6b2c",
+      "git_tracked": true,
+      "git_status": "modified"
+    },
+    {
+      "role": "docx",
+      "path": "docs/thesis/revision-20261017-content-refinement/thesis-revision-candidate-rev3.docx",
+      "bytes": 117103910,
+      "sha256": "ed816b427d266772455bf0247eba2795c69253d1351335077ba12aa36e605b67",
+      "git_tracked": false,
+      "git_status": "untracked"
+    },
+    {
+      "role": "pdf",
+      "path": "docs/thesis/revision-20261017-content-refinement/wps-pagination-proof-1200dpi.pdf",
+      "bytes": 203230124,
+      "sha256": "3955c662490f0986c9be40a7d0ab8d07bda30aa072ae73c667b2043ff602786b",
+      "git_tracked": false,
+      "git_status": "untracked"
+    },
+    {
+      "role": "toc",
+      "path": "docs/thesis/revision-20261017-content-refinement/toc-map-wps-verified-20261017-content-refinement.json",
+      "bytes": 5652,
+      "sha256": "b4c5d06698f7a69976271531265bee28eeb12fd8e02015ba23537a52e3e3fe94",
+      "git_tracked": false,
+      "git_status": "untracked"
+    },
+    {
+      "role": "docx-audit",
+      "path": "docs/thesis/revision-20261017-content-refinement/docx-audit-rev3.json",
+      "bytes": 1333,
+      "sha256": "337970585bd6e2a3cf4fd5e1389f1dd89f46a5ac907e27513784c3478e628507",
+      "git_tracked": false,
+      "git_status": "untracked"
+    },
+    {
+      "role": "figure-audit",
+      "path": "docs/thesis/revision-20261017-content-refinement/figure-sync-rev3.json",
+      "bytes": 10430,
+      "sha256": "759b14f1e817190d79978560b2a7d3f5de4dbf90e03d3c1777bbf1370b5ec70a",
+      "git_tracked": false,
+      "git_status": "untracked"
+    },
+    {
+      "role": "pdf-audit",
+      "path": "docs/thesis/revision-20261017-content-refinement/pdf-audit-rev3.json",
+      "bytes": 13623,
+      "sha256": "2b565d95f6838871494dd1db5f70eb7ff73da1e78f24c629f6ec5d7f181794fe",
+      "git_tracked": false,
+      "git_status": "untracked"
+    },
+    {
+      "role": "delivery-audit",
+      "path": "docs/thesis/revision-20261017-content-refinement/delivery-audit.md",
+      "bytes": 4350,
+      "sha256": "df04bcd77acf8fa1f55bdbcd5c179b741057097b3c68e9fe5fa9d6abb591f63a",
+      "git_tracked": false,
+      "git_status": "untracked"
+    }
+  ],
+  "notes": []
+}

@@ -1,0 +1,16 @@
+{
+  "experiment": "SG-EXP-032",
+  "recovery_status": "PASS",
+  "remote_archive_sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+  "local_archive_sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+  "remote_local_archive_sha_equal": true,
+  "inner_checksum_files_verified": 99,
+  "independent_result_audit": "outputs/analysis/SG-EXP-032-target-audit/audit.json",
+  "independent_result_audit_status": "PASS",
+  "formal_run_count": 6,
+  "common_test_keys_per_run": 708560,
+  "exact_common_keys_across_all_runs": true,
+  "all_predictions_finite": true,
+  "data_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+  "verified_at_utc": "2026-10-15T02:49:14Z"
+}

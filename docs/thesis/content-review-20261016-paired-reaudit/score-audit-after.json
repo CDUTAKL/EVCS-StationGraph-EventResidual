@@ -1,0 +1,116 @@
+{
+  "assessment_id": "FORMAL-20261016-PAIRED-AFTER",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 79.0,
+  "raw_maximum": 90.0,
+  "normalized_score": 87.78,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "FORMAL-20261016-PAIRED-BEFORE",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 5.56,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "选题需求证据未变，新增训练不替代现场需求量化。"
+      },
+      {
+        "id": "BR-02",
+        "old": 5,
+        "new": 5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "两版本均已正确限定对象与结论范围；重组价值计入BR-12。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4,
+        "new": 4.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "[72]/[73]由未入文的书目转为具体近邻比较，增强缺口论证。"
+      },
+      {
+        "id": "BR-04",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "基础概念及推导准确性未实质改变；032是实证敏感性而非新理论。"
+      },
+      {
+        "id": "BR-05",
+        "old": 7.5,
+        "new": 8.5,
+        "raw_delta": 1.0,
+        "type": "improvement",
+        "reason": "031补逐邻接同参数控制、032补另一目标构造重训练；加分对应辨识设计改善。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4,
+        "new": 4.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "AdaptiveGraph三个旧前向缺口得到匹配CUDA/固定邻接证实；新合同与原始复算增强可追溯链。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9,
+        "new": 9,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原稿已有足够难度和问题解决链；不按额外训练数直接加分。"
+      },
+      {
+        "id": "BR-08",
+        "old": 7.5,
+        "new": 8.5,
+        "raw_delta": 1.0,
+        "type": "improvement",
+        "reason": "结果确实支持两类关系条件增量、替代目标排序和JPL诊断/校准，补齐原稿未受检结论。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9,
+        "new": 9.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "新增结果的终点、校正、分层、预算及事后性质进入主要结论，统计解释更完整。"
+      },
+      {
+        "id": "BR-10",
+        "old": 7,
+        "new": 8,
+        "raw_delta": 1.0,
+        "type": "improvement",
+        "reason": "由关系整体/子集观察推进到两类邻接的受控新增经验知识，且MDP部分判断受跨站检验。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3,
+        "new": 3,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "无同步计量、真实运行约束或收益新证据，实践能力没有因新训练而增加。"
+      },
+      {
+        "id": "BR-12",
+        "old": 9,
+        "new": 9.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "结果主次、跨章同步、摘要/结论压缩和引用闭合是可以检查的表达改善。"
+      }
+    ]
+  }
+}

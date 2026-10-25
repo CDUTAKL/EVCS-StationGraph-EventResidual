@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "task_id": "TASK-YYYYMMDD-short-name",
+  "title": "",
+  "task_type": "content_revision",
+  "workflow_stage": "",
+  "objective": "",
+  "context_sources": [
+    {
+      "path": "docs/thesis/thesis-brief.md",
+      "locator": {"kind": "markdown_heading", "value": "研究问题"},
+      "purpose": "确定本任务所服务的研究问题"
+    },
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "locator": {"kind": "markdown_heading", "value": "论文核心结论权限"},
+      "purpose": "读取当前主张及其证据边界"
+    }
+  ],
+  "evidence_sources": [],
+  "claude_skills": [],
+  "allowed_paths": [],
+  "locked_claims": [],
+  "steps": [],
+  "acceptance_criteria": [],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [],
+    "network_domains": []
+  },
+  "deliverables": [
+    "修改后的授权文件",
+    "execution-report.json"
+  ]
+}

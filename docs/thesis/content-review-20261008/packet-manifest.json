@@ -1,0 +1,60 @@
+{
+  "review_date": "2026-10-08",
+  "scope": "thesis content; institutional formatting and blank personal cover fields excluded",
+  "review_contexts": "three isolated fork_turns=none reviewer agents; shared model and evidence, no real-world reviewer identities",
+  "rubric_issue": "12 maxima sum to 90 although local rubric and CLI label 100; preserve maxima and disclose raw score /90 and normalization raw/90*100",
+  "files": [
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "sha256": "25fe77154070100c565dbf355fe2555cbdaf873a4398df9808f1277a043161e2"
+    },
+    {
+      "path": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+      "sha256": "ca580c03a62ea475293faf7d37d324bbb38448989db0141bb7ec514b8f9b61a5"
+    },
+    {
+      "path": "outputs/thesis/audits/figure-1200dpi-20261007/final-audit.md",
+      "sha256": "71d6bd8c3717d2278604c9ce8ab73c7f15a767b1a5c5c2cca10c26c6e2dab4a5"
+    },
+    {
+      "path": "outputs/SG-EXP-028-analysis/model_summary.csv",
+      "sha256": "cc78a8802cec9e63a731cbf5b2c538dba44617308ba0419b24951eb70e7341bc"
+    },
+    {
+      "path": "outputs/SG-EXP-028-analysis/paired_intervals.csv",
+      "sha256": "8c0b44d1acd30cf5d6a61855f31dadf70369f7b9b35691f060509ff68f237682"
+    },
+    {
+      "path": "outputs/analysis/SG-EXP-027-time-block/summary.json",
+      "sha256": "352630aed417d31b1caa51eb5ee523bfab4601486afd74859429539198a90023"
+    },
+    {
+      "path": "outputs/analysis/SG-EXP-025-rolling-calibration/summary.csv",
+      "sha256": "3a326ec866b4f8ad792c84880dac407e37e39b9094bf72edec3975ea815877d0"
+    },
+    {
+      "path": "outputs/analysis/SG-EXP-020-legacy-evidence-v1/four_cell_summary.csv",
+      "sha256": "31529ce47664302a89e9e394ab0475309aae759d22bbb5750389fd0d7891f210"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/EXP-024-026-no-training-supplement.md",
+      "sha256": "d7eec350e2fbf366b5a21e5e8d44bfd4c9bd23ae8e38236c875c537543cd7f21"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-027-paired-gate-control-report.md",
+      "sha256": "8d219e2b0a76a6adcaf153dc9a6e7f5dd35c98c6fecab57d9f07ea424fcb0511"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/EXP-023-independent-calibration.md",
+      "sha256": "9dcacb950e49188e11ae6bf0d557e9ef81b5a11dc396789264be4dd18e43ccfe"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/EXP-019-eventtime-v1-phase2.md",
+      "sha256": "74fed15df3e44b25c06eacdfc19b97473a4e0e2e96d9826b38268d17d308893b"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md",
+      "sha256": "edf3f29b5fd1675d7f139b15c431280fef8a0f691b9505985f3e4a1cb67ebc06"
+    }
+  ]
+}

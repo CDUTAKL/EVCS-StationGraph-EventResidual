@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "checks": {
+    "tables_unchanged": true,
+    "headings_unchanged": true,
+    "figure_links_unchanged": true,
+    "figure_and_table_captions_unchanged": true,
+    "display_equations_unchanged": true,
+    "references_and_appendix_unchanged": true,
+    "no_control_characters": true
+  },
+  "edits": 37,
+  "before_sha256": "4fe50a9e6631c95868531aa3c33767f1dd389589a4b015e3f7cc4b942787c70b",
+  "after_sha256": "76cc39ad351c7e6bf9a86014b320b80076b4d23a1b795d29ccc2dbe231a8df96",
+  "main_body_han_before": 44304,
+  "main_body_han_after": 41784,
+  "all_source_han_before": 47159,
+  "all_source_han_after": 44639
+}

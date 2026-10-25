@@ -1,0 +1,295 @@
+{
+  "status": "PASS",
+  "table_count": 41,
+  "check": "Caption location matches normalized PDF text; all DOCX cell text segments recovered on the caption page or following three pages. Selected multi-page tables visually inspected for row splits and repeated headers.",
+  "all_cells_recovered_near_caption": true,
+  "tables": [
+    {
+      "caption": "表1-1 充电负荷预测及方法近邻研究比较",
+      "physical_caption_page": 14,
+      "cell_segments": 28,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表2-1 原始数据形态与审计结果",
+      "physical_caption_page": 22,
+      "cell_segments": 30,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表2-2 三套数据与评价协议的回答范围",
+      "physical_caption_page": 24,
+      "cell_segments": 20,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表2-3 节点筛选门槛及主分析条件下的未通过数量",
+      "physical_caption_page": 26,
+      "cell_segments": 28,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表2-4 主分析节点代理负荷统计",
+      "physical_caption_page": 29,
+      "cell_segments": 66,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表2-5 代表性节点日、周滞后自相关系数",
+      "physical_caption_page": 29,
+      "cell_segments": 12,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表2-6 逐节点冻结规则事件统计",
+      "physical_caption_page": 33,
+      "cell_segments": 55,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表2-7 Caltech回溯协议输入特征的全量描述性统计",
+      "physical_caption_page": 34,
+      "cell_segments": 40,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-1 三套协议的任务与评价设置",
+      "physical_caption_page": 47,
+      "cell_segments": 16,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-2 Caltech事件时刻协议的整体与关键分层误差",
+      "physical_caption_page": 49,
+      "cell_segments": 30,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-3 JPL另一场站的点预测比较",
+      "physical_caption_page": 50,
+      "cell_segments": 20,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-4 Caltech回溯协议全局预测指标对比",
+      "physical_caption_page": 52,
+      "cell_segments": 65,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-5 原主实验时间块误差差复核",
+      "physical_caption_page": 55,
+      "cell_segments": 18,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-6 Caltech回溯协议分层MAE对比",
+      "physical_caption_page": 55,
+      "cell_segments": 52,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-7 Caltech回溯协议下MRG-GCN目标片区间与逐节点MAE",
+      "physical_caption_page": 56,
+      "cell_segments": 36,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-8 模型规模与正式训练耗时",
+      "physical_caption_page": 57,
+      "cell_segments": 32,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-9 Caltech事件时刻协议下同参数节点门控配对结果",
+      "physical_caption_page": 58,
+      "cell_segments": 12,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-10 关系子集与超参数敏感性",
+      "physical_caption_page": 59,
+      "cell_segments": 34,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-11 JPL三关系图自环替换的配对重训练结果",
+      "physical_caption_page": 60,
+      "cell_segments": 24,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-12 组合配置下的结构消融结果",
+      "physical_caption_page": 62,
+      "cell_segments": 18,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-13 方法组件与目标敏感性证据、贡献范围",
+      "physical_caption_page": 63,
+      "cell_segments": 34,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-14 主要比较的输入、模型容量与训练选模预算",
+      "physical_caption_page": 64,
+      "cell_segments": 95,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表3-15 完成时刻截断代理目标下的Caltech测试结果",
+      "physical_caption_page": 66,
+      "cell_segments": 24,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表4-1 MDP三层机制画像",
+      "physical_caption_page": 69,
+      "cell_segments": 18,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表4-2 两层关系级β门控权重",
+      "physical_caption_page": 70,
+      "cell_segments": 49,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表4-3 分层参数干预敏感度",
+      "physical_caption_page": 72,
+      "cell_segments": 35,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表4-4 GCN→TCN知识蒸馏结果",
+      "physical_caption_page": 74,
+      "cell_segments": 30,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表4-5 原正式MRG-GCN三种子四格误差分解",
+      "physical_caption_page": 75,
+      "cell_segments": 36,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表4-6 MDP证据引起的研究判断与后续决策",
+      "physical_caption_page": 78,
+      "cell_segments": 19,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表4-7 JPL冻结关系参数替换的分层结果",
+      "physical_caption_page": 79,
+      "cell_segments": 45,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表4-8 JPL原正式MRG-GCN三种子四格误差分解",
+      "physical_caption_page": 80,
+      "cell_segments": 25,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表5-1 TE候选与LRE统计关系的覆盖情况",
+      "physical_caption_page": 85,
+      "cell_segments": 28,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表5-2 新协议独立校准的覆盖与区间质量",
+      "physical_caption_page": 88,
+      "cell_segments": 18,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表5-3 新协议成熟标签滚动校准回放结果",
+      "physical_caption_page": 89,
+      "cell_segments": 35,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表5-4 不同共形口径的经验覆盖率",
+      "physical_caption_page": 90,
+      "cell_segments": 20,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表5-5 规则路由分层共形的节点级区间宽度",
+      "physical_caption_page": 92,
+      "cell_segments": 22,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表5-6 冻结区间的覆盖失效诊断",
+      "physical_caption_page": 93,
+      "cell_segments": 32,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表5-7 固定发布时刻下的节点集合四目标片预测示例",
+      "physical_caption_page": 95,
+      "cell_segments": 20,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表5-8 合成四片充电分配的影子计划",
+      "physical_caption_page": 95,
+      "cell_segments": 30,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表5-9 第5章探索结果汇总",
+      "physical_caption_page": 96,
+      "cell_segments": 28,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    },
+    {
+      "caption": "表A-1 Caltech事件时刻协议完整配置与组件结果",
+      "physical_caption_page": 105,
+      "cell_segments": 78,
+      "missing_within_4_pages": 0,
+      "missing_examples": []
+    }
+  ]
+}

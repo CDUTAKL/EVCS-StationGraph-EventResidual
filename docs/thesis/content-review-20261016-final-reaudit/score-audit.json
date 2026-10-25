@@ -1,0 +1,116 @@
+{
+  "assessment_id": "FORMAL-20261016-FINAL-REAUDIT",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 74.5,
+  "raw_maximum": 90.0,
+  "normalized_score": 82.78,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "FORMAL-20261016-CURRENT",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": -6.67,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮修订未增加现场需求或成本证据。"
+      },
+      {
+        "id": "BR-02",
+        "old": 5.0,
+        "new": 4.5,
+        "raw_delta": -0.5,
+        "type": "recalibration",
+        "reason": "复核统一锚点后，对题目范围提示和第五章外围内容作小幅校准；不是本轮文字修订造成退步。"
+      },
+      {
+        "id": "BR-03",
+        "old": 5.0,
+        "new": 4.0,
+        "raw_delta": -1.0,
+        "type": "recalibration",
+        "reason": "来源可读层级与原文覆盖缺口在稿中和证据包中持续存在；此前满分高估了“边界披露”对“文献比较完整度”的补偿。"
+      },
+      {
+        "id": "BR-04",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮精修未改变理论和公式证据；局部符号表达问题经本次复核确认。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.5,
+        "new": 8.0,
+        "raw_delta": -0.5,
+        "type": "recalibration",
+        "reason": "按统一“强设计”锚点重新权衡预算充分性与替代解释；这些限制并非本轮文本修改造成。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "精修未补齐历史训练来源或原始数据端到端重现；现有复算支持保留4.5。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "文字凝练不代表新增研究工作量，本轮不按字数或运行次数计分。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.5,
+        "new": 8.0,
+        "raw_delta": -0.5,
+        "type": "recalibration",
+        "reason": "再次按“结果支持主要结论且覆盖主要替代解释”的锚点裁定；先前8.5对事后分层及代理效度的限制计分偏宽。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.5,
+        "new": 8.5,
+        "raw_delta": -1.0,
+        "type": "recalibration",
+        "reason": "前次满分区间边界评分未充分计入已查看测试期反复使用与跨种子不确定性；本轮按固定统计锚点校准。"
+      },
+      {
+        "id": "BR-10",
+        "old": 8.5,
+        "new": 7.5,
+        "raw_delta": -1.0,
+        "type": "recalibration",
+        "reason": "评阅更清楚地区分“诊断改变研究判断”与“带来新预测能力”；此前8.5高估了组合与任务迁移的创新权重。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.0,
+        "new": 3.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "精修后的应用表述更克制，但无新增现场材料，分数不变。"
+      },
+      {
+        "id": "BR-12",
+        "old": 10.0,
+        "new": 8.5,
+        "raw_delta": -1.5,
+        "type": "recalibration",
+        "reason": "本轮内容确有精简改善，但全稿仍存在可定位的结构重复和结果分散；此前满分10对“可读、规范”要求给得过满。"
+      }
+    ]
+  }
+}

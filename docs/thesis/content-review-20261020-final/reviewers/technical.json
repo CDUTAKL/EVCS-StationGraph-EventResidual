@@ -1,0 +1,545 @@
+{
+  "schema_version": 1,
+  "record_type": "independent_blind_review",
+  "reviewer_role": "technical_and_methods",
+  "context_id": "BR-TECH-FINAL-20261020-7F4C2A9B",
+  "reviewed_at": "2026-10-20",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "degree_context": "professional_masters",
+  "historical_scores_exposed": "unknown",
+  "packet": {
+    "path": "docs/thesis/revision-20261019-nontraining/paired-review-preparation/reviewer-packet/",
+    "fingerprint": "1fa7aba697bb3663f5c2beb7298bf12d6f3ca11ffd46495a9dc4741a6a84f080",
+    "manifest_listed_files": 27,
+    "manifest_hashes_verified": 27,
+    "manifest_failures": [],
+    "readme_present": false,
+    "reviewer_record_template_present": false,
+    "figure_scope": "captions_only; image content and full-page visual acceptance remain unchecked",
+    "excluded_materials_respected": [
+      "project score README and history",
+      "publication-status materials",
+      "historical scorecards and reviewer reports",
+      "other reviewers' opinions"
+    ]
+  },
+  "scoring": {
+    "score_step": 0.5,
+    "raw_maximum": 90,
+    "display_maximum": 100,
+    "normalization": "sum(scores) / 90 * 100",
+    "rounding": "ROUND_HALF_UP to 2 decimals",
+    "across_reviewer_average_reported": false,
+    "baseline": {
+      "raw_total": 74,
+      "normalized_score": 82.22
+    },
+    "current": {
+      "raw_total": 74.5,
+      "normalized_score": 82.78
+    }
+  },
+  "paired_criteria": [
+    {
+      "id": "BR-01",
+      "name": "选题意义与问题定义",
+      "maximum": 5,
+      "baseline": {
+        "score": 4.5,
+        "location": "摘要；§1.1.1–1.1.3；§2.1–2.3",
+        "evidence_ids": [
+          "PASSPORT.md",
+          "QUALITY.md",
+          "DATA_AVAIL.md",
+          "MRECOMP.json"
+        ],
+        "rationale": "研究对象、粒度、预测时距和技术目标具体：以会话记录重构的15 min节点代理能量，检验站内统计关系和节点级门控。研究动机有公开数据现象和相关文献支持；需求与任务设置相符。扣0.5分在于需求端仍由潜在容量核查、负荷均衡等用途推导，缺少现场需求量化或直接用户约束。",
+        "limitation": "代理目标与实测功率之间的效度未验证，行为输入的到达时延亦未量测；这些是已声明范围限制，实践量测不足另在BR-11反映。"
+      },
+      "current": {
+        "score": 4.5,
+        "location": "摘要；§1.1.1–1.1.3；§2.1–2.3",
+        "evidence_ids": [
+          "PASSPORT.md",
+          "QUALITY.md",
+          "DATA_AVAIL.md",
+          "MRECOMP.json"
+        ],
+        "rationale": "与冻结基线相同：对象、粒度、预测时距和技术目标明确，公开数据和研究现象支撑动机，提出的实验任务与问题相符。当前稿摘要增加具体MAE数值，但没有新增需求来源或现场约束。",
+        "limitation": "仍是单一ACN体系内的节点代理能量问题；没有现场容量事件、运行损失或计量功率效度材料。"
+      },
+      "revision_effect": "0分变化。当前稿把结果数值写得更具体，没有改变选题需求证据或研究对象。"
+    },
+    {
+      "id": "BR-02",
+      "name": "研究问题、范围与题目一致性",
+      "maximum": 5,
+      "baseline": {
+        "score": 4.5,
+        "location": "题目；§1.3–1.6；§3.9；§4.5；结论",
+        "evidence_ids": [
+          "MAP.md",
+          "MDP.md"
+        ],
+        "rationale": "题目、研究问题、关系建模与机制诊断主线基本一致，章节推进可以回答所提出的问题，摘要和结论也回到代理负荷及条件性增量。扣0.5分在于方向性筛查、区间校准和运行接口扩大了第五章覆盖面，整体论文显得宽于核心预测增量问题；作者将这些内容标为补充并限制其结论，故不作严重范围漂移处理。",
+        "limitation": "辅助分析本身不能替代三个核心研究问题的证据，也不应被解读成现场决策验证。"
+      },
+      "current": {
+        "score": 4.5,
+        "location": "题目；§1.3–1.6；§3.9；§4.5；结论",
+        "evidence_ids": [
+          "MAP.md",
+          "MDP.md"
+        ],
+        "rationale": "与冻结基线相同：研究主线仍围绕代理负荷预测、站内关系、门控增量和MDP判断；辅助可靠性与运行接口分析保持从属定位。当前结论更具体地列出两项贡献，但未收缩第五章的辅助议题范围。",
+        "limitation": "补充章节内容较多，读者仍需依靠显式的适用边界区分主结论与探索性接口。"
+      },
+      "revision_effect": "0分变化。当前结论明确列出两项贡献，提升了闭合表达，但未改变题目、研究问题或章节范围。"
+    },
+    {
+      "id": "BR-03",
+      "name": "文献综述与缺口定位",
+      "maximum": 5,
+      "baseline": {
+        "score": 4.5,
+        "location": "§1.2.1–1.2.4；表1-1；§1.3",
+        "evidence_ids": [
+          "NEAR.md",
+          "NEAR2.md",
+          "NEAR76.md",
+          "NEAR_20261016.md",
+          "MAP.md"
+        ],
+        "rationale": "对EV站间图预测、住宅图门控及公开会话重构EV代理负荷先例作了任务粒度和方法路径比较；[76]与本文同属会话重构EV负荷近邻，稿件把研究缺口收窄到站内节点关系替换、节点门控控制和分层诊断。比较边界没有做跨文数值排名。扣0.5分在于数篇近邻只能读取摘要或索引正文，无法支持对其切分、输入权限和参数共享的完整比较；这些未知项已明示。",
+        "limitation": "近邻证据对研究对象、关系构造和报告范围的比较较强，对全部文献实验细节的逐篇全文复核不完整。"
+      },
+      "current": {
+        "score": 4.5,
+        "location": "§1.2.1–1.2.4；表1-1；§1.3",
+        "evidence_ids": [
+          "NEAR.md",
+          "NEAR2.md",
+          "NEAR76.md",
+          "NEAR_20261016.md",
+          "MAP.md"
+        ],
+        "rationale": "现稿对[76]残差预测近邻、站间动态图与住宅图门控均给出可读原文范围内的比较，研究缺口限定较准确。当前引用归纳收紧为与表格实际对应的文献，不将[74]、[75]等未列为直接方法比较的文献混进该句。评分仍受若干摘要级或索引级来源限制。",
+        "limitation": "引用范围更精确不等于这些论文全文已核查；尤其[12]、[70]、[72]、[73]的未知实验字段不可从方法名称推断。"
+      },
+      "revision_effect": "0分变化。当前稿修正了总结句中的引用范围并保留近邻比较，但对可读原文层级没有新增证据。"
+    },
+    {
+      "id": "BR-04",
+      "name": "理论基础与专业知识",
+      "maximum": 5,
+      "baseline": {
+        "score": 4.5,
+        "location": "§2.1.1–2.4；§3.2–3.5；§4.2.5；§5.2.2；§5.4.1",
+        "evidence_ids": [
+          "S31.md",
+          "S32.md",
+          "MRECOMP.json",
+          "RECOMP.json"
+        ],
+        "rationale": "代理能量、功率、时间片起点与发布时刻的区别交代清楚；图的统计语义、门控和变换参数的可辨识边界、事件评价标签及TE候选的因果解释限制均有明确说明。主要公式与单位总体一致。扣0.5分在于预测输入按片末可见仍是未实测的信息条件，且理论层主要服务于工程建模，缺少更强的理论推导或对假设的外部验证。",
+        "limitation": "报告只核对冻结稿和随附证据，不含图像、源代码或全文外部文献重审；声明的建模近似不作为理论错误扣分。"
+      },
+      "current": {
+        "score": 4.5,
+        "location": "§2.1.1–2.4；§3.2–3.5；§4.2.5；§5.2.2；§5.4.1",
+        "evidence_ids": [
+          "S31.md",
+          "S32.md",
+          "MRECOMP.json",
+          "RECOMP.json"
+        ],
+        "rationale": "核心概念、单位、假设和方法解释与冻结基线一致。当前§5.4.1明确用目标片左端时刻和h序号说明四个输出片的映射，减少运行接口时间索引歧义。",
+        "limitation": "计数在片末可用、最终会话字段可用于目标构造等仍是协议假设或事后标签定义，不能推为实时数据链已验证。"
+      },
+      "revision_effect": "0分变化。当前稿的时间片索引说明更明确，但没有改变公式、方法假设或理论证据。"
+    },
+    {
+      "id": "BR-05",
+      "name": "方法与实验设计",
+      "maximum": 10,
+      "component_scores": {
+        "baseline": {
+          "information_split": 3,
+          "comparators": 1.5,
+          "controls": 2.5,
+          "selection_budget": 1.5
+        },
+        "current": {
+          "information_split": 3,
+          "comparators": 1.5,
+          "controls": 2.5,
+          "selection_budget": 1.5
+        }
+      },
+      "baseline": {
+        "score": 8.5,
+        "location": "§2.1.1–2.1.3；§3.6–3.8；表3-14；§3.8.4",
+        "evidence_ids": [
+          "S31.md",
+          "S32.md",
+          "S31AUDIT.json",
+          "S32AUDIT.json",
+          "QUALITY.md"
+        ],
+        "rationale": "按协议区分回溯、Caltech事件时刻和JPL重拟合输入；完整窗口留段、模型选择、冻结测试键、容量近似TCN、同参数共享门控及关系邻接自环替换均有清楚设计。完成时刻目标敏感性固定图和共同键，避免与端到端重建图敏感性混淆。主要扣分来自比较矩阵仍不完整（如未匹配容量AGCRN、未加入行为GRU、未重训15节点敏感性集合）及门控训练预算不足。",
+        "limitation": "旧回溯协议明确存在部分预处理全时期统计与跨段窗口问题；主结论依赖较新的行为输入协议，但其片末可见性仍未经到达时间戳验证。031、032等已查看测试期补充实验只作敏感性证据。"
+      },
+      "current": {
+        "score": 8.5,
+        "location": "§2.1.1–2.1.3；§3.6–3.8；表3-14；§3.8.4",
+        "evidence_ids": [
+          "S31.md",
+          "S32.md",
+          "S31AUDIT.json",
+          "S32AUDIT.json",
+          "QUALITY.md"
+        ],
+        "rationale": "与冻结基线相同：信息边界、对照、组件控制及选模预算总体适合研究的限定问题，受控增量不依靠固定门值的混杂比较。",
+        "limitation": "当前仍有一个共享门控运行触及60轮上限；AGCRN容量不匹配、缺少行为GRU和其他输入/节点范围验证等限制没有因文字修改消失。"
+      },
+      "revision_effect": "0分变化。正文修订主要调整描述和边界，并未增加模型对照、训练预算或独立测试期。"
+    },
+    {
+      "id": "BR-06",
+      "name": "可复现性与方法严谨性",
+      "maximum": 5,
+      "component_scores": {
+        "baseline": {
+          "data_split": 1,
+          "source_config": 1,
+          "keys_metrics": 1.5,
+          "environment_package": 1
+        },
+        "current": {
+          "data_split": 1,
+          "source_config": 1,
+          "keys_metrics": 1.5,
+          "environment_package": 1
+        }
+      },
+      "baseline": {
+        "score": 4.5,
+        "location": "§2.1–2.2；§3.6.1、§3.6.3–3.6.4；表3-14；§4.6.1；§5.3.3–5.3.5",
+        "evidence_ids": [
+          "PASSPORT.md",
+          "QUALITY.md",
+          "ADAPT.md",
+          "ADAPTAUDIT.json",
+          "CAL.md",
+          "RECOMP.json",
+          "MRECOMP.json"
+        ],
+        "rationale": "数据边界、训练/调参/校准/测试划分、节点和预测键、checkpoint与测试预测完整性、哈希清单及独立算术复核材料充分；JPL校准和SG-EXP-031/032审计支持主要表格数值。扣0.5分主要因原AdaptiveGraph训练Git身份缺失且复算依赖冻结检查点，若干历史运行不是从头训练的完全源代码复现。",
+        "limitation": "检查点回放和指标复算证明产物可追溯，不等同所有主实验均可由第三方用公开材料从头训练重现；数据不适合公开再分发。"
+      },
+      "current": {
+        "score": 4.5,
+        "location": "§2.1–2.2；§3.6.1、§3.6.3–3.6.4；表3-14；§4.6.1；§5.3.3–5.3.5",
+        "evidence_ids": [
+          "PASSPORT.md",
+          "QUALITY.md",
+          "ADAPT.md",
+          "ADAPTAUDIT.json",
+          "CAL.md",
+          "RECOMP.json",
+          "MRECOMP.json"
+        ],
+        "rationale": "与冻结基线相同。修订没有替换哈希、运行身份或原数值；manifest所列27份材料均与冻结包SHA和bytes匹配。",
+        "limitation": "原AdaptiveGraph训练身份限制仍在；冻结检查点重放不认证缺失的训练Git版本，也不构成从头重训复现。"
+      },
+      "revision_effect": "0分变化。正文变化未新增可复现工件；packet manifest 27/27项哈希验证通过。"
+    },
+    {
+      "id": "BR-07",
+      "name": "工作量与解决问题能力",
+      "maximum": 10,
+      "component_scores": {
+        "baseline": {
+          "technical_work": 4,
+          "problem_solving": 3.5,
+          "integration": 1.5
+        },
+        "current": {
+          "technical_work": 4,
+          "problem_solving": 3.5,
+          "integration": 1.5
+        }
+      },
+      "baseline": {
+        "score": 9,
+        "location": "§2–§5；表3-13、表4-6、表5-9；附录A",
+        "evidence_ids": [
+          "PASSPORT.md",
+          "QUALITY.md",
+          "S31.md",
+          "S32.md",
+          "ADAPT.md",
+          "CAL.md"
+        ],
+        "rationale": "工作包括数据重构与质量门禁、多关系模型、成组受控比较、目标敏感性、诊断协议、区间校准和求解接口；还发现并解释数据时间口径、后端top-k并列及校准路由问题，体现独立分析和问题处理。不同工件已形成从数据定义、预测、诊断到适用条件的分析链。",
+        "limitation": "部分工作属于已查看测试期的后验补充，现场效益和计量效度未验证；评分依据实际难度与问题解决，不因缺外部新数据或部署重复扣分。"
+      },
+      "current": {
+        "score": 9,
+        "location": "§2–§5；表3-13、表4-6、表5-9；附录A",
+        "evidence_ids": [
+          "PASSPORT.md",
+          "QUALITY.md",
+          "S31.md",
+          "S32.md",
+          "ADAPT.md",
+          "CAL.md"
+        ],
+        "rationale": "完成的技术工作和诊断链与冻结基线相同；当前更明确归纳受控增量与诊断判断，但未新增工作量。",
+        "limitation": "已有分析虽覆盖面广，诊断指导改模的预测收益仍未实证，应用接口仅经合成实例核验。"
+      },
+      "revision_effect": "0分变化。更明确的总结提升贡献辨识度，不代表新增实验或工作量。"
+    },
+    {
+      "id": "BR-08",
+      "name": "结果与证据充分性",
+      "maximum": 10,
+      "component_scores": {
+        "baseline": {
+          "claim_support": 3.5,
+          "alternatives": 2.5,
+          "robustness_scope": 2
+        },
+        "current": {
+          "claim_support": 3.5,
+          "alternatives": 2.5,
+          "robustness_scope": 2
+        }
+      },
+      "baseline": {
+        "score": 8,
+        "location": "摘要；§3.6–3.8；§4.2–4.6；§5.3；结论",
+        "evidence_ids": [
+          "RECOMP.json",
+          "MRECOMP.json",
+          "S31AUDIT.json",
+          "S32AUDIT.json",
+          "CAL.md",
+          "MAP.md"
+        ],
+        "rationale": "主要预测数字可由逐键预测独立复算，JPL共同键对照和条件时间块区间支持限定的整体MAE判断；非零/事件差异、关系替换、完成时刻截断和MDP有直接数值支持。稿件区分组件内增量与完整模型表现，并解释零值组驱动。扣分在于大量组件与目标敏感性补充复用已查看测试期，未见独立数据家族、未查看时期或电表目标确认。",
+        "limitation": "区间反映固定时期的块变化而非场站抽样或完整训练随机性；替代目标保持原图，不能证明全流程拓扑稳健；现有证据不等于实测功率效度。"
+      },
+      "current": {
+        "score": 8,
+        "location": "摘要；§3.6–3.8；§4.2–4.6；§5.3；结论",
+        "evidence_ids": [
+          "RECOMP.json",
+          "MRECOMP.json",
+          "S31AUDIT.json",
+          "S32AUDIT.json",
+          "CAL.md",
+          "MAP.md"
+        ],
+        "rationale": "证据链与冻结基线相同。摘要新增绝对MAE和关系变化百分比，所依数据和复算状态未变化；没有新增确认性结果。",
+        "limitation": "SG-EXP-031、032、JPL后续诊断与可靠性评价都复用已查看时期，不能作为独立盲测或跨数据家族泛化。"
+      },
+      "revision_effect": "0分变化。当前稿更具体呈现已有数值，未扩大其证据权限。"
+    },
+    {
+      "id": "BR-09",
+      "name": "统计解释与结论边界",
+      "maximum": 10,
+      "component_scores": {
+        "baseline": {
+          "uncertainty": 3,
+          "multiplicity": 1.5,
+          "interpretation": 3.5
+        },
+        "current": {
+          "uncertainty": 3,
+          "multiplicity": 1.5,
+          "interpretation": 3.5
+        }
+      },
+      "baseline": {
+        "score": 8,
+        "location": "§3.6–3.8；§4.2–4.6；§5.2–5.3；结论与局限",
+        "evidence_ids": [
+          "RECOMP.json",
+          "MRECOMP.json",
+          "S31AUDIT.json",
+          "S32AUDIT.json",
+          "MDP.md",
+          "CAL.md"
+        ],
+        "rationale": "报告三种子离散、按时间块的配对区间、多重校正后的JPL关系比较、事后分层属性和阴性结果；明确指出事件覆盖不足、测试期已查看、β与关系变换不可分辨、固定测试期区间不代表跨站不确定性。扣分在于只有三个训练种子，多个次要分层及结构探索未做多终点校正，校准和测试重叠窗口依赖可能削弱传统有限样本保证。",
+        "limitation": "TE家族校正和主JPL三项校正已明示；不能把未校正的次要分析提升为确认性结果。"
+      },
+      "current": {
+        "score": 8,
+        "location": "§3.6–3.8；§4.2–4.6；§5.2–5.3；结论与局限",
+        "evidence_ids": [
+          "RECOMP.json",
+          "MRECOMP.json",
+          "S31AUDIT.json",
+          "S32AUDIT.json",
+          "MDP.md",
+          "CAL.md"
+        ],
+        "rationale": "统计方法、区间口径和阴性结果解释与基线相同；后续工作现更优先突出代理目标和信息时点的核验，但不增加统计不确定性证据。",
+        "limitation": "结果解释仍限于固定已查看时期与各自的目标/协议，历史回放不保证未来覆盖率。"
+      },
+      "revision_effect": "0分变化。结论范围更聚焦，但统计设计和未校正分析范围没有变化。"
+    },
+    {
+      "id": "BR-10",
+      "name": "贡献与创新",
+      "maximum": 10,
+      "component_scores": {
+        "baseline": {
+          "prior_difference": 2,
+          "contribution": 2.5,
+          "demonstration": 2.5
+        },
+        "current": {
+          "prior_difference": 2,
+          "contribution": 3,
+          "demonstration": 2.5
+        }
+      },
+      "baseline": {
+        "score": 7,
+        "location": "§1.2.2–1.3；§1.4；表3-13；§4.5；结论",
+        "evidence_ids": [
+          "NEAR.md",
+          "NEAR2.md",
+          "NEAR76.md",
+          "NEAR_20261016.md",
+          "S31.md",
+          "MAP.md",
+          "MDP.md"
+        ],
+        "rationale": "贡献定位为单场站节点代理能量任务的关系替换与门控受控增量，以及把参数敏感度、学生替代性与误差构成分开报告的诊断判断；与近邻任务粒度及控制方式可区分。没有主张图卷积、门控、TCN或残差方法首创。扣分来自贡献偏经验性、架构增量有限，且未验证MDP指导改模能带来新预测收益。",
+        "limitation": "跨站数据仍属同一ACN体系；关系增量依赖本架构、数据、预算和固定时期，不能推广为普遍关系必要性。"
+      },
+      "current": {
+        "score": 7.5,
+        "location": "§1.2.2–1.3；§1.4；表3-13；§4.5；结论",
+        "evidence_ids": [
+          "NEAR.md",
+          "NEAR2.md",
+          "NEAR76.md",
+          "NEAR_20261016.md",
+          "S31.md",
+          "MAP.md",
+          "MDP.md"
+        ],
+        "rationale": "证据和贡献实质与基线相同。当前结论明确命名两项贡献：站内关系/门控受控增量，以及区分组件价值、完整模型表现和参数敏感度的诊断判断；这改善了贡献陈述的可识别性，值得0.5分增量，但不改变贡献的新颖性或验证范围。",
+        "limitation": "新贡献是受控经验判断与诊断组织，不是新算子；未证明诊断指导模型修改提高预测，且近邻已覆盖一般图门控和会话重构代理预测。"
+      },
+      "revision_effect": "当前稿 +0.5。结论从泛称“两项核心贡献”改为明确点出具体贡献；证据仍为原有结果。"
+    },
+    {
+      "id": "BR-11",
+      "name": "专业实践价值",
+      "maximum": 5,
+      "component_scores": {
+        "baseline": {
+          "use_case": 1,
+          "real_inputs": 1,
+          "value_evaluation": 0.5,
+          "usable_outputs": 1
+        },
+        "current": {
+          "use_case": 1,
+          "real_inputs": 1,
+          "value_evaluation": 0.5,
+          "usable_outputs": 1
+        }
+      },
+      "baseline": {
+        "score": 3.5,
+        "location": "§1.1.1；§5.4.1–5.4.5；结论的使用条件",
+        "evidence_ids": [
+          "PASSPORT.md",
+          "DATA_AVAIL.md",
+          "ACN_DECISION.md",
+          "ACN_RANGE.json",
+          "ACN_BOUNDS.json",
+          "S32.md"
+        ],
+        "rationale": "容量核查和充电协调的需求接口具体，使用公开真实会话输入；通过固定预测轨迹和合成线性规划说明计算/约束接口。实测功率映射、时延、车辆约束和运行收益尚无现场验证，因此价值评价组件只部分满足。",
+        "limitation": "合成例不能支持现场越限安全、经济收益或真实调度效果；可用输出主要是概念接口和采数/影子运行流程。"
+      },
+      "current": {
+        "score": 3.5,
+        "location": "§1.1.1；§5.4.1–5.4.5；结论的使用条件",
+        "evidence_ids": [
+          "PASSPORT.md",
+          "DATA_AVAIL.md",
+          "ACN_DECISION.md",
+          "ACN_RANGE.json",
+          "ACN_BOUNDS.json",
+          "S32.md"
+        ],
+        "rationale": "工程接口和可用条件与冻结基线相同。现稿把5.4.1改写为“定义输入接口”，弱化了由预测直接支持容量和协调判断的语气，提高了实践主张的边界准确性；尚无新增实践量测或收益结果。",
+        "limitation": "真实场景价值仍待同步电表、信号到达时间、约束和成本资料验证；ACN范围查询只确认元数据连接时间界限，不等于获得独立新时期数据。"
+      },
+      "revision_effect": "0分变化。当前稿更谨慎地将结果称为接口定义，但未增加真实约束、量测或业务评价。"
+    },
+    {
+      "id": "BR-12",
+      "name": "结构、表达与学术规范",
+      "maximum": 10,
+      "component_scores": {
+        "baseline": {
+          "structure": 2.5,
+          "writing": 2,
+          "scholarly_content": 2,
+          "terminology": 1
+        },
+        "current": {
+          "structure": 2.5,
+          "writing": 2,
+          "scholarly_content": 2,
+          "terminology": 1
+        }
+      },
+      "baseline": {
+        "score": 7.5,
+        "location": "全文；重点§3.5.4、§5.4.1、表1-1、表3-14、表5-9及附录A",
+        "evidence_ids": [
+          "manifest.json",
+          "rubric.json",
+          "anchors.json",
+          "NEAR.md",
+          "QUALITY.md"
+        ],
+        "rationale": "章节层次、定义、表格、单位与结论大体清楚，文献比较标示可读范围，数值口径和不确定性较严谨。扣分在于全文信息量高且多处重复边界说明；图像内容和整页视觉未检查。冻结基线的§3.5.4交叉引用缺少固定门值证据的准确落点。",
+        "limitation": "只按文字和图注评价；没有查看图像本身、页面排版、目录刷新、封面或形式交付门槛。"
+      },
+      "current": {
+        "score": 7.5,
+        "location": "全文；重点§3.5.4、§5.4.1、表1-1、表3-14、表5-9及附录A",
+        "evidence_ids": [
+          "manifest.json",
+          "rubric.json",
+          "anchors.json",
+          "NEAR.md",
+          "QUALITY.md"
+        ],
+        "rationale": "当前稿将未来一小时内各目标片左端时刻映射写得更明确；§3.5.4也新增附表A-1定位。但该处仍把主要交叉引用指向§3.7.2（关系路径），而同参数节点门控比较实际见§3.7.1，故交叉引用问题未完全消除。文字整体清晰但重复和篇幅密度仍在。",
+        "limitation": "manifest明确仅检查captions；不能据此评价图内公式标签、连线、色彩、可读性、视觉排版或整页验收。"
+      },
+      "revision_effect": "0分变化。当前改善了§5.4.1的时间片符号说明并补入附表定位，但未消除§3.5.4指向§3.7.2而非§3.7.1的问题；图像仍未检查。"
+    }
+  ],
+  "scope_notes": [
+    "Only the frozen reviewer packet was read. No project paths outside the packet were read; the output directory was created only for these two deliverables.",
+    "No README or reviewer-record-template.json was present in the packet file list. This JSON is a structured custom record because the referenced template was not provided.",
+    "NZ.json is explicitly review-time exploratory analysis, not a manuscript result; it was excluded from manuscript claims and scores.",
+    "The independent recomputation records report arithmetic/manifest verification, not a fresh model forward or independent external confirmation."
+  ]
+}

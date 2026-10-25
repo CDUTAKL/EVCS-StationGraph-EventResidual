@@ -1,0 +1,116 @@
+{
+  "assessment_id": "FORMAL-20261016-NONEXPERIMENTAL",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 76.0,
+  "raw_maximum": 90.0,
+  "normalized_score": 84.44,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "FORMAL-20261016-FINAL-REAUDIT",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 1.67,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "没有新增现场需求、精度门槛或成本效益证据。"
+      },
+      {
+        "id": "BR-02",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "贡献表述更清楚，但题名范围提示与第五章主线位置没有实质改变。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.0,
+        "new": 4.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "新增原文定位和对照字段改善了近邻工作比较，但全文可读范围限制仍存在。"
+      },
+      {
+        "id": "BR-04",
+        "old": 4.5,
+        "new": 5.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "本轮补齐公式符号、单位、退化处理并修正选模口径，与实现逐项对应。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "实验设计和其主要替代解释限制均未改变。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "没有补齐历史源码身份，也没有进行新的端到端重现。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮无新增研究实验或独立证据链。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "文字重组没有新增预测结果或确认性证据，也没有改变数据使用范围。"
+      },
+      {
+        "id": "BR-09",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "边界叙述更紧凑，但统计证据本身未变化。"
+      },
+      {
+        "id": "BR-10",
+        "old": 7.5,
+        "new": 7.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "近邻比较改善由BR-03计分；它没有改变增量证据或带来新的预测能力，不重复加至BR-10。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.0,
+        "new": 3.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有实测数据、现场运行或真实收益评价。"
+      },
+      {
+        "id": "BR-12",
+        "old": 8.5,
+        "new": 9.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "针对性去重、术语和公式说明改善了表达，但摘要密度和章节主次问题仍在。"
+      }
+    ]
+  }
+}

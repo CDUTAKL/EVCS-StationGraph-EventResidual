@@ -1,0 +1,2615 @@
+{
+  "audit_id": "SGEXP-031-032-REPLAY-20261022",
+  "generated_utc": "2026-10-24T11:58:58+00:00",
+  "replay_script": {
+    "path": "scripts/replay_sgexp031_032_evidence.py",
+    "sha256": "0fb12a026d2b4e4b21b55eafa6712a5bb867a0b962eeb5c7e45ea4bd52bf8a0c"
+  },
+  "scope": {
+    "does": [
+      "verify archive and internal manifest hashes",
+      "recompute metrics from saved predictions",
+      "inventory configs, environments, checkpoints, and predictions"
+    ],
+    "does_not": [
+      "checkpoint forward inference",
+      "retraining",
+      "training-process reconstruction",
+      "network access"
+    ]
+  },
+  "privacy_and_access": [
+    "Frozen archives preserve source code, processed inputs, run metadata, checkpoints, and saved predictions.",
+    "No credentials, raw session records, or user identifiers are copied into this index.",
+    "Local working-tree artifacts only; nothing is published or uploaded."
+  ],
+  "commands": {
+    "replay": "python3 scripts/replay_sgexp031_032_evidence.py --out <package.json>",
+    "sg031_audit": "python3 scripts/audit_sgexp031_results.py --source <recovered-sg031> --out <fresh-empty-dir> --bootstrap-draws 10000",
+    "sg032_audit": "python3 scripts/audit_sgexp032_results.py --source <formal-results> --out <fresh-empty-dir> --bootstrap-draws 10000"
+  },
+  "experiments": {
+    "SG-EXP-031": {
+      "archives": {
+        "result": {
+          "path": "outputs/experiments/SG-EXP-031/SG-EXP-031-results.tar.gz",
+          "bytes": 122402069,
+          "sha256": "4eb436fbf30823d4df9b3e1be9f34652f849bdf7a130ce1c4229d9b2964f8c5f",
+          "expected_sha256": "4eb436fbf30823d4df9b3e1be9f34652f849bdf7a130ce1c4229d9b2964f8c5f",
+          "hash_match": true
+        },
+        "bundle": {
+          "path": "outputs/experiments/SG-EXP-031/SG-EXP-031-bundle.tar.gz",
+          "bytes": 2201588,
+          "sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+          "expected_sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+          "hash_match": true
+        }
+      },
+      "internal_result_checksums": {
+        "path": "outputs/experiments/SG-EXP-031/SG-EXP-031-results.tar.gz",
+        "sha256": "4eb436fbf30823d4df9b3e1be9f34652f849bdf7a130ce1c4229d9b2964f8c5f",
+        "entries": 173,
+        "verified": 173,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "bundle_manifest": {
+        "archive_path": "outputs/experiments/SG-EXP-031/SG-EXP-031-bundle.tar.gz",
+        "archive_sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+        "manifest_member": "SG-EXP-031/BUNDLE_MANIFEST.json",
+        "manifest_sha256": "3ba32eee77da8bea6895804f5c4f1bf4924d3ff394b4aabce84c394fc482ee8b",
+        "entries": 67,
+        "verified": 67,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "disk_manifest": {
+        "manifest_path": "outputs/experiments/SG-EXP-031/bundle/BUNDLE_MANIFEST.json",
+        "manifest_sha256": "3ba32eee77da8bea6895804f5c4f1bf4924d3ff394b4aabce84c394fc482ee8b",
+        "entries": 67,
+        "verified": 67,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "source_identity": {
+        "entrypoint": {
+          "path": "scripts/jpl_relation_controls.py",
+          "sha256": "ac5f7a998ad198af30f07971f929b7abc43300e7aecb9e65e645d633920b9cba",
+          "expected_sha256": "ac5f7a998ad198af30f07971f929b7abc43300e7aecb9e65e645d633920b9cba",
+          "matches_frozen_bundle": true,
+          "git_tracked": false
+        },
+        "data_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+        "git_identity": {
+          "recorded_commit": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+          "working_tree_patch_bytes": 0,
+          "limit": "Git commit identifies only the recorded baseline; the entrypoint was untracked and the working-tree patch was empty. Source identity is the frozen bundle manifest, not the commit alone."
+        }
+      },
+      "run_inventory": {
+        "runs": 12,
+        "status": "PASS",
+        "files_expected": 156,
+        "files_verified": 156,
+        "runs_detail": [
+          {
+            "label": "full",
+            "seed": 2024,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/full/seed-2024",
+            "status": "complete",
+            "best_epoch": 27,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "5681b82aa18c258b725f7f29ac3b11b7be6b7df1f85e6cd0c31f45a65c99571d",
+              "last.pt": "32cedbb0e121bef48e75ac2c8f7f26e1807c66abd964b744ce1b1ccfb37c9692"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "78c9e8c89baf8146c709dbbeabfdda78362d4bca6e88e2fc1e7b5a09cd915f9c",
+              "predictions_test.npz": "cfae44cc38632ef06f2e25ae83d2da0971552f3459e94fcde4e1459bbd7f32ee",
+              "predictions_tuning.npz": "d924d9d5ae43d6e3d7ea3bea3cfa57db1bb91cc3405430c540dd02d2115e468f"
+            },
+            "test_mae": 0.08112869093363045,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "5681b82aa18c258b725f7f29ac3b11b7be6b7df1f85e6cd0c31f45a65c99571d",
+                "expected_sha256": "5681b82aa18c258b725f7f29ac3b11b7be6b7df1f85e6cd0c31f45a65c99571d",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 187,
+                "sha256": "71d74c1b5fe6d8244b13a8507a711d8a8e36aa7d6c4f90fcbcb708f5e538fc4f",
+                "expected_sha256": "71d74c1b5fe6d8244b13a8507a711d8a8e36aa7d6c4f90fcbcb708f5e538fc4f",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1240,
+                "sha256": "54fc1dd76c0c2c96ce7d032ace3a62bcc92ea6d05ecf6cd6b7bbbe6ab966f670",
+                "expected_sha256": "54fc1dd76c0c2c96ce7d032ace3a62bcc92ea6d05ecf6cd6b7bbbe6ab966f670",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 465045,
+                "sha256": "32cedbb0e121bef48e75ac2c8f7f26e1807c66abd964b744ce1b1ccfb37c9692",
+                "expected_sha256": "32cedbb0e121bef48e75ac2c8f7f26e1807c66abd964b744ce1b1ccfb37c9692",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4787,
+                "sha256": "4aa9cf66c5dc08fae3c7089b7462ec2c39a6e55d2c13b98ed6f05ebb2f019631",
+                "expected_sha256": "4aa9cf66c5dc08fae3c7089b7462ec2c39a6e55d2c13b98ed6f05ebb2f019631",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2446248,
+                "sha256": "78c9e8c89baf8146c709dbbeabfdda78362d4bca6e88e2fc1e7b5a09cd915f9c",
+                "expected_sha256": "78c9e8c89baf8146c709dbbeabfdda78362d4bca6e88e2fc1e7b5a09cd915f9c",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4921738,
+                "sha256": "cfae44cc38632ef06f2e25ae83d2da0971552f3459e94fcde4e1459bbd7f32ee",
+                "expected_sha256": "cfae44cc38632ef06f2e25ae83d2da0971552f3459e94fcde4e1459bbd7f32ee",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2381363,
+                "sha256": "d924d9d5ae43d6e3d7ea3bea3cfa57db1bb91cc3405430c540dd02d2115e468f",
+                "expected_sha256": "d924d9d5ae43d6e3d7ea3bea3cfa57db1bb91cc3405430c540dd02d2115e468f",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 237,
+                "sha256": "50715735c4d9f5580427bccb8f822474eaeff2b9b7b9720343d8a81828096a2d",
+                "expected_sha256": "50715735c4d9f5580427bccb8f822474eaeff2b9b7b9720343d8a81828096a2d",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 5226,
+                "sha256": "315af9efe089ab9b65defc867aa5c1e82883cfe4b13cb326790bdac3610257fa",
+                "expected_sha256": "315af9efe089ab9b65defc867aa5c1e82883cfe4b13cb326790bdac3610257fa",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "full",
+            "seed": 2025,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/full/seed-2025",
+            "status": "complete",
+            "best_epoch": 25,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "ba3b4e35f9251d45a4f4e892b308b9b0d533e4accd8c4e65a852eaa56c7a7db8",
+              "last.pt": "6a8781c2e83568153d8f56e1bf649dad55bb01fcb0ed4549485f31cbda3630a3"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "029ca1626962f08882c546afeee146c572d3ef38082eb01691bd57091a9c7737",
+              "predictions_test.npz": "01e768a3b145d8402a3f7af6bfca964013519ffc06858b784a2dec5184be03af",
+              "predictions_tuning.npz": "323fd318d713c5834f659a7665be55ccd0b257a43bcc4962dc35a44ed19a60b9"
+            },
+            "test_mae": 0.0813350579716888,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "ba3b4e35f9251d45a4f4e892b308b9b0d533e4accd8c4e65a852eaa56c7a7db8",
+                "expected_sha256": "ba3b4e35f9251d45a4f4e892b308b9b0d533e4accd8c4e65a852eaa56c7a7db8",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 188,
+                "sha256": "1d5758b0e442efc3c472fe72eeceee51ea857c549adfa438a75d3c65a10ac96d",
+                "expected_sha256": "1d5758b0e442efc3c472fe72eeceee51ea857c549adfa438a75d3c65a10ac96d",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1240,
+                "sha256": "f509d024b3b9bcd6123896a1dfceb7769c347b940145f09f18e6f40248d5cf92",
+                "expected_sha256": "f509d024b3b9bcd6123896a1dfceb7769c347b940145f09f18e6f40248d5cf92",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 464917,
+                "sha256": "6a8781c2e83568153d8f56e1bf649dad55bb01fcb0ed4549485f31cbda3630a3",
+                "expected_sha256": "6a8781c2e83568153d8f56e1bf649dad55bb01fcb0ed4549485f31cbda3630a3",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4786,
+                "sha256": "bf631097b4b76c97a9242448fc27bd5e0b31942ce1c6c8acb02d0a55a3fdaf26",
+                "expected_sha256": "bf631097b4b76c97a9242448fc27bd5e0b31942ce1c6c8acb02d0a55a3fdaf26",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2447037,
+                "sha256": "029ca1626962f08882c546afeee146c572d3ef38082eb01691bd57091a9c7737",
+                "expected_sha256": "029ca1626962f08882c546afeee146c572d3ef38082eb01691bd57091a9c7737",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4923550,
+                "sha256": "01e768a3b145d8402a3f7af6bfca964013519ffc06858b784a2dec5184be03af",
+                "expected_sha256": "01e768a3b145d8402a3f7af6bfca964013519ffc06858b784a2dec5184be03af",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2382874,
+                "sha256": "323fd318d713c5834f659a7665be55ccd0b257a43bcc4962dc35a44ed19a60b9",
+                "expected_sha256": "323fd318d713c5834f659a7665be55ccd0b257a43bcc4962dc35a44ed19a60b9",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 237,
+                "sha256": "95ec786bdba0a85618366e27e458401b24ada20cb4ba01aba0dcaf81f61024c9",
+                "expected_sha256": "95ec786bdba0a85618366e27e458401b24ada20cb4ba01aba0dcaf81f61024c9",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 4924,
+                "sha256": "0d25157596e58c0df482b9a33291a7fadd070492f991f629a76914994426df4b",
+                "expected_sha256": "0d25157596e58c0df482b9a33291a7fadd070492f991f629a76914994426df4b",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "full",
+            "seed": 2026,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/full/seed-2026",
+            "status": "complete",
+            "best_epoch": 24,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "28152829ddab02532712a4fa8c0bff28912408ef09395de69bfeda4e2850ab8e",
+              "last.pt": "691e2fb0a5877fd8f9da352a9cf5133f43924a04eed6b644b3f8234b68b43ea4"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "55092a8718406f8048b50edfd66e27b40c7f41999147cab42d0c73e74333f3f4",
+              "predictions_test.npz": "cd3b667d7a6bf983b131459330856389985b5dbe4dc4d120491fa66de0d96987",
+              "predictions_tuning.npz": "373429ac43599e0f338ca07034ed6fcee882fe0035589fd44e0ef56feb3a7c8d"
+            },
+            "test_mae": 0.08073728103518948,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "28152829ddab02532712a4fa8c0bff28912408ef09395de69bfeda4e2850ab8e",
+                "expected_sha256": "28152829ddab02532712a4fa8c0bff28912408ef09395de69bfeda4e2850ab8e",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 187,
+                "sha256": "a6de6f213136eb286cb11240df95262a40908036866b2c1bc78d94ec3ab5b2b5",
+                "expected_sha256": "a6de6f213136eb286cb11240df95262a40908036866b2c1bc78d94ec3ab5b2b5",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1240,
+                "sha256": "4e0f13ea3bdb064f9767a0dd9c44917737ec06fcef0875a3b90721b544efde1c",
+                "expected_sha256": "4e0f13ea3bdb064f9767a0dd9c44917737ec06fcef0875a3b90721b544efde1c",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 464853,
+                "sha256": "691e2fb0a5877fd8f9da352a9cf5133f43924a04eed6b644b3f8234b68b43ea4",
+                "expected_sha256": "691e2fb0a5877fd8f9da352a9cf5133f43924a04eed6b644b3f8234b68b43ea4",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4828,
+                "sha256": "3a88e29d97a7cc87d187bcbc9c0c491175c36b5493c16cf3160ed5a540b0bb04",
+                "expected_sha256": "3a88e29d97a7cc87d187bcbc9c0c491175c36b5493c16cf3160ed5a540b0bb04",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2448872,
+                "sha256": "55092a8718406f8048b50edfd66e27b40c7f41999147cab42d0c73e74333f3f4",
+                "expected_sha256": "55092a8718406f8048b50edfd66e27b40c7f41999147cab42d0c73e74333f3f4",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4929355,
+                "sha256": "cd3b667d7a6bf983b131459330856389985b5dbe4dc4d120491fa66de0d96987",
+                "expected_sha256": "cd3b667d7a6bf983b131459330856389985b5dbe4dc4d120491fa66de0d96987",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2386534,
+                "sha256": "373429ac43599e0f338ca07034ed6fcee882fe0035589fd44e0ef56feb3a7c8d",
+                "expected_sha256": "373429ac43599e0f338ca07034ed6fcee882fe0035589fd44e0ef56feb3a7c8d",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 237,
+                "sha256": "c8757d28eea396da299450bcb3d63888145a9a82214b51efff9f48fdd67147ef",
+                "expected_sha256": "c8757d28eea396da299450bcb3d63888145a9a82214b51efff9f48fdd67147ef",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 4788,
+                "sha256": "4d3ff81945561cd85e1363efe6033975f9c98bed84ee4c92a99396f43d309822",
+                "expected_sha256": "4d3ff81945561cd85e1363efe6033975f9c98bed84ee4c92a99396f43d309822",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "load_to_self",
+            "seed": 2024,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/load_to_self/seed-2024",
+            "status": "complete",
+            "best_epoch": 42,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "eb149fe08c6e1829b4e7c586e1f8ba53d25bb583eaa898b8d6d2f0d40ef1eea3",
+              "last.pt": "25d526168efc340411fb6eee83f5764a1e65dcec1503460c3a917f7dc6028e68"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "7f13763705c019ef901440ed8d2f5efe52f5474b202b4d702bf2bd44d70fa192",
+              "predictions_test.npz": "49d609d06e5cfe7e20b01ee891cf4dd0d9d82449033d08e0ecd63dc7c901d9f4",
+              "predictions_tuning.npz": "037527896bcd5d69bcf541a0f79e8c70bc0f3ff04a03e653ce0a61c44e2b7f99"
+            },
+            "test_mae": 0.08250263288526556,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "eb149fe08c6e1829b4e7c586e1f8ba53d25bb583eaa898b8d6d2f0d40ef1eea3",
+                "expected_sha256": "eb149fe08c6e1829b4e7c586e1f8ba53d25bb583eaa898b8d6d2f0d40ef1eea3",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 189,
+                "sha256": "9fc638212cdebe7db08eced2863b57b06fe2718b25d08a5d44ba55287cb938b2",
+                "expected_sha256": "9fc638212cdebe7db08eced2863b57b06fe2718b25d08a5d44ba55287cb938b2",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1256,
+                "sha256": "a7721ce83eca9842102d3de179e009a7cfdd901beb2069c4769930a9ca54f3d9",
+                "expected_sha256": "a7721ce83eca9842102d3de179e009a7cfdd901beb2069c4769930a9ca54f3d9",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 465877,
+                "sha256": "25d526168efc340411fb6eee83f5764a1e65dcec1503460c3a917f7dc6028e68",
+                "expected_sha256": "25d526168efc340411fb6eee83f5764a1e65dcec1503460c3a917f7dc6028e68",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4807,
+                "sha256": "06454f85477d4c211f1e956fe7cd8131afd743032be54d206c3348c8fbf42188",
+                "expected_sha256": "06454f85477d4c211f1e956fe7cd8131afd743032be54d206c3348c8fbf42188",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2454110,
+                "sha256": "7f13763705c019ef901440ed8d2f5efe52f5474b202b4d702bf2bd44d70fa192",
+                "expected_sha256": "7f13763705c019ef901440ed8d2f5efe52f5474b202b4d702bf2bd44d70fa192",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4937815,
+                "sha256": "49d609d06e5cfe7e20b01ee891cf4dd0d9d82449033d08e0ecd63dc7c901d9f4",
+                "expected_sha256": "49d609d06e5cfe7e20b01ee891cf4dd0d9d82449033d08e0ecd63dc7c901d9f4",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2396845,
+                "sha256": "037527896bcd5d69bcf541a0f79e8c70bc0f3ff04a03e653ce0a61c44e2b7f99",
+                "expected_sha256": "037527896bcd5d69bcf541a0f79e8c70bc0f3ff04a03e653ce0a61c44e2b7f99",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 245,
+                "sha256": "9ea895aa8e5cd7c074ded1ae2098ffb7388e8c8c82a2accd819091d6bfa44781",
+                "expected_sha256": "9ea895aa8e5cd7c074ded1ae2098ffb7388e8c8c82a2accd819091d6bfa44781",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 7459,
+                "sha256": "02fa9c3b6d94943e9c27078463d559e7b0abe8434fefa201f0888ef365dd65ec",
+                "expected_sha256": "02fa9c3b6d94943e9c27078463d559e7b0abe8434fefa201f0888ef365dd65ec",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "load_to_self",
+            "seed": 2025,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/load_to_self/seed-2025",
+            "status": "complete",
+            "best_epoch": 41,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "51897b61ba0d8a92374b0dba67f7aa370f44f58ca9bf8b9ebed07492b51dd40d",
+              "last.pt": "265c2ef3dd4205014026b8a13c22bf96bdd8b082d81dbc736b18b7987b6263c1"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "899d8134eb3e63b95dd9669ee6f37e583be45a38b21a1efd806bde443b1b93ef",
+              "predictions_test.npz": "e05d79c9b31184d89c274ab47262f404c432084b44ab2071eecf34dc5185a80d",
+              "predictions_tuning.npz": "4ee63b88d2642947281c51a3fbb6e069134dd6345a2fc412fac7c1c892a42b64"
+            },
+            "test_mae": 0.0826281123888309,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "51897b61ba0d8a92374b0dba67f7aa370f44f58ca9bf8b9ebed07492b51dd40d",
+                "expected_sha256": "51897b61ba0d8a92374b0dba67f7aa370f44f58ca9bf8b9ebed07492b51dd40d",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 186,
+                "sha256": "7a426cae04667875f0520791bc04b179488e9e1482eae47bd7c23d7c788b4849",
+                "expected_sha256": "7a426cae04667875f0520791bc04b179488e9e1482eae47bd7c23d7c788b4849",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1256,
+                "sha256": "35005721c0fd6c214383e25b740aed45da36a61917e0f0cabbcbf73dd9fbe040",
+                "expected_sha256": "35005721c0fd6c214383e25b740aed45da36a61917e0f0cabbcbf73dd9fbe040",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 465813,
+                "sha256": "265c2ef3dd4205014026b8a13c22bf96bdd8b082d81dbc736b18b7987b6263c1",
+                "expected_sha256": "265c2ef3dd4205014026b8a13c22bf96bdd8b082d81dbc736b18b7987b6263c1",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4795,
+                "sha256": "3417e1d40949b3c1ba2d34b85e524f72cd961181843a3bc5fb9280ed49e96345",
+                "expected_sha256": "3417e1d40949b3c1ba2d34b85e524f72cd961181843a3bc5fb9280ed49e96345",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2443486,
+                "sha256": "899d8134eb3e63b95dd9669ee6f37e583be45a38b21a1efd806bde443b1b93ef",
+                "expected_sha256": "899d8134eb3e63b95dd9669ee6f37e583be45a38b21a1efd806bde443b1b93ef",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4915820,
+                "sha256": "e05d79c9b31184d89c274ab47262f404c432084b44ab2071eecf34dc5185a80d",
+                "expected_sha256": "e05d79c9b31184d89c274ab47262f404c432084b44ab2071eecf34dc5185a80d",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2381308,
+                "sha256": "4ee63b88d2642947281c51a3fbb6e069134dd6345a2fc412fac7c1c892a42b64",
+                "expected_sha256": "4ee63b88d2642947281c51a3fbb6e069134dd6345a2fc412fac7c1c892a42b64",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 245,
+                "sha256": "6853afb2cebc4127fc11aa7ff4c696f5e26577bfc6801c4f7b1ddbddd497cde2",
+                "expected_sha256": "6853afb2cebc4127fc11aa7ff4c696f5e26577bfc6801c4f7b1ddbddd497cde2",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 7321,
+                "sha256": "c20908066eb2f951397e78c2ec0657d6718a12d059ca1f9212f6717403df203a",
+                "expected_sha256": "c20908066eb2f951397e78c2ec0657d6718a12d059ca1f9212f6717403df203a",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "load_to_self",
+            "seed": 2026,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/load_to_self/seed-2026",
+            "status": "complete",
+            "best_epoch": 28,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "3b4c872ab826a93f80c953de30f59decdc8b7f1de3f82a7d2a48d8ba9ca3dbec",
+              "last.pt": "914c9c07c1414d6b6f5a2dafe3be92d011e0f8c94cfc7a53ba816b91e4e32d40"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "c7a1aed0045cce5d6f829f75eb51ec3c5c7b95c54234c623c5821ac153871255",
+              "predictions_test.npz": "b0ba2cc9d8a03da85e4d4a7458bd9bd2ed5cc6824e192c1b812f51e52699538c",
+              "predictions_tuning.npz": "007143784cbf56bb21499017ebacc7d9a39da54cd98acebf5734549e4f32cfa8"
+            },
+            "test_mae": 0.08257297414989434,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "3b4c872ab826a93f80c953de30f59decdc8b7f1de3f82a7d2a48d8ba9ca3dbec",
+                "expected_sha256": "3b4c872ab826a93f80c953de30f59decdc8b7f1de3f82a7d2a48d8ba9ca3dbec",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 188,
+                "sha256": "8a2425f4b65f169cf4b9e61335230d06e985e4a7856e3dad73cf3db06e85b99a",
+                "expected_sha256": "8a2425f4b65f169cf4b9e61335230d06e985e4a7856e3dad73cf3db06e85b99a",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1256,
+                "sha256": "83bb1d3f9445eb7991bc8008a8c8daffef3bbbe9a9e815028b81e99318599839",
+                "expected_sha256": "83bb1d3f9445eb7991bc8008a8c8daffef3bbbe9a9e815028b81e99318599839",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 465045,
+                "sha256": "914c9c07c1414d6b6f5a2dafe3be92d011e0f8c94cfc7a53ba816b91e4e32d40",
+                "expected_sha256": "914c9c07c1414d6b6f5a2dafe3be92d011e0f8c94cfc7a53ba816b91e4e32d40",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4822,
+                "sha256": "e7d208ed357bd389e6ce69c86e9e73e1eebedff18cc08b7e63ef50e18ca22fb5",
+                "expected_sha256": "e7d208ed357bd389e6ce69c86e9e73e1eebedff18cc08b7e63ef50e18ca22fb5",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2456629,
+                "sha256": "c7a1aed0045cce5d6f829f75eb51ec3c5c7b95c54234c623c5821ac153871255",
+                "expected_sha256": "c7a1aed0045cce5d6f829f75eb51ec3c5c7b95c54234c623c5821ac153871255",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4946508,
+                "sha256": "b0ba2cc9d8a03da85e4d4a7458bd9bd2ed5cc6824e192c1b812f51e52699538c",
+                "expected_sha256": "b0ba2cc9d8a03da85e4d4a7458bd9bd2ed5cc6824e192c1b812f51e52699538c",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2402155,
+                "sha256": "007143784cbf56bb21499017ebacc7d9a39da54cd98acebf5734549e4f32cfa8",
+                "expected_sha256": "007143784cbf56bb21499017ebacc7d9a39da54cd98acebf5734549e4f32cfa8",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 245,
+                "sha256": "8cb51bf513a0698ae662385da3cb7bc640d34b42e5214244ac519db80b612fe7",
+                "expected_sha256": "8cb51bf513a0698ae662385da3cb7bc640d34b42e5214244ac519db80b612fe7",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 5370,
+                "sha256": "95799f0e9a63be4b55093b87fbe19b1ce512d227177644ef81fc44d5016f5a9b",
+                "expected_sha256": "95799f0e9a63be4b55093b87fbe19b1ce512d227177644ef81fc44d5016f5a9b",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "event_to_self",
+            "seed": 2024,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/event_to_self/seed-2024",
+            "status": "complete",
+            "best_epoch": 23,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "ba8c13f36daa5ee60786e891a3b4b743b4388064b075280af93115a52ae9ced4",
+              "last.pt": "70939d2ce093a7341299c4b74c99b1d303b721f40bbde4c888f753edabf1f1fa"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "55b4bba317aeffca0cd693a3e5f72fb54574b5e439f3dd3c3be24560fcbfcbc8",
+              "predictions_test.npz": "599defad191ff209a55631439064b6adec2a37743bc35db58d1a6d2108cb3ef4",
+              "predictions_tuning.npz": "7c215b87a97f2876ac997f26063d06be8e46c18f7a7aaa4314c9af6249c98e44"
+            },
+            "test_mae": 0.08022293797051609,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "ba8c13f36daa5ee60786e891a3b4b743b4388064b075280af93115a52ae9ced4",
+                "expected_sha256": "ba8c13f36daa5ee60786e891a3b4b743b4388064b075280af93115a52ae9ced4",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 188,
+                "sha256": "e51371c2b7f0d34e27e3c6884122e0d5a0bf1b2177d6ee024c5a6a05e22f3ea5",
+                "expected_sha256": "e51371c2b7f0d34e27e3c6884122e0d5a0bf1b2177d6ee024c5a6a05e22f3ea5",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1258,
+                "sha256": "936016c4013400c1c267b1882c13985bd2389323daff60c3c562396a5f83dd31",
+                "expected_sha256": "936016c4013400c1c267b1882c13985bd2389323daff60c3c562396a5f83dd31",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 464789,
+                "sha256": "70939d2ce093a7341299c4b74c99b1d303b721f40bbde4c888f753edabf1f1fa",
+                "expected_sha256": "70939d2ce093a7341299c4b74c99b1d303b721f40bbde4c888f753edabf1f1fa",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4823,
+                "sha256": "6e54280994e49d027fe9f45f3de5231097d833c47d81bb7e828d694de39fb106",
+                "expected_sha256": "6e54280994e49d027fe9f45f3de5231097d833c47d81bb7e828d694de39fb106",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2436842,
+                "sha256": "55b4bba317aeffca0cd693a3e5f72fb54574b5e439f3dd3c3be24560fcbfcbc8",
+                "expected_sha256": "55b4bba317aeffca0cd693a3e5f72fb54574b5e439f3dd3c3be24560fcbfcbc8",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4898911,
+                "sha256": "599defad191ff209a55631439064b6adec2a37743bc35db58d1a6d2108cb3ef4",
+                "expected_sha256": "599defad191ff209a55631439064b6adec2a37743bc35db58d1a6d2108cb3ef4",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2367015,
+                "sha256": "7c215b87a97f2876ac997f26063d06be8e46c18f7a7aaa4314c9af6249c98e44",
+                "expected_sha256": "7c215b87a97f2876ac997f26063d06be8e46c18f7a7aaa4314c9af6249c98e44",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 246,
+                "sha256": "760d7df69731b4387ebd9709f7603058bf02970640e46037a5f443568b252077",
+                "expected_sha256": "760d7df69731b4387ebd9709f7603058bf02970640e46037a5f443568b252077",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 4620,
+                "sha256": "8def9ad25a1d1273e0994ec17facb903bd3d497f2c716a6aa9a271f45af5592c",
+                "expected_sha256": "8def9ad25a1d1273e0994ec17facb903bd3d497f2c716a6aa9a271f45af5592c",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "event_to_self",
+            "seed": 2025,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/event_to_self/seed-2025",
+            "status": "complete",
+            "best_epoch": 41,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "b1f5dc2d72b2da666c0192f23215139cf258e9fd8ee6ce67bcbd652d309fb59a",
+              "last.pt": "fb06321a96496501cc39e5bc6570d2edf897c327ee60fafe229092b3633b88b6"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "435f5233a4fc8f949c964c9c13e959ccba36d783a5824ea21b605fef6683cfa4",
+              "predictions_test.npz": "9a65adaca6438ac07b1fea3931ddb55d3471a694953f2f50e9d00d86a4f477dd",
+              "predictions_tuning.npz": "8379518412ed25da5c537cc4120c2de363b1c1a16b752cf160dce1aef499f778"
+            },
+            "test_mae": 0.08165800157980575,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "b1f5dc2d72b2da666c0192f23215139cf258e9fd8ee6ce67bcbd652d309fb59a",
+                "expected_sha256": "b1f5dc2d72b2da666c0192f23215139cf258e9fd8ee6ce67bcbd652d309fb59a",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 189,
+                "sha256": "f799c4cd44579aa16f31ae746937a84eea436d0abdc2dabe777f539cf15687de",
+                "expected_sha256": "f799c4cd44579aa16f31ae746937a84eea436d0abdc2dabe777f539cf15687de",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1258,
+                "sha256": "1bc133a84581e24479f088b4d106b696baab9a4800703b953261fa48aab48db3",
+                "expected_sha256": "1bc133a84581e24479f088b4d106b696baab9a4800703b953261fa48aab48db3",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 465813,
+                "sha256": "fb06321a96496501cc39e5bc6570d2edf897c327ee60fafe229092b3633b88b6",
+                "expected_sha256": "fb06321a96496501cc39e5bc6570d2edf897c327ee60fafe229092b3633b88b6",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4824,
+                "sha256": "c54224dbe646e82fdf489f3e3e101c6e375eeb19829bb77d8dbd92e29ef9d315",
+                "expected_sha256": "c54224dbe646e82fdf489f3e3e101c6e375eeb19829bb77d8dbd92e29ef9d315",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2436565,
+                "sha256": "435f5233a4fc8f949c964c9c13e959ccba36d783a5824ea21b605fef6683cfa4",
+                "expected_sha256": "435f5233a4fc8f949c964c9c13e959ccba36d783a5824ea21b605fef6683cfa4",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4905577,
+                "sha256": "9a65adaca6438ac07b1fea3931ddb55d3471a694953f2f50e9d00d86a4f477dd",
+                "expected_sha256": "9a65adaca6438ac07b1fea3931ddb55d3471a694953f2f50e9d00d86a4f477dd",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2373581,
+                "sha256": "8379518412ed25da5c537cc4120c2de363b1c1a16b752cf160dce1aef499f778",
+                "expected_sha256": "8379518412ed25da5c537cc4120c2de363b1c1a16b752cf160dce1aef499f778",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 246,
+                "sha256": "c603896ecb9f4581f89adeb80070df6e9ca7852763409e4dfc4479c2891fe4b2",
+                "expected_sha256": "c603896ecb9f4581f89adeb80070df6e9ca7852763409e4dfc4479c2891fe4b2",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 7317,
+                "sha256": "2e664f96a51b2e8b308cc67eb225e217ecb12e87ca11980f8d33d377f8a225ce",
+                "expected_sha256": "2e664f96a51b2e8b308cc67eb225e217ecb12e87ca11980f8d33d377f8a225ce",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "event_to_self",
+            "seed": 2026,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/event_to_self/seed-2026",
+            "status": "complete",
+            "best_epoch": 32,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "81f627c9d4ebf5bc89e18398d4bf7fdf99b8ba7411ceaff71425b2c8af2de0f7",
+              "last.pt": "b2aa312fed77ec350bef6bed20d64e80c5ab6be493b939893c943dc7799d3fff"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "3ad15d245ba8bdc371fb6f52513f77344be935c4f9b79b341fc79d8524c0e879",
+              "predictions_test.npz": "e0e07ebed8e7cdb1ff2060054d2a5ae7944c55e0a306c9336fdfc10dfeaa7c43",
+              "predictions_tuning.npz": "5a0ac1a391e8014bc0d8a0722d4409c7d9288a2a73a80aa4d39402ce530d2df8"
+            },
+            "test_mae": 0.08167893215987887,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "81f627c9d4ebf5bc89e18398d4bf7fdf99b8ba7411ceaff71425b2c8af2de0f7",
+                "expected_sha256": "81f627c9d4ebf5bc89e18398d4bf7fdf99b8ba7411ceaff71425b2c8af2de0f7",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 188,
+                "sha256": "fa834db22ce18fc3e725644c6cdadc3ac3299115c4c3be27eb30eaf99d415552",
+                "expected_sha256": "fa834db22ce18fc3e725644c6cdadc3ac3299115c4c3be27eb30eaf99d415552",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1258,
+                "sha256": "98ef7987a19d1218f14e54e95f61fc7c947e912cee56b8e7533183b739d7cedd",
+                "expected_sha256": "98ef7987a19d1218f14e54e95f61fc7c947e912cee56b8e7533183b739d7cedd",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 465301,
+                "sha256": "b2aa312fed77ec350bef6bed20d64e80c5ab6be493b939893c943dc7799d3fff",
+                "expected_sha256": "b2aa312fed77ec350bef6bed20d64e80c5ab6be493b939893c943dc7799d3fff",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4797,
+                "sha256": "3b9410a9b18a9fc1b76dc19e7e5bc0312d84cb80d71ce6c0ab485bc99e723e8c",
+                "expected_sha256": "3b9410a9b18a9fc1b76dc19e7e5bc0312d84cb80d71ce6c0ab485bc99e723e8c",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2434266,
+                "sha256": "3ad15d245ba8bdc371fb6f52513f77344be935c4f9b79b341fc79d8524c0e879",
+                "expected_sha256": "3ad15d245ba8bdc371fb6f52513f77344be935c4f9b79b341fc79d8524c0e879",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4898764,
+                "sha256": "e0e07ebed8e7cdb1ff2060054d2a5ae7944c55e0a306c9336fdfc10dfeaa7c43",
+                "expected_sha256": "e0e07ebed8e7cdb1ff2060054d2a5ae7944c55e0a306c9336fdfc10dfeaa7c43",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2368402,
+                "sha256": "5a0ac1a391e8014bc0d8a0722d4409c7d9288a2a73a80aa4d39402ce530d2df8",
+                "expected_sha256": "5a0ac1a391e8014bc0d8a0722d4409c7d9288a2a73a80aa4d39402ce530d2df8",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 246,
+                "sha256": "76580aff72cd8f8b065368f6363b12ec07887e0d3fd6f48c57fe89201fe47229",
+                "expected_sha256": "76580aff72cd8f8b065368f6363b12ec07887e0d3fd6f48c57fe89201fe47229",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 5972,
+                "sha256": "d691ef4880a8f2484b2bc9f352ab56f4fd426d637971d93fbe21b6ae92c3e177",
+                "expected_sha256": "d691ef4880a8f2484b2bc9f352ab56f4fd426d637971d93fbe21b6ae92c3e177",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "pattern_to_self",
+            "seed": 2024,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/pattern_to_self/seed-2024",
+            "status": "complete",
+            "best_epoch": 34,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "d7f9c51b412755de5a5dfa0771687868b550716223db38909902699998ab3bab",
+              "last.pt": "912aca5ea7d70d58b9a892bca0e90a2da1efbf262442ca7a0f3366a10f3a3648"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "360fd664c7bd0f6a44c1e1a330e9804ecc6b0a6d9fd6c2881304b6ba600a645f",
+              "predictions_test.npz": "2a3cc8d463e40123d601163c0bb183a4eafa62137a5a04e481c3f66ee69bce52",
+              "predictions_tuning.npz": "a93ab4cc82c1a8b0e5310d03e702fa6123ae28d12598fe516020d78e03aafeed"
+            },
+            "test_mae": 0.08191421165354142,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "d7f9c51b412755de5a5dfa0771687868b550716223db38909902699998ab3bab",
+                "expected_sha256": "d7f9c51b412755de5a5dfa0771687868b550716223db38909902699998ab3bab",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 188,
+                "sha256": "ea4502df43d09fb0e951194cae068c42bdcf58ff301b02043c86bb046de8c914",
+                "expected_sha256": "ea4502df43d09fb0e951194cae068c42bdcf58ff301b02043c86bb046de8c914",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1262,
+                "sha256": "06fad7cd2d1eb03c70a2548edf3d3a2094558ed61a52fe857f8d0852aa46a49e",
+                "expected_sha256": "06fad7cd2d1eb03c70a2548edf3d3a2094558ed61a52fe857f8d0852aa46a49e",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 465429,
+                "sha256": "912aca5ea7d70d58b9a892bca0e90a2da1efbf262442ca7a0f3366a10f3a3648",
+                "expected_sha256": "912aca5ea7d70d58b9a892bca0e90a2da1efbf262442ca7a0f3366a10f3a3648",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4822,
+                "sha256": "5978b22672d9a6736b8bdc465702ad94a900bb4c49aceb0ccde53a1f95cc44b2",
+                "expected_sha256": "5978b22672d9a6736b8bdc465702ad94a900bb4c49aceb0ccde53a1f95cc44b2",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2440659,
+                "sha256": "360fd664c7bd0f6a44c1e1a330e9804ecc6b0a6d9fd6c2881304b6ba600a645f",
+                "expected_sha256": "360fd664c7bd0f6a44c1e1a330e9804ecc6b0a6d9fd6c2881304b6ba600a645f",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4911545,
+                "sha256": "2a3cc8d463e40123d601163c0bb183a4eafa62137a5a04e481c3f66ee69bce52",
+                "expected_sha256": "2a3cc8d463e40123d601163c0bb183a4eafa62137a5a04e481c3f66ee69bce52",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2375904,
+                "sha256": "a93ab4cc82c1a8b0e5310d03e702fa6123ae28d12598fe516020d78e03aafeed",
+                "expected_sha256": "a93ab4cc82c1a8b0e5310d03e702fa6123ae28d12598fe516020d78e03aafeed",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 248,
+                "sha256": "179ce344cd30a47cb30afedf4cd17bc7fe101d37585d1fd6126adb7ececef691",
+                "expected_sha256": "179ce344cd30a47cb30afedf4cd17bc7fe101d37585d1fd6126adb7ececef691",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 6260,
+                "sha256": "951d3ff3525822db4dbf352b21b2d29bb1afabdd73683f91fb23d820c0c83270",
+                "expected_sha256": "951d3ff3525822db4dbf352b21b2d29bb1afabdd73683f91fb23d820c0c83270",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "pattern_to_self",
+            "seed": 2025,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/pattern_to_self/seed-2025",
+            "status": "complete",
+            "best_epoch": 41,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "4781a5801cf62959b05db0de18f0528bb90e2e11ee392c7790e820fe04275ed7",
+              "last.pt": "0392b24fce8f5df37b3f99889548439b9f6d1541c047155f7b7636bd09960efb"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "57a984528e33a02172dff22af5b04a56f8246ce3497678b6cbd765104d0607ee",
+              "predictions_test.npz": "a392dbcfa684981dcb280d160a12f2aa2f6e5b3c100592ab37373747cf4d0ce1",
+              "predictions_tuning.npz": "0d7c94fc5b89d972fc99ebbd95b66c98eb31db00b794d550d215e47f46a7bfd6"
+            },
+            "test_mae": 0.08220832275443064,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "4781a5801cf62959b05db0de18f0528bb90e2e11ee392c7790e820fe04275ed7",
+                "expected_sha256": "4781a5801cf62959b05db0de18f0528bb90e2e11ee392c7790e820fe04275ed7",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 188,
+                "sha256": "5decc54841f2a2e16d0a33e953252524d5fd0ac197b361c782b19b9a0a972447",
+                "expected_sha256": "5decc54841f2a2e16d0a33e953252524d5fd0ac197b361c782b19b9a0a972447",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1262,
+                "sha256": "c4c59e29c357afc3716a6110452f32e37889b45d43a0c085b2551252e1f9ae74",
+                "expected_sha256": "c4c59e29c357afc3716a6110452f32e37889b45d43a0c085b2551252e1f9ae74",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 465813,
+                "sha256": "0392b24fce8f5df37b3f99889548439b9f6d1541c047155f7b7636bd09960efb",
+                "expected_sha256": "0392b24fce8f5df37b3f99889548439b9f6d1541c047155f7b7636bd09960efb",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4844,
+                "sha256": "c12d5d64e7052656f9537f68a322f6ff5da514800b5be32c42d70c70cc59ed0c",
+                "expected_sha256": "c12d5d64e7052656f9537f68a322f6ff5da514800b5be32c42d70c70cc59ed0c",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2444926,
+                "sha256": "57a984528e33a02172dff22af5b04a56f8246ce3497678b6cbd765104d0607ee",
+                "expected_sha256": "57a984528e33a02172dff22af5b04a56f8246ce3497678b6cbd765104d0607ee",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4915151,
+                "sha256": "a392dbcfa684981dcb280d160a12f2aa2f6e5b3c100592ab37373747cf4d0ce1",
+                "expected_sha256": "a392dbcfa684981dcb280d160a12f2aa2f6e5b3c100592ab37373747cf4d0ce1",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2377331,
+                "sha256": "0d7c94fc5b89d972fc99ebbd95b66c98eb31db00b794d550d215e47f46a7bfd6",
+                "expected_sha256": "0d7c94fc5b89d972fc99ebbd95b66c98eb31db00b794d550d215e47f46a7bfd6",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 248,
+                "sha256": "ec8b42fff9e4b82c55e9ff1739bd5267f1d43a5928ef5b38f21aee224be4f5bf",
+                "expected_sha256": "ec8b42fff9e4b82c55e9ff1739bd5267f1d43a5928ef5b38f21aee224be4f5bf",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 7304,
+                "sha256": "39fa06754205cf1c54af3451a8d93d58ae0749a02e7875ecfaab0515878c142f",
+                "expected_sha256": "39fa06754205cf1c54af3451a8d93d58ae0749a02e7875ecfaab0515878c142f",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "pattern_to_self",
+            "seed": 2026,
+            "path": "outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031/jpl/pattern_to_self/seed-2026",
+            "status": "complete",
+            "best_epoch": 22,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "2cea9fc751c82be6e1d71afa28b3c367343a516c28e1890b5f924d228dbaf41e",
+              "last.pt": "774e5b3d433930d2281343535e775dfc5b892c068a2d5d0875b21bef28c44793"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "f7a852275b7f39458156e152df3fda9d1829a1df6acebd0b997b0e2ef211c3df",
+              "predictions_test.npz": "60d3af8c5281eda9e6d1b00b9c8d81a443752c1d9c2dcd343985865b3c33644b",
+              "predictions_tuning.npz": "1803b8d60eec18bcf052f2705b84b1bb0238d280056d17be45b5fa39c8eb488c"
+            },
+            "test_mae": 0.08283552003738893,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "2cea9fc751c82be6e1d71afa28b3c367343a516c28e1890b5f924d228dbaf41e",
+                "expected_sha256": "2cea9fc751c82be6e1d71afa28b3c367343a516c28e1890b5f924d228dbaf41e",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 187,
+                "sha256": "98e5822e65e91f596ee48eaf8d1c8223b7842109dafa68b349e99dde2be2d6b6",
+                "expected_sha256": "98e5822e65e91f596ee48eaf8d1c8223b7842109dafa68b349e99dde2be2d6b6",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1262,
+                "sha256": "134609ea748dcb4a91b3c2b7e0988e20863978efa5e14421495007d7a5c24aa9",
+                "expected_sha256": "134609ea748dcb4a91b3c2b7e0988e20863978efa5e14421495007d7a5c24aa9",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 464725,
+                "sha256": "774e5b3d433930d2281343535e775dfc5b892c068a2d5d0875b21bef28c44793",
+                "expected_sha256": "774e5b3d433930d2281343535e775dfc5b892c068a2d5d0875b21bef28c44793",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4785,
+                "sha256": "4d79ce8211f837b63630bdc0cdcfc517699c9b95b3c549012e729328890cc0e2",
+                "expected_sha256": "4d79ce8211f837b63630bdc0cdcfc517699c9b95b3c549012e729328890cc0e2",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2480401,
+                "sha256": "f7a852275b7f39458156e152df3fda9d1829a1df6acebd0b997b0e2ef211c3df",
+                "expected_sha256": "f7a852275b7f39458156e152df3fda9d1829a1df6acebd0b997b0e2ef211c3df",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 4995436,
+                "sha256": "60d3af8c5281eda9e6d1b00b9c8d81a443752c1d9c2dcd343985865b3c33644b",
+                "expected_sha256": "60d3af8c5281eda9e6d1b00b9c8d81a443752c1d9c2dcd343985865b3c33644b",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2432191,
+                "sha256": "1803b8d60eec18bcf052f2705b84b1bb0238d280056d17be45b5fa39c8eb488c",
+                "expected_sha256": "1803b8d60eec18bcf052f2705b84b1bb0238d280056d17be45b5fa39c8eb488c",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 248,
+                "sha256": "edc8f80c62d6fdf17d09409ee2f56541aaa6575911f1c1f6d079a340b0c83cfe",
+                "expected_sha256": "edc8f80c62d6fdf17d09409ee2f56541aaa6575911f1c1f6d079a340b0c83cfe",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 4456,
+                "sha256": "82964531f2fc11c83a3f0e7495601b766d4d2d2f027949ddf20c46d6ce85e678",
+                "expected_sha256": "82964531f2fc11c83a3f0e7495601b766d4d2d2f027949ddf20c46d6ce85e678",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          }
+        ]
+      },
+      "saved_prediction_replay": {
+        "command": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/bin/python /Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/scripts/audit_sgexp031_results.py --source /Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-031/recovered/results/SG-EXP-031 --out /var/folders/l9/9m003kf51pj9k8kdk3j2phb40000gn/T/sgexp031-032-replay-tn2uhxu1/SG-EXP-031-audit --bootstrap-draws 10000",
+        "returncode": 0,
+        "stdout_tail": [
+          "          0.0022754760717531874",
+          "        ]",
+          "      },",
+          "      \"positive_time_blocks\": 17,",
+          "      \"time_blocks\": 24",
+          "    }",
+          "  ]",
+          "}"
+        ],
+        "stderr_tail": [],
+        "audit": {
+          "status": "POST_HOC_DIAGNOSTIC",
+          "source_checksum_entries_verified": 173,
+          "verified_result_manifest_entries": null,
+          "run_count": 12,
+          "test_keys_per_run": 632640,
+          "primary_difference": null
+        },
+        "outputs": [
+          {
+            "name": "README.md",
+            "bytes": 3594,
+            "sha256": "63dd87c07025b962e50c7e83d39e6014c1acbe65ca73e3ac97effc7eb58945aa"
+          },
+          {
+            "name": "audit.json",
+            "bytes": 31770,
+            "sha256": "8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475"
+          },
+          {
+            "name": "paired-time-blocks.csv",
+            "bytes": 5370,
+            "sha256": "5425b4ce32fc26ae525679374ab8762bd2a14a9f6344efb639698accbfa05d51"
+          },
+          {
+            "name": "run-metrics.csv",
+            "bytes": 3108,
+            "sha256": "27ab37e7969430e22a557a57600d6373d1262d83a92630e2b169cee50d941709"
+          }
+        ]
+      },
+      "status": "PASS"
+    },
+    "SG-EXP-032": {
+      "archives": {
+        "result": {
+          "path": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+          "bytes": 73841118,
+          "sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+          "expected_sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+          "hash_match": true
+        },
+        "bundle": {
+          "path": "outputs/experiments/SG-EXP-032/upload/SG-EXP-032-bundle.tar.gz",
+          "bytes": 2612518,
+          "sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+          "expected_sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+          "hash_match": true
+        }
+      },
+      "internal_result_checksums": {
+        "path": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+        "sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+        "entries": 99,
+        "verified": 99,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "bundle_manifest": {
+        "archive_path": "outputs/experiments/SG-EXP-032/upload/SG-EXP-032-bundle.tar.gz",
+        "archive_sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+        "manifest_member": "workspace/BUNDLE_MANIFEST.json",
+        "manifest_sha256": "893ca0586a7a2e79b4f5ca5ef35d2d1e2f46d84d3538d90829f5b757c9d01cc2",
+        "entries": 91,
+        "verified": 91,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "disk_manifest": {
+        "manifest_path": "outputs/experiments/SG-EXP-032/frozen-contract/manifest.json",
+        "manifest_sha256": "e8f5b8498cc03f9c483a1a54991914ffb926d369595f3a553912298c6c1ea566",
+        "entries": 3,
+        "verified": 3,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "source_identity": {
+        "entrypoint": {
+          "path": "scripts/completion_target_sensitivity.py",
+          "sha256": "6bb968944a4db08cb3458cf0dbdd4b07c192ce5c31cbcdefad44b9cb945ad753",
+          "expected_sha256": "6bb968944a4db08cb3458cf0dbdd4b07c192ce5c31cbcdefad44b9cb945ad753",
+          "matches_frozen_bundle": true,
+          "git_tracked": false
+        },
+        "data_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+        "git_identity": {
+          "recorded_commit": null,
+          "limit": "No verified historical Git commit is present in the frozen SG-EXP-032 bundle; source identity is the file-hash manifest only."
+        }
+      },
+      "run_inventory": {
+        "runs": 6,
+        "status": "PASS",
+        "files_expected": 75,
+        "files_verified": 75,
+        "runs_detail": [
+          {
+            "label": "mrg_full",
+            "seed": 2024,
+            "path": "outputs/experiments/SG-EXP-032/recovered/closeout/closeout/results/formal/mrg_full/seed-2024",
+            "status": "complete",
+            "best_epoch": 16,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "0b20fd692a65cd3d525e67acd698bb90e406e998472306a0190cdbc226e4ad8d",
+              "last.pt": "196937e50188c70598b129ed269b562b5b4048bfc1bb9b33a37e093ca06d7f6c"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "126396771dd53106a4fbb6be5307e9d06bb5e3c49438ae280811da853a385407",
+              "predictions_test.npz": "1e317f88b59dae5a7ee4db013bac9afd45b79eb1fe80159ed8f885d8151e65b8",
+              "predictions_tuning.npz": "ee0b39866553880220cc6c2d0509714ae7b609927865c4b45e2edfe308c44f6f"
+            },
+            "test_mae": 0.0433091665520962,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "0b20fd692a65cd3d525e67acd698bb90e406e998472306a0190cdbc226e4ad8d",
+                "expected_sha256": "0b20fd692a65cd3d525e67acd698bb90e406e998472306a0190cdbc226e4ad8d",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 186,
+                "sha256": "bde72a2494b852c0c4311d8c881401bf1c4e2be4e16151a26dde5b55606657b5",
+                "expected_sha256": "bde72a2494b852c0c4311d8c881401bf1c4e2be4e16151a26dde5b55606657b5",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1243,
+                "sha256": "f68192dee14fb5c4997abc2e85dbca9784ea5dd5f1ade4e9313e5c13438becb0",
+                "expected_sha256": "f68192dee14fb5c4997abc2e85dbca9784ea5dd5f1ade4e9313e5c13438becb0",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 464405,
+                "sha256": "196937e50188c70598b129ed269b562b5b4048bfc1bb9b33a37e093ca06d7f6c",
+                "expected_sha256": "196937e50188c70598b129ed269b562b5b4048bfc1bb9b33a37e093ca06d7f6c",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4878,
+                "sha256": "ff8ed243c17c06df937a17f210bf92d82ceee644c670b3438218d1644171be1b",
+                "expected_sha256": "ff8ed243c17c06df937a17f210bf92d82ceee644c670b3438218d1644171be1b",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2670083,
+                "sha256": "126396771dd53106a4fbb6be5307e9d06bb5e3c49438ae280811da853a385407",
+                "expected_sha256": "126396771dd53106a4fbb6be5307e9d06bb5e3c49438ae280811da853a385407",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 5439590,
+                "sha256": "1e317f88b59dae5a7ee4db013bac9afd45b79eb1fe80159ed8f885d8151e65b8",
+                "expected_sha256": "1e317f88b59dae5a7ee4db013bac9afd45b79eb1fe80159ed8f885d8151e65b8",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2635293,
+                "sha256": "ee0b39866553880220cc6c2d0509714ae7b609927865c4b45e2edfe308c44f6f",
+                "expected_sha256": "ee0b39866553880220cc6c2d0509714ae7b609927865c4b45e2edfe308c44f6f",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 263,
+                "sha256": "5845a389af677676bfe684bc0ceb356c0b1223e0f6644afc22bf3270aa2e3a1f",
+                "expected_sha256": "5845a389af677676bfe684bc0ceb356c0b1223e0f6644afc22bf3270aa2e3a1f",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 3598,
+                "sha256": "495a439eb917b742508eff3683fd7abe7a0c0fa34cdb4f9b0fa0adc0d6308ae6",
+                "expected_sha256": "495a439eb917b742508eff3683fd7abe7a0c0fa34cdb4f9b0fa0adc0d6308ae6",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "mrg_full",
+            "seed": 2025,
+            "path": "outputs/experiments/SG-EXP-032/recovered/closeout/closeout/results/formal/mrg_full/seed-2025",
+            "status": "complete",
+            "best_epoch": 12,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "cd1892fcac1648ed9fb39b4db8ca544d7434c4784adb48f37e5ccf8bb9751eb4",
+              "last.pt": "891f116d5ff65e2b45c21856fd58b6b819bfbeff47bc5e450f937f1841172c3f"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "c408b28da558b61f258cda1e5062d93ddc38a8b952a6e4b1db53f7fb41fb1319",
+              "predictions_test.npz": "844df5847b7a2ecd42e2330f097c3837d6b3258077c3bfb0035996ba93b14119",
+              "predictions_tuning.npz": "15967e834d8c92c4990e0795bc32c533a8ec818bfdb787a170595b5d640d72ff"
+            },
+            "test_mae": 0.04374020334847536,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "cd1892fcac1648ed9fb39b4db8ca544d7434c4784adb48f37e5ccf8bb9751eb4",
+                "expected_sha256": "cd1892fcac1648ed9fb39b4db8ca544d7434c4784adb48f37e5ccf8bb9751eb4",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 184,
+                "sha256": "009476100ad5011dc1a7caafbbcbdae62f67aafddd3ce12e8a7624296d2a4e74",
+                "expected_sha256": "009476100ad5011dc1a7caafbbcbdae62f67aafddd3ce12e8a7624296d2a4e74",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1243,
+                "sha256": "0c462279e124c4958ac1597984372329bec2abf5e9914e1245dc8c095a9a99b7",
+                "expected_sha256": "0c462279e124c4958ac1597984372329bec2abf5e9914e1245dc8c095a9a99b7",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 464149,
+                "sha256": "891f116d5ff65e2b45c21856fd58b6b819bfbeff47bc5e450f937f1841172c3f",
+                "expected_sha256": "891f116d5ff65e2b45c21856fd58b6b819bfbeff47bc5e450f937f1841172c3f",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4861,
+                "sha256": "878f54605733023688b326049287e9c0dfa0b29a67e25ed9e4df3cf30ebeca8d",
+                "expected_sha256": "878f54605733023688b326049287e9c0dfa0b29a67e25ed9e4df3cf30ebeca8d",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2685880,
+                "sha256": "c408b28da558b61f258cda1e5062d93ddc38a8b952a6e4b1db53f7fb41fb1319",
+                "expected_sha256": "c408b28da558b61f258cda1e5062d93ddc38a8b952a6e4b1db53f7fb41fb1319",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 5463114,
+                "sha256": "844df5847b7a2ecd42e2330f097c3837d6b3258077c3bfb0035996ba93b14119",
+                "expected_sha256": "844df5847b7a2ecd42e2330f097c3837d6b3258077c3bfb0035996ba93b14119",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2651231,
+                "sha256": "15967e834d8c92c4990e0795bc32c533a8ec818bfdb787a170595b5d640d72ff",
+                "expected_sha256": "15967e834d8c92c4990e0795bc32c533a8ec818bfdb787a170595b5d640d72ff",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 263,
+                "sha256": "74edb0b1995e67e862a930abe53ca4368fa69699308f612b60ce71bbdc7b7f22",
+                "expected_sha256": "74edb0b1995e67e862a930abe53ca4368fa69699308f612b60ce71bbdc7b7f22",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 2988,
+                "sha256": "b4cea57688b7e8fab36307607329c564678435413d18367a279e5aa3bc01bd06",
+                "expected_sha256": "b4cea57688b7e8fab36307607329c564678435413d18367a279e5aa3bc01bd06",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "mrg_full",
+            "seed": 2026,
+            "path": "outputs/experiments/SG-EXP-032/recovered/closeout/closeout/results/formal/mrg_full/seed-2026",
+            "status": "complete",
+            "best_epoch": 14,
+            "trainable_parameters": 32714,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "73ae65e99960de43cf7707dcf8223db9ac15a8321b9f9d1bb290b6e0e774b3db",
+              "last.pt": "a992ea96c485544909a6b2b4d47542c920b7b907ae153efdf2c1b17868a2387e"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "5cf60ac1b2ffd058d6b85fa76ff128f231ed53ada9165b61173e45578137618e",
+              "predictions_test.npz": "bd44801dbc7733ec761fb6fd593f837f26a28a3865444379682e77b543d659a6",
+              "predictions_tuning.npz": "95ce61a080356cff18225940f9c6256bbcb2c807fa922f7ea03c507194769872"
+            },
+            "test_mae": 0.043154620803342675,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 151870,
+                "sha256": "73ae65e99960de43cf7707dcf8223db9ac15a8321b9f9d1bb290b6e0e774b3db",
+                "expected_sha256": "73ae65e99960de43cf7707dcf8223db9ac15a8321b9f9d1bb290b6e0e774b3db",
+                "passed": true
+              },
+              {
+                "name": "beta.json",
+                "bytes": 186,
+                "sha256": "97cb11b0b53f07ce5b504323da1300be04c26fd40b4e94c938df33359305d885",
+                "expected_sha256": "97cb11b0b53f07ce5b504323da1300be04c26fd40b4e94c938df33359305d885",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1243,
+                "sha256": "f9d473a1c79bf7f8c3e5df5b2c5dd58ce97195c04ed1958548a6123ffa66da9c",
+                "expected_sha256": "f9d473a1c79bf7f8c3e5df5b2c5dd58ce97195c04ed1958548a6123ffa66da9c",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 464277,
+                "sha256": "a992ea96c485544909a6b2b4d47542c920b7b907ae153efdf2c1b17868a2387e",
+                "expected_sha256": "a992ea96c485544909a6b2b4d47542c920b7b907ae153efdf2c1b17868a2387e",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4890,
+                "sha256": "5fe358ccc19183c29ccea568479a63a33ea32a6108c392746d4a2486600e8b5b",
+                "expected_sha256": "5fe358ccc19183c29ccea568479a63a33ea32a6108c392746d4a2486600e8b5b",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2688700,
+                "sha256": "5cf60ac1b2ffd058d6b85fa76ff128f231ed53ada9165b61173e45578137618e",
+                "expected_sha256": "5cf60ac1b2ffd058d6b85fa76ff128f231ed53ada9165b61173e45578137618e",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 5465062,
+                "sha256": "bd44801dbc7733ec761fb6fd593f837f26a28a3865444379682e77b543d659a6",
+                "expected_sha256": "bd44801dbc7733ec761fb6fd593f837f26a28a3865444379682e77b543d659a6",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2655317,
+                "sha256": "95ce61a080356cff18225940f9c6256bbcb2c807fa922f7ea03c507194769872",
+                "expected_sha256": "95ce61a080356cff18225940f9c6256bbcb2c807fa922f7ea03c507194769872",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 263,
+                "sha256": "1a38a5b9459aa656172aaa754b2c49121d6ed6ba9c4bd0f690bee951fb5dfdda",
+                "expected_sha256": "1a38a5b9459aa656172aaa754b2c49121d6ed6ba9c4bd0f690bee951fb5dfdda",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 3300,
+                "sha256": "f3a523d3bada9f741f21b1e35de329dc00bb3aee9de00cdcc5b9bdb4bd4d40cb",
+                "expected_sha256": "f3a523d3bada9f741f21b1e35de329dc00bb3aee9de00cdcc5b9bdb4bd4d40cb",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "tcn_wide",
+            "seed": 2024,
+            "path": "outputs/experiments/SG-EXP-032/recovered/closeout/closeout/results/formal/tcn_wide/seed-2024",
+            "status": "complete",
+            "best_epoch": 6,
+            "trainable_parameters": 32674,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "7c3f33e98df0d43c0a8991b7080c31fe83db2480e7bf633f79b818311912153d",
+              "last.pt": "07524796e6740ffcfc2ecedd09bc9439099e4ca230b617ed108047e6f8ec48ac"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "33d33f1a3a51fc67fc07f6542d4013de62e529f53de22e2d683c31c30e0bb429",
+              "predictions_test.npz": "33f7d725c91d039f1ed4fd9c991dc7746edce944fbee6677d281428f07bfd676",
+              "predictions_tuning.npz": "60b4c0e04ffc9d6418fe505a5e0cf01451232454c65ca2b0185d42ad40c86f40"
+            },
+            "test_mae": 0.051653791530389626,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 140239,
+                "sha256": "7c3f33e98df0d43c0a8991b7080c31fe83db2480e7bf633f79b818311912153d",
+                "expected_sha256": "7c3f33e98df0d43c0a8991b7080c31fe83db2480e7bf633f79b818311912153d",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1243,
+                "sha256": "7d73b81ac7967691bf496c11121d77e6b1e2b9aeea88a165256f00cba7496b4f",
+                "expected_sha256": "7d73b81ac7967691bf496c11121d77e6b1e2b9aeea88a165256f00cba7496b4f",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 429275,
+                "sha256": "07524796e6740ffcfc2ecedd09bc9439099e4ca230b617ed108047e6f8ec48ac",
+                "expected_sha256": "07524796e6740ffcfc2ecedd09bc9439099e4ca230b617ed108047e6f8ec48ac",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4831,
+                "sha256": "0bb36f3a0046b4e4d4ecefa77fbde52b9d03717a3ec5e3cab67ab72cba0a4861",
+                "expected_sha256": "0bb36f3a0046b4e4d4ecefa77fbde52b9d03717a3ec5e3cab67ab72cba0a4861",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2765020,
+                "sha256": "33d33f1a3a51fc67fc07f6542d4013de62e529f53de22e2d683c31c30e0bb429",
+                "expected_sha256": "33d33f1a3a51fc67fc07f6542d4013de62e529f53de22e2d683c31c30e0bb429",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 5606216,
+                "sha256": "33f7d725c91d039f1ed4fd9c991dc7746edce944fbee6677d281428f07bfd676",
+                "expected_sha256": "33f7d725c91d039f1ed4fd9c991dc7746edce944fbee6677d281428f07bfd676",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2744801,
+                "sha256": "60b4c0e04ffc9d6418fe505a5e0cf01451232454c65ca2b0185d42ad40c86f40",
+                "expected_sha256": "60b4c0e04ffc9d6418fe505a5e0cf01451232454c65ca2b0185d42ad40c86f40",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 262,
+                "sha256": "458707da4618660ebede69a655849836f47ab1139d046a8bd210f91afdc2f85f",
+                "expected_sha256": "458707da4618660ebede69a655849836f47ab1139d046a8bd210f91afdc2f85f",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 2093,
+                "sha256": "26284e61dd2fc5b22b16df37b5c6c16ab2447755f9c88af4590df6b74f5e7a08",
+                "expected_sha256": "26284e61dd2fc5b22b16df37b5c6c16ab2447755f9c88af4590df6b74f5e7a08",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "tcn_wide",
+            "seed": 2025,
+            "path": "outputs/experiments/SG-EXP-032/recovered/closeout/closeout/results/formal/tcn_wide/seed-2025",
+            "status": "complete",
+            "best_epoch": 12,
+            "trainable_parameters": 32674,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "18d23e29eddd7a8858f1f10a7e992f77dfd19f0e2d1c53f5c7bbb3283005ded5",
+              "last.pt": "764ba3fcab761823f41ddad93cc0060d546d315788b5993f71d82a939bccbc5a"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "6927efa6b1179842a5c593d6be5eb2f2765d22cee7b44141a0ffe2daba4715f2",
+              "predictions_test.npz": "34bef9d3f1960a06739f0bdbc344b647e9cfef566919e8b1ac9e7fc896e2c8f0",
+              "predictions_tuning.npz": "1e765a46048a54cbc72826865ed9f44033ff840ef59657690f17be6a5fbc6f1c"
+            },
+            "test_mae": 0.05178900460665115,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 140239,
+                "sha256": "18d23e29eddd7a8858f1f10a7e992f77dfd19f0e2d1c53f5c7bbb3283005ded5",
+                "expected_sha256": "18d23e29eddd7a8858f1f10a7e992f77dfd19f0e2d1c53f5c7bbb3283005ded5",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1243,
+                "sha256": "cf1ed806c78dbba4da670cc54df581287afd570eec7b60eba48fec5aa428377f",
+                "expected_sha256": "cf1ed806c78dbba4da670cc54df581287afd570eec7b60eba48fec5aa428377f",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 429595,
+                "sha256": "764ba3fcab761823f41ddad93cc0060d546d315788b5993f71d82a939bccbc5a",
+                "expected_sha256": "764ba3fcab761823f41ddad93cc0060d546d315788b5993f71d82a939bccbc5a",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4878,
+                "sha256": "876eee8e0b6deff1f95a27c4642bb0b7d732fac9cc7040c0c3fb28a70616fd4c",
+                "expected_sha256": "876eee8e0b6deff1f95a27c4642bb0b7d732fac9cc7040c0c3fb28a70616fd4c",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2760745,
+                "sha256": "6927efa6b1179842a5c593d6be5eb2f2765d22cee7b44141a0ffe2daba4715f2",
+                "expected_sha256": "6927efa6b1179842a5c593d6be5eb2f2765d22cee7b44141a0ffe2daba4715f2",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 5601183,
+                "sha256": "34bef9d3f1960a06739f0bdbc344b647e9cfef566919e8b1ac9e7fc896e2c8f0",
+                "expected_sha256": "34bef9d3f1960a06739f0bdbc344b647e9cfef566919e8b1ac9e7fc896e2c8f0",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2739433,
+                "sha256": "1e765a46048a54cbc72826865ed9f44033ff840ef59657690f17be6a5fbc6f1c",
+                "expected_sha256": "1e765a46048a54cbc72826865ed9f44033ff840ef59657690f17be6a5fbc6f1c",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 263,
+                "sha256": "bbca52f85309a11fa91dd70f0a1b0b5976709ff27889001663cc6c554f6a114f",
+                "expected_sha256": "bbca52f85309a11fa91dd70f0a1b0b5976709ff27889001663cc6c554f6a114f",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 2987,
+                "sha256": "4603691d25a2f874e945e49dc8e55cf3d8044859aba55376d475f81e582dc8bb",
+                "expected_sha256": "4603691d25a2f874e945e49dc8e55cf3d8044859aba55376d475f81e582dc8bb",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          },
+          {
+            "label": "tcn_wide",
+            "seed": 2026,
+            "path": "outputs/experiments/SG-EXP-032/recovered/closeout/closeout/results/formal/tcn_wide/seed-2026",
+            "status": "complete",
+            "best_epoch": 4,
+            "trainable_parameters": 32674,
+            "contract": {
+              "max_epochs": 60,
+              "patience": 8,
+              "batch_size": 256,
+              "lr": 0.001,
+              "weight_decay": 0.0001,
+              "selection": "tuning_original_unit_MAE",
+              "dataset_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+              "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018"
+            },
+            "environment": {
+              "python": "3.12.3",
+              "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+              "torch": "2.8.0+cu128",
+              "numpy": "2.3.2",
+              "cuda": "12.8",
+              "device": "cuda",
+              "gpu": "NVIDIA GeForce RTX 4090 D"
+            },
+            "checkpoint_sha256": {
+              "best.pt": "6b20bb4b54b9f91e8941da301a8da6fe75b9cf60e7d03116b3a26f007c88c961",
+              "last.pt": "70a5cb07b7951f874cc819501abef82d41d5a4f43ff51fdcd9f9333f14c9ab1f"
+            },
+            "prediction_sha256": {
+              "predictions_calibration.npz": "69f14b40e18f10257d875f57e7d1598ea0c706fbc419e857f9293c04ef3667e2",
+              "predictions_test.npz": "ccba9e6af47c843963d31c4cb8d77ce9e8d4698e9de3a73c21c6469bda7563d8",
+              "predictions_tuning.npz": "e5e3b7f11df6128ba29ff1dacff89a5c5e16a28d118d2eff4a57859d2053540c"
+            },
+            "test_mae": 0.051667202607139286,
+            "files": [
+              {
+                "name": "best.pt",
+                "bytes": 140239,
+                "sha256": "6b20bb4b54b9f91e8941da301a8da6fe75b9cf60e7d03116b3a26f007c88c961",
+                "expected_sha256": "6b20bb4b54b9f91e8941da301a8da6fe75b9cf60e7d03116b3a26f007c88c961",
+                "passed": true
+              },
+              {
+                "name": "config_resolved.json",
+                "bytes": 1243,
+                "sha256": "1ec91acc5243b868b1db58c973d44fb2db2bb59c1fce4ced5130308a487a7ed6",
+                "expected_sha256": "1ec91acc5243b868b1db58c973d44fb2db2bb59c1fce4ced5130308a487a7ed6",
+                "passed": true
+              },
+              {
+                "name": "environment.json",
+                "bytes": 211,
+                "sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "expected_sha256": "1810f8348fd60871b8206bf7a26431516f30311f1ee0f777580347b2e77a7d5e",
+                "passed": true
+              },
+              {
+                "name": "environment.txt",
+                "bytes": 4909,
+                "sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "expected_sha256": "32800b9408fc6b916ae14103ac110ba4e5dbf8f0f635227b00e26310ab233b75",
+                "passed": true
+              },
+              {
+                "name": "exit_code.txt",
+                "bytes": 2,
+                "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+                "passed": true
+              },
+              {
+                "name": "last.pt",
+                "bytes": 429147,
+                "sha256": "70a5cb07b7951f874cc819501abef82d41d5a4f43ff51fdcd9f9333f14c9ab1f",
+                "expected_sha256": "70a5cb07b7951f874cc819501abef82d41d5a4f43ff51fdcd9f9333f14c9ab1f",
+                "passed": true
+              },
+              {
+                "name": "metrics.json",
+                "bytes": 4873,
+                "sha256": "f78d30ff83b1b3475501a86844c989f244d142732a5c062a0b568f5f8e175cff",
+                "expected_sha256": "f78d30ff83b1b3475501a86844c989f244d142732a5c062a0b568f5f8e175cff",
+                "passed": true
+              },
+              {
+                "name": "predictions_calibration.npz",
+                "bytes": 2767295,
+                "sha256": "69f14b40e18f10257d875f57e7d1598ea0c706fbc419e857f9293c04ef3667e2",
+                "expected_sha256": "69f14b40e18f10257d875f57e7d1598ea0c706fbc419e857f9293c04ef3667e2",
+                "passed": true
+              },
+              {
+                "name": "predictions_test.npz",
+                "bytes": 5613667,
+                "sha256": "ccba9e6af47c843963d31c4cb8d77ce9e8d4698e9de3a73c21c6469bda7563d8",
+                "expected_sha256": "ccba9e6af47c843963d31c4cb8d77ce9e8d4698e9de3a73c21c6469bda7563d8",
+                "passed": true
+              },
+              {
+                "name": "predictions_tuning.npz",
+                "bytes": 2747387,
+                "sha256": "e5e3b7f11df6128ba29ff1dacff89a5c5e16a28d118d2eff4a57859d2053540c",
+                "expected_sha256": "e5e3b7f11df6128ba29ff1dacff89a5c5e16a28d118d2eff4a57859d2053540c",
+                "passed": true
+              },
+              {
+                "name": "run_summary.json",
+                "bytes": 262,
+                "sha256": "a962234e2bd9a5af311676552ce00735d661773ca773dea5a978d987e91fdf25",
+                "expected_sha256": "a962234e2bd9a5af311676552ce00735d661773ca773dea5a978d987e91fdf25",
+                "passed": true
+              },
+              {
+                "name": "train_log.json",
+                "bytes": 1787,
+                "sha256": "4b4112390885bf9d6aed776055c48347b040a9f21ad9ee9984b04cdd248c6de3",
+                "expected_sha256": "4b4112390885bf9d6aed776055c48347b040a9f21ad9ee9984b04cdd248c6de3",
+                "passed": true
+              }
+            ],
+            "status_manifest": "PASS",
+            "mismatches": []
+          }
+        ]
+      },
+      "saved_prediction_replay": {
+        "command": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/bin/python /Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/scripts/audit_sgexp032_results.py --source /Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/recovered/closeout/closeout/results/formal --out /var/folders/l9/9m003kf51pj9k8kdk3j2phb40000gn/T/sgexp031-032-replay-tn2uhxu1/SG-EXP-032-audit --bootstrap-draws 10000",
+        "returncode": 0,
+        "stdout_tail": [
+          "  \"primary_difference\": 0.008302002680088615,",
+          "  \"ci95\": [",
+          "    0.0077570223584829175,",
+          "    0.008797254975353164",
+          "  ],",
+          "  \"blocks\": 27,",
+          "  \"output\": \"/private/var/folders/l9/9m003kf51pj9k8kdk3j2phb40000gn/T/sgexp031-032-replay-tn2uhxu1/SG-EXP-032-audit\"",
+          "}"
+        ],
+        "stderr_tail": [],
+        "audit": {
+          "status": "PASS",
+          "source_checksum_entries_verified": null,
+          "verified_result_manifest_entries": 75,
+          "run_count": 6,
+          "test_keys_per_run": 708560,
+          "primary_difference": 0.008302002680088615
+        },
+        "outputs": [
+          {
+            "name": "README.md",
+            "bytes": 1529,
+            "sha256": "9f465de6d08b4a83f302bc394ae012fff8e799687cef077e0763d44b9d98c7eb"
+          },
+          {
+            "name": "audit.json",
+            "bytes": 10819,
+            "sha256": "11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a"
+          },
+          {
+            "name": "paired-seven-day-blocks.csv",
+            "bytes": 1633,
+            "sha256": "7dacf89f28b62e3cabfc9d707c63ffb8bd5c3b8d44d80f6446faa20dee95fd66"
+          },
+          {
+            "name": "run-metrics.csv",
+            "bytes": 1473,
+            "sha256": "4ba3940cdf52c8dece5835733788f1fa8ac29417e1c2aefe90e386b4a84ad6b3"
+          }
+        ]
+      },
+      "status": "PASS"
+    }
+  },
+  "audit_output_directory": "temporary directory removed after hashing outputs",
+  "status": "PASS"
+}

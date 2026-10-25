@@ -1,0 +1,89 @@
+{
+  "task_id": "REV-20261021-DATA-PROVENANCE",
+  "executor": "Claude Code",
+  "model": "deepseek-flash[1m]",
+  "user_reported_model": "DeepSeek",
+  "status": "pending_codex_review",
+  "summary": "按任务包完成证据控制文档的受限修订：将当前入口中SG-EXP-031的表号由3-11纠正为3-10；将[76]来源指针更新为content-review-20261019-paired/sources/NEAR76-factual-extract.md，并保留其2026-10-17留存原文核验的可读范围；在data-availability.md补充ACN、KIT、ChargePlace Scotland与悉尼候选的时期、字段/标签、节点映射、论文已查看期及冻结推理边界；修正source-chain-summary.md中两处近邻审计路径。thesis-manuscript.md保持不变；未训练、未下载数据、未执行远程推理、未联网采集、未运行测试或审计脚本、未提交Git。KIT曲线形态审计仍为COMPUTED且未获Codex最终确认，其时间覆盖率等摘要值未写入正文。全部改动与报告待Codex复核，不声称验收通过。",
+  "changed_paths": [
+    "docs/thesis/claim-evidence-map.md",
+    "docs/thesis/experiment-registry.md",
+    "docs/thesis/material-passport.md",
+    "docs/thesis/data-availability.md",
+    "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+    "docs/thesis/revision-20261021-evidence/data-source-compatibility.md"
+  ],
+  "evidence_used": [
+    "docs/thesis/blueprints/tasks/REV-20261021-DATA-PROVENANCE/EXECUTION_PACKET.md与blueprint.json（任务约束、锁定主张、allowed_paths、checks_to_run为空）",
+    "docs/thesis/claim-evidence-map.md（当前入口与NEAR76/CLM-031条目）",
+    "docs/thesis/experiment-registry.md（当前入口）",
+    "docs/thesis/material-passport.md（当前入口）",
+    "docs/thesis/data-availability.md（当前入口与日期化历史记录）",
+    "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+    "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+    "docs/thesis/revision-20261021-evidence/training-source-chain.json（SG-EXP-031条目与Git身份字段，部分读取）",
+    "docs/thesis/content-review-20261019-paired/sources/NEAR76-factual-extract.md",
+    "docs/thesis/content-review-20261015-rev7/packet/nearest-work-source-audit.md（任务包冻结摘录）",
+    "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md（任务包冻结摘录）",
+    "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md（任务包冻结摘录）",
+    "docs/thesis/revision-20261016-nonexperimental/nearest-work-source-audit.md（路径存在性核验）",
+    "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/NEAR76-primary.md（仅用于识别早期稿判断，未作为当前证据）",
+    "docs/thesis/revision-20261021-evidence/kit-lf/summary.json、session_profile_audit.csv、zenodo_record.json（状态与字段核对；未引用其数值）",
+    "docs/thesis/revision-20261019-nontraining/data-decision.md（ACN边界记录路径核验）"
+  ],
+  "claim_or_number_changes": [
+    {
+      "type": "table_number_correction",
+      "locations": [
+        "docs/thesis/claim-evidence-map.md 当前入口（含CLM-031-RELATION行）",
+        "docs/thesis/experiment-registry.md 当前入口",
+        "docs/thesis/material-passport.md 当前入口"
+      ],
+      "change": "SG-EXP-031结果表号由表3-11改为表3-10；表3-11仍对应旧Caltech关系子集/敏感性结果。未改变任何实验数值、区间或结论强度。"
+    },
+    {
+      "type": "source_pointer",
+      "locations": [
+        "docs/thesis/claim-evidence-map.md NEAR76-LITERATURE行"
+      ],
+      "change": "[76]来源指针由旧评阅包NEAR76-primary.md改为content-review-20261019-paired/sources/NEAR76-factual-extract.md；保留该摘录依据2026-10-17留存原文核验的可读范围，并注明本轮未重新取得出版社全文（页面返回429）。未改写表1-1或近邻正文。"
+    },
+    {
+      "type": "availability_boundary",
+      "locations": [
+        "docs/thesis/data-availability.md 当前入口",
+        "docs/thesis/revision-20261021-evidence/data-source-compatibility.md ACN行"
+      ],
+      "change": "补充ACN、KIT、ChargePlace Scotland与悉尼候选的未查看数据兼容性边界；ACN结论严格限于已查REST API的connectionTime边界和6次HTTP 200区间外计数为0。未新增模型数值、新数据期结论或冻结推理可用性主张。"
+    },
+    {
+      "type": "path_correction",
+      "locations": [
+        "docs/thesis/revision-20261021-evidence/source-chain-summary.md"
+      ],
+      "change": "近邻审计路径修正为content-review-20261015-rev7/packet/nearest-work-source-audit.md与revision-20261016-nonexperimental/nearest-work-source-audit.md；未改哈希或来源链结论。"
+    }
+  ],
+  "checks": [
+    {
+      "name": "blueprint checks_to_run",
+      "result": "为空；未运行训练、远程推理、数据下载、网络采集或新增测试。"
+    },
+    {
+      "name": "workspace scope",
+      "result": "仅六个allowed_paths文件发生本轮工作区改动；thesis-manuscript.md未改。依据collection-report.json与本次编辑记录。"
+    },
+    {
+      "name": "audit scripts and hashes",
+      "result": "未运行审计脚本，未重算或新增任何哈希。"
+    }
+  ],
+  "unresolved": [
+    "KIT曲线形态审计kit-lf/summary.json状态为COMPUTED，尚待Codex最终确认或精确重跑；本轮未将其时间覆盖率等摘要数值写入正文。",
+    "docs/thesis/revision-20261021-evidence/data-source-compatibility.md中KIT计算脚本路径仍为../../scripts/audit_kit_measured_lf_profile.py；计划中的../../../scripts/audit_kit_measured_lf_profile.py路径与KIT状态说明编辑被权限提示拒绝，未应用。",
+    "thesis-manuscript.md按任务包保持不变；KIT形态证据未进入正文，待Codex复核。",
+    "旧评阅包content-review-20261017-calibration-pair/reviewer-packet/evidence/NEAR76-primary.md仍保留早期稿“没有正面比较[76]”表述；当前映射已改指NEAR76-factual-extract.md，旧文件未修改。",
+    "Source files and this task report are pending Codex review; no scoring or acceptance is claimed."
+  ],
+  "blockers": []
+}

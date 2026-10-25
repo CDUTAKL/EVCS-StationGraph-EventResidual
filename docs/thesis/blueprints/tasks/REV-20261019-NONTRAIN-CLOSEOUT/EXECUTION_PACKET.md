@@ -1,0 +1,982 @@
+# Claude Code执行任务包
+
+任务编号：REV-20261019-NONTRAIN-CLOSEOUT
+任务类型：content_revision；对应12流程阶段：8/10/11
+目标：完成本轮已有证据足以支持的非训练修订：ACN边界归档与状态订正、摘要/定义/引文/转引小修和第5章局部去重；不评分、不训练、不连接远端、不修改正式DOCX。
+
+## 开始前
+只依据本任务包的冻结摘录和蓝图列出的材料工作。不要从聊天历史、归档计划或整份实验登记表重建当前状态。正文源稿为`docs/thesis/thesis-manuscript.md`。
+
+## 可写范围
+- `docs/thesis/thesis-manuscript.md`
+- `docs/thesis/data-availability.md`
+- `docs/thesis/claim-evidence-map.md`
+- `docs/thesis/material-passport.md`
+- `docs/thesis/revision-20261018-claude-review/data-availability-check.md`
+- `docs/thesis/revision-20261019-nontraining/data-decision.md`
+- `docs/thesis/revision-20261019-nontraining/change-report.md`
+- 以上路径是任务约束和事后审计范围，不是操作系统级文件隔离；不要写入未列路径，也不要把Git忽略路径当作可审计输出。
+
+## 锁定主张与口径
+- 科学结果、表格行、显示公式块、参考文献条目、图片链接和标题全部不改。只在scope.json标题范围内修正文；文中已有0.03890、1.82%、1.52%可补入中文摘要。
+- 两个关系有条件整体增量、第三关系不确定；完整模型非零组未胜TCN。保留已查看测试期、未实测和预算触顶限制。
+- ACN三站点connectionTime已独立where核验，无晚于2021-09记录。Office1仅候选，未核查节点/字段/未使用史。普通端点返回payload曾在内存处理，但未保存或展示用户记录。不能写成完整新数据快照或对所有数据源的不可得证明。
+- 不改历史正式评分、锚点、history、发布状态、训练合同、科学报告和正式Word。无需新的Skill调用或Bash，Codex执行确定性审计。
+
+## 执行步骤
+1. 读取当前包与授权段落。完成plan中的NT-01/02；优先最小必要改动。修订摘要绝对MAE与核心关系增量的双语一致性；表1-1概括性引用排除不在表列出的[74][75]，保留后文事件文献；删除1.5无必要未定义缩写串，明确两贡献；3.5.4固定门值转引到3.7.2及附表A-1。不要改已正确的3.5.9。
+2. 5.4.1用一句内联定义写明tau与发布时刻、h=1..4、15min左端关系；不改显示公式。5.1/5.4.5/5.5只去实际重复，保留现有结果表和必要边界。可保留已经凝练的原段，无需强行改写。结论后续工作反映ACN范围已核查，其他来源和Office1仍需条件核验。
+3. 更新数据可用性/证据映射/材料护照当前入口；在旧10月18日data-availability-check文首加日期化后续核验说明并保留原失败经过。data-decision.md列三站点数量和UTC连接时间极值、6个where计数、来源哈希、原脚本标签订正、未核查节点字段和未下载时序的边界。
+4. change-report.md列每个修改的原句/新句或明确定位、理由、数字/主张变化、保留项；逐个对应scope与评审问题。只检查文本不变性，不假称已运行脚本或完成Word验收。
+5. 填写本任务execution-report.json，model填写实际环境报告的标识，不猜测；changed_paths使用相对路径，报告自身可省略。保留pending_codex_review，不给分。完成后结束会话。
+
+## 指定Claude Code Skills
+- 本任务未指定Claude Code专用skill；如需技能支持，先在报告中说明阻塞，不要假定Codex全局skill已自动安装到Claude Code。
+
+## 验收条件
+- 所有正文改动在scope白名单内，未改显示公式/图表行/参考文献条目
+- ACN数值和connectionTime边界与冻结JSON一致；历史失败保留、Office1条件明确
+- 全文现有科学结论方向和证据权限不变；小修与局部去重有记录
+- 执行报告列实际模型、改动与未决项，无评分/训练/远端/正式Word动作
+
+## 操作权限
+- 训练：False；远程执行：False；联网：False；Git提交/暂存：False。
+- 除非明确列入允许范围，不得启动训练、远程作业、联网采集、Git暂存/提交或覆盖正式Word。不得使用绕过权限的启动方式。
+- 不得修改`.git/`、`.claude/settings*.json`、凭据文件或交接控制文件；如需修改，停止并报告。
+- 只运行蓝图列出的检查：无。未列检查时不要新增或运行测试。
+- Bash网络主机白名单：无。空数组表示Bash无网络；WebSearch/WebFetch须单独取得工具权限。
+
+## 冻结的证据摘录
+
+### 证据控制台
+
+#### docs/thesis/revision-20261019-nontraining/plan.md — 当前执行计划与分工
+定位：`{"kind": "whole_file"}`；来源SHA-256：`9b4c70555f4c5e415ec678cc493393a474229d7e02bdaf5ad19047272593e0c3`
+```text
+# 2026-10-19 非训练修订计划与 Claude Code 协作
+
+## 冻结起点与目标
+
+规范正文为 `docs/thesis/thesis-manuscript.md`，本轮前稿SHA-256为 `62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`，副本为本目录`before.md`。正式内部内容模拟分仍为75.5/90＝83.89，不是学校成绩。超过88分的最低0.5步长原始分为79.5/90＝88.33，差4.0原始分；计划和任务数量不折算为分数。
+
+本轮处理可用材料支持的文字与证据修订。保留既有12流程、量表和正式评分记录，不启动训练、SSH、GPU实验、凭据查询或原始数据下载。作者信息、致谢及成果页按用户此前要求暂缓。正式DOCX仅在候选审计通过后同步，分页和全页视觉验收须有实际检查证据。
+
+## 已完成并继续采用的证据
+
+- SG-EXP-031：负荷耦合、轮廓相似关系相对同参数自环的条件性整体增量；行为关系不确定。非零组的负荷关系差异是未校正事后描述，不等于完整模型胜过TCN。
+- SG-EXP-032：完成时刻截断后总体排序保持，非零组仍未胜过TCN；固定原图，属于已查看时期的目标敏感性。
+- AdaptiveGraph三检查点在匹配CUDA环境前向通过；历史CPU选边偏差与原训练源码身份缺口保留。
+- JPL校准已完成：整体约90%，事件明显不足；不能继续列为“未开展”。
+- ACN三站点API边界和6个严格范围计数已核验；目前可见记录均止于2021年9月。Office 1的兼容性与既有分析使用史未核验。
+
+## 工作顺序、交付和验收
+
+| ID | 目的与具体动作 | Claude Code执行范围 | Codex复检与验收 | 依赖/状态 |
+|---|---|---|---|---|
+| NT-00 | 保存本轮前稿、正式分和科学证据身份；建立任务包 | 只读本计划和选定摘录 | 核对哈希、任务白名单和已有脏工作区，不覆盖旧改动 | Codex已建立 |
+| NT-01 | 将ACN边界从未知收口为“接口已核验，无晚于2021-09的记录”；记录排序标签订正、六项计数、响应哈希与核查时间 | 更新data-availability、claim-evidence-map、material-passport；在10月18日旧报告加后续状态说明；写本轮data-decision | 三站点数值逐项与JSON对照；只认证connectionTime，节点/字段完整性仍待核验；不声称取得完整新数据 | 本轮可完成，无训练 |
+| NT-02 | 修复摘要详略、τ定义、表1-1引用、未定义缩写句、贡献枚举和固定门值章节转引；第五章做局部去重 | 只编辑scope.json标题内正文，不改图表行、显示公式、参考文献条目、科学结果 | 比较前后标题/表格/公式/图片链接/参考文献；逐项审查允许的引文、数字和定义变化；逐条问题关闭 | 本轮可完成，无训练 |
+| NT-03 | 法证核对评分理由：BR-03旧理由、BR-10新算子/指导改模收益要求是否错配到既有锚点 | 另起只读核查任务，写理由对照；不改分数、锚点、history或发布状态 | 核对正文、NEAR76原文摘录、量表边界，区分需改理由、需另行校准和仍有证据缺口；不预承诺加分 | NT-01/02回收后执行 |
+| NT-04 | 固化可复现性与实践材料边界，给出最小材料清单和使用决策表 | 只读已有CUDA复算报告、材料护照、主稿与数据核验；不扫描凭据或重训；写出处与缺口 | 缺失原Git身份不靠猜测补写；真实约束/量测不足时不生成现场收益；推理测速若未实际做只能作为待执行方案 | 本轮可形成证据决策，不虚构补齐 |
+| NT-05 | 形成修订后的DOCX候选和增量机械审计 | 使用已存在的生成/审计入口；不擅自修改学校模板或图件 | MD→DOCX关键文本/公式/图表一致；目录分页与全页视觉验收未实际检查时保留未通过 | 待正文复检后；候选不等于正式交付 |
+| NT-06 | 更新任务状态与下一轮评阅输入 | 执行报告按实际模型标识、实际改动、检查和未决点填写 | Codex接受科学内容后更新本轮结果；正式复评分单独组包和法证，不由Claude自评分替代 | 本轮收口 |
+
+## 本轮正文修改清单
+
+| 位置 | 问题与修改 | 不得越过的范围 |
+|---|---|---|
+| 中文摘要/Abstract | 用已核验正文数字统一核心信息；中文补0.03890及关系增量1.82%/1.52%可选；避免重复边界句 | 不改性能方向；仍并列整体与非零/事件结果 |
+| §1.2.2 | 表1-1概括范围不包含未在表列出的[74][75]；已有近邻证据说清楚即可 | 不暗示新取得全文，不改引文编号和参考条目 |
+| §1.5–1.6 | 删除无必要的未定义方法缩写串；明确两类贡献是受控组件证据和诊断判断 | 不新增模型首创或诊断后性能收益 |
+| §3.5.4 | 固定门值结果转引应落在§3.7.2/附表A-1；节点门控同参数结果落在§3.7.1 | §3.5.9现文已正确引用3.7.1，不因历史评语再改正确句 |
+| §5.1、5.4.1、5.4.5 | 用读者问题连接方向筛查、可靠性与接口；定义τ与4目标片左端对应；采数需求写一次 | 显示公式与目标片口径不变；不把代理功率写成实测功率 |
+| §5.5、结论后续工作 | 保留表5-9；在段落中压缩重复，后续新时期数据改为另行取得，反映ACN范围已核查 | 不删去困难样本、时间依赖、已查看期与计量限制 |
+
+## 规范术语与贡献句
+
+复用已有terminology-ledger，锁定“节点代理负荷”“目标片”“节点级门控/共享门控”“负荷耦合/行为共现/轮廓相似关系”“L1联合参数敏感度/L2受检学生替代/L3四格误差”。不扩大到全篇机械替词。
+
+核心句：在会话重构的站内节点代理任务中，受控对照支持两类关系的条件性整体增量，并通过分层诊断区分组件价值、完整模型表现和参数敏感度。它可改变关系取舍与指标选择，但尚未证明现场收益或诊断后改模收益。
+
+## Claude Code与Codex如何协作
+
+1. Codex选择本任务所需正文、当前证据与条款，冻结为蓝图和精简执行包；Claude沿用当前本机配置的DeepSeek，不改模型、认证或用户设置。
+2. Claude完成指定文字或证据整理，逐项填写execution-report；阶段状态为awaiting_codex_review，不自行宣布验收、评分、训练成功或Word交付通过。
+3. 本轮在同一工作树串行执行，每任务结束立即collect；Codex检查完成前不生成下一任务的写入产物。跨任务真正并行时另用隔离工作树，涉及同一正文的编辑仍须顺序合并。
+4. Codex独立核对变更范围、数字、证据权限与文件哈希；发现问题发同一事项的补修任务，验收记录写明实际复核依据。
+5. Bash、网络、远端和Skill权限保持正常机制；本轮Claude不联网、不使用Bash/Skill工具，由任务包给出已选写作准则，确定性审计由Codex运行。需要新权限时回报具体阻断，不变更用户级配置。
+6. 修改过程中不反复重渲染整篇论文；正文先收束，再做一次候选生成和影响页检查。第11/12步正式最终交付仍要求实际全页视觉验收，未查看页不能自动通过。
+
+## 独立列出的后续研究
+
+| 项目 | 触发条件 | 本轮处置 |
+|---|---|---|
+| 门控预算6次重训 | 保留跨预算门控结论并补齐八项就绪缺口 | 不启动；沿用120/16合同，训练后回收核验再控制面关机 |
+| Office 1另站验证 | 未参与既有分析，完成节点/字段/标签兼容性审查 | 仅候选；1,683会话不是可运行性证明，不能直接称零样本 |
+| 真实约束调度回放 | 真实限额、车辆请求、计量映射与预测时可见性可核查 | 缺材料，不用合成参数代替，不提前写收益 |
+| 同硬件资源评价 | 检查点可用，固定硬件/批量/预热/重复次数/计时范围 | 可另行无训练测量；本轮无实际时延结果 |
+| 容量匹配AGCRN/行为GRU/受控蒸馏 | 要回答更强容量/输入/替代性主张 | 不因列表存在而全部开训，先按主张选择 |
+
+## 完成与暂停判据
+
+本轮文字修订通过范围与证据检查才记为完成。评分理由复核只产生核查结论；正式评分校准和修订增量需按现行协议另行发布。证据不存在或工具无法完成的项目写出缺口和最短下一步，不伪装为已补齐。是否达到88.33由后续同量表评阅决定。
+
+```
+
+#### docs/thesis/revision-20261019-nontraining/scope.json — 标题白名单和数值变更范围
+定位：`{"kind": "whole_file"}`；来源SHA-256：`e0699f4dc35b6d63590d37fa54b2bdbe454e88fafc85e2427a45d4bd3eb6de51`
+```text
+{
+  "allowed_headings": [
+    "摘  要",
+    "Abstract",
+    "1.2.2 多节点负荷与时空图预测",
+    "1.5 技术路线",
+    "1.6 论文组织结构",
+    "3.5.4 节点级门控",
+    "5.1 引言",
+    "5.4.1 预测量与运行量的对应",
+    "5.4.5 证据边界与应用验证要求",
+    "5.5 本章小结",
+    "研究判断与使用条件",
+    "研究局限与后续工作"
+  ],
+  "table_rows_locked": true,
+  "display_equations_locked": true,
+  "reference_entries_locked": true,
+  "permitted_numeric_changes": {
+    "摘  要": [
+      "0.03890",
+      "1.82%",
+      "1.52%"
+    ],
+    "1.2.2 多节点负荷与时空图预测": [
+      "citation range only: exclude 74/75 from table summary"
+    ],
+    "3.5.4 节点级门控": [
+      "section cross reference only: 3.6.2 -> 3.7.2; appendix A-1"
+    ],
+    "5.4.1 节点集合需求与预测输出对应": [
+      "inline tau/h/15-min definition only"
+    ]
+  }
+}
+
+```
+
+#### docs/thesis/revision-20261019-nontraining/writing-guidance.md — 本轮静态写作指引
+定位：`{"kind": "whole_file"}`；来源SHA-256：`206803197ddf1657b6b625451d28a50ae97666a9f6aba077980ddd9663f8c2b0`
+```text
+# 本轮已选写作准则
+
+由Codex按research-paper-plan、research-paper-writing及其中文修订参考整理。沿用现有研究主线与术语；先写结论和证据，再在必要处限定。只修具体问题，不按禁词表机械替换。保持科学数值、比较方向、信息可见性、已查看时期和代理目标边界。当前任务只使用本文件的静态指引，不调用额外Skill工具，也不运行skill脚本。
+
+```
+
+### 直接证据
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "摘  要"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+# 摘  要
+
+场站内充电节点负荷稀疏且异质，全局误差未必反映活跃片段表现。本文以公开会话记录重构的15 min节点代理能量为对象，检验站内关系与节点级门控的预测增量，并据此讨论模型选择与误差报告。主要比较采用Caltech事件时刻协议与JPL另一场站重新拟合协议，均假定行为计数在时间片末可见。
+
+本文构建负荷耦合、行为共现和轮廓相似关系图，以多关系门控图卷积网络（MRG-GCN）融合时间表示与节点关系；并以三层机制诊断协议（MDP）分别检验冻结参数敏感度、受检时序学生的替代表现和事件—规则四格误差构成。主要贡献是对站内关系增量及其解释范围进行受控检验，不主张基础图卷积、门控或时序网络组合为算法首创。
+
+Caltech事件时刻协议下，MRG-GCN整体MAE较容量近似TCN低16.1%，但完整AGCRN更低，且MRG-GCN在非零目标和标签事件组均未优于TCN。JPL中MRG-GCN整体MAE较三项预登记基线低2.64%—3.36%，但TCN的RMSE、事件及非零目标误差更低。节点级门控在两场站相对同参数共享门控的整体MAE分别低2.69%和2.71%；共享门控各有一个种子触及60轮上限，结论限于该预算。
+
+JPL关系替换重训支持负荷耦合和轮廓相似关系相对自环的条件性整体MAE增量，行为共现关系仍不确定。负荷关系相对自环的非零组正向差异属于未校正事后分层；完整MRG-GCN非零组仍未胜过TCN。完成时刻截断保持全局排序，但非零组未改善。以上补充分析复用已查看测试期。
+
+MDP分别解释参数敏感度、受检学生的替代表现和误差构成，修正了关系取舍、替代性判断与分层报告重点。现有结果可支持节点代理负荷模型筛选和后续采数安排；实测功率效度、输入到达时延和运行收益仍需同步量测及现场评价。
+
+关键词：充电节点短期负荷预测；LRE；MRG-GCN；MDP；节点代理负荷
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "Abstract"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+# Abstract
+
+Charging-node proxy energy is sparse and heterogeneous, so aggregate error can conceal performance on active intervals. This thesis studies 15-minute node-level energy reconstructed from public charging sessions. It tests whether within-station relations and node-specific gates add predictive value, and what model-selection and error-reporting decisions those comparisons support. Main analyses use Caltech's event-time protocol and a separately refitted JPL site, assuming behavioral counts are available at interval end.
+
+MRG-GCN combines temporal representations with load-coupling, behavioral co-occurrence, and profile-similarity relations. The contribution is a controlled test of within-station relation gains and their interpretive scope, not a claim of novelty for the underlying graph convolution, gating, or temporal-network components. At Caltech, its overall MAE is 0.03890 kWh/15 min, 16.1% below a capacity-near TCN, but full AGCRN performs better and MRG-GCN does not lead on nonzero or event targets. At JPL, its overall MAE is 2.64%–3.36% below three preregistered baselines, while TCN has lower RMSE and lower nonzero- and event-target errors. Node-specific gates reduce overall MAE by 2.69% and 2.71% at Caltech and JPL, respectively; one shared-gate seed per site reaches the 60-epoch limit, so this result is budget-bound.
+
+JPL relation-replacement retraining supports conditional overall-MAE gains over self-loop replacements for load coupling (1.82%) and profile similarity (1.52%); the behavioral relation remains uncertain. A post-hoc nonzero-target difference for load coupling is exploratory and does not imply that the complete model beats TCN on nonzero targets. Completion-time target truncation preserves global ranking but not nonzero-target performance. These supplements reuse inspected test periods.
+
+MDP separates parameter sensitivity, a tested student's replacement performance, and error composition. The distinctions refine relation choice, model replacement claims, and subgroup reporting, but do not show that diagnosis-guided model changes improve prediction. The findings can guide node-proxy-load model screening and data collection; meter validity, reporting delays, and operational benefits require synchronized measurements and field evaluation.
+
+Keywords: short-term charging-node load forecasting; LRE; MRG-GCN; MDP; proxy load
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "1.2.2 多节点负荷与时空图预测"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+### 1.2.2 多节点负荷与时空图预测
+
+图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的特征传播聚合邻居信息，GAT[48]进一步以注意力机制学习邻居贡献，RGCN[49]则将消息传递扩展至多关系场景。在时空预测领域，STGCN[50]将图卷积与时间卷积结合，Graph WaveNet[51]通过自适应邻接和扩张卷积联合学习空间与时间依赖，AGCRN[52]使用节点自适应参数和可学习图结构刻画节点异质性。这些方法最初主要用于交通流预测[53-55]，随后被引入居民负荷、区域负荷和多节点短期负荷预测[56-63]。
+
+EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接EV近邻[12,13,67,70,76]及站间图[10]、住宅图方法[71]，并标明证据来源和字段核验边界。
+
+**表1-1 充电负荷预测及方法近邻研究比较**
+
+| 文献 | 节点粒度与关系来源 | 模型路径 | 已报告的验证范围及本文比较边界 |
+|---|---|---|---|
+| 黄健等[13] | 以城市充电站为节点，按地域分布描述站间关系 | 原文摘要：GCN提取站点及邻站空间依赖，将各时刻表征输入LSTM作时间预测 | 官方期刊摘要及已核查的第59—64页索引正文片段；对象是城市场站负荷，非单场站内节点。本文未从该文可核实数据划分、预测时输入到达时刻及参数共享细节，故不作跨文数值比较 |
+| 张延宇等[12] | 可读摘要确认充电站负荷时空相关与自适应关联图；摘要未说明节点粒度及建边字段 | 多头注意力与自适应关联图提取表征，再以Chebyshev图卷积和多尺度时间卷积建模时空耦合 | 国家科技期刊平台可读摘要报告两个真实数据集及Palo Alto四种波动条件的结果；未据摘要外推输入可见性、数据划分或门控细节 |
+| 黄南天等[10] | 13座公共充电站为节点；Rapid-MIC特征与自适应动态图 | AST-GCN差异化空间聚合、节点自适应参数学习与GRU | 公开正文报告13站小时负荷和随机抽取32天，并含动态图及节点参数模块消融；研究对象为站间负荷，模块删除消融不等同于冻结β参数干预 |
+| Xie等[70] | 城市充电站群；距离、交通网络与交通密度图 | 出版社全文索引说明采用MGAT-MIC-LSTM，融合多图、ResNet/GAT/LSTM及天气、典型日、价格等因素 | 出版社页面的图构建与数据处理段报告西安10站、30 min采样、2021年7—9月；其节点是站群站点。全文可读范围未明确精确切分和预测时外生变量到达权限 |
+| Liang[76] | 主要实验使用加工后的配电负荷代理；Boulder扩展以公开交易记录重构EV负荷序列 | PARC以持续性预测为锚，使用预测时可用的滞后、滚动、爬坡和周期特征学习残差；在相同特征边界下比较直接预测与残差校正 | 出版社全文报告滚动起点、日块重采样及配对检验；Boulder序列上持续性/季节混合在sMAPE、正负荷MAPE较优，HistGBR在MAE、WAPE较优，PARC-ExtraTrees在RMSE、R²较优。该文覆盖会话重构EV负荷预测，但未报告本文式站内关系替换重训或MDP；两者不作数值排名 |
+| Feng等[71] | 住宅个体及聚合负荷为预测对象；自适应邻居与时间相似邻居构图 | STGNet以节点特定GCN提取空间表示，经自适应图门控融合后接BiGRU | 原文§4.1.1、§4.1.3及§5.5（表3—5）报告节点特定参数化、图分支消融；含三套真实数据及15户设置。该研究可证明图门控和节点特异参数化已有先例，不能作为EV充电任务的同键对照 |
+| Huang等[67] | Palo Alto、Boulder、韩国等站群数据；构造站间因果感知关系与关键站动态关系 | 作者稿§III（PDF第4—6页）描述CAGLM、CRGLM及时间表示融合 | 作者稿§IV（第7—8页、表II起）报告27/40/14站、逐小时数据、72 h输入、3/6/12 h预测、7∶1∶2切分及5次随机初始化；数据说明将会话起止与总电量按分钟分配后聚合为小时负荷，表明会话重构代理已有先例。其“因果感知”是模型构造术语，不等于外部因果识别；节点仍是站点 |
+| Wang等[72] | 住宅用户为节点；Pearson同步图与传递熵方向信息图 | RLF-MGNN逐时刻以多图GCN提取关系表征，再送入LSTM学习时间特征 | 出版社摘要可读，未据此核实完整建图细节、切分、容量或消融；住宅用户节点不同于场站内充电节点，传递熵图不等同物理因果拓扑 |
+| Zhang等[73] | 住宅用户为节点；构造时空融合图 | STFAG-GCN报告自适应门控图卷积（AFG-Conv）、门控TCN及多层STFGCN组合 | PubMed收录的原文摘要可读，未取得全文核实图构造、参数共享、切分和消融细节；因此仅作为方法结构先例，不作数值比较 |
+
+表1-1显示，已有研究覆盖站间图预测、住宅用户图门控，也包括会话交易重构EV负荷后的直接与残差预测[12-13,67,70-76]。因此，本文不把一般EV代理负荷预测、图卷积、多关系融合或门控时序模型组合视为研究空白或算法首创。与近邻[76]相比，本文关注的问题更窄：在单场站会话重构代理任务中，站内统计关系相对自环替换是否具有条件增量，以及参数干预、受检学生和误差分层分别能改变哪些研究判断。当前结果支持两类关系的条件性整体增量，第三类仍不确定；尚未证明诊断指导改模可提升预测。节点粒度、目标和评价协议不同，不作跨文数值排名。
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "1.5 技术路线"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+## 1.5 技术路线
+
+图1-2概括本文主线与补充验证。
+
+![本文总体技术路线](../../outputs/figures/fig1_2_roadmap.png)
+
+**图1-2 本文总体技术路线与双贡献主线**  Caltech主线完成代理序列重构、LRE构图、MRG-GCN预测及MDP诊断；JPL重新筛选节点、构图和训练，补充点预测与门控比较。固定测试期的关系替换、目标敏感性及JPL既有检查点复核分别见3.7.2、3.8.4和4.6节。
+
+第一阶段审计会话字段、时间和节点标识，重构15 min节点代理负荷；依训练集和验证集筛选10个节点，并分析负荷稀疏性、节点差异及事件构成。
+
+第二阶段以训练期统计量构建并稀疏化三类LRE关系图，由TCN和双层多关系门控图卷积预测未来1 h四个目标片；在统一键和指标下比较已登记基线，并开展组件对照。STMGCN、MGAT-MIC-LSTM和CADGN仅用于文献定位，未重跑。
+
+第三阶段以MDP分别检验冻结β替换、当前TCN学生的蒸馏表现及事件—规则四格误差构成；三层结论限于各自的模型和协议。
+
+第四阶段筛查方向性统计候选，评价分层区间覆盖，并用固定预测轨迹和合成线性规划说明运行核查接口；这些分析不构成现场收益验证。
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "1.6 论文组织结构"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+## 1.6 论文组织结构
+
+本文正文由五章组成，正文之后为结论和参考文献。各章按“界定任务—检验预测—解释证据—分析适用条件”展开。
+
+第1章为绪论。本章界定节点代理负荷、站内统计关系和事件窗口，梳理相关研究并提出研究问题、主要贡献和技术路线。
+
+第2章为充电行为数据与特征分析。本章说明Caltech和JPL数据、代理目标重构、节点筛选与时间划分，并分析主要节点的统计特征及其对建模和评价的约束。
+
+第3章为基于多关系门控图卷积的节点短期负荷预测。本章定义任务、构建LRE关系并介绍MRG-GCN，报告Caltech与JPL同协议模型比较、组件对照及目标敏感性结果。
+
+第4章为三层机制诊断协议（MDP）与模型可解释性分析。本章以Caltech为主，依次讨论关系参数干预、受检时序学生蒸馏和四格误差溯源，并用JPL既有产物事后复核L1与L3。
+
+第5章为模型结构与可靠性边界分析。本章报告方向性结构候选、Caltech与JPL区间校准及预测支持接口，并说明应用验证所需条件。
+
+结论部分归纳两项核心贡献及其证据，说明代理目标、数据体系、时间范围和现场量测对结果外推的限制。事件残差修正与预警比较属于已终止探索，不作为本文贡献。
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "3.5.4 节点级门控"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+### 3.5.4 节点级门控
+
+关系消息聚合后，模型按样本、节点和特征维计算门值：
+
+$$
+\begin{aligned}
+\mathbf G^{(l)}&=\sigma\!\left([\mathbf Z^{(l)}\Vert\mathbf M^{(l)}]\mathbf W_g^{(l)}+\mathbf b_g^{(l)}\right),\\
+\widetilde{\mathbf H}^{(l)}&=\mathbf G^{(l)}\odot\mathbf M^{(l)}+
+(1-\mathbf G^{(l)})\odot\mathbf Z^{(l)}.
+\end{aligned} \tag{3-10}
+$$
+
+$$
+\mathbf H^{(l)}=\operatorname{LayerNorm}\!\left[
+\mathbf Z^{(l)}+\operatorname{Dropout}(\widetilde{\mathbf H}^{(l)})\right]. \tag{3-11}
+$$
+
+关系级$\boldsymbol\beta$与各关系变换共同缩放聚合消息，节点级$\mathbf G$在自身表示和邻域消息间分配门值。β不能脱离关系变换的尺度单独解释为重要性，详见4.2.5节。Caltech回溯协议未对$\mathbf G$单独重训练消融；Caltech事件时刻协议的固定门值结果只作为受限功能证据，详见3.6.2节。
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "5.1 引言"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+## 5.1 引言
+
+第4章显示，整体误差改善不等于困难样本表现改善。本章据此检验方向性候选、区间覆盖和运行接口所需证据。方向性分析仅用训练段序列；区间评价分别复用Caltech与JPL冻结预测；固定轨迹和合成线性规划用于说明接口及其条件。
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "5.4.1 预测量与运行量的对应"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+### 5.4.1 预测量与运行量的对应
+
+计量映射和发布时可见性核验后，预测可作为容量核查、充电协调及滚动计划的需求输入。当前结果只支持定义节点集合的预测接口，尚不支持实际容量或控制判断。设$t$为发布时刻，预测对象为$[t,t+60\mathrm{\,min})$内的4个连续15 min目标片，其左端时刻分别为$t$、$t+15$、$t+30$和$t+45$ min；$\mathcal N$为10个研究节点。首片虽以发布时刻为左端，预测量仍是该片完整区间的能量。集合代理需求及预测值为
+
+$$
+D_{\tau}=\sum_{n\in\mathcal N}y_{\tau,n},\qquad
+\widehat D^{(m,s)}_{t,h}=\sum_{n\in\mathcal N}\widehat y^{(m,s)}_{t,h,n}. \tag{5-4}
+$$
+
+其中，$m$和$s$分别表示模型配置与随机种子。$D_{\tau}$和$\widehat D_{t,h}$的单位为kWh/15 min，表示会话最终交付电量按接入至断开期间均匀分配后得到的区间能量代理；后文省略模型和种子上标。对$\Delta t=0.25$ h的时间片，除以时间长度可得到区间平均代理功率：
+
+$$
+\widehat P^{\mathrm{proxy}}_{t,h}=\frac{\widehat D_{t,h}}{\Delta t}=4\widehat D_{t,h}. \tag{5-5}
+$$
+
+该换算仍是代理平均功率，不能恢复片内波动。预测仅覆盖10个研究节点；与全站限额比较前，还需校准同步电表并补入其他节点和非充电负荷。
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "5.4.5 证据边界与应用验证要求"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+### 5.4.5 证据边界与应用验证要求
+
+下一步需同步采集节点及全站电表、输入到达时间戳、设备限额、车辆请求和电价；先校准代理—实测映射并核验预测时可见性，再预先固定事件定义、告警阈值和调度基线开展影子回放，评价覆盖、误报漏报、约束越限、需求满足及成本。在这些材料取得前，本章证据仅支持运行接口定义与合成约束可行性核验。
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "5.5 本章小结"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+## 5.5 本章小结
+
+表5-9汇总本章三类分析：方向性候选、区间可靠性和运行接口。
+
+**表5-9 第5章探索结果汇总**
+
+| 问题 | 操作 | 主要观察 | 结论边界 |
+|---|---|---|---|
+| 统计关系能否呈现方向信息？ | TE候选筛查与PCMCI+条件独立分析 | TE有76/90个未经校正的名义候选，270项Bonferroni后为0；当前环境PCMCI+为22/360个Holm校正滞后单元 | 历史PCMCI+的80个名义单元缺版本和完整p矩阵；方向统计不是物理因果边 |
+| 点预测能否给出可靠区间？ | 标准共形、回溯规则路由与oracle对比 | 标签事件覆盖率1.9%→3.9%；oracle为86.1% | 旧规则不具备已验证实时可见性，覆盖未达标；oracle仅为事后参照 |
+| 分离模型选择与校准后能否达标？ | 新协议冻结三种子、独立校准段与有限样本秩修正 | 行为分层整体覆盖80.04%，事件5.92%；平均宽度较标准增加43.3% | 测试时期已查看；存在时间依赖与失配，不能报告90%保证或与旧覆盖直接计算收益 |
+| 滚动残差更新能否缓解失配？ | 14/28天成熟标签历史回放 | 14天行为分层整体覆盖89.01%，事件26.71%；宽度为冻结分层的4.47倍 | 已查看时期的条件回放，未达90%，不证明分层独有优势 |
+| JPL独立校准能否覆盖困难样本？ | 复用冻结三种子预测，按原两条路径校准 | 标准/行为分层整体覆盖90.08%/90.11%，事件46.43%/45.88% | 固定已查看测试期；总体接近目标不等于事件可靠性 |
+| 节点预测如何进入运行决策？ | 代理需求回放及合成充电分配线性规划 | 实例末步低估43.1%；合成计划满足1 kWh请求与容量限制 | 真实预测与合成约束来源不同，尚无计量映射或实际调度收益 |
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "研究判断与使用条件"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+## 研究判断与使用条件
+
+在会话重构的站内节点代理能量任务中，可优先复核负荷耦合和轮廓相似关系，将行为共现关系保留为待确认候选；若关注活跃片段，应按非零组和事件组表现选模，不以整体MAE或$\beta$排序单独决定关系取舍。现有证据可用于安排模型复核与数据采集，不能支持现场设备选型、容量控制或收益估算。
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 授权正文小修；其他标题和表格/公式/参考文献不改
+定位：`{"kind": "markdown_heading", "value": "研究局限与后续工作"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+## 研究局限与后续工作
+
+后续工作分三步推进：首先以同步电表和输入到达时间戳校准代理目标，并在未见时期或其他数据来源复核；若要检验全流程稳健性，替代目标下还应重建关系图。其次，若要排除门控优化预算的影响，应以一致的更长预算重训共享门控；若要判断图信息能否被时序模型替代，应匹配学生容量、输入和训练预算。最后，结合成熟标签、实时可见信号及设备和车辆约束开展真实站点影子运行，评价事件覆盖、漏报、执行效果与成本。上述补验对应更强主张，不改变本文当前结果的适用范围。
+
+```
+
+#### docs/thesis/revision-20261019-nontraining/evidence/acn/range_probe_reviewed.json — 已校正并经where验证的API范围；原标签颠倒已留痕
+定位：`{"kind": "whole_file"}`；来源SHA-256：`84ec68aaf9c9d8b35acb928821a289464a5f66fbb4f946cdb754044b59055ae6`
+```text
+{
+  "derived_from": "range_probe.json",
+  "checked_at_utc": "2026-10-19T06:02:57.685593+00:00",
+  "interpretation": "Chronological min/max computed from the two returned connectionTime boundary values; original script labels were inverted relative to the returned timestamps.",
+  "verification_limit": "ConnectionTime extrema independently confirmed: strict where queries returned zero records both below the candidate minimum and above the candidate maximum for all three sites.",
+  "sites": [
+    {
+      "site_name": "Caltech",
+      "site_id": "caltech",
+      "matching_session_count": 31424,
+      "earliest_connectionTime_utc_observed": "Wed, 25 Apr 2018 11:08:04 GMT",
+      "latest_connectionTime_utc_observed": "Tue, 14 Sep 2021 01:52:37 GMT",
+      "earliest_response_sort": "connectionTime",
+      "earliest_response_sha256": "8d9d1ddbbb9f1fa2938040cc90f302db71695daa5afef834769e7d3c64b49695",
+      "latest_response_sort": "-connectionTime",
+      "latest_response_sha256": "6310f67f53bfc5456d239f84612a699a979f54a509381d6bd9a14c49b22dd3d6"
+    },
+    {
+      "site_name": "JPL",
+      "site_id": "jpl",
+      "matching_session_count": 33638,
+      "earliest_connectionTime_utc_observed": "Wed, 05 Sep 2018 11:04:13 GMT",
+      "latest_connectionTime_utc_observed": "Tue, 14 Sep 2021 05:43:39 GMT",
+      "earliest_response_sort": "connectionTime",
+      "earliest_response_sha256": "af325900ab6bb76615ef3a9b9ce0f2410cf8cb12ab699ee2aacabb87fc833797",
+      "latest_response_sort": "-connectionTime",
+      "latest_response_sha256": "6e165a5adc997ec167b880b020a26ab6b7b3e862a4152d529eb5c9e3f536f99b"
+    },
+    {
+      "site_name": "Office 1",
+      "site_id": "office001",
+      "matching_session_count": 1683,
+      "earliest_connectionTime_utc_observed": "Mon, 25 Mar 2019 16:24:42 GMT",
+      "latest_connectionTime_utc_observed": "Mon, 13 Sep 2021 21:21:51 GMT",
+      "earliest_response_sort": "connectionTime",
+      "earliest_response_sha256": "81f94880622cca3db2631dc86bcdbf39fe775649ee6ffd0e143d7015afeecda0",
+      "latest_response_sort": "-connectionTime",
+      "latest_response_sha256": "f1a1e1476d34166997dfc334e252f835c2434479b199535b77b1bd977d201f94"
+    }
+  ],
+  "bounds_verification": {
+    "checked_at_utc": "2026-10-19T06:06:36.557679+00:00",
+    "manifest": "/Users/xushuyuan/acn_metadata_audit_20261019/bounds_verification.json",
+    "all_sites_confirmed": true,
+    "counts": {
+      "Caltech": [
+        0,
+        0
+      ],
+      "JPL": [
+        0,
+        0
+      ],
+      "Office 1": [
+        0,
+        0
+      ]
+    },
+    "response_sha256_by_site": {
+      "Caltech": [
+        "0392e8121a25fd016265a7fb3ac5e43dff69adde6e5ddff845f95e25a194297c",
+        "0392e8121a25fd016265a7fb3ac5e43dff69adde6e5ddff845f95e25a194297c"
+      ],
+      "JPL": [
+        "de48d802736d205567d72c949dfcb8a638bb53736ef75d6dd531f9e75b31eea1",
+        "de48d802736d205567d72c949dfcb8a638bb53736ef75d6dd531f9e75b31eea1"
+      ],
+      "Office 1": [
+        "6ca77754695e88f7657e6eb2f1f508cd7ab7641ed08cb20172e89d469f1898bc",
+        "6ca77754695e88f7657e6eb2f1f508cd7ab7641ed08cb20172e89d469f1898bc"
+      ]
+    }
+  }
+}
+
+```
+
+#### docs/thesis/revision-20261019-nontraining/evidence/acn/bounds_verification.json — 6个HTTP200、区间外计数为0
+定位：`{"kind": "whole_file"}`；来源SHA-256：`430bb7fffbbf62dd5ef92f4099a6ff455dda3362de195d273d36df02fa260b05`
+```text
+{
+  "checked_at_utc": "2026-10-19T06:06:36.557679+00:00",
+  "source_manifest": "/Users/xushuyuan/acn_metadata_audit_20261019/range_probe_reviewed.json",
+  "scope": "Counts records strictly before/after the candidate connectionTime bounds; no session pages or time series saved.",
+  "sites": [
+    {
+      "site_name": "Caltech",
+      "site_id": "caltech",
+      "candidate_earliest_connectionTime_utc": "Wed, 25 Apr 2018 11:08:04 GMT",
+      "candidate_latest_connectionTime_utc": "Tue, 14 Sep 2021 01:52:37 GMT",
+      "checks": [
+        {
+          "where": "connectionTime<\"Wed, 25 Apr 2018 11:08:04 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "0392e8121a25fd016265a7fb3ac5e43dff69adde6e5ddff845f95e25a194297c"
+        },
+        {
+          "where": "connectionTime>\"Tue, 14 Sep 2021 01:52:37 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "0392e8121a25fd016265a7fb3ac5e43dff69adde6e5ddff845f95e25a194297c"
+        }
+      ],
+      "extrema_confirmed_if_both_counts_zero": true
+    },
+    {
+      "site_name": "JPL",
+      "site_id": "jpl",
+      "candidate_earliest_connectionTime_utc": "Wed, 05 Sep 2018 11:04:13 GMT",
+      "candidate_latest_connectionTime_utc": "Tue, 14 Sep 2021 05:43:39 GMT",
+      "checks": [
+        {
+          "where": "connectionTime<\"Wed, 05 Sep 2018 11:04:13 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "de48d802736d205567d72c949dfcb8a638bb53736ef75d6dd531f9e75b31eea1"
+        },
+        {
+          "where": "connectionTime>\"Tue, 14 Sep 2021 05:43:39 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "de48d802736d205567d72c949dfcb8a638bb53736ef75d6dd531f9e75b31eea1"
+        }
+      ],
+      "extrema_confirmed_if_both_counts_zero": true
+    },
+    {
+      "site_name": "Office 1",
+      "site_id": "office001",
+      "candidate_earliest_connectionTime_utc": "Mon, 25 Mar 2019 16:24:42 GMT",
+      "candidate_latest_connectionTime_utc": "Mon, 13 Sep 2021 21:21:51 GMT",
+      "checks": [
+        {
+          "where": "connectionTime<\"Mon, 25 Mar 2019 16:24:42 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "6ca77754695e88f7657e6eb2f1f508cd7ab7641ed08cb20172e89d469f1898bc"
+        },
+        {
+          "where": "connectionTime>\"Mon, 13 Sep 2021 21:21:51 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "6ca77754695e88f7657e6eb2f1f508cd7ab7641ed08cb20172e89d469f1898bc"
+        }
+      ],
+      "extrema_confirmed_if_both_counts_zero": true
+    }
+  ]
+}
+
+```
+
+#### docs/thesis/revision-20261019-nontraining/evidence/acn/provenance.json — 复制来源与SHA
+定位：`{"kind": "whole_file"}`；来源SHA-256：`6089bdc07aee0ba0967606567bb4866f30f2517775791e912f967ad307bae431`
+```text
+{
+  "audit_date": "2026-10-19",
+  "raw_sessions_saved": false,
+  "time_series_saved": false,
+  "credentials_saved": false,
+  "files": [
+    {
+      "file": "range_probe.json",
+      "source_path": "/Users/xushuyuan/acn_metadata_audit_20261019/range_probe.json",
+      "sha256": "25a3aacea4662049fac8dfac0a934916610e393395fb5cb08434c04a55f0eb43",
+      "kind": "sanitized_query_metadata_and_response_hashes"
+    },
+    {
+      "file": "range_probe_reviewed.json",
+      "source_path": "/Users/xushuyuan/acn_metadata_audit_20261019/range_probe_reviewed.json",
+      "sha256": "84ec68aaf9c9d8b35acb928821a289464a5f66fbb4f946cdb754044b59055ae6",
+      "kind": "sanitized_query_metadata_and_response_hashes"
+    },
+    {
+      "file": "bounds_verification.json",
+      "source_path": "/Users/xushuyuan/acn_metadata_audit_20261019/bounds_verification.json",
+      "sha256": "430bb7fffbbf62dd5ef92f4099a6ff455dda3362de195d273d36df02fa260b05",
+      "kind": "sanitized_query_metadata_and_response_hashes"
+    }
+  ]
+}
+
+```
+
+#### docs/thesis/data-availability.md — 只更新当前入口；历史状态保留
+定位：`{"kind": "whole_file"}`；来源SHA-256：`b7fce9607247e2263976766092d05538667459dff497606d9b931dacf69dbcff`
+```text
+# 数据可用性
+
+## 当前证据状态（截至2026-10-16统一修订）
+
+本节为当前入口；下方按日期保留的历史失败、预检和待办状态仅代表当时情况。正文表号以当前主稿为准。
+
+## 未查看数据候选核查（2026-10-16）
+
+- 本地清单未发现可认证的、覆盖既有测试期之后的ACN/JPL序列；2022—2026年本地CSV为零行。它们不能作为未查看时期证据。
+- ACN-Data官方页面提供不含时序的会话元数据端点及可筛选、分页的REST API，但使用API须注册并取得访问令牌。当前未取得新时期元数据范围及站点/节点交叉映射，故不能确认存在可用的未查看时期。优先建议后续只读盘点元数据：统计最早/最晚日期、各时期会话数、站点与空间单元数，再判断与当前节点定义及预测输入的兼容性；不需先下载时序或训练。
+- Zenodo于2026-02-09发布的2025年充电测量数据覆盖2025-10-28至2025-12-02，含18组、16辆车的测量；低频数据列出三相电压、电流及计算功率。但每组数据是单一测点，不是多节点场站预测样本；记录页未显示明确许可。可作为代理目标与计量信号对照的候选，须先确认授权及会话/时间对齐定义，不据此声称能验证站内图预测。
+- 新发现的悉尼路侧充电记录（Zenodo DOI `10.5281/zenodo.19866413`；前一版本 DOI `10.5281/zenodo.19233669`）覆盖2025年9月至2026年2月，约27,000次会话；记录描述为充电桩位置与使用数据，但文件受限访问，权利/许可栏未列明，当前不能读取字段字典。它可能补充公共路侧场景，但尚不能确认含功率时序、可用于代理目标校准或与本文节点定义匹配；须先取得数据访问权并核实字段、许可和测量语义。
+- 本轮未下载新数据、未运行新分析或训练。具体来源和适用性判断见`revision-20261016-nonexperimental/data-availability-decision.md`。
+
+- AdaptiveGraph：SG-EXP-004三个冻结检查点在匹配PyTorch 2.4.1/CUDA 12.1环境逐键通过；原生CPU存在top-k并列选边差异，固定CUDA邻接后CPU通过。原训练Git标识缺失、历史Mac环境偏差仍保留。报告：`experiment-reports/EXP-AdaptiveGraph-CUDA-20261015-no-training.md`及`outputs/analysis/AdaptiveGraph-CUDA-20261015/independent-verification.json`。
+- SG-EXP-031：四配置×三种子同参数关系自环替换重训，支持负荷耦合和轮廓相似关系在当前JPL设置下的条件性整体MAE增量，行为共现关系区间跨零。正文§3.7.2、表3-11；输入/容量/预算见表3-14。
+- SG-EXP-032：完成时刻截断代理目标下全局MAE排序保持；新目标零值94.27%，非零组MRG-GCN较差。正文§3.8.4、表3-15；两种分层是边际评价，未作联合贡献分解。两项新训练均为已查看固定测试期上的补充。
+- JPL可靠性：AUDIT-JPL-CAL-20261015复用313,120校准键与632,640测试键，标准/行为分层整体覆盖90.08%/90.11%，事件46.43%/45.88%，独立核验PASS。正文§5.3.5；报告`experiment-reports/EXP-JPL-calibration-20261015-no-training.md`。JPL尚缺L2与同硬件时延。
+- AutoDL当前关闭状态以SG-EXP-032的控制台关机证据为准。SG-EXP-031结束时在线为历史事实，不作为当前实例状态；材料已回收并核验。
+
+
+## JPL全量元数据与验证设计封存：2026-10-05
+
+`DATA-JPL-METADATA-20261005`获取官方337页、33,638条必要会话元数据；52个stationID与52个spaceID稳定一一映射，与静态52候选标识全部匹配。未保存用户字段或令牌。源快照SHA256为`68480c71451dfaa0e2ca3a27cefb2fa229c76eac31fc541ccef56af7a9af3af4`，仅本地研究，不进入Git；教育研究用途已有官方条款，原数据再分发权限未确认。
+
+SG-DATA-007按成熟训练会话选10节点、完整UTC15min网格106,096步、70/7.5/7.5/15顺序划分，合法原点74,168/7,826/7,828/15,816。独立核对1,060,960节点时间格及逐格代理目标、成熟性、全部原点、scaler/规则/日历与来源哈希通过；张量SHA256为`1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af`。缺失完成字段2,037条，完成时间区间异常3,211条最大约1min；成熟口径取断开/完成的较晚时刻。2020年9—10月无会话不能认证真实零需求。任务仍为事件时间假设输入→事后会话代理目标，不是实测功率、实时延迟或真正新时期验证。SG-EXP-028随后完成JPL场站固定协议重新拟合；结果支持该测试期内整体MAE比较，不将其解释为零样本迁移、跨家族泛化或未来时期验证。
+
+与Caltech来源核查会话键、站点设备和车位标识无交集，支持不同场站身份；历史时期重叠且同属ACN。SG-EXP-028按预登记方案完成完整MRG-GCN、参数量近似匹配TCN、完整AGCRN和共享门控各三种子，共12次正式运行。逐键核验通过；MRG-GCN整体MAE较三项对照低2.64%—3.36%，三个校正七日块区间均高于零。TCN的RMSE、事件及非零目标MAE较低，结果应按整体MAE主终点解释。训练与统计细节见`experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md`。预登记前“未训练”等表述记录的是当时状态；2026-10-04有限API抽样的未完成说明同样只对应当轮。
+
+## JPL独立场站候选核查：2026-10-04
+
+`DATA-JPL-FEASIBILITY-20261004`锁定ACN-Data-Static commit `abb7cf15cc7108913e965d4375cc7270d532b65f`，清点27,723个JPL时序文件、52个候选前缀，固定首/中/末抽样156条；电流156条可读，功率50条有值、电量48条有值，3条时间戳重复，7条存在超过60秒间隙，有值的累计电量样本未通过单调门禁。另以官方API作只读元数据探查：接口报告33,638条记录，抽样5页共113条，观察到50个不同`stationID`，与静态候选前缀有50个字符串匹配；这不是全量节点普查或物理EVSE映射。API计数与静态时序文件数不同，未经逐会话匹配不解释为漏采。API时间页覆盖约2018-09至2021-09，与主论文测试期结束时间重合，不是新时期数据。普通会话字段支持进一步重构代理序列，但时序端点抽样25条均未返回电流/导引时序值；节点到物理EVSE映射、连续实测功率和跨站性能仍未通过门禁。官方使用条件限教育/研究，静态仓库无独立LICENSE，再分发未确认。原始时序与API记录均未保存/发布；派生清单、抽样响应哈希、字段质量和脚本位于`outputs/analysis/JPL-feasibility-20261004/`及`scripts/probe_jpl_api_metadata.py`，详见`JPL-data-feasibility-20261004.md`。不训练、不修改正文及正式DOCX。
+
+2026-10-04证据同步：SG-EXP-027六份逐键预测已回收封存，新增7/1日配对时间块统计及独立复算；SG-EXP-024工程支持范围与电流形态核查、SG-EXP-025成熟标签滚动回放、SG-EXP-026合成决策算例分别进入正文第2章、第5章。实测功率、新时期和真实调度收益缺口仍保留；新增分析不改变原预测或旧36次训练结果。分析输出在本地保存，未经许可不将会话数据、checkpoint或完整预测作为公开附件。
+
+## 最新材料核查：2026-10-04
+
+SG-EXP-024补充11,085会话完成时刻支持范围审计及替代重构守恒；2022—2026年本地CSV均零行，不是新时期数据。当前可取得公开历史量测：office_01示例真实包含电流/电压/功率，论文Caltech10节点预定5月会话中8条通过电流形态门禁，2条未过门禁；通过者的电压/功率列均缺失。只完成归一化电流形态核查，尚未完成同节点实测能量/功率验证、实时延迟或未见时期确认。
+
+公开来源为https://github.com/tongxin-li/ACN-Data-Static，历史范围2018—2020。通过者会话文件URL、SHA256、匹配标识、字段缺失和采样质量见`outputs/analysis/SG-EXP-024-matched-current-probe/sample_metadata.json`；完整清单在批次读取前固定，但CA-303匹配试探样本此前已查看，仍属探索性便利样本。原始量测未本地保存或进入Git，派生无量纲片份额可复算。仓库无独立许可文件，研究引用与再分发权限应遵守官方https://ev.caltech.edu/dataset.html条款；公开可读不等于任意再发布。
+
+SG-EXP-025利用冻结calibration/test预测、时间键及逐节点label_available_at_ns完成14/28天滚动校准，成熟标签门禁与23,310条分位数独立复算通过。源预测仍在原归档，派生半宽和指标独立保存，不替换原运行。SG-EXP-026以完全合成请求验证影子决策求解；真实容量、车辆需求、非充电负荷、备用及电价仍缺，真实论文案例拒绝生成执行计划。详见`experiment-reports/EXP-024-026-no-training-supplement.md`。
+
+本文档以下2026-10-03及以前段落是对应轮次的历史状态，不以“当时无新增电流数据”否定本轮新取得的有限历史电流样本，也不因本轮样本扩大旧实验目标或口径。
+
+## 已确认的原始归档
+
+- 会话数：31,424
+- 站点数：1
+- `stationID`：55 个唯一值
+- `EVSEID`：55 个唯一值，且逐行与 `stationID` 完全一致
+- `spaceID`：55 个唯一值，与 `stationID` 文本值不同
+- 核心字段无缺失：`siteID`、`stationID`、`EVSEID`、`spaceID`
+- `stationID`、`EVSEID` 与 `spaceID` 三者均为稳定的一一映射，其中前两者逐行完全相同
+- 单节点会话数：最少 8，中位数 565，最多 1,808
+- 会话连接时间跨度：2018-04-25 至 2021-09-14
+
+这些结果说明数据具备“单站、多单元”的形态，但还不能单凭唯一值数量认定每个字段对应独立物理充电桩。SG-EXP-001 已完成以下检查：
+
+1. `stationID` 与 `EVSEID` 逐行完全相同，应视为同一标识的别名；
+2. `stationID` 与 `spaceID` 为稳定一一映射；
+3. 15 min 节点代理负荷在三个时间划分中均为完整的“时间戳 × 节点”笛卡尔网格；
+4. 训练、验证、测试预测起点连续、互斥并严格按时间排列；
+5. 节点覆盖率、活跃月份比例、非零负荷时间片和月度能量波动已逐节点统计。
+
+## 与既有实验一致的时间边界
+
+- 训练集：2018-04-26 10:45 至 2020-09-08 02:15，共 83,103 个预测起点；
+- 验证集：2020-09-08 02:30 至 2021-03-12 14:00，共 17,807 个预测起点；
+- 测试集：2021-03-12 14:15 至 2021-09-14 02:15，共 17,809 个预测起点。
+
+历史窗口、预测范围与 EXP-111 保持一致，分别为 96 个和 4 个
+15 min 时间片。节点清单只依据训练集和验证集冻结，测试集仅用于事后标记是否可评价。
+
+## 冻结节点范围
+
+- 主分析节点 10 个：CA-303、CA-304、CA-305、CA-307、CA-311、CA-315、
+  CA-317、CA-321、CA-327、CA-489；全部在测试期可评价。
+- 敏感性分析节点 15 个：在主分析节点基础上增加 CA-212、CA-308、CA-309、
+  CA-325、CA-492；其中 CA-212 测试期未达到最低可评价条件。
+
+主分析门槛同时约束训练/验证会话覆盖、活跃月份覆盖、训练期非零负荷时间片和
+月度代理能量变异系数。验证期会话覆盖明显低于训练期，是当前最主要的跨期数据边界。
+正式模型使用10个主分析节点；15节点集合仅完成筛选覆盖统计，尚无该集合的正式模型性能结果，不声称已完成节点范围稳健性验证。
+
+## 输入权限及处理范围订正（2026-10-03）
+
+原始31,424条会话覆盖55候选节点；主分析10节点对应11,085条会话。旧SG-DATA-005标准化统计为训练期拟合，但occupancy_rate的分母和load_jump_flag的阈值来自全时期，上游处理不能统称无测试统计。旧规则含事后代理负荷差分，仅作回溯诊断；目标标签跳变阈值也沿用旧定义。
+
+旧训练/验证各有4个原点的目标跨段，验证/测试各有95个原点的历史跨入前段；历史使用过去信息不等于未来泄漏，但不满足新协议完整窗口留段约定。SG-DATA-006继承固定10节点、假设事件即时可观察，未验证原始数据未提供的上报到达延迟，其测试时期已查看过，不是未见确认集。
+
+旧冻结共形覆盖失效新增复算位于outputs/analysis/conformal_failure_audit/，复用原三种子检查点、原测试预测和原校准规则，不重新训练、不修改旧conformal_summary.json。
+
+这些筛选仅证明节点具备后续统计图建模的最低数据条件。目标仍是由会话记录重构的
+节点代理负荷，不是真实在线电表功率；统计关系也不等同于物理或电气拓扑。
+
+## SG-EXP-023独立校准与守恒核验（2026-10-03）
+
+使用SG-EXP-019已回收预测及SG-DATA-006冻结张量，独立calibration与test的原点和目标时间集合不重叠，模型仍由tuning选择。新数值、逐键区间、校准样本数/秩、七日块统计和来源manifest保存于`outputs/analysis/SG-EXP-023-independent-calibration/`，独立复核为其同级`SG-EXP-023-independent-verification.json`。36原运行源工件未修改。
+
+对10节点11,085会话核验总电量92,650.01693634107 kWh与代理目标守恒；无新增功率、电流或事件入库时间数据，因此没有补成实测功率验证或实测延迟验证。旧协议独立校准仍未补做；本轮只补新协议的独立校准，测试时期已查看的性质保持不变。
+
+## SG-EXP-021补充应用数据（2026-10-02）
+
+节点集合代理需求预警复用SG-DATA-006事件时刻行为/日历输入协议下、SG-EXP-019已回收的三模型三种子预测。独立calibration/test各九份NPZ，共18份；源SHA256与既有运行manifest一致，原预测未修改。8805/17714个原点、8808/17717个唯一目标片均经独立复算核验，不能套用上文旧协议的预测键数与边界。
+
+权威派生工件为`outputs/analysis/SG-EXP-021-demand-warning/final/`，机器来源在audit与manifest，方法和复跑见`SG-EXP-021-demand-warning-report.md`。本算例使用已分析过的历史测试期、事后代理目标和十节点范围，不构成未见时期、完整场站或实测在线量测验证。
+
+## SG-EXP-022运行接口算例（2026-10-02）
+
+四步预测展示复用SG-EXP-021中同一个固定原点、MRG-GCN三种子展示统计和首个按时间顺序选定的合格代理需求过程；不增添原始记录、不重训模型、不重算或替换SG-EXP-021预警比较。唯一新增数值为将kWh/15 min代理需求除以0.25 h得到的区间平均代理功率换算值。派生CSV、来源哈希、计算审计与输出manifest位于`outputs/analysis/SG-EXP-022-forecast-operation-interface/`，代码为`scripts/build_forecast_operation_case.py`。该换算值不是电表功率；本数据缺少完整场站容量、同时段非充电负荷及实际车辆控制约束，不能据此计算真实容量余量或调度收益。
+
+## 2026-10-12 跨协议检查点证据包
+
+新增`MAT-CHECKPOINT-REPLAY-20261012`，复用SG-DATA-005/006/007及原实验权重，不新增原始数据。三个协议、四组实验共63次完整test前向，60次通过、3次未通过；原预测到六类指标复算63/63通过。来源、字段、权限与逐运行差异见`reproducibility-20261012/README.md`及`data-dictionary.md`。
+
+可携带输入目录为`outputs/evidence/checkpoint-replay-20261012`，MANIFEST覆盖1,022个冻结文件，SHA256为`1e881063a63addbf6a627d14fabe2c372d507a1fe6465f8ae8aaa5c0a37c9f62`。实际从仓库外临时目录调用，在现有CPU环境执行；原tuning/calibration导出保留，本轮不声称完成其前向复算。旧AdaptiveGraph三个种子、训练时源码认证和历史PCMCI完整检验矩阵仍有缺口。原始会话、凭据未进入包；派生张量/权重/完整预测仅供授权本地教育研究交接，不进Git、不上传，公开再分发许可未确认。
+
+## 2026-10-14 JPL L1/L3无训练复核
+
+复用SG-DATA-007及SG-EXP-028，不增加原始数据。27组JPL冻结前向输出、源哈希与环境说明保存于outputs/analysis/JPL-MDP-20261014；仅将经过独立核验的汇总纳入§4.6与表4-7/4-8。完整预测和权重仍限授权研究，不公开再分发。
+
+用户另行授权AdaptiveGraph原环境检查点推理。准备了仅含旧SG-EXP-004恢复源码、冻结张量、三个检查点与原预测的最小复算包；64文件哈希预检通过。原CUDA主机不可用，包尚未上传，CUDA输出未生成。恢复后只在用户指定环境执行推理，回收输出manifest；本地预检不替代原环境复现。
+
+```
+
+#### docs/thesis/claim-evidence-map.md — 主张权限与已完成JPL校准
+定位：`{"kind": "whole_file"}`；来源SHA-256：`3a1ae1eea4bd7eccba86c8b49e8a38dcf121810a78a614f40a4f8f72ab9fca42`
+```text
+# 新增补强证据映射
+
+## 当前证据状态（2026-10-18更新）
+
+本节为当前入口；下方按日期保留的历史失败、预检和待办状态仅代表当时情况。正文表号以当前主稿为准。
+
+### 论文核心结论权限
+
+| 结论层级 | 当前证据 | 正文可作的判断 | 不支持的外推 |
+|---|---|---|---|
+| 主要模型比较 | Caltech事件时刻协议、JPL重新拟合；整体与分层MAE/RMSE | MRG-GCN在所检协议下有整体MAE优势；该优势没有稳定延伸至非零目标和标签事件组 | 活跃充电预测全面领先、跨数据家族泛化或实测功率预测 |
+| 节点门控增量 | Caltech与JPL同参数共享门控对照，各有一个共享门控种子触及60轮上限 | 当前预算及选模规则下，节点级门控的整体MAE较低 | 更长预算下仍占优或跨时期普遍成立 |
+| 关系增量 | SG-EXP-031 JPL同参数自环替换：负荷与轮廓关系的整体差异区间为正；行为关系区间跨零 | 负荷与轮廓关系在本架构、协议和预算下有条件性整体增量证据；行为关系仍不确定 | 三类关系均不可替代或对其他站点同样有效 |
+| 非零组关系结果 | 031已查看测试期上的事后分层；负荷关系相对自环的非零组差为正，未作多重校正 | 可作探索性组件分层描述 | 完整MRG-GCN胜过TCN；确认性或多重校正后的非零组结论 |
+| 目标敏感性 | SG-EXP-032固定原图与测试键，仅更换完成时刻截断代理目标 | 全局MAE排序在该替代目标下保持；非零组仍未优于TCN | 实测功率效度、替代目标重建图后的端到端稳健性 |
+| MDP诊断 | L1联合参数敏感度、L2受检学生蒸馏、L3四格误差还原及JPL复核 | 修订关系权重解释、学生替代结论和指标报告重点 | 诊断指导改模已提高预测或运行收益 |
+| 应用价值 | 固定代理轨迹、合成LP核验；真实案例状态为`MATERIALS_REQUIRED` | 界定采数、校准、离线评价和影子运行步骤 | 真实越限、安全改善、成本节约或直接调度能力 |
+
+SG-EXP-031/032及JPL后续诊断均使用已查看的固定测试期，属于事后补充证据；不作为独立时期确认。全文据此区分总体模型比较、组件内增量、探索性分层与未验证的现场主张。
+
+- AdaptiveGraph：SG-EXP-004三个冻结检查点在匹配PyTorch 2.4.1/CUDA 12.1环境逐键通过；原生CPU存在top-k并列选边差异，固定CUDA邻接后CPU通过。原训练Git标识缺失、历史Mac环境偏差仍保留。报告：`experiment-reports/EXP-AdaptiveGraph-CUDA-20261015-no-training.md`及`outputs/analysis/AdaptiveGraph-CUDA-20261015/independent-verification.json`。
+- SG-EXP-031：四配置×三种子同参数关系自环替换重训，支持负荷耦合和轮廓相似关系在当前JPL设置下的条件性整体MAE增量，行为共现关系区间跨零。审计中的次要分层显示，负荷关系相对自环的非零组种子平均差为0.004893 kWh/15 min，三个种子方向均为正；这是已查看测试期上的事后描述，未作该分层的多重校正，不等同完整模型胜过TCN（JPL非零组仍是TCN较低）。正文§3.7.2、表3-11；输入/容量/预算见表3-14。报告：`experiment-reports/SG-EXP-031-jpl-relation-controls.md`，数值见`outputs/analysis/SG-EXP-031-audit-20261015/audit.json`及`content-review-20261016-paired-reaudit/load-nonzero-crosscheck.json`。
+- SG-EXP-032：完成时刻截断代理目标下全局MAE排序保持；新目标零值94.27%，非零组MRG-GCN较差。正文§3.8.4、表3-15；两种分层是边际评价，未作联合贡献分解。两项新训练均为已查看固定测试期上的补充。
+- JPL可靠性：AUDIT-JPL-CAL-20261015复用313,120校准键与632,640测试键，标准/行为分层整体覆盖90.08%/90.11%，事件46.43%/45.88%，独立核验PASS。正文§5.3.5；报告`experiment-reports/EXP-JPL-calibration-20261015-no-training.md`。JPL尚缺L2与同硬件时延。
+- AutoDL当前关闭状态以SG-EXP-032的控制台关机证据为准。SG-EXP-031结束时在线为历史事实，不作为当前实例状态；材料已回收并核验。
+
+
+范围：登记2026-10-04—2026-10-05新增证据及正文落点。各项证据按来源、口径和独立数值复核；旧主实验和36次原结果保持。该映射不是全文证据认证。
+
+| 主张ID | 主张 | 数据/实验 | 产物 | 状态与限制 |
+|---|---|---|---|---|
+| CLM-024-SUPPORT | 原均摊能量可延续到充电完成后；完成支持重构保持总量 | 原31,424会话、SG-DATA-00610节点；SG-EXP-024 | proxy-engineering/summary.json、session_support_audit.csv | 核验通过的重构敏感性；不是实测或模型MAE偏差 |
+| CLM-024-CURRENT | 8个预定匹配会话的实测电流归一化形态不同于等片分摊 | DATA-024-CURRENT-PROBE；SG-EXP-024 | matched-current-probe/selection.json、sample_metadata.json、normalized_bin_shapes.csv | 便利样本、2质量失败；功率/电压缺失，不能推断实测kWh误差 |
+| CLM-025-ROLL | 成熟标签回放下滚动校准缓解全体覆盖失配，事件仍明显不足 | SG-DATA-006，SG-EXP-019冻结预测；SG-EXP-025 | rolling-calibration/summary.csv、daily_quantiles.csv、独立verification | 14/28天固定、历史探索；不是保证或未见确认 |
+| CLM-026-DECISION | 服务与容量约束的影子LP可执行合成可行性核验 | DATA-026-SYNTHETIC；SG-EXP-026 | charging-decision/shadow_plan.json、audit.json | 算法单元核验；真实案例MATERIALS_REQUIRED，无实际收益 |
+| CLM-027-GATE | 同参数节点级门控相对节点共享门控具有本测试期MAE增量 | SG-DATA-006；SG-EXP-027 | recovered六次来源、SG-EXP-027-time-block/summary.json与independent-verification.json | 三种子、七日及一日块方向一致；同上限与选模，实际轮次不同，不是旧协议消融或跨期保证 |
+| CLM-028-JPL | JPL固定协议测试期内MRG-GCN整体MAE低于预登记的三项基线；节点级门控对照方向与Caltech一致 | SG-DATA-007-JPL；SG-EXP-028 | `experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md`及回收归档、预测键复核、配对区间CSV；`experiment-reports/EXP-JPL-calibration-20261015-no-training.md`及独立核验 | 12次正式运行；24个七日块、三组校正区间均高于零。TCN的RMSE、事件MAE、非零目标MAE较低。JPL独立校准已完成：总体覆盖约90.1%，事件覆盖约46%；同硬件时延仍未完成。同属ACN家族、年份重叠、目标为会话代理，不代表跨家族、未来时期或零样本迁移 |
+| CLM-029-GATE-COMPOSITION | 两个既有测试期的节点级门控整体MAE点估计不由任一单节点单独决定 | SG-DATA-006/007；SG-EXP-027/028原始预测键；SG-EXP-029 | `experiment-reports/SG-EXP-029-node-composition-sensitivity.md`、逐键审计脚本、留一CSV/JSON | 两站各10次留一点估计均为正；事后同测试期分析，无留一区间/多重校正，不是独立验证，不证明每节点获益 |
+
+上述分析产物位于`outputs/analysis/SG-EXP-*`；SG-EXP-027六次原工件位于`outputs/experiments/SG-EXP-027/recovered/`，SG-EXP-028归档及分析表位于本机训练交接工作区。正文映射：CLM-024在2.1.2，CLM-027在3.7.1、4.2.5及表3-9，CLM-029在3.7.1与结论，CLM-025在5.3.4及表5-3，CLM-026在5.4.4、式（5-7）及表5-8，CLM-028在摘要、1.4—1.6、2.1.3、3.6.3、3.8.2、结论与局限。方法组件证据对照见表3-13；本轮重排不新增图号。
+
+## 2026-10-12 检查点复算的增补映射
+
+| 原证据/正文 | 新复核材料 | 本轮结论与边界 |
+|---|---|---|
+| SG-EXP-019，表3-2 | `reproducibility-20261012/sg019.json` | 36/36现有检查点完整test前向通过；只在原事件时刻协议内解释 |
+| CLM-027-GATE，表3-9 | `reproducibility-20261012/sg027.json` | 6/6通过；没有增加训练预算或新的确认时期 |
+| CLM-028-JPL，表3-3 | `reproducibility-20261012/sg028.json` | 12/12锁定检查点通过；原整体MAE结论及指标边界沿用 |
+| SG-EXP-002/003/004，表3-4三行 | `reproducibility-20261012/legacy.json` | TCN/MRG六次通过，AdaptiveGraph三次CPU前向未通过；原预测到指标全部算术一致，训练时源码仍未认证 |
+| 上述21行MAE均值/样本标准差 | `paper-mae-archived-audit.json`、`paper-mae-forward-audit.json` | 原预测指标21/21行与论文一致；前向指标20/21行通过，不替换旧AdaptiveGraph原GPU数字 |
+
+本轮总入口状态为FAIL（60/63前向通过），完整失败记录保留。可携带包及权限见`data-availability.md`和`reproducibility-20261012/README.md`。
+
+## 2026-10-14 JPL L1/L3无训练复核
+
+| 主张ID | 来源与定位 | 已支持范围 | 未支持范围 |
+|---|---|---|---|
+| CLM-AUD-JPL-L1-20261014 | SG-EXP-028三个冻结MRG；audit_jpl_mdp_20261014.py；§4.6.1–4.6.2、表4-7 | 七种替换三个种子均提高整体MAE；函数保持重参数化重现预测；联合配置敏感度 | β独立收益、三关系条件边际、所有分层均退化；事后分析未作确认性统计 |
+| CLM-AUD-JPL-L3-20261014 | 同组原正式预测与冻结掩码；§4.6.3、表4-8 | 四格计数与加权MAE闭合；稀有格高单键误差、常态格多数累计误差 | 同时刻事件检测性能、因果归因、实际运行风险或收益 |
+| CLM-AUD-BUDGET-20261014 | revision-20261014-evidence/input-capacity-budget.json；表3-13 | 12组主要配置、36运行的输入/容量/最佳与停止轮次可追溯 | 相同预算代表相同充分收敛、参数量代表推理效率 |
+
+MDP判断变化汇总于表4-6，组件范围汇总于表3-13。新工件和独立核验见revision-20261014-evidence/README.md；L2尚未跨站。该历史映射截至2026-10-14；AdaptiveGraph后续CUDA核验见本文件当前入口。
+
+## 本轮新增主张与工件
+
+| 文献定位 | 正文位置 | 直接证据 | 支持范围与边界 |
+|---|---|---|---|
+| NEAR76-LITERATURE | §1.2表1-1、§1.2.3、§1.3 | 出版社原文核验快照：`content-review-20261017-calibration-pair/reviewer-packet/evidence/NEAR76-primary.md` | Liang[76]已报告公开Boulder交易重构EV负荷上的直接/残差预测及指标依赖结果；本文不把一般会话重构代理预测或残差校正作为空白。其单场站内多节点关系、节点门控、关系替换重训与MDP差异用于定位本文问题，不支持跨文误差排名。 |
+
+| 主张 | 正文 | 直接证据 | 权限 |
+|---|---|---|---|
+| CLM-031-RELATION | §3.7.2、表3-11、表3-13 | SG-EXP-031实验报告；audit.json与逐种子/块级CSV | 两类邻接相对自环替换的条件性整体MAE增量；第三类不确定 |
+| CLM-032-TARGET | §2.1.2、§3.8.4、表3-15 | SG-EXP-032目标审计、逐键预测、回收manifest | 固定图、共同键上的替代代理目标敏感性，不是实测效度 |
+| CLM-JPL-INTERVAL | §5.3.5 | JPL-calibration-20261015/audit.json、independent-verification.json | 固定已查看测试期的独立校准经验覆盖，事件覆盖不足 |
+| CLM-ADAPTIVE-CUDA | §3.6.1、§3.6.4 | AdaptiveGraph-CUDA-20261015独立核验及回收数组 | 匹配CUDA权重→预测复算通过，原生CPUtop-k选边机制；保留训练源码认证限制 |
+
+```
+
+#### docs/thesis/material-passport.md — 材料身份登记
+定位：`{"kind": "whole_file"}`；来源SHA-256：`33ecc45c11775788fc9e6979949ef78fef5900a1583d8b01df5feb030681c2ea`
+```text
+# 2026-10-04新增材料身份记录
+
+## 当前证据状态（2026-10-15统一修订）
+
+本节为当前入口；下方按日期保留的历史失败、预检和待办状态仅代表当时情况。正文表号以当前主稿为准。
+
+- AdaptiveGraph：SG-EXP-004三个冻结检查点在匹配PyTorch 2.4.1/CUDA 12.1环境逐键通过；原生CPU存在top-k并列选边差异，固定CUDA邻接后CPU通过。原训练Git标识缺失、历史Mac环境偏差仍保留。报告：`experiment-reports/EXP-AdaptiveGraph-CUDA-20261015-no-training.md`及`outputs/analysis/AdaptiveGraph-CUDA-20261015/independent-verification.json`。
+- SG-EXP-031：四配置×三种子同参数关系自环替换重训，支持负荷耦合和轮廓相似关系在当前JPL设置下的条件性整体MAE增量，行为共现关系区间跨零。正文§3.7.2、表3-11；输入/容量/预算见表3-14。
+- SG-EXP-032：完成时刻截断代理目标下全局MAE排序保持；新目标零值94.27%，非零组MRG-GCN较差。正文§3.8.4、表3-15；两种分层是边际评价，未作联合贡献分解。两项新训练均为已查看固定测试期上的补充。
+- JPL可靠性：AUDIT-JPL-CAL-20261015复用313,120校准键与632,640测试键，标准/行为分层整体覆盖90.08%/90.11%，事件46.43%/45.88%，独立核验PASS。正文§5.3.5；报告`experiment-reports/EXP-JPL-calibration-20261015-no-training.md`。JPL尚缺L2与同硬件时延。
+- AutoDL当前关闭状态以SG-EXP-032的控制台关机证据为准。SG-EXP-031结束时在线为历史事实，不作为当前实例状态；材料已回收并核验。
+
+
+该文件只覆盖本轮新增材料，不代替既有完整归档与图表manifest。
+
+| 材料ID | 身份/来源 | 版本及完整性 | 权限 | 使用范围 |
+|---|---|---|---|---|
+| DATA-JPL-METADATA-20261005 | 官方JPL普通会话API全量必要元数据，337页33,638会话 | acquisition逐页响应哈希；本地快照SHA256 68480c71451dfaa0e2ca3a27cefb2fa229c76eac31fc541ccef56af7a9af3af4；52设备/52车位映射 | 本地教育研究；未存用户字段或令牌；原始记录不进Git，再分发未确认 | 外部场站代理任务来源，不认证实测功率/采集在线率 |
+| SG-DATA-007-JPL | 10训练期筛选车位，事件时间输入、事后代理目标 | dataset SHA256 1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af；1,060,960行节点时间格独立核验；完整manifest和身份/节点筛选记录 | 张量只本地研究及后续授权云端处理，不进Git | 另一场站重新训练的固定数据资产，非真正新时期/零样本迁移 |
+| MAT-JPL-PREREG-20261005 | SG-EXP-028冻结协议与比较设计 | 配置、方案及代码/来源摘要见JPL-validation-freeze-20261005.json；4模型×3种子共12次 | 可复核研究设计，不含个人数据 | 预登记材料；性能证据见MAT-JPL-RESULT-20261005及正式实验报告 |
+| MAT-JPL-RESULT-20261005 | SG-EXP-028十二次正式训练、测试预测和派生统计 | 12/12运行通过；归档SHA256 `50e7beb581c7cd4e3099fa0661d5a1cf3c1f79935516739eae693ba0234d4966`；数据张量SHA256与SG-DATA-007一致；逐键复核见实验报告 | 仅本地研究；原始会话、检查点和逐键预测不进入公开附件 | JPL固定协议点预测比较与条件时间块差异；不是实测功率、零样本迁移或未来时期证据 |
+| DATA-JPL-FEASIBILITY-20261004 | ACN-Data-Static JPL固定156条探查 + 官方API元数据跨期抽样113条及1个时序页 | 静态commit abb7cf15cc7108913e965d4375cc7270d532b65f；API报33,638条，抽样50个stationID与静态52候选中50个字符串匹配；`api_authenticated_crosswalk_probe.json`含逐页响应哈希，manifest记录脚本/摘要SHA256；无原始API记录 | 仅本地研究核查；教育研究条款；再分发待明确；令牌未保存 | 外部站点候选；非全量节点盘点，时序页0/25有电流，不是实测kW、正式跨站或新时期性能验证 |
+| MAT-024-SUPPORT | 原会话主10节点及SG-DATA-006固定目标；脚本audit_proxy_engineering.py | sources.json与manifest.json；替代重构仅派生 | 原始数据不进入Git；只保留本地证据 | 支持范围/总量，不是实测负荷 |
+| DATA-024-CURRENT-PROBE | ACN-Data Static公开历史Caltech会话；预定10个、8个质量通过 | selection.json、各通过文件URL/SHA256，元数据及派生份额manifest | 原文件不保存/再分发；许可需遵守官方条款 | 归一化电流形态，非实测能量、新时期或在线性能 |
+| MAT-025-ROLLING | SG-EXP-019 MRG三种子冻结calibration/test及成熟时间张量 | 配置SG-EXP-025-rolling-calibration.json、sources与manifest；独立复核23,310条分位数 | 本地派生证据，无源工件改动 | 已查看历史上的成熟标签回放 |
+| DATA-026-SYNTHETIC | 人工设定单车4片影子决策单元算例 | synthetic_parameters.json、shadow_plan.json、sources/manifest；枚举复核 | 完全合成，无真实车辆材料 | 算法可行性，不报告实际经济收益 |
+| MAT-024-026-REPORT | EXP-024-026-no-training-supplement.md | 与实验registry/质量报告/指标定义映射 | 研究记录 | 2026-10-04经核验纳入正文2.1.2、5.3.4、5.5.4 |
+| MAT-027-GATE | 同5090六次配对门控训练及完整归档 | 原归档SHA256为2afb6019b11808a2eca437f4590c68ba7f58752ad8af5cb5e1f229164c1cbb50；6/6独立PASS | 本地完整归档，权重与逐键预测不进入Git | 新协议节点门值差异，不替换旧成绩或原36次结果 |
+| MAT-027-BLOCK | SG-EXP-027-time-block派生统计 | 新冻结配置、sources与manifest；两种聚合及百分位复算一致 | 派生摘要与脚本可复跑，原源文件只读 | 既有测试期条件性区间，不是跨站或未见确认 |
+
+前轮保持论文哈希的说明对应重训前检查点；本轮经用户授权将补充证据写入正文并原位同步唯一DOCX，版本由Git保存，不新增日期后缀Word。原模型主结果和原phase2全部工件未修改。本轮无私人token或原始量测再发布材料。
+
+## 2026-10-12 新增复算与交接材料
+
+| 材料ID | 来源/完整性 | 核验结论 | 权限与范围 |
+|---|---|---|---|
+| MAT-CHECKPOINT-REPLAY-20261012 | 三个协议、四组实验原权重/配置/冻结张量；1,022文件MANIFEST SHA256 `1e881063a63addbf6a627d14fabe2c372d507a1fe6465f8ae8aaa5c0a37c9f62` | 60/63 test前向通过；63/63原预测指标复算通过；21行论文MAE均值/样本SD一致 | 本地授权研究；不公开权重、预测或张量；不等同训练复现 |
+| MAT-ADAPTIVE-REPLAY-GAP-20261012 | 旧SG-EXP-004三种子及`adaptive-topk-diagnostic.json` | CPU前向失败如实保留；top-k并列值是候选解释，未作CUDA确认 | 不修改原结果；不能计为前向通过；训练时源码认证仍缺 |
+
+交接索引为`reproducibility-20261012/README.md`；原预测、模型与历史评分文件保持原证据身份，未用当前PCMCI结果填补历史完整p矩阵。
+
+| 交付材料 | 身份 | 已核验范围 | 待办范围 |
+|---|---|---|---|
+| MAT-THESIS-DOCX-20261012 | 正式论文稳定文件；SHA256 `489ebf1b68a47f0184b4c1ec34c1ac99a79cdc685de490a1d59af55dcc60df79`；源MD SHA256 `21e54e81244e6dc07721dfb1395fe31ba7ba71f7e8d99de805d8ebf61e021350` | 本轮文字同步、27公式序号、46图片字节顺序通过 | 本轮目录刷新及WPS分页视觉验收未执行；不声明完整格式验收通过 |
+
+## 2026-10-14 JPL L1/L3无训练复核
+
+| 材料ID | 来源与哈希索引 | 核验状态 | 范围 |
+|---|---|---|---|
+| MAT-JPL-MDP-20261014 | outputs/analysis/JPL-MDP-20261014/audit.json与output-manifest.json；原SG-EXP-028冻结锁 | PASS；31输出文件摘要、24组指标与3组重参数化对照；原源文件哈希保持 | 事后L1/L3，不训练、不提供一般效度或运行收益 |
+| MAT-ADAPTIVE-CUDA-PACK-20261014 | outputs/evidence/AdaptiveGraph-CUDA-replay-20261014.tar.gz；SHA256 9e0df8d6c001fbc83538cfa28524aa259938f903b5dad844d2961eb727867e71 | 64输入文件本地材料预检通过；CUDA待执行 | 未上传、原训练源码认证仍缺；旧失败保持 |
+
+正文源版本、变更及正式Word同步核验登记在revision-20261014-evidence/；原始评分版本与工件保留。
+
+| MAT-THESIS-DOCX-20261014 | 正式稳定文件；DOCX SHA256 1182efb29a26e9e8f18f1b9ab8c545bcf2bd25eeebd00df5490289e0f6d42156；源MD SHA256 4495426788c75bd9c3fcbc6aa6f11942c08de7203a993e9e5662c98ec192b0b6 | 五个表格、38表号、27公式、46正文图片内容同步核验PASS | 目录页码与WPS分页未重新验收 |
+
+## 当前交付新增材料
+
+| 材料ID | 来源与完整性 | 使用范围 |
+|---|---|---|
+| MAT-031-RESULT | outputs/experiments/SG-EXP-031，173项内层校验；audit-20261015通过 | 同参数关系替换重训练，事后固定JPL测试期 |
+| MAT-032-RESULT | outputs/experiments/SG-EXP-032，99项内层校验；target-audit通过；shutdown-evidence.json控制台已关机 | 代理目标敏感性；不支持非零目标改善 |
+| MAT-JPL-CAL-20261015 | 6份原预测输入SHA及独立排序/端点复算；最大差2.22e-16 | 后验固定期可靠性，不训练、不调测试半宽 |
+| MAT-ADAPTIVE-CUDA-20261015 | 64输入/13回收文件哈希，三个CUDA与固定邻接CPU均通过 | 原检查点复算，缺失原训练Git身份不能补认证 |
+
+```
+
+#### docs/thesis/revision-20261018-claude-review/data-availability-check.md — 10月18日旧失败记录，追加日期化订正
+定位：`{"kind": "whole_file"}`；来源SHA-256：`e3c39f15f18b8d51ca45ec91666df5a556fd20ad9988f29f262f4e5c2180b54b`
+````text
+# 官方新数据入口实查记录
+
+任务编号：REV-20261018-claude-bounded  
+核查日期：2026-10-19  
+核查对象：ACN-Data官方数据页及其页面明确的站点/下载入口  
+核查方式：WebFetch只读访问；未登录、未使用API令牌、未下载会话、未按结果选择时期。
+
+## 1. 实际访问的URL与读取范围
+
+| 序号 | URL | 读取范围 | 结果 |
+|---|---|---|---|
+| 1 | `https://ev.caltech.edu/dataset` | 尝试读取数据页全文及页面链接 | 失败，未取得页面内容 |
+| 2 | `https://ev.caltech.edu/dataset/` | 同上（规范尾斜杠形式） | 失败，未取得页面内容 |
+| 3 | `https://ev.caltech.edu/` | 尝试读取项目首页及数据入口链接 | 失败，未取得页面内容 |
+
+三次请求均由WebFetch在域名安全校验阶段返回同一错误：
+
+```text
+Unable to verify if domain ev.caltech.edu is safe to fetch. This may be due to network restrictions or enterprise security policies blocking claude.ai.
+```
+
+该错误发生在页面内容返回之前，因此本轮**没有读到**官方页面的正文、表格、站点列表或下载按钮，也不能确认页面是否存在记录计数、最新日期或2021年之后的元数据。
+
+## 2. 补充的公开索引核查（不作为直接证据）
+
+为区分“页面不存在”和“本会话域名校验失败”，另做一次受限 WebSearch（仅限`ev.caltech.edu`与`caltech.edu`）。搜索结果中出现了标题为“ACN-Data - ACN-Data”的条目，URL为`https://ev.caltech.edu/dataset`，另有`https://ev.caltech.edu/research`条目；搜索摘要称ACN-Data是持续更新的工作场所EV充电会话数据集，并称其覆盖期可追溯至2018年。
+
+必须强调：
+
+- 这些是搜索引擎索引摘要，**不是对官方页面的实际读取**；
+- 摘要没有给出可核验的逐月记录数、最新记录日期、站点/spaceID映射或2021年后的具体会话量；
+- 因此不能据此认定“已有晚于2021年的可用新数据”，也不能把“持续更新”的页面说明当作新数据已可用的证据。
+
+## 3. 当前结论
+
+**未知。** 本轮未能通过WebFetch取得ACN-Data官方页面内容，因而无法确认：
+
+- 官方页面是否展示记录计数或最新日期；
+- 是否存在晚于既有2021年本地记录（JPL最晚接入/断开时间为2021-09-14）的公开元数据；
+- 新记录是否覆盖Caltech/JPL站点、是否保持节点映射和行为字段稳定；
+- 能否据此建立未查看时期或独立时间确认集。
+
+本轮没有新增数据、没有下载会话、没有调用带凭据API，也没有改变`docs/thesis/revision-20261016-nonexperimental/data-availability-decision.md`中“本地尚无已取得且通过适用性核验的新数据”的结论。
+
+## 4. 失败原因与下一步
+
+失败原因是WebFetch对所访问域名的安全校验未通过，而不是404、登录墙或API权限错误。下一步建议：
+
+1. 本轮WebFetch权限已获批准，失败发生在域名安全验证阶段，不是缺少工具许可；因此不建议通过添加允许规则解决。应由操作者在能够通过该验证的网络环境中重新读取`https://ev.caltech.edu/dataset`。
+2. 若页面提供按站点和日期筛选的网页界面，只读记录筛选时间范围、返回计数、站点列表和spaceID映射；不下载会话，不使用API令牌。
+3. 若必须使用REST API，先由操作者在本机取得令牌；令牌不通过聊天传递，只查询不包含时序的会话元数据端点。
+4. 将实际读取时间、URL、字段、计数和响应哈希记入材料护照；不保存用户身份字段。
+5. 只有在确认存在未查看时期且节点映射、字段稳定性和标签成熟条件均可核验后，才讨论独立时间确认集；不得按已查看测试结果挑选有利时期。
+6. 在完成上述步骤前，论文中新数据结论保持“未知”，门控预算补验仍只复用已查看JPL测试期。
+
+## 5. 与门控预算补验的关系
+
+门控预算补验（`gate-budget-contract.json`）不依赖新增数据，复用冻结的JPL事件时刻数据和原划分。因此本轮新数据核查受阻不改变该补验的准备状态；但该补验本身也不是独立外部验证，只回答已查看测试期上的预算敏感性。
+
+````
+
+#### docs/thesis/thesis-manuscript.md — 固定门值结果转引和已完成031证据
+定位：`{"kind": "markdown_heading", "value": "3.7.2 关系路径、关系子集与敏感性"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+### 3.7.2 关系路径、关系子集与敏感性
+
+旧协议关系子集见表3-10：单关系配置与三关系基线MAE接近，但删去分支也改变了参数量和传播路径，不能据此识别条件增量。为隔离邻接的作用，SG-EXP-031在JPL保留全部关系分支和参数，只将指定邻接换为单位自环并从头重训；这是已查看测试期上的事后补充，与旧子集比较分开解释。
+
+top-$k$实验中，$k=5$和$k=7$的MAE分别为0.01391和0.01448，较密的$k=7$配置上升4.1%；该结论不外推到未正式比较的其他稀疏度。关系随机失活概率取0、0.2和0.4时，MAE分别为0.01391、0.01391和0.01391，差异不足0.03%，未观察到实质收益。因此，主模型保持$p=0$。这些已完成的小网格实验不构成输入长度、15节点范围或规则阈值/扩展长度的全面敏感性验证；后几项尚未完成，不声称模型对其稳健。
+
+**表3-10 关系子集与超参数敏感性**
+
+| 实验组 | 配置 | 全局MAE | 组内结论 |
+|---|---|---:|---|
+| 关系子集 | 三关系 | 0.01412 | 组内基线 |
+| 关系子集 | 仅负荷 | 0.01415 | 与基线接近 |
+| 关系子集 | 仅行为 | 0.01415 | 与基线接近 |
+| 关系子集 | 仅轮廓 | 0.01401 | 数值略低 |
+| 稀疏度 | top-$k=5$ | 0.01391 | 组内基线 |
+| 稀疏度 | top-$k=7$ | 0.01448 | +4.1% |
+| 关系随机失活 | $p=0.2$ | 0.01391 | 变化不足0.03% |
+| 关系随机失活 | $p=0.4$ | 0.01391 | 变化不足0.03% |
+
+附表A-1的单关系变体均值高于三关系模型，但参数量和路径同时变化，不能证明每类关系必需。固定门值变体也受参数量与部分种子触顶混淆；节点门值增量以3.7.1节的同参数比较为准。去除跨层拼接和精炼的变化较小。
+
+等权$\beta$重训练取得略低的全局MAE，现有证据不支持学习$\beta$的正向精度净增益。它允许各关系变换重新适应等权约束；旧协议L1则固定其他参数，只在推理时替换$\beta$。前者检验参数化选择，后者检验既有模型的功能依赖，二者的差异由4.2.5节结合关系变换的尺度解释。
+
+按预测发布的当地日期划分27个连续七日非重叠时间块，保留全部节点、目标片和三种子，对种子平均的同键误差差作2,000次配对Bootstrap。以“对照MAE减MRG-GCN MAE”为正向改善，等宽TCN与自环对照的全局差分别为0.00744和0.00720 kWh/15 min，描述性95%区间分别为[0.00693, 0.00798]和[0.00664, 0.00773]；相对等宽TCN的标签事件差为−0.00638，区间为[−0.00847, −0.00444]。这些结果把关系路径的价值限定在本测试时期和样本组成上。该区间反映固定三种子平均后的时间段变动，不包含重新抽取训练种子的全部不确定性，且未作多终点校正。
+
+时间块分析中，等权β比完整模型低0.000277 kWh/15 min，“等权减完整”区间为[−0.000470, −0.000089]；这是已查看时期的条件差异，不证明等效或普遍更优，现有结果不支持学习β有正向净增益。跨层拼接差异区间跨零；精炼去除的差异较小。
+
+
+**表3-11 JPL三关系图自环替换的配对重训练结果**
+
+| 替换配置 | 完整模型相对替换配置的整体MAE差（kWh/15 min） | 相对替换配置MAE | Bonferroni 98.333%七日块区间（kWh/15 min） | 同向种子 | 结论 |
+|---|---:|---:|---:|---:|---|
+| 负荷耦合关系→自环 | 0.001501 | 1.82% | [0.000048, 0.002689] | 3/3 | 支持当前设置下的条件性整体MAE增量 |
+| 行为共现关系→自环 | 0.000120 | 0.15% | [-0.000432, 0.000728] | 2/3 | 区间跨零，增量尚不确定 |
+| 轮廓相似关系→自环 | 0.001252 | 1.52% | [0.000167, 0.002275] | 3/3 | 支持当前设置下的条件性整体MAE增量 |
+
+注：每个替换配置均保留三个关系分支和32,714个可训练参数，仅将指定邻接矩阵替换为单位自环，再按同一规则从头训练；每配置三个种子，共12次运行，同一种子各配置的非图参数初始值一致。差值定义为“替换配置MAE−完整模型MAE”，正值表示完整模型误差较低。区间对三项比较作Bonferroni校正，基于固定JPL测试期24个当地七日块及10,000次配对重采样；测试期已查看，本结果为事后补充分析。
+
+负荷耦合和轮廓相似关系对应的整体MAE差三种子均为正，Bonferroni校正区间下限均高于零；行为共现关系的区间跨零。因此，前两类关系在本架构、协议和预算下具有相对自环替代的条件性整体增量证据，第三类仍不确定。事件组中，行为或轮廓关系替换后的MAE反而分别低0.005142和0.003677，表明整体改善不必然延伸至事件样本。
+
+负荷邻接的事后分层显示，替换为自环后的配置非零组MAE较完整模型高0.004893 kWh/15 min，三个种子方向均为正；该结果来自已查看测试期，未作多重校正。它比较的是当前图模型内的关系组件，而非不同模型。JPL完整MRG-GCN非零组MAE为0.277839，高于TCN的0.275718 kWh/15 min；Caltech事件时刻和完成时刻截断目标也呈相同方向。因此，“负荷关系相对自环改善非零组”与“完整模型非零组尚未胜过TCN”可以同时成立：前者支持在所检架构内保留并复核该关系，后者要求按分层表现选择模型。
+
+SG-EXP-031四种配置的最佳与停止轮次均低于60轮上限，降低了触顶对这组关系比较的影响，但不能据此证明充分收敛。027及028共享门控的触顶限制属于另一项对照；各组结果均按各自架构、预算和测试期解释。
+
+```
+
+#### docs/thesis/thesis-manuscript.md — 此处3.7.1转引已正确，不修改它
+定位：`{"kind": "markdown_heading", "value": "3.5.9 节点门控与残差更新的分工"}`；来源SHA-256：`62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66`
+```text
+### 3.5.9 节点门控与残差更新的分工
+
+图3-6给出$\boldsymbol\beta$与$\mathbf G$的计算位置。冻结替换改变$\boldsymbol\beta$而保留关系变换，检验联合配置敏感度；节点维门控增量则由同参数共享门控训练比较，见3.7.1节。两类权重均不作物理因果解释。
+
+![节点门控与残差更新细节](../../outputs/figures/fig3_6_gate_residual_detail.png)
+
+**图3-6 节点门控与残差更新细节**  三类关系消息先形成融合消息$\mathbf M^{(l)}$，再与层输入$\mathbf Z^{(l)}$共同生成节点门值；门控混合后通过残差更新和LayerNorm得到$\mathbf H^{(l)}$。底部身份路径表示输入状态直接参与残差更新，不表示额外的关系边。
+
+```
+
+## 完成报告
+在`docs/thesis/blueprints/tasks/REV-20261019-NONTRAIN-CLOSEOUT/execution-report.json`填写Claude Code工作报告。changed_paths使用项目根目录相对路径，仅列实际工作区改动，不必列报告自身；列出证据来源、检查、未解决事项，以及所有数字或主张变化。报告只供Codex复检，不代表验收。
+在`model`字段填写当前Claude Code会话实际报告的模型标识；`user_reported_model`只是操作者标签。若provider返回`unrecognized_model`，把原始模型名和诊断写入`unresolved`，不要猜测或自动替换模型。
+如证据不足、需要扩大修改范围或发生未授权操作，停止继续并在报告中说明。

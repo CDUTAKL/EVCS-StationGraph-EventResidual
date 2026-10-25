@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "assessment_id": "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW",
+  "issues": [
+    {
+      "id": "REPRO-TRACE",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "SG-EXP-031/032的重要源文件、运行配置/环境和归档清单得到哈希封存并复核部分既有预测指标；历史Git身份和前向/训练复现仍缺。",
+      "present_in_baseline": false,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-06",
+      "evidence_ids": [
+        "CURRENT",
+        "DELIVERY22",
+        "REPLAY22",
+        "S31AUDIT",
+        "S32AUDIT"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "EPFL-DIAGNOSTIC",
+      "kind": "research_extension",
+      "status": "supported",
+      "severity": "minor",
+      "summary": "EPFL V2对外部双端口记录完成跨表连接诊断、质量筛选及代理形态核查；仅作为探索性外部数据工作。",
+      "present_in_baseline": false,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-07",
+      "evidence_ids": [
+        "CURRENT",
+        "EPFL22"
+      ],
+      "secondary_impacts": [
+        {
+          "criterion_id": "BR-11",
+          "distinct_reason": "BR-07评价的是遇到键不兼容后的数据诊断与处理能力；BR-11评价新增真实测量/运行字段作为工程背景，二者分别对应方法工作和实践输入，不把同一结果重复计作模型性能或收益。",
+          "evidence_ids": [
+            "CURRENT",
+            "EPFL22",
+            "DELIVERY22"
+          ]
+        }
+      ]
+    }
+  ],
+  "note": "本台账只登记本轮用于解释配对分变化的新增证据。历史研究限制保留在评分卡和forensic-review.md；未将既有范围限制重复作为新增缺陷或下降理由。"
+}

@@ -160,7 +160,7 @@ def redraw_fig3_4() -> None:
     _clean(ax)
     fig.text(0.50, 0.92, "点为三种子均值；浅色带为跨种子标准差",
              ha="center", va="center", fontsize=7.0, color=GRAY_M)
-    _final(fig, "fig3_10_mae_by_horizon", (8.4, 4.65))
+    _final(fig, "fig3_12_mae_by_horizon", (8.4, 4.65))
     return None
 
 
@@ -240,7 +240,7 @@ def redraw_fig3_8() -> None:
               handlelength=1.9, handletextpad=0.35)
     _clean(ax)
     fig.subplots_adjust(left=0.135, right=0.99, bottom=0.175, top=0.775)
-    _final(fig, "fig3_12_mae_by_window", (5.59, 3.15))
+    _final(fig, "fig3_14_mae_by_window", (5.59, 3.15))
     return None
 
 
@@ -301,7 +301,7 @@ def redraw_fig3_9() -> None:
     cbar.set_label("MAE（kWh/15 min，三种子均值）", fontsize=7.6)
     cbar.ax.tick_params(labelsize=7.2)
     ax.tick_params(length=0)
-    _final(fig, "fig3_13_mae_by_node", (fig_w, fig_h))
+    _final(fig, "fig3_15_mae_by_node", (fig_w, fig_h))
     return None
 
 
@@ -372,7 +372,7 @@ def redraw_fig3_10() -> None:
     ax.set_ylabel("全局 MAE（kWh/15 min）", fontsize=8.8)
     ax.set_ylim(0, ymax)
     _clean(ax)
-    _final(fig, "fig3_14_mechanism_ablation", (5.59, 3.15))
+    _final(fig, "fig3_16_mechanism_ablation", (5.59, 3.15))
     return None
 
 

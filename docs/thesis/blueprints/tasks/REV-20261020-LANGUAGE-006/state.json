@@ -1,0 +1,21 @@
+{
+  "task_id": "REV-20261020-LANGUAGE-006",
+  "status": "awaiting_codex_review",
+  "created_at": "2026-10-20T10:59:25+00:00",
+  "updated_at": "2026-10-20T11:09:26+00:00",
+  "prepared_at": "2026-10-20T10:59:52+00:00",
+  "baseline_head": "1a708ff62f694de6391e7296209d03997b8f72d4",
+  "baseline_sha256": "1d14334e7ae1101eb32ee7bd6ae3ba13a96f89b0a83a9eb8f722cfd24cd4c67d",
+  "execution_started_at": "2026-10-20T11:00:14.666262+00:00",
+  "claude_pid": 58623,
+  "execution_mode": "tool_free_draft_then_codex_apply",
+  "execution_finished_at": "2026-10-20T11:01:57.075811+00:00",
+  "claude_exit_code": 0,
+  "collected_at": "2026-10-20T11:09:26+00:00",
+  "codex_review": {
+    "status": "passed",
+    "source_sha256": "7ddffbb0657af8c26d222408b8466aaacb3510e95a2eec782e7eeb46a2d74bc1",
+    "reviewed_at": "2026-10-20T11:11:03.088763+00:00",
+    "report_path": "docs/thesis/revision-20261020-delivery/language-recovery/revision-review.md"
+  }
+}

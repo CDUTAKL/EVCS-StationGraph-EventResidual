@@ -1,0 +1,139 @@
+{
+  "TCN": {
+    "paths": [
+      "outputs/night_run/20260730-171821/SG-EXP-002/20260730-171821/seed-2024/metrics.json",
+      "outputs/night_run/20260730-171821/SG-EXP-002/20260730-171821/seed-2025/metrics.json",
+      "outputs/night_run/20260730-171821/SG-EXP-002/20260730-171821/seed-2026/metrics.json"
+    ],
+    "mean": [
+      0.020929291347822978,
+      0.026810983428760326,
+      0.032520607703189486,
+      0.03782953129107248
+    ],
+    "sd": [
+      0.00014759353778234557,
+      0.00013322204618760998,
+      0.0001378274717259138,
+      0.0001428641474988193
+    ]
+  },
+  "MRG-GCN": {
+    "paths": [
+      "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2024/metrics.json",
+      "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2025/metrics.json",
+      "outputs/night_run/20260730-171821/SG-EXP-003/20260730-171821/seed-2026/metrics.json"
+    ],
+    "mean": [
+      0.004324698492164777,
+      0.010720186660027794,
+      0.016970566094117175,
+      0.023022855363534784
+    ],
+    "sd": [
+      0.00019057742361007802,
+      0.00024735451636098596,
+      0.00025224280382255145,
+      0.00022167418184919403
+    ]
+  },
+  "AdaptiveGraph": {
+    "paths": [
+      "outputs/night_run/20260730-171821/SG-EXP-004/20260730-171821/seed-2024/metrics.json",
+      "outputs/night_run/20260730-171821/SG-EXP-004/20260730-171821/seed-2025/metrics.json",
+      "outputs/night_run/20260730-171821/SG-EXP-004/20260730-171821/seed-2026/metrics.json"
+    ],
+    "mean": [
+      0.004521064997013049,
+      0.010919855566811812,
+      0.017171950311805757,
+      0.023240232555639534
+    ],
+    "sd": [
+      0.0001439580518581445,
+      0.0001874353718689991,
+      0.00019589325071859805,
+      0.00014496723498651912
+    ]
+  },
+  "MLP": {
+    "paths": [
+      "outputs/experiments/SG-EXP-009/20260731-095406/seed-2024/metrics.json",
+      "outputs/experiments/SG-EXP-009/20260731-095406/seed-2025/metrics.json",
+      "outputs/experiments/SG-EXP-009/20260731-095406/seed-2026/metrics.json"
+    ],
+    "mean": [
+      0.01331872887212703,
+      0.0187020334802801,
+      0.023737866720387413,
+      0.028718347879529024
+    ],
+    "sd": [
+      0.0002416379434726898,
+      0.0001748686065927281,
+      0.0001811258981154205,
+      0.00018081112789171318
+    ]
+  },
+  "GWN": {
+    "paths": [
+      "outputs/experiments/SG-EXP-010/20260731-114125/seed-2024/metrics.json",
+      "outputs/experiments/SG-EXP-010/20260731-114125/seed-2025/metrics.json",
+      "outputs/experiments/SG-EXP-010/20260731-114125/seed-2026/metrics.json"
+    ],
+    "mean": [
+      0.00842950789526576,
+      0.014732044875902933,
+      0.02085066744535623,
+      0.026905375171931714
+    ],
+    "sd": [
+      0.0005737287195442389,
+      0.0005737944290813486,
+      0.0005752763798328675,
+      0.00044335327485097435
+    ]
+  },
+  "AGCRN": {
+    "paths": [
+      "outputs/experiments/SG-EXP-008/20260731-205118/seed-2024/metrics.json",
+      "outputs/experiments/SG-EXP-008/20260731-205118/seed-2025/metrics.json",
+      "outputs/experiments/SG-EXP-008/20260731-205118/seed-2026/metrics.json"
+    ],
+    "mean": [
+      0.012119340812292878,
+      0.017847347529071095,
+      0.023455481919199342,
+      0.028865670084080048
+    ],
+    "sd": [
+      0.00022953545809571967,
+      0.0002429953874508946,
+      0.00032180863767755543,
+      0.0003534356598284754
+    ]
+  },
+  "_time_axis": {
+    "reference": "forecast_release_time",
+    "tick_intervals_min": [
+      [
+        0,
+        15
+      ],
+      [
+        15,
+        30
+      ],
+      [
+        30,
+        45
+      ],
+      [
+        45,
+        60
+      ]
+    ],
+    "interval_convention": "left-closed, right-open",
+    "note": "No metric values or prediction keys changed; labels expose the existing target-bin mapping."
+  }
+}

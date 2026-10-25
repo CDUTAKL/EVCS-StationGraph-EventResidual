@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261019-NONTRAIN-CLOSEOUT",
+  "title": "ACN证据收口与受限正文修订",
+  "task_type": "content_revision",
+  "workflow_stage": "8/10/11",
+  "objective": "完成本轮已有证据足以支持的非训练修订：ACN边界归档与状态订正、摘要/定义/引文/转引小修和第5章局部去重；不评分、不训练、不连接远端、不修改正式DOCX。",
+  "context_sources": [
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/plan.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "当前执行计划与分工"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/scope.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "标题白名单和数值变更范围"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/writing-guidance.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮静态写作指引"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "摘  要"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "Abstract"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "1.2.2 多节点负荷与时空图预测"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "1.5 技术路线"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "1.6 论文组织结构"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "3.5.4 节点级门控"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "5.1 引言"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "5.4.1 预测量与运行量的对应"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "5.4.5 证据边界与应用验证要求"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "5.5 本章小结"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "研究判断与使用条件"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "研究局限与后续工作"
+      },
+      "purpose": "授权正文小修；其他标题和表格/公式/参考文献不改"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/evidence/acn/range_probe_reviewed.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "已校正并经where验证的API范围；原标签颠倒已留痕"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/evidence/acn/bounds_verification.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "6个HTTP200、区间外计数为0"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/evidence/acn/provenance.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "复制来源与SHA"
+    },
+    {
+      "path": "docs/thesis/data-availability.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "只更新当前入口；历史状态保留"
+    },
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "主张权限与已完成JPL校准"
+    },
+    {
+      "path": "docs/thesis/material-passport.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "材料身份登记"
+    },
+    {
+      "path": "docs/thesis/revision-20261018-claude-review/data-availability-check.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "10月18日旧失败记录，追加日期化订正"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "3.7.2 关系路径、关系子集与敏感性"
+      },
+      "purpose": "固定门值结果转引和已完成031证据"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "3.5.9 节点门控与残差更新的分工"
+      },
+      "purpose": "此处3.7.1转引已正确，不修改它"
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": [
+    "docs/thesis/thesis-manuscript.md",
+    "docs/thesis/data-availability.md",
+    "docs/thesis/claim-evidence-map.md",
+    "docs/thesis/material-passport.md",
+    "docs/thesis/revision-20261018-claude-review/data-availability-check.md",
+    "docs/thesis/revision-20261019-nontraining/data-decision.md",
+    "docs/thesis/revision-20261019-nontraining/change-report.md"
+  ],
+  "locked_claims": [
+    "科学结果、表格行、显示公式块、参考文献条目、图片链接和标题全部不改。只在scope.json标题范围内修正文；文中已有0.03890、1.82%、1.52%可补入中文摘要。",
+    "两个关系有条件整体增量、第三关系不确定；完整模型非零组未胜TCN。保留已查看测试期、未实测和预算触顶限制。",
+    "ACN三站点connectionTime已独立where核验，无晚于2021-09记录。Office1仅候选，未核查节点/字段/未使用史。普通端点返回payload曾在内存处理，但未保存或展示用户记录。不能写成完整新数据快照或对所有数据源的不可得证明。",
+    "不改历史正式评分、锚点、history、发布状态、训练合同、科学报告和正式Word。无需新的Skill调用或Bash，Codex执行确定性审计。"
+  ],
+  "steps": [
+    "读取当前包与授权段落。完成plan中的NT-01/02；优先最小必要改动。修订摘要绝对MAE与核心关系增量的双语一致性；表1-1概括性引用排除不在表列出的[74][75]，保留后文事件文献；删除1.5无必要未定义缩写串，明确两贡献；3.5.4固定门值转引到3.7.2及附表A-1。不要改已正确的3.5.9。",
+    "5.4.1用一句内联定义写明tau与发布时刻、h=1..4、15min左端关系；不改显示公式。5.1/5.4.5/5.5只去实际重复，保留现有结果表和必要边界。可保留已经凝练的原段，无需强行改写。结论后续工作反映ACN范围已核查，其他来源和Office1仍需条件核验。",
+    "更新数据可用性/证据映射/材料护照当前入口；在旧10月18日data-availability-check文首加日期化后续核验说明并保留原失败经过。data-decision.md列三站点数量和UTC连接时间极值、6个where计数、来源哈希、原脚本标签订正、未核查节点字段和未下载时序的边界。",
+    "change-report.md列每个修改的原句/新句或明确定位、理由、数字/主张变化、保留项；逐个对应scope与评审问题。只检查文本不变性，不假称已运行脚本或完成Word验收。",
+    "填写本任务execution-report.json，model填写实际环境报告的标识，不猜测；changed_paths使用相对路径，报告自身可省略。保留pending_codex_review，不给分。完成后结束会话。"
+  ],
+  "acceptance_criteria": [
+    "所有正文改动在scope白名单内，未改显示公式/图表行/参考文献条目",
+    "ACN数值和connectionTime边界与冻结JSON一致；历史失败保留、Office1条件明确",
+    "全文现有科学结论方向和证据权限不变；小修与局部去重有记录",
+    "执行报告列实际模型、改动与未决项，无评分/训练/远端/正式Word动作"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [],
+    "network_domains": []
+  },
+  "deliverables": [
+    "受限修订正文",
+    "更新的证据控制台及日期化数据结论",
+    "docs/thesis/revision-20261019-nontraining/data-decision.md",
+    "docs/thesis/revision-20261019-nontraining/change-report.md",
+    "execution-report.json"
+  ]
+}

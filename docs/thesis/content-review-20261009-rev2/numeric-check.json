@@ -1,0 +1,36 @@
+{
+  "scope": "current-source summary arithmetic and pre-existing time mapping; no training/prediction/bootstrap rerun",
+  "jpl_relative_mae_reduction_percent": {
+    "tcn_wide": 3.363293514865387,
+    "agcrn_full": 2.6432489565817696,
+    "mrg_shared_gate": 2.71037375933668
+  },
+  "jpl_tcn_lower_rmse": true,
+  "parameter_gap_percent": 0.12227181023415051,
+  "full_agcrn_to_mrg_parameters": 6.110900531882375,
+  "target_start_leads_minutes": [
+    0,
+    15,
+    30,
+    45
+  ],
+  "time_mapping_status": "PASS_FIXED_ORIGIN_ARITHMETIC_AND_TIME_MAPPING",
+  "leave_one_out": {
+    "sg027": {
+      "positive": 10,
+      "count": 10,
+      "reduction_range_percent": [
+        2.2544944676158383,
+        2.888347149956625
+      ]
+    },
+    "jpl": {
+      "positive": 10,
+      "count": 10,
+      "reduction_range_percent": [
+        2.126628566016357,
+        3.201822448053414
+      ]
+    }
+  }
+}

@@ -1,0 +1,842 @@
+{
+  "schema_version": 2,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "REPLACE",
+  "assessment_kind": "formal",
+  "review_date": "YYYY-MM-DD",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "REPLACE",
+    "manuscript_path": "",
+    "manuscript_sha256": "",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "evidence": [],
+    "frozen_manuscript_path": ""
+  },
+  "reviewer_reports": [],
+  "forensic_report": "",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-01-problem",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-01-significance",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-01-need",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-01-problem",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-01-significance",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-01-need",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-02",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-02-alignment",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-02-progression",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-02-closure",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-02-alignment",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-02-progression",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-02-closure",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-03",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-03-coverage",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-03-sources",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-03-gap",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-03-coverage",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-03-sources",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-03-gap",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-04",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-04-concepts",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-04-formulas",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-04-knowledge",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-04-concepts",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-04-formulas",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-04-knowledge",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-05",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-05-information_split",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-05-comparators",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-05-controls",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-05-selection_budget",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-05-information_split",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-05-comparators",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-05-controls",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-05-selection_budget",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-06",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-06-data_split",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-06-source_config",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-06-keys_metrics",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-06-environment_package",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-06-data_split",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-06-source_config",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-06-keys_metrics",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-06-environment_package",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-07",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-07-technical_work",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-07-problem_solving",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-07-integration",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-07-technical_work",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-07-problem_solving",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-07-integration",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-08",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-08-claim_support",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-08-alternatives",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-08-robustness_scope",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-08-claim_support",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-08-alternatives",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-08-robustness_scope",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-09",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-09-uncertainty",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-09-multiplicity",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-09-interpretation",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-09-uncertainty",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-09-multiplicity",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-09-interpretation",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-10",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-10-prior_difference",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-10-contribution",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-10-demonstration",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-10-prior_difference",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-10-contribution",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-10-demonstration",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-11",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-11-use_case",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-11-real_inputs",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-11-value_evaluation",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-11-usable_outputs",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-11-use_case",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-11-real_inputs",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-11-value_evaluation",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-11-usable_outputs",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-12",
+      "score": null,
+      "manuscript_location": "",
+      "evidence_ids": [],
+      "rationale": "",
+      "na_reason": "尚未评阅",
+      "change": {
+        "type": "unchanged",
+        "reason": "待配对核验；不能以新基线绕开变化核验。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-12-structure",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-12-writing",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-12-scholarly_content",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-12-terminology",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-12-structure",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-12-writing",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-12-scholarly_content",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        },
+        {
+          "id": "BR-12-terminology",
+          "score": null,
+          "evidence_ids": [],
+          "rationale": ""
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": null,
+        "revision_delta": null,
+        "calibration_delta": null,
+        "evidence_ids": [],
+        "rationale": ""
+      },
+      "adjudication": ""
+    }
+  ],
+  "blockers": [],
+  "limitations": [],
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "review_mode": "calibration_pair",
+  "claim_scope": "",
+  "baseline": {
+    "scorecard_path": "",
+    "scorecard_sha256": "",
+    "manuscript_path": "",
+    "manuscript_sha256": ""
+  },
+  "anchors_sha256": "d31ffe74621b318fb63b8a7534b7abcb4e194733ff2ed6ee3d291030f512b575",
+  "issue_ledger": {
+    "path": "",
+    "sha256": ""
+  },
+  "reviewer_records": [],
+  "publication_note": "模板不是评分。首次2.0须对同一对新旧稿配对校准，不从旧分自动迁移。"
+}

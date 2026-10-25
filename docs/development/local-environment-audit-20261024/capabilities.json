@@ -1,0 +1,18 @@
+{
+  "module_availability": {
+    "docx": false,
+    "matplotlib": false,
+    "openpyxl": false,
+    "lxml": false,
+    "PIL": false,
+    "tigramite": false,
+    "sklearn": false,
+    "pypdf": false,
+    "pdfplumber": false,
+    "defusedxml": false
+  },
+  "project_cli_returncode": 0,
+  "project_cli_stdout": "usage: evcs-sg [-h] {prepare-data,run,run-mechanism,run-pipeline} ...\n\n站内充电单元交互图与事件残差修正统一实验入口\n\npositional arguments:\n  {prepare-data,run,run-mechanism,run-pipeline}\n    prepare-data        生成十五分钟节点张量与预测键基础\n    run                 运行 SG-EXP-002～005 单项实验\n    run-mechanism       运行 SG-EXP-006 机制实验\n    run-pipeline        按正式顺序运行 SG-EXP-002～006\n\noptions:\n  -h, --help            show this help message and exit\n",
+  "project_cli_stderr": "",
+  "scope": "find_spec plus CLI help; no export or training"
+}

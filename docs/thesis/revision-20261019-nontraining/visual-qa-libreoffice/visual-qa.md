@@ -1,0 +1,139 @@
+# PDF 逐页视觉验收
+
+- PDF：`/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261019-nontraining/thesis-candidate.pdf`
+- PDF SHA-256：`6dae77243e1fdcdd44174e006e677cdffac52eedaeeb4ea3efcde430da66551a`
+- 页数：125
+- 自动通过：124
+- 需人工目视：1
+- 标志：`{"out_of_bounds_glyph": 1}`
+- 重点页原因：`{"front_matter": 1, "page_number_not_detected": 2, "sparse_page": 3, "equation_number": 17}`
+- 人工复核页：`[1, 3, 4, 6, 25, 26, 27, 38, 46, 50, 51, 52, 53, 54, 55, 58, 77, 87, 93, 100, 105, 113, 114]`
+- 人工验收：填写 `manual-review.json`；所有页面必须逐页给出结论，且文件哈希必须与本 PDF 一致。
+
+| 页 | 状态 | 文本字符 | 图像 | 标志 | 重点原因 |
+|---:|---|---:|---:|---|---|
+| 1 | automated_pass | 133 | 0 | — | front_matter |
+| 2 | automated_pass | 138 | 0 | — | — |
+| 3 | automated_pass | 194 | 0 | — | page_number_not_detected |
+| 4 | automated_pass | 185 | 0 | — | page_number_not_detected |
+| 5 | automated_pass | 836 | 0 | — | — |
+| 6 | automated_pass | 53 | 0 | — | sparse_page |
+| 7 | automated_pass | 2514 | 0 | — | — |
+| 8 | automated_pass | 417 | 0 | — | — |
+| 9 | automated_pass | 458 | 0 | — | — |
+| 10 | automated_pass | 500 | 0 | — | — |
+| 11 | automated_pass | 484 | 0 | — | — |
+| 12 | automated_pass | 205 | 0 | — | — |
+| 13 | automated_pass | 797 | 0 | — | — |
+| 14 | automated_pass | 845 | 0 | — | — |
+| 15 | automated_pass | 900 | 0 | — | — |
+| 16 | automated_pass | 763 | 0 | — | — |
+| 17 | automated_pass | 540 | 0 | — | — |
+| 18 | automated_pass | 523 | 0 | — | — |
+| 19 | automated_pass | 785 | 0 | — | — |
+| 20 | automated_pass | 862 | 0 | — | — |
+| 21 | automated_pass | 787 | 0 | — | — |
+| 22 | automated_pass | 564 | 1 | — | — |
+| 23 | automated_pass | 528 | 1 | — | — |
+| 24 | automated_pass | 763 | 0 | — | — |
+| 25 | automated_pass | 107 | 0 | — | sparse_page |
+| 26 | automated_pass | 910 | 0 | — | equation_number |
+| 27 | automated_pass | 802 | 0 | — | equation_number |
+| 28 | automated_pass | 734 | 1 | — | — |
+| 29 | automated_pass | 814 | 0 | — | — |
+| 30 | automated_pass | 901 | 0 | — | — |
+| 31 | automated_pass | 980 | 0 | — | — |
+| 32 | automated_pass | 1008 | 0 | — | — |
+| 33 | automated_pass | 663 | 0 | — | — |
+| 34 | automated_pass | 601 | 1 | — | — |
+| 35 | automated_pass | 433 | 1 | — | — |
+| 36 | automated_pass | 902 | 1 | — | — |
+| 37 | automated_pass | 419 | 1 | — | — |
+| 38 | automated_pass | 686 | 1 | — | equation_number |
+| 39 | automated_pass | 412 | 2 | — | — |
+| 40 | automated_pass | 573 | 1 | — | — |
+| 41 | automated_pass | 840 | 1 | — | — |
+| 42 | automated_pass | 826 | 0 | — | — |
+| 43 | automated_pass | 292 | 1 | — | — |
+| 44 | automated_pass | 718 | 1 | — | — |
+| 45 | automated_pass | 713 | 1 | — | — |
+| 46 | automated_pass | 101 | 0 | — | sparse_page |
+| 47 | automated_pass | 523 | 0 | — | — |
+| 48 | automated_pass | 298 | 1 | — | — |
+| 49 | automated_pass | 404 | 2 | — | — |
+| 50 | automated_pass | 560 | 0 | — | equation_number |
+| 51 | automated_pass | 523 | 1 | — | equation_number |
+| 52 | review | 991 | 0 | out_of_bounds_glyph | equation_number |
+| 53 | automated_pass | 725 | 1 | — | equation_number |
+| 54 | automated_pass | 692 | 0 | — | equation_number |
+| 55 | automated_pass | 794 | 0 | — | equation_number |
+| 56 | automated_pass | 378 | 1 | — | — |
+| 57 | automated_pass | 577 | 1 | — | — |
+| 58 | automated_pass | 699 | 1 | — | equation_number |
+| 59 | automated_pass | 1171 | 0 | — | — |
+| 60 | automated_pass | 1100 | 0 | — | — |
+| 61 | automated_pass | 780 | 0 | — | — |
+| 62 | automated_pass | 498 | 1 | — | — |
+| 63 | automated_pass | 658 | 1 | — | — |
+| 64 | automated_pass | 1075 | 0 | — | — |
+| 65 | automated_pass | 280 | 1 | — | — |
+| 66 | automated_pass | 270 | 1 | — | — |
+| 67 | automated_pass | 415 | 1 | — | — |
+| 68 | automated_pass | 1073 | 0 | — | — |
+| 69 | automated_pass | 653 | 1 | — | — |
+| 70 | automated_pass | 594 | 1 | — | — |
+| 71 | automated_pass | 908 | 0 | — | — |
+| 72 | automated_pass | 937 | 0 | — | — |
+| 73 | automated_pass | 1007 | 0 | — | — |
+| 74 | automated_pass | 875 | 0 | — | — |
+| 75 | automated_pass | 921 | 0 | — | — |
+| 76 | automated_pass | 559 | 1 | — | — |
+| 77 | automated_pass | 552 | 0 | — | equation_number |
+| 78 | automated_pass | 918 | 0 | — | — |
+| 79 | automated_pass | 915 | 0 | — | — |
+| 80 | automated_pass | 1004 | 0 | — | — |
+| 81 | automated_pass | 992 | 0 | — | — |
+| 82 | automated_pass | 698 | 0 | — | — |
+| 83 | automated_pass | 462 | 1 | — | — |
+| 84 | automated_pass | 755 | 0 | — | — |
+| 85 | automated_pass | 728 | 0 | — | — |
+| 86 | automated_pass | 363 | 2 | — | — |
+| 87 | automated_pass | 879 | 0 | — | equation_number |
+| 88 | automated_pass | 525 | 0 | — | — |
+| 89 | automated_pass | 257 | 1 | — | — |
+| 90 | automated_pass | 916 | 0 | — | — |
+| 91 | automated_pass | 593 | 0 | — | — |
+| 92 | automated_pass | 653 | 1 | — | — |
+| 93 | automated_pass | 521 | 2 | — | equation_number |
+| 94 | automated_pass | 626 | 0 | — | — |
+| 95 | automated_pass | 660 | 0 | — | — |
+| 96 | automated_pass | 1180 | 0 | — | — |
+| 97 | automated_pass | 1027 | 0 | — | — |
+| 98 | automated_pass | 290 | 0 | — | — |
+| 99 | automated_pass | 477 | 1 | — | — |
+| 100 | automated_pass | 774 | 0 | — | equation_number |
+| 101 | automated_pass | 137 | 1 | — | — |
+| 102 | automated_pass | 474 | 1 | — | — |
+| 103 | automated_pass | 429 | 1 | — | — |
+| 104 | automated_pass | 745 | 1 | — | — |
+| 105 | automated_pass | 808 | 0 | — | equation_number |
+| 106 | automated_pass | 691 | 1 | — | — |
+| 107 | automated_pass | 964 | 0 | — | — |
+| 108 | automated_pass | 806 | 0 | — | — |
+| 109 | automated_pass | 492 | 0 | — | — |
+| 110 | automated_pass | 126 | 1 | — | — |
+| 111 | automated_pass | 536 | 1 | — | — |
+| 112 | automated_pass | 983 | 0 | — | — |
+| 113 | automated_pass | 793 | 0 | — | equation_number |
+| 114 | automated_pass | 880 | 0 | — | equation_number |
+| 115 | automated_pass | 625 | 0 | — | — |
+| 116 | automated_pass | 742 | 0 | — | — |
+| 117 | automated_pass | 881 | 0 | — | — |
+| 118 | automated_pass | 679 | 0 | — | — |
+| 119 | automated_pass | 1385 | 0 | — | — |
+| 120 | automated_pass | 1963 | 0 | — | — |
+| 121 | automated_pass | 1981 | 0 | — | — |
+| 122 | automated_pass | 1730 | 0 | — | — |
+| 123 | automated_pass | 2812 | 0 | — | — |
+| 124 | automated_pass | 1991 | 0 | — | — |
+| 125 | automated_pass | 1374 | 0 | — | — |

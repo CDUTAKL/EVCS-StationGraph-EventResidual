@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261021-EPFL-STOP-AND-PROVENANCE",
+  "title": "Record EPFL compatibility screen and preserve evidence boundaries",
+  "task_type": "evidence_audit",
+  "workflow_stage": "12-step workflow: evidence consolidation / source provenance / claim-boundary audit",
+  "objective": "Update only the current evidence console to record the EPFL dataset compatibility screen, timestamp/DST limits, and why the frozen proxy-shape audit stopped; add exact provenance paths for SG-EXP-031 and clarify that no new model or application claim is supported.",
+  "context_sources": [
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "论文核心结论权限"
+      },
+      "purpose": "Preserve the current core claim boundaries and evidence hierarchy."
+    },
+    {
+      "path": "docs/thesis/data-availability.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "当前证据状态（2026-10-21未查看数据兼容性更新）"
+      },
+      "purpose": "Update the current availability entry only; preserve dated historical sections."
+    }
+  ],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/revision-20261021-evidence/epfl-proxy-audit-protocol.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "Frozen V1 method, strict join key, conclusion gate and explicit non-compatibility rules."
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "Current source-chain status; preserve source/hash/Git identity limitations and near-work findings."
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "Canonical experiment report and scope for SG-EXP-031."
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "Current candidate data sources and application evidence boundaries."
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": [
+    "docs/thesis/data-availability.md",
+    "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+    "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+    "docs/thesis/claim-evidence-map.md"
+  ],
+  "locked_claims": [
+    "Do not call EPFL a compatible unseen period for the frozen ACN checkpoint: it has two CCS ports, no fixed ten-node ACN mapping, graph, or 96×10×7 input contract.",
+    "Do not report a 15-minute proxy-versus-measured shape difference, proxy-label calibration, ACN model evaluation, target-validity conclusion, deployment benefit, or dispatch benefit. The frozen V1 join uses CCS+Session; CCS2 does not match under that key, so the V1 analysis stopped before shape comparison.",
+    "The exact composite crosswalk (CCS, Arrival, Departure, session Energy) is post-hoc exploratory and may only be described as a mapping diagnostic; do not treat it as independent energy closure because Energy is part of the key.",
+    "Workbook timestamps are timezone-naive. Record file-level clock discontinuities and per-session one-minute regularity without asserting UTC or interpreting DST as a confirmed timezone. No session is known to cross the discontinuities.",
+    "Keep the EPFL files local/ignored. Record source commit, license, and the four supplied SHA-256 values only; do not copy raw data or raw session rows into the repository.",
+    "Do not change the thesis manuscript, DOCX, figures, score, training artifacts, experimental results, or any historical/date-stamped record.",
+    "SG-EXP-031 source identity remains split: Git baseline does not contain the untracked training entrypoint; its frozen package hash identifies it. SG-EXP-032 has no Git commit identity; do not fabricate one.",
+    "Nearest-work comparison [12],[13],[67],[70],[76] is already present in current Table 1-1. Do not revive stale review claims that it is missing; [76] full text was not reacquired this round.",
+    "ACN connectionTime boundary probes only cover that field and do not prove no other unseen source exists."
+  ],
+  "steps": [
+    "Inspect the existing current-entry sections and make the smallest targeted evidence-only edits. Preserve all date-stamped historical records and existing source-chain caveats.",
+    "Add an EPFL screen entry with period 2022-04-12–2023-07-04, two measured CCS ports, 1,878 session rows / 1,878 measurement groups, direct CCS+Session matching of CCS1 1,129/1,129 and CCS2 0/749, and the stopped V1 status. State that the post-hoc composite key matched 1,878/1,878 uniquely but is exploratory, includes Energy, and was not used to produce a shape result.",
+    "Record that timestamp series are timezone-naive; the workbook-wide sequence includes a 2022-10-30 rollback-like jump and a 2023-03-26 forward-like jump; all individual session trajectories are one-minute regular and none crosses the jumps. Describe this strictly as a file-time limitation.",
+    "Record the source repository commit 680bc3bb751f86a47db32a5641f09dcfa079caae, MIT license, and SHA-256 for Session_data.xlsx b886943bf86520f24f5a53870886c4c43709d265cbebdd65e1345321e22cc192, Measurement_data.xlsx a0a489e2897ec79235ed914376ab7751ab21c68418543234a60042eaee73a89c, README.md 28daaa5b0d65872d09f95d9a0dd1e4490f6b79bfa2ea780f56b51e8a012c93be, LICENSE 4654a82938a437cf4ef3efbb9ed7cb7a7b95f8250db1e1444d22c6e22e9a9d8f.",
+    "Update source-chain-summary only if a concise EPFL scope note is needed; do not repeat the full protocol or alter the already-correct near-work/source-chain status.",
+    "In CLM-031-RELATION add exact current evidence paths for experiment report, audit JSON, per-seed/block CSVs under outputs/analysis/SG-EXP-031-audit-20261015/, and the paired nonzero cross-check. Mark outputs as local/ignored if they are not portable Git artifacts.",
+    "Return a concise execution report listing exact files/sections changed, checks actually run, any unresolved limitations, and explicitly state that no manuscript/main DOCX or model result changed."
+  ],
+  "acceptance_criteria": [
+    "Only the four explicitly allowed evidence-console files change; no manuscript, DOCX, raw workbook, output data, or historical packet is edited.",
+    "The strict-key failure is clearly distinguished from the post-hoc composite crosswalk, and no proxy-shape result or application claim is promoted.",
+    "Timestamp/clock discontinuities are described without asserting an unverified timezone.",
+    "SG-EXP-031 claim mapping points to actual report and local audit paths; local/ignored portability limitation is explicit.",
+    "All existing Git identity limitations, near-work comparison status, ACN API scope, and KIT evidence pending status are preserved.",
+    "execution-report.json accurately lists changed paths and limitations; task remains pending Codex review."
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [],
+    "network_domains": []
+  },
+  "deliverables": [
+    "Updated evidence-console documents within allowed_paths",
+    "execution-report.json with pending_codex_review"
+  ]
+}

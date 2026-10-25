@@ -1,0 +1,90 @@
+{
+  "review_date": "2026-10-12",
+  "manuscript_sha256": "3e96ea1479541d81b82c5424fe6c5256af1c1bee07110155da3acde8ff9d8e90",
+  "evidence": [
+    {
+      "id": "E01",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261011-rev5/manuscript-frozen.md",
+      "locator": "双语摘要、五章正文、图表文字、结论与参考文献",
+      "sha256": "3e96ea1479541d81b82c5424fe6c5256af1c1bee07110155da3acde8ff9d8e90",
+      "reviewed": true
+    },
+    {
+      "id": "E02",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261010-rev4/scorecard.json",
+      "locator": "同量表正式基线77.5/90与逐项缺口",
+      "sha256": "0559fcfb50bf435bb4219178bd27cc59c2fee84f2d2feadf417299ffb659e80f",
+      "reviewed": true
+    },
+    {
+      "id": "E03",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/nearest-work-source-audit.md",
+      "locator": "近邻可读原文层级与未知字段",
+      "sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125",
+      "reviewed": true
+    },
+    {
+      "id": "E04",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261011-revision/directionality/directionality_audit.json",
+      "locator": "TE270项校正、ASYM20/45、PCMCI360项完整矩阵",
+      "sha256": "53952ea52701591455d3831c148bfb686c164924c714554481022277b1f5f1de",
+      "reviewed": true
+    },
+    {
+      "id": "E05",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261011-revision/checkpoint-replay/sgexp028_checkpoint_replay.json",
+      "locator": "12运行检查点重放及逐键/指标容差",
+      "sha256": "6c11b0b1d547209b7680eb5921a72015dc1fecccf920d032fdc7fbc97303d256",
+      "reviewed": true
+    },
+    {
+      "id": "E06",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261011-revision/training-budget/training_budget_audit.json",
+      "locator": "18运行实际停止/最佳轮次",
+      "sha256": "9c1d22582c6f65da15dbd8bee8b453de54a1851d6f30500b92bd18b24cdc47d9",
+      "reviewed": true
+    },
+    {
+      "id": "E07",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261011-rev5/forensic-numeric-check.json",
+      "locator": "主评重汇总完整矩阵与重放指标",
+      "sha256": "99eafa97b3136ada647dae13e191127e76898b638e119e4e62fb48e5010882f0",
+      "reviewed": true
+    },
+    {
+      "id": "E08",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261011-rev5/checkpoint-source-check.json",
+      "locator": "主评12best文件哈希和源日志核对",
+      "sha256": "d9a927328c16ab7b498bec62cbfe33488b57e799fbb10625d5c8ee31ba7cfac6",
+      "reviewed": true
+    },
+    {
+      "id": "E09",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md",
+      "locator": "JPL共同键、模型对照与固定测试期解释",
+      "sha256": "edf3f29b5fd1675d7f139b15c431280fef8a0f691b9505985f3e4a1cb67ebc06",
+      "reviewed": true
+    },
+    {
+      "id": "E10",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-019-eventtime-v1-phase2.md",
+      "locator": "Caltech36运行同协议结果与容量/预算限制",
+      "sha256": "74fed15df3e44b25c06eacdfc19b97473a4e0e2e96d9826b38268d17d308893b",
+      "reviewed": true
+    },
+    {
+      "id": "E11",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-027-paired-gate-control-report.md",
+      "locator": "Caltech同参数门控六运行及配对统计",
+      "sha256": "8d219e2b0a76a6adcaf153dc9a6e7f5dd35c98c6fecab57d9f07ea424fcb0511",
+      "reviewed": true
+    },
+    {
+      "id": "E12",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/transfer_entropy/transfer_entropy_summary.json",
+      "locator": "原TE矩阵独立重数76名义、0校正、20描述不对称",
+      "sha256": "c58fcce35ac66d57392d85a35e106dcffb8320661a53f860a1515ba2dd287039",
+      "reviewed": true
+    }
+  ]
+}

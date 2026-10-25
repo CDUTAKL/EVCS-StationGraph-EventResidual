@@ -1,0 +1,292 @@
+{
+  "schema_version": 1,
+  "contract_id": "GATE-BUDGET-20261018",
+  "task_id": "REV-20261018-claude-bounded",
+  "experiment_id": "SG-EXP-033",
+  "experiment_id_status": "proposed_unregistered",
+  "title": "JPL节点级门控与同参数共享门控的匹配延长预算敏感性补验",
+  "status": "prepared_not_started",
+  "training_started": false,
+  "ready_to_run": false,
+  "max_epochs": 120,
+  "patience": 16,
+  "seeds": [
+    2024,
+    2025,
+    2026
+  ],
+  "variants": [
+    {
+      "name": "mrg_full",
+      "label": "节点级门控（完整模型）",
+      "gate": "node_specific",
+      "trainable_parameters": 32714
+    },
+    {
+      "name": "mrg_shared_gate",
+      "label": "同参数共享门控对照",
+      "gate": "shared_across_nodes",
+      "trainable_parameters": 32714
+    }
+  ],
+  "trainable_parameters": 32714,
+  "design": {
+    "protocol": "SG-DATA-007-jpl-eventtime-v1",
+    "dataset_path": "data/jpl/dataset.npz",
+    "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+    "raw_sessions_path": "data/external/JPL-20261005/sessions.jsonl",
+    "raw_sessions_sha256": "68480c71451dfaa0e2ca3a27cefb2fa229c76eac31fc541ccef56af7a9af3af4",
+    "raw_sessions_role": "provenance_reference_not_training_input",
+    "history_steps": 96,
+    "horizon_steps": 4,
+    "nodes": 10,
+    "features": 7,
+    "split_origins": {
+      "train": 74168,
+      "tuning": 7826,
+      "calibration": 7828,
+      "test": 15816
+    },
+    "common_test_keys": 632640,
+    "runs": 6,
+    "from_scratch": true,
+    "input_visibility_assumption": "行为计数在时间片末可见"
+  },
+  "paired_initialization": {
+    "rule": "同一种子下两配置使用相同初始化；共享门控复用完整模型已初始化的关系变换、门控和归一化模块，不额外抽取随机数",
+    "same_seed_initial_parameter_digest_required": true,
+    "expected_trainable_parameters": 32714,
+    "expected_capacity_difference": 0,
+    "assertions": [
+      "两配置在相同种子下的初始参数SHA-256一致",
+      "两配置参数数量均为32,714",
+      "两配置使用相同数据、切分、输入通道、目标与批次顺序",
+      "共享门控仅改变前向中节点维度的汇聚方式，不改变可训练参数集合",
+      "替换关系邻接或数据张量在校验后保持不变"
+    ]
+  },
+  "training": {
+    "optimizer": "AdamW",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "loss": "standardized_L1",
+    "selection": "tuning_original_unit_MAE",
+    "precision": "float32",
+    "deterministic": true,
+    "tf32": false,
+    "gradient_clip": 5.0,
+    "num_workers": 0,
+    "threads": 2,
+    "input_and_selection_identical_across_variants": true,
+    "calibration_and_test_used_for_selection": false
+  },
+  "budget_sensitivity": {
+    "reference_budget": {
+      "max_epochs": 60,
+      "patience": 8
+    },
+    "planned_budget": {
+      "max_epochs": 120,
+      "patience": 16
+    },
+    "both_epoch_cap_and_patience_changed": true,
+    "interpretation": "共同预算策略敏感性：轮数上限与早停耐心同时改变，不能把结果归因为单独的轮数上限效应",
+    "prior_observation": "SG-EXP-028中JPL共享门控seed-2024最佳59轮、停止60轮；节点级门控相对共享门控的2.71%整体MAE差异产生于60轮/耐心8预算",
+    "claim_scope": "仅回答当前协议和已查看测试期上结论对训练预算策略是否敏感"
+  },
+  "evaluation": {
+    "common_test_keys": 632640,
+    "primary": {
+      "metric": "overall_MAE",
+      "contrast": "mrg_shared_gate_absolute_error_minus_mrg_full_absolute_error",
+      "positive_means": "节点级门控绝对误差更低",
+      "interval": "10,000次配对七日块bootstrap的95%区间",
+      "seed_reporting": "逐种子方向、三种子均值及样本标准差"
+    },
+    "secondary": [
+      {
+        "metric": "nonzero_target_MAE",
+        "definition": "target != 0",
+        "status": "exploratory"
+      },
+      {
+        "metric": "event_MAE",
+        "definition": "target_event == 1",
+        "status": "exploratory"
+      },
+      {
+        "metric": "zero_target_MAE",
+        "definition": "target == 0",
+        "status": "exploratory"
+      },
+      {
+        "metric": "RMSE",
+        "status": "exploratory"
+      },
+      {
+        "metric": "by_horizon_MAE",
+        "status": "descriptive"
+      },
+      {
+        "metric": "by_node_MAE",
+        "status": "descriptive"
+      }
+    ],
+    "multiplicity": "仅整体MAE为预登记主要比较；非零目标、事件组及其余分层不作确认性显著性主张",
+    "test_period_status": "已查看JPL固定测试期；本补验属于预算敏感性分析，不是盲测、独立时间外验证或跨场站确认"
+  },
+  "stopping_rules": {
+    "training_stop": "连续16轮调参集原单位MAE无改善或达到120轮上限",
+    "model_selection": "完整调参集原单位MAE最低的检查点",
+    "test_or_calibration_use": "不参与早停、选模、配置筛选或种子选择",
+    "budget_censored_flag": "任一运行在120轮停止或最佳轮为120时标记budget_censored并保留",
+    "no_test_based_early_stop": true,
+    "no_direction_based_stopping": true
+  },
+  "failure_retention": {
+    "retain_all_runs": true,
+    "no_overwrite": true,
+    "no_direction_based_rerun": true,
+    "failed_or_interrupted_runs_reported": true,
+    "resume_only_with_matching_contract": true,
+    "excluded_runs_must_be_justified_by_contract_not_test_result": true
+  },
+  "hash_freeze_checklist": [
+    {
+      "item": "JPL冻结张量",
+      "path": "data/jpl/dataset.npz",
+      "expected_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+      "status": "to_verify_at_freeze"
+    },
+    {
+      "item": "JPL数据加载器",
+      "path": "src/evcs_station_graph/jpl_eventtime/data.py",
+      "expected_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+      "status": "frozen_reference_verify"
+    },
+    {
+      "item": "训练与选模runner",
+      "path": "src/evcs_station_graph/eventtime/runner.py",
+      "expected_sha256": "cc4692209a5eb4fc0e662fe71150685c99e3a5f38a35fc2dc94f3307122025a7",
+      "status": "frozen_reference_verify"
+    },
+    {
+      "item": "共享门控实现",
+      "path": "src/evcs_station_graph/eventtime/gate_control.py",
+      "expected_sha256": "1cf89b3cc00e6cae6ce9ff90916319d390e6af81bed00726d7ff4e6d91cabe95",
+      "status": "frozen_reference_verify"
+    },
+    {
+      "item": "模型构建源码",
+      "path": "src/evcs_station_graph/eventtime/models.py",
+      "expected_sha256": "to_compute_at_freeze",
+      "status": "to_hash"
+    },
+    {
+      "item": "现有Caltech门控入口（参考）",
+      "path": "scripts/gate_control_experiment.py",
+      "expected_sha256": "b875feca68a8c5fb95f876ac9adf55041631ae956909c311877dd892db2e93e3",
+      "status": "frozen_reference_verify"
+    },
+    {
+      "item": "现有JPL关系替换适配器（参考）",
+      "path": "scripts/jpl_relation_controls.py",
+      "expected_sha256": "ac5f7a998ad198af30f07971f929b7abc43300e7aecb9e65e645d633920b9cba",
+      "status": "frozen_reference_verify"
+    },
+    {
+      "item": "新建JPL门控预算入口",
+      "path": "scripts/jpl_gate_budget.py",
+      "expected_sha256": "to_compute_after_implementation",
+      "status": "to_implement_and_hash"
+    },
+    {
+      "item": "冻结配置与bundle manifest",
+      "path": "outputs/experiments/SG-EXP-033/frozen-contract/",
+      "expected_sha256": "to_compute_at_freeze",
+      "status": "to_create"
+    },
+    {
+      "item": "本计划文档",
+      "path": "docs/thesis/revision-20261018-claude-review/gate-budget-plan.md",
+      "expected_sha256": "to_compute_at_freeze",
+      "status": "to_hash"
+    },
+    {
+      "item": "本JSON合同",
+      "path": "docs/thesis/revision-20261018-claude-review/gate-budget-contract.json",
+      "expected_sha256": "to_compute_at_freeze",
+      "status": "to_hash"
+    },
+    {
+      "item": "运行环境",
+      "path": "remote environment snapshot",
+      "expected": "PyTorch 2.8.0+cu128, CUDA 12.8, NumPy 2.3.2, RTX 4090 D",
+      "status": "to_confirm_on_instance"
+    }
+  ],
+  "implementation_gaps": [
+    {
+      "id": "GAP-01",
+      "item": "现有Caltech门控入口不能加载JPL数据",
+      "detail": "scripts/gate_control_experiment.py固定使用FrozenData、Caltech DATA_SHA256、SG-DATA-006协议和data/eventtime/dataset.npz，未提供JPL数据路径或协议切换。"
+    },
+    {
+      "id": "GAP-02",
+      "item": "现有JPL入口不支持共享门控配置",
+      "detail": "scripts/jpl_relation_controls.py可加载FrozenJPLData，但只构造full/load_to_self/event_to_self/pattern_to_self四种关系替换，未构造mrg_shared_gate，也未提供两配置配对运行路径。"
+    },
+    {
+      "id": "GAP-03",
+      "item": "需要JPL门控入口与作用域工厂适配",
+      "detail": "需新建或扩展入口，使runner.build_model在专用CLI进程内注入mrg_full与mrg_shared_gate，退出时恢复；直接修改旧runner或旧上传包不在本任务范围内。"
+    },
+    {
+      "id": "GAP-04",
+      "item": "需要配对初始化与合同检查",
+      "detail": "需实现check阶段：两种子配置参数均为32,714；同种子初始参数SHA-256一致；关系图、数据、切分和批次顺序一致；梯度有限且非零；探针后参数不变；CUDA环境与合同冻结。"
+    },
+    {
+      "id": "GAP-05",
+      "item": "需要非零目标评价",
+      "detail": "runner.export的metric_report只直接给出整体、RMSE、事件/稳定组及目标事件×规则触发四格，未直接输出非零目标MAE。需在入口或导出后审计中从predictions_test.npz的y_true计算target != 0分层，并保持原始导出不变。"
+    },
+    {
+      "id": "GAP-06",
+      "item": "需要配对块统计",
+      "detail": "runner不包含bootstrap。需新增预登记审计脚本，在共同测试键上按固定JPL测试期的连续七日块计算两配置逐键绝对误差差的10,000次配对bootstrap区间；统计脚本须在测试导出前冻结哈希。"
+    },
+    {
+      "id": "GAP-07",
+      "item": "需要源码与bundle哈希覆盖",
+      "detail": "runner.code_digest只覆盖eventtime/*.py和models目录中的部分文件，未覆盖jpl_eventtime/data.py或新入口。需在运行合同中另行记录JPL加载器、新入口、配置和计划哈希，并创建冻结bundle manifest。"
+    },
+    {
+      "id": "GAP-08",
+      "item": "需要回收与关机流程",
+      "detail": "需准备启动包装、结果归档哈希、6/6合同核验、独立指标复算和控制面关机证据；关机只能在回收验收后执行，不以SSH断连作为关机证明。"
+    }
+  ],
+  "recovery_and_shutdown": {
+    "required_before_shutdown": [
+      "6/6正式运行完成且合同一致",
+      "逐键预测导出并冻结checkpoint锁",
+      "远端归档SHA-256与本地下载一致",
+      "归档内文件manifest逐项通过",
+      "独立复算整体、非零、事件及四格指标",
+      "记录失败/中断运行及保留去向"
+    ],
+    "shutdown_after_acceptance": true,
+    "shutdown_evidence": "AutoDL控制台实例状态记录；不以SSH断连作为关机证明",
+    "training_started": false
+  },
+  "claim_boundaries": [
+    "本合同只准备补验，不表示训练已开始、已完成或已获得任何收益。",
+    "同时改变120轮上限与耐心16是共同预算策略敏感性，不是单独轮数效应。",
+    "补验复用已查看JPL固定测试期，只能作为预算敏感性证据，不能写成盲测、独立时间外验证或跨场景确认。",
+    "若共享门控在延长预算后缩小差距，应相应收窄节点门控增量结论；若差距保留，也只提高当前协议和预算范围内的稳健性证据。",
+    "不改变SG-EXP-028、SG-EXP-031、SG-EXP-032的既有数值、结论或证据权限。",
+    "不在本任务中读取历史评分、运行训练、SSH、远端命令或访问凭据。"
+  ]
+}

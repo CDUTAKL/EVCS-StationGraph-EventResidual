@@ -1,0 +1,15 @@
+{
+  "type": "source-summary-recalculation-not-raw-prediction-reaudit",
+  "jpl_relative_reductions_percent": {
+    "tcn_wide": 3.363293514865387,
+    "agcrn_full": 2.6432489565817696,
+    "mrg_shared_gate": 2.71037375933668
+  },
+  "jpl_adjusted_weekly_intervals_positive": true,
+  "four_cell_keys": 712360,
+  "four_cell_mean_weighted_mae": 0.01375957663665189,
+  "four_cell_contribution_percent_sum": 100.0,
+  "rolling_all_coverage_gain_pp": 8.971105716758876,
+  "rolling_event_coverage_percent": 26.70521364170913,
+  "rolling_width_ratio": 4.466409518197432
+}

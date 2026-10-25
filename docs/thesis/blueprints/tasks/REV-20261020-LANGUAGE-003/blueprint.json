@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261020-LANGUAGE-003",
+  "title": "语言复核意见定点修补",
+  "task_type": "content_revision",
+  "workflow_stage": "正文精修",
+  "objective": "按独立语言复核意见修正含混指代和指标名称；补全WAPE首次出现时的中文术语；收束β权重的重复解释；补明方向性关系后续验证的时期与比较条件。仅编辑授权正文中的文字，不改变数据、结果、公式、图表、引文、章节结构或结论权限。",
+  "context_sources": [
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "论文核心结论权限"
+      },
+      "purpose": "锁定正文核心结论和证据边界"
+    },
+    {
+      "path": "docs/thesis/terminology-ledger.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "数据与口径"
+      },
+      "purpose": "核对目标、指标及术语"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/writing-guidance.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "遵循语言凝练和学术表达要求"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "保证关系替换结论不超出实验报告"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "保证完成时刻敏感性结论及测试期边界准确"
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": [
+    "docs/thesis/thesis-manuscript.md"
+  ],
+  "locked_claims": [
+    "不得将受控关系替换的组件级改善写成完整模型在非零组胜过TCN。",
+    "SG-EXP-031与SG-EXP-032均属已查看测试期上的补充分析。",
+    "TE/PCMCI+结果是训练段候选筛查，不构成因果边或已验证的预测增益。",
+    "没有同步实测功率、现场部署或已取得的独立时期新数据证据。"
+  ],
+  "steps": [
+    "§1.1.3第55行改写“关系权重与变换参数共同决定消息”之后的比较句，明确比较对象为“学习权重配置相对等权设置”，消除“二者”的歧义。不得改变实验判定。",
+    "检查WAPE在正文中的首次出现位置，在首次出现处补充规范中文名称“加权绝对百分比误差（WAPE）”；后续公式、定义、指标数值和口径不得修改。",
+    "§3.7.2将“全局差”明确为“全局MAE差”，不改动差值、区间、解释或统计口径。",
+    "§4.2.3–§4.2.4检查β均值是否重复叙述。表4-2已报告精确值，图4-2展示种子间权重画像；压缩重复数值陈述，保留图表引用、结果解释及“不能据权重大小推断贡献”的边界。不得删除唯一的信息或图引用。",
+    "§5.2.6补足方向性关系后续验证的比较条件：构图规则预先固定；统一数据划分、预测键、模型容量、种子及训练/选模预算；若仍使用本研究已查看时期，结果只能称为探索性；独立时期确认须待兼容的新时期数据可用。保持当前TE/PCMCI+只是训练段候选筛查、未回灌MRG-GCN且不作因果解释的边界。不得暗示新数据已取得。"
+  ],
+  "acceptance_criteria": [
+    "唯一修改路径为 docs/thesis/thesis-manuscript.md，且仅限上述段落的语言调整。",
+    "所有已有数字、数据口径、公式、表格、图片/图注、引文标记与章节标题逐字不变。",
+    "负荷关系相对自环的非零组组件增量与完整MRG-GCN非零组未胜过TCN保持明确区分。",
+    "已查看测试期、门控预算触顶、代理目标而非实测功率、关系证据限制和应用价值边界不得弱化。",
+    "交付报告列出每处改动前后、对应行号及理由，并声明未做结论扩张；状态保持 pending_codex_review。"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [],
+    "network_domains": []
+  },
+  "deliverables": [
+    "修改后的授权文件",
+    "execution-report.json"
+  ]
+}

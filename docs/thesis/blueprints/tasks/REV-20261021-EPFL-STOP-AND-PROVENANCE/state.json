@@ -1,0 +1,20 @@
+{
+  "task_id": "REV-20261021-EPFL-STOP-AND-PROVENANCE",
+  "status": "awaiting_codex_review",
+  "created_at": "2026-10-21T05:30:56+00:00",
+  "updated_at": "2026-10-21T05:42:00+00:00",
+  "prepared_at": "2026-10-21T05:31:01+00:00",
+  "baseline_head": "f861d3a10832726bcb35c8d06ec12ca6337f317b",
+  "baseline_sha256": "30bb5a030fab3bf60e1cc4899c4e8ebe9c84ee606ce5a55e933e037cfc22307b",
+  "execution_started_at": "2026-10-21T05:31:05+00:00",
+  "claude_pid": 59554,
+  "collected_at": "2026-10-21T05:42:00+00:00",
+  "codex_review": {
+    "status": "passed",
+    "source_sha256": "f907c14c37065eebbe54f70e710a86f4ecabcb39b10f5d0edb5296440f9768ea",
+    "reviewed_at": "2026-10-21T05:40:21+00:00",
+    "summary": "独立复核四份证据控制台变更；复算原始工作簿SHA-256、会话计数、严格CCS+Session匹配数、包含Energy的复合键唯一匹配、文件时间跳变及会话内分钟连续性。Codex将文件级时间跳变写成确切时间和分钟差，并将SG-EXP-031当前支持材料未跟踪/忽略状态写清。EPFL V1没有形态比较结果。限定范围的diff check通过；完整仓库diff check仅在既有wps-visual-acceptance.md发现尾随空格。"
+  },
+  "claude_exit_code": 143,
+  "execution_finished_at": "2026-10-21T05:41:59+00:00"
+}

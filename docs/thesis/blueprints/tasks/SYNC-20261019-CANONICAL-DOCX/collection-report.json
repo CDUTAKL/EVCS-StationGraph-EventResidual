@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "task_id": "SYNC-20261019-CANONICAL-DOCX",
+  "status": "awaiting_codex_review",
+  "collected_at": "2026-10-19T15:10:03+00:00",
+  "baseline_head": "1a708ff62f694de6391e7296209d03997b8f72d4",
+  "current_head": "1a708ff62f694de6391e7296209d03997b8f72d4",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 116356504,
+        "mtime_ns": 1792116182696819699,
+        "sha256": "9ab6f47046da1a6fb5bc596512e0400a7d423c4a035521600127a1b64caa4b16"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 116345981,
+        "mtime_ns": 1792422499869471937,
+        "sha256": "54749d10bc365dd60862cb9fef030baec9a07530f5a791e47f6a224e84502f9b"
+      }
+    }
+  ],
+  "out_of_scope_changes": [],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [],
+  "executor_report": {
+    "task_id": "SYNC-20261019-CANONICAL-DOCX",
+    "executor": "Claude Code",
+    "model": "deepseek-flash[1m]",
+    "user_reported_model": "DeepSeek",
+    "summary": "按任务包将已通过全页WPS视觉验收的候选DOCX按字节原样复制到唯一授权的正式论文路径。复制前后源候选文件未被编辑；目标文件与源文件SHA-256完全一致，DOCX ZIP完整性检查通过。本任务仅同步交付文件，不构成论文内容修订、实验新增、评分提升、行政签署完成、PDF重新导出或全页复验。",
+    "sync_record": {
+      "source_path": "docs/thesis/revision-20261019-nontraining/thesis-delivery-final-restored-noline.docx",
+      "source_sha256": "54749d10bc365dd60862cb9fef030baec9a07530f5a791e47f6a224e84502f9b",
+      "target_path": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+      "target_sha256": "54749d10bc365dd60862cb9fef030baec9a07530f5a791e47f6a224e84502f9b",
+      "copy_command": "cp -- docs/thesis/revision-20261019-nontraining/thesis-delivery-final-restored-noline.docx outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+      "zip_integrity": "PASS：unzip -t 输出 'No errors detected in compressed data'，全部条目 OK"
+    },
+    "changed_paths": [
+      "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx"
+    ],
+    "evidence_used": [
+      {
+        "path": "docs/thesis/revision-20261019-nontraining/canonical-sync-inputs.md",
+        "locator": "whole_file",
+        "usage": "作者确认学号为2024050524；未知官方字段留空；源候选DOCX路径与SHA-256 54749d10bc365dd60862cb9fef030baec9a07530f5a791e47f6a224e84502f9b 及任务边界。"
+      },
+      {
+        "path": "docs/thesis/revision-20261019-nontraining/wps-visual-acceptance.md",
+        "locator": "markdown_heading: 验收对象",
+        "usage": "确认已验收候选DOCX、其SHA-256、高分辨率PDF SHA-256及正文稿SHA-256。"
+      },
+      {
+        "path": "docs/thesis/revision-20261019-nontraining/wps-visual-acceptance.md",
+        "locator": "markdown_heading: 封面、声明与签署",
+        "usage": "确认学号2024050524、旧脚本学号冲突需作者确认、未知封面字段留空、签名与日期须线下真实完成。"
+      },
+      {
+        "path": "docs/thesis/revision-20261019-nontraining/status.md",
+        "locator": "markdown_heading: Word/WPS 视觉验收结论",
+        "usage": "确认104页全页验收、目录页码匹配、字体嵌入及尚待签署/元数据核实事项。"
+      },
+      {
+        "path": "docs/thesis/revision-20261019-nontraining/codex-review.md",
+        "locator": "markdown_heading: DOCX候选与交付门槛",
+        "usage": "核实正式交付文件仍为旧稿、候选稿与正式文件之间的交付状态差异。"
+      }
+    ],
+    "claim_or_number_changes": [],
+    "checks": [
+      {
+        "command": "shasum -a 256 docs/thesis/revision-20261019-nontraining/thesis-delivery-final-restored-noline.docx（复制前核对源哈希）",
+        "result": "54749d10bc365dd60862cb9fef030baec9a07530f5a791e47f6a224e84502f9b，与canonical-sync-inputs.md记录一致"
+      },
+      {
+        "command": "cp -- docs/thesis/revision-20261019-nontraining/thesis-delivery-final-restored-noline.docx outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+        "result": "退出码0，按字节原样复制，无格式转换、压缩或重写"
+      },
+      {
+        "command": "shasum -a 256 docs/thesis/revision-20261019-nontraining/thesis-delivery-final-restored-noline.docx outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+        "result": "两个文件均为54749d10bc365dd60862cb9fef030baec9a07530f5a791e47f6a224e84502f9b，完全一致"
+      },
+      {
+        "command": "unzip -t outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+        "result": "PASS，全部条目 OK，'No errors detected in compressed data'"
+      }
+    ],
+    "unresolved": [
+      "本任务未从正式论文路径重新导出PDF，也未对新PDF做全页复验；PDF验收状态仍以候选稿验收记录为准。",
+      "原创性声明与版权授权页的作者、导师签名及日期未生成、未代签，仍须线下真实签署；行政签署未完成。",
+      "分类号、UDC、密级、送审/答辩/授位日期、答辩委员会主席等未知官方字段按作者要求保持空白，未在本任务中填写。",
+      "学号以作者确认的2024050524为准；旧构建脚本中的2023050482冲突未在本任务处理。",
+      "本次同步不代表论文评分、交付门槛通过或最终验收；最终接受与否由Codex复检决定。"
+    ],
+    "blockers": []
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

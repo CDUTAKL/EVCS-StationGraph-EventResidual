@@ -39,3 +39,9 @@
 处理中一次未加`--no-project`的`uv run`误重建了项目`.venv`。已按项目声明重建ARM64开发环境，9项依赖导入通过，但没有依据认定与原环境版本完全一致。未训练，也未修改远程环境、实验归档环境或项目依赖声明。详见`environment-recovery-notes.md`；历史实验复现应继续使用对应归档环境。
 
 本次提交仅包含此交付目录的正式产物和验收记录，仓库既有未提交改动不纳入本次提交。
+
+## 2026-10-25版本整合补记
+
+完整工作区整合时，已将本目录103页对应的DOCX复制到`outputs/thesis/`的稳定正式文件名；旧稳定文件先行独立备份，复制前后哈希记录见`canonical-word-sync-20261025.json`。该同步没有再生成Word、导出PDF或修改正文。
+
+验收记录中103页均有`reviewed`条目，但`manual-review.json`的`review_complete`及`visual-qa.json`的`manual_review_complete`仍为false。第37、49、53页的留白机会与前置页未知字段也仍保留。本补记明确这一区别，不能将本次版本合并写成全部交付门槛已关闭。环境恢复的后续状态见`environment-recovery-notes.md`开头的更新。

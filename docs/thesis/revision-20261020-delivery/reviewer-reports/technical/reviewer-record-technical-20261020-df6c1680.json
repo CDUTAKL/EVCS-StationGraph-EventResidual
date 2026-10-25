@@ -1,0 +1,863 @@
+{
+  "schema_version": 1,
+  "review_kind": "isolated_paired_technical_review",
+  "context_id": "technical-20261020-df6c1680",
+  "review_date": "2026-10-20",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "packet_fingerprint": "df6c1680331963797b6e15a60484f13ff85384a71676443169c2f25e92295724",
+  "manuscripts": {
+    "baseline": "manuscripts/baseline.md",
+    "current": "manuscripts/current.md",
+    "comparison": "paired; content facts and experiments are unchanged, except for editorial clarifications"
+  },
+  "prior_score_exposure": {
+    "exposed": false,
+    "status": "not_provided",
+    "reason": "The assigned isolated packet contains no prior scorecard; no scorecard or other reviewer report was read."
+  },
+  "figure_review_scope": "captions_only; image pixels and full-page visual acceptance unchecked",
+  "numeric_confidence_intervals_included": false,
+  "evidence_files_read": [
+    "evidence/ACN_BOUNDS.json",
+    "evidence/ACN_DECISION.md",
+    "evidence/ACN_RANGE.json",
+    "evidence/ADAPT.md",
+    "evidence/ADAPTAUDIT.json",
+    "evidence/CAL.md",
+    "evidence/DATA_AVAIL.md",
+    "evidence/MAP.md",
+    "evidence/MDP.md",
+    "evidence/MRECOMP.json",
+    "evidence/NEAR.md",
+    "evidence/NEAR2.md",
+    "evidence/NEAR76.md",
+    "evidence/NEAR_20261016.md",
+    "evidence/NZ.json",
+    "evidence/PASSPORT.md",
+    "evidence/QUALITY.md",
+    "evidence/RECOMP.json",
+    "evidence/S31.md",
+    "evidence/S31AUDIT.json",
+    "evidence/S32.md",
+    "evidence/S32AUDIT.json"
+  ],
+  "criterion_assessments": [
+    {
+      "id": "BR-01",
+      "name": "选题意义与问题定义",
+      "maximum": 5,
+      "locations": [
+        "§1.1.1–1.1.3",
+        "§1.3–1.4",
+        "§2.1–2.3",
+        "§3.2",
+        "摘要"
+      ],
+      "evidence_ids": [
+        "evidence/QUALITY.md",
+        "evidence/MAP.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "problem",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2
+        },
+        {
+          "component_id": "significance",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2
+        },
+        {
+          "component_id": "need",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1
+        }
+      ],
+      "baseline": {
+        "score": 5,
+        "rationale": "研究对象、预测目标、粒度和代理目标都明确，动机由充电设施增长、站内节点预测需求和数据稀疏异质支撑。",
+        "remaining_gap": "实际站点的决策效益尚未量化，归BR-11。"
+      },
+      "current": {
+        "score": 5,
+        "rationale": "研究对象、预测目标、粒度和代理目标都明确，动机由充电设施增长、站内节点预测需求和数据稀疏异质支撑。",
+        "remaining_gap": "实际站点的决策效益尚未量化，归BR-11。"
+      }
+    },
+    {
+      "id": "BR-02",
+      "name": "研究问题、范围与题目一致性",
+      "maximum": 5,
+      "locations": [
+        "标题",
+        "摘要",
+        "§1.3–1.6",
+        "第2–5章章首与小结",
+        "结论"
+      ],
+      "evidence_ids": [
+        "evidence/MDP.md",
+        "evidence/MAP.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "alignment",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2
+        },
+        {
+          "component_id": "progression",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2
+        },
+        {
+          "component_id": "closure",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1
+        }
+      ],
+      "baseline": {
+        "score": 5,
+        "rationale": "题目、研究问题、数据、方法和结论闭合；代理目标、研究范围和决策用途限制均明确。",
+        "remaining_gap": "第5章支线较多，但没有改变主线。"
+      },
+      "current": {
+        "score": 5,
+        "rationale": "题目、研究问题、数据、方法和结论闭合；代理目标、研究范围和决策用途限制均明确。",
+        "remaining_gap": "第5章支线较多，但没有改变主线。"
+      }
+    },
+    {
+      "id": "BR-03",
+      "name": "文献综述与缺口定位",
+      "maximum": 5,
+      "locations": [
+        "§1.2.1–1.2.4",
+        "表1-1",
+        "§1.3"
+      ],
+      "evidence_ids": [
+        "evidence/NEAR.md",
+        "evidence/NEAR2.md",
+        "evidence/NEAR76.md",
+        "evidence/NEAR_20261016.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "coverage",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1
+        },
+        {
+          "component_id": "sources",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5
+        },
+        {
+          "component_id": "gap",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2
+        }
+      ],
+      "baseline": {
+        "score": 4.5,
+        "rationale": "覆盖直接EV近邻和住宅图方法；与[76]按代理目标、残差基线、站内关系对照和MDP作具体区分，不主张通用算法首创。",
+        "remaining_gap": "若干来源只可读摘要、索引或出版社片段，细粒度比较受可读范围限制。"
+      },
+      "current": {
+        "score": 4.5,
+        "rationale": "覆盖直接EV近邻和住宅图方法；与[76]按代理目标、残差基线、站内关系对照和MDP作具体区分，不主张通用算法首创。",
+        "remaining_gap": "若干来源只可读摘要、索引或出版社片段，细粒度比较受可读范围限制。"
+      }
+    },
+    {
+      "id": "BR-04",
+      "name": "理论基础与专业知识",
+      "maximum": 5,
+      "locations": [
+        "§2.1–2.5",
+        "§3.2–3.5",
+        "式（3-1）—（3-16）",
+        "§4.2–4.4",
+        "§5.2–5.4"
+      ],
+      "evidence_ids": [
+        "evidence/MDP.md",
+        "evidence/S31.md",
+        "evidence/S32.md",
+        "evidence/QUALITY.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "concepts",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2
+        },
+        {
+          "component_id": "formulas",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2
+        },
+        {
+          "component_id": "knowledge",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1
+        }
+      ],
+      "baseline": {
+        "score": 5,
+        "rationale": "符号、量纲、图关系语义、预测时间口径、损失、评价和诊断公式有定义，专业知识用于解释具体限制。",
+        "remaining_gap": "线性输出头可能产生负预测，但包内未给频次与影响；列为核验事项，不视为已证实缺陷。"
+      },
+      "current": {
+        "score": 5,
+        "rationale": "符号、量纲、图关系语义、预测时间口径、损失、评价和诊断公式有定义，专业知识用于解释具体限制。",
+        "remaining_gap": "线性输出头可能产生负预测，但包内未给频次与影响；列为核验事项，不视为已证实缺陷。"
+      }
+    },
+    {
+      "id": "BR-05",
+      "name": "方法与实验设计",
+      "maximum": 10,
+      "locations": [
+        "§2.1.1–2.1.3",
+        "表2-2",
+        "§3.5.7",
+        "§3.6.1–3.6.3",
+        "§3.7.1–3.7.3",
+        "表3-9–3-14",
+        "§3.8.4",
+        "表3-15"
+      ],
+      "evidence_ids": [
+        "evidence/S31.md",
+        "evidence/S31AUDIT.json",
+        "evidence/S32.md",
+        "evidence/S32AUDIT.json",
+        "evidence/PASSPORT.md",
+        "evidence/QUALITY.md",
+        "evidence/MAP.md",
+        "evidence/DATA_AVAIL.md",
+        "evidence/ACN_DECISION.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "information_split",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5
+        },
+        {
+          "component_id": "comparators",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5
+        },
+        {
+          "component_id": "controls",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5
+        },
+        {
+          "component_id": "selection_budget",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5
+        }
+      ],
+      "baseline": {
+        "score": 8,
+        "rationale": "输入权限、时间切分、共同键、基线容量、同参数门控和关系自环替换控制总体合理，训练/调参/校准/测试和预算有记录。",
+        "remaining_gap": "片末行为字段可见性未经量测；旧协议有已披露预处理与窗口限制；部分对照容量或预算不完全等价；补充实验复用已查看测试期。"
+      },
+      "current": {
+        "score": 8,
+        "rationale": "输入权限、时间切分、共同键、基线容量、同参数门控和关系自环替换控制总体合理，训练/调参/校准/测试和预算有记录。",
+        "remaining_gap": "片末行为字段可见性未经量测；旧协议有已披露预处理与窗口限制；部分对照容量或预算不完全等价；补充实验复用已查看测试期。"
+      }
+    },
+    {
+      "id": "BR-06",
+      "name": "可复现性与方法严谨性",
+      "maximum": 5,
+      "locations": [
+        "§2.1–2.2",
+        "§3.6.1",
+        "§3.6.3–3.6.4",
+        "表3-14",
+        "§4.6.1",
+        "§5.3.3–5.3.5"
+      ],
+      "evidence_ids": [
+        "evidence/ADAPT.md",
+        "evidence/ADAPTAUDIT.json",
+        "evidence/RECOMP.json",
+        "evidence/MRECOMP.json",
+        "evidence/S31AUDIT.json",
+        "evidence/S32AUDIT.json",
+        "evidence/CAL.md",
+        "evidence/PASSPORT.md",
+        "evidence/QUALITY.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "data_split",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1
+        },
+        {
+          "component_id": "source_config",
+          "maximum": 1.5,
+          "baseline_score": 1,
+          "current_score": 1
+        },
+        {
+          "component_id": "keys_metrics",
+          "maximum": 1.5,
+          "baseline_score": 1.5,
+          "current_score": 1.5
+        },
+        {
+          "component_id": "environment_package",
+          "maximum": 1,
+          "baseline_score": 0.5,
+          "current_score": 0.5
+        }
+      ],
+      "baseline": {
+        "score": 4,
+        "rationale": "数据、配置、预测键和指标可追踪；主要结果独立复算，冻结检查点重放与源码认证区分清楚。",
+        "remaining_gap": "历史训练Git身份、部分历史硬件信息不全；图像像素未检查。"
+      },
+      "current": {
+        "score": 4,
+        "rationale": "数据、配置、预测键和指标可追踪；主要结果独立复算，冻结检查点重放与源码认证区分清楚。",
+        "remaining_gap": "历史训练Git身份、部分历史硬件信息不全；图像像素未检查。"
+      }
+    },
+    {
+      "id": "BR-07",
+      "name": "工作量与解决问题能力",
+      "maximum": 10,
+      "locations": [
+        "第2–5章",
+        "附录A",
+        "§2.1.2",
+        "§3.6–3.8",
+        "§4.2–4.6",
+        "§5.2–5.4"
+      ],
+      "evidence_ids": [
+        "evidence/S31.md",
+        "evidence/S31AUDIT.json",
+        "evidence/S32.md",
+        "evidence/S32AUDIT.json",
+        "evidence/ADAPT.md",
+        "evidence/ADAPTAUDIT.json",
+        "evidence/MDP.md",
+        "evidence/RECOMP.json",
+        "evidence/MRECOMP.json",
+        "evidence/QUALITY.md",
+        "evidence/PASSPORT.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "technical_work",
+          "maximum": 4,
+          "baseline_score": 4,
+          "current_score": 4
+        },
+        {
+          "component_id": "problem_solving",
+          "maximum": 4,
+          "baseline_score": 4,
+          "current_score": 4
+        },
+        {
+          "component_id": "integration",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2
+        }
+      ],
+      "baseline": {
+        "score": 10,
+        "rationale": "多协议重构、关系建模、受控训练、复算和机制/校准分析构成完整的技术与诊断链。",
+        "remaining_gap": "剩余主要是外推及实际效度边界，不因缺少新数据家族或现场部署扣工作量分。"
+      },
+      "current": {
+        "score": 10,
+        "rationale": "多协议重构、关系建模、受控训练、复算和机制/校准分析构成完整的技术与诊断链。",
+        "remaining_gap": "剩余主要是外推及实际效度边界，不因缺少新数据家族或现场部署扣工作量分。"
+      }
+    },
+    {
+      "id": "BR-08",
+      "name": "结果与证据充分性",
+      "maximum": 10,
+      "locations": [
+        "摘要",
+        "§3.6.2–3.6.4",
+        "表3-2–3-3",
+        "§3.7.1–3.7.3",
+        "表3-9–3-11",
+        "§3.8.4",
+        "表3-15",
+        "§4.2–4.6",
+        "§5.3"
+      ],
+      "evidence_ids": [
+        "evidence/RECOMP.json",
+        "evidence/MRECOMP.json",
+        "evidence/S31.md",
+        "evidence/S31AUDIT.json",
+        "evidence/S32.md",
+        "evidence/S32AUDIT.json",
+        "evidence/MDP.md",
+        "evidence/QUALITY.md",
+        "evidence/MAP.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "claim_support",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 3.5
+        },
+        {
+          "component_id": "alternatives",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5
+        },
+        {
+          "component_id": "robustness_scope",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5
+        }
+      ],
+      "baseline": {
+        "score": 8.5,
+        "rationale": "主要数值与归档审计相符，整体结果、组件内替换和负结果被分开陈述；非零组组件差异与完整模型对TCN结果没有混淆。",
+        "remaining_gap": "另一场站仍属同源且年份重叠；关系/目标补充结果为已查看测试期上的事后分析，缺独立时期和实测功率证据。"
+      },
+      "current": {
+        "score": 8.5,
+        "rationale": "主要数值与归档审计相符，整体结果、组件内替换和负结果被分开陈述；非零组组件差异与完整模型对TCN结果没有混淆。",
+        "remaining_gap": "另一场站仍属同源且年份重叠；关系/目标补充结果为已查看测试期上的事后分析，缺独立时期和实测功率证据。"
+      }
+    },
+    {
+      "id": "BR-09",
+      "name": "统计解释与结论边界",
+      "maximum": 10,
+      "locations": [
+        "§3.6.1",
+        "§3.6.3",
+        "§3.7.1–3.7.2",
+        "表3-11注",
+        "§3.8.4",
+        "§4.2–4.6",
+        "§5.2.3–5.2.6",
+        "§5.3.3–5.3.7",
+        "结论与局限"
+      ],
+      "evidence_ids": [
+        "evidence/S31.md",
+        "evidence/S31AUDIT.json",
+        "evidence/S32.md",
+        "evidence/S32AUDIT.json",
+        "evidence/RECOMP.json",
+        "evidence/MRECOMP.json",
+        "evidence/CAL.md",
+        "evidence/MDP.md",
+        "evidence/MAP.md",
+        "evidence/DATA_AVAIL.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "uncertainty",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 3.5
+        },
+        {
+          "component_id": "multiplicity",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5
+        },
+        {
+          "component_id": "interpretation",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 4
+        }
+      ],
+      "baseline": {
+        "score": 8.5,
+        "rationale": "明示种子、时间块依赖、校正与探索性边界，保留阴性结果并限制同源、已查看测试期的推断。",
+        "remaining_gap": "基线仍需更直接说明在已查看时期继续比较只能算探索；当前稿已补入独立新时期要求及数据尚未取得的状态。"
+      },
+      "current": {
+        "score": 9,
+        "rationale": "除与Baseline相同的统计处理外，Current第5.2.6节把复用已查看时期仅称探索性、独立时期确认须待兼容数据且目前尚未取得写入该方法位置；这改善了确认性结论边界的直接性，不增加实验或外推证据。",
+        "remaining_gap": "种子数量和固定时期限制仍在；需新数据才能支持独立时期确认。"
+      }
+    },
+    {
+      "id": "BR-10",
+      "name": "贡献与创新",
+      "maximum": 10,
+      "locations": [
+        "§1.2.2–1.3",
+        "§1.4",
+        "§3.7.1–3.7.3",
+        "表3-11、表3-13",
+        "§4.2–4.6",
+        "结论第（2）—（3）点"
+      ],
+      "evidence_ids": [
+        "evidence/NEAR.md",
+        "evidence/NEAR2.md",
+        "evidence/NEAR76.md",
+        "evidence/NEAR_20261016.md",
+        "evidence/S31.md",
+        "evidence/S31AUDIT.json",
+        "evidence/MDP.md",
+        "evidence/MAP.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "prior_difference",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5
+        },
+        {
+          "component_id": "contribution",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5
+        },
+        {
+          "component_id": "demonstration",
+          "maximum": 4,
+          "baseline_score": 3,
+          "current_score": 3
+        }
+      ],
+      "baseline": {
+        "score": 8,
+        "rationale": "贡献定位到任务内受控关系增量、节点门控和诊断判断，并由与其性质相符的实验支持。",
+        "remaining_gap": "贡献属于窄范围的组合/经验增量；诊断指导改模未证明改善预测，跨时期和异数据家族确认不足。"
+      },
+      "current": {
+        "score": 8,
+        "rationale": "贡献定位到任务内受控关系增量、节点门控和诊断判断，并由与其性质相符的实验支持。",
+        "remaining_gap": "贡献属于窄范围的组合/经验增量；诊断指导改模未证明改善预测，跨时期和异数据家族确认不足。"
+      }
+    },
+    {
+      "id": "BR-11",
+      "name": "专业实践价值",
+      "maximum": 5,
+      "locations": [
+        "§1.1.1",
+        "§1.4",
+        "§2.1",
+        "§5.4.1–5.4.5",
+        "表5-7–5-8",
+        "研究判断与使用条件"
+      ],
+      "evidence_ids": [
+        "evidence/DATA_AVAIL.md",
+        "evidence/ACN_DECISION.md",
+        "evidence/ACN_RANGE.json",
+        "evidence/ACN_BOUNDS.json",
+        "evidence/PASSPORT.md",
+        "evidence/QUALITY.md",
+        "evidence/CAL.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "use_case",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1
+        },
+        {
+          "component_id": "real_inputs",
+          "maximum": 1.5,
+          "baseline_score": 1,
+          "current_score": 1
+        },
+        {
+          "component_id": "value_evaluation",
+          "maximum": 1.5,
+          "baseline_score": 0.5,
+          "current_score": 0.5
+        },
+        {
+          "component_id": "usable_outputs",
+          "maximum": 1,
+          "baseline_score": 0.5,
+          "current_score": 0.5
+        }
+      ],
+      "baseline": {
+        "score": 3,
+        "rationale": "真实会话记录和潜在工程场景用于代理任务筛选及采数计划，合成流程展示了预测接口与约束处理思路。",
+        "remaining_gap": "缺同步电表、真实输入延迟、设备/车辆约束与运行效益验证；算例不支持真实收益主张。"
+      },
+      "current": {
+        "score": 3,
+        "rationale": "真实会话记录和潜在工程场景用于代理任务筛选及采数计划，合成流程展示了预测接口与约束处理思路。",
+        "remaining_gap": "缺同步电表、真实输入延迟、设备/车辆约束与运行效益验证；算例不支持真实收益主张。"
+      }
+    },
+    {
+      "id": "BR-12",
+      "name": "结构、表达与学术规范",
+      "maximum": 10,
+      "locations": [
+        "全篇",
+        "摘要",
+        "表1-1",
+        "第2–5章表图和公式",
+        "结论",
+        "参考文献"
+      ],
+      "evidence_ids": [
+        "manifest.json",
+        "evidence/NEAR.md",
+        "evidence/NEAR2.md",
+        "evidence/NEAR76.md",
+        "evidence/NEAR_20261016.md"
+      ],
+      "component_scores": [
+        {
+          "component_id": "structure",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5
+        },
+        {
+          "component_id": "writing",
+          "maximum": 3,
+          "baseline_score": 2,
+          "current_score": 2
+        },
+        {
+          "component_id": "scholarly_content",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5
+        },
+        {
+          "component_id": "terminology",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1
+        }
+      ],
+      "baseline": {
+        "score": 8,
+        "rationale": "章节完整、术语与时间口径总体清楚，引用和图注按其可核验来源作了限制。",
+        "remaining_gap": "内容密度和重复回顾增加阅读负担；图像像素与整页视觉内容未检查。"
+      },
+      "current": {
+        "score": 8,
+        "rationale": "章节完整、术语与时间口径总体清楚，引用和图注按其可核验来源作了限制。",
+        "remaining_gap": "内容密度和重复回顾增加阅读负担；图像像素与整页视觉内容未检查。"
+      }
+    }
+  ],
+  "scorecards": {
+    "baseline": [
+      {
+        "criterion_id": "BR-01",
+        "criterion": "选题意义与问题定义",
+        "score": 5,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-02",
+        "criterion": "研究问题、范围与题目一致性",
+        "score": 5,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-03",
+        "criterion": "文献综述与缺口定位",
+        "score": 4.5,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-04",
+        "criterion": "理论基础与专业知识",
+        "score": 5,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-05",
+        "criterion": "方法与实验设计",
+        "score": 8,
+        "maximum": 10
+      },
+      {
+        "criterion_id": "BR-06",
+        "criterion": "可复现性与方法严谨性",
+        "score": 4,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-07",
+        "criterion": "工作量与解决问题能力",
+        "score": 10,
+        "maximum": 10
+      },
+      {
+        "criterion_id": "BR-08",
+        "criterion": "结果与证据充分性",
+        "score": 8.5,
+        "maximum": 10
+      },
+      {
+        "criterion_id": "BR-09",
+        "criterion": "统计解释与结论边界",
+        "score": 8.5,
+        "maximum": 10
+      },
+      {
+        "criterion_id": "BR-10",
+        "criterion": "贡献与创新",
+        "score": 8,
+        "maximum": 10
+      },
+      {
+        "criterion_id": "BR-11",
+        "criterion": "专业实践价值",
+        "score": 3,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-12",
+        "criterion": "结构、表达与学术规范",
+        "score": 8,
+        "maximum": 10
+      }
+    ],
+    "current": [
+      {
+        "criterion_id": "BR-01",
+        "criterion": "选题意义与问题定义",
+        "score": 5,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-02",
+        "criterion": "研究问题、范围与题目一致性",
+        "score": 5,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-03",
+        "criterion": "文献综述与缺口定位",
+        "score": 4.5,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-04",
+        "criterion": "理论基础与专业知识",
+        "score": 5,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-05",
+        "criterion": "方法与实验设计",
+        "score": 8,
+        "maximum": 10
+      },
+      {
+        "criterion_id": "BR-06",
+        "criterion": "可复现性与方法严谨性",
+        "score": 4,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-07",
+        "criterion": "工作量与解决问题能力",
+        "score": 10,
+        "maximum": 10
+      },
+      {
+        "criterion_id": "BR-08",
+        "criterion": "结果与证据充分性",
+        "score": 8.5,
+        "maximum": 10
+      },
+      {
+        "criterion_id": "BR-09",
+        "criterion": "统计解释与结论边界",
+        "score": 9,
+        "maximum": 10
+      },
+      {
+        "criterion_id": "BR-10",
+        "criterion": "贡献与创新",
+        "score": 8,
+        "maximum": 10
+      },
+      {
+        "criterion_id": "BR-11",
+        "criterion": "专业实践价值",
+        "score": 3,
+        "maximum": 5
+      },
+      {
+        "criterion_id": "BR-12",
+        "criterion": "结构、表达与学术规范",
+        "score": 8,
+        "maximum": 10
+      }
+    ]
+  },
+  "totals": {
+    "baseline": {
+      "raw_total": 77.5,
+      "raw_maximum": 90,
+      "normalized_score": 86.11
+    },
+    "current": {
+      "raw_total": 78.0,
+      "raw_maximum": 90,
+      "normalized_score": 86.67
+    }
+  },
+  "packet_control_files_read": [
+    "reviewer_instructions.md",
+    "rubric.json",
+    "anchors.json",
+    "manifest.json",
+    "manuscripts/baseline.md",
+    "manuscripts/current.md"
+  ]
+}

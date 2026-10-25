@@ -1,0 +1,116 @@
+{
+  "assessment_id": "EVCS-CONTENT-20261009-FORMAL",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 75.5,
+  "raw_maximum": 90.0,
+  "normalized_score": 83.89,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "EVCS-CONTENT-20261008-IMPORT",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 1.67,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。"
+      },
+      {
+        "id": "BR-02",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.0,
+        "new": 4,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。"
+      },
+      {
+        "id": "BR-04",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.0,
+        "new": 8,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9.0,
+        "new": 9,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.0,
+        "new": 8,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.0,
+        "new": 9,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。"
+      },
+      {
+        "id": "BR-10",
+        "old": 7.0,
+        "new": 7.5,
+        "raw_delta": 0.5,
+        "type": "recalibration",
+        "reason": "旧评阅对组合贡献的认可不足；本轮按可信增量锚点，将同参数门控与有边界的诊断组织计为7.5分。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.0,
+        "new": 3.5,
+        "raw_delta": 0.5,
+        "type": "recalibration",
+        "reason": "旧评阅仅按现场验证不足计3分；本轮同时计入代理量审计与条件性运行接口的已有专业成果，定3.5分。"
+      },
+      {
+        "id": "BR-12",
+        "old": 8.0,
+        "new": 8.5,
+        "raw_delta": 0.5,
+        "type": "recalibration",
+        "reason": "旧評阅对已完成证据重排与重复压缩的认可不足；本轮按可读性和剩余重复程度定8.5分。"
+      }
+    ]
+  }
+}

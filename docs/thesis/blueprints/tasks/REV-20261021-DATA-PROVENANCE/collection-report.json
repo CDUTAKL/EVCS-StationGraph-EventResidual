@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261021-DATA-PROVENANCE",
+  "status": "awaiting_codex_review",
+  "collected_at": "2026-10-21T02:19:58+00:00",
+  "baseline_head": "f861d3a10832726bcb35c8d06ec12ca6337f317b",
+  "current_head": "f861d3a10832726bcb35c8d06ec12ca6337f317b",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 12258,
+        "mtime_ns": 1792390795905054242,
+        "sha256": "08dd78234f049d8b6652918cf2f71bb457a44540cfa292d29d07b3943364d6f2"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 12444,
+        "mtime_ns": 1792548916551933530,
+        "sha256": "66fa63bd7891614733a103d9baa448797f2a991f3d3f6084fdb4b019a7414403"
+      }
+    },
+    {
+      "path": "docs/thesis/data-availability.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 18459,
+        "mtime_ns": 1792390927147604394,
+        "sha256": "c393e177d3a1bb1b0d9c720f37b56f1aded71e9c82ad531317e86c8060b97c17"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 21514,
+        "mtime_ns": 1792548974205538467,
+        "sha256": "71a5f14b466d54f02cfa91814c6bc1272e873716af57578a9edd8f4814e35c10"
+      }
+    },
+    {
+      "path": "docs/thesis/experiment-registry.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 18262,
+        "mtime_ns": 1792066457571107570,
+        "sha256": "e7fcb73a7edf9681db4b783b3cbf8a708cd0a59c17cfd3f83344a5a25e452a62"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 18262,
+        "mtime_ns": 1792548874809340266,
+        "sha256": "e799498f498a2177b728d9eddd4b1e62ebd687a578d611052aca188ca70f0d2b"
+      }
+    },
+    {
+      "path": "docs/thesis/material-passport.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 10503,
+        "mtime_ns": 1792390799222924147,
+        "sha256": "8f271140266df108f52e18723fecff36997cdf5a978cd9c643e6135bc3e9e184"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 10503,
+        "mtime_ns": 1792548880416220786,
+        "sha256": "759fecaf9c90c75620d27d3aa651b8c2c0f21627540a11dd67c79929ff21ca51"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 5330,
+        "mtime_ns": 1792547973048416025,
+        "sha256": "3fcc4c3edc8f9f489758c5eddb9ebbbc8dc02eea607b157e7a6be26c75e3b198"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 5353,
+        "mtime_ns": 1792549031895910365,
+        "sha256": "e2076171bc574fe3defaba8c02da3393f78e0f1dbb6c0ab8c60cb9f8e1bb8a06"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 4601,
+        "mtime_ns": 1792547808569981620,
+        "sha256": "4f21171c707e16e3f56acd0f16add49a462d51a65dcf2b8e1d43cca58b5b5069"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 4611,
+        "mtime_ns": 1792549003644487237,
+        "sha256": "0af227865b0a6678fa920ff80ae242d09d865dce2b1970afa7663be4c37bd993"
+      }
+    }
+  ],
+  "out_of_scope_changes": [],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [],
+  "executor_report": {
+    "task_id": "REV-20261021-DATA-PROVENANCE",
+    "executor": "Claude Code",
+    "model": "deepseek-flash[1m]",
+    "user_reported_model": "DeepSeek",
+    "status": "pending_codex_review",
+    "summary": "按任务包完成证据控制文档的受限修订：将当前入口中SG-EXP-031的表号由3-11纠正为3-10；将[76]来源指针更新为content-review-20261019-paired/sources/NEAR76-factual-extract.md，并保留其2026-10-17留存原文核验的可读范围；在data-availability.md补充ACN、KIT、ChargePlace Scotland与悉尼候选的时期、字段/标签、节点映射、论文已查看期及冻结推理边界；修正source-chain-summary.md中两处近邻审计路径。thesis-manuscript.md保持不变；未训练、未下载数据、未执行远程推理、未联网采集、未运行测试或审计脚本、未提交Git。KIT曲线形态审计仍为COMPUTED且未获Codex最终确认，其时间覆盖率等摘要值未写入正文。全部改动与报告待Codex复核，不声称验收通过。",
+    "changed_paths": [
+      "docs/thesis/claim-evidence-map.md",
+      "docs/thesis/experiment-registry.md",
+      "docs/thesis/material-passport.md",
+      "docs/thesis/data-availability.md",
+      "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+      "docs/thesis/revision-20261021-evidence/data-source-compatibility.md"
+    ],
+    "evidence_used": [
+      "docs/thesis/blueprints/tasks/REV-20261021-DATA-PROVENANCE/EXECUTION_PACKET.md与blueprint.json（任务约束、锁定主张、allowed_paths、checks_to_run为空）",
+      "docs/thesis/claim-evidence-map.md（当前入口与NEAR76/CLM-031条目）",
+      "docs/thesis/experiment-registry.md（当前入口）",
+      "docs/thesis/material-passport.md（当前入口）",
+      "docs/thesis/data-availability.md（当前入口与日期化历史记录）",
+      "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+      "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "docs/thesis/revision-20261021-evidence/training-source-chain.json（SG-EXP-031条目与Git身份字段，部分读取）",
+      "docs/thesis/content-review-20261019-paired/sources/NEAR76-factual-extract.md",
+      "docs/thesis/content-review-20261015-rev7/packet/nearest-work-source-audit.md（任务包冻结摘录）",
+      "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md（任务包冻结摘录）",
+      "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md（任务包冻结摘录）",
+      "docs/thesis/revision-20261016-nonexperimental/nearest-work-source-audit.md（路径存在性核验）",
+      "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/NEAR76-primary.md（仅用于识别早期稿判断，未作为当前证据）",
+      "docs/thesis/revision-20261021-evidence/kit-lf/summary.json、session_profile_audit.csv、zenodo_record.json（状态与字段核对；未引用其数值）",
+      "docs/thesis/revision-20261019-nontraining/data-decision.md（ACN边界记录路径核验）"
+    ],
+    "claim_or_number_changes": [
+      {
+        "type": "table_number_correction",
+        "locations": [
+          "docs/thesis/claim-evidence-map.md 当前入口（含CLM-031-RELATION行）",
+          "docs/thesis/experiment-registry.md 当前入口",
+          "docs/thesis/material-passport.md 当前入口"
+        ],
+        "change": "SG-EXP-031结果表号由表3-11改为表3-10；表3-11仍对应旧Caltech关系子集/敏感性结果。未改变任何实验数值、区间或结论强度。"
+      },
+      {
+        "type": "source_pointer",
+        "locations": [
+          "docs/thesis/claim-evidence-map.md NEAR76-LITERATURE行"
+        ],
+        "change": "[76]来源指针由旧评阅包NEAR76-primary.md改为content-review-20261019-paired/sources/NEAR76-factual-extract.md；保留该摘录依据2026-10-17留存原文核验的可读范围，并注明本轮未重新取得出版社全文（页面返回429）。未改写表1-1或近邻正文。"
+      },
+      {
+        "type": "availability_boundary",
+        "locations": [
+          "docs/thesis/data-availability.md 当前入口",
+          "docs/thesis/revision-20261021-evidence/data-source-compatibility.md ACN行"
+        ],
+        "change": "补充ACN、KIT、ChargePlace Scotland与悉尼候选的未查看数据兼容性边界；ACN结论严格限于已查REST API的connectionTime边界和6次HTTP 200区间外计数为0。未新增模型数值、新数据期结论或冻结推理可用性主张。"
+      },
+      {
+        "type": "path_correction",
+        "locations": [
+          "docs/thesis/revision-20261021-evidence/source-chain-summary.md"
+        ],
+        "change": "近邻审计路径修正为content-review-20261015-rev7/packet/nearest-work-source-audit.md与revision-20261016-nonexperimental/nearest-work-source-audit.md；未改哈希或来源链结论。"
+      }
+    ],
+    "checks": [
+      {
+        "name": "blueprint checks_to_run",
+        "result": "为空；未运行训练、远程推理、数据下载、网络采集或新增测试。"
+      },
+      {
+        "name": "workspace scope",
+        "result": "仅六个allowed_paths文件发生本轮工作区改动；thesis-manuscript.md未改。依据collection-report.json与本次编辑记录。"
+      },
+      {
+        "name": "audit scripts and hashes",
+        "result": "未运行审计脚本，未重算或新增任何哈希。"
+      }
+    ],
+    "unresolved": [
+      "KIT曲线形态审计kit-lf/summary.json状态为COMPUTED，尚待Codex最终确认或精确重跑；本轮未将其时间覆盖率等摘要数值写入正文。",
+      "docs/thesis/revision-20261021-evidence/data-source-compatibility.md中KIT计算脚本路径仍为../../scripts/audit_kit_measured_lf_profile.py；计划中的../../../scripts/audit_kit_measured_lf_profile.py路径与KIT状态说明编辑被权限提示拒绝，未应用。",
+      "thesis-manuscript.md按任务包保持不变；KIT形态证据未进入正文，待Codex复核。",
+      "旧评阅包content-review-20261017-calibration-pair/reviewer-packet/evidence/NEAR76-primary.md仍保留早期稿“没有正面比较[76]”表述；当前映射已改指NEAR76-factual-extract.md，旧文件未修改。",
+      "Source files and this task report are pending Codex review; no scoring or acceptance is claimed."
+    ],
+    "blockers": []
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

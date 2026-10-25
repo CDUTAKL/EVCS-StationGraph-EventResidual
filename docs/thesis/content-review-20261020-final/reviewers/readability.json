@@ -1,0 +1,638 @@
+{
+  "report_id": "BR-READ-20261020-9F3A",
+  "context_id": "readability-review-20261020-evcs-packet-a",
+  "review_date": "2026-10-20",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "scope": {
+    "focus": "独立配对盲审，重点为可读性、结构与学术表达；按同一固定量表评估全部12项。",
+    "historical_score_exposure": "unknown",
+    "historical_reports_read": false,
+    "other_reviewer_reports_read": false,
+    "packet_readme_present": false,
+    "figures": "captions_only; image content and full-page visual acceptance remain unchecked",
+    "incident": "曾误调用一次 packet 外工作区 git-status，只显示文件名/状态；没有打开其他文件内容、历史评审或旧分数，未用于评分，并已告知委托方。"
+  },
+  "packet": {
+    "path": "docs/thesis/revision-20261019-nontraining/paired-review-preparation/reviewer-packet/",
+    "fingerprint": "1fa7aba697bb3663f5c2beb7298bf12d6f3ca11ffd46495a9dc4741a6a84f080",
+    "excluded": "manifest标明历史评分卡和评阅报告未纳入packet。"
+  },
+  "scoring": {
+    "raw_maximum": 90,
+    "display_maximum": 100,
+    "step": 0.5,
+    "normalization": "sum(scores) / 90 * 100",
+    "rounding": "ROUND_HALF_UP"
+  },
+  "criteria": [
+    {
+      "id": "BR-01",
+      "name": "选题意义与问题定义",
+      "maximum": 5,
+      "locations": [
+        "§1.1.1–1.1.3",
+        "§2.3",
+        "§2.6"
+      ],
+      "evidence_ids": [
+        "PASSPORT",
+        "DATA_AVAIL",
+        "ACN_DECISION"
+      ],
+      "components": [
+        {
+          "id": "BR-01-problem",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2,
+          "basis": "15 min节点代理能量、节点粒度、预测目标及关系增量问题具体。"
+        },
+        {
+          "id": "BR-01-significance",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "基础设施需求与稀疏/异质数据有文献和统计依据；实际业务收益未量化。"
+        },
+        {
+          "id": "BR-01-need",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "basis": "任务设置与节点级预测、模型筛选和后续采数需求相符。"
+        }
+      ],
+      "baseline_reason": "明确区分会话重构代理目标与电表功率，并提出可查的节点级研究需求。",
+      "current_reason": "与基线相同；本次修订未改变问题定义或目标口径。",
+      "revision_effect": "同分。",
+      "limitations": "真实业务成本、容量约束和现场影响未量化；按量表边界不在本项重复扣分。",
+      "baseline_score": 4.5,
+      "current_score": 4.5
+    },
+    {
+      "id": "BR-02",
+      "name": "研究问题、范围与题目一致性",
+      "maximum": 5,
+      "locations": [
+        "题目与中英文摘要",
+        "§1.3–1.6",
+        "§3.9",
+        "结论"
+      ],
+      "evidence_ids": [
+        "MDP",
+        "MAP",
+        "NEAR_20261016"
+      ],
+      "components": [
+        {
+          "id": "BR-02-alignment",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2,
+          "basis": "题目、站内关系预测、MDP诊断和主要结果对应；第5章作为可靠性/使用条件扩展。"
+        },
+        {
+          "id": "BR-02-progression",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "数据—预测—诊断—可靠性主线可追踪，第5章侧支略多。"
+        },
+        {
+          "id": "BR-02-closure",
+          "maximum": 1,
+          "baseline_score": 0.5,
+          "current_score": 1,
+          "basis": "摘要和结论回答主要问题；当前稿点名两项贡献，基线该处指代较抽象。"
+        }
+      ],
+      "baseline_reason": "主线闭合，但基线结论称“两项核心贡献”而未在该处直接点名。",
+      "current_reason": "§1.6及结论明确说出两项贡献；摘要补入关键数值，便于对应研究问题。",
+      "revision_effect": "4.0升至4.5，来自闭合表达更直接，不是新增研究结果。",
+      "limitations": "第5章兼有TE、共形区间、滚动校准和合成决策算例，略扩宽主题；可再用一张总览表收束。",
+      "baseline_score": 4,
+      "current_score": 4.5
+    },
+    {
+      "id": "BR-03",
+      "name": "文献综述与缺口定位",
+      "maximum": 5,
+      "locations": [
+        "§1.2.1–1.2.4",
+        "表1-1",
+        "§1.3"
+      ],
+      "evidence_ids": [
+        "NEAR",
+        "NEAR2",
+        "NEAR_20261016",
+        "NEAR76"
+      ],
+      "components": [
+        {
+          "id": "BR-03-coverage",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "basis": "覆盖EV负荷预测、站间图、住宅图门控、行为/事件及可解释性先例。"
+        },
+        {
+          "id": "BR-03-sources",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "区分全文、摘要和索引片段可读范围，透明注明未知项。"
+        },
+        {
+          "id": "BR-03-gap",
+          "maximum": 2,
+          "baseline_score": 1,
+          "current_score": 1,
+          "basis": "按粒度、目标、方法和验证边界区分先例；对最直接EV会话代理近邻[76]仍缺直接对照。"
+        }
+      ],
+      "baseline_reason": "综述覆盖广且不越过可读范围，但对[76]的任务/方法差异比较不足。",
+      "current_reason": "分数不变；表1-1引文范围收紧为表内实际列出的研究，但未补[76]正面比较。",
+      "revision_effect": "同分；引文指向更准确，核心缺口仍在。",
+      "limitations": "NEAR76表明[76]同属公开会话重构EV代理负荷预测，且比较直接/残差路径；正文需比较目标、输入、验证与本文贡献。",
+      "baseline_score": 3.5,
+      "current_score": 3.5
+    },
+    {
+      "id": "BR-04",
+      "name": "理论基础与专业知识",
+      "maximum": 5,
+      "locations": [
+        "§2.1–2.5及式(2-1)–(2-2)",
+        "§3.2–3.5及式(3-1)–(3-15)",
+        "§4.2.5",
+        "§5.4"
+      ],
+      "evidence_ids": [
+        "S32",
+        "S31",
+        "MDP",
+        "PASSPORT"
+      ],
+      "components": [
+        {
+          "id": "BR-04-concepts",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2,
+          "basis": "代理能量、功率、统计关系、事件标签/规则及参数敏感度区分清楚。"
+        },
+        {
+          "id": "BR-04-formulas",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "公式、单位与假设解释较全，部分实现对应需结合代码才能完全复核。"
+        },
+        {
+          "id": "BR-04-knowledge",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "basis": "专业知识用于解释节点预测、分层误差和应用条件。"
+        }
+      ],
+      "baseline_reason": "公式与概念较充分；代理量、物理拓扑、统计关系和因果的边界明确。",
+      "current_reason": "技术内容基本未变；修正§3.5.4的交叉引用，增强可追踪性。",
+      "revision_effect": "同分；交叉引用修正仅改善定位。",
+      "limitations": "片末行为计数可见是明示假设；未作完整代码—公式逐项审核，图像本体未检查。",
+      "baseline_score": 4.5,
+      "current_score": 4.5
+    },
+    {
+      "id": "BR-05",
+      "name": "方法与实验设计",
+      "maximum": 10,
+      "locations": [
+        "§2.1.1–2.1.3",
+        "§3.5.7",
+        "§3.6.2–3.6.3",
+        "§3.7.1–3.7.2",
+        "§3.8.3–3.8.4"
+      ],
+      "evidence_ids": [
+        "S31",
+        "S32",
+        "MRECOMP",
+        "S31AUDIT",
+        "S32AUDIT"
+      ],
+      "components": [
+        {
+          "id": "BR-05-information_split",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "输入、标签成熟、切分和共同预测键清楚；实际上报延迟未核验。"
+        },
+        {
+          "id": "BR-05-comparators",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "含容量近似TCN、完整AGCRN、共享门控和自环对照；仍缺若干严格匹配基线。"
+        },
+        {
+          "id": "BR-05-controls",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "同参数门控、邻接替换重训和目标敏感性回答限定问题；部分后验分析复用已查看测试期。"
+        },
+        {
+          "id": "BR-05-selection_budget",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "三种子、选模规则、上限及触顶情况披露；未覆盖更长预算或广泛调参。"
+        }
+      ],
+      "baseline_reason": "协议与受控对照较强，主要比较和事后补充分别报告。",
+      "current_reason": "实验设计与证据未变，同分。",
+      "revision_effect": "无分数变化；文字修订未增加新实验合同。",
+      "limitations": "行为计数时点未实际核验；共享门控种子触及60轮上限；031/032复用已查看测试期，非独立确认。",
+      "baseline_score": 8,
+      "current_score": 8
+    },
+    {
+      "id": "BR-06",
+      "name": "可复现性与方法严谨性",
+      "maximum": 5,
+      "locations": [
+        "§2.1–2.2",
+        "§3.6.1、§3.6.4",
+        "§3.8.3"
+      ],
+      "evidence_ids": [
+        "RECOMP",
+        "MRECOMP",
+        "S31AUDIT",
+        "S32AUDIT",
+        "ADAPTAUDIT",
+        "PASSPORT"
+      ],
+      "components": [
+        {
+          "id": "BR-06-data_split",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "basis": "来源、节点筛选、时间切分和预测键可追溯。"
+        },
+        {
+          "id": "BR-06-source_config",
+          "maximum": 1.5,
+          "baseline_score": 1,
+          "current_score": 1,
+          "basis": "配置、哈希与检查点多有登记；若干旧训练Git身份缺失，复算并非从头训练。"
+        },
+        {
+          "id": "BR-06-keys_metrics",
+          "maximum": 1.5,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "共同键、掩码和指标独立复算有审计记录。"
+        },
+        {
+          "id": "BR-06-environment_package",
+          "maximum": 1,
+          "baseline_score": 0.5,
+          "current_score": 0.5,
+          "basis": "环境限制有说明，但第三方携带/重训包不完整。"
+        }
+      ],
+      "baseline_reason": "结果链可追溯、逐键核验充分；训练身份和跨环境携带能力有已披露缺口。",
+      "current_reason": "本轮文字修订未增加或删除复现工件，同分。",
+      "revision_effect": "无评分变化。",
+      "limitations": "评审未运行代码或独立重训；RECOMP等为packet中提供的审计证据。",
+      "baseline_score": 4,
+      "current_score": 4
+    },
+    {
+      "id": "BR-07",
+      "name": "工作量与解决问题能力",
+      "maximum": 10,
+      "locations": [
+        "第2–5章",
+        "§3.7",
+        "第4章",
+        "§5.3–5.4"
+      ],
+      "evidence_ids": [
+        "S31",
+        "S32",
+        "MDP",
+        "QUALITY",
+        "PASSPORT",
+        "MAP"
+      ],
+      "components": [
+        {
+          "id": "BR-07-technical_work",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 3.5,
+          "basis": "完成数据重构/审计、多关系模型、跨站重拟合、敏感性和诊断。"
+        },
+        {
+          "id": "BR-07-problem_solving",
+          "maximum": 4,
+          "baseline_score": 3,
+          "current_score": 3,
+          "basis": "发现并处理代理目标、预算、门控解释、后端选边和区间失配问题；部分结论仍有限。"
+        },
+        {
+          "id": "BR-07-integration",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "研究工件形成较完整链条；第5章侧支较多、部分结果为事后补充。"
+        }
+      ],
+      "baseline_reason": "工作量较大，含工程核查和证据边界修订；没有因缺少现场部署或新数据家族重复扣分。",
+      "current_reason": "完成工作量未变，同分。",
+      "revision_effect": "无分数变化；当前更清楚概括已完成的贡献。",
+      "limitations": "诊断指导改模收益未验证，补充分析复用固定时期；这些限制不否定工作量。",
+      "baseline_score": 8,
+      "current_score": 8
+    },
+    {
+      "id": "BR-08",
+      "name": "结果与证据充分性",
+      "maximum": 10,
+      "locations": [
+        "§3.6.2–3.6.5",
+        "§3.7.1–3.7.2",
+        "§3.8.4",
+        "§4.2–4.6",
+        "§5.3.3–5.3.7"
+      ],
+      "evidence_ids": [
+        "RECOMP",
+        "MRECOMP",
+        "S31",
+        "S32",
+        "MDP",
+        "CAL"
+      ],
+      "components": [
+        {
+          "id": "BR-08-claim_support",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 3.5,
+          "basis": "模型、门控、关系替换、四格诊断和覆盖结论有直接结果；部分探索性分析仅宜描述。"
+        },
+        {
+          "id": "BR-08-alternatives",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "有时序、AGCRN、共享门控、自环替换等对照，部分匹配控制仍不足。"
+        },
+        {
+          "id": "BR-08-robustness_scope",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "目标截断、跨站重拟合、块区间及校准敏感性已报告，测试期复用和同源限制明示。"
+        }
+      ],
+      "baseline_reason": "主要主张与直接证据相配，包含阴性结果并收窄外推。",
+      "current_reason": "证据量不变；摘要补入MAE和关系增量数值只改善摘要可读性。",
+      "revision_effect": "无评分变化。",
+      "limitations": "无未查看时期、独立数据家族或同步功率效度验证；图像内容未检查。",
+      "baseline_score": 8.5,
+      "current_score": 8.5
+    },
+    {
+      "id": "BR-09",
+      "name": "统计解释与结论边界",
+      "maximum": 10,
+      "locations": [
+        "§3.6.3",
+        "§3.7.1–3.7.2",
+        "§3.8.4",
+        "§4.2.5",
+        "§4.3.3",
+        "§4.6",
+        "§5.3.3–5.3.7",
+        "结论"
+      ],
+      "evidence_ids": [
+        "S31",
+        "S32",
+        "MDP",
+        "CAL",
+        "MRECOMP",
+        "DATA_AVAIL"
+      ],
+      "components": [
+        {
+          "id": "BR-09-uncertainty",
+          "maximum": 4,
+          "baseline_score": 3,
+          "current_score": 3,
+          "basis": "区分种子离散、时间块差异与分层描述；三种子及固定测试期区间不代表跨站/全部训练不确定性。"
+        },
+        {
+          "id": "BR-09-multiplicity",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "主要比较有校正，事后分层标为探索；并非全部探索分析可作确认性推断。"
+        },
+        {
+          "id": "BR-09-interpretation",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 3.5,
+          "basis": "负结果、代理目标、测试期复用、预算和现场限制均有限定。"
+        }
+      ],
+      "baseline_reason": "不确定性、阴性结果和推断边界处理严谨。",
+      "current_reason": "局限句更新为更具体的ACN时间核验/兼容数据状态，统计结论不变。",
+      "revision_effect": "同分；当前的限制描述更贴近packet证据。",
+      "limitations": "只有三个训练种子，后验分层未校正；区间经验覆盖不是保证。",
+      "baseline_score": 8,
+      "current_score": 8
+    },
+    {
+      "id": "BR-10",
+      "name": "贡献与创新",
+      "maximum": 10,
+      "locations": [
+        "摘要",
+        "§1.2.2–1.3",
+        "§1.4",
+        "§3.8.1",
+        "§4.5",
+        "结论"
+      ],
+      "evidence_ids": [
+        "NEAR",
+        "NEAR2",
+        "NEAR_20261016",
+        "NEAR76",
+        "S31",
+        "MDP",
+        "MAP"
+      ],
+      "components": [
+        {
+          "id": "BR-10-prior_difference",
+          "maximum": 3,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "承认图卷积/门控组合有先例；与近邻[76]的直接对照不足。"
+        },
+        {
+          "id": "BR-10-contribution",
+          "maximum": 3,
+          "baseline_score": 2,
+          "current_score": 2.5,
+          "basis": "任务内关系增量与MDP判断可识别；当前稿更直接列明两项贡献。"
+        },
+        {
+          "id": "BR-10-demonstration",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 3.5,
+          "basis": "同参数门控、关系自环和诊断结果支持增量贡献；未证明诊断指导改模收益。"
+        }
+      ],
+      "baseline_reason": "贡献有实验支撑且不主张一般算子首创；最近的EV会话代理预测[76]提到但比较不够深入。",
+      "current_reason": "结论将两项贡献具体表述为站内关系/门控证据和区分组件、完整模型及参数敏感度的诊断判断。",
+      "revision_effect": "7.0升至7.5，仅因贡献呈现具体化，不是新增贡献或实验。",
+      "limitations": "仍应比较[76]的目标、粒度、输入、方法与验证；MDP引导改模的预测收益未检验。",
+      "baseline_score": 7,
+      "current_score": 7.5
+    },
+    {
+      "id": "BR-11",
+      "name": "专业实践价值",
+      "maximum": 5,
+      "locations": [
+        "§1.1.1",
+        "§5.4.1–5.4.5",
+        "结论“研究判断与使用条件”"
+      ],
+      "evidence_ids": [
+        "PASSPORT",
+        "DATA_AVAIL",
+        "ACN_DECISION",
+        "MAP",
+        "S32",
+        "CAL"
+      ],
+      "components": [
+        {
+          "id": "BR-11-use_case",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "basis": "明确容量核查、充电协调和采数安排等候选用途。"
+        },
+        {
+          "id": "BR-11-real_inputs",
+          "maximum": 1.5,
+          "baseline_score": 1,
+          "current_score": 1,
+          "basis": "使用真实会话字段；目标仍为事后代理量，上报时延未验证。"
+        },
+        {
+          "id": "BR-11-value_evaluation",
+          "maximum": 1.5,
+          "baseline_score": 0.5,
+          "current_score": 0.5,
+          "basis": "有固定轨迹与合成LP算例，缺现场约束、计量和收益评价。"
+        },
+        {
+          "id": "BR-11-usable_outputs",
+          "maximum": 1,
+          "baseline_score": 0.5,
+          "current_score": 0.5,
+          "basis": "定义接口和后续验证流程，未形成经现场验证工具或实际决策改变。"
+        }
+      ],
+      "baseline_reason": "候选用途具体，来自真实会话记录，但未验证现场价值。",
+      "current_reason": "§5.4.1将其改成接口定义，避免把结果表述为已有容量/控制判断；实践证据未变。",
+      "revision_effect": "同分；使用主张更准确。",
+      "limitations": "没有同步电表、到达时戳、全站负荷或真实调度实验；合成结果不能代表收益。",
+      "baseline_score": 3,
+      "current_score": 3
+    },
+    {
+      "id": "BR-12",
+      "name": "结构、表达与学术规范",
+      "maximum": 10,
+      "locations": [
+        "全文，重点§1.2.2/表1-1、§3.5.4、§3.6–3.8、§4.2–4.6、§5.3–5.4与结论"
+      ],
+      "evidence_ids": [
+        "NEAR",
+        "NEAR2",
+        "NEAR_20261016",
+        "NEAR76",
+        "QUALITY",
+        "PASSPORT",
+        "rubric.json",
+        "manifest.json"
+      ],
+      "components": [
+        {
+          "id": "BR-12-structure",
+          "maximum": 3,
+          "baseline_score": 2,
+          "current_score": 2,
+          "basis": "章节有层级、小结和跨章指引；结果段及第5章较长，侧支多。"
+        },
+        {
+          "id": "BR-12-writing",
+          "maximum": 3,
+          "baseline_score": 2,
+          "current_score": 2.5,
+          "basis": "表达专业谨慎，但重复限定、长表和缩写密集；当前摘要、时间片说明更直接。"
+        },
+        {
+          "id": "BR-12-scholarly_content",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "引文范围说明和图表注释总体可靠；近邻[76]比较不足，图像/版面未验收。"
+        },
+        {
+          "id": "BR-12-terminology",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "basis": "代理负荷单位、事件标签/规则和时间口径总体一致。"
+        }
+      ],
+      "baseline_reason": "全文结构清楚，表达克制；主要可读性负担为长文、密集表格和跨章重复的范围限制。",
+      "current_reason": "摘要补入关键指标，路线描述变简洁，§3.5.4交叉引用修正，§5.4.1时间片/h映射明确，结论限制更新。",
+      "revision_effect": "7.5升至8.0，属于局部表达和回查便利改善，未压缩整体篇幅。",
+      "limitations": "manifest仅允许图题/图注范围；未检查图片、坐标轴渲染或分页。封面/分页/PPI等交付门槛不计内容分。",
+      "baseline_score": 7.5,
+      "current_score": 8
+    }
+  ],
+  "status": "complete",
+  "totals": {
+    "baseline_raw": 70.5,
+    "baseline_display": "78.33",
+    "baseline_band": "需较大修订",
+    "current_raw": 72,
+    "current_display": "80.00",
+    "current_band": "内容良好",
+    "difference_raw": 1.5,
+    "difference_display": "1.67"
+  }
+}

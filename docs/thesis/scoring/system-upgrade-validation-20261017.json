@@ -1,0 +1,60 @@
+{
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "date": "2026-10-17",
+  "scope": "local scoring governance and publication validation; no new thesis score",
+  "commands": [
+    {
+      "command": [
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_thesis_scoring_protocol.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.19
+    },
+    {
+      "command": [
+        "-m",
+        "py_compile",
+        "scripts/audit_thesis_content_score.py",
+        "scripts/thesis_scoring_protocol.py",
+        "tests/test_thesis_scoring_protocol.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.047
+    }
+  ],
+  "checks": {
+    "suspended_score": {
+      "exit_code": 1,
+      "status": "withheld",
+      "publication_status": "withheld",
+      "publishable_score": null
+    },
+    "empty_template": {
+      "exit_code": 1,
+      "status": "withheld",
+      "publication_status": "withheld",
+      "publishable_score": null
+    },
+    "legacy_arithmetic": {
+      "exit_code": 0,
+      "status": "valid",
+      "publication_status": "record_only_not_publication_checked",
+      "publishable_score": null
+    },
+    "original_review_artifacts_unchanged": true,
+    "numeric_rubric_unchanged": true,
+    "manuscript_unchanged": true
+  },
+  "limitations": [
+    "Synthetic tests verify bookkeeping, arithmetic and publication barriers; they do not validate scientific judgment.",
+    "Ruff was not available on the current PATH; focused Python compilation and contract tests were run."
+  ],
+  "new_score_published": false
+}

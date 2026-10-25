@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261020-LANGUAGE-004",
+  "status": "report_incomplete",
+  "collected_at": "2026-10-19T18:28:35+00:00",
+  "baseline_head": "1a708ff62f694de6391e7296209d03997b8f72d4",
+  "current_head": "1a708ff62f694de6391e7296209d03997b8f72d4",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 195460,
+        "mtime_ns": 1792431466896373285,
+        "sha256": "3d883156d9264c9f94c3f7150d7a7647773e1c546d4689b1b283a8eb0b0ed9f3"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 195472,
+        "mtime_ns": 1792433642445215897,
+        "sha256": "0d8ff715c3071b0858a9d76b8109936a266b3662034540ce3a82f29c3ad1fcb9"
+      }
+    }
+  ],
+  "out_of_scope_changes": [],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [
+    "execution-report.summary尚未填写",
+    "报告漏列实际改动: docs/thesis/thesis-manuscript.md",
+    "execution-report.model未记录"
+  ],
+  "executor_report": {
+    "task_id": "REV-20261020-LANGUAGE-004",
+    "executor": "Claude Code",
+    "model": "",
+    "user_reported_model": "DeepSeek",
+    "summary": "",
+    "changed_paths": [],
+    "evidence_used": [],
+    "claim_or_number_changes": [],
+    "checks": [],
+    "unresolved": [],
+    "blockers": []
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

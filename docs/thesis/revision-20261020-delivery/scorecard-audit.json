@@ -1,0 +1,131 @@
+{
+  "assessment_id": "FORMAL-20261020-PAIRED-REVIEW",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 76.5,
+  "raw_maximum": 90.0,
+  "normalized_score": 85.0,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "FORMAL-20261019-NONTRAIN-CALIBRATION-PAIR",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 1.11,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。"
+      },
+      {
+        "id": "BR-02",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。"
+      },
+      {
+        "id": "BR-04",
+        "old": 5,
+        "new": 5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9,
+        "new": 9,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。"
+      },
+      {
+        "id": "BR-09",
+        "old": 8.5,
+        "new": 9.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "与旧稿相比，当前稿新增直接对应的探索/确认区分与新时期数据条件，不改变统计量或结果。主评只提高解释边界组件0.5；未增加检验或确认性证据。"
+      },
+      {
+        "id": "BR-10",
+        "old": 7.5,
+        "new": 7.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.0,
+        "new": 3.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。"
+      },
+      {
+        "id": "BR-12",
+        "old": 8.0,
+        "new": 8.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "三份盲评中的可读性和原创性视角均识别到表达清晰度改善。法证对照确认变化集中于精炼、指代和边界表达；分值只计BR-12-writing +0.5。未把待完成的WPS目录和版式作为内容得分。"
+      }
+    ]
+  },
+  "publication_status": "publishable",
+  "publication": {
+    "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+    "status": "publishable",
+    "problems": [],
+    "raw_score": 76.5,
+    "normalized_score": 85.0,
+    "revision_delta_raw": 1.0,
+    "calibration_delta_raw": 0.0,
+    "recommendation": "minor_revision",
+    "checked_file_count": 33,
+    "note": "发布条件核验不证明证据真实、学术判断正确或评分具有测量精度。"
+  },
+  "record_validation_status": "valid"
+}
+

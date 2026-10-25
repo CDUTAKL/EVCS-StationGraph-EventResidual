@@ -174,11 +174,8 @@ def _asymmetry_analysis(
 ) -> Dict[str, Any]:
     """方向不对称性分析：TE(i→j) vs TE(j→i)。
 
-    判别逻辑：若节点对的信息耦合完全来自共享外部驱动（站级活动、日周期），
-    TE 矩阵近似对称（两个方向信息量相同）；若存在定向信息流
-    （一个节点的活动模式预测另一个节点），两个方向差异显著。
-
-    返回按不对称度排序的节点对列表与总体不对称率。
+    以双向TE和的归一化绝对差作描述性汇总；该阈值筛查不构成方向差异的
+    显著性检验，也不识别物理因果关系。返回按不对称度排序的节点对列表与计数。
     """
     n = len(node_ids)
     pairs: List[Dict[str, Any]] = []
@@ -319,7 +316,7 @@ def main() -> None:
               f"主导方向={p['dominant_direction']}")
 
     verdict = (
-        "通过：候选有向边提供统计图未覆盖的方向信息，值得投入 PCMCI+ 正式检验"
+        "筛查结论：TE检出与统计图不同的方向性候选，供PCMCI+条件独立核验；该筛查本身不构成因果结论"
         if overlap["total_significant_edges"] >= MIN_SIGNIFICANT_EDGES
         and overlap["exclusive_to_causal"] > 0
         and overlap["jaccard_load"] < JACCARD_THRESHOLD

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "task_id": "SMOKE-20261018-fixed-e2e",
+  "title": "纯合成文本端到端回归",
+  "task_type": "other",
+  "workflow_stage": "11/12辅助工具冒烟",
+  "objective": "验证自动任务提示、授权输出、本地Bash和自动回收；仅读合成文本与本任务控制文件。",
+  "context_sources": [],
+  "evidence_sources": [
+    {
+      "path": "tmp/claude-code-fixed-e2e-20261018/fixture.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "纯合成测试令牌"
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": [
+    "tmp/claude-code-fixed-e2e-20261018/output.txt"
+  ],
+  "locked_claims": [
+    "不得读取或修改论文、实验、检查点及其他项目材料。"
+  ],
+  "steps": [
+    "读取本任务包冻结的合成摘录，在唯一授权输出文件写入令牌 handoff-fixed-e2e-ok，末尾换行。",
+    "仅运行checks_to_run指定的两条命令，记录真实退出码；无网沙箱拒绝curl为预期结果，不要绕过沙箱或重试。",
+    "填写同目录execution-report.json。本次专门测试兼容性：changed_paths同时列出输出文件和本报告自身的项目相对路径；不要改其他任务包文件。完成后停止，等待操作者退出会话。"
+  ],
+  "acceptance_criteria": [
+    "输出恰为handoff-fixed-e2e-ok加换行",
+    "Python退出0且curl明确被沙箱拒绝",
+    "报告如实填写模型、执行结果，无数字或主张变化",
+    "任务包自身报告路径不导致误报，自动回收到awaiting_codex_review"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [
+      "python3 -c 'print(\"local_bash_smoke_ok\")'",
+      "curl --head --connect-timeout 3 --max-time 5 https://example.com"
+    ],
+    "network_domains": []
+  },
+  "deliverables": [
+    "tmp/claude-code-fixed-e2e-20261018/output.txt",
+    "execution-report.json"
+  ]
+}

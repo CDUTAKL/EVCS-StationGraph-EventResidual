@@ -4,7 +4,8 @@
 *.yaml text eol=lf
 *.yml text eol=lf
 *.json text eol=lf
-*.md text eol=lf
+# Markdown允许显式换行及段尾空行；保留冻结评阅材料的原始内容。
+*.md text eol=lf whitespace=-blank-at-eol,-blank-at-eof
 
 # 若未来确需登记二进制证据，只记录其清单与校验和，不直接合并二进制内容。
 *.png binary
@@ -13,6 +14,12 @@
 *.pptx binary
 # Preserve hash-verified analysis CSV bytes across checkout (CSV writer uses CRLF).
 outputs/analysis/SG-EXP-027-time-block/*.csv -text whitespace=cr-at-eol
+docs/thesis/**/*.csv -text whitespace=cr-at-eol
+# 比较补丁中的空格是diff上下文，Word提取文本中的空格来自模板占位。
+# 这些材料与历史哈希绑定，不按代码空白规则重写。
+docs/thesis/**/*.diff -text -whitespace
+docs/thesis/**/*docx-text.txt -text -whitespace
+docs/thesis/revision-20261020-delivery/scorecard-audit.json whitespace=-blank-at-eof
 /outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx filter=lfs diff=lfs merge=lfs -text
 /docs/thesis/revision-20261023-layout/thesis-layout-final-1200dpi.docx filter=lfs diff=lfs merge=lfs -text
 /docs/thesis/revision-20261023-layout/thesis-layout-final-1200ppi.pdf filter=lfs diff=lfs merge=lfs -text

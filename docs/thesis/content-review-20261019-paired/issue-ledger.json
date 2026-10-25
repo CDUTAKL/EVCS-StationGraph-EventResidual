@@ -1,0 +1,91 @@
+{
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "issues": [
+    {
+      "id": "NEAR76-OMITTED-COMPARISON",
+      "kind": "defect",
+      "status": "supported",
+      "severity": "major",
+      "description": "旧稿未把Liang[76]的会话重构EV负荷预测及残差校正作为最近邻正面对照；当前稿已在表1-1、§1.2.2、§1.2.3和§1.3中补入任务、目标、预测路径、指标结果与本文差异。",
+      "primary_criterion": "BR-03",
+      "secondary_impacts": [
+        {
+          "criterion_id": "BR-10",
+          "distinct_reason": "BR-03评价文献覆盖与缺口定位；BR-10评价本文相对最近工作的贡献差异。当前稿分别补足“缺口如何收窄”与“哪些既有方法不再被主张为新颖”两项要求，证据相关但评分要求不同。",
+          "evidence_ids": [
+            "BASE",
+            "CURRENT",
+            "NEAR76"
+          ]
+        }
+      ],
+      "present_in_baseline": true,
+      "present_in_current": false,
+      "used_for_score": true,
+      "evidence_ids": [
+        "BASE",
+        "CURRENT",
+        "NEAR76"
+      ]
+    },
+    {
+      "id": "CURRENT-TAU-SYMBOL-UNDEFINED",
+      "kind": "defect",
+      "status": "supported",
+      "severity": "minor",
+      "description": "当前稿§5.4.1在预测时间片枚举后直接使用D_tau中的tau，未显式写出tau与四个目标片起点的对应定义。上下文可推知其含义，属于可局部修补的符号完整性问题，本次未单独扣分。",
+      "primary_criterion": "BR-04",
+      "secondary_impacts": [],
+      "present_in_baseline": false,
+      "present_in_current": true,
+      "used_for_score": false,
+      "evidence_ids": [
+        "BASE",
+        "CURRENT"
+      ]
+    },
+    {
+      "id": "CURRENT-BILINGUAL-ABSTRACT-DETAIL",
+      "kind": "defect",
+      "status": "partly_supported",
+      "severity": "minor",
+      "description": "当前中文摘要省略0.03890 kWh/15 min的绝对MAE，而英文摘要保留该数值；结论方向一致，但信息细节不完全对称。本次不把摘要详略差异视为科学结论矛盾，也不单独扣分。",
+      "primary_criterion": "BR-12",
+      "secondary_impacts": [],
+      "present_in_baseline": false,
+      "present_in_current": true,
+      "used_for_score": false,
+      "evidence_ids": [
+        "BASE",
+        "CURRENT"
+      ]
+    },
+    {
+      "id": "CURRENT-LIT-RANGE-NOT-TABLED",
+      "kind": "defect",
+      "status": "partly_supported",
+      "severity": "minor",
+      "description": "当前稿§1.2.2的概括性引用范围[12-13,67,70-76]包含[74][75]，但表1-1未列这两篇；两文在后文作为事件/残差路径讨论，因此不影响表1-1最近邻对照结论，建议收窄引用范围或说明表格只列直接近邻。未单独计分。",
+      "primary_criterion": "BR-03",
+      "secondary_impacts": [],
+      "present_in_baseline": false,
+      "present_in_current": true,
+      "used_for_score": false,
+      "evidence_ids": [
+        "BASE",
+        "CURRENT"
+      ]
+    }
+  ],
+  "field_guide": {
+    "id": "稳定问题ID；同一根因沿用ID",
+    "status": "supported / partly_supported / unverified / refuted",
+    "kind": "defect / scope_limit / research_extension",
+    "severity": "blocker / major / minor / extension",
+    "primary_criterion": "唯一主要归属BR-xx",
+    "secondary_impacts": "每项须有不同受影响要求、独立证据和distinct_reason",
+    "present_in_baseline": "true/false",
+    "present_in_current": "true/false",
+    "used_for_score": "只有经过核实且实际影响分值的问题为true"
+  }
+}

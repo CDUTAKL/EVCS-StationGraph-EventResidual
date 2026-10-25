@@ -1,4 +1,5 @@
 __pycache__/
+.cache/
 *.py[cod]
 .DS_Store
 .venv/
@@ -21,6 +22,18 @@ htmlcov/
 *.tmp
 *.log
 .drawio-tmp/
+tmp/
+
+# 论文候选稿和重复分页证明在本地归档；Git保留源稿、稳定正式Word及轻量审计。
+# 已跟踪的历史交付文件继续保留，不因新增忽略规则而删除。
+docs/thesis/**/*.docx
+docs/thesis/**/*.pdf
+docs/thesis/**/visual-qa*/**/*.png
+docs/thesis/**/visual-qa*/**/*.jpg
+docs/thesis/**/lo-visual-audit*/**/*.png
+docs/thesis/**/lo-visual-audit*/**/*.jpg
+docs/thesis/**/detail-previews/*.png
+docs/thesis/**/*.jsonl
 
 # 原始、中间及正式数据不进入 Git；仅保留目录骨架与轻量清单
 data/external/*
@@ -55,3 +68,4 @@ outputs/figures/fig_alpha_curve.*
 outputs/figures/schematics/
 # 本地保留的图片替换前快照不进入版本库；正式版本由根目录图件和 manifest 锁定。
 outputs/figures/archive-before-*/
+outputs/figures/archive/

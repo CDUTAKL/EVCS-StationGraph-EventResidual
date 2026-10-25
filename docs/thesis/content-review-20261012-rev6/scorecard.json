@@ -1,0 +1,507 @@
+{
+  "schema_version": 1,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "FORMAL-20261012-REV6",
+  "assessment_kind": "formal",
+  "review_date": "2026-10-12",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "EVCS-THESIS-REV6-20261012",
+    "manuscript_path": "docs/thesis/thesis-manuscript.md",
+    "manuscript_sha256": "21e54e81244e6dc07721dfb1395fe31ba7ba71f7e8d99de805d8ebf61e021350",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "evidence": [
+      {
+        "id": "MS",
+        "path": "packet/manuscript-frozen.md",
+        "sha256": "21e54e81244e6dc07721dfb1395fe31ba7ba71f7e8d99de805d8ebf61e021350",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/manuscript-frozen.md",
+        "locator": "packet/manuscript-frozen.md",
+        "reviewed": true
+      },
+      {
+        "id": "RUB",
+        "path": "packet/rubric.json",
+        "sha256": "244fb698bd39b0e935e45116671c1954659a6720dc33faa42d9a7faf89433548",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/rubric.json",
+        "locator": "packet/rubric.json",
+        "reviewed": true
+      },
+      {
+        "id": "RULES",
+        "path": "packet/score-rules.md",
+        "sha256": "45cedce765ec6fd4c221eb783d65a2672dd0197d07ffc3b6a5c91cff13d9b5d7",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/score-rules.md",
+        "locator": "packet/score-rules.md",
+        "reviewed": true
+      },
+      {
+        "id": "REV5",
+        "path": "packet/prior-rev5-scorecard.md",
+        "sha256": "94c589c78bf1b9c37604eeace848b65011ba066f2daa3b3a4759e9dd7f0065a0",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/prior-rev5-scorecard.md",
+        "locator": "packet/prior-rev5-scorecard.md",
+        "reviewed": true
+      },
+      {
+        "id": "REV5F",
+        "path": "packet/prior-rev5-forensic-review.md",
+        "sha256": "5d118c241bd60c0249219f1e3d546387cda952183fd8b9b3c77b8df700195ab4",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/prior-rev5-forensic-review.md",
+        "locator": "packet/prior-rev5-forensic-review.md",
+        "reviewed": true
+      },
+      {
+        "id": "REPLAY",
+        "path": "packet/checkpoint-replay-report.md",
+        "sha256": "9908aeb1d50ee0a842895f6987f4210d8300678d7d23d2006951b7d6c08191ee",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/checkpoint-replay-report.md",
+        "locator": "packet/checkpoint-replay-report.md",
+        "reviewed": true
+      },
+      {
+        "id": "REPRO",
+        "path": "packet/reproducibility-readme.md",
+        "sha256": "ca72af4ff1553c38a713484696de2c6ac169f6396f11ad1876ffa15af22a7734",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/reproducibility-readme.md",
+        "locator": "packet/reproducibility-readme.md",
+        "reviewed": true
+      },
+      {
+        "id": "DATA",
+        "path": "packet/data-availability.md",
+        "sha256": "3fd3e798cb8e927977e39d14b3e4e00280b5669b83de41e5bd36a756681b6dca",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/data-availability.md",
+        "locator": "packet/data-availability.md",
+        "reviewed": true
+      },
+      {
+        "id": "PASS",
+        "path": "packet/material-passport.md",
+        "sha256": "f00ced582e56d8f6e8d4282575af164e5b1fb7738421345db67fc4756be049a1",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/material-passport.md",
+        "locator": "packet/material-passport.md",
+        "reviewed": true
+      },
+      {
+        "id": "CLAIMS",
+        "path": "packet/claim-evidence-map.md",
+        "sha256": "b8dc5fa63f1e5c7df5094b54ad427b24adbab0865d71ac9e5243d751084d968d",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/claim-evidence-map.md",
+        "locator": "packet/claim-evidence-map.md",
+        "reviewed": true
+      },
+      {
+        "id": "FIX",
+        "path": "packet/local-repair-audit.json",
+        "sha256": "2185b9fb16e54b8cc52af8344ff42f4dc34b5461c3665e7720028386c74a0f5f",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/local-repair-audit.json",
+        "locator": "packet/local-repair-audit.json",
+        "reviewed": true
+      },
+      {
+        "id": "BUNDLE",
+        "path": "packet/original-bundle-audit.json",
+        "sha256": "c4e402db7a7cf3c5c9cc9e95a410c0e6579b3799c026d60ef8d2c7c0c7a1bead",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/original-bundle-audit.json",
+        "locator": "packet/original-bundle-audit.json",
+        "reviewed": true
+      },
+      {
+        "id": "ARCH",
+        "path": "packet/archive-integrity-audit.json",
+        "sha256": "47923321d2c38c98c46e2548297268bdd4d3b27559d9cb0166ea3a824a7de313",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/archive-integrity-audit.json",
+        "locator": "packet/archive-integrity-audit.json",
+        "reviewed": true
+      },
+      {
+        "id": "MAEARCH",
+        "path": "packet/paper-mae-archived-audit.json",
+        "sha256": "9ba6f8342ac64b5095210ee7c614f37a00eface30a66bf5689b76371cc1153e5",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/paper-mae-archived-audit.json",
+        "locator": "packet/paper-mae-archived-audit.json",
+        "reviewed": true
+      },
+      {
+        "id": "MAEFWD",
+        "path": "packet/paper-mae-forward-audit.json",
+        "sha256": "2de24031553ed9cd5bd784627ad1c682c66b8e1fd3b498b763425ca00eaa1dae",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/paper-mae-forward-audit.json",
+        "locator": "packet/paper-mae-forward-audit.json",
+        "reviewed": true
+      },
+      {
+        "id": "ADAPT",
+        "path": "packet/adaptive-topk-diagnostic.json",
+        "sha256": "47df842bf333e35783a5ea501d2a6ee15be5865e9db526a12ddfb087d69d0e8d",
+        "scope": "frozen review packet",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/adaptive-topk-diagnostic.json",
+        "locator": "packet/adaptive-topk-diagnostic.json",
+        "reviewed": true
+      }
+    ],
+    "scope_note": "致谢/在读成果占位按用户既有指示暂不纳入内容评分；学校版式、WPS目录分页和逐图视觉验收另审。"
+  },
+  "reviewer_reports": [
+    "reviewer-integrity.md",
+    "reviewer-methods.md",
+    "reviewer-literature-practice.md"
+  ],
+  "forensic_report": "forensic-review.md",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": 4.5,
+      "manuscript_location": "§1.1.1–1.1.3；§2.1.2；§5.4.1",
+      "evidence_ids": [
+        "MS",
+        "DATA",
+        "PASS"
+      ],
+      "rationale": "研究对象、站内节点需求和会话代理能量定义具体，且区分实测功率。当前没有现场预测误差成本或业务收益量化，留0.5分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "MS",
+          "DATA",
+          "PASS"
+        ]
+      }
+    },
+    {
+      "id": "BR-02",
+      "score": 5,
+      "manuscript_location": "题名、摘要；§1.3–1.6；§3.8.2；§4.5–4.6；结论",
+      "evidence_ids": [
+        "MS",
+        "CLAIMS",
+        "DATA"
+      ],
+      "rationale": "题目、研究问题、三套协议、MDP定位及结论边界一致；JPL被限定为同家族另一站点重拟合，不表述为零样本或未来时期验证。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "MS",
+          "CLAIMS",
+          "DATA"
+        ]
+      }
+    },
+    {
+      "id": "BR-03",
+      "score": 4.5,
+      "manuscript_location": "§1.2.1–1.2.4；表1-1；§1.3；§3.5.8",
+      "evidence_ids": [
+        "MS",
+        "REV5",
+        "REV5F"
+      ],
+      "rationale": "近邻按节点粒度、关系来源、方法路径和已核验范围比较，主动收窄首创主张。[12]、[13]等来源仍有摘要/片段范围限制，未新增原文核验，留0.5分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "MS",
+          "REV5",
+          "REV5F"
+        ]
+      }
+    },
+    {
+      "id": "BR-04",
+      "score": 4.5,
+      "manuscript_location": "§2.1–2.6；§3.2–3.5；§4.2.5；§5.2–5.4",
+      "evidence_ids": [
+        "MS",
+        "FIX",
+        "DATA"
+      ],
+      "rationale": "代理能量、事件可见性、图关系与物理拓扑、β重参数化及TE/运行接口口径总体准确。会话均匀分摊和实际事件上报时延仍是适用假设，留0.5分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "MS",
+          "FIX",
+          "DATA"
+        ]
+      }
+    },
+    {
+      "id": "BR-05",
+      "score": 8,
+      "manuscript_location": "§2.1.1–2.1.3；§3.5.7；§3.6.2–3.6.4；§3.7.1–3.7.2",
+      "evidence_ids": [
+        "MS",
+        "CLAIMS",
+        "DATA",
+        "REPLAY"
+      ],
+      "rationale": "三协议、共同键和预登记比较支撑限定问题；相近参数TCN、完整AGCRN及共享门控形成主要参照。没有容量匹配AGCRN/行为GRU，且共享门控触顶使更长预算下差异未确认，维持8分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "MS",
+          "CLAIMS",
+          "DATA",
+          "REPLAY"
+        ]
+      }
+    },
+    {
+      "id": "BR-06",
+      "score": 4.5,
+      "manuscript_location": "§3.6.1；§3.6.3–3.6.4；§3.7.1",
+      "evidence_ids": [
+        "REPLAY",
+        "REPRO",
+        "BUNDLE",
+        "ARCH",
+        "MAEARCH",
+        "MAEFWD",
+        "ADAPT"
+      ],
+      "rationale": "63/63原预测到指标的算术核验通过；检查点前向60/63通过，其中SG-EXP-019为36/36、SG-EXP-027为6/6、SG-EXP-028为12/12，另有旧TCN/MRG 6/6通过。旧AdaptiveGraph 3/3 CPU前向失败，训练时源码版本未认证，且可携带性仅在既有依赖环境核验。核心结果链可追溯，但尚不足以给5分；保留4.5。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "REPLAY",
+          "REPRO",
+          "BUNDLE",
+          "ARCH",
+          "MAEARCH",
+          "MAEFWD",
+          "ADAPT"
+        ]
+      }
+    },
+    {
+      "id": "BR-07",
+      "score": 9,
+      "manuscript_location": "§2.1–2.6；§3.3–3.7；§4.2–4.4；§5.2–5.4",
+      "evidence_ids": [
+        "MS",
+        "DATA",
+        "PASS",
+        "CLAIMS",
+        "REPLAY"
+      ],
+      "rationale": "完成数据口径、跨协议预测、门控对照、机制诊断、失配分析和数值链复核，体现硕士层级的独立问题解决；不按运行数或文件数加分。尚无实测功率、未见时期和新数据家族，维持9分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "MS",
+          "DATA",
+          "PASS",
+          "CLAIMS",
+          "REPLAY"
+        ]
+      }
+    },
+    {
+      "id": "BR-08",
+      "score": 8.5,
+      "manuscript_location": "§3.6.2–3.6.5；§3.7.1–3.7.5；§4.2–4.4；§5.2–5.4",
+      "evidence_ids": [
+        "MS",
+        "REPLAY",
+        "MAEARCH",
+        "MAEFWD",
+        "CLAIMS"
+      ],
+      "rationale": "整体MAE与节点门控结论有协议内直接证据，且复算链支持主表数字；同时保留JPL其他指标由TCN占优、事件区间覆盖不足及TE校正后无保留候选。组件独立性、MDP跨站和实测/未见期证据不足，维持8.5。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "MS",
+          "REPLAY",
+          "MAEARCH",
+          "MAEFWD",
+          "CLAIMS"
+        ]
+      }
+    },
+    {
+      "id": "BR-09",
+      "score": 9.5,
+      "manuscript_location": "§3.6–3.7；§4.2.5、§4.3.3、§4.4.4；§5.2.3–5.2.6；§5.3.3–5.3.7；结论",
+      "evidence_ids": [
+        "MS",
+        "CLAIMS",
+        "DATA",
+        "REPLAY"
+      ],
+      "rationale": "区分种子、固定期时间块和逐键复算，报告负结果、探索性分析及代理目标边界。少种子、已查看时期、PCMCI历史完整矩阵缺失仍限制统计确认，维持9.5。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "MS",
+          "CLAIMS",
+          "DATA",
+          "REPLAY"
+        ]
+      }
+    },
+    {
+      "id": "BR-10",
+      "score": 7.5,
+      "manuscript_location": "表1-1；§1.2.2–1.2.4；§3.5.8；§3.7.1；§3.8；§4.5；结论",
+      "evidence_ids": [
+        "MS",
+        "REV5",
+        "REV5F",
+        "CLAIMS"
+      ],
+      "rationale": "贡献已限于站内任务化关系预测、同参数节点门控增量和MDP诊断组织；不主张算子首创或β独立正增益。独有关系贡献及MDP外部效度未建立，维持7.5。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "MS",
+          "REV5",
+          "REV5F",
+          "CLAIMS"
+        ]
+      }
+    },
+    {
+      "id": "BR-11",
+      "score": 3.5,
+      "manuscript_location": "§2.1.2；§5.4.1–5.4.5；表5-7、表5-8",
+      "evidence_ids": [
+        "MS",
+        "DATA",
+        "CLAIMS"
+      ],
+      "rationale": "代理量映射、固定失配例及合成LP给出有限应用接口价值；没有同步电表、完整场站约束、真实车辆请求或现场收益验证，维持3.5。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "当前证据仍落在REV5已采用的锚点区间；新增复核未消除该项尚存的主要缺口。",
+        "evidence_ids": [
+          "MS",
+          "DATA",
+          "CLAIMS"
+        ]
+      }
+    },
+    {
+      "id": "BR-12",
+      "score": 10,
+      "manuscript_location": "表1-1；§3.6.1、§3.6.3–3.6.4；§4.2.5、§4.2.6.3；§5.2.4；全文公式序列",
+      "evidence_ids": [
+        "MS",
+        "FIX",
+        "REPRO"
+      ],
+      "rationale": "已核实修正：等权β转引及4.2.6.3指向3.7.2；第四章公式次序为(4-1)、(4-2)；[13]只写成已查官方索引片段；top-k表述改为邻居上限、不保证对称化后边数。局部修复审计全通过，因此由9.5升10。致谢/成果占位按用户先前指示暂不纳入内容评分；学校版式及WPS分页另审。",
+      "na_reason": null,
+      "change": {
+        "type": "improvement",
+        "reason": "四项局部学术表达与转引问题均已修正，并由本轮局部审计核验通过。",
+        "evidence_ids": [
+          "FIX",
+          "MS"
+        ]
+      }
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "60/63 checkpoint test forwards pass; 3 legacy AdaptiveGraph CPU forwards fail. Exact top-k ties are only a plausible explanation; no original CUDA replay confirmed the cause.",
+    "63/63 archived prediction-to-metric checks pass; this arithmetic does not substitute for checkpoint forward reproduction.",
+    "Legacy training-time source commit is absent; no retraining or fresh dependency installation was performed.",
+    "Historical PCMCI+ full p-matrix and software version remain unavailable.",
+    "Metered-power validation, reporting-delay validation, unseen-period/non-ACN confirmation, and field-benefit evaluation remain absent.",
+    "Images were not independently re-rendered or visually inspected in this scoring pass; WPS pagination/TOC final visual audit remains separate."
+  ],
+  "reviewer_suggestions": [
+    {
+      "perspective": "integrity",
+      "raw_score": 78.0,
+      "vector": [
+        4.5,
+        5,
+        4.5,
+        4.5,
+        8,
+        4,
+        9,
+        8.5,
+        9.5,
+        7.5,
+        3.5,
+        9.5
+      ]
+    },
+    {
+      "perspective": "methods_evidence",
+      "raw_score": 78.5,
+      "vector": [
+        4.5,
+        5,
+        4.5,
+        4.5,
+        8,
+        4.5,
+        9,
+        8.5,
+        9.5,
+        7.5,
+        3.5,
+        9.5
+      ]
+    },
+    {
+      "perspective": "literature_contribution_practice",
+      "raw_score": 79.0,
+      "vector": [
+        4.5,
+        5,
+        4.5,
+        4.5,
+        8.5,
+        4,
+        9.5,
+        8.5,
+        9.5,
+        8,
+        3.5,
+        9
+      ]
+    }
+  ]
+}

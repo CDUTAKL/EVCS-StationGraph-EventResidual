@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "task_id": "SMOKE-20261018-fixed-e2e",
+  "status": "awaiting_codex_review",
+  "collected_at": "2026-10-18T02:53:44+00:00",
+  "baseline_head": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+  "current_head": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "tmp/claude-code-fixed-e2e-20261018/output.txt",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 21,
+        "mtime_ns": 1792291966165296466,
+        "sha256": "7d8382c0400d910cf603bf61db562c9079e5aa74510d16eafa4cf86642d719d6"
+      }
+    }
+  ],
+  "out_of_scope_changes": [],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [],
+  "executor_report": {
+    "task_id": "SMOKE-20261018-fixed-e2e",
+    "executor": "Claude Code",
+    "model": "deepseek-flash[1m]",
+    "user_reported_model": "DeepSeek",
+    "summary": "已按任务包读取纯合成摘录，将令牌 handoff-fixed-e2e-ok 加末尾换行写入唯一授权输出文件；仅运行 checks_to_run 指定的两条命令：python3 退出码 0，curl 被无网沙箱明确拒绝（退出码 56，blocked-by-allowlist），未重试或绕过。未读取或修改论文、实验、检查点及其他项目材料；无数字或主张变化。",
+    "changed_paths": [
+      "tmp/claude-code-fixed-e2e-20261018/output.txt",
+      "docs/thesis/blueprints/tasks/SMOKE-20261018-fixed-e2e/execution-report.json"
+    ],
+    "evidence_used": [
+      {
+        "path": "tmp/claude-code-fixed-e2e-20261018/fixture.md",
+        "locator": {
+          "kind": "whole_file"
+        },
+        "purpose": "纯合成测试令牌",
+        "sha256": "8141aefaa1ca23892fdf69d67401d5eb1f32c101d275664bdcdaad3fc2934074",
+        "sha256_source": "EXECUTION_PACKET.md 给定值；按操作者指示未另行重算"
+      }
+    ],
+    "claim_or_number_changes": [],
+    "checks": [
+      {
+        "command": "python3 -c 'print(\"local_bash_smoke_ok\")'",
+        "exit_code": 0,
+        "stdout": "local_bash_smoke_ok\n",
+        "result": "passed"
+      },
+      {
+        "command": "curl --head --connect-timeout 3 --max-time 5 https://example.com",
+        "exit_code": 56,
+        "stderr_excerpt": "curl: (56) CONNECT tunnel failed, response 403; HTTP/1.1 403 Forbidden; X-Proxy-Error: blocked-by-allowlist",
+        "sandbox_violation": "deny network-outbound example.com:443 (host is on the deny list)",
+        "result": "denied_by_sandbox_as_expected"
+      }
+    ],
+    "unresolved": [],
+    "blockers": []
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

@@ -259,6 +259,18 @@
       "manuscript_sha256": "2a72afd71fa9cc10caa6b982e68733560d9fb1b02f088feead818d01563718bf",
       "baseline_assessment_id": "FORMAL-20261020-LANGUAGE-PAIRED-REVIEW",
       "comparison_limit": "同量表同范围与78/90冻结正式基线配对；本轮净变化0。三视角认为呈现与范围措辞更清楚，但结果证据已在基线稿中；不重复计入。未检查Word/WPS和PDF视觉。"
+    },
+    {
+      "id": "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW",
+      "date": "2026-10-22",
+      "raw_score": 79.5,
+      "raw_maximum": 90,
+      "normalized_score": 88.33,
+      "status": "formal_same_rubric_paired_revision",
+      "scorecard": "../content-review-20261022-paired-review/scorecard.json",
+      "manuscript_sha256": "8ac58074c2a53835883c6635cdf7d6f0044e7971e67af6de36e3f4248e75d9d5",
+      "baseline_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+      "comparison_limit": "同量表同范围配对，78.0→79.5/90（+1.5/90，校准效应0）；分别认可来源/配置追溯、EPFL数据问题解决链与真实输入背景的小幅提升。未增加预测性能证据；盲评绝对分较低属校准差异，未发现旧稿错评依据，故保留固定正式基线。非官方内容模拟；新版PDF版式另列验收。"
     }
   ],
   "policy": "不因对分数提出疑问就提高分数；不因缺少新实验就默认内容分不能上升；每项变化必须有可复查依据。",

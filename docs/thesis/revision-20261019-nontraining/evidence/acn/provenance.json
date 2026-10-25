@@ -1,0 +1,26 @@
+{
+  "audit_date": "2026-10-19",
+  "raw_sessions_saved": false,
+  "time_series_saved": false,
+  "credentials_saved": false,
+  "files": [
+    {
+      "file": "range_probe.json",
+      "source_path": "/Users/xushuyuan/acn_metadata_audit_20261019/range_probe.json",
+      "sha256": "25a3aacea4662049fac8dfac0a934916610e393395fb5cb08434c04a55f0eb43",
+      "kind": "sanitized_query_metadata_and_response_hashes"
+    },
+    {
+      "file": "range_probe_reviewed.json",
+      "source_path": "/Users/xushuyuan/acn_metadata_audit_20261019/range_probe_reviewed.json",
+      "sha256": "84ec68aaf9c9d8b35acb928821a289464a5f66fbb4f946cdb754044b59055ae6",
+      "kind": "sanitized_query_metadata_and_response_hashes"
+    },
+    {
+      "file": "bounds_verification.json",
+      "source_path": "/Users/xushuyuan/acn_metadata_audit_20261019/bounds_verification.json",
+      "sha256": "430bb7fffbbf62dd5ef92f4099a6ff455dda3362de195d273d36df02fa260b05",
+      "kind": "sanitized_query_metadata_and_response_hashes"
+    }
+  ]
+}

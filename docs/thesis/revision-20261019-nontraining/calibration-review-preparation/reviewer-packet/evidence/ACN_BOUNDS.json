@@ -1,0 +1,70 @@
+{
+  "checked_at_utc": "2026-10-19T06:06:36.557679+00:00",
+  "source_manifest": "/Users/xushuyuan/acn_metadata_audit_20261019/range_probe_reviewed.json",
+  "scope": "Counts records strictly before/after the candidate connectionTime bounds; no session pages or time series saved.",
+  "sites": [
+    {
+      "site_name": "Caltech",
+      "site_id": "caltech",
+      "candidate_earliest_connectionTime_utc": "Wed, 25 Apr 2018 11:08:04 GMT",
+      "candidate_latest_connectionTime_utc": "Tue, 14 Sep 2021 01:52:37 GMT",
+      "checks": [
+        {
+          "where": "connectionTime<\"Wed, 25 Apr 2018 11:08:04 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "0392e8121a25fd016265a7fb3ac5e43dff69adde6e5ddff845f95e25a194297c"
+        },
+        {
+          "where": "connectionTime>\"Tue, 14 Sep 2021 01:52:37 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "0392e8121a25fd016265a7fb3ac5e43dff69adde6e5ddff845f95e25a194297c"
+        }
+      ],
+      "extrema_confirmed_if_both_counts_zero": true
+    },
+    {
+      "site_name": "JPL",
+      "site_id": "jpl",
+      "candidate_earliest_connectionTime_utc": "Wed, 05 Sep 2018 11:04:13 GMT",
+      "candidate_latest_connectionTime_utc": "Tue, 14 Sep 2021 05:43:39 GMT",
+      "checks": [
+        {
+          "where": "connectionTime<\"Wed, 05 Sep 2018 11:04:13 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "de48d802736d205567d72c949dfcb8a638bb53736ef75d6dd531f9e75b31eea1"
+        },
+        {
+          "where": "connectionTime>\"Tue, 14 Sep 2021 05:43:39 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "de48d802736d205567d72c949dfcb8a638bb53736ef75d6dd531f9e75b31eea1"
+        }
+      ],
+      "extrema_confirmed_if_both_counts_zero": true
+    },
+    {
+      "site_name": "Office 1",
+      "site_id": "office001",
+      "candidate_earliest_connectionTime_utc": "Mon, 25 Mar 2019 16:24:42 GMT",
+      "candidate_latest_connectionTime_utc": "Mon, 13 Sep 2021 21:21:51 GMT",
+      "checks": [
+        {
+          "where": "connectionTime<\"Mon, 25 Mar 2019 16:24:42 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "6ca77754695e88f7657e6eb2f1f508cd7ab7641ed08cb20172e89d469f1898bc"
+        },
+        {
+          "where": "connectionTime>\"Mon, 13 Sep 2021 21:21:51 GMT\"",
+          "matching_session_count": 0,
+          "response_status": 200,
+          "response_sha256": "6ca77754695e88f7657e6eb2f1f508cd7ab7641ed08cb20172e89d469f1898bc"
+        }
+      ],
+      "extrema_confirmed_if_both_counts_zero": true
+    }
+  ]
+}

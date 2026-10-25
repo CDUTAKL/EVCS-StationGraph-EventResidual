@@ -1,0 +1,109 @@
+{
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "issues": [
+    {
+      "id": "CAL-BR08-ROBUSTNESS",
+      "kind": "scope_limit",
+      "status": "supported",
+      "severity": "minor",
+      "primary_criterion": "BR-08",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "evidence_ids": [
+        "BASELINE",
+        "S31",
+        "S32",
+        "CAL"
+      ],
+      "description": "原评分对稳健性证据给分偏低：冻结基线已有JPL重拟合、替代目标和独立校准等同ACN体系/已查看期内控制。主评将robustness_scope由2.0校准为2.5，同时保留未见时期与外部体系限制。",
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR10-ANCHOR-MISALIGNMENT",
+      "kind": "scope_limit",
+      "status": "supported",
+      "severity": "minor",
+      "primary_criterion": "BR-10",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "evidence_ids": [
+        "BASELINE",
+        "NEAR76",
+        "NEAR",
+        "S31",
+        "MDP"
+      ],
+      "description": "历史评分理由把“没有新算子/诊断指导后精度收益”当作最近工作差异或贡献的必要条件，与固定锚点不符。受控经验发现和诊断判断可以构成贡献；主评将旧稿prior_difference校准为2.5/3，仍保留MDP近邻比较不够系统的缺口。",
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR12-DENSITY",
+      "kind": "defect",
+      "status": "partly_supported",
+      "severity": "minor",
+      "primary_criterion": "BR-12",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "NEAR",
+        "NEAR76",
+        "NEAR2",
+        "MAP"
+      ],
+      "description": "旧评分将结构与学术内容近满分，但冻结稿仍有补充分析密集、局部限制重复、表后引用范围过宽及交叉引用错误；部分问题已在当前稿修复，但密度和近邻原文范围仍限制表达/学术精度。此问题用于校准BR-12旧分，不涉及图像、页码或PPI门槛。",
+      "secondary_impacts": []
+    },
+    {
+      "id": "REV-BR03-CITATION-SCOPE",
+      "kind": "defect",
+      "status": "supported",
+      "severity": "minor",
+      "primary_criterion": "BR-03",
+      "present_in_baseline": true,
+      "present_in_current": false,
+      "used_for_score": true,
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "NEAR"
+      ],
+      "description": "基线表1-1之后的概括性引用包含未在表中列出的[74][75]；当前稿将范围收窄至实际列出的文献，改善文献覆盖表述的可核对性。",
+      "secondary_impacts": []
+    },
+    {
+      "id": "REV-BR12-CLARITY",
+      "kind": "defect",
+      "status": "supported",
+      "severity": "minor",
+      "primary_criterion": "BR-12",
+      "present_in_baseline": true,
+      "present_in_current": false,
+      "used_for_score": true,
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "MAP"
+      ],
+      "description": "基线存在错误章节转引，且§5.4.1未定义τ与h的对应；当前稿修复转引并补足时间片记号，摘要也补齐核心数字、删除未定义缩写串。",
+      "secondary_impacts": []
+    }
+  ],
+  "field_guide": {
+    "id": "稳定问题ID；同一根因沿用ID",
+    "status": "supported / partly_supported / unverified / refuted",
+    "kind": "defect / scope_limit / research_extension",
+    "severity": "blocker / major / minor / extension",
+    "primary_criterion": "唯一主要归属BR-xx",
+    "secondary_impacts": "每项必须有不同受影响要求、独立证据和distinct_reason，不能复制主要理由",
+    "present_in_baseline": "true/false",
+    "present_in_current": "true/false",
+    "used_for_score": "只有经过核实的问题可以为true",
+    "evidence_ids": "已读取的证据ID",
+    "impact_changed": "旧新均存在但影响不同，须有impact_change_evidence_ids和具体说明"
+  }
+}

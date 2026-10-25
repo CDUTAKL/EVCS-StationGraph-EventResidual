@@ -1,0 +1,960 @@
+{
+  "schema_version": 1,
+  "task_id": "REVIEW-20261019-ORIGINALITY",
+  "context_id": "CC-REVIEW-20261019-ORIGINALITY-FRESH",
+  "reviewer_role": "originality",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "packet_fingerprint": "6bdbc7d34632f864b2de30d199c857313f53d6d5d0abd5dcef73619309cb420b",
+  "review_date": "2026-10-19",
+  "review_nature": "internal_non_official_content_simulation; not a school grade; not a format acceptance",
+  "manuscripts": {
+    "baseline": {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manuscripts/baseline.md",
+      "sha256": "c9ec6d784adfbccec8feb54c448f2f4b6130d5a9891f7394023621be7696598b",
+      "bytes": 194214
+    },
+    "current": {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manuscripts/current.md",
+      "sha256": "62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66",
+      "bytes": 194930
+    }
+  },
+  "reading": {
+    "baseline_full_read": true,
+    "current_full_read": true,
+    "baseline_read_scope": "title through appendix A, including abstract, chapters 1-5, conclusion, references, appendix A and pending acknowledgement/publication pages",
+    "current_read_scope": "title through appendix A, including abstract, chapters 1-5, conclusion, references, appendix A and pending acknowledgement/publication pages",
+    "manifest_read": true,
+    "reviewer_instructions_read": true,
+    "rubric_read": true,
+    "anchors_read": true,
+    "evidence_files_read": [
+      "evidence/ADAPT.md",
+      "evidence/ADAPTAUDIT.json",
+      "evidence/CAL.md",
+      "evidence/DATA_AVAIL.md",
+      "evidence/MAP.md",
+      "evidence/MDP.md",
+      "evidence/MRECOMP.json",
+      "evidence/NEAR.md",
+      "evidence/NEAR2.md",
+      "evidence/NEAR76.md",
+      "evidence/NEAR_20261016.md",
+      "evidence/NZ.json",
+      "evidence/PASSPORT.md",
+      "evidence/QUALITY.md",
+      "evidence/RECOMP.json",
+      "evidence/S31.md",
+      "evidence/S31AUDIT.json",
+      "evidence/S32.md",
+      "evidence/S32AUDIT.json"
+    ],
+    "evidence_file_count_read": 19,
+    "figure_scope": "captions_only; image content and full-page visual acceptance remain unchecked",
+    "external_search": false,
+    "training_or_remote_execution": false,
+    "git_stage_or_commit": false,
+    "other_reviewer_reports_read": false,
+    "historical_scores_exposed": "none observed in frozen packet; prior model exposure unknown",
+    "historical_scores_note": "The packet manifest explicitly excludes historical scorecards and reviewer reports. No historical total, school grade or other reviewer opinion was read or used."
+  },
+  "scoring": {
+    "score_step": 0.5,
+    "raw_maximum": 90,
+    "display_maximum": 100,
+    "normalization": "sum(scores) / 90 * 100",
+    "display_decimals": 2,
+    "rounding": "ROUND_HALF_UP",
+    "component_first": true,
+    "same_anchors_for_both_manuscripts": true,
+    "totals_computed_by": "manual column addition in two independent orders; no Bash/code execution environment was available in this session",
+    "totals_code_calculation_satisfied": false
+  },
+  "criteria": [
+    {
+      "id": "BR-01",
+      "name": "选题意义与问题定义",
+      "maximum": 5,
+      "component_maxima": {
+        "BR-01-problem": 2,
+        "BR-01-significance": 2,
+        "BR-01-need": 1
+      },
+      "baseline": {
+        "score": 5.0,
+        "component_scores": {
+          "BR-01-problem": 2.0,
+          "BR-01-significance": 2.0,
+          "BR-01-need": 1.0
+        },
+        "component_sum": 5.0,
+        "positions": [
+          "摘要",
+          "1.1.1-1.1.3",
+          "1.3",
+          "1.4"
+        ],
+        "evidence_ids": [
+          "QUALITY.md",
+          "DATA_AVAIL.md"
+        ],
+        "reason_summary": "研究对象为单场站、15 min、10 节点、未来 4 片的节点代理能量；使用问题落在模型筛选、采数安排和运行核查接口；动机由会话量、零值比例和节点异质性支撑。",
+        "gaps": [
+          "代理目标不等于实测功率，现场效度未验证；该边界按锚点归 BR-11，不重复扣本项。"
+        ]
+      },
+      "current": {
+        "score": 5.0,
+        "component_scores": {
+          "BR-01-problem": 2.0,
+          "BR-01-significance": 2.0,
+          "BR-01-need": 1.0
+        },
+        "component_sum": 5.0,
+        "positions": [
+          "摘要",
+          "1.1.1-1.1.3",
+          "1.3",
+          "1.4"
+        ],
+        "evidence_ids": [
+          "QUALITY.md",
+          "DATA_AVAIL.md"
+        ],
+        "reason_summary": "问题定义、粒度和使用场景与旧稿一致；摘要更凝练，但没有改变研究对象或任务边界。",
+        "gaps": [
+          "同旧稿：代理目标与实测功率的对应关系仍需同步量测。"
+        ]
+      },
+      "change": {
+        "delta": 0.0,
+        "changed": false,
+        "basis": "问题定义与证据未发生可指认变化；当前稿摘要措辞调整不构成评分依据变化。"
+      }
+    },
+    {
+      "id": "BR-02",
+      "name": "研究问题、范围与题目一致性",
+      "maximum": 5,
+      "component_maxima": {
+        "BR-02-alignment": 2,
+        "BR-02-progression": 2,
+        "BR-02-closure": 1
+      },
+      "baseline": {
+        "score": 5.0,
+        "component_scores": {
+          "BR-02-alignment": 2.0,
+          "BR-02-progression": 2.0,
+          "BR-02-closure": 1.0
+        },
+        "component_sum": 5.0,
+        "positions": [
+          "题目",
+          "摘要与 Abstract",
+          "1.3-1.7",
+          "第 2-5 章",
+          "结论"
+        ],
+        "evidence_ids": [
+          "MAP.md"
+        ],
+        "reason_summary": "题目中的站内多关系图、机制诊断和充电节点短期负荷预测分别对应 LRE/MRG-GCN、MDP 与节点代理负荷任务；章节按数据与协议、预测与组件、机制诊断、可靠性边界推进，结论回到同一主线。",
+        "gaps": [
+          "第 5 章为探索性边界分析，但两稿均明确其非主线贡献，不构成范围漂移。"
+        ]
+      },
+      "current": {
+        "score": 5.0,
+        "component_scores": {
+          "BR-02-alignment": 2.0,
+          "BR-02-progression": 2.0,
+          "BR-02-closure": 1.0
+        },
+        "component_sum": 5.0,
+        "positions": [
+          "题目",
+          "摘要与 Abstract",
+          "1.3-1.7",
+          "第 2-5 章",
+          "结论"
+        ],
+        "evidence_ids": [
+          "MAP.md"
+        ],
+        "reason_summary": "题目、问题、范围、章节推进和结论闭合与旧稿一致；1.3 开头更直接，但没有改变主线。",
+        "gaps": [
+          "同旧稿：第 5 章仍属边界探索，不是第二贡献主线。"
+        ]
+      },
+      "change": {
+        "delta": 0.0,
+        "changed": false,
+        "basis": "题目、研究问题、章节推进和结论闭合未发生可指认变化。"
+      }
+    },
+    {
+      "id": "BR-03",
+      "name": "文献综述与缺口定位",
+      "maximum": 5,
+      "component_maxima": {
+        "BR-03-coverage": 1,
+        "BR-03-sources": 2,
+        "BR-03-gap": 2
+      },
+      "baseline": {
+        "score": 4.5,
+        "component_scores": {
+          "BR-03-coverage": 1.0,
+          "BR-03-sources": 2.0,
+          "BR-03-gap": 1.5
+        },
+        "component_sum": 4.5,
+        "positions": [
+          "1.2.1-1.2.4",
+          "表 1-1（8 行，未列 [76]）",
+          "1.3"
+        ],
+        "evidence_ids": [
+          "NEAR.md",
+          "NEAR2.md",
+          "NEAR_20261016.md",
+          "NEAR76.md"
+        ],
+        "reason_summary": "覆盖时间序列、图方法、事件建模和可解释性；核心近邻有原文层级披露；但表 1-1 未列 Liang[76]，1.3 的缺口表述没有明确排除会话交易重构 EV 负荷预测与残差校正这一最近邻路径。",
+        "gaps": [
+          "[72][73] 仅有摘要；未采用系统综述式检索；但边界已披露，不越过可读范围。"
+        ]
+      },
+      "current": {
+        "score": 5.0,
+        "component_scores": {
+          "BR-03-coverage": 1.0,
+          "BR-03-sources": 2.0,
+          "BR-03-gap": 2.0
+        },
+        "component_sum": 5.0,
+        "positions": [
+          "1.2.1-1.2.4",
+          "表 1-1（9 行，新增 Liang[76]）",
+          "1.2.2 结尾比较段",
+          "1.2.3 新增 [76] 段",
+          "1.3 缺口段"
+        ],
+        "evidence_ids": [
+          "NEAR.md",
+          "NEAR2.md",
+          "NEAR76.md",
+          "NEAR_20261016.md"
+        ],
+        "reason_summary": "新增 [76] 的节点粒度、方法路径、Boulder EV 扩展、指标依赖结果和未报告边界；明确承认会话交易重构 EV 负荷预测与残差校正已有先例，并把缺口收窄为站内统计关系相对自环替换的条件增量与 MDP 诊断判断。",
+        "gaps": [
+          "[72][73] 仍仅摘要可读；但正文明确未核实图构造、参数共享、切分和消融细节。"
+        ]
+      },
+      "change": {
+        "delta": 0.5,
+        "changed": true,
+        "change_type": "manuscript_text_and_gap_positioning",
+        "basis": "表 1-1 新增 [76] 行，1.2.2/1.2.3/1.3 据此改写；这是最近邻比较与缺口定位的实际文字变化，有 NEAR76.md 原文核验支撑，不是评分标准变化。"
+      }
+    },
+    {
+      "id": "BR-04",
+      "name": "理论基础与专业知识",
+      "maximum": 5,
+      "component_maxima": {
+        "BR-04-concepts": 2,
+        "BR-04-formulas": 2,
+        "BR-04-knowledge": 1
+      },
+      "baseline": {
+        "score": 5.0,
+        "component_scores": {
+          "BR-04-concepts": 2.0,
+          "BR-04-formulas": 2.0,
+          "BR-04-knowledge": 1.0
+        },
+        "component_sum": 5.0,
+        "positions": [
+          "2.1 式(2-1)",
+          "2.4 式(2-2)",
+          "3.2 式(3-1)(3-2)",
+          "3.3 式(3-3)-(3-6)",
+          "3.4 式(3-7)",
+          "3.5 式(3-8)-(3-13)",
+          "4.2.5 重参数化",
+          "4.3.1 蒸馏损失",
+          "4.4.3 式(4-2)",
+          "5.2.2 式(5-1)",
+          "5.3.2 式(5-3)",
+          "5.4.1 式(5-4)(5-5)",
+          "5.4.2 式(5-6)",
+          "5.4.4 式(5-7)"
+        ],
+        "evidence_ids": [
+          "RECOMP.json",
+          "MRECOMP.json",
+          "S32.md",
+          "S31.md"
+        ],
+        "reason_summary": "概念、符号、量纲和时间口径准确；TCN 感受野、β 重参数化、共形秩、代理能量与功率换算等公式与实现/使用条件一致；专业知识用于解释稀疏性、事件错位和不确定性问题。",
+        "gaps": [
+          "均匀分摊、片末可见、未验证通信延迟均为明确声明的假设，不是理论错误。"
+        ]
+      },
+      "current": {
+        "score": 5.0,
+        "component_scores": {
+          "BR-04-concepts": 2.0,
+          "BR-04-formulas": 2.0,
+          "BR-04-knowledge": 1.0
+        },
+        "component_sum": 5.0,
+        "positions": [
+          "与旧稿相同的公式与假设章节"
+        ],
+        "evidence_ids": [
+          "RECOMP.json",
+          "MRECOMP.json",
+          "S32.md",
+          "S31.md"
+        ],
+        "reason_summary": "公式、符号和假设未发生实质变化；未发现新的概念或量纲错误。",
+        "gaps": [
+          "同旧稿：代理目标的物理效度仍需实测。"
+        ]
+      },
+      "change": {
+        "delta": 0.0,
+        "changed": false,
+        "basis": "公式、符号和建模假设未发生可指认变化。"
+      }
+    },
+    {
+      "id": "BR-05",
+      "name": "方法与实验设计",
+      "maximum": 10,
+      "component_maxima": {
+        "BR-05-information_split": 3,
+        "BR-05-comparators": 2,
+        "BR-05-controls": 3,
+        "BR-05-selection_budget": 2
+      },
+      "baseline": {
+        "score": 9.0,
+        "component_scores": {
+          "BR-05-information_split": 3.0,
+          "BR-05-comparators": 2.0,
+          "BR-05-controls": 2.5,
+          "BR-05-selection_budget": 1.5
+        },
+        "component_sum": 9.0,
+        "positions": [
+          "2.1.1 三套协议",
+          "2.1.3 JPL 四段留窗",
+          "2.2 节点筛选与质量门禁",
+          "3.6.1 表 3-1",
+          "3.6.2-3.6.3 主比较",
+          "3.7.1 同参数门控",
+          "3.7.2 表 3-11 自环替换",
+          "3.8.3 表 3-14 预算",
+          "3.8.4 SG-EXP-032"
+        ],
+        "evidence_ids": [
+          "QUALITY.md",
+          "PASSPORT.md",
+          "S31.md",
+          "S31AUDIT.json",
+          "S32.md",
+          "S32AUDIT.json",
+          "MRECOMP.json",
+          "RECOMP.json"
+        ],
+        "reason_summary": "输入权限、标签成熟度和切分清楚；对照含容量近似 TCN、完整 AGCRN、同参数共享门控和自环替换；预算、种子和选模规则可检查。设计能回答论文限定的问题。",
+        "gaps": [
+          "完整 AGCRN 未容量匹配；无行为 GRU/容量匹配 AGCRN；共享门控各有一个种子触及 60 轮上限；片末可见假设未核验；L2 学生与教师容量不匹配。"
+        ]
+      },
+      "current": {
+        "score": 9.0,
+        "component_scores": {
+          "BR-05-information_split": 3.0,
+          "BR-05-comparators": 2.0,
+          "BR-05-controls": 2.5,
+          "BR-05-selection_budget": 1.5
+        },
+        "component_sum": 9.0,
+        "positions": [
+          "与旧稿相同的方法与实验设计章节"
+        ],
+        "evidence_ids": [
+          "QUALITY.md",
+          "PASSPORT.md",
+          "S31.md",
+          "S31AUDIT.json",
+          "S32.md",
+          "S32AUDIT.json",
+          "MRECOMP.json",
+          "RECOMP.json"
+        ],
+        "reason_summary": "实验设计、对照和预算未发生变化；当前稿仅改写关系结论的解释，不改变设计。",
+        "gaps": [
+          "同旧稿：容量匹配、行为基线、预算触顶和输入可见性仍有边界。"
+        ]
+      },
+      "change": {
+        "delta": 0.0,
+        "changed": false,
+        "basis": "实验设计与对照未发生可指认变化；3.7.2 的文字改写不改变设计。"
+      }
+    },
+    {
+      "id": "BR-06",
+      "name": "可复现性与方法严谨性",
+      "maximum": 5,
+      "component_maxima": {
+        "BR-06-data_split": 1,
+        "BR-06-source_config": 1.5,
+        "BR-06-keys_metrics": 1.5,
+        "BR-06-environment_package": 1
+      },
+      "baseline": {
+        "score": 4.5,
+        "component_scores": {
+          "BR-06-data_split": 1.0,
+          "BR-06-source_config": 1.5,
+          "BR-06-keys_metrics": 1.5,
+          "BR-06-environment_package": 0.5
+        },
+        "component_sum": 4.5,
+        "positions": [
+          "2.1/2.1.3 数据来源与网格",
+          "2.2 节点筛选",
+          "3.6.3-3.6.4 复核状态",
+          "3.8.3 预算表",
+          "4.6.1 JPL 重放容差",
+          "5.3.5 校准输入",
+          "附录 A"
+        ],
+        "evidence_ids": [
+          "ADAPT.md",
+          "ADAPTAUDIT.json",
+          "PASSPORT.md",
+          "QUALITY.md",
+          "RECOMP.json",
+          "MRECOMP.json",
+          "S31AUDIT.json",
+          "S32AUDIT.json"
+        ],
+        "reason_summary": "数据张量、节点顺序、切分、预测键、真值和掩码均可追溯；主要指标由独立算术复算；检查点重放和逐键核对充分；正文没有把重放称为从头训练复现。",
+        "gaps": [
+          "AdaptiveGraph 原训练 Git 标识缺失；SG-031 源码含未提交差异；权重和逐键预测不公开；原 GPU 型号未完整记录。"
+        ]
+      },
+      "current": {
+        "score": 4.5,
+        "component_scores": {
+          "BR-06-data_split": 1.0,
+          "BR-06-source_config": 1.5,
+          "BR-06-keys_metrics": 1.5,
+          "BR-06-environment_package": 0.5
+        },
+        "component_sum": 4.5,
+        "positions": [
+          "与旧稿相同的复现与复核章节"
+        ],
+        "evidence_ids": [
+          "ADAPT.md",
+          "ADAPTAUDIT.json",
+          "PASSPORT.md",
+          "QUALITY.md",
+          "RECOMP.json",
+          "MRECOMP.json",
+          "S31AUDIT.json",
+          "S32AUDIT.json"
+        ],
+        "reason_summary": "复现材料、哈希、逐键核对和声明未发生变化；当前稿没有新增或削弱复现证据。",
+        "gaps": [
+          "同旧稿：训练身份和公开工件仍有边界。"
+        ]
+      },
+      "change": {
+        "delta": 0.0,
+        "changed": false,
+        "basis": "复现材料与声明未发生可指认变化。"
+      }
+    },
+    {
+      "id": "BR-07",
+      "name": "工作量与解决问题能力",
+      "maximum": 10,
+      "component_maxima": {
+        "BR-07-technical_work": 4,
+        "BR-07-problem_solving": 4,
+        "BR-07-integration": 2
+      },
+      "baseline": {
+        "score": 9.5,
+        "component_scores": {
+          "BR-07-technical_work": 4.0,
+          "BR-07-problem_solving": 3.5,
+          "BR-07-integration": 2.0
+        },
+        "component_sum": 9.5,
+        "positions": [
+          "第 2 章数据审计与协议",
+          "第 3 章 12 配置×3 种子、JPL 4 模型×3 种子、SG-031 4×3、SG-032 2×3",
+          "第 4 章 L1/L2/L3 与 JPL 复核",
+          "第 5 章 TE/PCMCI+、共形、滚动回放、运行接口"
+        ],
+        "evidence_ids": [
+          "S31.md",
+          "S31AUDIT.json",
+          "S32.md",
+          "S32AUDIT.json",
+          "RECOMP.json",
+          "MRECOMP.json",
+          "QUALITY.md",
+          "PASSPORT.md"
+        ],
+        "reason_summary": "技术工作量显著；问题发现与处理有可查记录，包括预算触顶、top-k 并列选边、β 重参数化、替代目标、关系替换和共形路由失配；负结果保留；分析链从数据到预测、诊断、可靠性和应用边界闭合。",
+        "gaps": [
+          "部分分析停留在探索性描述；L2 容量不匹配；未做现场部署（本项不因后者重复扣分）。"
+        ]
+      },
+      "current": {
+        "score": 9.5,
+        "component_scores": {
+          "BR-07-technical_work": 4.0,
+          "BR-07-problem_solving": 3.5,
+          "BR-07-integration": 2.0
+        },
+        "component_sum": 9.5,
+        "positions": [
+          "与旧稿相同的工作量与分析链"
+        ],
+        "evidence_ids": [
+          "S31.md",
+          "S31AUDIT.json",
+          "S32.md",
+          "S32AUDIT.json",
+          "RECOMP.json",
+          "MRECOMP.json",
+          "QUALITY.md",
+          "PASSPORT.md"
+        ],
+        "reason_summary": "未新增实验或分析；工作量、问题解决和分析链与旧稿一致。",
+        "gaps": [
+          "同旧稿：探索性分析深度与容量匹配仍有限。"
+        ]
+      },
+      "change": {
+        "delta": 0.0,
+        "changed": false,
+        "basis": "工作量、问题处理和分析链未发生可指认变化。"
+      }
+    },
+    {
+      "id": "BR-08",
+      "name": "结果与证据充分性",
+      "maximum": 10,
+      "component_maxima": {
+        "BR-08-claim_support": 4,
+        "BR-08-alternatives": 3,
+        "BR-08-robustness_scope": 3
+      },
+      "baseline": {
+        "score": 8.0,
+        "component_scores": {
+          "BR-08-claim_support": 3.5,
+          "BR-08-alternatives": 2.5,
+          "BR-08-robustness_scope": 2.0
+        },
+        "component_sum": 8.0,
+        "positions": [
+          "表 3-2",
+          "表 3-3",
+          "表 3-9",
+          "表 3-11",
+          "表 3-15",
+          "表 4-5/4-7/4-8",
+          "表 5-2/5-3/5-4/5-6",
+          "结论(1)-(4)"
+        ],
+        "evidence_ids": [
+          "RECOMP.json",
+          "MRECOMP.json",
+          "S31AUDIT.json",
+          "S32AUDIT.json",
+          "CAL.md",
+          "MDP.md",
+          "QUALITY.md"
+        ],
+        "reason_summary": "主要结论有直接证据且数字一致；整体优势来自零目标键、非零/事件未胜过 TCN、两类关系有条件下增量、行为关系不确定、替代目标保持全局排序但不改善非零组、事件覆盖不足，均被明确写出。",
+        "gaps": [
+          "替代解释覆盖不完整（无容量匹配 AGCRN、无行为 GRU、L2 容量不匹配）；稳健性限于 ACN 体系与已查看测试期；无现场实测。"
+        ]
+      },
+      "current": {
+        "score": 8.0,
+        "component_scores": {
+          "BR-08-claim_support": 3.5,
+          "BR-08-alternatives": 2.5,
+          "BR-08-robustness_scope": 2.0
+        },
+        "component_sum": 8.0,
+        "positions": [
+          "与旧稿相同的结果表与结论"
+        ],
+        "evidence_ids": [
+          "RECOMP.json",
+          "MRECOMP.json",
+          "S31AUDIT.json",
+          "S32AUDIT.json",
+          "CAL.md",
+          "MDP.md",
+          "QUALITY.md"
+        ],
+        "reason_summary": "结果数字与证据口径未变；3.7.2 改写把组件内差异与模型间排名分得更清楚，但没有新增证据或改变结论。",
+        "gaps": [
+          "同旧稿：外部效度、容量匹配和现场证据仍有限。"
+        ]
+      },
+      "change": {
+        "delta": 0.0,
+        "changed": false,
+        "basis": "结果数字、证据和主张范围未发生可指认变化；3.7.2 属同向澄清。"
+      }
+    },
+    {
+      "id": "BR-09",
+      "name": "统计解释与结论边界",
+      "maximum": 10,
+      "component_maxima": {
+        "BR-09-uncertainty": 4,
+        "BR-09-multiplicity": 2,
+        "BR-09-interpretation": 4
+      },
+      "baseline": {
+        "score": 9.5,
+        "component_scores": {
+          "BR-09-uncertainty": 3.5,
+          "BR-09-multiplicity": 2.0,
+          "BR-09-interpretation": 4.0
+        },
+        "component_sum": 9.5,
+        "positions": [
+          "3.6.3 Bonferroni 区间",
+          "3.7.1 七日/一日块与留一节点",
+          "3.7.2 2,000 次 Bootstrap 与未校正分层",
+          "3.8.4 事后目标敏感性",
+          "4.6 事后 L1/L3",
+          "5.3.4/5.3.7 依赖与漂移",
+          "5.5",
+          "结论局限"
+        ],
+        "evidence_ids": [
+          "S31AUDIT.json",
+          "S32AUDIT.json",
+          "RECOMP.json",
+          "MRECOMP.json",
+          "MDP.md",
+          "CAL.md",
+          "NZ.json"
+        ],
+        "reason_summary": "清楚区分种子、预测键和时间块变异；主比较用 Bonferroni 同时区间；次要分层标注未校正；反复说明测试期已查看和区间条件性；负结果保留；未把三 seed 排序写成显著。",
+        "gaps": [
+          "主要重复仅三种子；时间块区间条件化；大量次要终点未统一校正，但均已披露。"
+        ]
+      },
+      "current": {
+        "score": 9.5,
+        "component_scores": {
+          "BR-09-uncertainty": 3.5,
+          "BR-09-multiplicity": 2.0,
+          "BR-09-interpretation": 4.0
+        },
+        "component_sum": 9.5,
+        "positions": [
+          "与旧稿相同的统计与边界章节"
+        ],
+        "evidence_ids": [
+          "S31AUDIT.json",
+          "S32AUDIT.json",
+          "RECOMP.json",
+          "MRECOMP.json",
+          "MDP.md",
+          "CAL.md",
+          "NZ.json"
+        ],
+        "reason_summary": "统计口径未变；当前稿对非零组关系结果的表述更明确地标注为未校正事后描述，方向与旧稿一致，不构成新的加分或减分。",
+        "gaps": [
+          "同旧稿：三种子、条件区间和次要终点多重性边界仍在。"
+        ]
+      },
+      "change": {
+        "delta": 0.0,
+        "changed": false,
+        "basis": "统计方法、区间口径和结论边界未发生可指认变化。"
+      }
+    },
+    {
+      "id": "BR-10",
+      "name": "贡献与创新",
+      "maximum": 10,
+      "component_maxima": {
+        "BR-10-prior_difference": 3,
+        "BR-10-contribution": 3,
+        "BR-10-demonstration": 4
+      },
+      "baseline": {
+        "score": 8.0,
+        "component_scores": {
+          "BR-10-prior_difference": 2.5,
+          "BR-10-contribution": 2.5,
+          "BR-10-demonstration": 3.0
+        },
+        "component_sum": 8.0,
+        "positions": [
+          "摘要/Abstract 贡献段",
+          "1.2.2 表 1-1 与结尾",
+          "1.3",
+          "1.4",
+          "3.7.2",
+          "3.8.1 表 3-13",
+          "4.5 表 4-6",
+          "结论"
+        ],
+        "evidence_ids": [
+          "NEAR.md",
+          "NEAR2.md",
+          "NEAR_20261016.md",
+          "S31.md",
+          "S31AUDIT.json",
+          "RECOMP.json",
+          "MRECOMP.json",
+          "MDP.md",
+          "MAP.md"
+        ],
+        "reason_summary": "明确不主张基础算子首创；贡献限定为单场站任务中的三类关系操作化、同参数节点门控、JPL 自环替换和 MDP 区分；有条件下增量证据。但表 1-1 未列 [76]，最近邻差异不够明确。",
+        "gaps": [
+          "贡献是条件性经验/诊断贡献，不是算法首创；行为关系不确定；MDP 未证明可指导改模提升预测。"
+        ]
+      },
+      "current": {
+        "score": 8.0,
+        "component_scores": {
+          "BR-10-prior_difference": 2.5,
+          "BR-10-contribution": 2.5,
+          "BR-10-demonstration": 3.0
+        },
+        "component_sum": 8.0,
+        "positions": [
+          "摘要/Abstract 贡献段",
+          "1.2.2 表 1-1 新增 [76] 与结尾比较段",
+          "1.3 缺口段",
+          "1.4",
+          "3.7.2",
+          "3.8.1 表 3-13",
+          "4.5 表 4-6",
+          "结论"
+        ],
+        "evidence_ids": [
+          "NEAR76.md",
+          "NEAR.md",
+          "NEAR2.md",
+          "NEAR_20261016.md",
+          "S31.md",
+          "S31AUDIT.json",
+          "RECOMP.json",
+          "MRECOMP.json",
+          "MDP.md",
+          "MAP.md"
+        ],
+        "reason_summary": "新增 [76] 行使最近邻差异更清楚，但该根因的主要受影响要求是 BR-03 的缺口定位，已在 BR-03 计入；贡献内容本身未新增实验或算子，故本项维持 8.0。",
+        "gaps": [
+          "同旧稿：条件性贡献、行为关系不确定、MDP 改模收益未验证。"
+        ]
+      },
+      "change": {
+        "delta": 0.0,
+        "changed": false,
+        "change_type": "no_score_change_to_avoid_double_counting",
+        "basis": "当前稿在表 1-1、1.2.2 结尾和 1.3 更明确地区分 [76]，但同一根因的主要分值已计入 BR-03-gap；旧稿已明确不主张算法首创并给出任务化贡献，贡献内容未新增实验或新算子，故 BR-10 不重复升档。"
+      }
+    },
+    {
+      "id": "BR-11",
+      "name": "专业实践价值",
+      "maximum": 5,
+      "component_maxima": {
+        "BR-11-use_case": 1,
+        "BR-11-real_inputs": 1.5,
+        "BR-11-value_evaluation": 1.5,
+        "BR-11-usable_outputs": 1
+      },
+      "baseline": {
+        "score": 3.0,
+        "component_scores": {
+          "BR-11-use_case": 1.0,
+          "BR-11-real_inputs": 1.0,
+          "BR-11-value_evaluation": 0.5,
+          "BR-11-usable_outputs": 0.5
+        },
+        "component_sum": 3.0,
+        "positions": [
+          "5.4.1-5.4.5",
+          "表 5-7",
+          "表 5-8",
+          "结论使用条件"
+        ],
+        "evidence_ids": [
+          "PASSPORT.md",
+          "QUALITY.md",
+          "DATA_AVAIL.md"
+        ],
+        "reason_summary": "使用场景明确；输入为真实 ACN 会话但目标是代理能量；价值评价只有固定轨迹和合成 LP；工件是接口定义和算例。",
+        "gaps": [
+          "无现场量测、设备限额、车辆请求、电价和运行收益。"
+        ]
+      },
+      "current": {
+        "score": 3.0,
+        "component_scores": {
+          "BR-11-use_case": 1.0,
+          "BR-11-real_inputs": 1.0,
+          "BR-11-value_evaluation": 0.5,
+          "BR-11-usable_outputs": 0.5
+        },
+        "component_sum": 3.0,
+        "positions": [
+          "5.4.1-5.4.5",
+          "表 5-7",
+          "表 5-8",
+          "结论使用条件"
+        ],
+        "evidence_ids": [
+          "PASSPORT.md",
+          "QUALITY.md",
+          "DATA_AVAIL.md"
+        ],
+        "reason_summary": "5.4.5 把下一步采数与影子运行要求写得更具体，但没有新增真实输入或价值评价；应用边界与旧稿一致。",
+        "gaps": [
+          "同旧稿：现场量测与收益评价缺失。"
+        ]
+      },
+      "change": {
+        "delta": 0.0,
+        "changed": false,
+        "basis": "没有新增真实输入、价值评价或可用工件；5.4.5 属表述细化。"
+      }
+    },
+    {
+      "id": "BR-12",
+      "name": "结构、表达与学术规范",
+      "maximum": 10,
+      "component_maxima": {
+        "BR-12-structure": 3,
+        "BR-12-writing": 3,
+        "BR-12-scholarly_content": 3,
+        "BR-12-terminology": 1
+      },
+      "baseline": {
+        "score": 8.0,
+        "component_scores": {
+          "BR-12-structure": 2.5,
+          "BR-12-writing": 2.0,
+          "BR-12-scholarly_content": 2.5,
+          "BR-12-terminology": 1.0
+        },
+        "component_sum": 8.0,
+        "positions": [
+          "全文目录与章节小结",
+          "表/图编号",
+          "参考文献",
+          "附录 A"
+        ],
+        "evidence_ids": [
+          "baseline.md",
+          "manifest.json",
+          "NEAR76.md"
+        ],
+        "reason_summary": "结构清楚、术语基本统一、图表编号连续、引文大体可靠；但摘要偏长，1.3 从方法基础直接跳到三个问题，部分边界说明重复。",
+        "gaps": [
+          "全文较密；图片内容未检查；部分近邻仅摘要可读。"
+        ]
+      },
+      "current": {
+        "score": 8.5,
+        "component_scores": {
+          "BR-12-structure": 2.5,
+          "BR-12-writing": 2.5,
+          "BR-12-scholarly_content": 2.5,
+          "BR-12-terminology": 1.0
+        },
+        "component_sum": 8.5,
+        "positions": [
+          "摘要/Abstract",
+          "1.2.2 表 1-1 与比较段",
+          "1.3",
+          "全文目录与章节小结",
+          "参考文献",
+          "附录 A"
+        ],
+        "evidence_ids": [
+          "current.md",
+          "manifest.json",
+          "NEAR76.md"
+        ],
+        "reason_summary": "摘要更短、更直接；1.3 先承认最近邻覆盖再收窄缺口，段落衔接更顺；表 1-1 新增行后比较段同步改写。结构、学术内容与术语未变。",
+        "gaps": [
+          "仍较密且有重复；图片内容与整页视觉验收未检查。"
+        ]
+      },
+      "change": {
+        "delta": 0.5,
+        "changed": true,
+        "change_type": "writing_and_organization",
+        "basis": "摘要凝练与 1.3 段落组织的实际文字变化；评的是表达与组织，不评 [76] 内容本身（已在 BR-03 计入），也不涉及新证据或新结果。若主评认为不足以支撑 0.5，可降至 8.0，当前稿总分相应为 79.5（88.33）。"
+      }
+    }
+  ],
+  "totals": {
+    "baseline": {
+      "raw_sum": 79.0,
+      "raw_maximum": 90,
+      "normalized": 87.78,
+      "band": "内容良好",
+      "component_sum_check": 79.0
+    },
+    "current": {
+      "raw_sum": 80.0,
+      "raw_maximum": 90,
+      "normalized": 88.89,
+      "band": "内容良好",
+      "component_sum_check": 80.0
+    }
+  },
+  "change_summary": {
+    "criteria_changed": [
+      "BR-03",
+      "BR-12"
+    ],
+    "raw_delta": 1.0,
+    "normalized_delta": 1.11,
+    "basis": "当前稿新增 Liang[76] 的最近邻比较并收窄缺口（BR-03），同时改善摘要与 1.3 的文字组织（BR-12）；同一根因不在 BR-10 重复计分，实验结果、统计口径和证据边界未变，其余 10 项同分。"
+  },
+  "limitations": [
+    "Figure image content and full-page visual acceptance were not checked; the manifest limits figure_scope to captions only.",
+    "Some nearest-work papers were readable only as abstracts or indexed text; the evidence files disclose the readable level and the manuscript does not extrapolate beyond it.",
+    "No field measurement, input arrival timestamp, device limit or operational benefit data were available; the thesis limits its claims accordingly.",
+    "Historical scorecards and other reviewer reports were excluded from the packet and were not read; prior model exposure to historical scores is unknown.",
+    "The session had no Bash or code execution tool, so the 12-item total was not computed by code; it was cross-checked by two independent manual column additions. A script-based recomputation is recommended for the main reviewer.",
+    "This report is an internal non-official content simulation, not a school grade or a format acceptance conclusion."
+  ],
+  "report_path": "docs/thesis/content-review-20261019-paired/reviewers/originality-report.md",
+  "status": "complete_with_disclosed_procedural_gap",
+  "blockers": []
+}

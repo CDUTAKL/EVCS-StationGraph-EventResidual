@@ -1,6 +1,6 @@
 {
   "active_protocol_id": "EVCS-THESIS-REVIEW-2.0",
-  "current_authoritative_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+  "current_authoritative_assessment_id": "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW",
   "current_state": "authoritative_v2_paired_revision",
   "assessments": {
     "FORMAL-20261017-CURRENT": {
@@ -79,9 +79,20 @@
       "baseline_assessment_id": "FORMAL-20261020-LANGUAGE-PAIRED-REVIEW",
       "revision_delta_raw": 0.0,
       "calibration_delta_raw": 0.0
+    },
+    "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW": {
+      "status": "publishable",
+      "date": "2026-10-22",
+      "reason": "按EVCS-THESIS-REVIEW-2.0完成与78.0/90正式基线的配对复评；冻结包、三隔离视角、逐项裁定、哈希与算术发布检查均通过。BR-06、BR-07、BR-11各+0.5，总修订效应+1.5/90，校准效应0。",
+      "record": "docs/thesis/content-review-20261022-paired-review/scorecard.json",
+      "raw_score": 79.5,
+      "normalized_score": 88.33,
+      "baseline_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+      "revision_delta_raw": 1.5,
+      "calibration_delta_raw": 0.0
     }
   },
-  "latest_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
-  "latest_authoritative_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+  "latest_assessment_id": "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW",
+  "latest_authoritative_assessment_id": "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW",
   "current_score_status": "authoritative_v2_paired_revision"
 }

@@ -1,0 +1,352 @@
+{
+  "analysis": "paired all-node and leave-one-node-out sensitivity of the node-specific gate",
+  "status": "PASS",
+  "script_sha256": "9d47c5995e10a3941e668ba5dfa597d8466f4da1790b1f2f694770302595f084",
+  "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+  "jpl_recovery_archive_sha256": "50e7beb581c7cd4e3099fa0661d5a1cf3c1f79935516739eae693ba0234d4966",
+  "sg027": {
+    "site_protocol": "SG-EXP-027 / Caltech event-time gate control",
+    "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+    "verified_runs": 6,
+    "expected_runs": 6,
+    "keys_per_run": 708560,
+    "node_ids": [
+      "CA-303",
+      "CA-304",
+      "CA-305",
+      "CA-307",
+      "CA-311",
+      "CA-315",
+      "CA-317",
+      "CA-321",
+      "CA-327",
+      "CA-489"
+    ],
+    "per_seed_mae": [
+      {
+        "model": "mrg_full",
+        "seed": 2024,
+        "keys": 708560,
+        "origins": 17714,
+        "nodes": 10,
+        "manifest_sha256": "44e0e9d1781efbe66cf0f5b5ef40fcc7d7311071684d33cb088796dcbae4c98f",
+        "test_prediction_sha256": "0f7c2f92d69b575d8f182f9ef8402e2e99990aad7cbca7f25263860e290c2e43",
+        "test_mae": 0.03899679499875924
+      },
+      {
+        "model": "mrg_full",
+        "seed": 2025,
+        "keys": 708560,
+        "origins": 17714,
+        "nodes": 10,
+        "manifest_sha256": "d5f4beca6fb3e4ef1856780a70f8cd2d1eab77f263efcf43f3a4daa817021883",
+        "test_prediction_sha256": "76a4e03f215a2ddd06d9919f5fce511bb1cfff12600b96c354337e3dac174a93",
+        "test_mae": 0.038598121664490385
+      },
+      {
+        "model": "mrg_full",
+        "seed": 2026,
+        "keys": 708560,
+        "origins": 17714,
+        "nodes": 10,
+        "manifest_sha256": "1711fee5d4d5429a0152fb5a75aa421ec07c0e37d5ed713b87e076761778f826",
+        "test_prediction_sha256": "a36694e8ec0d59bcba72bd622a3e53650cbefa3bd930cedbcd0a922a231fbdcd",
+        "test_mae": 0.03843588152542451
+      },
+      {
+        "model": "mrg_shared_gate",
+        "seed": 2024,
+        "keys": 708560,
+        "origins": 17714,
+        "nodes": 10,
+        "manifest_sha256": "f9bcf6981d1d0666a793d4df34fa70c4602cca3766eb8aaeea69a86da48bd8c4",
+        "test_prediction_sha256": "ca8a889e57245ad65454e36fb57edab45541f2fb4f80beda3697cf5b8d6f37ca",
+        "test_mae": 0.03968208410264655
+      },
+      {
+        "model": "mrg_shared_gate",
+        "seed": 2025,
+        "keys": 708560,
+        "origins": 17714,
+        "nodes": 10,
+        "manifest_sha256": "4e5851dddb81515e4f83783a29999e46a1634e1d22960b68596b07f63de9ab33",
+        "test_prediction_sha256": "f1035de681d42b3579b43dddf0d8eeecf7d95e439e1c58788ffd3032aba266c6",
+        "test_mae": 0.039907112520137976
+      },
+      {
+        "model": "mrg_shared_gate",
+        "seed": 2026,
+        "keys": 708560,
+        "origins": 17714,
+        "nodes": 10,
+        "manifest_sha256": "b501f95f7b3e552022fdbda4a0697426d13ef9cc65dcc44f534fff45c631de4a",
+        "test_prediction_sha256": "9e454698a95c4a26bdb86854031020b8c3aa49e59b4436b156c56c9fe82750e8",
+        "test_mae": 0.03964330245711338
+      }
+    ],
+    "all_nodes_and_leave_one_node_out": [
+      {
+        "omitted_node": null,
+        "evaluated_nodes": 10,
+        "mrg_full_mae": 0.03867693272955805,
+        "mrg_shared_gate_mae": 0.03974416635996597,
+        "shared_minus_node_gate_mae": 0.001067233630407921,
+        "relative_node_gate_improvement_pct": 2.685258562833861
+      },
+      {
+        "omitted_node": "CA-303",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.034853671815350304,
+        "mrg_shared_gate_mae": 0.03565756975271144,
+        "shared_minus_node_gate_mae": 0.000803897937361138,
+        "relative_node_gate_improvement_pct": 2.2544944676158383
+      },
+      {
+        "omitted_node": "CA-304",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.04006326279553749,
+        "mrg_shared_gate_mae": 0.041065475711915995,
+        "shared_minus_node_gate_mae": 0.0010022129163785032,
+        "relative_node_gate_improvement_pct": 2.4405243066201483
+      },
+      {
+        "omitted_node": "CA-305",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.03657744768575074,
+        "mrg_shared_gate_mae": 0.03766329880527859,
+        "shared_minus_node_gate_mae": 0.0010858511195278517,
+        "relative_node_gate_improvement_pct": 2.8830483626560808
+      },
+      {
+        "omitted_node": "CA-307",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.03875608283658826,
+        "mrg_shared_gate_mae": 0.039822192603598414,
+        "shared_minus_node_gate_mae": 0.0010661097670101524,
+        "relative_node_gate_improvement_pct": 2.6771749552379407
+      },
+      {
+        "omitted_node": "CA-311",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.03987346897861908,
+        "mrg_shared_gate_mae": 0.04095985523561965,
+        "shared_minus_node_gate_mae": 0.0010863862570005753,
+        "relative_node_gate_improvement_pct": 2.6523195718129107
+      },
+      {
+        "omitted_node": "CA-315",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.04127446972759721,
+        "mrg_shared_gate_mae": 0.04244664778998508,
+        "shared_minus_node_gate_mae": 0.0011721780623878686,
+        "relative_node_gate_improvement_pct": 2.761532708513283
+      },
+      {
+        "omitted_node": "CA-317",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.04041809241584053,
+        "mrg_shared_gate_mae": 0.04151572193476788,
+        "shared_minus_node_gate_mae": 0.0010976295189273483,
+        "relative_node_gate_improvement_pct": 2.64388879146077
+      },
+      {
+        "omitted_node": "CA-321",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.03953047791801214,
+        "mrg_shared_gate_mae": 0.04067464063928062,
+        "shared_minus_node_gate_mae": 0.0011441627212684796,
+        "relative_node_gate_improvement_pct": 2.812963318878176
+      },
+      {
+        "omitted_node": "CA-327",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.03672778619567326,
+        "mrg_shared_gate_mae": 0.03782016381946161,
+        "shared_minus_node_gate_mae": 0.001092377623788346,
+        "relative_node_gate_improvement_pct": 2.888347149956625
+      },
+      {
+        "omitted_node": "CA-489",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.03869456692661143,
+        "mrg_shared_gate_mae": 0.039816097307040416,
+        "shared_minus_node_gate_mae": 0.0011215303804289825,
+        "relative_node_gate_improvement_pct": 2.816776269608598
+      }
+    ],
+    "sensitivity_classification": "post-hoc, same historical test period; descriptive, no new independent sample"
+  },
+  "jpl": {
+    "site_protocol": "SG-EXP-028 / JPL refit gate control",
+    "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+    "verified_runs": 6,
+    "expected_runs": 6,
+    "keys_per_run": 632640,
+    "node_ids": [
+      "AG-1F08",
+      "AG-1F10",
+      "AG-1F06",
+      "AG-1F13",
+      "AG-1F02",
+      "AG-1F04",
+      "AG-1F01",
+      "AG-1F12",
+      "AG-1F07",
+      "AG-1F03"
+    ],
+    "per_seed_mae": [
+      {
+        "model": "mrg_full",
+        "seed": 2024,
+        "keys": 632640,
+        "origins": 15816,
+        "nodes": 10,
+        "manifest_sha256": "fd2a1fa6fe1d2ef20ab06f9cf8678623fa7d1cade35c15bb9201de6756e00420",
+        "test_prediction_sha256": "cfae44cc38632ef06f2e25ae83d2da0971552f3459e94fcde4e1459bbd7f32ee",
+        "test_mae": 0.08112869093363045
+      },
+      {
+        "model": "mrg_full",
+        "seed": 2025,
+        "keys": 632640,
+        "origins": 15816,
+        "nodes": 10,
+        "manifest_sha256": "ab1ce9845e3aa7bd11c65c2e4e355856afb0727950ed6d564dd6f69eb4b03757",
+        "test_prediction_sha256": "01e768a3b145d8402a3f7af6bfca964013519ffc06858b784a2dec5184be03af",
+        "test_mae": 0.0813350579716888
+      },
+      {
+        "model": "mrg_full",
+        "seed": 2026,
+        "keys": 632640,
+        "origins": 15816,
+        "nodes": 10,
+        "manifest_sha256": "932e808354fd505d27859e337e4b1996102675e59b6793ab6e8fa77a9a7ad2c5",
+        "test_prediction_sha256": "cd3b667d7a6bf983b131459330856389985b5dbe4dc4d120491fa66de0d96987",
+        "test_mae": 0.08073728103518948
+      },
+      {
+        "model": "mrg_shared_gate",
+        "seed": 2024,
+        "keys": 632640,
+        "origins": 15816,
+        "nodes": 10,
+        "manifest_sha256": "e97502b6e8f4cf87cd71321cd17c7e03d0bf1e9abb70184c527703d7fab6974c",
+        "test_prediction_sha256": "02946008b7000dd7e2d287de2fd458f36c310690747c3bbc8800fc2db85a7f2f",
+        "test_mae": 0.08266308634335891
+      },
+      {
+        "model": "mrg_shared_gate",
+        "seed": 2025,
+        "keys": 632640,
+        "origins": 15816,
+        "nodes": 10,
+        "manifest_sha256": "7e8e278d346b9dc3422930ee4ad908914be4c4f24f4acc465a6b15394cfa5005",
+        "test_prediction_sha256": "30dcd18ff2a548076a66812c82ad7f1c57b898a4c68e077347058e2ab330ca0f",
+        "test_mae": 0.08407967901095305
+      },
+      {
+        "model": "mrg_shared_gate",
+        "seed": 2026,
+        "keys": 632640,
+        "origins": 15816,
+        "nodes": 10,
+        "manifest_sha256": "3d81bf0c02d9ecaa0f4968a22f2c0b84495ea28c9d6dd080eaf2ada4329cb11a",
+        "test_prediction_sha256": "ae0e0c2566cac441970424932afc1240574a81d5fd1a548622d986e6ee4c29d1",
+        "test_mae": 0.08323355723830178
+      }
+    ],
+    "all_nodes_and_leave_one_node_out": [
+      {
+        "omitted_node": null,
+        "evaluated_nodes": 10,
+        "mrg_full_mae": 0.08106700998016958,
+        "mrg_shared_gate_mae": 0.08332544086420457,
+        "shared_minus_node_gate_mae": 0.00225843088403499,
+        "relative_node_gate_improvement_pct": 2.7103737593366635
+      },
+      {
+        "omitted_node": "AG-1F08",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.0822359828816664,
+        "mrg_shared_gate_mae": 0.08402283652518829,
+        "shared_minus_node_gate_mae": 0.0017868536435218796,
+        "relative_node_gate_improvement_pct": 2.126628566016357
+      },
+      {
+        "omitted_node": "AG-1F10",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.08141524348025701,
+        "mrg_shared_gate_mae": 0.08325835181440835,
+        "shared_minus_node_gate_mae": 0.0018431083341513416,
+        "relative_node_gate_improvement_pct": 2.2137218597118333
+      },
+      {
+        "omitted_node": "AG-1F06",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.08183141723708141,
+        "mrg_shared_gate_mae": 0.08405836516720924,
+        "shared_minus_node_gate_mae": 0.002226947930127829,
+        "relative_node_gate_improvement_pct": 2.649287701108599
+      },
+      {
+        "omitted_node": "AG-1F13",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.08364747033378243,
+        "mrg_shared_gate_mae": 0.0860415266677408,
+        "shared_minus_node_gate_mae": 0.0023940563339583665,
+        "relative_node_gate_improvement_pct": 2.7824428815672797
+      },
+      {
+        "omitted_node": "AG-1F02",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.08393526865561454,
+        "mrg_shared_gate_mae": 0.08637926200908398,
+        "shared_minus_node_gate_mae": 0.0024439933534694397,
+        "relative_node_gate_improvement_pct": 2.8293751261876023
+      },
+      {
+        "omitted_node": "AG-1F04",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.07596601300373768,
+        "mrg_shared_gate_mae": 0.07847876367607297,
+        "shared_minus_node_gate_mae": 0.0025127506723352927,
+        "relative_node_gate_improvement_pct": 3.201822448053414
+      },
+      {
+        "omitted_node": "AG-1F01",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.07941526271745081,
+        "mrg_shared_gate_mae": 0.08141021849469207,
+        "shared_minus_node_gate_mae": 0.001994955777241264,
+        "relative_node_gate_improvement_pct": 2.4504980015148035
+      },
+      {
+        "omitted_node": "AG-1F12",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.08052302052465403,
+        "mrg_shared_gate_mae": 0.08291556111454675,
+        "shared_minus_node_gate_mae": 0.0023925405898927166,
+        "relative_node_gate_improvement_pct": 2.8855145617207527
+      },
+      {
+        "omitted_node": "AG-1F07",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.08194646419196495,
+        "mrg_shared_gate_mae": 0.08444673183582567,
+        "shared_minus_node_gate_mae": 0.002500267643860715,
+        "relative_node_gate_improvement_pct": 2.96076306270979
+      },
+      {
+        "omitted_node": "AG-1F03",
+        "evaluated_nodes": 9,
+        "mrg_full_mae": 0.07975395677548654,
+        "mrg_shared_gate_mae": 0.08224279133727763,
+        "shared_minus_node_gate_mae": 0.002488834561791095,
+        "relative_node_gate_improvement_pct": 3.0262039034939683
+      }
+    ],
+    "sensitivity_classification": "post-hoc, same historical test period; descriptive, no new independent sample"
+  },
+  "interpretation_limit": "Post-hoc robustness reanalysis on already observed historical test periods; no new data, model fit, independent site, or confirmatory significance test."
+}

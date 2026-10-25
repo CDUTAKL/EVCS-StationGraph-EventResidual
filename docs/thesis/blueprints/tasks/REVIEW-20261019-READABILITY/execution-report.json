@@ -1,0 +1,63 @@
+{
+  "task_id": "REVIEW-20261019-READABILITY",
+  "executor": "Claude Code",
+  "model": "deepseek-flash[1m]",
+  "user_reported_model": "DeepSeek",
+  "summary": "已在隔离上下文中完整阅读冻结旧稿、当前稿、rubric、anchors及19份证据，按EVCS-THESIS-CONTENT-1.0的12项组件评分，先组件后求和，0.5分步长。旧稿原始总分78.0/90（百分制86.67），当前稿80.5/90（89.44），差+2.5原始分/+2.77百分制。仅BR-03（+0.5，新增Liang[76]近邻比较并收窄缺口）、BR-10（+1.0，明确排除一般EV代理负荷/残差校正首创并收窄最近邻差异）、BR-12（+1.0，摘要与关键段落组织/表达改进）发生变化；其余9项因证据与主张范围未变而同分。未修改论文、证据、评分政策或Word文件；未读取其他评阅者结果或历史评分。",
+  "changed_paths": [
+    "docs/thesis/content-review-20261019-paired/reviewers/readability-report.md",
+    "docs/thesis/content-review-20261019-paired/reviewers/readability-record.json"
+  ],
+  "evidence_used": [
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manifest.json",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/reviewer_instructions.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/rubric.json",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/anchors.json",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manuscripts/baseline.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manuscripts/current.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/ADAPT.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/ADAPTAUDIT.json",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/CAL.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/DATA_AVAIL.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MAP.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MDP.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MRECOMP.json",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR2.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR76.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR_20261016.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NZ.json",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/PASSPORT.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/QUALITY.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/RECOMP.json",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S31.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S31AUDIT.json",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S32.md",
+    "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S32AUDIT.json"
+  ],
+  "claim_or_number_changes": [
+    "旧稿原始总分78.0/90（百分制86.67）；当前稿80.5/90（百分制89.44）；差值+2.5原始分/+2.77百分制。",
+    "逐项变化：BR-03 4.5→5.0（+0.5）；BR-10 7.5→8.5（+1.0）；BR-12 6.5→7.5（+1.0）；BR-01、BR-02、BR-04、BR-05、BR-06、BR-07、BR-08、BR-09、BR-11均不变。",
+    "变化归因均为稿件实际文字/组织变化：BR-03为新增Liang[76]表1-1行、§1.2.2末段与§1.2.3讨论；BR-10为明确排除一般EV代理负荷预测/残差校正为首创并收窄与[76]的差异；BR-12为摘要与§1.2.2—§1.3、§3.7.2、§4.6.4、§5.4.1、§5.4.5的组织/措辞改进。未因新发现旧问题单独降低当前稿。",
+    "未修改任何论文正文、证据文件、评分政策、任务控制文件、.git或.claude设置；未改变任何实验数值或证据哈希。",
+    "记录中的稿件哈希逐字取自manifest：旧稿c9ec6d784adfbccec8feb54c448f2f4b6130d5a9891f7394023621be7696598b，当前稿62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66。"
+  ],
+  "checks": [
+    "完整阅读baseline.md与current.md全文（含摘要、Abstract、第1—5章、结论、参考文献、附录A、成果页），未只读摘要或差异片段。",
+    "逐份阅读19份证据文件；对关键数字、引用与比较记录稿件位置和证据ID。",
+    "按anchors.json组件逐项评分，12项均给出旧稿分、当前稿分、组件分、稿件定位、证据ID、理由与缺口；分值遵循各项上限和0.5步长。",
+    "12项分值两遍逐项复核；原始总分78.0/80.5与百分制86.67/89.44可由readability-record.json的criteria分值直接复算。",
+    "核对任务包manifest列出的稿件与证据哈希；未打开或引用其他评阅者的technical-report/technical-record/originality-report/originality-record。",
+    "确认图像内容与Word格式未检查：manifest的figure_scope为captions_only；本报告只核对图题、图注和正文引用。",
+    "未联网、未训练、未远程执行、未Git暂存/提交；未使用绕过权限的启动方式。"
+  ],
+  "unresolved": [
+    "本会话工具集不含Bash/Python执行入口，无法按reviewer_instructions运行脚本计算总分或计算readability-report.md的SHA-256；readability-record.json的raw_report_sha256留空。12项分值已两遍逐项复核，原始总分可由记录JSON直接求和复算。",
+    "环境报告的模型标识为deepseek-flash[1m]，user_reported_model为DeepSeek；未收到provider的unrecognized_model诊断，未猜测或替换为其他模型名。",
+    "图像内容、Word/PDF格式、目录页码、封面/签字/致谢、有效PPI未检查；图件只核对题注与正文引用，不能记为视觉验收通过。",
+    "任务包证据未独立覆盖部分正文表格：Caltech回溯表3-4/3-6/3-7的多数基线数值、JPL表3-3中TCN/AGCRN/共享门控的逐值、Caltech L1表4-2/4-3/4-5、Caltech共形表5-2—5-6、TE/PCMCI表5-1；这些仅由稿件内部一致性和QUALITY.md/MAP.md摘要支持，未在包内给出逐项复算JSON。本报告记为证据边界，未判定数值错误。",
+    "两稿共同遗留的规范问题：§3.5.9固定门值结果交叉引用指向§3.6.2（实际在附表A-1/§3.7.2）；§1.5的STMGCN/MGAT-MIC-LSTM/CADGN未定义、CADGN未在表1-1出现；节点代理负荷/能量混用；§1.6“两项核心贡献”/图1-2“双贡献主线”未枚举。",
+    "当前稿新出现但不改变总分的规范问题：§5.4.1集合需求式D_τ的τ未再显式定义（旧稿定义了τ_{t,h}）；中文摘要删去0.03890绝对MAE而英文摘要保留；§1.2.2引用[12-13,67,70-76]含[74][75]而表1-1未列。"
+  ],
+  "blockers": []
+}

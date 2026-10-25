@@ -1,0 +1,1921 @@
+{
+  "status": "PASS",
+  "pdf": "docs/thesis/revision-20261022-delivery/thesis-evidence-delivery-1200ppi.pdf",
+  "pdf_sha256": "989fc9332ed545c3aabd2e1fa3704fe5f581958e1a930683e343277d6ec06bbf",
+  "pdf_pages": 106,
+  "toc_pdf_pages": [
+    7,
+    8,
+    9,
+    10
+  ],
+  "entries_checked": 116,
+  "matched_entries": 116,
+  "mismatches": [],
+  "entries": [
+    {
+      "locator": "第1章",
+      "title": "绪论",
+      "toc_page": 1,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 11,
+          "printed_page": 1
+        },
+        {
+          "pdf_page": 13,
+          "printed_page": 3
+        },
+        {
+          "pdf_page": 15,
+          "printed_page": 5
+        },
+        {
+          "pdf_page": 17,
+          "printed_page": 7
+        },
+        {
+          "pdf_page": 19,
+          "printed_page": 9
+        }
+      ],
+      "first_heading_pdf_page": 11,
+      "first_heading_printed_page": 1,
+      "match": true
+    },
+    {
+      "locator": "1.1",
+      "title": "研究背景与意义",
+      "toc_page": 1,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 11,
+          "printed_page": 1
+        }
+      ],
+      "first_heading_pdf_page": 11,
+      "first_heading_printed_page": 1,
+      "match": true
+    },
+    {
+      "locator": "1.1.1",
+      "title": "电动汽车充电负荷增长与节点级预测需求",
+      "toc_page": 1,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 11,
+          "printed_page": 1
+        }
+      ],
+      "first_heading_pdf_page": 11,
+      "first_heading_printed_page": 1,
+      "match": true
+    },
+    {
+      "locator": "1.1.2",
+      "title": "离散会话记录与节点代理负荷预测问题",
+      "toc_page": 1,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 11,
+          "printed_page": 1
+        }
+      ],
+      "first_heading_pdf_page": 11,
+      "first_heading_printed_page": 1,
+      "match": true
+    },
+    {
+      "locator": "1.1.3",
+      "title": "站内节点关系建模与事件窗口预测意义",
+      "toc_page": 2,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 12,
+          "printed_page": 2
+        }
+      ],
+      "first_heading_pdf_page": 12,
+      "first_heading_printed_page": 2,
+      "match": true
+    },
+    {
+      "locator": "1.2",
+      "title": "国内外研究现状",
+      "toc_page": 2,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 12,
+          "printed_page": 2
+        }
+      ],
+      "first_heading_pdf_page": 12,
+      "first_heading_printed_page": 2,
+      "match": true
+    },
+    {
+      "locator": "1.2.1",
+      "title": "电动汽车充电负荷时间序列预测",
+      "toc_page": 2,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 12,
+          "printed_page": 2
+        }
+      ],
+      "first_heading_pdf_page": 12,
+      "first_heading_printed_page": 2,
+      "match": true
+    },
+    {
+      "locator": "1.2.2",
+      "title": "多节点负荷与时空图预测",
+      "toc_page": 3,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 13,
+          "printed_page": 3
+        }
+      ],
+      "first_heading_pdf_page": 13,
+      "first_heading_printed_page": 3,
+      "match": true
+    },
+    {
+      "locator": "1.2.3",
+      "title": "充电行为特征与事件建模",
+      "toc_page": 6,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 16,
+          "printed_page": 6
+        }
+      ],
+      "first_heading_pdf_page": 16,
+      "first_heading_printed_page": 6,
+      "match": true
+    },
+    {
+      "locator": "1.2.4",
+      "title": "模型可解释性与机制诊断",
+      "toc_page": 6,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 16,
+          "printed_page": 6
+        }
+      ],
+      "first_heading_pdf_page": 16,
+      "first_heading_printed_page": 6,
+      "match": true
+    },
+    {
+      "locator": "1.3",
+      "title": "现有研究不足",
+      "toc_page": 7,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 17,
+          "printed_page": 7
+        }
+      ],
+      "first_heading_pdf_page": 17,
+      "first_heading_printed_page": 7,
+      "match": true
+    },
+    {
+      "locator": "1.4",
+      "title": "研究目标与主要内容",
+      "toc_page": 8,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 18,
+          "printed_page": 8
+        }
+      ],
+      "first_heading_pdf_page": 18,
+      "first_heading_printed_page": 8,
+      "match": true
+    },
+    {
+      "locator": "1.5",
+      "title": "技术路线",
+      "toc_page": 9,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 19,
+          "printed_page": 9
+        }
+      ],
+      "first_heading_pdf_page": 19,
+      "first_heading_printed_page": 9,
+      "match": true
+    },
+    {
+      "locator": "1.6",
+      "title": "论文组织结构",
+      "toc_page": 9,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 19,
+          "printed_page": 9
+        }
+      ],
+      "first_heading_pdf_page": 19,
+      "first_heading_printed_page": 9,
+      "match": true
+    },
+    {
+      "locator": "1.7",
+      "title": "本章小结",
+      "toc_page": 10,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 20,
+          "printed_page": 10
+        }
+      ],
+      "first_heading_pdf_page": 20,
+      "first_heading_printed_page": 10,
+      "match": true
+    },
+    {
+      "locator": "第2章",
+      "title": "充电行为数据与特征分析",
+      "toc_page": 11,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 21,
+          "printed_page": 11
+        },
+        {
+          "pdf_page": 23,
+          "printed_page": 13
+        },
+        {
+          "pdf_page": 25,
+          "printed_page": 15
+        },
+        {
+          "pdf_page": 27,
+          "printed_page": 17
+        },
+        {
+          "pdf_page": 29,
+          "printed_page": 19
+        },
+        {
+          "pdf_page": 31,
+          "printed_page": 21
+        },
+        {
+          "pdf_page": 33,
+          "printed_page": 23
+        },
+        {
+          "pdf_page": 35,
+          "printed_page": 25
+        },
+        {
+          "pdf_page": 37,
+          "printed_page": 27
+        }
+      ],
+      "first_heading_pdf_page": 21,
+      "first_heading_printed_page": 11,
+      "match": true
+    },
+    {
+      "locator": "2.1",
+      "title": "数据来源与重构口径",
+      "toc_page": 11,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 21,
+          "printed_page": 11
+        }
+      ],
+      "first_heading_pdf_page": 21,
+      "first_heading_printed_page": 11,
+      "match": true
+    },
+    {
+      "locator": "2.1.1",
+      "title": "三套评估协议的任务边界",
+      "toc_page": 13,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 23,
+          "printed_page": 13
+        }
+      ],
+      "first_heading_pdf_page": 23,
+      "first_heading_printed_page": 13,
+      "match": true
+    },
+    {
+      "locator": "2.1.2",
+      "title": "分摊支持范围与实测形态核查",
+      "toc_page": 14,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 24,
+          "printed_page": 14
+        }
+      ],
+      "first_heading_pdf_page": 24,
+      "first_heading_printed_page": 14,
+      "match": true
+    },
+    {
+      "locator": "2.1.3",
+      "title": "JPL 另一场站数据与验证口径",
+      "toc_page": 15,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 25,
+          "printed_page": 15
+        }
+      ],
+      "first_heading_pdf_page": 25,
+      "first_heading_printed_page": 15,
+      "match": true
+    },
+    {
+      "locator": "2.2",
+      "title": "节点可用性筛选与质量门禁",
+      "toc_page": 16,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 26,
+          "printed_page": 16
+        }
+      ],
+      "first_heading_pdf_page": 26,
+      "first_heading_printed_page": 16,
+      "match": true
+    },
+    {
+      "locator": "2.3",
+      "title": "节点负荷统计特征",
+      "toc_page": 18,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 28,
+          "printed_page": 18
+        }
+      ],
+      "first_heading_pdf_page": 28,
+      "first_heading_printed_page": 18,
+      "match": true
+    },
+    {
+      "locator": "2.4",
+      "title": "事件分数构成与事件窗口统计",
+      "toc_page": 20,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 30,
+          "printed_page": 20
+        }
+      ],
+      "first_heading_pdf_page": 30,
+      "first_heading_printed_page": 20,
+      "match": true
+    },
+    {
+      "locator": "2.5",
+      "title": "特征构成与协议输入",
+      "toc_page": 24,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 34,
+          "printed_page": 24
+        }
+      ],
+      "first_heading_pdf_page": 34,
+      "first_heading_printed_page": 24,
+      "match": true
+    },
+    {
+      "locator": "2.6",
+      "title": "数据特征对建模的启示",
+      "toc_page": 26,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 36,
+          "printed_page": 26
+        }
+      ],
+      "first_heading_pdf_page": 36,
+      "first_heading_printed_page": 26,
+      "match": true
+    },
+    {
+      "locator": "2.7",
+      "title": "本章小结",
+      "toc_page": 27,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 37,
+          "printed_page": 27
+        }
+      ],
+      "first_heading_pdf_page": 37,
+      "first_heading_printed_page": 27,
+      "match": true
+    },
+    {
+      "locator": "第3章",
+      "title": "基于多关系门控图卷积的节点短期负荷预测",
+      "toc_page": 28,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 38,
+          "printed_page": 28
+        },
+        {
+          "pdf_page": 39,
+          "printed_page": 29
+        },
+        {
+          "pdf_page": 41,
+          "printed_page": 31
+        },
+        {
+          "pdf_page": 43,
+          "printed_page": 33
+        },
+        {
+          "pdf_page": 45,
+          "printed_page": 35
+        },
+        {
+          "pdf_page": 47,
+          "printed_page": 37
+        },
+        {
+          "pdf_page": 49,
+          "printed_page": 39
+        },
+        {
+          "pdf_page": 51,
+          "printed_page": 41
+        },
+        {
+          "pdf_page": 53,
+          "printed_page": 43
+        },
+        {
+          "pdf_page": 55,
+          "printed_page": 45
+        },
+        {
+          "pdf_page": 57,
+          "printed_page": 47
+        },
+        {
+          "pdf_page": 59,
+          "printed_page": 49
+        },
+        {
+          "pdf_page": 61,
+          "printed_page": 51
+        },
+        {
+          "pdf_page": 63,
+          "printed_page": 53
+        },
+        {
+          "pdf_page": 65,
+          "printed_page": 55
+        },
+        {
+          "pdf_page": 67,
+          "printed_page": 57
+        }
+      ],
+      "first_heading_pdf_page": 38,
+      "first_heading_printed_page": 28,
+      "match": true
+    },
+    {
+      "locator": "3.1",
+      "title": "引言",
+      "toc_page": 28,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 38,
+          "printed_page": 28
+        }
+      ],
+      "first_heading_pdf_page": 38,
+      "first_heading_printed_page": 28,
+      "match": true
+    },
+    {
+      "locator": "3.2",
+      "title": "预测任务形式化定义",
+      "toc_page": 30,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 40,
+          "printed_page": 30
+        }
+      ],
+      "first_heading_pdf_page": 40,
+      "first_heading_printed_page": 30,
+      "match": true
+    },
+    {
+      "locator": "3.3",
+      "title": "场景驱动的 LRE 三关系图构建",
+      "toc_page": 31,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 41,
+          "printed_page": 31
+        }
+      ],
+      "first_heading_pdf_page": 41,
+      "first_heading_printed_page": 31,
+      "match": true
+    },
+    {
+      "locator": "3.3.1",
+      "title": "负荷耦合关系图",
+      "toc_page": 32,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 42,
+          "printed_page": 32
+        }
+      ],
+      "first_heading_pdf_page": 42,
+      "first_heading_printed_page": 32,
+      "match": true
+    },
+    {
+      "locator": "3.3.2",
+      "title": "行为共现关系图",
+      "toc_page": 32,
+      "toc_pdf_page": 7,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 42,
+          "printed_page": 32
+        }
+      ],
+      "first_heading_pdf_page": 42,
+      "first_heading_printed_page": 32,
+      "match": true
+    },
+    {
+      "locator": "3.3.3",
+      "title": "轮廓相似关系图",
+      "toc_page": 32,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 42,
+          "printed_page": 32
+        }
+      ],
+      "first_heading_pdf_page": 42,
+      "first_heading_printed_page": 32,
+      "match": true
+    },
+    {
+      "locator": "3.3.4",
+      "title": "top-k 稀疏化与对称归一化",
+      "toc_page": 32,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 42,
+          "printed_page": 32
+        }
+      ],
+      "first_heading_pdf_page": 42,
+      "first_heading_printed_page": 32,
+      "match": true
+    },
+    {
+      "locator": "3.4",
+      "title": "时间基线：TCN",
+      "toc_page": 33,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 43,
+          "printed_page": 33
+        }
+      ],
+      "first_heading_pdf_page": 43,
+      "first_heading_printed_page": 33,
+      "match": true
+    },
+    {
+      "locator": "3.5",
+      "title": "双层多关系门控图卷积网络（MRG-GCN）",
+      "toc_page": 33,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 43,
+          "printed_page": 33
+        }
+      ],
+      "first_heading_pdf_page": 43,
+      "first_heading_printed_page": 33,
+      "match": true
+    },
+    {
+      "locator": "3.5.1",
+      "title": "总体架构",
+      "toc_page": 33,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 43,
+          "printed_page": 33
+        }
+      ],
+      "first_heading_pdf_page": 43,
+      "first_heading_printed_page": 33,
+      "match": true
+    },
+    {
+      "locator": "3.5.2",
+      "title": "单关系消息传递",
+      "toc_page": 34,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 44,
+          "printed_page": 34
+        }
+      ],
+      "first_heading_pdf_page": 44,
+      "first_heading_printed_page": 34,
+      "match": true
+    },
+    {
+      "locator": "3.5.3",
+      "title": "关系级门控",
+      "toc_page": 34,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 44,
+          "printed_page": 34
+        }
+      ],
+      "first_heading_pdf_page": 44,
+      "first_heading_printed_page": 34,
+      "match": true
+    },
+    {
+      "locator": "3.5.4",
+      "title": "节点级门控",
+      "toc_page": 34,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 44,
+          "printed_page": 34
+        }
+      ],
+      "first_heading_pdf_page": 44,
+      "first_heading_printed_page": 34,
+      "match": true
+    },
+    {
+      "locator": "3.5.5",
+      "title": "关系随机失活",
+      "toc_page": 35,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 45,
+          "printed_page": 35
+        }
+      ],
+      "first_heading_pdf_page": 45,
+      "first_heading_printed_page": 35,
+      "match": true
+    },
+    {
+      "locator": "3.5.6",
+      "title": "逐层关系选择与跨层融合",
+      "toc_page": 35,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 45,
+          "printed_page": 35
+        }
+      ],
+      "first_heading_pdf_page": 45,
+      "first_heading_printed_page": 35,
+      "match": true
+    },
+    {
+      "locator": "3.5.7",
+      "title": "目标函数与训练策略",
+      "toc_page": 35,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 45,
+          "printed_page": 35
+        }
+      ],
+      "first_heading_pdf_page": 45,
+      "first_heading_printed_page": 35,
+      "match": true
+    },
+    {
+      "locator": "3.5.8",
+      "title": "与现有方法的区别",
+      "toc_page": 35,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 45,
+          "printed_page": 35
+        }
+      ],
+      "first_heading_pdf_page": 45,
+      "first_heading_printed_page": 35,
+      "match": true
+    },
+    {
+      "locator": "3.5.9",
+      "title": "节点门控与残差更新的分工",
+      "toc_page": 35,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 45,
+          "printed_page": 35
+        }
+      ],
+      "first_heading_pdf_page": 45,
+      "first_heading_printed_page": 35,
+      "match": true
+    },
+    {
+      "locator": "3.5.10",
+      "title": "跨层表示的使用原则",
+      "toc_page": 36,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 46,
+          "printed_page": 36
+        }
+      ],
+      "first_heading_pdf_page": 46,
+      "first_heading_printed_page": 36,
+      "match": true
+    },
+    {
+      "locator": "3.6",
+      "title": "主要预测结果与回溯补充",
+      "toc_page": 37,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 47,
+          "printed_page": 37
+        }
+      ],
+      "first_heading_pdf_page": 47,
+      "first_heading_printed_page": 37,
+      "match": true
+    },
+    {
+      "locator": "3.6.1",
+      "title": "评价协议与指标",
+      "toc_page": 37,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 47,
+          "printed_page": 37
+        }
+      ],
+      "first_heading_pdf_page": 47,
+      "first_heading_printed_page": 37,
+      "match": true
+    },
+    {
+      "locator": "3.6.2",
+      "title": "Caltech 事件时刻协议的预测结果",
+      "toc_page": 38,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 48,
+          "printed_page": 38
+        }
+      ],
+      "first_heading_pdf_page": 48,
+      "first_heading_printed_page": 38,
+      "match": true
+    },
+    {
+      "locator": "3.6.3",
+      "title": "JPL 重拟合协议：另一场站的点预测比较",
+      "toc_page": 39,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 49,
+          "printed_page": 39
+        }
+      ],
+      "first_heading_pdf_page": 49,
+      "first_heading_printed_page": 39,
+      "match": true
+    },
+    {
+      "locator": "3.6.4",
+      "title": "回溯补充：完整配置与复算状态",
+      "toc_page": 42,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 52,
+          "printed_page": 42
+        }
+      ],
+      "first_heading_pdf_page": 52,
+      "first_heading_printed_page": 42,
+      "match": true
+    },
+    {
+      "locator": "3.6.5",
+      "title": "回溯补充：分层与节点误差",
+      "toc_page": 46,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 56,
+          "printed_page": 46
+        }
+      ],
+      "first_heading_pdf_page": 56,
+      "first_heading_printed_page": 46,
+      "match": true
+    },
+    {
+      "locator": "3.6.6",
+      "title": "回溯补充：模型规模与训练记录",
+      "toc_page": 48,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 58,
+          "printed_page": 48
+        }
+      ],
+      "first_heading_pdf_page": 58,
+      "first_heading_printed_page": 48,
+      "match": true
+    },
+    {
+      "locator": "3.7",
+      "title": "组件增量与协议敏感性",
+      "toc_page": 49,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 59,
+          "printed_page": 49
+        }
+      ],
+      "first_heading_pdf_page": 59,
+      "first_heading_printed_page": 49,
+      "match": true
+    },
+    {
+      "locator": "3.7.1",
+      "title": "同参数节点级门控配对对照",
+      "toc_page": 49,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 59,
+          "printed_page": 49
+        }
+      ],
+      "first_heading_pdf_page": 59,
+      "first_heading_printed_page": 49,
+      "match": true
+    },
+    {
+      "locator": "3.7.2",
+      "title": "关系路径、关系子集与敏感性",
+      "toc_page": 50,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 60,
+          "printed_page": 50
+        }
+      ],
+      "first_heading_pdf_page": 60,
+      "first_heading_printed_page": 50,
+      "match": true
+    },
+    {
+      "locator": "3.7.3",
+      "title": "关系级参数干预",
+      "toc_page": 52,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 62,
+          "printed_page": 52
+        }
+      ],
+      "first_heading_pdf_page": 62,
+      "first_heading_printed_page": 52,
+      "match": true
+    },
+    {
+      "locator": "3.7.4",
+      "title": "组合配置消融与事件残差探索",
+      "toc_page": 52,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 62,
+          "printed_page": 52
+        }
+      ],
+      "first_heading_pdf_page": 62,
+      "first_heading_printed_page": 52,
+      "match": true
+    },
+    {
+      "locator": "3.7.5",
+      "title": "四格评价的加权还原检查",
+      "toc_page": 53,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 63,
+          "printed_page": 53
+        }
+      ],
+      "first_heading_pdf_page": 63,
+      "first_heading_printed_page": 53,
+      "match": true
+    },
+    {
+      "locator": "3.8",
+      "title": "证据综合与适用范围",
+      "toc_page": 53,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 63,
+          "printed_page": 53
+        }
+      ],
+      "first_heading_pdf_page": 63,
+      "first_heading_printed_page": 53,
+      "match": true
+    },
+    {
+      "locator": "3.8.1",
+      "title": "方法组件与目标敏感性证据综合",
+      "toc_page": 54,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 64,
+          "printed_page": 54
+        }
+      ],
+      "first_heading_pdf_page": 64,
+      "first_heading_printed_page": 54,
+      "match": true
+    },
+    {
+      "locator": "3.8.2",
+      "title": "三套协议的回答范围与比较边界",
+      "toc_page": 55,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 65,
+          "printed_page": 55
+        }
+      ],
+      "first_heading_pdf_page": 65,
+      "first_heading_printed_page": 55,
+      "match": true
+    },
+    {
+      "locator": "3.8.3",
+      "title": "输入、容量与训练选模预算",
+      "toc_page": 55,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 65,
+          "printed_page": 55
+        }
+      ],
+      "first_heading_pdf_page": 65,
+      "first_heading_printed_page": 55,
+      "match": true
+    },
+    {
+      "locator": "3.8.4",
+      "title": "完成时刻截断目标敏感性（SG-EXP-032）",
+      "toc_page": 57,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 67,
+          "printed_page": 57
+        }
+      ],
+      "first_heading_pdf_page": 67,
+      "first_heading_printed_page": 57,
+      "match": true
+    },
+    {
+      "locator": "3.9",
+      "title": "本章小结",
+      "toc_page": 57,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 67,
+          "printed_page": 57
+        }
+      ],
+      "first_heading_pdf_page": 67,
+      "first_heading_printed_page": 57,
+      "match": true
+    },
+    {
+      "locator": "第4章",
+      "title": "三层机制诊断协议（MDP）与模型可解释性分析",
+      "toc_page": 59,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 69,
+          "printed_page": 59
+        },
+        {
+          "pdf_page": 71,
+          "printed_page": 61
+        },
+        {
+          "pdf_page": 73,
+          "printed_page": 63
+        },
+        {
+          "pdf_page": 75,
+          "printed_page": 65
+        },
+        {
+          "pdf_page": 77,
+          "printed_page": 67
+        },
+        {
+          "pdf_page": 79,
+          "printed_page": 69
+        },
+        {
+          "pdf_page": 81,
+          "printed_page": 71
+        }
+      ],
+      "first_heading_pdf_page": 69,
+      "first_heading_printed_page": 59,
+      "match": true
+    },
+    {
+      "locator": "4.1",
+      "title": "引言：MDP 协议的定义与设计原则",
+      "toc_page": 59,
+      "toc_pdf_page": 8,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 69,
+          "printed_page": 59
+        }
+      ],
+      "first_heading_pdf_page": 69,
+      "first_heading_printed_page": 59,
+      "match": true
+    },
+    {
+      "locator": "4.2",
+      "title": "L1 干预归因层（IA）：关系分配的功能依赖",
+      "toc_page": 60,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 70,
+          "printed_page": 60
+        }
+      ],
+      "first_heading_pdf_page": 70,
+      "first_heading_printed_page": 60,
+      "match": true
+    },
+    {
+      "locator": "4.2.1",
+      "title": "观察操作",
+      "toc_page": 60,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 70,
+          "printed_page": 60
+        }
+      ],
+      "first_heading_pdf_page": 70,
+      "first_heading_printed_page": 60,
+      "match": true
+    },
+    {
+      "locator": "4.2.2",
+      "title": "干预操作",
+      "toc_page": 60,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 70,
+          "printed_page": 60
+        }
+      ],
+      "first_heading_pdf_page": 70,
+      "first_heading_printed_page": 60,
+      "match": true
+    },
+    {
+      "locator": "4.2.3",
+      "title": "观察证据",
+      "toc_page": 60,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 70,
+          "printed_page": 60
+        }
+      ],
+      "first_heading_pdf_page": 70,
+      "first_heading_printed_page": 60,
+      "match": true
+    },
+    {
+      "locator": "4.2.4",
+      "title": "干预证据",
+      "toc_page": 61,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 71,
+          "printed_page": 61
+        }
+      ],
+      "first_heading_pdf_page": 71,
+      "first_heading_printed_page": 61,
+      "match": true
+    },
+    {
+      "locator": "4.2.5",
+      "title": "L1 判定结论",
+      "toc_page": 62,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 72,
+          "printed_page": 62
+        }
+      ],
+      "first_heading_pdf_page": 72,
+      "first_heading_printed_page": 62,
+      "match": true
+    },
+    {
+      "locator": "4.2.6",
+      "title": "分层敏感度：关系分配干预的样本响应",
+      "toc_page": 63,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 73,
+          "printed_page": 63
+        }
+      ],
+      "first_heading_pdf_page": 73,
+      "first_heading_printed_page": 63,
+      "match": true
+    },
+    {
+      "locator": "4.3",
+      "title": "L2 蒸馏验证层（DV）：受检时序学生的替代性分析",
+      "toc_page": 64,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 74,
+          "printed_page": 64
+        }
+      ],
+      "first_heading_pdf_page": 74,
+      "first_heading_printed_page": 64,
+      "match": true
+    },
+    {
+      "locator": "4.3.1",
+      "title": "协议操作",
+      "toc_page": 64,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 74,
+          "printed_page": 64
+        }
+      ],
+      "first_heading_pdf_page": 74,
+      "first_heading_printed_page": 64,
+      "match": true
+    },
+    {
+      "locator": "4.3.2",
+      "title": "诊断实验",
+      "toc_page": 65,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 75,
+          "printed_page": 65
+        }
+      ],
+      "first_heading_pdf_page": 75,
+      "first_heading_printed_page": 65,
+      "match": true
+    },
+    {
+      "locator": "4.3.3",
+      "title": "L2 判定结论",
+      "toc_page": 65,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 75,
+          "printed_page": 65
+        }
+      ],
+      "first_heading_pdf_page": 75,
+      "first_heading_printed_page": 65,
+      "match": true
+    },
+    {
+      "locator": "4.4",
+      "title": "L3 四格溯源层（FET）：全局误差构成",
+      "toc_page": 66,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 76,
+          "printed_page": 66
+        }
+      ],
+      "first_heading_pdf_page": 76,
+      "first_heading_printed_page": 66,
+      "match": true
+    },
+    {
+      "locator": "4.4.1",
+      "title": "协议操作",
+      "toc_page": 66,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 76,
+          "printed_page": 66
+        }
+      ],
+      "first_heading_pdf_page": 76,
+      "first_heading_printed_page": 66,
+      "match": true
+    },
+    {
+      "locator": "4.4.2",
+      "title": "诊断实验",
+      "toc_page": 66,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 76,
+          "printed_page": 66
+        }
+      ],
+      "first_heading_pdf_page": 76,
+      "first_heading_printed_page": 66,
+      "match": true
+    },
+    {
+      "locator": "4.4.3",
+      "title": "还原校验",
+      "toc_page": 68,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 78,
+          "printed_page": 68
+        }
+      ],
+      "first_heading_pdf_page": 78,
+      "first_heading_printed_page": 68,
+      "match": true
+    },
+    {
+      "locator": "4.4.4",
+      "title": "L3 判定结论",
+      "toc_page": 68,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 78,
+          "printed_page": 68
+        }
+      ],
+      "first_heading_pdf_page": 78,
+      "first_heading_printed_page": 68,
+      "match": true
+    },
+    {
+      "locator": "4.5",
+      "title": "MDP 诊断结果与适用边界",
+      "toc_page": 69,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 79,
+          "printed_page": 69
+        }
+      ],
+      "first_heading_pdf_page": 79,
+      "first_heading_printed_page": 69,
+      "match": true
+    },
+    {
+      "locator": "4.6",
+      "title": "JPL 的 L1/L3 复核与适用范围",
+      "toc_page": 69,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 79,
+          "printed_page": 69
+        }
+      ],
+      "first_heading_pdf_page": 79,
+      "first_heading_printed_page": 69,
+      "match": true
+    },
+    {
+      "locator": "4.6.1",
+      "title": "复核材料与计算口径",
+      "toc_page": 69,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 79,
+          "printed_page": 69
+        }
+      ],
+      "first_heading_pdf_page": 79,
+      "first_heading_printed_page": 69,
+      "match": true
+    },
+    {
+      "locator": "4.6.2",
+      "title": "L1：整体配置敏感度及样本层面差异",
+      "toc_page": 70,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 80,
+          "printed_page": 70
+        }
+      ],
+      "first_heading_pdf_page": 80,
+      "first_heading_printed_page": 70,
+      "match": true
+    },
+    {
+      "locator": "4.6.3",
+      "title": "L3：困难样本与总误差组成",
+      "toc_page": 71,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 81,
+          "printed_page": 71
+        }
+      ],
+      "first_heading_pdf_page": 81,
+      "first_heading_printed_page": 71,
+      "match": true
+    },
+    {
+      "locator": "4.6.4",
+      "title": "复核结论与剩余验证范围",
+      "toc_page": 71,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 81,
+          "printed_page": 71
+        }
+      ],
+      "first_heading_pdf_page": 81,
+      "first_heading_printed_page": 71,
+      "match": true
+    },
+    {
+      "locator": "第5章",
+      "title": "模型结构与可靠性边界分析",
+      "toc_page": 72,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 82,
+          "printed_page": 72
+        },
+        {
+          "pdf_page": 83,
+          "printed_page": 73
+        },
+        {
+          "pdf_page": 85,
+          "printed_page": 75
+        },
+        {
+          "pdf_page": 87,
+          "printed_page": 77
+        },
+        {
+          "pdf_page": 89,
+          "printed_page": 79
+        },
+        {
+          "pdf_page": 91,
+          "printed_page": 81
+        },
+        {
+          "pdf_page": 93,
+          "printed_page": 83
+        },
+        {
+          "pdf_page": 95,
+          "printed_page": 85
+        },
+        {
+          "pdf_page": 97,
+          "printed_page": 87
+        }
+      ],
+      "first_heading_pdf_page": 82,
+      "first_heading_printed_page": 72,
+      "match": true
+    },
+    {
+      "locator": "5.1",
+      "title": "引言",
+      "toc_page": 72,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 82,
+          "printed_page": 72
+        }
+      ],
+      "first_heading_pdf_page": 82,
+      "first_heading_printed_page": 72,
+      "match": true
+    },
+    {
+      "locator": "5.2",
+      "title": "方向性统计候选与结构对照",
+      "toc_page": 72,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 82,
+          "printed_page": 72
+        }
+      ],
+      "first_heading_pdf_page": 82,
+      "first_heading_printed_page": 72,
+      "match": true
+    },
+    {
+      "locator": "5.2.1",
+      "title": "问题与动机",
+      "toc_page": 72,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 82,
+          "printed_page": 72
+        }
+      ],
+      "first_heading_pdf_page": 82,
+      "first_heading_printed_page": 72,
+      "match": true
+    },
+    {
+      "locator": "5.2.2",
+      "title": "传递熵方向性检验",
+      "toc_page": 73,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 83,
+          "printed_page": 73
+        }
+      ],
+      "first_heading_pdf_page": 83,
+      "first_heading_printed_page": 73,
+      "match": true
+    },
+    {
+      "locator": "5.2.3",
+      "title": "传递熵名义候选与双向读数不对称",
+      "toc_page": 73,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 83,
+          "printed_page": 73
+        }
+      ],
+      "first_heading_pdf_page": 83,
+      "first_heading_printed_page": 73,
+      "match": true
+    },
+    {
+      "locator": "5.2.4",
+      "title": "有向候选边与统计关系图的互补性",
+      "toc_page": 75,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 85,
+          "printed_page": 75
+        }
+      ],
+      "first_heading_pdf_page": 85,
+      "first_heading_printed_page": 75,
+      "match": true
+    },
+    {
+      "locator": "5.2.5",
+      "title": "PCMCI+条件独立检验与版本敏感性",
+      "toc_page": 76,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 86,
+          "printed_page": 76
+        }
+      ],
+      "first_heading_pdf_page": 86,
+      "first_heading_printed_page": 76,
+      "match": true
+    },
+    {
+      "locator": "5.2.6",
+      "title": "方向性证据的解释边界与复核路径",
+      "toc_page": 77,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 87,
+          "printed_page": 77
+        }
+      ],
+      "first_heading_pdf_page": 87,
+      "first_heading_printed_page": 77,
+      "match": true
+    },
+    {
+      "locator": "5.3",
+      "title": "事件感知的区间预测：分层共形预测",
+      "toc_page": 78,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 88,
+          "printed_page": 78
+        }
+      ],
+      "first_heading_pdf_page": 88,
+      "first_heading_printed_page": 78,
+      "match": true
+    },
+    {
+      "locator": "5.3.1",
+      "title": "问题与动机",
+      "toc_page": 78,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 88,
+          "printed_page": 78
+        }
+      ],
+      "first_heading_pdf_page": 88,
+      "first_heading_printed_page": 78,
+      "match": true
+    },
+    {
+      "locator": "5.3.2",
+      "title": "分层共形方法",
+      "toc_page": 78,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 88,
+          "printed_page": 78
+        }
+      ],
+      "first_heading_pdf_page": 88,
+      "first_heading_printed_page": 78,
+      "match": true
+    },
+    {
+      "locator": "5.3.3",
+      "title": "事件时刻输入协议下的独立校准补充",
+      "toc_page": 79,
+      "toc_pdf_page": 9,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 89,
+          "printed_page": 79
+        }
+      ],
+      "first_heading_pdf_page": 89,
+      "first_heading_printed_page": 79,
+      "match": true
+    },
+    {
+      "locator": "5.3.4",
+      "title": "成熟标签约束下的滚动校准回放",
+      "toc_page": 80,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 90,
+          "printed_page": 80
+        }
+      ],
+      "first_heading_pdf_page": 90,
+      "first_heading_printed_page": 80,
+      "match": true
+    },
+    {
+      "locator": "5.3.5",
+      "title": "JPL 既有预测的独立校准补充",
+      "toc_page": 80,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 90,
+          "printed_page": 80
+        }
+      ],
+      "first_heading_pdf_page": 90,
+      "first_heading_printed_page": 80,
+      "match": true
+    },
+    {
+      "locator": "5.3.6",
+      "title": "回溯补充：覆盖与路由错位",
+      "toc_page": 81,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 91,
+          "printed_page": 81
+        }
+      ],
+      "first_heading_pdf_page": 91,
+      "first_heading_printed_page": 81,
+      "match": true
+    },
+    {
+      "locator": "5.3.7",
+      "title": "回溯补充：残差失配诊断",
+      "toc_page": 83,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 93,
+          "printed_page": 83
+        }
+      ],
+      "first_heading_pdf_page": 93,
+      "first_heading_printed_page": 83,
+      "match": true
+    },
+    {
+      "locator": "5.4",
+      "title": "节点负荷预测的决策接口与验证条件",
+      "toc_page": 84,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 94,
+          "printed_page": 84
+        }
+      ],
+      "first_heading_pdf_page": 94,
+      "first_heading_printed_page": 84,
+      "match": true
+    },
+    {
+      "locator": "5.4.1",
+      "title": "预测量与运行量的对应",
+      "toc_page": 84,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 94,
+          "printed_page": 84
+        }
+      ],
+      "first_heading_pdf_page": 94,
+      "first_heading_printed_page": 84,
+      "match": true
+    },
+    {
+      "locator": "5.4.2",
+      "title": "从预测曲线到运行核查",
+      "toc_page": 85,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 95,
+          "printed_page": 85
+        }
+      ],
+      "first_heading_pdf_page": 95,
+      "first_heading_printed_page": 85,
+      "match": true
+    },
+    {
+      "locator": "5.4.3",
+      "title": "固定发布时刻的四目标片算例",
+      "toc_page": 85,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 95,
+          "printed_page": 85
+        }
+      ],
+      "first_heading_pdf_page": 95,
+      "first_heading_printed_page": 85,
+      "match": true
+    },
+    {
+      "locator": "5.4.4",
+      "title": "有限时域充电分配与合成决策算例",
+      "toc_page": 86,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 96,
+          "printed_page": 86
+        }
+      ],
+      "first_heading_pdf_page": 96,
+      "first_heading_printed_page": 86,
+      "match": true
+    },
+    {
+      "locator": "5.4.5",
+      "title": "证据边界与应用验证要求",
+      "toc_page": 87,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 97,
+          "printed_page": 87
+        }
+      ],
+      "first_heading_pdf_page": 97,
+      "first_heading_printed_page": 87,
+      "match": true
+    },
+    {
+      "locator": "5.5",
+      "title": "本章小结",
+      "toc_page": 87,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 97,
+          "printed_page": 87
+        }
+      ],
+      "first_heading_pdf_page": 97,
+      "first_heading_printed_page": 87,
+      "match": true
+    },
+    {
+      "locator": "结论",
+      "title": "",
+      "toc_page": 89,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 99,
+          "printed_page": 89
+        }
+      ],
+      "first_heading_pdf_page": 99,
+      "first_heading_printed_page": 89,
+      "match": true
+    },
+    {
+      "locator": "参考文献",
+      "title": "",
+      "toc_page": 91,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 101,
+          "printed_page": 91
+        }
+      ],
+      "first_heading_pdf_page": 101,
+      "first_heading_printed_page": 91,
+      "match": true
+    },
+    {
+      "locator": "附录A",
+      "title": "Caltech 事件时刻协议完整组件结果",
+      "toc_page": 96,
+      "toc_pdf_page": 10,
+      "actual_heading_pages": [
+        {
+          "pdf_page": 106,
+          "printed_page": 96
+        }
+      ],
+      "first_heading_pdf_page": 106,
+      "first_heading_printed_page": 96,
+      "match": true
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "runs": [
+    {
+      "component": "sg019",
+      "original_bundle_files": 51,
+      "mismatched_files": [],
+      "status": "PASS"
+    },
+    {
+      "component": "sg027",
+      "original_bundle_files": 59,
+      "mismatched_files": [],
+      "status": "PASS"
+    },
+    {
+      "component": "sg028",
+      "original_bundle_files": 32,
+      "mismatched_files": [],
+      "status": "PASS"
+    }
+  ],
+  "note": "原始上传/回收bundle manifest验证，另有本轮全包MANIFEST校验。旧协议训练时源码缺少认证，不计为同类验证。"
+}

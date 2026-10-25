@@ -1,0 +1,315 @@
+{
+  "created_utc": "2026-10-24T11:38:38.575259+00:00",
+  "python": "3.14.5 (main, May 10 2026, 10:21:34) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "executable": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/bin/python",
+  "base_executable": "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+  "prefix": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv",
+  "base_prefix": "/opt/homebrew/opt/python@3.14/Frameworks/Python.framework/Versions/3.14",
+  "machine": "arm64",
+  "sys_path": [
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/scripts",
+    "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python314.zip",
+    "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14",
+    "/opt/homebrew/Cellar/python@3.14/3.14.5/Frameworks/Python.framework/Versions/3.14/lib/python3.14/lib-dynload",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/src"
+  ],
+  "packages": {
+    "evcs-station-graph": "0.1.0",
+    "filelock": "4.2.4",
+    "formulaic": "1.2.2",
+    "fsspec": "2026.9.0",
+    "iniconfig": "2.3.1",
+    "interface-meta": "2.0.1",
+    "jinja2": "3.1.6",
+    "lightgbm": "4.7.0",
+    "markupsafe": "3.0.4",
+    "mpmath": "1.3.0",
+    "narwhals": "2.27.1",
+    "networkx": "3.7",
+    "numpy": "2.5.4",
+    "packaging": "26.3",
+    "pandas": "3.1.0",
+    "patsy": "1.0.3",
+    "pluggy": "1.7.0",
+    "pygments": "2.21.0",
+    "pytest": "9.1.1",
+    "python-dateutil": "3.0.0",
+    "pyyaml": "6.0.3",
+    "scipy": "1.18.1",
+    "setuptools": "84.2.1",
+    "six": "1.17.0",
+    "statsmodels": "0.15.0",
+    "sympy": "1.14.0",
+    "torch": "2.14.1",
+    "typing-extensions": "4.16.0",
+    "tzdata": "2026.5",
+    "wrapt": "2.5.1",
+    "xgboost": "3.4.1"
+  },
+  "metadata_hashes": {
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/narwhals-2.27.1.dist-info/METADATA": "5962ef236f36fe34aff21a837a0698386dcb1f0de54462aa18b73698e6ef1a4f",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/narwhals-2.27.1.dist-info/RECORD": "dd9a643a7dc16d09dcfa8047c733c9d389eaf6ea64c572ce1e1420cedb0834f2",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/filelock-4.2.4.dist-info/METADATA": "d99c0f72a7ab84c924b734018a28a5001505fe0f96280c4462b864313edddb50",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/filelock-4.2.4.dist-info/RECORD": "9ddb91d987696c841aa3f68697dc8f1aefe4c247d12a638e9e6124c13d6bb176",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools-84.2.1.dist-info/METADATA": "24939b84ead30ff4581918c8d5a95aafd377f6a8afc61f30ea18358a8786bfa4",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools-84.2.1.dist-info/RECORD": "03f770e022ed5af62052917e3441590b97d7f58ee66e514c343861cc38866d47",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/METADATA": "3800d9b91dceea2065a6ed6279383362e97ac38b8e56b9343f404ee531860099",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/autocommand-2.2.2.dist-info/RECORD": "2bee6072cbcec6390c57107c8dfcb0422918a98ecdb5a2cc362187f13d42e96f",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/METADATA": "8215c54ead77d9dc5a108a25c6bdc72b5999aa6f62c9499a440359412afa5a51",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/backports.tarfile-1.2.0.dist-info/RECORD": "0f69db719b54220d6a4adff8bfb04ac98affea3dc8b54054a1a787a17567f4d1",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/importlib_metadata-8.7.1.dist-info/METADATA": "a3e38b9ee4326289d4864704f30e299ee769e2309ce9f4a75f0de1a50ad0a356",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/importlib_metadata-8.7.1.dist-info/RECORD": "52a6b8ee0de15cf7fd99625f43b97cd2e3942ac86f16054ea90de48e66f29355",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/jaraco.text-4.0.0.dist-info/METADATA": "5c2fd09012c954f139b10624978d5335a654c34014cd06f6f466ca683dbc9c56",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/jaraco.text-4.0.0.dist-info/RECORD": "63b936c308d0fcbe1390e824567cc007536c32a849adb02278e95f1d4c736c31",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/jaraco_context-6.1.0.dist-info/METADATA": "0435ebfc52055c5a9974ed20c171b6454383eaf9dbb1508814ba7ad97c59d712",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/jaraco_context-6.1.0.dist-info/RECORD": "4599d876ceb42b7eef03aa39e235c4ebeab6aea2409dbe634496852393d1f837",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/METADATA": "2e79da8dc3469924abe3ac8b22a3feb5692a79bf9f47bbc86b6535d618641849",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/jaraco_functools-4.4.0.dist-info/RECORD": "baafd2d6d94c1bde453e4c805ac05511dc53986e0a63b02f674ef0f788bec146",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/more_itertools-10.8.0.dist-info/METADATA": "6ab3515145abe58b067f087c867631cf4cf5d653fed81b9642ee12086c3904b8",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/more_itertools-10.8.0.dist-info/RECORD": "9ed1b134c0aa83722f36e99f3918aa9610ce3a0a514d793bbb74a368d441a01d",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.3.dist-info/METADATA": "70fdb89fc4d4a9a043bf7372b8972bcc883fddff34ab55e9cf80d73875384763",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/packaging-26.3.dist-info/RECORD": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/platformdirs-4.4.0.dist-info/METADATA": "bbc5216d5f4c77bfbc57227264d52e66bccde71ccf79e75e1a6046d029d30223",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/platformdirs-4.4.0.dist-info/RECORD": "3d0d2f1cc018593c4d8baa2395baf0b1c1c645bbd8c18cd064f49cb4e4c95ea0",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/tomli-2.4.0.dist-info/METADATA": "f5ac0a1f8fba908b4646cd655309e91aad969b6787616ac571ca462a3832ffce",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/tomli-2.4.0.dist-info/RECORD": "225430ce95640e8d4fcdb93cdae2fc38d685aec016d0e293d5fb99a695886fed",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/wheel-0.46.3.dist-info/METADATA": "22910aa97ca89cbcc20a019e27fe31360b7929a4bd66ca0d310f99a44f6ccd35",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/wheel-0.46.3.dist-info/RECORD": "b0297c3ada17b8727e15ddd6d1e38c8a90a997f779fcf978996f6fec62ecb702",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/zipp-3.23.0.dist-info/METADATA": "bdd67d4d16cf0bf3b893e7d18cd3d2d774adb82f37ed985bc7770c607226b35b",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/setuptools/_vendor/zipp-3.23.0.dist-info/RECORD": "3bfab660a24704f84228e4bb1ce1f0e3fa9ff80e5c806352a626b2f460ead836",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/torch-2.14.1.dist-info/METADATA": "06e6b0ce4b324c0ebc71f89a865bb9f9362befa134e7db6110ecee8ad065a134",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/torch-2.14.1.dist-info/RECORD": "c815c41fe6d9884ac58433b1ea148c8b9c34169f23b2183e8cd64a8e86934171",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/packaging-26.3.dist-info/METADATA": "70fdb89fc4d4a9a043bf7372b8972bcc883fddff34ab55e9cf80d73875384763",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/packaging-26.3.dist-info/RECORD": "1b8655965b0d83e9a067fd7f84b977bd1e117e0fb9f2874b2572781bdc9e2147",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/networkx-3.7.dist-info/METADATA": "ffcf42a343af6ffc54ff9cc4c09cf9638cd73b131370f395abd11b630186c90c",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/networkx-3.7.dist-info/RECORD": "0403c7ac1516dc6dc03a4f0d8256c3b5d333c5721e6ab116c9f2b37fdeb6eb30",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/pygments-2.21.0.dist-info/METADATA": "1dde075570136774c706bf0009183a793fe0ee262e4a5590cc6eff8453eedd43",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/pygments-2.21.0.dist-info/RECORD": "45a9704aae833d78b3d88811a854bfa9d6b57168d5a4a386f2929d357df41073",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/pandas-3.1.0.dist-info/METADATA": "b2b43910a5ef734a08be961df9c484f4664ad9ec2fa5a08294d0edfa08bcdd4b",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/pandas-3.1.0.dist-info/RECORD": "6056ad5b6c87ee106ea536c369413228603902ad371e9234917b71f94fcd7c75",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/iniconfig-2.3.1.dist-info/METADATA": "47c2c35d936f5c649d8074c6464719a42966a67b5cebad01e3e5784cf090cfb6",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/iniconfig-2.3.1.dist-info/RECORD": "0000f3396bc6bfd4ddf9c29d9a1f4c099b1b18479ef23a3a6548278c7cf9f48d",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/numpy-2.5.4.dist-info/METADATA": "e2b909d6a37d76c2bc130f528d7fed0c517322bce16dc7846b6a6df30e200403",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/numpy-2.5.4.dist-info/RECORD": "869ec747b9af9786cb9a3abedd2dc2570140658ea8fe40407a9ad7a1e3cc735b",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/formulaic-1.2.2.dist-info/METADATA": "abc2ce34c42d629b55aa1665550d8f1ba50fcacf874db97954f3b9f2890e0643",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/formulaic-1.2.2.dist-info/RECORD": "8d19e627cfd70e9f5a9bdf97df85e4c0deeb9bd6e53a23b7779a76ff8dc375c0",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/wrapt-2.5.1.dist-info/METADATA": "166ca07d308c14c3e9dfe028c6389bf1a439027fe7b389d33eedb7d002e8bafb",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/wrapt-2.5.1.dist-info/RECORD": "a7b8a02c5eb3ad86e960931e04a281f0c8d0e3ba872236259b8b8add306779cc",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/tzdata-2026.5.dist-info/METADATA": "e0780e8b6dc8882ce87e871a9d4589d59cb05a0c2d64f58b1ba62cde1ee91f6a",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/tzdata-2026.5.dist-info/RECORD": "bc03ea1afd3394eb010013e6112f91d884785445c8453b7d56ddb7ba0cc4939d",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/evcs_station_graph-0.1.0.dist-info/METADATA": "35f2b15e3a7c82dcef43da81a2a8dd6ede8007c39a8adae59d784da0235c3da3",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/evcs_station_graph-0.1.0.dist-info/RECORD": "fdd2bcf764ff59714f2579cf717a1ae6ee8c728b4c5c5f78be82e3de177064c4",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/sympy-1.14.0.dist-info/METADATA": "b756c2fbfd5be05ac5bdb0ebca61f55618f30f633ed92d88a5687429313a7595",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/sympy-1.14.0.dist-info/RECORD": "217f8ed83412f5a6df95e6b7428d33125e9e9d1a30e24e444344969ba5ccb099",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/pluggy-1.7.0.dist-info/METADATA": "20ac8237e37f1d6e7e75500cd663015177ba80c1a1a595ff6bae18a539ff8a2c",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/pluggy-1.7.0.dist-info/RECORD": "bab7152cdb6aaa818c2be8786237e032b04022f00e928d71e8dc732b768d6e6d",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/pytest-9.1.1.dist-info/METADATA": "c5d032518012789cabc870d46589aca3aeda36cf9fa4399ee88bda3d10438451",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/pytest-9.1.1.dist-info/RECORD": "ea04f11d2d91c32cb80ab7492d93f56cc990e89e524e94eb254c4590301fa4aa",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/mpmath-1.3.0.dist-info/METADATA": "44b66ea444b9c0d19ae94815d356bf047ae6b680c19268b5c265687cd6a81406",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/mpmath-1.3.0.dist-info/RECORD": "09cbd04e87d0c5ab64aab08291b31883e4ea27e8d2c640710e0beb1995e86b9b",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/pyyaml-6.0.3.dist-info/METADATA": "03c3b415ed38d09faedc49360e930769b40c58f68585e6de00e2e4916a858d34",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/pyyaml-6.0.3.dist-info/RECORD": "cef437d0bd1e655b419def99659e9a9baa5ca12ef72926e5a6a5d8dbc7ef85d5",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/fsspec-2026.9.0.dist-info/METADATA": "68f5a262767510638e9b1933b1493f2baadc9616fe1e696f62aedd59c8c0a37c",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/fsspec-2026.9.0.dist-info/RECORD": "f7b3713c1750221155b0601147f3b68a24f11e342dca818b5fd551f5ef88a74b",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/statsmodels-0.15.0.dist-info/METADATA": "5c2b2bc90b451ec1d9d87529d25754011b4436f55f2a2956e0fabda34b82a826",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/statsmodels-0.15.0.dist-info/RECORD": "c9650ae2a379d2a7085f85dcc9c24e088d5cbd971d66824525df33ccfb6fb0d6",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/jinja2-3.1.6.dist-info/METADATA": "68c5548fb67c4132a13898d9b31ec50c6bea2abdd915d921f214355c3a6499c8",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/jinja2-3.1.6.dist-info/RECORD": "4551b3fb657b85a9f01e961c0f8a235da65d758149b619400211964b3ac02bdc",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/lightgbm-4.7.0.dist-info/METADATA": "5d4c523f458fa8998bff7dfccc81d5a163bac9c626281c2816c8bc446681a0c9",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/lightgbm-4.7.0.dist-info/RECORD": "e5ad643bb384926742f720f995989971cd6145a5421bdf10413365444b5cecaa",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/interface_meta-2.0.1.dist-info/METADATA": "e9f0a6845e13e5de8b4ee9419760ca1517ee3cdd2c41b1b205499122117f0222",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/interface_meta-2.0.1.dist-info/RECORD": "8a96ddaf49ff1ace2479970279663ed5eda7be1861d596af7e44f8582181e92c",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/patsy-1.0.3.dist-info/METADATA": "c9d8d1a6ebfdadd02c21b9f4d15b1c26716f181c4bb6bcccb1006c9d892da31f",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/patsy-1.0.3.dist-info/RECORD": "23ee763dc754c1da0150209e7e263668cd57b1a33499378c5a45cdc98b7f9640",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/typing_extensions-4.16.0.dist-info/METADATA": "b05084ca1d50879865178d9fff9fabeab61bdfb1f361bfbde95421ffc8f9be46",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/typing_extensions-4.16.0.dist-info/RECORD": "9e07fea845cac76293d927afa7157a14ecba39b318bc8af236b8de530b7656c1",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/markupsafe-3.0.4.dist-info/METADATA": "66767d76388ece15d49d50dafb655891ef5d868715e7128e7f7d737a70b353c4",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/markupsafe-3.0.4.dist-info/RECORD": "235655dd6851158c64c3cb4316a04f7916fc249b6b19bbecebc5662f5afb00bd",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/python_dateutil-3.0.0.dist-info/METADATA": "e10ead93598aed51bdb28aa30ef64ee5d6ccc871e88741d220e504e979af4695",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/python_dateutil-3.0.0.dist-info/RECORD": "a17d86766c46a890c3d8b1c4ccfa5bb1c6014919f3a3a9da4b8c597f47bf5b33",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/six-1.17.0.dist-info/METADATA": "562042078c2752549f6d8a7c86dbc5dd708088a7be6d80672ec7b07100b72468",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/six-1.17.0.dist-info/RECORD": "d16e50f347969b1e1919fb0c88bac4b9c644f5305bcfcfb00f72b646dbd4065d",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/scipy-1.18.1.dist-info/METADATA": "1adfbde8be136cbf348b889c51028e7e1824cdb90d29a26d8e81501948864fae",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/scipy-1.18.1.dist-info/RECORD": "e2bfab2a68718ba79c9527bb33bd45e92c33584f1ce82f223879e1fd5f4669f7",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/xgboost-3.4.1.dist-info/METADATA": "a2191abd817e5472b14a082327ae0d75e4b9b01f090b42b367d9e5805e38a744",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/.venv/lib/python3.14/site-packages/xgboost-3.4.1.dist-info/RECORD": "a99d0d0f26f5dd9f6c70a18ecb790e01e6b4704058018a05834e93e7d4554777"
+  },
+  "historical_reference": {
+    "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/local-smoke/mrg_full/seed-2024/environment.txt",
+    "sha256": "599d2fcd8920ff36597a545158d64529c0883d0f1fe4e7d0e98e0a4eaa41719b",
+    "limitation": "Historical run snapshot, not incident-time full backup",
+    "non_pinned_lines": [
+      "artifact_tool_v2 @ file:///var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/codex-primary-runtime-XgCkVI/generated-source--oai-artifact-tool/lib/agent/tools/artifact_tool_v2",
+      "-e git+https://github.com/CDUTAKL/EVCS-StationGraph-EventResidual.git@fce67da891d95ae5021942e3e34fb088c1a9fc2a#egg=evcs_station_graph"
+    ]
+  },
+  "missing_from_historical": {
+    "annotated-types": "0.8.0",
+    "cffi": "2.1.1",
+    "charset-normalizer": "3.5.2",
+    "contourpy": "1.3.3",
+    "cryptography": "50.0.2",
+    "cycler": "0.12.1",
+    "et-xmlfile": "2.0.0",
+    "fonttools": "4.63.0",
+    "joblib": "1.5.3",
+    "kiwisolver": "1.5.0",
+    "lxml": "6.1.1",
+    "matplotlib": "3.11.0",
+    "openpyxl": "3.1.5",
+    "pdf2image": "1.17.0",
+    "pdfminer-six": "20251230",
+    "pdfplumber": "0.11.9",
+    "pillow": "12.3.0",
+    "pycparser": "3.0",
+    "pydantic": "2.13.5",
+    "pydantic-core": "2.46.5",
+    "pyhumps": "3.8.0",
+    "pyparsing": "3.3.2",
+    "pypdf": "6.10.0",
+    "pypdfium2": "5.14.0",
+    "python-docx": "1.2.0",
+    "python-pptx": "1.0.2",
+    "pytz": "2026.5",
+    "reportlab": "4.4.9",
+    "scikit-learn": "1.9.0",
+    "threadpoolctl": "3.6.0",
+    "tigramite": "5.2.10.1",
+    "typing-inspection": "0.4.4",
+    "wheel": "0.48.0",
+    "xlsxwriter": "3.2.9"
+  },
+  "changed_from_historical": {
+    "filelock": {
+      "historical": "3.32.0",
+      "current": "4.2.4"
+    },
+    "fsspec": {
+      "historical": "2026.7.0",
+      "current": "2026.9.0"
+    },
+    "iniconfig": {
+      "historical": "2.3.0",
+      "current": "2.3.1"
+    },
+    "markupsafe": {
+      "historical": "3.0.3",
+      "current": "3.0.4"
+    },
+    "narwhals": {
+      "historical": "2.24.0",
+      "current": "2.27.1"
+    },
+    "networkx": {
+      "historical": "3.6.1",
+      "current": "3.7"
+    },
+    "numpy": {
+      "historical": "2.3.5",
+      "current": "2.5.4"
+    },
+    "pandas": {
+      "historical": "2.2.3",
+      "current": "3.1.0"
+    },
+    "patsy": {
+      "historical": "1.0.2",
+      "current": "1.0.3"
+    },
+    "pluggy": {
+      "historical": "1.6.0",
+      "current": "1.7.0"
+    },
+    "pygments": {
+      "historical": "2.20.0",
+      "current": "2.21.0"
+    },
+    "python-dateutil": {
+      "historical": "2.9.0.post0",
+      "current": "3.0.0"
+    },
+    "scipy": {
+      "historical": "1.18.0",
+      "current": "1.18.1"
+    },
+    "setuptools": {
+      "historical": "84.0.0",
+      "current": "84.2.1"
+    },
+    "statsmodels": {
+      "historical": "0.14.6",
+      "current": "0.15.0"
+    },
+    "torch": {
+      "historical": "2.13.0",
+      "current": "2.14.1"
+    },
+    "xgboost": {
+      "historical": "3.3.0",
+      "current": "3.4.1"
+    }
+  },
+  "new_vs_historical": {
+    "formulaic": "1.2.2",
+    "wrapt": "2.5.1",
+    "evcs-station-graph": "0.1.0",
+    "interface-meta": "2.0.1"
+  },
+  "preserved_file_hashes": {
+    "pyproject.toml": "0507cb845e0c2d6d9f41d3506f639bcbf31d2357147cdc8acc7a7228c6070cd6",
+    "requirements-server.txt": "cdff7db334acb80a2b35cae467646f63f4c6681136969d6368ab8cc23bef72a9",
+    "cloud/jpl/requirements.txt": "a37bee22fe4790105691530dfbaff720b3d25f863fe5c75c968d9c62f419b2c2",
+    "cloud/eventtime/requirements.txt": "3debfb2a1a96e5a5888afddc26b2019f30d531b56b7303bcf36bdc3661f91b9d",
+    ".venv/pyvenv.cfg": "4088d2ada63eb00632194c235422d735a83ef69bd77e58a1ac9e9aae1e256dfc",
+    "docs/thesis/thesis-manuscript.md": "8ac58074c2a53835883c6635cdf7d6f0044e7971e67af6de36e3f4248e75d9d5",
+    "docs/thesis/revision-20261023-layout/thesis-layout-final-1200dpi.docx": "ba030b448906bb4f403b33c3ecb110b886c4082442012839f923d28604c7f10d",
+    "docs/thesis/revision-20261023-layout/thesis-layout-final-1200ppi.pdf": "4ff939d81868e3ba11e3db4bb625716d6997900cf6cff2a55dc84ff52885f4e0"
+  },
+  "archived_evidence_hash_checks": [
+    {
+      "path": "scripts/replay_sgexp031_032_evidence.py",
+      "expected_sha256": "0fb12a026d2b4e4b21b55eafa6712a5bb867a0b962eeb5c7e45ea4bd52bf8a0c",
+      "actual_sha256": "0fb12a026d2b4e4b21b55eafa6712a5bb867a0b962eeb5c7e45ea4bd52bf8a0c",
+      "match": true
+    },
+    {
+      "path": "outputs/experiments/SG-EXP-031/SG-EXP-031-results.tar.gz",
+      "expected_sha256": "4eb436fbf30823d4df9b3e1be9f34652f849bdf7a130ce1c4229d9b2964f8c5f",
+      "actual_sha256": "4eb436fbf30823d4df9b3e1be9f34652f849bdf7a130ce1c4229d9b2964f8c5f",
+      "match": true
+    },
+    {
+      "path": "outputs/experiments/SG-EXP-031/SG-EXP-031-bundle.tar.gz",
+      "expected_sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+      "actual_sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+      "match": true
+    },
+    {
+      "path": "scripts/jpl_relation_controls.py",
+      "expected_sha256": "ac5f7a998ad198af30f07971f929b7abc43300e7aecb9e65e645d633920b9cba",
+      "actual_sha256": "ac5f7a998ad198af30f07971f929b7abc43300e7aecb9e65e645d633920b9cba",
+      "match": true
+    },
+    {
+      "path": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "expected_sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+      "actual_sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+      "match": true
+    },
+    {
+      "path": "outputs/experiments/SG-EXP-032/upload/SG-EXP-032-bundle.tar.gz",
+      "expected_sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+      "actual_sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+      "match": true
+    },
+    {
+      "path": "scripts/completion_target_sensitivity.py",
+      "expected_sha256": "6bb968944a4db08cb3458cf0dbdd4b07c192ce5c31cbcdefad44b9cb945ad753",
+      "actual_sha256": "6bb968944a4db08cb3458cf0dbdd4b07c192ce5c31cbcdefad44b9cb945ad753",
+      "match": true
+    }
+  ],
+  "archive_hash_failures": [],
+  "mutations": "report only; no install, environment rebuild, training, or inference"
+}

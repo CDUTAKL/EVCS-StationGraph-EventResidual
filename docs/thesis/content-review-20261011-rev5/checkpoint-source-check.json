@@ -1,0 +1,86 @@
+[
+  {
+    "model": "mrg_full",
+    "seed": 2024,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 27,
+    "stopped_epoch": 35
+  },
+  {
+    "model": "mrg_full",
+    "seed": 2025,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 25,
+    "stopped_epoch": 33
+  },
+  {
+    "model": "mrg_full",
+    "seed": 2026,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 24,
+    "stopped_epoch": 32
+  },
+  {
+    "model": "tcn_wide",
+    "seed": 2024,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 11,
+    "stopped_epoch": 19
+  },
+  {
+    "model": "tcn_wide",
+    "seed": 2025,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 10,
+    "stopped_epoch": 18
+  },
+  {
+    "model": "tcn_wide",
+    "seed": 2026,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 15,
+    "stopped_epoch": 23
+  },
+  {
+    "model": "agcrn_full",
+    "seed": 2024,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 5,
+    "stopped_epoch": 13
+  },
+  {
+    "model": "agcrn_full",
+    "seed": 2025,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 5,
+    "stopped_epoch": 13
+  },
+  {
+    "model": "agcrn_full",
+    "seed": 2026,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 4,
+    "stopped_epoch": 12
+  },
+  {
+    "model": "mrg_shared_gate",
+    "seed": 2024,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 59,
+    "stopped_epoch": 60
+  },
+  {
+    "model": "mrg_shared_gate",
+    "seed": 2025,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 33,
+    "stopped_epoch": 41
+  },
+  {
+    "model": "mrg_shared_gate",
+    "seed": 2026,
+    "checkpoint_lock_and_replay_hash_match": true,
+    "best_epoch": 48,
+    "stopped_epoch": 56
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "audit_id": "EVCS-CITATION-CLOSURE-20261009-REV1",
+  "manuscript_path": "docs/thesis/thesis-manuscript.md",
+  "manuscript_sha256": "6402f06a4deff473f09d75824bbab08023c34d9246408dca7a31fac71bf22ca0",
+  "reference_heading": "# 参考文献",
+  "citation_parser": "numeric bracket citations; expands comma-separated inclusive ranges using hyphen, en dash, or em dash",
+  "unique_cited_reference_numbers": 92,
+  "numbered_references": 92,
+  "undefined_citations": [],
+  "uncited_references": [],
+  "reference_numbering_contiguous": true,
+  "status": "PASS",
+  "limits": [
+    "This checks numeric citation closure and numbering only.",
+    "It does not verify every bibliography field, source existence, or claim-to-source support."
+  ]
+}

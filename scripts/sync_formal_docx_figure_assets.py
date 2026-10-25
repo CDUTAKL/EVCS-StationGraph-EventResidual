@@ -56,7 +56,7 @@ def source_figures(source: Path) -> tuple[list[Path], list[tuple[int, int]]]:
     text = source.read_text(encoding="utf-8")
     links = re.findall(r"!\[[^\]]*\]\(([^)]+)\)", text)
     captions = [(int(ch), int(num)) for ch, num in re.findall(r"\*\*图(\d+)-(\d+)\b", text)]
-    expected = [(ch, num) for ch, count in ((1, 2), (2, 13), (3, 16), (4, 6), (5, 9))
+    expected = [(ch, num) for ch, count in ((1, 2), (2, 13), (3, 16), (4, 7), (5, 8))
                 for num in range(1, count + 1)]
     if len(links) != len(expected) or captions != expected:
         raise ValueError(f"Expected {len(expected)} ordered figures/captions; got {len(links)} links and {len(captions)} captions")

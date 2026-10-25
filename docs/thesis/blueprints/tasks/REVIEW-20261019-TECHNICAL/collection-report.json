@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "task_id": "REVIEW-20261019-TECHNICAL",
+  "status": "scope_violation",
+  "collected_at": "2026-10-19T01:10:00+00:00",
+  "baseline_head": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+  "current_head": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "docs/thesis/content-review-20261019-paired/reviewers/technical-record.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 26374,
+        "mtime_ns": 1792370373004285397,
+        "sha256": "007ff76d38973b1d7ecd567ecdfa35d45b05933a82e0978f3a146da312ddf833"
+      }
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/reviewers/technical-report.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 55064,
+        "mtime_ns": 1792370402754386255,
+        "sha256": "6553ee50b4081a49bc60b5000c29272cc2008363f09b7d1b07f53064b0d65d60"
+      }
+    }
+  ],
+  "out_of_scope_changes": [
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/EXECUTION_PACKET.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 638997,
+        "mtime_ns": 1792369756224809544
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 638997,
+        "mtime_ns": 1792370456185981638
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/baseline.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 252584,
+        "mtime_ns": 1792369756377434817
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 253951,
+        "mtime_ns": 1792370456362831172
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/collection-report.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 8551,
+        "mtime_ns": 1792371546376004586
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/context-snapshot.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 656247,
+        "mtime_ns": 1792369756220827440
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 656247,
+        "mtime_ns": 1792370456180929146
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/execution-report.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 278,
+        "mtime_ns": 1792369756221297150
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 7085,
+        "mtime_ns": 1792371401558961173
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/state.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 311,
+        "mtime_ns": 1792369756379202326
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 510,
+        "mtime_ns": 1792371546376456135
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/EXECUTION_PACKET.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 639018,
+        "mtime_ns": 1792369756450319665
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 639018,
+        "mtime_ns": 1792371565022549414
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/baseline.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 253368,
+        "mtime_ns": 1792369756601733806
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 254540,
+        "mtime_ns": 1792371565202622210
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/collection-report.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 8725,
+        "mtime_ns": 1792372195155361572
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/context-snapshot.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 656247,
+        "mtime_ns": 1792369756445701848
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 656247,
+        "mtime_ns": 1792371565017906878
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/execution-report.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 278,
+        "mtime_ns": 1792369756446443936
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 7259,
+        "mtime_ns": 1792371977449569483
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/state.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 311,
+        "mtime_ns": 1792369756602584269
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 510,
+        "mtime_ns": 1792372195155707828
+      }
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/reviewers/originality-record.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 33168,
+        "mtime_ns": 1792371310254368117
+      }
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/reviewers/originality-report.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 38540,
+        "mtime_ns": 1792371523913933437
+      }
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/reviewers/readability-record.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 19950,
+        "mtime_ns": 1792371954636675896
+      }
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/reviewers/readability-report.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 56977,
+        "mtime_ns": 1792372151462581854
+      }
+    }
+  ],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [
+    "报告漏列实际改动: docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/EXECUTION_PACKET.md, docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/baseline.json, docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/collection-report.json, docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/context-snapshot.json, docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/execution-report.json, docs/thesis/blueprints/tasks/REVIEW-20261019-ORIGINALITY/state.json, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/EXECUTION_PACKET.md, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/baseline.json, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/collection-report.json, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/context-snapshot.json, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/execution-report.json, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/state.json, docs/thesis/content-review-20261019-paired/reviewers/originality-record.json, docs/thesis/content-review-20261019-paired/reviewers/originality-report.md, docs/thesis/content-review-20261019-paired/reviewers/readability-record.json, docs/thesis/content-review-20261019-paired/reviewers/readability-report.md"
+  ],
+  "executor_report": {
+    "task_id": "REVIEW-20261019-TECHNICAL",
+    "context_id": "CC-REVIEW-20261019-TECHNICAL-FRESH",
+    "executor": "Claude Code",
+    "model": "deepseek-flash[1m]",
+    "user_reported_model": "DeepSeek",
+    "model_note": "执行环境标识为deepseek-flash[1m]；任务包execution_policy登记user_reported_model=DeepSeek。",
+    "summary": "已按任务包完成技术视角的12项配对评阅：全文读取旧稿（baseline.md，1-1764行，SHA-256 c9ec6d784adfbccec8feb54c448f2f4b6130d5a9891f7394023621be7696598b）与当前稿（current.md，1-1763行，SHA-256 62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66），完整读取rubric.json、anchors.json、reviewer_instructions.md、manifest.json及19份证据。旧稿合计82.5/90（显示值91.67），当前稿合计83.5/90（显示值92.78）；仅BR-03文献缺口定位与BR-10贡献/最近工作差异各+0.5，其余项按同一证据与同一锚点保持同分。未读取历史评分、其他评阅者结果或packet外项目文件；未训练、未联网、未远程执行、未进行Git暂存/提交。",
+    "changed_paths": [
+      "docs/thesis/content-review-20261019-paired/reviewers/technical-report.md",
+      "docs/thesis/content-review-20261019-paired/reviewers/technical-record.json",
+      "docs/thesis/blueprints/tasks/REVIEW-20261019-TECHNICAL/execution-report.json"
+    ],
+    "evidence_used": [
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manifest.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/reviewer_instructions.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/rubric.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/anchors.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manuscripts/baseline.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manuscripts/current.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/ADAPT.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/ADAPTAUDIT.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/CAL.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/DATA_AVAIL.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MAP.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MDP.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MRECOMP.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR2.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR76.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR_20261016.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NZ.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/PASSPORT.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/QUALITY.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/RECOMP.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S31.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S31AUDIT.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S32.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S32AUDIT.json"
+    ],
+    "claim_or_number_changes": [],
+    "checks": [],
+    "unresolved": [
+      "图像内容、分辨率、字体、裁切和整页视觉验收未检查；manifest登记figure_scope为captions_only。",
+      "未做Word/PDF格式、分页、目录页码和有效PPI验收。",
+      "未重新获取外部文献全文；[72][73]仅摘要可读，[76]依据NEAR76.md留存核验记录。",
+      "未独立重跑训练、检查点前向或数据流水线；仅依据packet内审计记录与哈希清单。",
+      "论文的未查看时期、外部数据家族、实测功率和现场业务数据仍缺；本评阅不把这些写成已通过。",
+      "评分合计与换算按量表公式计算；本环境未提供代码执行工具，合计由组件分逐项相加并在报告与JSON中复核一致。"
+    ],
+    "blockers": []
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

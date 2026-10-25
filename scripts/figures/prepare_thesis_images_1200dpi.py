@@ -27,7 +27,7 @@ import sync_formal_docx_figure_assets as docx_sync  # noqa: E402
 
 FIG = ROOT / "outputs/figures"
 STAGE = Path("/private/tmp/evcs-1200dpi-stage")
-REPORT = ROOT / "docs/thesis/figure-1200dpi-20261006.json"
+REPORT = ROOT / "docs/thesis/figure-1200dpi-20261007.json"
 DPI = 1200
 PNG_SIG = b"\x89PNG\r\n\x1a\n"
 

@@ -1,0 +1,191 @@
+{
+  "docx": "docs/thesis/revision-20261017-content-refinement/thesis-revision-candidate-rev2.docx",
+  "figure_count": 46,
+  "ordered_hash_match": true,
+  "figures": [
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_1_research_gap_map.png",
+      "sha256": "65a235861276a84b21b64316cd0e79fd26a619c37a847672098e30d9463b7eb1"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig1_2_roadmap.png",
+      "sha256": "25c7df6118d2fa7f8fa14e5b7d9d1c65faba8772cf034cfb8bcb25668c93f808"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_1_data_reconstruction.png",
+      "sha256": "840767c9da4508697016c73ea5d2e137ab1c12e94cb0ddd667e8ddc0b85ea34f"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_2_node_coverage.png",
+      "sha256": "c7717c8f7bca33d45a455042d28075900c58c5324fe60a5521c7230ebd0d4d3c"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_3_load_heatmap.png",
+      "sha256": "5756387c6f5b1c9df1f8fa93e7910cb0ce22ebb3caf0a6a5155d072ed393c37f"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_4_autocorrelation.png",
+      "sha256": "7e63dab09c78fa8e903d4bce21aede3e4e04e40a4948dd30cec82f6af08a352e"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_5_weekly_curves.png",
+      "sha256": "54c61655c97ff8a3078bca0b5868ec5aba8640974550646569a6a6082d91d5f9"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_6_load_distribution.png",
+      "sha256": "7fade86f3a6af2b4c1c4413e43a99080d01a411ec58dea54bdfa1eaed66f245f"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_7_event_score_flow.png",
+      "sha256": "ef10e8023fd06bb47882b28b666adfa1a5b89817e56dc9c9fac3603f162d80a8"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_8_event_hourly.png",
+      "sha256": "0411b05dc46727a4f71bc90719a21362d95583faa3a72cb22981033aa114944b"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_9_event_component_composition.png",
+      "sha256": "97897cd575caf77c496187ad3566967a4e5fd1217d207b60785edb6e09efc422"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_10_dual_window_definition.png",
+      "sha256": "5d9c7042cff534ad182718ee51de107629c51e73d491379725d9eed491828c58"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_11_feature_correlation.png",
+      "sha256": "919d1efbbd15dd7d7708a8f7bbb45b483b909bfc8215586e3cbd1482d5a1d407"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_12_weekday_hour_heatmap.png",
+      "sha256": "d23ad8701fae38019f3196528710ff4b15921fbf4dfde3093dc0cd7cc52a29ed"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig2_13_jpl_validation_protocol.png",
+      "sha256": "2edde69e7539883da39e09a2dfa1c7e0f91e8aced13df73fa6e8e765ffcd673f"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_1_mrggcn_architecture.png",
+      "sha256": "9173a206b62ead4fb19d49c1ef3cea27c7caaa1d966dd295b4d7bee63cbac8ba"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_2_relation_propagation_unit.png",
+      "sha256": "cecf94a68e11d2e3272556eddd04f0563bbf891a96beb6974d07459151968e9d"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_3_temporal_skip_fusion.png",
+      "sha256": "99881015cd469351fa5bfc77c631d0d00398f7ffb2db25bd9bd36a3f0c54029e"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_4_lre_construction.png",
+      "sha256": "ededddcd10ea58b390c3e18d6a43f395a0a84c5a4b1ff3efe12c1ab7e6b4aa00"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_5_lre_matrices.png",
+      "sha256": "1cbd667061e3a02d725d310c405933ab30b2aa75d38d1577dee5f5836c999716"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_6_gate_residual_detail.png",
+      "sha256": "471768c968273dc127949f34f09e69795304a6e51b704483f50721bd852256bd"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_7_cross_layer_detail.png",
+      "sha256": "e9c7b285bc0c3bf970deeb9b7080c6be3916de3d4b584ed90f9b38c21617c5da"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_8_train_predict_pipeline.png",
+      "sha256": "70d1a1760f995c245403f368b66a5629c4028a4c589db6a98c25b7a49f418a99"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_jpl_mae_primary.png",
+      "sha256": "697560aec67761dc0114511695794915646c28a07beb0388701e033e31152cd5"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_jpl_stratified_mae.png",
+      "sha256": "f68929be7939e516be9e004c743e32c669ba36e2612702a2ef400d273fcda746"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_model_mae_comparison.png",
+      "sha256": "6a83d66a91700ead8bd9fecea999ec86e0a2acbdfab81ffc7d94da53f350a6ee"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_horizon.png",
+      "sha256": "43ec712829e45c2f457b3913bdef72b0acb6a8958c05573e8b65d822f2862114"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_bootstrap_difference.png",
+      "sha256": "2a131d89ed69cff53d18529636fd473c21473732051e8b88cea52cc9e0bedd87"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mae_by_window.png",
+      "sha256": "e1aadffdfa84e3db6565dea8ba96bc86e83f3c03b47937f28a78b189d1305837"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_mae_by_node.png",
+      "sha256": "cc53753281938c43670b8f91dd65017997a70a93c50956848f198ba054b2658a"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_mechanism_ablation.png",
+      "sha256": "86fe3a0ac48225b02a100b8f88f7f475a477b89fa272b2b4bad645c85a234ea4"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_1_three_layer_framework.png",
+      "sha256": "e85dfc81755f2fa1215beb917be20f9bfb81a2ba8a3f9c89e7a80f1000751188"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_2_beta_profile.png",
+      "sha256": "55e284fcfb9db5ffdd15b6a2aa4763aa48cc5c24a4d0f980a874773a7560eb23"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_3_intervention.png",
+      "sha256": "f2d9913a9fdc3a6b6c3ee443405cab925b32287dbb0077cc095cef8bde41deb6"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_4_parameter_intervention.png",
+      "sha256": "e83fc5114794da52357b5f54eef9fd9c7a5570bcf9cc250af9861fff4377668e"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_5_four_cell.png",
+      "sha256": "fd29c8c9e3eded2c7f234ff96a9b55642308393bde8af598fed5f52a33bae9cb"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_6_residual_distribution.png",
+      "sha256": "0eda6bfe760ac36ddb82f4658981e504ac6a1f4105996372b02cb3a3b0882bb5"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_7_error_vs_event_intensity.png",
+      "sha256": "980c39a360cc3c90320c76866230003495f80139fb85cf52c68b0a25d32ed038"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_1_te_pcmci_flow.png",
+      "sha256": "ca385186f4c9ed6fb3b35dac1880f100e1f691242aa1eb518de05f8605b07d3e"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_2_transfer_entropy.png",
+      "sha256": "1028c2139a18bd7c24f0c0845e2af23e7a7c37dc9d8501351db1c5f74405df5c"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_3_asymmetry.png",
+      "sha256": "ee8668c7b7fb55148316c1bccb623e7dac4e968277b4d82e3f23eea12493bfd5"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_4_te_vs_relations.png",
+      "sha256": "118c7b54ed8dcec22a51365d6b3e7efa48fac56b1b5cc609b7dd228fa441f938"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_5_pcmci_validation_network.png",
+      "sha256": "a670a9646a44feceebfb60893f45fbb3100b2c351d463ac103e1bea6c610c218"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_6_conformal_method.png",
+      "sha256": "5d69edcca21dec2f572776defc04b383c25cc50ddc4f02fc4bb8c5d00da5bd5c"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_7_coverage.png",
+      "sha256": "3c10046eb2706b35b8714c0ca50ab001990aebdd82b466bc2e7e21601b96d501"
+    },
+    {
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig5_8_quantile_per_node.png",
+      "sha256": "699b09422b127fb3f1c81a1d2d7301bf08ca4e073a6ce8fa3e51ef7f27166bfd"
+    }
+  ]
+}

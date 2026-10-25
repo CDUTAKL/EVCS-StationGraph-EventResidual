@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "archive_sha256": "9f2a628d607bcc17c63302a6614f55e6b760fbe1c20c2d3dd622e288ee35c9a5",
+  "delivery_manifest_sha256": "bad75774d04a064716a7b427fa7ba2f9087d23177ca7d9817542b31518fbd389",
+  "files_verified_inside_archive": 1046,
+  "total_archive_files": 1047,
+  "path_and_file_type_check": true,
+  "frozen_input_manifest_verified_after_inference": true,
+  "scope": "compressed delivery integrity; inference outcomes remain 60 PASS / 3 FAIL"
+}

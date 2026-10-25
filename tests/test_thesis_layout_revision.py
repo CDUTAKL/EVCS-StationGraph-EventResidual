@@ -27,7 +27,7 @@ def test_outer_cover_spacing_preserves_text_and_compacts_only_empty_lines():
     (r"q_{\mathrm{stable},n}", "q", "sSub", "stable,n"),
 ])
 def test_single_script_expression_retains_its_base(latex, base, script_tag, script_text):
-    runtime = "/private/tmp/codex-thesis-temml-runtime/node_modules:/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
+    runtime = builder.MATH_NODE_PATH
     math = run_converter(latex, builder.NODE, str(builder.MATH_CONVERTER), runtime)
     scripts = math.xpath(f".//m:{script_tag}", namespaces=NS)
     assert len(scripts) == 1
@@ -38,7 +38,7 @@ def test_single_script_expression_retains_its_base(latex, base, script_tag, scri
 
 @pytest.mark.parametrize("latex,base,accent", [(r"\hat y", "y", "̂"), (r"\widetilde{\mathbf H}^{(l)}", "H", "̃")])
 def test_prediction_and_refinement_accents_remain_native(latex, base, accent):
-    runtime = "/private/tmp/codex-thesis-temml-runtime/node_modules:/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
+    runtime = builder.MATH_NODE_PATH
     math = run_converter(latex, builder.NODE, str(builder.MATH_CONVERTER), runtime)
     accents = math.xpath(".//m:acc", namespaces=NS)
     assert len(accents) == 1
@@ -47,7 +47,7 @@ def test_prediction_and_refinement_accents_remain_native(latex, base, accent):
 
 
 def test_math_runs_have_explicit_size_instead_of_inheriting_a_script_size():
-    runtime = "/private/tmp/codex-thesis-temml-runtime/node_modules:/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
+    runtime = builder.MATH_NODE_PATH
     math = run_converter(r"a_i-b_j", builder.NODE, str(builder.MATH_CONVERTER), runtime)
     runs = math.xpath(".//m:r", namespaces=NS)
     assert runs
@@ -56,7 +56,7 @@ def test_math_runs_have_explicit_size_instead_of_inheriting_a_script_size():
 
 @pytest.mark.parametrize('latex,tag', [(r"P_{\mathrm{lim}}-R", 'sub'), (r"P^{\mathrm{lim}}-R", 'sup')])
 def test_limit_name_in_a_variable_script_is_not_a_limit_operator(latex, tag):
-    runtime = "/private/tmp/codex-thesis-temml-runtime/node_modules:/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
+    runtime = builder.MATH_NODE_PATH
     math = run_converter(latex, builder.NODE, str(builder.MATH_CONVERTER), runtime)
     literal = math.xpath(f".//m:{tag}/m:r[m:t='lim']", namespaces=NS)
     assert len(literal) == 1
@@ -64,7 +64,7 @@ def test_limit_name_in_a_variable_script_is_not_a_limit_operator(latex, tag):
 
 
 def test_optimization_variable_remains_below_minimum_operator():
-    runtime = "/private/tmp/codex-thesis-temml-runtime/node_modules:/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
+    runtime = builder.MATH_NODE_PATH
     math = run_converter(r"\min_{\{p_{j,h}\}}\sum_h p_{j,h}", builder.NODE, str(builder.MATH_CONVERTER), runtime)
     low = math.xpath('.//m:limLow', namespaces=NS)
     assert len(low) == 1
@@ -77,7 +77,7 @@ def test_optimization_variable_remains_below_minimum_operator():
     (r"\sum_{i=1}^{n}x_i", "sSubSup", True),
 ])
 def test_sum_only_contains_nonempty_limit_scripts(latex, script_tag, has_upper):
-    runtime = "/private/tmp/codex-thesis-temml-runtime/node_modules:/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules"
+    runtime = builder.MATH_NODE_PATH
     math = run_converter(latex, builder.NODE, str(builder.MATH_CONVERTER), runtime)
     operators = math.xpath(f".//m:{script_tag}[m:e//m:t='∑']", namespaces=NS)
     assert len(operators) == 1

@@ -1,0 +1,1254 @@
+{
+  "status": "PASS",
+  "retraining_performed": false,
+  "rows": [
+    {
+      "component": "legacy",
+      "model": "AdaptiveGraph",
+      "parameters": 35005,
+      "input_contract": "A",
+      "selection": "验证集标准化MAE",
+      "training": {
+        "epochs": 60,
+        "patience": 8,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001
+      },
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 17,
+          "stop_epoch": 25,
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-004/seed-2024/metrics.json": "0f1e1295682fd15009a1423df49c82f6c03f7155df43304ff24cb3d32a1f453a",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-004/seed-2024/training_log.csv": "499a73fbf713391d20a93ad05e22140594d3e36d4141ff0c0cbe782b1c279e6c",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-004/config_resolved.yaml": "6f465273dbc40d1c081dc36e1bd65117438307ba9f0426290932b4d11a60af28"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 13,
+          "stop_epoch": 21,
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-004/seed-2025/metrics.json": "2c69088080f38d3ecb34ace0bf4109026d76c97676d6477b0f7fa5179f0104c1",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-004/seed-2025/training_log.csv": "a7b01432469cccc5d18596f9f907ce46a7cb4eb2abaf37c6efdb934813215e9e",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-004/config_resolved.yaml": "6f465273dbc40d1c081dc36e1bd65117438307ba9f0426290932b4d11a60af28"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 13,
+          "stop_epoch": 21,
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-004/seed-2026/metrics.json": "3f286612f2b2fd7682657fe707b9f0a2866bf5d16941e03b9f459457589d355a",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-004/seed-2026/training_log.csv": "839cc4e99e072ec305e0a4c43ffe06e46cd56de94bc6e08eb9b98a25d15759b2",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-004/config_resolved.yaml": "6f465273dbc40d1c081dc36e1bd65117438307ba9f0426290932b4d11a60af28"
+          }
+        }
+      ]
+    },
+    {
+      "component": "legacy",
+      "model": "MRG-GCN",
+      "parameters": 32714,
+      "input_contract": "A",
+      "selection": "验证集标准化MAE",
+      "training": {
+        "epochs": 60,
+        "patience": 8,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001
+      },
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 22,
+          "stop_epoch": 30,
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-003/seed-2024/metrics.json": "7098dcee337c241f5ccd3445bcd17128327574a6b3490fa1b42c9f174b20cb34",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-003/seed-2024/training_log.csv": "09ff1cc436ec1c6dcee454a561e23c35da4c90d80ce7d95ca53f676587a5c5d9",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-003/config_resolved.yaml": "1721aec31fc2c7943f3463d127925c56548a4935ff5e9ecc9ad990dfacd71e64"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 29,
+          "stop_epoch": 37,
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-003/seed-2025/metrics.json": "31d0edb78513585d62ca2d0a6ae6983b4326cf17487a0c00c18001431f1b81ca",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-003/seed-2025/training_log.csv": "298a5b7ab76d1b3a115a017b96bf85b641abcd0c3b2971358afec196c313b8d5",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-003/config_resolved.yaml": "1721aec31fc2c7943f3463d127925c56548a4935ff5e9ecc9ad990dfacd71e64"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 25,
+          "stop_epoch": 33,
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-003/seed-2026/metrics.json": "41d0d36944b91a5410c9ffb37a64e0931679dd7830ee14a98ff14cf58701d58c",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-003/seed-2026/training_log.csv": "68af6d8c06dd991ee65727fda7814dc9212498ca9587b3043825ce9773b376ab",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-003/config_resolved.yaml": "1721aec31fc2c7943f3463d127925c56548a4935ff5e9ecc9ad990dfacd71e64"
+          }
+        }
+      ]
+    },
+    {
+      "component": "legacy",
+      "model": "TCN",
+      "parameters": 16996,
+      "input_contract": "A",
+      "selection": "验证集标准化MAE",
+      "training": {
+        "epochs": 60,
+        "patience": 8,
+        "batch_size": 256,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001
+      },
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 8,
+          "stop_epoch": 16,
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-002/seed-2024/metrics.json": "52834eadacbbb22eb8a004f9386b9c24cd6a2d60570d230747ccc975743daa54",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-002/seed-2024/training_log.csv": "976c0a41b2911828e9031147ac6d2afdbf2e632fbfe71e3f8ab95c04730135bb",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-002/config_resolved.yaml": "b9751dff8288d4759bca4c11efc5a8bfa694500af8db80d0aeb2bac7921b2eb2"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 6,
+          "stop_epoch": 14,
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-002/seed-2025/metrics.json": "78f4608fafa78b5dde01c018cb9ab6407f56347017388cae164379d6dce5e4b1",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-002/seed-2025/training_log.csv": "e6e821c34062da74a21e203160ce6d706f04c48379958335e51a4deb7c1bba4f",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-002/config_resolved.yaml": "b9751dff8288d4759bca4c11efc5a8bfa694500af8db80d0aeb2bac7921b2eb2"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 5,
+          "stop_epoch": 13,
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-002/seed-2026/metrics.json": "1ebf25e5ffc4767f96087576c19bfa9ab1685a3c00ed53082007beea789f4012",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-002/seed-2026/training_log.csv": "bfff4eac11e0531b8798de1d38e5a5f7d99088d02277f07925fc94977ee6c0dd",
+            "outputs/evidence/checkpoint-replay-20261012/components/legacy/results/SG-EXP-002/config_resolved.yaml": "b9751dff8288d4759bca4c11efc5a8bfa694500af8db80d0aeb2bac7921b2eb2"
+          }
+        }
+      ]
+    },
+    {
+      "component": "sg019",
+      "model": "mrg_full",
+      "parameters": 32714,
+      "input_contract": "B",
+      "selection": "调参集原单位MAE",
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 27,
+          "stop_epoch": 35,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-019",
+            "model": "mrg_full",
+            "seed": 2024,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "88ca9b20c55d008bc005854c9b7d790608949eb3af37e8f454796eab15ec82ee",
+            "contract": "1f4c75271de736a042cf43bb79d827a0803c6781c1b51a2aa08f9bb8b7b42ffc",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2024/config_resolved.json": "21207720b48e6a68554da085ec296a2f40f980579645946bce126f16893e6f7a",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2024/train_log.json": "36c445fe7530321af96f8ef8498269b54f18acf3bcc1a37af050e1ebc6b3eab6",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2024/run_summary.json": "ea3dab6e9a40c252c873d3f8a7c2bc7b0e86210aee1cca975cd16f288306342b"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 19,
+          "stop_epoch": 27,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-019",
+            "model": "mrg_full",
+            "seed": 2025,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "88ca9b20c55d008bc005854c9b7d790608949eb3af37e8f454796eab15ec82ee",
+            "contract": "a51ec45fa4743a6c71857c9a212d910c75e310c7a577870f6b48ed82398c6ce8",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2025/config_resolved.json": "d4c6dff47febf95fbfce1e3b686b86f9713bac8783d1ef46670fb521339ae40c",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2025/train_log.json": "0fdcc6ae0da07c00dc00c39ab3698e58a78bc7d7f4cfb26efd223175b8ee73f7",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2025/run_summary.json": "e328485a46f5ce2591997bd28090b4659ec27cea0e6f7ed4c9deaa298667d7d6"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 19,
+          "stop_epoch": 27,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-019",
+            "model": "mrg_full",
+            "seed": 2026,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "88ca9b20c55d008bc005854c9b7d790608949eb3af37e8f454796eab15ec82ee",
+            "contract": "88d2ce10e735997d49782bd3b9fa851b399e101f3f9dbce673591b2c1bd74de4",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2026/config_resolved.json": "199677a40d962dfe95b1c1eb8a6f2d23b0cf9fd6fea9692fd05f83bb24e0b72d",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2026/train_log.json": "88a75ec92b2ec0805fc67d53e13913f9d93ae5c275564f809dc747b9efb8d327",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2026/run_summary.json": "3f9179b0f13bfc35a9fdd4fbf792ee8a6ec17d7545b4a5a31376580f9eed3749"
+          }
+        }
+      ]
+    },
+    {
+      "component": "sg019",
+      "model": "tcn_wide",
+      "parameters": 32674,
+      "input_contract": "B",
+      "selection": "调参集原单位MAE",
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 11,
+          "stop_epoch": 19,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-019",
+            "model": "tcn_wide",
+            "seed": 2024,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "88ca9b20c55d008bc005854c9b7d790608949eb3af37e8f454796eab15ec82ee",
+            "contract": "3b9c1357a39a1d64edcb7e11596eff59adcc615bbf6ab71f97ab3e37377c073d",
+            "trainable_parameters": 32674
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2024/config_resolved.json": "8bd17e346f463f247bdbb5ca6fcd8c7e71755ea4fe9e073955c26158ae1eb278",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2024/train_log.json": "13e10b0855974a50ae8dd13506aec914f36df392c1ae0695c8f35fd9746eae17",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2024/run_summary.json": "c8ca8da20b0b5e0478f5002bc7ebb7406978346be5328a15b097e270656aa96e"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 4,
+          "stop_epoch": 12,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-019",
+            "model": "tcn_wide",
+            "seed": 2025,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "88ca9b20c55d008bc005854c9b7d790608949eb3af37e8f454796eab15ec82ee",
+            "contract": "71a7bb7a17679b77bb2922bbcee531670ea0216b839fc2baaee518f6d178ce7c",
+            "trainable_parameters": 32674
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2025/config_resolved.json": "f5fc91dcd17d54672a2e7bdb940cf9cb37e29428d3b6c5d1d6a861ea395b62ac",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2025/train_log.json": "abfdd5b2f70ec973f68e9d663a679af91ba531a5300eedf3f55f5ad1c5806299",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2025/run_summary.json": "446a83f4618eacb75eb52c5f358f2e98e8d6e50c10e79def762ff388987bea3e"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 3,
+          "stop_epoch": 11,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-019",
+            "model": "tcn_wide",
+            "seed": 2026,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "88ca9b20c55d008bc005854c9b7d790608949eb3af37e8f454796eab15ec82ee",
+            "contract": "694ad192c3cbf88880a95dd289f3be98ee7ce83d842e5b7fdb7767e9ca5461ad",
+            "trainable_parameters": 32674
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2026/config_resolved.json": "569ef1ddfc2a13aaab216ea8a489ceee6327cb128a9b0b46c9ef022e45ae4ffe",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2026/train_log.json": "f11b2d7f6986f30fcb71adea786f50cd14712c534e54af95207b3f2b8ff55ac9",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2026/run_summary.json": "2b59e92ed2428933fe5002e80b00fca5d5b9bfc128c362ef74a57c54c9cbb3e5"
+          }
+        }
+      ]
+    },
+    {
+      "component": "sg019",
+      "model": "agcrn_full",
+      "parameters": 199912,
+      "input_contract": "B",
+      "selection": "调参集原单位MAE",
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 1,
+          "stop_epoch": 9,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-019",
+            "model": "agcrn_full",
+            "seed": 2024,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "88ca9b20c55d008bc005854c9b7d790608949eb3af37e8f454796eab15ec82ee",
+            "contract": "78121327f996ccf4a807432030aadc12ff03bf3bfccafed51b808671267fa4ea",
+            "trainable_parameters": 199912
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2024/config_resolved.json": "b56b03990e3d791e63c357dcded453a4413428d65d059987c35a36c5c53f7149",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2024/train_log.json": "de6a9428f6de8519332868d4f40a3f232f26755a445f34786c9b2d8cea0822c8",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2024/run_summary.json": "45886dd703a57810a480d486660b288314dc2dafea7d47b4be7d5625b6e31f6f"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 1,
+          "stop_epoch": 9,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-019",
+            "model": "agcrn_full",
+            "seed": 2025,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "88ca9b20c55d008bc005854c9b7d790608949eb3af37e8f454796eab15ec82ee",
+            "contract": "6be0927cada7de35dea3cba4d2025b4e21de67a434e37f014c1fa01867517c04",
+            "trainable_parameters": 199912
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2025/config_resolved.json": "b5beee8709b73707b00333fbfe6673c64ad8643b1326efec7358325d7133c1c5",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2025/train_log.json": "bb8ca217ed0c15eb9a323f6d49065d3f82e1c58a43f100d008c9aec6edaac025",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2025/run_summary.json": "a88a39e6b89b7ba7053145c0325f67bd98798cede7716474f4c8d278190bb9ca"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 1,
+          "stop_epoch": 9,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-019",
+            "model": "agcrn_full",
+            "seed": 2026,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "88ca9b20c55d008bc005854c9b7d790608949eb3af37e8f454796eab15ec82ee",
+            "contract": "a525bf20666f4802aa392774b02a4e37fd61cec5d7da0e24ae71b46518fdcd56",
+            "trainable_parameters": 199912
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2026/config_resolved.json": "8033f4d0476003d3c453d7ffc24e30982a0ca7d517209afc2b6d3efb0bab8e1c",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2026/train_log.json": "69b0bca34e3ae37b0703eab18e7a564a2b86ce3f5a1962592b6a0ca2bf95c529",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2026/run_summary.json": "43b85f199552db9f9c8e5e22a538c12d53e86bb2094c23f22e33e54e5016af41"
+          }
+        }
+      ]
+    },
+    {
+      "component": "sg027",
+      "model": "mrg_full",
+      "parameters": 32714,
+      "input_contract": "B",
+      "selection": "调参集原单位MAE",
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 30,
+          "stop_epoch": 38,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-027",
+            "model": "mrg_full",
+            "seed": 2024,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "c6783c77194e8ccbdfeb790e8b3da3e5f06676ace2be15180b8f82c8668e6565",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_full/seed-2024/config_resolved.json": "6313e8c068b8615d1d4efe9114344da1901741e0d59b95cd9eeebbccbe4f820e",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_full/seed-2024/train_log.json": "92e56fe0e19044d7f8b39f95b7b997cf8235042a7c91586ec1fe30a9a28115cf",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_full/seed-2024/run_summary.json": "d7e7f8f64f4eb9f2bc958ff4a6637f59564d95410ff718ba813ac5439dc257a9"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 14,
+          "stop_epoch": 22,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-027",
+            "model": "mrg_full",
+            "seed": 2025,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "65abb859dde8bf316ff22d7da6acc9e3d681672de789863c22c4e9f1b5825a2f",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_full/seed-2025/config_resolved.json": "5e1284f2302f9072c7db794ac5b6b0fb65f4e84ed46720728c5bd4ccfc9e072f",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_full/seed-2025/train_log.json": "3002ca0dfdf8bd6185d709fec4a64dc0286263badb267cfce293a3fc1feb82c7",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_full/seed-2025/run_summary.json": "4c43d0892d90deaf92b266bbe8a66a5b7475edd862dc82a229d862e9e817d4d9"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 14,
+          "stop_epoch": 22,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-027",
+            "model": "mrg_full",
+            "seed": 2026,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "32c83ab060d134db3d383dc06ef0a290c789150121c2fb35b01d72c57319d7b7",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_full/seed-2026/config_resolved.json": "e32a94a078242f95edb01e0a5fa0ea17876606efff7e9604c0dd44969ab5ae3b",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_full/seed-2026/train_log.json": "fdf25fcdb9617c45344390156b9738a2948993107351fdf1e218bf79d095ce50",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_full/seed-2026/run_summary.json": "3f41ffd42888f6509fb963b07c6bbabd81825af16191d3debcba3cc43f958c7e"
+          }
+        }
+      ]
+    },
+    {
+      "component": "sg027",
+      "model": "mrg_shared_gate",
+      "parameters": 32714,
+      "input_contract": "B",
+      "selection": "调参集原单位MAE",
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 52,
+          "stop_epoch": 60,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-027",
+            "model": "mrg_shared_gate",
+            "seed": 2024,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "333cb42f7b1e324fdbb33ba977a007d15ada79eb92fa5b29cd45ee8155e5e4d2",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_shared_gate/seed-2024/config_resolved.json": "4a4577fb14bb6992d57590fe4101cd6138025596c99727284a8a4349706f9d04",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_shared_gate/seed-2024/train_log.json": "5cd1a2fcee99d4fd4852944e0ce5ac4ecd3d02f18ffc74e486ce418f27176d00",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_shared_gate/seed-2024/run_summary.json": "7ab49609874d0d9db4c947275d5f4adf62ae4c71286c5a518bcdb5064c824b70"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 32,
+          "stop_epoch": 40,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-027",
+            "model": "mrg_shared_gate",
+            "seed": 2025,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "f4315e6efe8341ffbf5ddd9938e8f40059edffaa1cc0d1c25cabb71c94a96d0b",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_shared_gate/seed-2025/config_resolved.json": "a105b926595d1567b46b86613e5a1c674dc60508279896081c98e4ab25d00564",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_shared_gate/seed-2025/train_log.json": "665009f0e897b906d1a4479b85a498deef8ffaf2836e1beee3f63b2bfa45662e",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_shared_gate/seed-2025/run_summary.json": "071535701e39baf364bf956eaecb5355b3a11026becd485f3f901d11d74fe041"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 46,
+          "stop_epoch": 54,
+          "config": {
+            "protocol": "SG-DATA-006-eventtime-v1",
+            "experiment": "SG-EXP-027",
+            "model": "mrg_shared_gate",
+            "seed": 2026,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "dataset_sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "8b647c562259379e5505740ba09f1625e47f78feb15fe7be4246617fd3ac561c",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_shared_gate/seed-2026/config_resolved.json": "6d496d45bf3532ff6b2dc95554247c80e9cd9a2a47735a2353bbe654c117d892",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_shared_gate/seed-2026/train_log.json": "4e6a4af41b2b9ac66b326d2bdeb7c054ec60afaf317e550a7736ba10db84081f",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg027/results/formal/mrg_shared_gate/seed-2026/run_summary.json": "58b3c7286ca51c04931493ce2ad612aaaf6748863d5a1340a98efaa35ef44020"
+          }
+        }
+      ]
+    },
+    {
+      "component": "sg028",
+      "model": "mrg_full",
+      "parameters": 32714,
+      "input_contract": "B",
+      "selection": "调参集原单位MAE",
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 27,
+          "stop_epoch": 35,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "mrg_full",
+            "seed": 2024,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "3060f0e58d8040277b67b10f31d087a83543e09c570a11bf7c6d682cab77cf12",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_full/seed-2024/config_resolved.json": "eb206d2f268ba15cf7c5a6ae2a009399cc6e79565ffbf503ee20fd94d0c29ddb",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_full/seed-2024/train_log.json": "2fe055c48427a4e8f9b9519aef396a4195da580cbc51070540a04cfae0e2a02b",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_full/seed-2024/run_summary.json": "9598a5912d38e5e3862fad6d92df9397e2c4b6d6ccd47fb8e60097cb9bb8e632"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 25,
+          "stop_epoch": 33,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "mrg_full",
+            "seed": 2025,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "bbea436266dbbc4e9770fd232c5cb6e392f64d519704ec6e611f57cc1d19ace1",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_full/seed-2025/config_resolved.json": "c63bf13000805b85599d35645472ba28ce2edbe82e947cab4ed3cd998ad96614",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_full/seed-2025/train_log.json": "8f3b74f873a32c0572a3ed6ce75d7d2c3e58afb312044f2a0f0f80650880181f",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_full/seed-2025/run_summary.json": "9336ebaa29060d71b4eaac9b389b3147f09bc6f2aba32f95c11daa7d4a23860f"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 24,
+          "stop_epoch": 32,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "mrg_full",
+            "seed": 2026,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "0dbd4a9699afebe6af945adec6a6d1c17c2e58ea77ef77c01d90a19f4a9f3519",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_full/seed-2026/config_resolved.json": "b417e4ef9bbf02ddfe7b9a2f7ac20cac52e1207ccb18b6fe054921635e1a6656",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_full/seed-2026/train_log.json": "877ebc48256cacda4446cfbc7a577695c21d874de1f82d1d56aa3932e5d4f2d0",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_full/seed-2026/run_summary.json": "d9aa235c9dbc7df86b5f1c103d8ae6629964b78a3375d684e519ed1efa06791e"
+          }
+        }
+      ]
+    },
+    {
+      "component": "sg028",
+      "model": "tcn_wide",
+      "parameters": 32674,
+      "input_contract": "B",
+      "selection": "调参集原单位MAE",
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 11,
+          "stop_epoch": 19,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "tcn_wide",
+            "seed": 2024,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "6e831e36d99c77ab5fe4b5f8b2506e53238314a72a75d029284d2a2624015cd9",
+            "trainable_parameters": 32674
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/tcn_wide/seed-2024/config_resolved.json": "060077a3a162163fd5d184364577839d49f5f29c2442083692f3f5283e556ab5",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/tcn_wide/seed-2024/train_log.json": "86283149938b273cda356b21e55649c0a67c701f959539ea02fae765f3ea0cde",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/tcn_wide/seed-2024/run_summary.json": "eadc9c906da2625d653b51d2cf6d9eb91d0dee6d9de2759f56a7c67da9e1a626"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 10,
+          "stop_epoch": 18,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "tcn_wide",
+            "seed": 2025,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "4e3fa8e544a4a17849928b507a811fa3b2d9235a4897541c72ea0c62f2532134",
+            "trainable_parameters": 32674
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/tcn_wide/seed-2025/config_resolved.json": "3aa5bac14b8facc7f7faab4f73156d7bee7ca2a432f27dd6f3ff03c1df1eff06",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/tcn_wide/seed-2025/train_log.json": "427a6117f0d8f99b6197a3884aebb91c8428358175adf4c36f6b66e07da1657d",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/tcn_wide/seed-2025/run_summary.json": "42564fedfadbc88a940e09f01d051008c4d834e60b72b1cc24205050e741f63b"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 15,
+          "stop_epoch": 23,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "tcn_wide",
+            "seed": 2026,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "579573740d59f56ff675de986e3eca691900edb45950b4a513e0185b8e7194e2",
+            "trainable_parameters": 32674
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/tcn_wide/seed-2026/config_resolved.json": "67aa5f02bfc3eda40e9419f3d46dff18e1aee06c4467871f71cda3afeaba613c",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/tcn_wide/seed-2026/train_log.json": "4dd0ac5443dfdb9615a097fe29e3aa90814c0c4cb81ac172e892c166cfb76a11",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/tcn_wide/seed-2026/run_summary.json": "bf1f29cc3215a8e45c2221df5507535d37d71ac62acd1137c8fd28f2b7e676d2"
+          }
+        }
+      ]
+    },
+    {
+      "component": "sg028",
+      "model": "agcrn_full",
+      "parameters": 199912,
+      "input_contract": "B",
+      "selection": "调参集原单位MAE",
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 5,
+          "stop_epoch": 13,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "agcrn_full",
+            "seed": 2024,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "b0984c898a55b6855014ed37595f157a6634b6b6a68978614a12b586222d4171",
+            "trainable_parameters": 199912
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/agcrn_full/seed-2024/config_resolved.json": "cc110795927889ca211ee4042fcbad442f89d3e8b3e5b5c0988cb0977a276d0f",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/agcrn_full/seed-2024/train_log.json": "b2163ab07ffb2723b5a80f4b9fdb1a50207f984bb925f0742a81f631b6d8f415",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/agcrn_full/seed-2024/run_summary.json": "87d682307803923f7c7f913f058ea96410b5d424e66e5bdad2fb4e3ee4eae7c4"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 5,
+          "stop_epoch": 13,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "agcrn_full",
+            "seed": 2025,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "2673043ea22066d24db72761aa8dc9959b3b90c563979409c33197f405186176",
+            "trainable_parameters": 199912
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/agcrn_full/seed-2025/config_resolved.json": "df600bec330fd82edbcd10649a92cdc335a9b27527e3f126fed8e4bd448b369a",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/agcrn_full/seed-2025/train_log.json": "ebb4902a5c66acc27249927d29f74f6f89bfb7aca73e0a487b8ad551e0bd6a5d",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/agcrn_full/seed-2025/run_summary.json": "a6e9dadf9d98676e2c6e5300a6dd42f8c5030a1a96578ad9cc47cef0854d6ecc"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 4,
+          "stop_epoch": 12,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "agcrn_full",
+            "seed": 2026,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "ddd16be1a1610d43acf6cff04ad444d8b73b0cbdf27ecf9c8807df74940aec43",
+            "trainable_parameters": 199912
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/agcrn_full/seed-2026/config_resolved.json": "ee3b7b80718e0273286500c8ef37c6fe93a681bf00e07a90ebe281faff10dcd5",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/agcrn_full/seed-2026/train_log.json": "e0bd916e252f6a7531148e90b166c0c0fa0398197a7f475d2bf446c50c3f043e",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/agcrn_full/seed-2026/run_summary.json": "a1f644befc3e8482dd0daaf8d49955a4c1bdf352857c76460573f64ebacf95ca"
+          }
+        }
+      ]
+    },
+    {
+      "component": "sg028",
+      "model": "mrg_shared_gate",
+      "parameters": 32714,
+      "input_contract": "B",
+      "selection": "调参集原单位MAE",
+      "runs": [
+        {
+          "seed": 2024,
+          "best_epoch": 59,
+          "stop_epoch": 60,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "mrg_shared_gate",
+            "seed": 2024,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "7352a33557fe97d66f484e907c8f653dc6777318e143dbe85e50c2518fc3f54b",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_shared_gate/seed-2024/config_resolved.json": "bfa6a02160ba3fe5057131c1dc330b8d99a2d9e71aeb2eaa6ac72ad18ccf115a",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_shared_gate/seed-2024/train_log.json": "8804b9e61b898e992aa33dab3d4b44cd1d6f9ebb5f7942699c875c3576cefc69",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_shared_gate/seed-2024/run_summary.json": "7a9101e28dc3f27a214684e5fb410ef30f5ff1a101d17059629a2415c4dfc419"
+          }
+        },
+        {
+          "seed": 2025,
+          "best_epoch": 33,
+          "stop_epoch": 41,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "mrg_shared_gate",
+            "seed": 2025,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "306f686c4460ab2f10ab76d494f6d93b4ce95415400ff98952bea000f52b3c4f",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_shared_gate/seed-2025/config_resolved.json": "38e3ed70576f10594029049efddc96ecc8dd4f75bc3fed78be0be1812ea21558",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_shared_gate/seed-2025/train_log.json": "1cbd30463a38279eca636a0d732e32ad6d5cee30ffa2e4430476bf6bb51b9c05",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_shared_gate/seed-2025/run_summary.json": "e401bf8f697bc1144022e5ef3be6ff878a67809a35587e7806e1dc779a48299f"
+          }
+        },
+        {
+          "seed": 2026,
+          "best_epoch": 48,
+          "stop_epoch": 56,
+          "config": {
+            "protocol": "SG-DATA-007-jpl-eventtime-v1",
+            "experiment": "SG-EXP-028",
+            "model": "mrg_shared_gate",
+            "seed": 2026,
+            "max_epochs": 60,
+            "patience": 8,
+            "batch_size": 256,
+            "lr": 0.001,
+            "weight_decay": 0.0001,
+            "loss": "standardized_L1",
+            "selection": "tuning_original_unit_MAE",
+            "mode": "formal",
+            "train_limit": null,
+            "eval_limit": null,
+            "num_workers": 0,
+            "threads": 2,
+            "precision": "float32",
+            "deterministic": true,
+            "gradient_clip": 5.0,
+            "jpl_dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "jpl_loader_sha256": "c75fa7cf963b921fa6b102e6a37c947756475d5d42784118361a28098469ddd4",
+            "jpl_entrypoint_sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+            "jpl_protocol_sha256": "7e78acf614239848643745e2ec0d08d4ab2b5e03c97650eb94c673d40c456bc5",
+            "jpl_data_spec_sha256": "026764d6a0979b55ad4fd626d74232f3d95194296a90696c51264ca976e1baef",
+            "jpl_experiment_spec_sha256": "4e5a913d7e5b16a90358638a6f9618071bc16d80f7c058d0f792deb692bae51a",
+            "jpl_bundle_manifest_sha256": "111b354bdcf95b8eb25b012618007069ede1a5bb65ba6bdb9dc480be5b897a68",
+            "dataset_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+            "code_sha256": "d40d609177089702c0799f106dbce19ce07e906f28410554506d74e1c39d0018",
+            "contract": "3ed07f83bb4fb0ae328962aa7a45631c5a80ebbb40f24f55c359302594877c94",
+            "trainable_parameters": 32714
+          },
+          "source_hashes": {
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_shared_gate/seed-2026/config_resolved.json": "3eba4e898870f742ace46d66b5a8aba609b53e2494f62012a8108c7464bdf93d",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_shared_gate/seed-2026/train_log.json": "e62a8877a9d770b936307c0dab8600f668dd2059d97a15d0290e6e5fd22090c0",
+            "outputs/evidence/checkpoint-replay-20261012/components/sg028/results/formal/mrg_shared_gate/seed-2026/run_summary.json": "faa80132f870a336e56099a274930f32f79f147e16145a330ee34c71d30af85a"
+          }
+        }
+      ]
+    }
+  ]
+}

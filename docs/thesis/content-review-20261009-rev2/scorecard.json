@@ -1,0 +1,451 @@
+{
+  "schema_version": 1,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "EVCS-CONTENT-20261009-REV2-FORMAL",
+  "assessment_kind": "formal",
+  "review_date": "2026-10-10",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "EVCS-CONTENT-20261009-REV2",
+    "manuscript_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/manuscript-frozen.md",
+    "manuscript_sha256": "e59daf4a7a43b6a337cbe82e843dab02c31665c96624c6a2fe23fdba2d5cfa97",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "evidence": [
+      {
+        "id": "E01",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/manuscript-frozen.md",
+        "locator": "冻结主稿全文：摘要、五章、图表与结论",
+        "sha256": "e59daf4a7a43b6a337cbe82e843dab02c31665c96624c6a2fe23fdba2d5cfa97",
+        "reviewed": true
+      },
+      {
+        "id": "E02",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009/nearest-literature-review.md",
+        "locator": "近邻文献来源核查；全文/摘要层级和比较边界",
+        "sha256": "c6a2c77a9ec3f36a428ee4b959eda533aa44a42cceb7018395efaa3b259c4f18",
+        "reviewed": true
+      },
+      {
+        "id": "E03",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/core-key-audit.md",
+        "locator": "旧Caltech、事件时刻、门控、JPL逐键审计范围与结论",
+        "sha256": "a1b9c19cc4d2d7c9709508b3cbfbad4b4ee18a5d09371be632e7c237f088eeb0",
+        "reviewed": true
+      },
+      {
+        "id": "E04",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-019-eventtime-v1-phase2.md",
+        "locator": "Caltech事件时刻协议与36次运行",
+        "sha256": "74fed15df3e44b25c06eacdfc19b97473a4e0e2e96d9826b38268d17d308893b",
+        "reviewed": true
+      },
+      {
+        "id": "E05",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-027-paired-gate-control-report.md",
+        "locator": "Caltech同参数门控对照及时间块结果",
+        "sha256": "8d219e2b0a76a6adcaf153dc9a6e7f5dd35c98c6fecab57d9f07ea424fcb0511",
+        "reviewed": true
+      },
+      {
+        "id": "E06",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md",
+        "locator": "JPL预登记重拟合协议和运行结果",
+        "sha256": "edf3f29b5fd1675d7f139b15c431280fef8a0f691b9505985f3e4a1cb67ebc06",
+        "reviewed": true
+      },
+      {
+        "id": "E07",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-029-node-composition-sensitivity.md",
+        "locator": "事后节点组成留一敏感性设计和边界",
+        "sha256": "c420caf2482d0274e5e93e2b8eb93b0711079e893e01488a6d36a79874052c2c",
+        "reviewed": true
+      },
+      {
+        "id": "E08",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/gate-node-composition-audit/sensitivity.json",
+        "locator": "SG-EXP-027与JPL全部节点和20次留一结果",
+        "sha256": "c254640b7e438b5399cf4614df0b83b3c2bb9a8e7f3389964faa08b22b74092d",
+        "reviewed": true
+      },
+      {
+        "id": "E09",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/gate-node-composition-audit/leave_one_node_out.csv",
+        "locator": "逐协议、逐节点留一数值",
+        "sha256": "d07bb323b9c30449eee4e13ce8ca2b1cd985eace9b20357cba7d5f3e6eeb6043",
+        "reviewed": true
+      },
+      {
+        "id": "E15",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-021-demand-warning/final/report.md",
+        "locator": "容量预警误差、触发结果和应用边界",
+        "sha256": "95be0da00c6122107bdfb894766b38e9d03261e6b6b487a2396d56a7b52df91e",
+        "reviewed": true
+      },
+      {
+        "id": "E16",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-022-forecast-operation-interface/audit.json",
+        "locator": "固定起点预测接口和时间映射审计",
+        "sha256": "bd0f8c823c34512194bf9578ac72708fa2277093a776c5863eb1b7ac3ef81ab7",
+        "reviewed": true
+      },
+      {
+        "id": "E17",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-026-charging-decision/actual_thesis_case_status.json",
+        "locator": "实际论文案例/合成决策可用性状态",
+        "sha256": "d60eab766bfbc1542ccfb072a692a8895cd3d0573cb2780e99d04fa82f8ab031",
+        "reviewed": true
+      },
+      {
+        "id": "E18",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/nearest-work-source-audit.md",
+        "locator": "[12][13][67][70]此次原文可读层级与事实核查",
+        "sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125",
+        "reviewed": true
+      },
+      {
+        "id": "E19",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/SG-EXP-028-analysis/model_summary.csv",
+        "locator": "JPL三个种子汇总指标",
+        "sha256": "cc78a8802cec9e63a731cbf5b2c538dba44617308ba0419b24951eb70e7341bc",
+        "reviewed": true
+      },
+      {
+        "id": "E20",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/SG-EXP-028-analysis/paired_intervals.csv",
+        "locator": "JPL预登记配对时间块区间",
+        "sha256": "8c0b44d1acd30cf5d6a61855f31dadf70369f7b9b35691f060509ff68f237682",
+        "reviewed": true
+      },
+      {
+        "id": "E21",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/integrity-review.md",
+        "locator": "主线及版本识别，章节闭合和局部问题",
+        "sha256": "7cd3b6ba1370fd9f0e1b65a42960206a304a97405a05b7294de32bb7bfe144c0",
+        "reviewed": true
+      },
+      {
+        "id": "E22",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/numeric-check.json",
+        "locator": "汇总数值算术与原时间映射对照",
+        "sha256": "b0b3d917dce8fccd2be336edc2c0ed10abbde594ab52ad513148a764bf58dd7f",
+        "reviewed": true
+      },
+      {
+        "id": "E23",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/citation-closure.json",
+        "locator": "当前冻结稿数字引文闭合",
+        "sha256": "3d893291ec28bd0fc15d86eb38c1070517e5ed86881f5ae899339e0773e1eb5c",
+        "reviewed": true
+      },
+      {
+        "id": "E24",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/baseline-identification.json",
+        "locator": "REV1 Word精确哈希确认及既有证据未变",
+        "sha256": "b46f681df10121362ab2fa357bda15b24a06ce28d3562226f079b8c7db397eec",
+        "reviewed": true
+      },
+      {
+        "id": "E25",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/revision-docx-content.diff",
+        "locator": "REV1与REV2正文和OMML比较，排除页码及字体变化",
+        "sha256": "1505e9e16ac5a6a56af38828f6632a134449e2b4efc38f98638d09a9cd2bff5e",
+        "reviewed": true
+      },
+      {
+        "id": "E26",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_horizon.svg",
+        "locator": "SVG实际横轴15/30/45/60及预测提前量文字",
+        "sha256": "86a6ad42ca215ea9af6aee48c3901c2d2acfb10b13c6f216fe6b23d60e90c872",
+        "reviewed": true
+      },
+      {
+        "id": "E27",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/scorecard.json",
+        "locator": "REV1正式量表与12项锚点记录",
+        "sha256": "5c3fbbcde9b19c2b883fb288fc1177193ffd88fa591d1bc8d81362df55f091de",
+        "reviewed": true
+      }
+    ]
+  },
+  "reviewer_reports": [
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/reviewer-methods.md",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/reviewer-literature.md",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/reviewer-structure.md"
+  ],
+  "forensic_report": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/forensic-review.md",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": 4.5,
+      "manuscript_location": "摘要；§§1.1.1–1.1.3、1.4；§§2.1–2.3",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E21"
+      ],
+      "rationale": "15 min站内节点代理能量任务、稀疏性和节点异质性均有明确界定，背景数据和预测目标具体。尚未用运营者工作流、计量功率或现场损失量化实际需求。",
+      "change": {
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-02",
+      "score": 4.5,
+      "manuscript_location": "题目；§§1.3–1.7；§§3.6–3.9；§§4.1–4.6；§5.6及结论",
+      "evidence_ids": [
+        "E01",
+        "E04",
+        "E05",
+        "E06",
+        "E21"
+      ],
+      "rationale": "题目、两项核心贡献、三套协议和结论基本闭合；JPL准确限定为同ACN体系的重拟合补充，不承担MDP跨站复现。机制诊断标题覆盖的证据类型仍较宽，实际只支持参数敏感度、受检蒸馏和误差分解。",
+      "change": {
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-03",
+      "score": 4.5,
+      "manuscript_location": "§§1.2.1–1.2.4，尤其表1-1及§1.2.4；§3.5.8",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E18",
+        "E21",
+        "E24",
+        "E25"
+      ],
+      "rationale": "表1-1按粒度、关系来源、模型路径、输入和验证范围比较最近工作；[10]/[92]全文核查记录及新增[67]接受稿、[13]索引正文使定位更具体，[12]未知节点已明确。不主张一般多图或门控首创。部分近邻融合/共享参数/时序权限仍无法由全文确认，保留强档4.5及0.5缺口。",
+      "change": {
+        "type": "unchanged",
+        "reason": "近邻核查和表述继续改善，但未完全补足最近直接EV工作精细方法比较，仍在原4.5强档；不因材料篇数机械加分。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-04",
+      "score": 4.5,
+      "manuscript_location": "§§2.1–2.6；§§3.2–3.5；§4.2–4.4；§5.2–5.5",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E06",
+        "E21"
+      ],
+      "rationale": "代理能量与实测功率、统计图与物理拓扑、事件标签与可见输入、参数干预与因果效应区分明确；核心公式单位与假设总体正确。TE/PCMCI+属于未经多重校正的方向性探索，代理映射的物理有效性尚未由连续电表数据验证。",
+      "change": {
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-05",
+      "score": 8.0,
+      "manuscript_location": "§§2.1–2.2；§§3.6.1–3.7.5；§§4.2–4.4",
+      "evidence_ids": [
+        "E01",
+        "E04",
+        "E05",
+        "E06",
+        "E21",
+        "E24"
+      ],
+      "rationale": "同输入TCN/宽TCN、等参数自环、同参数节点共享门控和预登记JPL对照能回答限定问题；训练上限、早停和选模规则明确。仍缺行为GRU/MLP或简单下界、容量匹配AGCRN、受控蒸馏和独立新时期确认。已有宽TCN本来就包含在REV1证据中，本轮澄清不构成新增控制。",
+      "change": {
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-06",
+      "score": 4.5,
+      "manuscript_location": "§§2.1–2.2；表3-1至3-3、3-9；各实验报告",
+      "evidence_ids": [
+        "E03",
+        "E04",
+        "E05",
+        "E06",
+        "E08",
+        "E09",
+        "E21"
+      ],
+      "rationale": "逐键审计覆盖旧主结果来源锁、36/36事件时刻运行、6/6同参数门控运行和12/12 JPL预测；数据切分、配置、键对齐及指标复算有记录。本轮新增可复核的留一产物进一步增强可追溯性。仍未重训完整流水线，JPL逐键归档外置于另一交接目录，旧训练环境也未完全重建。",
+      "change": {
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-07",
+      "score": 9.0,
+      "manuscript_location": "§§2.1–2.6；§§3.3–3.7；第4章；§§5.2–5.5",
+      "evidence_ids": [
+        "E01",
+        "E03",
+        "E04",
+        "E05",
+        "E06",
+        "E07",
+        "E21"
+      ],
+      "rationale": "工作覆盖会话重构与数据门禁、多协议预测、受控节点门控、模型诊断、区间评估和运行接口，体现持续且技术要求较高的问题解决。按工作量与独立分析能力评分；缺少现场部署主要限制实践价值，不重复计入本项。",
+      "change": {
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-08",
+      "score": 8.5,
+      "manuscript_location": "§§3.6–3.8；§§4.2–4.6；§§5.3–5.6；结论",
+      "evidence_ids": [
+        "E01",
+        "E03",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E09",
+        "E21"
+      ],
+      "rationale": "主要整体MAE、同参数门控和JPL对照有多种子、共同键与逐键审计支撑；新增20次留一结果均未使总体差值方向反转，补查了单节点主导这一替代解释。该敏感性复用同一历史测试期且属事后分析；事件/非零指标有不利结果，MDP只在Caltech验证，尚无实测功率或独立数据家族结果。",
+      "change": {
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-09",
+      "score": 9.0,
+      "manuscript_location": "§§3.6–3.8；§§4.2.5、4.3.3、4.4.4–4.6；§§5.2–5.5；结论",
+      "evidence_ids": [
+        "E01",
+        "E05",
+        "E06",
+        "E07",
+        "E21"
+      ],
+      "rationale": "正确区分种子离散度、固定测试期时间块、事后留一和场站抽样；保留负结果、未校正探索和覆盖不足，不扩张为物理因果、零样本迁移或现场效果。期望覆盖、β依赖和模型权衡解释准确；固定时期和有限种子仍限制推断，保持9分。",
+      "change": {
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-10",
+      "score": 7.0,
+      "manuscript_location": "§§1.2.2–1.4；§§3.5.8、3.7.1、3.8.1；第4章及结论",
+      "evidence_ids": [
+        "E01",
+        "E02",
+        "E05",
+        "E06",
+        "E21"
+      ],
+      "rationale": "任务内三类关系组合、同参数节点门控增量和MDP组织是可信硕士增量贡献。近邻核查改善差异论证，但一般多图/门控/节点参数化已有先例；未增加独立算子能力、各关系必要性或MDP通用优势证据，保持7分。",
+      "change": {
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-11",
+      "score": 3.5,
+      "manuscript_location": "§§1.1、1.4；§§5.5.1–5.5.5；§5.6及结论",
+      "evidence_ids": [
+        "E01",
+        "E15",
+        "E16",
+        "E17",
+        "E21"
+      ],
+      "rationale": "稿件给出代理量到区间平均功率的接口、预警和固定起点失败案例、受约束合成线性规划，足以说明潜在专业用途。尚无同步电表、真实站级约束、车辆请求、现场流程或实际收益验证；因此保留有限实践价值分，不作现场效果主张。",
+      "change": {
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。",
+        "evidence_ids": [
+          "E21",
+          "E24"
+        ]
+      }
+    },
+    {
+      "id": "BR-12",
+      "score": 9.0,
+      "manuscript_location": "摘要；§1.2表1-1；§2.1.1；§3.2；§3.6.2；§3.8.2—3.9；§5.5.1—5.5.3；图3-12、图3-16和表3-7",
+      "evidence_ids": [
+        "E01",
+        "E18",
+        "E21",
+        "E23",
+        "E24",
+        "E25",
+        "E26"
+      ],
+      "rationale": "相对精确哈希识别的REV1 Word，新增完整发布时刻/目标片契约，区分输入可见与标签成熟，近邻表更具体，3.8.2和3.9减少重复数字与协议复述，改善全文核读并达到强档下限9分。仍留1分：片起点/片末跨度标签未完全落到图表、图3-16表号、个别措辞和重复局限、探索枝节偏密。学校版式不在本项。",
+      "change": {
+        "type": "improvement",
+        "reason": "REV1与REV2正文直接对照确认预测任务定义、3.8.2/3.9压缩和来源身份表述改善，BR-12由8.5到9.0；仅计真实内容改善，不计目录和数学字体渲染变化。",
+        "evidence_ids": [
+          "E01",
+          "E21",
+          "E24",
+          "E25"
+        ]
+      }
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "非学校官方评分，不映射官方等级或实际盲审结果。",
+    "三份隔离AI评阅视角不是现实评审专家，不机械平均原始评分。",
+    "依据精确哈希匹配REV1 Word正文比较，未恢复REV1 Markdown原字节。",
+    "沿用既有逐键审计记录；本轮仅复算源汇总算术及核对既有证据哈希，未重训或重跑全部NPZ/Bootstrap。",
+    "部分近邻全文仍不可读，本轮评分读取来源核查记录，没有再次逐页核验原论文。",
+    "学校版式、目录分页、图像视觉及格式占位另审，不计本次内容分。"
+  ],
+  "baseline_assessment_id": "EVCS-CONTENT-20261009-REV1-FORMAL",
+  "comparison_basis": "same rubric/scope; identified REV1 DOCX content versus REV2 DOCX/frozen manuscript; unchanged primary experiment evidence"
+}

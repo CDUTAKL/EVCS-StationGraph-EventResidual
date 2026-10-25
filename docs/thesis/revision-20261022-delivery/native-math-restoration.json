@@ -1,0 +1,10 @@
+{
+  "source": "canonical manuscript via existing generator",
+  "oMath_count": 269,
+  "normalized_math_text_matches": true,
+  "math_objects_with_WPS_unicode_style_normalization": 68,
+  "restored_original_native_OMML": true,
+  "preserved": "WPS TOC, covers, tables, sections, drawing extents and original 1200 DPI figure assets",
+  "output_docx_sha256": "e5c3373740602e960e786bc820e06a330f1a4b4602b818929d8a5651b3e5b9cc",
+  "limitation": "WPS re-saving may rewrite equations and downsample images again. PDF is authoritative for reviewed layout."
+}

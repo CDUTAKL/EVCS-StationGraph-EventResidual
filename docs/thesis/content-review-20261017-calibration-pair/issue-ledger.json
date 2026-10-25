@@ -1,0 +1,66 @@
+{
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "issues": [
+    {
+      "id": "NEAR76-OMITTED-COMPARISON",
+      "kind": "defect",
+      "status": "supported",
+      "severity": "major",
+      "description": "两稿均在§1.2.3将[76]与其他残差/事件工作概括并列，未比较其公开Boulder会话重构EV负荷代理、持续性锚定残差校正、直接/残差同特征对照和指标依赖验证。",
+      "primary_criterion": "BR-03",
+      "secondary_impacts": [
+        {
+          "criterion_id": "BR-10",
+          "distinct_reason": "文献回顾完整度与原创性差异论证是不同要求：该缺失既使近邻综述无法定位缺口，也限制论文关于代理EV预测/残差路径的新颖性边界；它不否定站内关系或MDP本身的证据。",
+          "evidence_ids": [
+            "NEAR76",
+            "CURRENT",
+            "BASE"
+          ]
+        }
+      ],
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "evidence_ids": [
+        "NEAR76",
+        "CURRENT",
+        "BASE"
+      ]
+    },
+    {
+      "id": "BR12-CALIBRATION-AND-REVISION",
+      "kind": "defect",
+      "status": "partly_supported",
+      "severity": "minor",
+      "description": "baseline的摘要/结果叙事仍有数字密集和重复边界概括；current删除一处重复总结并提高JPL校准值的精确表达，构成小幅可读性改善。原历史9/10对baseline凝练度略宽，v2配对复评基线校准为8.5/10。",
+      "primary_criterion": "BR-12",
+      "secondary_impacts": [],
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "impact_changed": true,
+      "impact_change_evidence_ids": [
+        "CURRENT",
+        "BASE"
+      ],
+      "impact_change_reason": "current删去一处重复总结并将JPL校准覆盖值从概数改为逐路径精确值，改善表达但没有改变实验内容。",
+      "evidence_ids": [
+        "CURRENT",
+        "BASE"
+      ]
+    }
+  ],
+  "field_guide": {
+    "id": "稳定问题ID；同一根因沿用ID",
+    "status": "supported / partly_supported / unverified / refuted",
+    "kind": "defect / scope_limit / research_extension",
+    "severity": "blocker / major / minor / extension",
+    "primary_criterion": "唯一主要归属BR-xx",
+    "secondary_impacts": "每项必须有不同受影响要求、独立证据和distinct_reason，不能复制主要理由",
+    "present_in_baseline": "true/false",
+    "present_in_current": "true/false",
+    "used_for_score": "只有经过核实的问题可以为true",
+    "impact_changed": "旧新均存在但影响不同，须有impact_change_evidence_ids和具体说明"
+  }
+}

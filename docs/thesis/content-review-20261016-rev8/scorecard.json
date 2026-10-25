@@ -1,0 +1,588 @@
+{
+  "schema_version": 1,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "FORMAL-20261016-REV8",
+  "assessment_kind": "formal",
+  "review_date": "2026-10-16",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "EVCS-THESIS-REV8-20261016",
+    "manuscript_path": "docs/thesis/thesis-manuscript.md",
+    "manuscript_sha256": "f5ba2ddba9157fa18ea91c93214a375c2422916916125ba0f50a9d5ced228f6e",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "scope_note": "五章全文、双语摘要、结论、表格与图注的内容评估；版式另行验收。致谢/在读成果按用户此前指示暂缓。",
+    "evidence": [
+      {
+        "id": "MS",
+        "path": "packet/manuscript-frozen.md",
+        "sha256": "f5ba2ddba9157fa18ea91c93214a375c2422916916125ba0f50a9d5ced228f6e",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/thesis-manuscript.md",
+        "locator": "packet/manuscript-frozen.md",
+        "reviewed": true
+      },
+      {
+        "id": "PREV",
+        "path": "packet/prior-manuscript-rev7.md",
+        "sha256": "99c5e22c64aa5d46333b727bd6f313a75f4958f1de4dbbf1133ae476f9643419",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261015-final/manuscript-before.md",
+        "locator": "packet/prior-manuscript-rev7.md",
+        "reviewed": true
+      },
+      {
+        "id": "BASE",
+        "path": "packet/prior-scorecard-rev7.json",
+        "sha256": "a9eb3b540f29f5a94efd8ea645a3855caf39efd863379decb3211915e7860165",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261015-rev7/scorecard.json",
+        "locator": "packet/prior-scorecard-rev7.json",
+        "reviewed": true
+      },
+      {
+        "id": "RUB",
+        "path": "packet/rubric.json",
+        "sha256": "244fb698bd39b0e935e45116671c1954659a6720dc33faa42d9a7faf89433548",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/scoring/rubric.json",
+        "locator": "packet/rubric.json",
+        "reviewed": true
+      },
+      {
+        "id": "RULE",
+        "path": "packet/score-rules.md",
+        "sha256": "750599eefbc9ab798b1196461ae3961930f61dad408a507d708432050b78feb5",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/scoring/README.md",
+        "locator": "packet/score-rules.md",
+        "reviewed": true
+      },
+      {
+        "id": "SRC",
+        "path": "packet/source-audit.json",
+        "sha256": "ff6a46c35628cd0fef13daa6e7c8c9e7a8aa940966777e06b201114a5ee11377",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261015-final/source-audit.json",
+        "locator": "packet/source-audit.json",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR72",
+        "path": "packet/nearest-work-72-73.md",
+        "sha256": "2ca238e2e2214e2d526f2782c46fbd437db35a74f0f05113f1b5f7672f4a9048",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261015-final/nearest-work-72-73.md",
+        "locator": "packet/nearest-work-72-73.md",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR",
+        "path": "packet/nearest-work-original.md",
+        "sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/nearest-work-source-audit.md",
+        "locator": "packet/nearest-work-original.md",
+        "reviewed": true
+      },
+      {
+        "id": "CALTECH",
+        "path": "packet/caltech-main-strata.json",
+        "sha256": "e8be7dfa18db1436ab73a335f81082f11629fe7a42cfbe3d6042773d45e4b6cc",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261015-final/caltech-main-strata.json",
+        "locator": "packet/caltech-main-strata.json",
+        "reviewed": true
+      },
+      {
+        "id": "JPLCAL",
+        "path": "packet/jpl-calibration-report.md",
+        "sha256": "da74215ccdc23de4aa0901efa6eec09693ca03233be5befb29eae620c702352a",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-JPL-calibration-20261015-no-training.md",
+        "locator": "packet/jpl-calibration-report.md",
+        "reviewed": true
+      },
+      {
+        "id": "JPLCA",
+        "path": "packet/jpl-calibration-audit.json",
+        "sha256": "e85cde7561b3d4df27701c8756522619736b3f189ca05d4b51ca9ce11931fb50",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/JPL-calibration-20261015/audit.json",
+        "locator": "packet/jpl-calibration-audit.json",
+        "reviewed": true
+      },
+      {
+        "id": "JPLCV",
+        "path": "packet/jpl-calibration-verification.json",
+        "sha256": "42b1c5184b2c3b3011f22c0041e9f9ede5198260272016b5cc0dc746fd045184",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/JPL-calibration-20261015/independent-verification.json",
+        "locator": "packet/jpl-calibration-verification.json",
+        "reviewed": true
+      },
+      {
+        "id": "ADAPT",
+        "path": "packet/adaptivegraph-report.md",
+        "sha256": "380427dbca21f32cdf80eb261587e1800ee9182f062adb6535cab5ba719b3774",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-AdaptiveGraph-CUDA-20261015-no-training.md",
+        "locator": "packet/adaptivegraph-report.md",
+        "reviewed": true
+      },
+      {
+        "id": "ADAPTV",
+        "path": "packet/adaptivegraph-verification.json",
+        "sha256": "76499e6f387d971e33df08acb75479109aabb70d7b407f1b9520b6bb53891e84",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/AdaptiveGraph-CUDA-20261015/independent-verification.json",
+        "locator": "packet/adaptivegraph-verification.json",
+        "reviewed": true
+      },
+      {
+        "id": "S31",
+        "path": "packet/sg031-report.md",
+        "sha256": "c875bb7b3b0569603c8fabe3c0e0cb7d1e44c0841c056a5fbdefc871f79c0ecd",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+        "locator": "packet/sg031-report.md",
+        "reviewed": true
+      },
+      {
+        "id": "S31A",
+        "path": "packet/sg031-audit.json",
+        "sha256": "8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-031-audit-20261015/audit.json",
+        "locator": "packet/sg031-audit.json",
+        "reviewed": true
+      },
+      {
+        "id": "S32",
+        "path": "packet/sg032-report.md",
+        "sha256": "9585428a9501321944ba38efcfacaa3978d8c2514149c6eedfe0a46fd25b0f8a",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md",
+        "locator": "packet/sg032-report.md",
+        "reviewed": true
+      },
+      {
+        "id": "S32A",
+        "path": "packet/sg032-audit.json",
+        "sha256": "11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-032-target-audit/audit.json",
+        "locator": "packet/sg032-audit.json",
+        "reviewed": true
+      },
+      {
+        "id": "MDP",
+        "path": "packet/jpl-mdp-report.md",
+        "sha256": "f65ce5d985d71fc61bdc9d76c92be53d634c70bb2c66a91f584e22033739d371",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-JPL-MDP-20261014-no-training.md",
+        "locator": "packet/jpl-mdp-report.md",
+        "reviewed": true
+      },
+      {
+        "id": "REG",
+        "path": "packet/experiment-registry.md",
+        "sha256": "e7fcb73a7edf9681db4b783b3cbf8a708cd0a59c17cfd3f83344a5a25e452a62",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-registry.md",
+        "locator": "packet/experiment-registry.md",
+        "reviewed": true
+      },
+      {
+        "id": "CLAIMS",
+        "path": "packet/claim-evidence-map.md",
+        "sha256": "c85e7d50ca927c58e260b00d84da26528723d48b8a13e4a37c08d928a9da6c92",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/claim-evidence-map.md",
+        "locator": "packet/claim-evidence-map.md",
+        "reviewed": true
+      },
+      {
+        "id": "DATA",
+        "path": "packet/data-availability.md",
+        "sha256": "bec4ccb5180a912229eeb690c111c736a31aa8d3198f0e7ca80ee1f4526cc09a",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/data-availability.md",
+        "locator": "packet/data-availability.md",
+        "reviewed": true
+      },
+      {
+        "id": "PASS",
+        "path": "packet/material-passport.md",
+        "sha256": "33ecc45c11775788fc9e6979949ef78fef5900a1583d8b01df5feb030681c2ea",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/material-passport.md",
+        "locator": "packet/material-passport.md",
+        "reviewed": true
+      },
+      {
+        "id": "METRIC",
+        "path": "packet/metric-diagnostics.md",
+        "sha256": "f05be486274128ea9969eb7908b88442c05b101ba1618a4a14da3fb5bcb42a71",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/metric-diagnostics.md",
+        "locator": "packet/metric-diagnostics.md",
+        "reviewed": true
+      },
+      {
+        "id": "QUALITY",
+        "path": "packet/data-quality-report.md",
+        "sha256": "06a6b9a43fc675e7527646aaa81a92d13aa4c91802b72ae8f4f07314fde5862b",
+        "scope": "REV8 frozen packet; checked for cited scoring criteria",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/data-quality-report.md",
+        "locator": "packet/data-quality-report.md",
+        "reviewed": true
+      }
+    ]
+  },
+  "reviewer_reports": [
+    "reviewer-integrity.md",
+    "reviewer-methods.md",
+    "reviewer-literature-practice.md"
+  ],
+  "forensic_report": "forensic-review.md",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": 4.5,
+      "manuscript_location": "摘要；§1.1.1–1.1.3；§2.1.2；§5.4.1",
+      "evidence_ids": [
+        "MS",
+        "DATA",
+        "PASS"
+      ],
+      "rationale": "节点代理能量对象、粒度、数据来源和研究需求均有明确界定；实际计量功率、用户需求和业务收益仍未量化。REV8的内容重组未增加现场需求或计量证据，维持REV7评分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "内容表述更新没有改变问题意义所依据的实证材料。",
+        "evidence_ids": [
+          "MS",
+          "DATA"
+        ]
+      }
+    },
+    {
+      "id": "BR-02",
+      "score": 5.0,
+      "manuscript_location": "题名、摘要；§1.3–1.6；§3.8；§4.5–4.6；结论",
+      "evidence_ids": [
+        "MS",
+        "CLAIMS",
+        "REG"
+      ],
+      "rationale": "摘要、研究目标、主结果和结论围绕站内代理负荷及条件性组件增量，并把JPL界定为另一场站重新拟合；没有将已查看测试期补充写成盲测或零样本迁移。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "主线压缩未改变研究对象和结果范围，已有范围边界保持一致。",
+        "evidence_ids": [
+          "MS",
+          "CLAIMS"
+        ]
+      }
+    },
+    {
+      "id": "BR-03",
+      "score": 4.5,
+      "manuscript_location": "§1.2.2、表1-1；近邻核查[12]、[13]、[67]、[70]、[71]、[72]、[73]",
+      "evidence_ids": [
+        "MS",
+        "NEAR",
+        "NEAR72"
+      ],
+      "rationale": "新增[72]/[73]的摘要级方法先例及其与本文差异，并更明确收窄研究缺口；既有[12]/[13]/[67]/[70]/[71]比较亦标明来源可读范围。由于[72]/[73]完整实验协议仍未核实，尚不足以把文献比较提升至满分档。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "新增近邻段落改善了比较完整性，但可核实内容止于摘要，尚不足以跨越半分锚点；不因此把既有、已条件化的贡献再扣一次。",
+        "evidence_ids": [
+          "NEAR72",
+          "NEAR"
+        ]
+      }
+    },
+    {
+      "id": "BR-04",
+      "score": 4.5,
+      "manuscript_location": "§2.1–2.6；§3.2–3.5；§4.2.5；§5.2–5.4",
+      "evidence_ids": [
+        "MS",
+        "QUALITY",
+        "METRIC",
+        "S32"
+      ],
+      "rationale": "代理能量与实测功率、统计关系与物理拓扑、冻结β干预与关系替换重训均有区分；替代完成时刻目标结果被限定为固定拓扑下的敏感性。代理标签效度与输入时延仍未验证。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "内容重组与已有敏感性结果均未解决代理目标的物理效度及部署时点问题。",
+        "evidence_ids": [
+          "MS",
+          "S32",
+          "QUALITY"
+        ]
+      }
+    },
+    {
+      "id": "BR-05",
+      "score": 8.5,
+      "manuscript_location": "§2.1.1–2.1.3；§3.6.2–3.8.4；表3-11、表3-14、表3-15",
+      "evidence_ids": [
+        "MS",
+        "REG",
+        "S31",
+        "S31A",
+        "S32",
+        "S32A"
+      ],
+      "rationale": "同参数关系替换、完成时刻截断目标和容量近似TCN均有训练合同及审计；行为GRU、容量匹配AGCRN、未查看测试期确认和共享门控训练预算解释仍缺。这些设计优势已在REV7计入，REV8未新增训练对照。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮是正文与证据同步及交付整理，没有新增可改变实验设计评分的对照训练。",
+        "evidence_ids": [
+          "S31A",
+          "S32A"
+        ]
+      }
+    },
+    {
+      "id": "BR-06",
+      "score": 4.5,
+      "manuscript_location": "§3.6.1、§3.6.3–3.6.4；§3.8.3；表3-14",
+      "evidence_ids": [
+        "MS",
+        "ADAPT",
+        "ADAPTV",
+        "S31A",
+        "S32A",
+        "JPLCA",
+        "SRC"
+      ],
+      "rationale": "三种AdaptiveGraph既有检查点的匹配CUDA逐键复核、SG-031/032逐键审计与JPL校准重算均有材料；正文现已同步CUDA结论。CUDA复核材料在REV7包中已存在，这次同步属于论文表述与证据闭合修订并计入BR-12，故不重复加分；原训练git_commit缺失且本轮未从头重现，仍不满足最高可追溯性锚点。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "新稿修复了报告与正文的状态同步，但不构成新的原始复算；该同步改进只计入BR-12，避免重复计分。",
+        "evidence_ids": [
+          "ADAPT",
+          "ADAPTV",
+          "MS"
+        ]
+      }
+    },
+    {
+      "id": "BR-07",
+      "score": 9.0,
+      "manuscript_location": "§2.1–2.6；§3.3–3.8；§4.2–4.6；§5.2–5.4",
+      "evidence_ids": [
+        "MS",
+        "REG",
+        "S31",
+        "S32",
+        "JPLCAL",
+        "ADAPT"
+      ],
+      "rationale": "研究涵盖会话重构、多协议比较、关系替换、目标敏感性、诊断和可靠性分析。工作量不按文件或运行数累加；本轮内容重排未改变既有工作难度评价，现场量测和外部资料缺口仍在。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮完成稿件整编和交付，不增加研究工作量的实质性证据。",
+        "evidence_ids": [
+          "MS",
+          "REG"
+        ]
+      }
+    },
+    {
+      "id": "BR-08",
+      "score": 9.0,
+      "manuscript_location": "§3.6–3.8；表3-11、表3-13、表3-15；§4.2–4.6；结论",
+      "evidence_ids": [
+        "MS",
+        "CALTECH",
+        "S31A",
+        "S32A",
+        "JPLCAL",
+        "JPLCA",
+        "CLAIMS"
+      ],
+      "rationale": "核心结论有总体及分层结果、关系条件增量和替代目标敏感性支持；新JPL校准核对已有预测的分层覆盖，但使用已查看测试期。REV8主要调整呈现次序，没有增加新的性能证据或独立确认。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "结果重排使主要比较更易读，但所依据的实验与证据等级已计入REV7。",
+        "evidence_ids": [
+          "MS",
+          "JPLCAL",
+          "S31A",
+          "S32A"
+        ]
+      }
+    },
+    {
+      "id": "BR-09",
+      "score": 9.5,
+      "manuscript_location": "§3.6–3.8；§4.2.5、§4.3.3、§4.4.4、§4.6；§5.2–5.3；结论",
+      "evidence_ids": [
+        "MS",
+        "METRIC",
+        "S31A",
+        "S32A",
+        "JPLCA",
+        "JPLCV"
+      ],
+      "rationale": "稿件仍区分种子差异、固定期时间块区间、事后分层和经验校准覆盖；非零组反向结果、区间跨零及实测边界均明示。新校准仍重用已查看时段，不提供外部抽样或前瞻确认。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮未改变分析对应的不确定性层级，且未取得盲测或未见场站/时段证据。",
+        "evidence_ids": [
+          "MS",
+          "METRIC",
+          "JPLCV"
+        ]
+      }
+    },
+    {
+      "id": "BR-10",
+      "score": 8.0,
+      "manuscript_location": "表1-1；§1.2.2–1.2.4；§3.5.8、§3.7.1–3.7.2、§3.8；§4.5–4.6；结论",
+      "evidence_ids": [
+        "MS",
+        "NEAR",
+        "NEAR72",
+        "S31",
+        "S31A",
+        "CLAIMS"
+      ],
+      "rationale": "贡献限定于站内代理任务、同参数节点门控及有条件的关系增量；JPL同参数替换支持两类关系相对自环的条件增量，第三类仍不确定。[72]/[73]加强了多图及门控时空结构已有先例的界定，但属住宅负荷摘要级近邻，未证明本文的单场站会话代理任务增量已被直接复现。仍无诊断指导改模获益或外部确认。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "新比较进一步限制一般结构首创主张，但本稿已明确采用任务化、条件增量定位；SG-031带来的核心实验价值已在REV7计分，本轮没有新增算法能力。文献评阅者提出下调0.5，主评认为摘要级住宅负荷近邻不足以改变既有条件性增量锚点，故维持。",
+        "evidence_ids": [
+          "NEAR72",
+          "S31",
+          "MS"
+        ]
+      }
+    },
+    {
+      "id": "BR-11",
+      "score": 3.5,
+      "manuscript_location": "§2.1.2；§5.4.1–5.4.5；表5-7、表5-8；结论",
+      "evidence_ids": [
+        "MS",
+        "DATA",
+        "CLAIMS"
+      ],
+      "rationale": "第5.4章提供预测到运行核查接口和合成约束算例，但没有同步电表、真实车辆/设备约束、影子运行或现场效益。新校准与正文整编不改变此项实践证据。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮未新增计量、真实约束或运行收益材料。",
+        "evidence_ids": [
+          "MS",
+          "DATA"
+        ]
+      }
+    },
+    {
+      "id": "BR-12",
+      "score": 9.5,
+      "manuscript_location": "双语摘要、§1.2、§3.6—3.8、§5.3—5.5、表3-13、结論",
+      "evidence_ids": [
+        "MS",
+        "PREV",
+        "SRC",
+        "NEAR72",
+        "ADAPT",
+        "REG"
+      ],
+      "rationale": "摘要与结论分别由929/1859个汉字压至614/1082个；主要预测结果与困难分组前置，完整配置表移至附录A，且表3-13旧交叉引用已修正。新增[72]/[73]正文比较、AdaptiveGraph CUDA状态同步及图表/引文闭合改善了叙事与规范。仍有回溯分析和局限说明可再压缩，故不给满分。",
+      "na_reason": null,
+      "change": {
+        "type": "improvement",
+        "reason": "配对REV7，摘要和结论明显压缩，结果主次重排、完整配置移至附录，近邻文献入文，CUDA结论与正文同步，表3-13交叉引用修正；这些可直接核对的修订支持+0.5。封面与版式项另行验收，不并入本内容项。",
+        "evidence_ids": [
+          "MS",
+          "PREV",
+          "SRC",
+          "NEAR72",
+          "ADAPT"
+        ]
+      }
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "SG-EXP-031/032复用已查看固定测试期，不能视为盲测确认或未来期/不同数据家族验证。",
+    "会话均匀分摊代理目标仍不是电表实测功率；输入到达时延与现场效益未验证。",
+    "非零目标/标签事件组未优于TCN；总体MAE改善主要来自零目标键，关系增量限于特定协议与对照。",
+    "JPL新校准使用既有已查看测试期预测；AdaptiveGraph原训练git_commit仍缺，当前CUDA检查点重放不能替代从头复现。",
+    "封面作者、导师、专业领域与日期等项目仍为空，按模板保留；致谢与在读成果页按用户要求暂缓。Mac版WPS报告缺失字体并采用本机替代；PDF高清导出将图像下采样至约600 DPI。"
+  ],
+  "reviewer_suggestions": [
+    {
+      "perspective": "integrity",
+      "raw_score": 80.0,
+      "vector": [
+        4.5,
+        5,
+        4.5,
+        4.5,
+        8.5,
+        4.5,
+        9,
+        9,
+        9.5,
+        8,
+        3.5,
+        9.5
+      ]
+    },
+    {
+      "perspective": "methods_evidence",
+      "raw_score": 80.5,
+      "vector": [
+        4.5,
+        5,
+        4.5,
+        4.5,
+        8.5,
+        5,
+        9,
+        9,
+        9.5,
+        8,
+        3.5,
+        9.5
+      ]
+    },
+    {
+      "perspective": "literature_contribution_practice",
+      "raw_score": 80.0,
+      "vector": [
+        4.5,
+        5,
+        5,
+        4.5,
+        8.5,
+        4.5,
+        9,
+        9,
+        9.5,
+        7.5,
+        3.5,
+        9.5
+      ]
+    }
+  ],
+  "adjudication_note": "三份隔离视角的原始总分为80.0、80.5、80.0/90。主评按EVCS-THESIS-CONTENT-1.0与REV7逐项配对，不取平均。裁定80.0/90：BR-12 +0.5；其余保持REV7，其中BR-03不因摘要级近邻材料升至满分，BR-10不再重复计入已在REV7计分的SG-031条件增量，BR-06的CUDA复核已见于REV7证据包，本轮同步正文计入BR-12而不在BR-06重复加分。方法视角对BR-06建议+0.5，因训练git_commit仍缺且没有新增原始重放，未采纳；文献视角对BR-03/BR-10提出相反方向的各0.5变化，主评认为正文已准确限定近邻层级和任务差异，未采用。各缺口及适用边界保留。"
+}

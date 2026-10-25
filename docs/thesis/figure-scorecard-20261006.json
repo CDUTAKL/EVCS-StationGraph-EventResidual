@@ -978,9 +978,9 @@
       "chapter": 3,
       "number": 9,
       "title": "不同模型的全局MAE",
-      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_model_mae_comparison.png",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_model_mae_comparison.png",
       "caption": "随机初始化模型显示三种子均值和标准差；确定性基线无误差棒。所有结果使用相同预测键和kWh/15 min口径。",
-      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_model_mae_comparison.svg",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_model_mae_comparison.svg",
       "size_px": [
         6727,
         4999
@@ -1018,9 +1018,9 @@
       "chapter": 3,
       "number": 10,
       "title": "不同模型的逐步长MAE",
-      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_mae_by_horizon.png",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_horizon.png",
       "caption": "曲线为三种子均值，阴影为跨种子样本标准差；横轴15、30、45、60 min分别对应$h1$～$h4$。实心方形标记表示MRG-GCN（StaticGraph），GWN和AGCRN为本文所检简化变体。",
-      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_mae_by_horizon.svg",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_horizon.svg",
       "size_px": [
         9000,
         4920
@@ -1058,9 +1058,9 @@
       "chapter": 3,
       "number": 11,
       "title": "模型误差差的点级Bootstrap",
-      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_bootstrap_difference.png",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_bootstrap_difference.png",
       "caption": "每行纵轴按“前者vs后者”列出比较模型，点为MAE(后者)−MAE(前者)，正值表示前者误差更低；并非所有行都以MRG-GCN为比较对象。误差棒为10,000次重采样的95%百分位区间。预测键存在时间、节点及种子内相关性，该区间仅作点级误差差描述，不作跨种子显著性判断。",
-      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_bootstrap_difference.svg",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_bootstrap_difference.svg",
       "size_px": [
         6847,
         5778
@@ -1098,9 +1098,9 @@
       "chapter": 3,
       "number": 12,
       "title": "不同评价窗口的MAE",
-      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_window.png",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mae_by_window.png",
       "caption": "柱高为三种子均值，误差棒为跨种子标准差；纵轴采用对数尺度，以同时显示事件和稳定窗口的量级差异。",
-      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_window.svg",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mae_by_window.svg",
       "size_px": [
         6727,
         3799
@@ -1138,9 +1138,9 @@
       "chapter": 3,
       "number": 13,
       "title": "不同模型的逐节点MAE",
-      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_mae_by_node.png",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_mae_by_node.png",
       "caption": "热力图为10个节点和6个模型的三种子均值；节点按主张量测试预测起点对应时刻的累计代理负荷降序排列。颜色与数值使用同一节点映射，颜色表示误差大小，不表示节点间关系；GWN与AGCRN为原主实验的简化变体。",
-      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_mae_by_node.svg",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_mae_by_node.svg",
       "size_px": [
         6695,
         4410
@@ -1178,9 +1178,9 @@
       "chapter": 3,
       "number": 14,
       "title": "结构消融结果",
-      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mechanism_ablation.png",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_mechanism_ablation.png",
       "caption": "柱高为三种子均值，误差棒为跨种子标准差。百分比均相对于消融套件的0.01390内部基线，不与表3-2主模型直接换算。",
-      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mechanism_ablation.svg",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_mechanism_ablation.svg",
       "size_px": [
         6727,
         3799
@@ -1218,9 +1218,9 @@
       "chapter": 3,
       "number": 15,
       "title": "JPL整体MAE与七日时间块配对比较",
-      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_jpl_mae_primary.png",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_jpl_mae_primary.png",
       "caption": "左侧显示四种模型在2024、2025、2026三个种子下的整体MAE，汇总为均值±样本标准差；右侧显示基线减MRG-GCN的MAE差及Bonferroni校正98.33%置信区间。时间块分析基于24个非重叠七日块和10,000次配对重采样，差值为正表示MRG-GCN误差较低。两类误差棒分别反映种子离散度与固定测试期的时间块差异，不作相同统计解释。",
-      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_jpl_mae_primary.svg",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_jpl_mae_primary.svg",
       "size_px": [
         7715,
         3442
@@ -1258,9 +1258,9 @@
       "chapter": 3,
       "number": 16,
       "title": "JPL分层MAE比较",
-      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_jpl_stratified_mae.png",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_jpl_stratified_mae.png",
       "caption": "四个面板分别显示标签事件、稳定、零目标与非零目标预测键上的MAE，散点为三个种子，汇总为均值±样本标准差；各模型使用相同的冻结分层掩码。各面板纵轴独立设置范围，下限均不为零，跨面板比较须依据刻度。分层结果用于界定整体MAE优势的范围，不表示各层均由MRG-GCN取得最低误差。",
-      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_jpl_stratified_mae.svg",
+      "manuscript_link": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_jpl_stratified_mae.svg",
       "size_px": [
         6559,
         4029

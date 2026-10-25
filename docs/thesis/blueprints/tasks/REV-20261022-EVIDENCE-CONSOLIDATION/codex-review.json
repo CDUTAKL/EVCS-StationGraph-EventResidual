@@ -1,0 +1,26 @@
+{
+  "task_id": "REV-20261022-EVIDENCE-CONSOLIDATION",
+  "reviewer": "Codex",
+  "reviewed_at": "2026-10-22T22:44:43+08:00",
+  "status": "review_complete_with_explicit_limits",
+  "collector_status_preserved": "scope_violation",
+  "scope_attribution": "Two collected outside-scope changes were Codex replay-script/JSON work, not Claude tool calls. Subsequent reference-date correction, Word/PDF recovery and delivery review were also performed by Codex. Original collection record is retained.",
+  "source_sha256": "8ac58074c2a53835883c6635cdf7d6f0044e7971e67af6de36e3f4248e75d9d5",
+  "reproducibility_index_sha256": "972118903e4c30c8733d97867380e76651997e184933ce9ba4aafebecb2162a7",
+  "epfl_result_sha256": "c0e83a578c8b47fca89511c7a5b070833efe420d69066ab283ecec298b7b1f76",
+  "delivery_report": "docs/thesis/revision-20261022-delivery/DELIVERY.md",
+  "checks": {
+    "saved_prediction_replay": "PASS;18runs;not checkpoint forward inference",
+    "EPFL": "exploratory;1620eligible;meter boundary unresolved",
+    "compatible_unseen_data": "not identified among checked candidates",
+    "PDF_visual_review": "all106pages viewed;minor layout findings retained",
+    "training": "not performed",
+    "new_score": "not issued"
+  },
+  "limits": [
+    "Historical Git identity limitations retained.",
+    "Four archive sidecars and project data required for replay.",
+    "WPS font warning not eliminated;PDF embeds all used fonts.",
+    "No claim of real operational benefit or ACN measured-target calibration."
+  ]
+}

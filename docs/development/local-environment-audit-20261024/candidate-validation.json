@@ -1,0 +1,26 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+  "machine": "arm64",
+  "expected_packages": 61,
+  "actual_pinned_packages": 61,
+  "version_mismatches": {},
+  "unlisted_packages": {},
+  "module_availability": {
+    "torch": true,
+    "numpy": true,
+    "pandas": true,
+    "docx": true,
+    "matplotlib": true,
+    "openpyxl": true,
+    "lxml": true,
+    "PIL": true,
+    "tigramite": true,
+    "sklearn": true,
+    "pypdf": true,
+    "pdfplumber": true,
+    "pdf2image": true,
+    "reportlab": true,
+    "xgboost": true,
+    "lightgbm": true
+  }
+}

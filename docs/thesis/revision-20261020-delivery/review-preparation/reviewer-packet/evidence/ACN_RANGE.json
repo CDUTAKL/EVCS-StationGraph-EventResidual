@@ -1,0 +1,74 @@
+{
+  "derived_from": "range_probe.json",
+  "checked_at_utc": "2026-10-19T06:02:57.685593+00:00",
+  "interpretation": "Chronological min/max computed from the two returned connectionTime boundary values; original script labels were inverted relative to the returned timestamps.",
+  "verification_limit": "ConnectionTime extrema independently confirmed: strict where queries returned zero records both below the candidate minimum and above the candidate maximum for all three sites.",
+  "sites": [
+    {
+      "site_name": "Caltech",
+      "site_id": "caltech",
+      "matching_session_count": 31424,
+      "earliest_connectionTime_utc_observed": "Wed, 25 Apr 2018 11:08:04 GMT",
+      "latest_connectionTime_utc_observed": "Tue, 14 Sep 2021 01:52:37 GMT",
+      "earliest_response_sort": "connectionTime",
+      "earliest_response_sha256": "8d9d1ddbbb9f1fa2938040cc90f302db71695daa5afef834769e7d3c64b49695",
+      "latest_response_sort": "-connectionTime",
+      "latest_response_sha256": "6310f67f53bfc5456d239f84612a699a979f54a509381d6bd9a14c49b22dd3d6"
+    },
+    {
+      "site_name": "JPL",
+      "site_id": "jpl",
+      "matching_session_count": 33638,
+      "earliest_connectionTime_utc_observed": "Wed, 05 Sep 2018 11:04:13 GMT",
+      "latest_connectionTime_utc_observed": "Tue, 14 Sep 2021 05:43:39 GMT",
+      "earliest_response_sort": "connectionTime",
+      "earliest_response_sha256": "af325900ab6bb76615ef3a9b9ce0f2410cf8cb12ab699ee2aacabb87fc833797",
+      "latest_response_sort": "-connectionTime",
+      "latest_response_sha256": "6e165a5adc997ec167b880b020a26ab6b7b3e862a4152d529eb5c9e3f536f99b"
+    },
+    {
+      "site_name": "Office 1",
+      "site_id": "office001",
+      "matching_session_count": 1683,
+      "earliest_connectionTime_utc_observed": "Mon, 25 Mar 2019 16:24:42 GMT",
+      "latest_connectionTime_utc_observed": "Mon, 13 Sep 2021 21:21:51 GMT",
+      "earliest_response_sort": "connectionTime",
+      "earliest_response_sha256": "81f94880622cca3db2631dc86bcdbf39fe775649ee6ffd0e143d7015afeecda0",
+      "latest_response_sort": "-connectionTime",
+      "latest_response_sha256": "f1a1e1476d34166997dfc334e252f835c2434479b199535b77b1bd977d201f94"
+    }
+  ],
+  "bounds_verification": {
+    "checked_at_utc": "2026-10-19T06:06:36.557679+00:00",
+    "manifest": "/Users/xushuyuan/acn_metadata_audit_20261019/bounds_verification.json",
+    "all_sites_confirmed": true,
+    "counts": {
+      "Caltech": [
+        0,
+        0
+      ],
+      "JPL": [
+        0,
+        0
+      ],
+      "Office 1": [
+        0,
+        0
+      ]
+    },
+    "response_sha256_by_site": {
+      "Caltech": [
+        "0392e8121a25fd016265a7fb3ac5e43dff69adde6e5ddff845f95e25a194297c",
+        "0392e8121a25fd016265a7fb3ac5e43dff69adde6e5ddff845f95e25a194297c"
+      ],
+      "JPL": [
+        "de48d802736d205567d72c949dfcb8a638bb53736ef75d6dd531f9e75b31eea1",
+        "de48d802736d205567d72c949dfcb8a638bb53736ef75d6dd531f9e75b31eea1"
+      ],
+      "Office 1": [
+        "6ca77754695e88f7657e6eb2f1f508cd7ab7641ed08cb20172e89d469f1898bc",
+        "6ca77754695e88f7657e6eb2f1f508cd7ab7641ed08cb20172e89d469f1898bc"
+      ]
+    }
+  }
+}

@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "task_id": "REVIEW-20261019-ORIGINALITY",
+  "title": "同量表配对盲审：originality",
+  "task_type": "scoring",
+  "workflow_stage": "同量表配对复评／隔离评阅",
+  "objective": "在严格隔离的Claude Code新上下文中，完整审阅同一冻结旧稿、当前稿、证据包和固定评分锚点，独立给出12项配对评分与依据。重点核查近邻工作、研究缺口、贡献增量和新增知识；仍须覆盖全部12项。 独立上下文登记号：CC-REVIEW-20261019-ORIGINALITY-FRESH。",
+  "context_sources": [],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manifest.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/reviewer_instructions.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/rubric.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/anchors.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manuscripts/baseline.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manuscripts/current.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/ADAPT.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/ADAPTAUDIT.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/CAL.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/DATA_AVAIL.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MAP.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MDP.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MRECOMP.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR2.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR76.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR_20261016.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NZ.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/PASSPORT.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/QUALITY.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/RECOMP.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S31.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S31AUDIT.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S32.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S32AUDIT.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "本轮统一冻结盲审包：仅含旧稿、当前稿、同一科学证据和固定量表；须完整阅读。"
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": [
+    "docs/thesis/content-review-20261019-paired/reviewers/originality-report.md",
+    "docs/thesis/content-review-20261019-paired/reviewers/originality-record.json"
+  ],
+  "locked_claims": [
+    "不得读取或搜索项目目录、用户记忆、历史评分、既往评分意见或其他评阅报告。",
+    "不得修改论文、证据、评分政策、任务控制文件或Word文件。",
+    "固定使用随包评分量表和锚点；不改变权重、分值范围和0.5分步长。",
+    "对旧稿与当前稿使用相同标准；不能只因当前稿被新发现的问题降分。",
+    "结果仅为内部非官方内容模拟评阅，不映射学校等级。",
+    "机器记录context_id必须逐字使用：CC-REVIEW-20261019-ORIGINALITY-FRESH。"
+  ],
+  "steps": [
+    "仅阅读本任务EXECUTION_PACKET内的冻结材料，不调用外部搜索、不打开其他项目文件；先阅读manifest与说明，核对所有已列材料。",
+    "按稿件从头到尾分块阅读baseline.md和current.md全文，直到两个文件均读完；不得只读摘要、差异片段或自动截断的开头。",
+    "阅读完整rubric.json、anchors.json及所有19份证据；对支撑评分的关键数字、引用与比较逐项记录证据ID和稿件位置。",
+    "独立按12项固定分值范围分别评价旧稿和当前稿；每项先考虑组件，再给0.5分步长。指出稳定依据、变化依据和仍然存在的证据边界。",
+    "撰写完整原始评阅报告，并建立机器记录；报告和机器记录的12项分值、稿件哈希必须一致。将任务上下文标识填为本蓝图指定的唯一评阅上下文ID。",
+    "不要查看另外两名评阅者的结果，不要对三视角取平均，不要给出学校官方等级或格式验收结论。"
+  ],
+  "acceptance_criteria": [
+    "两稿均全文阅读，记录阅读范围；若受上下文或时间限制未读完，明确阻断并不伪造完整评分。",
+    "12项均有旧稿分、当前稿分、稿件定位、证据ID和独立理由；分值遵循每项上限和0.5步长。",
+    "对每项变化区分论文实际改变与解释分歧；评分意见不得引用或猜测任何历史总分。",
+    "原始报告和JSON机器记录均写入各自允许路径；execution-report.json准确记录模型和实际完成情况。"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [],
+    "network_domains": []
+  },
+  "deliverables": [
+    "docs/thesis/content-review-20261019-paired/reviewers/originality-report.md",
+    "docs/thesis/content-review-20261019-paired/reviewers/originality-record.json",
+    "execution-report.json"
+  ]
+}

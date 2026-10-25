@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261020-LANGUAGE-001",
+  "status": "report_incomplete",
+  "collected_at": "2026-10-19T17:09:03+00:00",
+  "baseline_head": "1a708ff62f694de6391e7296209d03997b8f72d4",
+  "current_head": "1a708ff62f694de6391e7296209d03997b8f72d4",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [],
+  "out_of_scope_changes": [],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [
+    "execution-report.summary尚未填写",
+    "execution-report.model未记录"
+  ],
+  "executor_report": {
+    "task_id": "REV-20261020-LANGUAGE-001",
+    "executor": "Claude Code",
+    "model": "",
+    "user_reported_model": "DeepSeek",
+    "summary": "",
+    "changed_paths": [],
+    "evidence_used": [],
+    "claim_or_number_changes": [],
+    "checks": [],
+    "unresolved": [],
+    "blockers": []
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

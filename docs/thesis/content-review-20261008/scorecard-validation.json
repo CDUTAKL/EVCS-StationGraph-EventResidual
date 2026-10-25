@@ -1,0 +1,22 @@
+{
+  "validator": "/Users/xushuyuan/Documents/Codex/EVCS-EventGraph-Thesis/files-mentioned-by-the-user-research/research-workflow-kit/scripts/audit_masters_blind_review.py",
+  "validator_interface": "validate_scorecard function; avoids known incorrect CLI /100 label",
+  "errors": [],
+  "warnings": [],
+  "raw_total": 74.0,
+  "actual_maximum": 90,
+  "normalized_percent": 82.22,
+  "all_packet_hashes_unchanged": true,
+  "changed_packet_files": [],
+  "reviewer_scores_raw": {
+    "structure": 72.5,
+    "methods": 74.0,
+    "application": 73.0
+  },
+  "raw_reviewer_sha256": {
+    "structure": "86c44b47613d599c59137592a65822bd21bd20919e15f8c143be99dd8e0b39eb",
+    "methods": "6141a2a5f4c4cb418d9ec1013ceccaa36928c226efa10f1ba5382bfdfab17e23",
+    "application": "04f3ed6cd98b805f5a7e76d80012f875e66125bb5076358df159000f80cb6ff5"
+  },
+  "scorecard_sha256": "58d8491c8c1cab38c354d0b50fe9c783aaf31a1bc94e924b1b3a6683ae83d64b"
+}

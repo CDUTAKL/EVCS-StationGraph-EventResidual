@@ -1,0 +1,25 @@
+{
+  "existing_report_rejected": {
+    "returncode": 2,
+    "passed": true,
+    "stderr": "usage: audit_local_environment.py [-h] --root ROOT\n                                  --historical-freeze HISTORICAL_FREEZE\n                                  --out OUT\naudit_local_environment.py: error: report already exists; choose a new path"
+  },
+  "venv_output_rejected": {
+    "returncode": 2,
+    "passed": true,
+    "stderr": "usage: audit_local_environment.py [-h] --root ROOT\n                                  --historical-freeze HISTORICAL_FREEZE\n                                  --out OUT\naudit_local_environment.py: error: report output must be outside .venv"
+  },
+  "script_syntax": {
+    "passed": true
+  },
+  "delivered_files_unchanged": {
+    "thesis-layout-final-1200dpi.docx": true,
+    "thesis-layout-final-1200ppi.pdf": true,
+    "thesis-layout-final-wps.pdf": true,
+    "toc-verification-final.json": true,
+    "pdf-figure-resolution.json": true,
+    "final-docx-preservation.json": true,
+    "visual-qa-final/manual-review.json": true
+  },
+  "source_md_matches_delivery": true
+}

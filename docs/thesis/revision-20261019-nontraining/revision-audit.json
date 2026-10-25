@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "checks": {
+    "heading_sequence_unchanged": true,
+    "changes_within_allowed_headings": true,
+    "all_markdown_table_rows_unchanged": true,
+    "display_equations_unchanged": true,
+    "figure_links_unchanged": true,
+    "reference_entries_unchanged": true,
+    "numeric_changes_match_reviewed_allowances": true,
+    "protected_scoring_and_scientific_records_unchanged": true,
+    "correct_fixed_gate_reference": true,
+    "correct_tau_definition": true,
+    "gate_budget_followup_is_paired": true
+  },
+  "changed_headings": [
+    "1.2.2 多节点负荷与时空图预测",
+    "1.5 技术路线",
+    "1.6 论文组织结构",
+    "3.5.4 节点级门控",
+    "5.4.1 预测量与运行量的对应",
+    "摘  要",
+    "研究局限与后续工作"
+  ],
+  "numeric_deltas": [
+    {
+      "heading": "1.6 论文组织结构",
+      "added": {},
+      "removed": {},
+      "matches_reviewed_allowance": true
+    },
+    {
+      "heading": "1.5 技术路线",
+      "added": {},
+      "removed": {},
+      "matches_reviewed_allowance": true
+    },
+    {
+      "heading": "摘  要",
+      "added": {
+        "15": 1,
+        "0.03890": 1,
+        "1.82": 1,
+        "1.52": 1
+      },
+      "removed": {},
+      "matches_reviewed_allowance": true
+    },
+    {
+      "heading": "3.5.4 节点级门控",
+      "added": {
+        "1": 1,
+        "3.7.2": 1
+      },
+      "removed": {
+        "3.6.2": 1
+      },
+      "matches_reviewed_allowance": true
+    },
+    {
+      "heading": "研究局限与后续工作",
+      "added": {
+        "1": 1
+      },
+      "removed": {},
+      "matches_reviewed_allowance": true
+    },
+    {
+      "heading": "5.4.1 预测量与运行量的对应",
+      "added": {
+        "4": 1,
+        "1": 1
+      },
+      "removed": {},
+      "matches_reviewed_allowance": true
+    },
+    {
+      "heading": "1.2.2 多节点负荷与时空图预测",
+      "added": {
+        "73": 1
+      },
+      "removed": {},
+      "matches_reviewed_allowance": true
+    }
+  ],
+  "protected_records": {
+    "docs/thesis/content-review-20261019-paired/scorecard.json": true,
+    "docs/thesis/scoring/history.json": true,
+    "docs/thesis/scoring/publication-status.json": true,
+    "docs/thesis/revision-20261018-claude-review/gate-budget-contract.json": true,
+    "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md": true,
+    "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md": true
+  },
+  "before_sha256": "62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66",
+  "current_sha256": "451642e15e0fc51343acabf84e727b5079d8a1f2243c0ab8d8542adeed8b9b42",
+  "scope": "Bounded Markdown and protected-record consistency; not scientific rerun, formal scoring or Word/PDF visual acceptance."
+}

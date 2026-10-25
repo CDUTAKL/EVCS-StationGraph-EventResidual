@@ -1,0 +1,40 @@
+{
+  "before_vector": [
+    4.5,
+    5,
+    4,
+    4.5,
+    7.5,
+    4,
+    9,
+    7.5,
+    9,
+    7,
+    3,
+    9
+  ],
+  "after_vector": [
+    4.5,
+    5,
+    4.5,
+    4.5,
+    8.5,
+    4.5,
+    9,
+    8.5,
+    9.5,
+    8,
+    3,
+    9.5
+  ],
+  "before_raw": 74.0,
+  "after_raw": 79.0,
+  "before_normalized": 82.22,
+  "after_normalized": 87.78,
+  "revision_effect_raw": 5.0,
+  "old_before_raw": 79.0,
+  "before_calibration_effect_raw": -5.0,
+  "old_after_raw": 80.0,
+  "after_calibration_effect_raw": -1.0,
+  "decomposition": "原历史两稿差 + 当前稿校准差 - 前稿校准差 = 本轮配对修订效应；评分校准不称论文退步。"
+}

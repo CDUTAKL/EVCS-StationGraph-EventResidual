@@ -1,0 +1,116 @@
+{
+  "assessment_id": "FORMAL-20261016-CURRENT",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 80.5,
+  "raw_maximum": 90.0,
+  "normalized_score": 89.44,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "FORMAL-20261016-PAIRED-AFTER",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 1.67,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前文本没有改变需求量化证据；不以目标与运行间的未验证连接重复扣分。"
+      },
+      {
+        "id": "BR-02",
+        "old": 5,
+        "new": 5.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "主线方向一致；新增文字进一步明确关系层与模型层对照，但没有改变题目范围。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.5,
+        "new": 5.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "上次评分指出[67]会话代理重构先例应进入比较表；当前稿已将该先例纳入，并把比较结果与可主张的研究差异直接相连。"
+      },
+      {
+        "id": "BR-04",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "当前结果验证了代理目标敏感性，未改变计量效度或理论基础证据。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "上次评分已计入031/032设计改进；当前文字更清楚划定门控、蒸馏和替代拓扑的解释范围，没有新增预算匹配实验。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "此轮是内容组织更新，没有补齐历史训练源码身份或新的原始训练复现。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "研究工作量及其独立分析能力在前次已达强档，本轮不因文字量增加而加分。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "新增非零组段落是同批既有预测的事后分层复算；正确入文提高透明度，却没有改变其非确认性，也不增加未查看数据。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.5,
+        "new": 9.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本次未改变数据的事后性质或随机性范围；更新的是表达清晰度，不将其重复计为统计证据增益。"
+      },
+      {
+        "id": "BR-10",
+        "old": 8,
+        "new": 8.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "当前入稿新增并跨摘要、引言、结果及结论解释关键非零组组件结果，进一步区分组件增量与模型间比较，并说明结果能支持的研究决策和不能支持的部署主张。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3,
+        "new": 3.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "此次修改将价值定位为数据采集和评价方案，未新增任何现场量测或运行效益证据。"
+      },
+      {
+        "id": "BR-12",
+        "old": 9.5,
+        "new": 10.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "本轮实质重写跨章节总结，压缩第五章重复限制，并使贡献—结果—使用边界同口径，解决上次所指的段落重复和主线重心问题。"
+      }
+    ]
+  }
+}

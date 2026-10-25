@@ -1,0 +1,378 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "observation": "ReLU/softmax generates exact ties across the top-k selection boundary in recovered AdaptiveGraph weights",
+  "cause_status": "backend-dependent tie selection is a plausible explanation, not confirmed; CUDA replay not performed",
+  "original_outputs_modified": false,
+  "tolerance_relaxed": false,
+  "runs": [
+    {
+      "seed": 2024,
+      "checkpoint_sha256": "dcab19b9ac5a9cd7498e742b5c0fdb6f8d44c42a782a8f2a7823067be51181ee",
+      "ambiguous_top_k_rows": [
+        {
+          "node_index": 0,
+          "strictly_above_cutoff": 4,
+          "tied_at_cutoff": 5,
+          "available_tied_slots": 1,
+          "cpu_selected_indices": [
+            1,
+            4,
+            9,
+            7,
+            3
+          ]
+        },
+        {
+          "node_index": 1,
+          "strictly_above_cutoff": 4,
+          "tied_at_cutoff": 5,
+          "available_tied_slots": 1,
+          "cpu_selected_indices": [
+            0,
+            2,
+            3,
+            9,
+            4
+          ]
+        },
+        {
+          "node_index": 3,
+          "strictly_above_cutoff": 2,
+          "tied_at_cutoff": 7,
+          "available_tied_slots": 3,
+          "cpu_selected_indices": [
+            0,
+            2,
+            1,
+            4,
+            5
+          ]
+        },
+        {
+          "node_index": 4,
+          "strictly_above_cutoff": 4,
+          "tied_at_cutoff": 5,
+          "available_tied_slots": 1,
+          "cpu_selected_indices": [
+            0,
+            3,
+            2,
+            9,
+            1
+          ]
+        },
+        {
+          "node_index": 5,
+          "strictly_above_cutoff": 4,
+          "tied_at_cutoff": 5,
+          "available_tied_slots": 1,
+          "cpu_selected_indices": [
+            0,
+            3,
+            2,
+            9,
+            4
+          ]
+        },
+        {
+          "node_index": 6,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            3,
+            0,
+            2,
+            1,
+            4
+          ]
+        },
+        {
+          "node_index": 7,
+          "strictly_above_cutoff": 0,
+          "tied_at_cutoff": 9,
+          "available_tied_slots": 5,
+          "cpu_selected_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "node_index": 9,
+          "strictly_above_cutoff": 0,
+          "tied_at_cutoff": 9,
+          "available_tied_slots": 5,
+          "cpu_selected_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 2025,
+      "checkpoint_sha256": "12a99322e4b734aabb0098b2ff25844e14355177c998edf3823c1d7f62a7b5e0",
+      "ambiguous_top_k_rows": [
+        {
+          "node_index": 0,
+          "strictly_above_cutoff": 4,
+          "tied_at_cutoff": 5,
+          "available_tied_slots": 1,
+          "cpu_selected_indices": [
+            1,
+            9,
+            5,
+            2,
+            4
+          ]
+        },
+        {
+          "node_index": 1,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            0,
+            2,
+            3,
+            5,
+            4
+          ]
+        },
+        {
+          "node_index": 3,
+          "strictly_above_cutoff": 0,
+          "tied_at_cutoff": 9,
+          "available_tied_slots": 5,
+          "cpu_selected_indices": [
+            0,
+            1,
+            2,
+            9,
+            4
+          ]
+        },
+        {
+          "node_index": 4,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            0,
+            2,
+            3,
+            1,
+            5
+          ]
+        },
+        {
+          "node_index": 5,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            3,
+            6,
+            9,
+            2,
+            4
+          ]
+        },
+        {
+          "node_index": 6,
+          "strictly_above_cutoff": 4,
+          "tied_at_cutoff": 5,
+          "available_tied_slots": 1,
+          "cpu_selected_indices": [
+            0,
+            2,
+            3,
+            9,
+            4
+          ]
+        },
+        {
+          "node_index": 7,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "node_index": 8,
+          "strictly_above_cutoff": 2,
+          "tied_at_cutoff": 7,
+          "available_tied_slots": 3,
+          "cpu_selected_indices": [
+            0,
+            4,
+            2,
+            3,
+            1
+          ]
+        },
+        {
+          "node_index": 9,
+          "strictly_above_cutoff": 0,
+          "tied_at_cutoff": 9,
+          "available_tied_slots": 5,
+          "cpu_selected_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "seed": 2026,
+      "checkpoint_sha256": "7e8f1daf5c4b5af11512d63ef55cdd3b133c79abc42a0b832c27042b9bd28fb9",
+      "ambiguous_top_k_rows": [
+        {
+          "node_index": 0,
+          "strictly_above_cutoff": 2,
+          "tied_at_cutoff": 7,
+          "available_tied_slots": 3,
+          "cpu_selected_indices": [
+            4,
+            2,
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "node_index": 1,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            0,
+            3,
+            6,
+            2,
+            4
+          ]
+        },
+        {
+          "node_index": 2,
+          "strictly_above_cutoff": 4,
+          "tied_at_cutoff": 5,
+          "available_tied_slots": 1,
+          "cpu_selected_indices": [
+            1,
+            3,
+            6,
+            8,
+            4
+          ]
+        },
+        {
+          "node_index": 3,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            2,
+            8,
+            4,
+            5,
+            1
+          ]
+        },
+        {
+          "node_index": 4,
+          "strictly_above_cutoff": 4,
+          "tied_at_cutoff": 5,
+          "available_tied_slots": 1,
+          "cpu_selected_indices": [
+            0,
+            3,
+            8,
+            6,
+            5
+          ]
+        },
+        {
+          "node_index": 5,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            0,
+            3,
+            6,
+            2,
+            4
+          ]
+        },
+        {
+          "node_index": 6,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            2,
+            4,
+            8,
+            3,
+            1
+          ]
+        },
+        {
+          "node_index": 7,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            0,
+            3,
+            6,
+            2,
+            4
+          ]
+        },
+        {
+          "node_index": 8,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            0,
+            2,
+            3,
+            1,
+            4
+          ]
+        },
+        {
+          "node_index": 9,
+          "strictly_above_cutoff": 3,
+          "tied_at_cutoff": 6,
+          "available_tied_slots": 2,
+          "cpu_selected_indices": [
+            0,
+            3,
+            6,
+            2,
+            4
+          ]
+        }
+      ]
+    }
+  ]
+}

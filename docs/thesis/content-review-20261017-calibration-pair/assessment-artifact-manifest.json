@@ -1,0 +1,62 @@
+{
+  "assessment_id": "FORMAL-20261017-PAIRED-CALIBRATION",
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "packet_id": "PAIR-PACKET-20261017-V2-NEAR76",
+  "files": [
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/scorecard.json",
+      "sha256": "137ce496d05fdd0fce216a5381e495e54ad0f4e90d9d7ce69bda3c11b5dd1ca2",
+      "bytes": 55388
+    },
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/scorecard.md",
+      "sha256": "ed3d5f4d395265c3f62ea5d03d4fa67cfe25653cc8b00350e5bc4dbbc5831b68",
+      "bytes": 2851
+    },
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/forensic-review.md",
+      "sha256": "66974accda8870846519192efb94a4e48974f1d1d6374fc2b9fd29780c98df05",
+      "bytes": 5372
+    },
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/issue-ledger.json",
+      "sha256": "34b883ebf5aef3cd1b8c1d4d6db163990f91c9efb1bf0fc932da7813aa49b74e",
+      "bytes": 2722
+    },
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/manifest.json",
+      "sha256": "56b281260d12de46a391730e67568c8982de58c59e39027f094c77599740e55c",
+      "bytes": 4372
+    },
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-technical-v2.md",
+      "sha256": "f6d0e215336d7f9ad07d2bca4cde70ef627b649e7453b0ee03c1f8cbc66b7dca",
+      "bytes": 18036
+    },
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-originality-v2.md",
+      "sha256": "be470453ad7c2f856bfa4fd03ee4ceb4132e281920e381c0ccfdedad000ae6a0",
+      "bytes": 15614
+    },
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-readability-v2.md",
+      "sha256": "0a7124d620e341245b7041b796f7bd3478761dddd8e1cb34e8fab8d0e6710900",
+      "bytes": 24038
+    },
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-record-technical.json",
+      "sha256": "8ee86ac099ec1dbedc9b9ecb9f01663a46eeaa2456c8780c90bcae2cfcde9ce7",
+      "bytes": 2581
+    },
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-record-originality.json",
+      "sha256": "9bfb3c5e50a4bdd1d1c069cb9a1333beddfdd0c46c2d2657c88e0369af3525be",
+      "bytes": 2605
+    },
+    {
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-record-readability.json",
+      "sha256": "e50c8cd143ffbc7c84e2a9c9b66ca247d7421d2e1bb0f75e5f5c92faa9273326",
+      "bytes": 2619
+    }
+  ]
+}

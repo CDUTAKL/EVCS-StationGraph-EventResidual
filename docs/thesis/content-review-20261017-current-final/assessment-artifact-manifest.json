@@ -1,0 +1,39 @@
+{
+  "assessment_id": "FORMAL-20261017-CURRENT",
+  "packet_id": "PACKET-20261017-CURRENT-FINAL",
+  "manuscript_sha256": "c9ec6d784adfbccec8feb54c448f2f4b6130d5a9891f7394023621be7696598b",
+  "files": {
+    "packet-manifest.json": {
+      "sha256": "547fd2aa5f098a9752e2b99c119cb5fbf6e49c2b264560e47c3d6eaf301aea9a",
+      "bytes": 4010
+    },
+    "reviewer-integrity.md": {
+      "sha256": "73d698a6dbf74ea41ad8a3debed6e022742823da8afc58ba6deced8c2b28ade3",
+      "bytes": 23684
+    },
+    "reviewer-technical.md": {
+      "sha256": "66b2033307bec0b846741590c1bde15ec9b7e5bd837a5c4f5b5ab6560775afab",
+      "bytes": 18796
+    },
+    "reviewer-originality.md": {
+      "sha256": "d2deb3f0bf67f4da4dff32610c1f1bc5170e596edcf5ea1e1c3752f154a7734a",
+      "bytes": 21293
+    },
+    "forensic-review.md": {
+      "sha256": "948647858c3b4091f41435c4eda5eb3ad2fe95c58c00cf9339856d41f33e9b36",
+      "bytes": 7282
+    },
+    "scorecard.json": {
+      "sha256": "6561d073063a65d49d0e52fd9a11d5be7615d486731275e335a1676b39763f90",
+      "bytes": 18334
+    },
+    "scorecard.md": {
+      "sha256": "e84506a7dd4de2fa173588b225b17eb2f190fb3d8ac4500b9663b16e04c78171",
+      "bytes": 4816
+    },
+    "score-audit.json": {
+      "sha256": "e1bfed4ff8b848d051ea0fb52f0173d67d7a222fcfa95f22bd2739dd6963017a",
+      "bytes": 340
+    }
+  }
+}

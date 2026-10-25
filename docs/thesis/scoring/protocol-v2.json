@@ -1,0 +1,19 @@
+{
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "raw_maximum": 90,
+  "weights_changed": false,
+  "anchors_file": "docs/thesis/scoring/criterion-anchors-v2.json",
+  "allowed_publication_modes": [
+    "calibration_pair",
+    "paired_revision"
+  ],
+  "baseline_required": true,
+  "reviewer_count": 3,
+  "reviewer_numeric_spread_fraction": 0.2,
+  "decision_from_issue_severity": true,
+  "unverified_concern_can_reduce_score": false,
+  "unchanged_basis_can_change_revision_score": false,
+  "inherited_issue_is_regression": false,
+  "independent_snapshot_replaces_baseline": false
+}

@@ -1,0 +1,164 @@
+{
+  "packet_id": "PACKET-20261016-CURRENT-THESIS-CONTENT",
+  "review_date": "2026-10-16",
+  "manuscript_path": "docs/thesis/thesis-manuscript.md",
+  "manuscript_sha256": "26832923ce8c6f50e9f1a1d2dea00330d4e16ac66195e7b439e70dd0a4afcedc",
+  "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+  "assessment_basis": "上次完整全文与原始证据复核为底稿；本轮重新读取当前全文差异、当前新增/改写位置及其直接证据，逐项对照上次冻结稿。",
+  "files": [
+    {
+      "id": "A",
+      "source": "docs/thesis/thesis-manuscript.md",
+      "sha256": "26832923ce8c6f50e9f1a1d2dea00330d4e16ac66195e7b439e70dd0a4afcedc",
+      "locator": "当前完整Markdown主稿；双语摘要、1.2–1.4、3.7.2–3.8.4、4.3–4.6、第5章、结论与引用",
+      "reviewed": true
+    },
+    {
+      "id": "PREV",
+      "source": "docs/thesis/content-review-20261016-paired-reaudit/packet/after-evidence/manuscript-frozen.md",
+      "sha256": "f5ba2ddba9157fa18ea91c93214a375c2422916916125ba0f50a9d5ced228f6e",
+      "locator": "上次评分冻结稿，用于逐项配对差异",
+      "reviewed": true
+    },
+    {
+      "id": "BASE",
+      "source": "docs/thesis/content-review-20261016-paired-reaudit/scorecard-after.json",
+      "sha256": "1f44b0d810c579c96c27cfff0d3c164aeeee8c62111e0bff6e1ebf360dbf91d4",
+      "locator": "上次同量表正式配对评分79/90",
+      "reviewed": true
+    },
+    {
+      "id": "PAIRFORENSIC",
+      "source": "docs/thesis/content-review-20261016-paired-reaudit/forensic-review.md",
+      "sha256": "ce9f0ebfa0d65946d1be676ba572ca68167b6a3fa8cd4ef64b2d5abfa550d935",
+      "locator": "上次评分的原始证据复算范围、评分锚点与裁定",
+      "reviewed": true
+    },
+    {
+      "id": "DELTA",
+      "source": "docs/thesis/content-review-20261016-current/manuscript-update.diff",
+      "sha256": "61df38187ee9d4f4e0c923e0c9042d0d4944cd6f5701cfd9ec8247d7b4a704f1",
+      "locator": "当前稿相对上次冻结稿的全部文本差异",
+      "reviewed": true
+    },
+    {
+      "id": "MAP",
+      "source": "docs/thesis/claim-evidence-map.md",
+      "sha256": "e7de3d524c149664798671a07e71278691ca55e19a66477b1d59d7baec8dad66",
+      "locator": "当前证据主张映射与边界",
+      "reviewed": true
+    },
+    {
+      "id": "S31",
+      "source": "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+      "sha256": "d93dd099dbc4a55385fa4e3122323ca1c8ee5f4ddc205562ebc4fd69d57519d9",
+      "locator": "SG-EXP-031设计、训练合同、关系增量、探索性分层和限制",
+      "reviewed": true
+    },
+    {
+      "id": "S31AUDIT",
+      "source": "outputs/analysis/SG-EXP-031-audit-20261015/audit.json",
+      "sha256": "8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475",
+      "locator": "SG-EXP-031独立结果审计、键对齐、指标复算和配对比较",
+      "reviewed": true
+    },
+    {
+      "id": "NZ",
+      "source": "docs/thesis/content-review-20261016-paired-reaudit/load-nonzero-crosscheck.json",
+      "sha256": "4f566d54cc6284679dd642bfce52d2251a9deea8fe97e319ebc2804995421345",
+      "locator": "负荷关系非零组复审阶段探索性分层复算",
+      "reviewed": true
+    },
+    {
+      "id": "S32",
+      "source": "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md",
+      "sha256": "9585428a9501321944ba38efcfacaa3978d8c2514149c6eedfe0a46fd25b0f8a",
+      "locator": "SG-EXP-032目标规则、固定项、六次训练、结果与限制",
+      "reviewed": true
+    },
+    {
+      "id": "S32AUDIT",
+      "source": "outputs/analysis/SG-EXP-032-target-audit/audit.json",
+      "sha256": "11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a",
+      "locator": "SG-EXP-032逐键和指标复算审计",
+      "reviewed": true
+    },
+    {
+      "id": "NEAR",
+      "source": "docs/thesis/content-review-20261016-paired-reaudit/packet/after-evidence/nearest-work-original.md",
+      "sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125",
+      "locator": "最接近工作原文可读范围与比较维度",
+      "reviewed": true
+    },
+    {
+      "id": "NEAR2",
+      "source": "docs/thesis/content-review-20261016-paired-reaudit/packet/after-evidence/nearest-work-72-73.md",
+      "sha256": "2ca238e2e2214e2d526f2782c46fbd437db35a74f0f05113f1b5f7672f4a9048",
+      "locator": "多关系门控近邻文献比较记录",
+      "reviewed": true
+    },
+    {
+      "id": "MDP",
+      "source": "docs/thesis/experiment-reports/EXP-JPL-MDP-20261014-no-training.md",
+      "sha256": "f65ce5d985d71fc61bdc9d76c92be53d634c70bb2c66a91f584e22033739d371",
+      "locator": "JPL L1/L3冻结检查点复核及适用范围",
+      "reviewed": true
+    },
+    {
+      "id": "CAL",
+      "source": "docs/thesis/experiment-reports/EXP-JPL-calibration-20261015-no-training.md",
+      "sha256": "da74215ccdc23de4aa0901efa6eec09693ca03233be5befb29eae620c702352a",
+      "locator": "JPL独立校准覆盖与事件分层结果",
+      "reviewed": true
+    },
+    {
+      "id": "ADAPT",
+      "source": "docs/thesis/experiment-reports/EXP-AdaptiveGraph-CUDA-20261015-no-training.md",
+      "sha256": "380427dbca21f32cdf80eb261587e1800ee9182f062adb6535cab5ba719b3774",
+      "locator": "AdaptiveGraph匹配CUDA前向与来源边界",
+      "reviewed": true
+    },
+    {
+      "id": "ADAPTAUDIT",
+      "source": "outputs/analysis/AdaptiveGraph-CUDA-20261015/independent-verification.json",
+      "sha256": "76499e6f387d971e33df08acb75479109aabb70d7b407f1b9520b6bb53891e84",
+      "locator": "AdaptiveGraph回收检查点独立输出核验",
+      "reviewed": true
+    },
+    {
+      "id": "QUALITY",
+      "source": "docs/thesis/data-quality-report.md",
+      "sha256": "06a6b9a43fc675e7527646aaa81a92d13aa4c91802b72ae8f4f07314fde5862b",
+      "locator": "会话代理重构、数据质量、目标效度证据边界",
+      "reviewed": true
+    },
+    {
+      "id": "PASSPORT",
+      "source": "docs/thesis/material-passport.md",
+      "sha256": "33ecc45c11775788fc9e6979949ef78fef5900a1583d8b01df5feb030681c2ea",
+      "locator": "数据和材料来源、字段与协议限制",
+      "reviewed": true
+    },
+    {
+      "id": "RECOMP",
+      "source": "docs/thesis/content-review-20261016-paired-reaudit/primary-evidence-recomputation.json",
+      "sha256": "388d838f54ae9e8f35ec8f049d226977956327d30cb5d80f42d8974e5c007294",
+      "locator": "既有协议和JPL诊断等关键证据复算清单与结果",
+      "reviewed": true
+    },
+    {
+      "id": "MRECOMP",
+      "source": "docs/thesis/content-review-20261016-paired-reaudit/methods-numeric-recompute.json",
+      "sha256": "deb2356b5c32d3b054cd8bd2eeb3e50e946adb43a38523a041e08c939ae40bde",
+      "locator": "新训练原始预测、输入键、预算及块区间复算",
+      "reviewed": true
+    },
+    {
+      "id": "DECISION",
+      "source": "outputs/analysis/SG-EXP-026-charging-decision/audit.json",
+      "sha256": "483716413395c390480f4651d9678fa6592bdf6d965252ead93771dc60e4b352",
+      "locator": "合成决策算例的约束核验；不代表现场收益",
+      "reviewed": true
+    }
+  ]
+}

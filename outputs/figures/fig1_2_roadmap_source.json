@@ -62,7 +62,7 @@
     "pdf_page_1based": 66
   },
   "visual_review": "Primary and independent reviewer accepted final selected native output; two model inputs, parallel MDP analyses, independent JPL refit and evidence synthesis reviewed.",
-  "pre_1200dpi_sha256": "d8bbeed90b80cf0ec45ac1bd8e0f898f5724cf3a1259416e37562ce1308ec491",
+  "pre_1200dpi_sha256": "25c7df6118d2fa7f8fa14e5b7d9d1c65faba8772cf034cfb8bcb25668c93f808",
   "outputs": {},
   "delivery": {
     "size_px": [
@@ -74,6 +74,6 @@
       1199.9976
     ],
     "effective_dpi_at_word_size": 1200.0605633802818,
-    "method": "Lanczos interpolation from raster-only source; no new source detail"
+    "method": "native pixels; added 1200 dpi metadata"
   }
 }

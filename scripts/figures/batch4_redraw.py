@@ -277,7 +277,7 @@ def redraw_model_comparison() -> None:
               labels=list(FAMILY_COLOR), fontsize=6.3, frameon=False,
               loc="lower right", handlelength=1.1, handleheight=0.92,
               labelspacing=0.42, borderpad=0.15, borderaxespad=0.25)
-    final(fig, "fig3_9_model_mae_comparison", (fig_w, fig_h))
+    final(fig, "fig3_11_model_mae_comparison", (fig_w, fig_h))
 
 
 # ========== ⑤ fig3_6 点级 pooled Bootstrap 差异图（描述性） ==========
@@ -341,7 +341,7 @@ def redraw_bootstrap() -> None:
     _clean_ax(ax)
     ax.grid(axis="y", color=GRAY_L, lw=0.5, alpha=0.6, zorder=0)
     fig.subplots_adjust(bottom=0.30)
-    final(fig, "fig3_11_bootstrap_difference", (7.2, 4.0))
+    final(fig, "fig3_13_bootstrap_difference", (7.2, 4.0))
 
 
 # ========== ⑥ fig4_4 四格诊断（重绘：Blues 色阶 + 分层标注） ==========

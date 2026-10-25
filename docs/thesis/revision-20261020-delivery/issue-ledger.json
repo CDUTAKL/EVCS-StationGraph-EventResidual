@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "assessment_id": "FORMAL-20261020-PAIRED-REVIEW",
+  "issues": [
+    {
+      "id": "REV20-EN-CN-PROXY-TERM",
+      "kind": "defect",
+      "status": "supported",
+      "severity": "minor",
+      "present_in_baseline": false,
+      "present_in_current": true,
+      "used_for_score": false,
+      "primary_criterion": "BR-12",
+      "secondary_impacts": [],
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT"
+      ],
+      "summary": "中文摘要与结论已改用“代理负荷”，英文摘要仍为“proxy energy”，跨语言术语尚未统一。该项作为下一轮语言校对问题登记，本轮BR-12只对写作精炼加分，术语分不变。"
+    }
+  ]
+}

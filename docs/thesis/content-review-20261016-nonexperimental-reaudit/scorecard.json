@@ -1,0 +1,367 @@
+{
+  "schema_version": 1,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "FORMAL-20261016-NONEXPERIMENTAL",
+  "assessment_kind": "formal",
+  "review_date": "2026-10-16",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "PACKET-20261016-NONEXPERIMENTAL-REAUDIT",
+    "manuscript_path": "docs/thesis/content-review-20261016-nonexperimental-reaudit/packet/manuscript.md",
+    "manuscript_sha256": "0b30acf65c7a5c5841ab5b6126dab5f39c4b0ec45e71a3cc69a6acfa985324f2",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "evidence": [
+      {
+        "id": "CURRENT",
+        "source": "docs/thesis/content-review-20261016-nonexperimental-reaudit/packet/manuscript.md",
+        "locator": "本轮冻结全文；双语摘要、五章、结论、表格、公式和图注",
+        "sha256": "0b30acf65c7a5c5841ab5b6126dab5f39c4b0ec45e71a3cc69a6acfa985324f2",
+        "reviewed": true
+      },
+      {
+        "id": "BASE",
+        "source": "docs/thesis/revision-20261016-nonexperimental/manuscript-before.md",
+        "locator": "上轮正式复评所对应的逐字稿件快照；SHA-256与FORMAL-20261016-FINAL-REAUDIT一致",
+        "sha256": "76cc39ad351c7e6bf9a86014b320b80076b4d23a1b795d29ccc2dbe231a8df96",
+        "reviewed": true
+      },
+      {
+        "id": "BASE-SCORE",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/scorecard.md",
+        "locator": "上轮同量表正式评分及12项理由，作为配对基线",
+        "sha256": "31e399aba540a40d35abe7bcba30c852cfb5d918b6256dc6e1d781ceb2f6d52f",
+        "reviewed": true
+      },
+      {
+        "id": "BASE-FORENSIC",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/forensic-review.md",
+        "locator": "上轮逐项证据核验；用于没有发生证据变化的评分项",
+        "sha256": "2f4725d004744eadf81918556323c8b0d1442e38a0bc2b2609c71739805270c5",
+        "reviewed": true
+      },
+      {
+        "id": "DELTA",
+        "source": "docs/thesis/revision-20261016-nonexperimental/revision-completion-audit.md",
+        "locator": "本轮公式、去重、Word候选和验收范围记录；核对实际已改内容与未改项目",
+        "sha256": "2923ef501e1ea60c940fd4070a01d9111faca3c377ce22d2587328e86c2cefe7",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR",
+        "source": "docs/thesis/revision-20261016-nonexperimental/nearest-work-source-audit.md",
+        "locator": "本轮[71]—[73]原文及摘要可读范围、方法先例与不支持的推断",
+        "sha256": "b30cc55d0ab712e727f3e05f2ef1c28720f669eb15dd710aab1bd88cfb931875",
+        "reviewed": true
+      },
+      {
+        "id": "PRIOR-NEAR",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/NEAR2.md",
+        "locator": "上轮冻结包对近邻[72]—[73]的来源范围记录",
+        "sha256": "2ca238e2e2214e2d526f2782c46fbd437db35a74f0f05113f1b5f7672f4a9048",
+        "reviewed": true
+      },
+      {
+        "id": "RELATION-CODE",
+        "source": "src/evcs_station_graph/graphs/relations.py",
+        "locator": "_profile_similarity：固定相位窗口均值、中心化、RMS距离、中位尺度、回退和分母下限；与式（3-5）核对",
+        "sha256": "f1d00a941bc8003ecb88586e9a712bfc0402c018a7cd26a37ab818262999d90f",
+        "reviewed": true
+      },
+      {
+        "id": "EVENTTIME-RUNNER",
+        "source": "src/evcs_station_graph/eventtime/runner.py",
+        "locator": "SG-EXP-019配置及逐轮训练实现：标准化L1训练、调参集原单位MAE选模、8轮耐心、60轮上限",
+        "sha256": "cc4692209a5eb4fc0e662fe71150685c99e3a5f38a35fc2dc94f3307122025a7",
+        "reviewed": true
+      },
+      {
+        "id": "JPL-CONFIG",
+        "source": "scripts/jpl_experiment.py",
+        "locator": "SG-EXP-028训练合同的选择指标、早停耐心与轮数上限",
+        "sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157",
+        "reviewed": true
+      },
+      {
+        "id": "TARGET-CONFIG",
+        "source": "scripts/completion_target_sensitivity.py",
+        "locator": "SG-EXP-032训练合同的完成时刻目标、调参选择与预算",
+        "sha256": "6bb968944a4db08cb3458cf0dbdd4b07c192ce5c31cbcdefad44b9cb945ad753",
+        "reviewed": true
+      },
+      {
+        "id": "DATA-AVAIL",
+        "source": "docs/thesis/revision-20261016-nonexperimental/data-availability-decision.md",
+        "locator": "新时期与实测数据可用性门禁；确认本轮没有取得独立验证数据",
+        "sha256": "eee96b5582c46965aa4b6ade26439edd59a429c3b3f2905e6bafae884c4c36ab",
+        "reviewed": true
+      },
+      {
+        "id": "S31-AUDIT",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/S31AUDIT.json",
+        "locator": "上轮冻结证据中SG-EXP-031合同和结果审计；沿用既有已审结果，不宣称本轮重跑",
+        "sha256": "8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475",
+        "reviewed": true
+      },
+      {
+        "id": "S32-AUDIT",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/S32AUDIT.json",
+        "locator": "上轮冻结证据中SG-EXP-032结果审计；沿用既有已审结果，不宣称本轮重跑",
+        "sha256": "11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a",
+        "reviewed": true
+      },
+      {
+        "id": "RECOMP",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/RECOMP.json",
+        "locator": "上轮冻结证据中的指标复算记录；本轮未重新训练或重算预测",
+        "sha256": "388d838f54ae9e8f35ec8f049d226977956327d30cb5d80f42d8974e5c007294",
+        "reviewed": true
+      },
+      {
+        "id": "DECISION",
+        "source": "docs/thesis/content-review-20261016-final-reaudit/packet/DECISION.json",
+        "locator": "上轮冻结证据中的应用算例权限记录；用于BR-11不变判断",
+        "sha256": "483716413395c390480f4651d9678fa6592bdf6d965252ead93771dc60e4b352",
+        "reviewed": true
+      }
+    ]
+  },
+  "reviewer_reports": [
+    "docs/thesis/content-review-20261016-nonexperimental-reaudit/reviewer-integrity.md",
+    "docs/thesis/content-review-20261016-nonexperimental-reaudit/reviewer-methods.md",
+    "docs/thesis/content-review-20261016-nonexperimental-reaudit/reviewer-originality.md"
+  ],
+  "forensic_report": "docs/thesis/content-review-20261016-nonexperimental-reaudit/forensic-review.md",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": 4.5,
+      "manuscript_location": "§1.1.1—1.1.3、§1.3；§2.3表2-4；§3.6.2表3-2",
+      "evidence_ids": [
+        "CURRENT",
+        "BASE-FORENSIC",
+        "DATA-AVAIL"
+      ],
+      "rationale": "问题仍由节点稀疏、异质性及全局误差掩盖困难组等可检验现象支撑。实际场站精度门槛、服务影响和成本需求未量化；本轮没有新增需求数据，维持4.5/5。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "没有新增现场需求、精度门槛或成本效益证据。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-02",
+      "score": 4.5,
+      "manuscript_location": "题名、摘要；§1.4—1.6；表2-2；§3.8；表4-6；结论",
+      "evidence_ids": [
+        "CURRENT",
+        "BASE-FORENSIC"
+      ],
+      "rationale": "研究问题、协议和结论总体闭合；本轮更清楚地将三关系操作化、受控增量与MDP诊断权限合并表述。题名仍未提示代理能量口径，第五章方向筛查和合成LP与预测主线连接较弱，且这些缺口未因本轮文字整理消失，维持4.5/5。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "贡献表述更清楚，但题名范围提示与第五章主线位置没有实质改变。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-03",
+      "score": 4.5,
+      "manuscript_location": "§1.2.2表1-1及比较段；文献[12]、[13]、[67]、[70]—[73]",
+      "evidence_ids": [
+        "CURRENT",
+        "NEAR",
+        "PRIOR-NEAR",
+        "BASE-SCORE"
+      ],
+      "rationale": "表1-1对[71]补足原文具体小节、表3—5消融及15户设置，并以[72]、[73]摘要可支持的结构事实补齐住宅多图先例；新来源核查明确不可由摘要推断的字段，也不做跨文排名。近邻差异较上轮更具体、可复核，故由4.0升至4.5。扣0.5：多篇仍仅有摘要或索引片段，完整协议和关键门控细节不齐。",
+      "na_reason": null,
+      "change": {
+        "type": "improvement",
+        "reason": "新增原文定位和对照字段改善了近邻工作比较，但全文可读范围限制仍存在。",
+        "evidence_ids": [
+          "CURRENT",
+          "NEAR"
+        ]
+      }
+    },
+    {
+      "id": "BR-04",
+      "score": 5.0,
+      "manuscript_location": "式（3-5）、§3.3.3；式（3-13）、§3.5.7；图3-8；关系实现与事件时刻/JPL训练入口",
+      "evidence_ids": [
+        "CURRENT",
+        "RELATION-CODE",
+        "EVENTTIME-RUNNER",
+        "JPL-CONFIG",
+        "TARGET-CONFIG",
+        "DELTA"
+      ],
+      "rationale": "式（3-5）现在明示轮廓均值、中心化、节点对RMS距离、正距离中位数、退化回退及分母下限，单位和实现一致；式（3-13）区分标准化训练损失与原单位MAE选模，图3-8与各协议入口的耐心8轮、上限60轮一致。上轮指出的局部公式和选模表述缺口均已修复，按本项强锚给5.0/5。",
+      "na_reason": null,
+      "change": {
+        "type": "improvement",
+        "reason": "本轮补齐公式符号、单位、退化处理并修正选模口径，与实现逐项对应。",
+        "evidence_ids": [
+          "CURRENT",
+          "RELATION-CODE",
+          "EVENTTIME-RUNNER",
+          "JPL-CONFIG",
+          "TARGET-CONFIG"
+        ]
+      }
+    },
+    {
+      "id": "BR-05",
+      "score": 8.0,
+      "manuscript_location": "§2.1；表3-2、3-3、3-9、3-11、3-14、3-15；§3.8",
+      "evidence_ids": [
+        "CURRENT",
+        "BASE-FORENSIC",
+        "S31-AUDIT",
+        "S32-AUDIT"
+      ],
+      "rationale": "事件时刻输入、近容量TCN、同参数门控、保留关系槽位的自环替换和目标敏感性均能回答限定问题。门控有种子触及预算上限；AGCRN未容量匹配，行为GRU缺失，L2学生容量/输入路径不匹配，032固定原图且没有未查看时期验证。本轮未补训练或新对照，维持8.0/10。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "实验设计和其主要替代解释限制均未改变。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-06",
+      "score": 4.5,
+      "manuscript_location": "§2.1.1—2.1.3、§3.6.4、§3.8.3；训练记录和检查点证据",
+      "evidence_ids": [
+        "CURRENT",
+        "BASE-FORENSIC",
+        "DELTA"
+      ],
+      "rationale": "数据、划分、配置、预测键和结果产物有较好追踪；上轮审计复算的归档预测与正文一致。历史训练Git标识和部分环境来源仍缺，检查点前向不等于从头训练复现。本轮仅核对文本和代码口径，未重放或重训，维持4.5/5。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "没有补齐历史源码身份，也没有进行新的端到端重现。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-07",
+      "score": 9.0,
+      "manuscript_location": "第2—5章，重点§2.1.2、§3.6—3.8、§4.2—4.6、§5.3",
+      "evidence_ids": [
+        "CURRENT",
+        "BASE-FORENSIC"
+      ],
+      "rationale": "前期已完成代理标签审计、双场站协议、受控比较、目标敏感性、诊断及可靠性分析，工作量和问题解决能力充分。本轮主要为非实验性写作与公式修订，不将文字修改或已有产物重复整理计作新增研究工作量，维持9.0/10。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮无新增研究实验或独立证据链。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-08",
+      "score": 8.0,
+      "manuscript_location": "表3-2、3-3、3-9、3-11、3-15；§3.7.2；表4-6；§5.3",
+      "evidence_ids": [
+        "CURRENT",
+        "BASE-FORENSIC",
+        "S31-AUDIT",
+        "S32-AUDIT",
+        "RECOMP"
+      ],
+      "rationale": "核心模型比较和负荷/轮廓关系相对自环的条件性整体增量有直接数值支持；非零组组件差异不等同完整模型胜过TCN。总体收益仍受零目标组驱动，非零/事件组未领先，事后分层未校正；没有独立未来期或计量验证。本轮未改变结果，维持8.0/10。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "文字重组没有新增预测结果或确认性证据，也没有改变数据使用范围。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-09",
+      "score": 8.5,
+      "manuscript_location": "§3.6—3.8；§4.2.5、§4.4—4.6；§5.2—5.3；结论",
+      "evidence_ids": [
+        "CURRENT",
+        "BASE-FORENSIC",
+        "S31-AUDIT",
+        "S32-AUDIT"
+      ],
+      "rationale": "多重比较、种子数、已查看测试期、时间块区间权限、事后分层和外推边界均已披露。固定测试期反复分析后的整体选择不确定性仍无法由局部校正消除；训练随机性仅三种子，缺未见时期确认。本轮压缩限定语但没有新增统计验证，维持8.5/10。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "边界叙述更紧凑，但统计证据本身未变化。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-10",
+      "score": 7.5,
+      "manuscript_location": "§1.2.2—1.4；§3.5.8、3.7.1—3.7.2；表4-6；结论",
+      "evidence_ids": [
+        "CURRENT",
+        "NEAR",
+        "BASE-FORENSIC",
+        "S31-AUDIT"
+      ],
+      "rationale": "贡献仍是单站代理任务中的关系定义、受控增量和MDP证据分级；文献比较更具体后，图时序、门控等一般算子先例也更清楚。行为关系和β独立增益未获支持，MDP尚未证明诊断指导改模可提升预测。文献措辞改善不等于新能力证据，维持7.5/10。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "近邻比较改善由BR-03计分；它没有改变增量证据或带来新的预测能力，不重复加至BR-10。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-11",
+      "score": 3.0,
+      "manuscript_location": "§2.1.2；§5.4表5-7、表5-8；结论",
+      "evidence_ids": [
+        "CURRENT",
+        "BASE-FORENSIC",
+        "DATA-AVAIL",
+        "DECISION"
+      ],
+      "rationale": "离线模型筛查、困难样本识别和采数优先级有有限实践价值；人工LP只证明合成输入下的可行性。没有同步电表、实际车辆/设备约束、影子运行或观测成本收益。本轮确认未取得可用未查看时期或测量集，维持3.0/5。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有实测数据、现场运行或真实收益评价。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-12",
+      "score": 9.0,
+      "manuscript_location": "中英文摘要；§1.2.2；§3.3.3、3.5.7—3.5.10；§5.2.6、5.3—5.5；结论",
+      "evidence_ids": [
+        "CURRENT",
+        "DELTA",
+        "BASE-FORENSIC"
+      ],
+      "rationale": "本轮删除或收束了§3.5若干重复解释、原§5.3.8重复边界段，并压缩§5.4应用限制表述；近邻比较和选模口径也更直接。局部公式和图3-8说明现在清楚。摘要仍偏数字密集，第五章方向性筛查与合成LP较外围，跨层路径仍需借图文交叉阅读，故由8.5升至9.0而不满分。",
+      "na_reason": null,
+      "change": {
+        "type": "improvement",
+        "reason": "针对性去重、术语和公式说明改善了表达，但摘要密度和章节主次问题仍在。",
+        "evidence_ids": [
+          "CURRENT",
+          "DELTA"
+        ]
+      }
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "三份本轮角度报告来自同一评阅上下文，未真正隔离；不得称为三名独立评阅者。",
+    "完整稿件的既有证据强度沿用同日上轮正式复审；本轮针对稿件差异逐项核查，未重跑全部实验审计。",
+    "本轮未训练、未前向复算、未取得未查看数据或同步实测功率。",
+    "评分只覆盖论文内容；WPS分页、字体、封面字段、致谢和学校版式另审。"
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261018-claude-bounded",
+  "title": "局部正文收束、门控补验准备与新数据条件核查",
+  "task_type": "content_revision",
+  "workflow_stage": "8/10/11",
+  "objective": "按已有证据收束主线与重复表达，准备公平门控预算补验，实查官方新数据入口；不训练、不评分、不更新正式Word。",
+  "context_sources": [],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "摘  要"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "Abstract"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "1.3 现有研究不足"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "1.4 研究目标与主要内容"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "1.7 本章小结"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "3.8.1 方法组件与目标敏感性证据综合"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "3.9 本章小结"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "4.5 MDP诊断结果与适用边界"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "5.1 引言"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "5.5 本章小结"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "研究工作总结"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "主要研究结论"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "研究判断与使用条件"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "研究局限与后续工作"
+      },
+      "purpose": "唯一允许修订范围与现有表述"
+    },
+    {
+      "path": "docs/thesis/revision-20261018-claude-review/scope.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "修订范围"
+    },
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "当前主张证据"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "关系证据"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "目标敏感性"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/EXP-JPL-calibration-20261015-no-training.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "JPL区间已完成"
+    },
+    {
+      "path": "docs/thesis/revision-20261016-nonexperimental/data-availability-decision.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "既有数据条件"
+    },
+    {
+      "path": "docs/thesis/revision-20261016-nonexperimental/gate-budget-decision-20261017.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "既有预算决策"
+    },
+    {
+      "path": "src/evcs_station_graph/eventtime/gate_control.py",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "共享门控实现"
+    },
+    {
+      "path": "scripts/gate_control_experiment.py",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "现有门控入口"
+    },
+    {
+      "path": "src/evcs_station_graph/jpl_eventtime/data.py",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "JPL数据入口"
+    },
+    {
+      "path": "scripts/jpl_relation_controls.py",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "JPL对照适配参考"
+    },
+    {
+      "path": "src/evcs_station_graph/eventtime/runner.py",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "训练与选模规则"
+    }
+  ],
+  "claude_skills": [
+    "research-paper-writing"
+  ],
+  "allowed_paths": [
+    "docs/thesis/thesis-manuscript.md",
+    "docs/thesis/revision-20261018-claude-review/change-report.md",
+    "docs/thesis/revision-20261018-claude-review/gate-budget-plan.md",
+    "docs/thesis/revision-20261018-claude-review/gate-budget-contract.json",
+    "docs/thesis/revision-20261018-claude-review/data-availability-check.md",
+    "docs/thesis/revision-20261018-claude-review/consistency-review.md"
+  ],
+  "locked_claims": [
+    "所有数值、表格、公式、引文、实验结果保持不变。只修改scope.json允许的标题对应正文段落；不改标题。",
+    "负荷关系相对自环的非零组增量与完整模型非零组未胜TCN同时成立；已查看时期、未实测、预算触顶、蒸馏容量限制保留。",
+    "不读取历史评分，不评分，不预设涨分；不运行训练/SSH/远端命令；不访问凭据或下载原始会话。"
+  ],
+  "steps": [
+    "读取指定范围与技能，完成简洁、学术化的局部收束，中文英文摘要对应。优先减少重复边界句，不堆字；无需为改而改。",
+    "在change-report.md记录逐节前后变化与理由；consistency-review.md记录主张—证据—结论闭合及未完成项，明确JPL独立校准已完成，不重复列旧问题。",
+    "按120轮/耐心16、两配置各3种子、从头训练准备gate-budget-plan.md及JSON合同。JSON顶层必须有training_started:false,max_epochs:120,patience:16,seeds:[2024,2025,2026],variants两个配置；写明数据/源码哈希待冻结清单、成对初始化、32,714参数、输入与调参选模一致、全局/非零/事件评价、统计与停止规则、失败保留、回收验收后关机。说明同时改变轮数上限和耐心，是共同预算策略敏感性，不是单独轮数效应。检查现有入口能否直接支持JPL；不能支持则列具体待实现项，不虚构ready_to_run。",
+    "通过WebFetch读取https://ev.caltech.edu/dataset及页面明确的站点/下载入口，实查是否能得到晚于既有2021年记录的元数据。仅网页/公开元数据，不登录、不用API令牌、不下载会话、不按结果选时期。若页面无记录计数/日期，明确未知；不得把网页说明当作新数据已可用。记录实际URL、读取范围、失败信息和下一步。",
+    "仅运行checks_to_run的唯一命令；禁止自行ls/shasum或其他Bash。检查通过后填写execution-report.json，记录网页与技能、改动与限制，不宣称验收。完成后停止等待操作者/exit。"
+  ],
+  "acceptance_criteria": [
+    "范围、数字、公式、表格、引用检查通过",
+    "正文主线准确且凝练；未改变证据权限",
+    "预算合同可审查但不宣称已完成训练或获益",
+    "新数据结论来自实际可见网页或如实记录阻断",
+    "执行报告完整且无越界改动"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": true,
+    "git_mutations_allowed": false,
+    "checks_to_run": [
+      "python3 tmp/check_claude_revision_20261018.py"
+    ],
+    "network_domains": [
+      "ev.caltech.edu"
+    ]
+  },
+  "deliverables": [
+    "局部修订主稿",
+    "逐节变化记录与一致性检查",
+    "门控预算合同和准备清单",
+    "新数据实际核查记录",
+    "execution-report.json"
+  ]
+}

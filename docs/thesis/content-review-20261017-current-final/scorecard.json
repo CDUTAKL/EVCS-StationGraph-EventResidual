@@ -1,0 +1,449 @@
+{
+  "schema_version": 1,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "FORMAL-20261017-CURRENT",
+  "assessment_kind": "formal",
+  "review_date": "2026-10-17",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "PACKET-20261017-CURRENT-FINAL",
+    "manuscript_path": "docs/thesis/thesis-manuscript.md",
+    "manuscript_sha256": "c9ec6d784adfbccec8feb54c448f2f4b6130d5a9891f7394023621be7696598b",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "evidence": [
+      {
+        "id": "MS",
+        "source": "packet/manuscript.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "c9ec6d784adfbccec8feb54c448f2f4b6130d5a9891f7394023621be7696598b"
+      },
+      {
+        "id": "NEAR16",
+        "source": "packet/NEAR-20261016.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "b30cc55d0ab712e727f3e05f2ef1c28720f669eb15dd710aab1bd88cfb931875"
+      },
+      {
+        "id": "NEAR",
+        "source": "packet/NEAR.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125"
+      },
+      {
+        "id": "NEAR2",
+        "source": "packet/NEAR2.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "2ca238e2e2214e2d526f2782c46fbd437db35a74f0f05113f1b5f7672f4a9048"
+      },
+      {
+        "id": "S31",
+        "source": "packet/S31.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "d93dd099dbc4a55385fa4e3122323ca1c8ee5f4ddc205562ebc4fd69d57519d9"
+      },
+      {
+        "id": "S31AUDIT",
+        "source": "packet/S31AUDIT.json",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475"
+      },
+      {
+        "id": "S32",
+        "source": "packet/S32.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "9585428a9501321944ba38efcfacaa3978d8c2514149c6eedfe0a46fd25b0f8a"
+      },
+      {
+        "id": "S32AUDIT",
+        "source": "packet/S32AUDIT.json",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a"
+      },
+      {
+        "id": "RECOMP",
+        "source": "packet/RECOMP.json",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "388d838f54ae9e8f35ec8f049d226977956327d30cb5d80f42d8974e5c007294"
+      },
+      {
+        "id": "MRECOMP",
+        "source": "packet/MRECOMP.json",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "deb2356b5c32d3b054cd8bd2eeb3e50e946adb43a38523a041e08c939ae40bde"
+      },
+      {
+        "id": "MDP",
+        "source": "packet/MDP.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "f65ce5d985d71fc61bdc9d76c92be53d634c70bb2c66a91f584e22033739d371"
+      },
+      {
+        "id": "MAP",
+        "source": "packet/MAP.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "abf6a2860e925ea4d60724b7547c1957315b7fa17a0c4948263059bfcc63eeae"
+      },
+      {
+        "id": "CAL",
+        "source": "packet/CAL.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "da74215ccdc23de4aa0901efa6eec09693ca03233be5befb29eae620c702352a"
+      },
+      {
+        "id": "ADAPT",
+        "source": "packet/ADAPT.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "380427dbca21f32cdf80eb261587e1800ee9182f062adb6535cab5ba719b3774"
+      },
+      {
+        "id": "ADAPTAUDIT",
+        "source": "packet/ADAPTAUDIT.json",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "76499e6f387d971e33df08acb75479109aabb70d7b407f1b9520b6bb53891e84"
+      },
+      {
+        "id": "QUALITY",
+        "source": "packet/QUALITY.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "06a6b9a43fc675e7527646aaa81a92d13aa4c91802b72ae8f4f07314fde5862b"
+      },
+      {
+        "id": "PASSPORT",
+        "source": "packet/PASSPORT.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "33ecc45c11775788fc9e6979949ef78fef5900a1583d8b01df5feb030681c2ea"
+      },
+      {
+        "id": "NZ",
+        "source": "packet/NZ.json",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "4f566d54cc6284679dd642bfce52d2251a9deea8fe97e319ebc2804995421345"
+      },
+      {
+        "id": "DECISION",
+        "source": "packet/DECISION.json",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "483716413395c390480f4651d9678fa6592bdf6d965252ead93771dc60e4b352"
+      },
+      {
+        "id": "DATA",
+        "source": "packet/DATA-AVAIL-20261017.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "103d7f4c39dd3d9dcace742ce4ce026486dbffb20fe1d083b6cc2c3c380726f8"
+      },
+      {
+        "id": "DOCX",
+        "source": "packet/DOCX-DELIVERY-20261017.md",
+        "locator": "完整文件；具体审阅范围见 forensic-review.md",
+        "reviewed": true,
+        "sha256": "d3b45ab0ebba88606e6e72f7df2ac01f3101c7d495cae73354724e8c4b7a3401"
+      },
+      {
+        "id": "EXT76",
+        "source": "https://www.mdpi.com/2032-6653/17/7/336",
+        "locator": "World Electric Vehicle Journal出版社文章页与摘要/结果/结论；由本轮法证复核打开",
+        "reviewed": true
+      },
+      {
+        "id": "MODELHEAD",
+        "source": "src/evcs_station_graph/models/graph.py",
+        "locator": "StaticGraphForecast使用线性forecast head，无非负激活；正文BR-04物理范围核验",
+        "reviewed": true,
+        "sha256": "32bc62ace86a140b5b5ec7be12aed8fac8d00e5ea13c043656ffb221d50a3937",
+        "review_scope": "主评法证补充；非三位评阅者初始冻结材料"
+      },
+      {
+        "id": "PREDICT-UNSCALE",
+        "source": "src/evcs_station_graph/eventtime/runner.py",
+        "locator": "预测由标准化输出乘target_std并加target_mean后直接用于指标；未见非负截断",
+        "reviewed": true,
+        "sha256": "cc4692209a5eb4fc0e662fe71150685c99e3a5f38a35fc2dc94f3307122025a7",
+        "review_scope": "主评法证补充；非三位评阅者初始冻结材料"
+      }
+    ]
+  },
+  "reviewer_reports": [
+    "docs/thesis/content-review-20261017-current-final/reviewer-integrity.md",
+    "docs/thesis/content-review-20261017-current-final/reviewer-technical.md",
+    "docs/thesis/content-review-20261017-current-final/reviewer-originality.md"
+  ],
+  "forensic_report": "docs/thesis/content-review-20261017-current-final/forensic-review.md",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": 4.5,
+      "manuscript_location": "题名、摘要；§§1.1.1–1.1.3、1.3；§2.1–2.3。",
+      "evidence_ids": [
+        "MS",
+        "DATA",
+        "PASSPORT",
+        "QUALITY"
+      ],
+      "rationale": "研究对象与难点具体：15 min节点代理能量稀疏且异质，整体误差可能掩盖活跃组；稿件也明确代理目标与电表功率不同。仍缺场站实际约束、服务需求或误差代价的量化。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；不将旧评阅分数作机械配对。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-02",
+      "score": 4.5,
+      "manuscript_location": "题名与双语摘要；§§1.3–1.6、2.1.1–2.1.3、3.8.2；结论。",
+      "evidence_ids": [
+        "MS",
+        "MAP",
+        "S31",
+        "S32"
+      ],
+      "rationale": "题目、研究问题、协议、结果和结论基本闭合，区分了总体模型比较、组件增量、MDP诊断及代理目标边界。题名中的“机制”仍可能被读为一般机制发现，且“负荷预测”本身未提示代理能量。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；不将旧评阅分数作机械配对。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-03",
+      "score": 3.5,
+      "manuscript_location": "§§1.2.1–1.2.4、表1-1及§1.3；特别是§1.2.3对[75]–[76]的概述。",
+      "evidence_ids": [
+        "MS",
+        "NEAR",
+        "NEAR16",
+        "NEAR2",
+        "EXT76"
+      ],
+      "rationale": "表1-1按节点粒度、关系来源、模型和可读证据范围比较多项近邻，且避免不当跨文排名。但[76]已是2026年EV代理序列残差预测近邻，正文仅并列引用，未与本文的节点粒度、预测时距、信息权限、目标和验证范围直接比较；其他数篇近邻也只能核查摘要或索引片段。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；识别并核实[76]比较缺口。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-04",
+      "score": 4.0,
+      "manuscript_location": "§§2.1.1–2.1.3；§§3.2–3.5，式（3-3）–（3-16）；§§4.2.5、4.4；§§5.2–5.4。",
+      "evidence_ids": [
+        "MS",
+        "S31",
+        "S32",
+        "MDP",
+        "CAL",
+        "DECISION",
+        "MODELHEAD",
+        "PREDICT-UNSCALE"
+      ],
+      "rationale": "时间片能量单位、关系图语义、训练/校准/测试边界、门控参数与MDP的解释权限总体清楚。仍有行为计数片末可见性的未核实假设、均匀分摊不能代表片内功率形态，以及物理非负目标下未报告负预测的频率与影响。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；未做公式实现的全量重跑。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-05",
+      "score": 7.5,
+      "manuscript_location": "§§2.1.1–2.1.3；§§3.6–3.8，表3-2、3-3、3-9、3-11、3-14、3-15；§4.3。",
+      "evidence_ids": [
+        "MS",
+        "S31",
+        "S31AUDIT",
+        "S32",
+        "S32AUDIT",
+        "MAP",
+        "MRECOMP"
+      ],
+      "rationale": "多协议、共同预测键、同参数门控和单关系替换控制能够回答限定问题，目标敏感性实验也隔离了固定拓扑下的标签变化。门控比较有种子触及60轮上限；AGCRN未容量匹配、缺行为GRU；L2学生输入/容量有限；新增关系和目标分析复用已查看测试期。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；以上控制缺口仍限制结论权限。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-06",
+      "score": 4.0,
+      "manuscript_location": "§§2.1–2.2；§§3.6.1、3.6.3–3.6.4、3.8.3–3.8.4；§4.6.1；§5.3.3–5.3.5。",
+      "evidence_ids": [
+        "MS",
+        "S31AUDIT",
+        "S32AUDIT",
+        "RECOMP",
+        "MRECOMP",
+        "ADAPT",
+        "ADAPTAUDIT",
+        "PASSPORT"
+      ],
+      "rationale": "主要数据、预测键、配置、合同、独立指标复算和检查点核验有较强追溯记录。部分旧训练源码身份仍缺；MRECOMP绑定到较早正文SHA而非当前SHA（已核对两版差异主要是摘要、结论措辞及重复句整理，未见其重算结果发生改变），且完整第三方端到端复现材料不齐。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；保留旧产物与当前文字版本的绑定差异。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-07",
+      "score": 8.5,
+      "manuscript_location": "第2章；§§3.3–3.8；第4章；§§5.2–5.4及附录A。",
+      "evidence_ids": [
+        "MS",
+        "S31",
+        "S32",
+        "MDP",
+        "ADAPT",
+        "CAL",
+        "DECISION",
+        "PASSPORT"
+      ],
+      "rationale": "研究实际覆盖数据重构和审计、多个预测协议、受控关系实验、检查点复算、目标敏感性、机制诊断和区间校准，体现较强的独立问题解决。仍集中于一个数据家族的历史会话代理，尚无计量验证或真实运行闭环。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "按完成的研究工作和证据难度评分，不按实验次数或投入时长加分。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-08",
+      "score": 8.0,
+      "manuscript_location": "§§3.6.2–3.8.4；§§4.2–4.6；§§5.3–5.4；结论。",
+      "evidence_ids": [
+        "MS",
+        "S31",
+        "S31AUDIT",
+        "S32",
+        "S32AUDIT",
+        "RECOMP",
+        "MRECOMP",
+        "MDP",
+        "CAL",
+        "NZ",
+        "DECISION"
+      ],
+      "rationale": "核心预测、关系替换与目标敏感性结果有同键核对和独立复算记录；稿件区分了‘关系相对自环增量’与‘完整模型相对TCN表现’。但总体收益主要来自零目标组，非零/事件表现未形成稳定领先，关系与目标补验仍复用已查看测试期，且代理目标没有电表效度验证。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；不将文字更新当作新增性能证据。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-09",
+      "score": 8.5,
+      "manuscript_location": "§§3.6–3.8；§§4.2–4.6；§§5.2–5.3；结论。",
+      "evidence_ids": [
+        "MS",
+        "S31AUDIT",
+        "S32AUDIT",
+        "MAP",
+        "CAL",
+        "QUALITY",
+        "DATA"
+      ],
+      "rationale": "明确区分种子波动与时间块区间、校正与探索性分层、已查看测试期与独立确认；校准负结果和外推限制被直接报告。三种子、有限时间块和站点数，以及复用测试期造成的整体选择不确定性仍未消除。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；统计边界披露充分但验证范围有限。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-10",
+      "score": 6.5,
+      "manuscript_location": "表1-1、§§1.2.2–1.4；§§3.7–3.8；§§4.1、4.5–4.6；结论。",
+      "evidence_ids": [
+        "MS",
+        "NEAR",
+        "NEAR16",
+        "NEAR2",
+        "EXT76",
+        "S31",
+        "S31AUDIT",
+        "MDP",
+        "MAP"
+      ],
+      "rationale": "可信贡献是单场站代理任务中的关系操作化、同参数增量证据和MDP对解释/报告的区分；JPL支持两类关系的条件性整体增量。通用图卷积、门控和时序组合均有先例；[76]近邻尚未被直接比较；MDP尚未证明能指导改模并提升预测，故新颖性属于有限的任务内组合贡献。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；按新增价值的证据强度而非方法复杂度评分。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-11",
+      "score": 3.0,
+      "manuscript_location": "§§1.1.1–1.1.2；§§5.4.1–5.4.5；结论‘研究判断与使用条件’。",
+      "evidence_ids": [
+        "MS",
+        "DATA",
+        "DECISION",
+        "CAL",
+        "S32",
+        "MAP"
+      ],
+      "rationale": "论文给出预测到容量核查的接口和合成线性规划示例，可支持后续模型筛选与采数安排。尚无同步电表、现场设备/车辆约束、影子运行、预警效果或经济收益证据。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；实际部署价值仍待现场证据。",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-12",
+      "score": 8.5,
+      "manuscript_location": "全文；重点摘要、§1.2–1.6、第3章结果、第4章综合判断、第5章总结与结论。",
+      "evidence_ids": [
+        "MS",
+        "NEAR16",
+        "MAP",
+        "DOCX"
+      ],
+      "rationale": "章节推进完整，摘要与结论口径一致，时间标签、数据单位和主张边界较清楚；本稿进一步明确JPL校准数字并删去一处第五章重复总结。仍存在证据限定语和结果摘要的重复、技术信息密度偏高；文献[76]与主要贡献的直接定位也未完成。Word版式与图像视觉验收另列。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "本轮建立当前独立评阅基线；只按内容表达、结构和规范评分。",
+        "evidence_ids": []
+      }
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "项目内部模拟分，不是成都理工大学官方成绩、A/B/C/D结论或实际盲审预测。",
+    "本轮只对当前稿进行三路隔离评阅；没有将旧稿按同一组隔离视角同步重评，故不发布正式配对涨跌结论。",
+    "数值核验依赖冻结审计和复算记录，没有重跑全部原始训练和逐键预测。",
+    "Word/PDF交付与全页视觉状态独立于内容评分；候选稿尚未通过全部个人信息、签章和1200 PPI交付要求。"
+  ]
+}

@@ -1,0 +1,798 @@
+{
+  "status": "PASS",
+  "method": "WPS PDF page layout retained; matched original DOCX figure streams restored by XObject replacement",
+  "input_pdf": "docs/thesis/revision-20261020-delivery/wps-final/thesis-candidate.pdf",
+  "input_pdf_sha256": "465e9097dae29f710e8bdf70e79ad5f7b6013e44f78d3d14bb15d084fbf3d8b0",
+  "input_docx": "docs/thesis/revision-20261020-delivery/thesis-candidate.docx",
+  "input_docx_sha256": "06891e7ec5ce9adf67e42884232d94ee198d42b0e0f71513b0cbeb05018d39e6",
+  "output_pdf": "docs/thesis/revision-20261020-delivery/wps-final/thesis-candidate-wps-1200ppi.pdf",
+  "output_pdf_sha256": "5802c89c8b1afb92dbdb598e21edeb44a54955880b4ea4a416850a300f45a2da",
+  "page_count": 104,
+  "figure_count": 46,
+  "minimum_effective_ppi": 1201.0,
+  "maximum_effective_ppi": 1872.0,
+  "figure_mapping": [
+    {
+      "figure_index": 1,
+      "pdf_page": 18,
+      "pdf_xref": 559,
+      "pdf_before_pixels": [
+        3352,
+        1887
+      ],
+      "source_docx_media": "word/media/image2.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.311,
+      "mapping_margin": 9.6195,
+      "source_sha256": "65a235861276a84b21b64316cd0e79fd26a619c37a847672098e30d9463b7eb1"
+    },
+    {
+      "figure_index": 2,
+      "pdf_page": 19,
+      "pdf_xref": 563,
+      "pdf_before_pixels": [
+        6709,
+        3776
+      ],
+      "source_docx_media": "word/media/image3.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.1155,
+      "mapping_margin": 9.0574,
+      "source_sha256": "25c7df6118d2fa7f8fa14e5b7d9d1c65faba8772cf034cfb8bcb25668c93f808"
+    },
+    {
+      "figure_index": 3,
+      "pdf_page": 22,
+      "pdf_xref": 585,
+      "pdf_before_pixels": [
+        3352,
+        1887
+      ],
+      "source_docx_media": "word/media/image4.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.2223,
+      "mapping_margin": 7.4324,
+      "source_sha256": "840767c9da4508697016c73ea5d2e137ab1c12e94cb0ddd667e8ddc0b85ea34f"
+    },
+    {
+      "figure_index": 4,
+      "pdf_page": 27,
+      "pdf_xref": 600,
+      "pdf_before_pixels": [
+        3352,
+        2602
+      ],
+      "source_docx_media": "word/media/image5.png",
+      "source_pixels": [
+        6714,
+        5212
+      ],
+      "thumbnail_mae": 0.4635,
+      "mapping_margin": 12.0776,
+      "source_sha256": "c7717c8f7bca33d45a455042d28075900c58c5324fe60a5521c7230ebd0d4d3c"
+    },
+    {
+      "figure_index": 5,
+      "pdf_page": 28,
+      "pdf_xref": 604,
+      "pdf_before_pixels": [
+        3352,
+        1569
+      ],
+      "source_docx_media": "word/media/image6.png",
+      "source_pixels": [
+        9016,
+        4219
+      ],
+      "thumbnail_mae": 0.6594,
+      "mapping_margin": 9.9582,
+      "source_sha256": "5756387c6f5b1c9df1f8fa93e7910cb0ce22ebb3caf0a6a5155d072ed393c37f"
+    },
+    {
+      "figure_index": 6,
+      "pdf_page": 28,
+      "pdf_xref": 605,
+      "pdf_before_pixels": [
+        8179,
+        3859
+      ],
+      "source_docx_media": "word/media/image7.png",
+      "source_pixels": [
+        8179,
+        3859
+      ],
+      "thumbnail_mae": 0.0181,
+      "mapping_margin": 4.8261,
+      "source_sha256": "7e63dab09c78fa8e903d4bce21aede3e4e04e40a4948dd30cec82f6af08a352e"
+    },
+    {
+      "figure_index": 7,
+      "pdf_page": 29,
+      "pdf_xref": 608,
+      "pdf_before_pixels": [
+        3353,
+        1578
+      ],
+      "source_docx_media": "word/media/image8.png",
+      "source_pixels": [
+        8239,
+        3878
+      ],
+      "thumbnail_mae": 0.5289,
+      "mapping_margin": 5.8748,
+      "source_sha256": "54c61655c97ff8a3078bca0b5868ec5aba8640974550646569a6a6082d91d5f9"
+    },
+    {
+      "figure_index": 8,
+      "pdf_page": 30,
+      "pdf_xref": 611,
+      "pdf_before_pixels": [
+        3353,
+        1785
+      ],
+      "source_docx_media": "word/media/image9.png",
+      "source_pixels": [
+        7699,
+        4099
+      ],
+      "thumbnail_mae": 0.6564,
+      "mapping_margin": 28.1332,
+      "source_sha256": "7fade86f3a6af2b4c1c4413e43a99080d01a411ec58dea54bdfa1eaed66f245f"
+    },
+    {
+      "figure_index": 9,
+      "pdf_page": 31,
+      "pdf_xref": 620,
+      "pdf_before_pixels": [
+        3352,
+        1885
+      ],
+      "source_docx_media": "word/media/image10.png",
+      "source_pixels": [
+        6709,
+        3772
+      ],
+      "thumbnail_mae": 0.3644,
+      "mapping_margin": 8.8009,
+      "source_sha256": "ef10e8023fd06bb47882b28b666adfa1a5b89817e56dc9c9fac3603f162d80a8"
+    },
+    {
+      "figure_index": 10,
+      "pdf_page": 31,
+      "pdf_xref": 621,
+      "pdf_before_pixels": [
+        3352,
+        1704
+      ],
+      "source_docx_media": "word/media/image11.png",
+      "source_pixels": [
+        8299,
+        4219
+      ],
+      "thumbnail_mae": 0.5253,
+      "mapping_margin": 18.0473,
+      "source_sha256": "0411b05dc46727a4f71bc90719a21362d95583faa3a72cb22981033aa114944b"
+    },
+    {
+      "figure_index": 11,
+      "pdf_page": 32,
+      "pdf_xref": 624,
+      "pdf_before_pixels": [
+        3352,
+        1815
+      ],
+      "source_docx_media": "word/media/image12.png",
+      "source_pixels": [
+        6727,
+        3643
+      ],
+      "thumbnail_mae": 0.563,
+      "mapping_margin": 18.2257,
+      "source_sha256": "97897cd575caf77c496187ad3566967a4e5fd1217d207b60785edb6e09efc422"
+    },
+    {
+      "figure_index": 12,
+      "pdf_page": 33,
+      "pdf_xref": 627,
+      "pdf_before_pixels": [
+        6709,
+        3776
+      ],
+      "source_docx_media": "word/media/image13.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.1109,
+      "mapping_margin": 8.2002,
+      "source_sha256": "5d9c7042cff534ad182718ee51de107629c51e73d491379725d9eed491828c58"
+    },
+    {
+      "figure_index": 13,
+      "pdf_page": 35,
+      "pdf_xref": 633,
+      "pdf_before_pixels": [
+        3352,
+        2816
+      ],
+      "source_docx_media": "word/media/image14.png",
+      "source_pixels": [
+        7665,
+        6439
+      ],
+      "thumbnail_mae": 1.1762,
+      "mapping_margin": 37.7721,
+      "source_sha256": "919d1efbbd15dd7d7708a8f7bbb45b483b909bfc8215586e3cbd1482d5a1d407"
+    },
+    {
+      "figure_index": 14,
+      "pdf_page": 36,
+      "pdf_xref": 636,
+      "pdf_before_pixels": [
+        3352,
+        1615
+      ],
+      "source_docx_media": "word/media/image15.png",
+      "source_pixels": [
+        9253,
+        4459
+      ],
+      "thumbnail_mae": 0.4782,
+      "mapping_margin": 17.1029,
+      "source_sha256": "d23ad8701fae38019f3196528710ff4b15921fbf4dfde3093dc0cd7cc52a29ed"
+    },
+    {
+      "figure_index": 15,
+      "pdf_page": 37,
+      "pdf_xref": 640,
+      "pdf_before_pixels": [
+        3352,
+        1885
+      ],
+      "source_docx_media": "word/media/image16.png",
+      "source_pixels": [
+        6709,
+        3772
+      ],
+      "thumbnail_mae": 0.3566,
+      "mapping_margin": 9.5383,
+      "source_sha256": "2edde69e7539883da39e09a2dfa1c7e0f91e8aced13df73fa6e8e765ffcd673f"
+    },
+    {
+      "figure_index": 16,
+      "pdf_page": 39,
+      "pdf_xref": 648,
+      "pdf_before_pixels": [
+        3352,
+        4469
+      ],
+      "source_docx_media": "word/media/image17.png",
+      "source_pixels": [
+        6709,
+        8945
+      ],
+      "thumbnail_mae": 0.4362,
+      "mapping_margin": 10.5855,
+      "source_sha256": "9173a206b62ead4fb19d49c1ef3cea27c7caaa1d966dd295b4d7bee63cbac8ba"
+    },
+    {
+      "figure_index": 17,
+      "pdf_page": 40,
+      "pdf_xref": 651,
+      "pdf_before_pixels": [
+        3352,
+        1887
+      ],
+      "source_docx_media": "word/media/image18.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.1465,
+      "mapping_margin": 5.8672,
+      "source_sha256": "cecf94a68e11d2e3272556eddd04f0563bbf891a96beb6974d07459151968e9d"
+    },
+    {
+      "figure_index": 18,
+      "pdf_page": 40,
+      "pdf_xref": 652,
+      "pdf_before_pixels": [
+        3352,
+        1887
+      ],
+      "source_docx_media": "word/media/image19.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.2093,
+      "mapping_margin": 7.7159,
+      "source_sha256": "99881015cd469351fa5bfc77c631d0d00398f7ffb2db25bd9bd36a3f0c54029e"
+    },
+    {
+      "figure_index": 19,
+      "pdf_page": 41,
+      "pdf_xref": 656,
+      "pdf_before_pixels": [
+        3352,
+        1887
+      ],
+      "source_docx_media": "word/media/image20.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.3604,
+      "mapping_margin": 9.91,
+      "source_sha256": "ededddcd10ea58b390c3e18d6a43f395a0a84c5a4b1ff3efe12c1ab7e6b4aa00"
+    },
+    {
+      "figure_index": 20,
+      "pdf_page": 43,
+      "pdf_xref": 666,
+      "pdf_before_pixels": [
+        3352,
+        1104
+      ],
+      "source_docx_media": "word/media/image21.png",
+      "source_pixels": [
+        8546,
+        2814
+      ],
+      "thumbnail_mae": 0.4039,
+      "mapping_margin": 6.5188,
+      "source_sha256": "1cbd667061e3a02d725d310c405933ab30b2aa75d38d1577dee5f5836c999716"
+    },
+    {
+      "figure_index": 21,
+      "pdf_page": 46,
+      "pdf_xref": 684,
+      "pdf_before_pixels": [
+        3352,
+        1887
+      ],
+      "source_docx_media": "word/media/image22.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.2854,
+      "mapping_margin": 5.7858,
+      "source_sha256": "471768c968273dc127949f34f09e69795304a6e51b704483f50721bd852256bd"
+    },
+    {
+      "figure_index": 22,
+      "pdf_page": 46,
+      "pdf_xref": 685,
+      "pdf_before_pixels": [
+        3352,
+        1887
+      ],
+      "source_docx_media": "word/media/image23.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.381,
+      "mapping_margin": 8.129,
+      "source_sha256": "e9c7b285bc0c3bf970deeb9b7080c6be3916de3d4b584ed90f9b38c21617c5da"
+    },
+    {
+      "figure_index": 23,
+      "pdf_page": 48,
+      "pdf_xref": 693,
+      "pdf_before_pixels": [
+        6709,
+        3776
+      ],
+      "source_docx_media": "word/media/image24.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.0846,
+      "mapping_margin": 9.8117,
+      "source_sha256": "70d1a1760f995c245403f368b66a5629c4028a4c589db6a98c25b7a49f418a99"
+    },
+    {
+      "figure_index": 24,
+      "pdf_page": 51,
+      "pdf_xref": 702,
+      "pdf_before_pixels": [
+        3352,
+        1579
+      ],
+      "source_docx_media": "word/media/image25.png",
+      "source_pixels": [
+        6709,
+        3161
+      ],
+      "thumbnail_mae": 0.2616,
+      "mapping_margin": 5.0192,
+      "source_sha256": "697560aec67761dc0114511695794915646c28a07beb0388701e033e31152cd5"
+    },
+    {
+      "figure_index": 25,
+      "pdf_page": 51,
+      "pdf_xref": 703,
+      "pdf_before_pixels": [
+        6709,
+        4121
+      ],
+      "source_docx_media": "word/media/image26.png",
+      "source_pixels": [
+        6709,
+        4121
+      ],
+      "thumbnail_mae": 0.0364,
+      "mapping_margin": 5.8704,
+      "source_sha256": "f68929be7939e516be9e004c743e32c669ba36e2612702a2ef400d273fcda746"
+    },
+    {
+      "figure_index": 26,
+      "pdf_page": 53,
+      "pdf_xref": 709,
+      "pdf_before_pixels": [
+        3352,
+        2491
+      ],
+      "source_docx_media": "word/media/image27.png",
+      "source_pixels": [
+        6727,
+        4999
+      ],
+      "thumbnail_mae": 0.7282,
+      "mapping_margin": 14.5068,
+      "source_sha256": "6a83d66a91700ead8bd9fecea999ec86e0a2acbdfab81ffc7d94da53f350a6ee"
+    },
+    {
+      "figure_index": 27,
+      "pdf_page": 54,
+      "pdf_xref": 712,
+      "pdf_before_pixels": [
+        3352,
+        1832
+      ],
+      "source_docx_media": "word/media/image28.png",
+      "source_pixels": [
+        9000,
+        4920
+      ],
+      "thumbnail_mae": 0.2736,
+      "mapping_margin": 4.5618,
+      "source_sha256": "43ec712829e45c2f457b3913bdef72b0acb6a8958c05573e8b65d822f2862114"
+    },
+    {
+      "figure_index": 28,
+      "pdf_page": 55,
+      "pdf_xref": 715,
+      "pdf_before_pixels": [
+        6847,
+        5778
+      ],
+      "source_docx_media": "word/media/image29.png",
+      "source_pixels": [
+        6847,
+        5778
+      ],
+      "thumbnail_mae": 0.029,
+      "mapping_margin": 8.2689,
+      "source_sha256": "2a131d89ed69cff53d18529636fd473c21473732051e8b88cea52cc9e0bedd87"
+    },
+    {
+      "figure_index": 29,
+      "pdf_page": 57,
+      "pdf_xref": 721,
+      "pdf_before_pixels": [
+        3352,
+        1893
+      ],
+      "source_docx_media": "word/media/image30.png",
+      "source_pixels": [
+        6727,
+        3799
+      ],
+      "thumbnail_mae": 0.5616,
+      "mapping_margin": 21.5323,
+      "source_sha256": "e1aadffdfa84e3db6565dea8ba96bc86e83f3c03b47937f28a78b189d1305837"
+    },
+    {
+      "figure_index": 30,
+      "pdf_page": 58,
+      "pdf_xref": 724,
+      "pdf_before_pixels": [
+        3352,
+        2208
+      ],
+      "source_docx_media": "word/media/image31.png",
+      "source_pixels": [
+        6709,
+        4419
+      ],
+      "thumbnail_mae": 0.7022,
+      "mapping_margin": 14.5669,
+      "source_sha256": "cc53753281938c43670b8f91dd65017997a70a93c50956848f198ba054b2658a"
+    },
+    {
+      "figure_index": 31,
+      "pdf_page": 63,
+      "pdf_xref": 741,
+      "pdf_before_pixels": [
+        3352,
+        1893
+      ],
+      "source_docx_media": "word/media/image32.png",
+      "source_pixels": [
+        6727,
+        3799
+      ],
+      "thumbnail_mae": 0.5472,
+      "mapping_margin": 18.4152,
+      "source_sha256": "86fe3a0ac48225b02a100b8f88f7f475a477b89fa272b2b4bad645c85a234ea4"
+    },
+    {
+      "figure_index": 32,
+      "pdf_page": 68,
+      "pdf_xref": 759,
+      "pdf_before_pixels": [
+        3352,
+        1887
+      ],
+      "source_docx_media": "word/media/image33.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.3601,
+      "mapping_margin": 9.483,
+      "source_sha256": "e85dfc81755f2fa1215beb917be20f9bfb81a2ba8a3f9c89e7a80f1000751188"
+    },
+    {
+      "figure_index": 33,
+      "pdf_page": 70,
+      "pdf_xref": 770,
+      "pdf_before_pixels": [
+        3352,
+        1679
+      ],
+      "source_docx_media": "word/media/image34.png",
+      "source_pixels": [
+        6709,
+        3360
+      ],
+      "thumbnail_mae": 0.237,
+      "mapping_margin": 4.5896,
+      "source_sha256": "55e284fcfb9db5ffdd15b6a2aa4763aa48cc5c24a4d0f980a874773a7560eb23"
+    },
+    {
+      "figure_index": 34,
+      "pdf_page": 71,
+      "pdf_xref": 774,
+      "pdf_before_pixels": [
+        3352,
+        2053
+      ],
+      "source_docx_media": "word/media/image35.png",
+      "source_pixels": [
+        6709,
+        4109
+      ],
+      "thumbnail_mae": 0.2058,
+      "mapping_margin": 14.8813,
+      "source_sha256": "f2d9913a9fdc3a6b6c3ee443405cab925b32287dbb0077cc095cef8bde41deb6"
+    },
+    {
+      "figure_index": 35,
+      "pdf_page": 73,
+      "pdf_xref": 788,
+      "pdf_before_pixels": [
+        3352,
+        3706
+      ],
+      "source_docx_media": "word/media/image36.png",
+      "source_pixels": [
+        6737,
+        7448
+      ],
+      "thumbnail_mae": 1.3514,
+      "mapping_margin": 28.8647,
+      "source_sha256": "e83fc5114794da52357b5f54eef9fd9c7a5570bcf9cc250af9861fff4377668e"
+    },
+    {
+      "figure_index": 36,
+      "pdf_page": 76,
+      "pdf_xref": 803,
+      "pdf_before_pixels": [
+        3352,
+        1442
+      ],
+      "source_docx_media": "word/media/image37.png",
+      "source_pixels": [
+        6713,
+        2887
+      ],
+      "thumbnail_mae": 0.2955,
+      "mapping_margin": 9.0631,
+      "source_sha256": "fd29c8c9e3eded2c7f234ff96a9b55642308393bde8af598fed5f52a33bae9cb"
+    },
+    {
+      "figure_index": 37,
+      "pdf_page": 76,
+      "pdf_xref": 804,
+      "pdf_before_pixels": [
+        3352,
+        1429
+      ],
+      "source_docx_media": "word/media/image38.png",
+      "source_pixels": [
+        10459,
+        4459
+      ],
+      "thumbnail_mae": 0.3449,
+      "mapping_margin": 4.472,
+      "source_sha256": "0eda6bfe760ac36ddb82f4658981e504ac6a1f4105996372b02cb3a3b0882bb5"
+    },
+    {
+      "figure_index": 38,
+      "pdf_page": 77,
+      "pdf_xref": 807,
+      "pdf_before_pixels": [
+        3352,
+        1631
+      ],
+      "source_docx_media": "word/media/image39.png",
+      "source_pixels": [
+        9000,
+        4380
+      ],
+      "thumbnail_mae": 0.3071,
+      "mapping_margin": 4.5799,
+      "source_sha256": "980c39a360cc3c90320c76866230003495f80139fb85cf52c68b0a25d32ed038"
+    },
+    {
+      "figure_index": 39,
+      "pdf_page": 81,
+      "pdf_xref": 824,
+      "pdf_before_pixels": [
+        3352,
+        1887
+      ],
+      "source_docx_media": "word/media/image40.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.3392,
+      "mapping_margin": 11.471,
+      "source_sha256": "ca385186f4c9ed6fb3b35dac1880f100e1f691242aa1eb518de05f8605b07d3e"
+    },
+    {
+      "figure_index": 40,
+      "pdf_page": 83,
+      "pdf_xref": 835,
+      "pdf_before_pixels": [
+        3352,
+        2077
+      ],
+      "source_docx_media": "word/media/image41.png",
+      "source_pixels": [
+        6720,
+        4164
+      ],
+      "thumbnail_mae": 0.3661,
+      "mapping_margin": 7.9729,
+      "source_sha256": "1028c2139a18bd7c24f0c0845e2af23e7a7c37dc9d8501351db1c5f74405df5c"
+    },
+    {
+      "figure_index": 41,
+      "pdf_page": 84,
+      "pdf_xref": 838,
+      "pdf_before_pixels": [
+        3352,
+        3430
+      ],
+      "source_docx_media": "word/media/image42.png",
+      "source_pixels": [
+        6708,
+        6864
+      ],
+      "thumbnail_mae": 0.6326,
+      "mapping_margin": 9.7095,
+      "source_sha256": "ee8668c7b7fb55148316c1bccb623e7dac4e968277b4d82e3f23eea12493bfd5"
+    },
+    {
+      "figure_index": 42,
+      "pdf_page": 85,
+      "pdf_xref": 842,
+      "pdf_before_pixels": [
+        3352,
+        1953
+      ],
+      "source_docx_media": "word/media/image43.png",
+      "source_pixels": [
+        6727,
+        3919
+      ],
+      "thumbnail_mae": 0.4759,
+      "mapping_margin": 6.911,
+      "source_sha256": "118c7b54ed8dcec22a51365d6b3e7efa48fac56b1b5cc609b7dd228fa441f938"
+    },
+    {
+      "figure_index": 43,
+      "pdf_page": 86,
+      "pdf_xref": 846,
+      "pdf_before_pixels": [
+        3352,
+        2056
+      ],
+      "source_docx_media": "word/media/image44.png",
+      "source_pixels": [
+        9000,
+        5520
+      ],
+      "thumbnail_mae": 0.4623,
+      "mapping_margin": 8.1696,
+      "source_sha256": "a670a9646a44feceebfb60893f45fbb3100b2c351d463ac103e1bea6c610c218"
+    },
+    {
+      "figure_index": 44,
+      "pdf_page": 88,
+      "pdf_xref": 855,
+      "pdf_before_pixels": [
+        3352,
+        1887
+      ],
+      "source_docx_media": "word/media/image45.png",
+      "source_pixels": [
+        6709,
+        3776
+      ],
+      "thumbnail_mae": 0.2946,
+      "mapping_margin": 8.3665,
+      "source_sha256": "5d69edcca21dec2f572776defc04b383c25cc50ddc4f02fc4bb8c5d00da5bd5c"
+    },
+    {
+      "figure_index": 45,
+      "pdf_page": 91,
+      "pdf_xref": 866,
+      "pdf_before_pixels": [
+        3352,
+        3718
+      ],
+      "source_docx_media": "word/media/image46.png",
+      "source_pixels": [
+        6709,
+        7441
+      ],
+      "thumbnail_mae": 0.326,
+      "mapping_margin": 8.1714,
+      "source_sha256": "3c10046eb2706b35b8714c0ca50ab001990aebdd82b466bc2e7e21601b96d501"
+    },
+    {
+      "figure_index": 46,
+      "pdf_page": 92,
+      "pdf_xref": 869,
+      "pdf_before_pixels": [
+        3352,
+        2519
+      ],
+      "source_docx_media": "word/media/image47.png",
+      "source_pixels": [
+        6730,
+        5058
+      ],
+      "thumbnail_mae": 0.7425,
+      "mapping_margin": 7.9712,
+      "source_sha256": "699b09422b127fb3f1c81a1d2d7301bf08ca4e073a6ce8fa3e51ef7f27166bfd"
+    }
+  ]
+}

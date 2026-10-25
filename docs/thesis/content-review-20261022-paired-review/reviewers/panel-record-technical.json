@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "record_type": "independent_reviewer_criterion_record",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "review_role": "technical_methods",
+  "context_isolation_id": "BLIND-TECH-20261022-DA0B92EDD5C0",
+  "packet_fingerprint": "5b28731a76055bdd3953815621999e5caa6b67bf867a40b75af26422b2aaaa50",
+  "historical_score_exposed": false,
+  "historical_score_exposure_basis": "Only the frozen packet was used. Its manifest marks historical scorecards and reviewer reports excluded; no project history, scorecard, README, publication-status, or other reviewer report was opened.",
+  "record_schema_note": "The project reviewer-record-template.json was not read because it is outside the frozen packet boundary. This record follows the component IDs and maxima in the packet anchors.json.",
+  "is_final_scorecard": false,
+  "scores": {
+    "baseline": {
+      "raw_total": 75.0,
+      "maximum": 90,
+      "normalized_100": 83.33
+    },
+    "current": {
+      "raw_total": 76.0,
+      "maximum": 90,
+      "normalized_100": 84.44
+    }
+  },
+  "criteria": [
+    {
+      "id": "BR-01",
+      "name": "选题意义与问题定义",
+      "maximum": 5,
+      "baseline_score": 4.0,
+      "current_score": 4.0,
+      "components": [
+        {
+          "id": "BR-01-problem",
+          "maximum": 2,
+          "baseline_score": 2.0,
+          "current_score": 2.0,
+          "basis": "研究对象、15 min粒度、会话重构代理目标及站内预测问题明确。"
+        },
+        {
+          "id": "BR-01-significance",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "背景有充电设施增长和稀疏/异质数据依据；工程需求的量化规模仍有限。"
+        },
+        {
+          "id": "BR-01-need",
+          "maximum": 1,
+          "baseline_score": 0.5,
+          "current_score": 0.5,
+          "basis": "问题适配离线节点筛选；预测结果与真实调度需求的对应尚未量测。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "摘要；§1.1.1–1.1.3；§2.1"
+        ],
+        "current": [
+          "摘要；§1.1.1–1.1.3；§2.1"
+        ]
+      },
+      "evidence_ids": [
+        "DATA_AVAIL.md",
+        "DATASEARCH22.md",
+        "EPFL22.md"
+      ],
+      "reason": "问题被具体化为单场站节点代理能量的短期预测，研究动机和数据挑战可查。没有把代理目标写成电表功率，也没有将应用需要定量化为可验收的负荷分配、风险或成本目标。",
+      "remaining_limitation": "真实功率对应关系、行为输入到达时间和运行需求强度尚无同步量测；这属于明确范围限制，不能据此否定问题定义本身。",
+      "change": "无分数变化；EPFL形态参照不改变问题定义。"
+    },
+    {
+      "id": "BR-02",
+      "name": "研究问题、范围与题目一致性",
+      "maximum": 5,
+      "baseline_score": 4.5,
+      "current_score": 4.5,
+      "components": [
+        {
+          "id": "BR-02-alignment",
+          "maximum": 2,
+          "baseline_score": 2.0,
+          "current_score": 2.0,
+          "basis": "题目、摘要、预测问题和代理目标一致，外推边界明确。"
+        },
+        {
+          "id": "BR-02-progression",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "各章围绕预测、组件和诊断推进；可靠性、方向候选和决策接口使范围较宽。"
+        },
+        {
+          "id": "BR-02-closure",
+          "maximum": 1,
+          "baseline_score": 1.0,
+          "current_score": 1.0,
+          "basis": "结论逐项回应整体排序、组件、目标敏感性、MDP和应用边界。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "摘要；§1.4–1.6；§3.9；§5.5；结论"
+        ],
+        "current": [
+          "摘要；§1.4–1.6；§3.9；§5.5；结论"
+        ]
+      },
+      "evidence_ids": [
+        "MAP.md",
+        "MDP.md",
+        "S31.md",
+        "S32.md"
+      ],
+      "reason": "主要问题、三套协议、贡献和结论闭合。论文把区间、TE和合成决策列为补充探索，并说明它们不构成主预测增益或现场验证。扣0.5是因为内容横跨多类研究任务，主次仍需读者持续跟踪。",
+      "remaining_limitation": "研究线较多，章节负担和多个不同任务口径增加综合阅读成本；未构成摘要或结论层面的范围漂移。",
+      "change": "无分数变化；current只新增范围受限的外部形态参照和材料追溯说明。"
+    },
+    {
+      "id": "BR-03",
+      "name": "文献综述与缺口定位",
+      "maximum": 5,
+      "baseline_score": 4.0,
+      "current_score": 4.0,
+      "components": [
+        {
+          "id": "BR-03-coverage",
+          "maximum": 1,
+          "baseline_score": 1.0,
+          "current_score": 1.0,
+          "basis": "覆盖EV预测、站间图、住宅负荷图、事件、解释与共形预测关键先例。"
+        },
+        {
+          "id": "BR-03-sources",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "核心近邻有原文或官方摘要审计，但若干来源仅能读摘要、索引片段或受限正文。"
+        },
+        {
+          "id": "BR-03-gap",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "以节点粒度、关系来源、目标与验证区分贡献；对最接近EV代理残差工作可再直接归纳差异。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "§1.2.1–1.2.4；表1-1；§1.3"
+        ],
+        "current": [
+          "§1.2.1–1.2.4；表1-1；§1.3"
+        ]
+      },
+      "evidence_ids": [
+        "NEAR.md",
+        "NEAR2.md",
+        "NEAR76.md",
+        "NEAR_20261016.md"
+      ],
+      "reason": "比较没有把图卷积、多关系或门控网络宣称为首创，并以站间/住宅近邻限定单站内节点任务。表1-1已说明Liang[76]的EV会话重构、残差预测、比较与指标边界。原文核查证明若干同行工作仅凭摘要/索引可读，论文相应没有臆推未知细节。",
+      "remaining_limitation": "NEAR76记录指出先前稿件未充分正面对比[76]；当前表1-1和§1.3已补上方法与问题差异，但尚可用一个更明确的并列句总结“目标粒度、邻接干预、MDP验证”三维差异。近邻原文可读范围仍不均衡。",
+      "change": "无分数变化；两稿均含现有近邻比较，当前参考文献新增EPFL数据集不改变研究缺口。"
+    },
+    {
+      "id": "BR-04",
+      "name": "理论基础与专业知识",
+      "maximum": 5,
+      "baseline_score": 4.5,
+      "current_score": 4.5,
+      "components": [
+        {
+          "id": "BR-04-concepts",
+          "maximum": 2,
+          "baseline_score": 2.0,
+          "current_score": 2.0,
+          "basis": "节点代理能量、统计关系、事件标签、发布时刻与量纲区分清楚。"
+        },
+        {
+          "id": "BR-04-formulas",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "代理重构、关系图、门控、误差、TE及区间方法公式有边界说明；实现一致性不能从正文公式独立保证。"
+        },
+        {
+          "id": "BR-04-knowledge",
+          "maximum": 1,
+          "baseline_score": 1.0,
+          "current_score": 1.0,
+          "basis": "专业方法用于分析代理目标敏感性、稀疏分层、关系依赖及校准失配。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "§2.1–2.5，式(2-1)–(2-2)；§3.2–3.5；§4.2；§5.2–5.3"
+        ],
+        "current": [
+          "§2.1–2.5，式(2-1)–(2-2)；§3.2–3.5；§4.2；§5.2–5.3"
+        ]
+      },
+      "evidence_ids": [
+        "EPFL22.md",
+        "S32.md",
+        "S32AUDIT.json",
+        "MDP.md",
+        "RECOMP.json"
+      ],
+      "reason": "公式和符号大体连贯，尤其代理能量与功率测量、统计关系与物理拓扑、β与变换尺度、预测键与独立原始观测等边界均有交代。完成时刻截断核查保留标签代理属性；TE候选被正确限制为未校正筛查。",
+      "remaining_limitation": "不同章节包含历史实现、事后复核和再训练方案；读者仍需对照协议，不能由公式本身确认每一历史实现与展示式完全一致。底层能量和时点假设未由ACN同步电表与到达时戳验证。",
+      "change": "无分数变化；EPFL另提供一项不同分箱口径的外部形态量，不改公式或ACN标签定义。"
+    },
+    {
+      "id": "BR-05",
+      "name": "方法与实验设计",
+      "maximum": 10,
+      "baseline_score": 8.5,
+      "current_score": 8.5,
+      "components": [
+        {
+          "id": "BR-05-information_split",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "输入时点、完整窗口留段、成熟标签和共同键控制清楚；旧协议泄漏/可见性限制已披露。"
+        },
+        {
+          "id": "BR-05-comparators",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "有近容量TCN、完整AGCRN、同参数共享门控及协议内基线；基线覆盖并非完全对称。"
+        },
+        {
+          "id": "BR-05-controls",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "同参数门控和关系自环替换重训可识别部分主张；尚无诊断指导改模试验，若干特征/节点范围未作端到端消融。"
+        },
+        {
+          "id": "BR-05-selection_budget",
+          "maximum": 2,
+          "baseline_score": 2.0,
+          "current_score": 2.0,
+          "basis": "训练、选模、种子、早停与测试隔离可查；预算上限触及已显式限定。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "§2.1.1–2.1.3；§3.6.2–3.6.4；§3.7.1–3.7.2；§3.8.3–3.8.4"
+        ],
+        "current": [
+          "§2.1.1–2.1.3；§3.6.2–3.6.4；§3.7.1–3.7.2；§3.8.3–3.8.4"
+        ]
+      },
+      "evidence_ids": [
+        "S31.md",
+        "S32.md",
+        "S31AUDIT.json",
+        "S32AUDIT.json",
+        "QUALITY.md",
+        "MAP.md"
+      ],
+      "reason": "训练、调参/校准/测试切分、成熟标签、输入字段、训练期建图、三种子和统一预测键大体匹配所问的协议内增量。JPL关系替换保留参数和其他关系分支并重训；节点门控共享对照相同参数。",
+      "remaining_limitation": "共享门控比较有种子到达60轮上限；完整AGCRN远大于MRG-GCN且未提供容量匹配AGCRN；没有行为GRU完整对照。节点门控、关系替换和目标敏感性补充复用已查看时期，未检验诊断指导调整是否带来增益。",
+      "change": "无分数变化；新增EPFL形态核查不是实验设计或模型验证，新增归档段落也不改变任何训练矩阵。"
+    },
+    {
+      "id": "BR-06",
+      "name": "可复现性与方法严谨性",
+      "maximum": 5,
+      "baseline_score": 4.0,
+      "current_score": 4.5,
+      "components": [
+        {
+          "id": "BR-06-data_split",
+          "maximum": 1,
+          "baseline_score": 1.0,
+          "current_score": 1.0,
+          "basis": "数据来源、节点、切分和时间边界可查。"
+        },
+        {
+          "id": "BR-06-source_config",
+          "maximum": 1.5,
+          "baseline_score": 1.0,
+          "current_score": 1.5,
+          "basis": "基线报告说明实验配置和部分审计；current新增031/032源包、逐运行配置/环境和源码身份哈希清单及完整性计数。"
+        },
+        {
+          "id": "BR-06-keys_metrics",
+          "maximum": 1.5,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "共同预测键、标签和指标独立复算对照充分。"
+        },
+        {
+          "id": "BR-06-environment_package",
+          "maximum": 1,
+          "baseline_score": 0.5,
+          "current_score": 0.5,
+          "basis": "侧车包和大体积权重/预测材料不随论文分发；当前复算不重训、不加载检查点前向。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "§2.1.1–2.1.3；§3.6.1、§3.6.3–3.6.4；表3-14（对应原稿表号）"
+        ],
+        "current": [
+          "§2.1.1–2.1.3；§3.6.1、§3.6.3–3.6.4；§3.8.3（表3-14）；§3.8.3新段，行1040"
+        ]
+      },
+      "evidence_ids": [
+        "REPLAY22.md",
+        "MRECOMP.json",
+        "RECOMP.json",
+        "S31.md",
+        "S32.md",
+        "S31AUDIT.json",
+        "S32AUDIT.json",
+        "ADAPT.md",
+        "ADAPTAUDIT.json"
+      ],
+      "reason": "两稿均有较强的键级与指标核验。current新增训练源码、配置、环境、检查点和预测文件按清单封存的可追溯性，并给出67/91项清单、18次既存预测复算状态，故BR-06源配置组件加0.5。",
+      "remaining_limitation": "该复算是保存预测指标算术复核，不是模型前向或训练复现；归档是大体积本地sidecar。031入口未被Git跟踪、032无可验证历史提交号，依赖冻结清单建立源身份。",
+      "change": "current较baseline +0.5；仅提升补充实验的来源/配置可追溯性，不是新性能证据。"
+    },
+    {
+      "id": "BR-07",
+      "name": "工作量与解决问题能力",
+      "maximum": 10,
+      "baseline_score": 9.0,
+      "current_score": 9.0,
+      "components": [
+        {
+          "id": "BR-07-technical_work",
+          "maximum": 4,
+          "baseline_score": 4.0,
+          "current_score": 4.0,
+          "basis": "完成多协议、多模型、多个训练矩阵、重构敏感性和区间/机制分析。"
+        },
+        {
+          "id": "BR-07-problem_solving",
+          "maximum": 4,
+          "baseline_score": 3.0,
+          "current_score": 3.0,
+          "basis": "诊断并处理代理口径、标签成熟、键对齐、top-k并列复算、误差分层及关系增量；解决方案的外部验证有限。"
+        },
+        {
+          "id": "BR-07-integration",
+          "maximum": 2,
+          "baseline_score": 2.0,
+          "current_score": 2.0,
+          "basis": "数据、模型、诊断、区间和运行接口组成完整分析链。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "§2–§5，尤其§3.6–3.8、§4.2–4.6、§5.2–5.4"
+        ],
+        "current": [
+          "§2–§5，尤其§3.6–3.8、§4.2–4.6、§5.2–5.4"
+        ]
+      },
+      "evidence_ids": [
+        "S31.md",
+        "S32.md",
+        "S31AUDIT.json",
+        "S32AUDIT.json",
+        "ADAPT.md",
+        "EPFL22.md",
+        "MRECOMP.json"
+      ],
+      "reason": "技术工作量和问题解决链条充分：站点数据审计、两场站重训、配对门控与邻接实验、代理目标敏感性、冻结检查点诊断、分层校准以及报告边界均有证据材料。工作量不是因每个补充实验都产生正收益才获分。",
+      "remaining_limitation": "研究任务铺展较广，多个事后补充在同一已查看时期累积；这些投入体现工程解决能力，但不会变成额外独立验证样本。",
+      "change": "无分数变化；current增加外部EPFL形态核查和归档清单汇总，未新增训练或重训。"
+    },
+    {
+      "id": "BR-08",
+      "name": "结果与证据充分性",
+      "maximum": 10,
+      "baseline_score": 8.0,
+      "current_score": 8.0,
+      "components": [
+        {
+          "id": "BR-08-claim_support",
+          "maximum": 4,
+          "baseline_score": 4.0,
+          "current_score": 4.0,
+          "basis": "关键MAE、分层、组件和还原数字有直接预测数组/审计支持。"
+        },
+        {
+          "id": "BR-08-alternatives",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "参数、邻接替换、同键基线及错误分层覆盖若干替代解释；无诊断驱动改模结果。"
+        },
+        {
+          "id": "BR-08-robustness_scope",
+          "maximum": 3,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "跨站同源重训与目标/门控/关系敏感性有益，但已查看测试期不是未见确认数据。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "§3.6.2–3.8.4；§4.2–4.6；§5.2–5.4"
+        ],
+        "current": [
+          "§3.6.2–3.8.4；§4.2–4.6；§5.2–5.4；§2.1.2行252–254"
+        ]
+      },
+      "evidence_ids": [
+        "S31AUDIT.json",
+        "S32AUDIT.json",
+        "RECOMP.json",
+        "MRECOMP.json",
+        "CAL.md",
+        "EPFL22.md",
+        "DATASEARCH22.md"
+      ],
+      "reason": "主张和指标有预测键、重算结果、控制实验或统计结果直接支撑。组件结论将负荷/轮廓关系的条件性全局增量与完整模型未胜过TCN的非零组结果区分；事件、非零和校准边界明确。",
+      "remaining_limitation": "多个补充仍在已查看测试期，重复从相同固定期取证不等于独立确认；JPL和Caltech同属ACN、时期重叠；EPFL只作探索性proxy形态比较，不能校准ACN或验证模型。",
+      "change": "无分数变化；EPFL增加目标形态的有限外部参照，但不新增模型结果、测试样本或ACN校准。"
+    },
+    {
+      "id": "BR-09",
+      "name": "统计解释与结论边界",
+      "maximum": 10,
+      "baseline_score": 8.5,
+      "current_score": 8.5,
+      "components": [
+        {
+          "id": "BR-09-uncertainty",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 3.5,
+          "basis": "区分种子、时间块和预测键；适当说明重叠依赖、站点样本外推未由区间覆盖。"
+        },
+        {
+          "id": "BR-09-multiplicity",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "basis": "预登记三项比较作Bonferroni校正，未校正的分层分析标为探索性；大量多终点分析仍需谨慎。"
+        },
+        {
+          "id": "BR-09-interpretation",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 3.5,
+          "basis": "负结果、代理限制、已查看时期及事件覆盖缺口解释得当。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "§2.1.1、§2.4；§3.6–3.8；§4.2–4.6；§5.2–5.3；结论"
+        ],
+        "current": [
+          "§2.1.1、§2.4；§3.6–3.8；§4.2–4.6；§5.2–5.3；结论"
+        ]
+      },
+      "evidence_ids": [
+        "S31.md",
+        "S32.md",
+        "S31AUDIT.json",
+        "S32AUDIT.json",
+        "CAL.md",
+        "NZ.json",
+        "RECOMP.json"
+      ],
+      "reason": "清楚区分种子离散、测试期时间块变化和观察键，不把点级Bootstrap当作独立样本显著性。负结果和范围限制充分公开，事件区间覆盖不足、未见时期验证缺失等均回到结论中。",
+      "remaining_limitation": "主要区间是固定测试期的时间块不确定性，不估计站点抽样或总体训练随机性；许多后验分层未作多重校正，应始终保留探索性标签。",
+      "change": "无分数变化；EPFL读数按形态分布而非误差率呈现，且明确不同口径。"
+    },
+    {
+      "id": "BR-10",
+      "name": "贡献与创新",
+      "maximum": 10,
+      "baseline_score": 8.0,
+      "current_score": 8.0,
+      "components": [
+        {
+          "id": "BR-10-prior_difference",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "一般图/门控组合不称首创，站间和住宅节点近邻有区分；最近EV代理残差方法差异仍可更突出。"
+        },
+        {
+          "id": "BR-10-contribution",
+          "maximum": 3,
+          "baseline_score": 3.0,
+          "current_score": 3.0,
+          "basis": "贡献定位为单站代理目标上的受控关系增量和三种MDP判断，具有具体经验/工程内容。"
+        },
+        {
+          "id": "BR-10-demonstration",
+          "maximum": 4,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "同参数门控、JPL自环替换及诊断有实证；诊断引导改模的预测价值未被实验证明。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "§1.2.2–1.3；§1.4；§3.7；§4.1–4.6"
+        ],
+        "current": [
+          "§1.2.2–1.3；§1.4；§3.7；§4.1–4.6；结论"
+        ]
+      },
+      "evidence_ids": [
+        "NEAR.md",
+        "NEAR2.md",
+        "NEAR76.md",
+        "NEAR_20261016.md",
+        "S31.md",
+        "MDP.md"
+      ],
+      "reason": "可信贡献是任务内受控发现、关系替换判断与对机制解释口径的校正，而非全新算子。新实验支持两类关系相对自环的条件性整体增量；MDP能改变研究判断和报告重点，但没有证明据诊断改模可提升预测。",
+      "remaining_limitation": "独立新增能力验证仍有限，尤其无法宣称关系普遍有效、时序学生不能替代图信息或诊断方法已改善预测。与[76]的近邻差异虽有比较，建议在最终稿继续清楚聚焦。",
+      "change": "无分数变化；EPFL形态核查支持任务口径说明，不构成方法创新或模型贡献证据。"
+    },
+    {
+      "id": "BR-11",
+      "name": "专业实践价值",
+      "maximum": 5,
+      "baseline_score": 3.5,
+      "current_score": 4.0,
+      "components": [
+        {
+          "id": "BR-11-use_case",
+          "maximum": 1,
+          "baseline_score": 1.0,
+          "current_score": 1.0,
+          "basis": "明确面向节点代理负荷模型筛选、采数与后续影子运行。"
+        },
+        {
+          "id": "BR-11-real_inputs",
+          "maximum": 1.5,
+          "baseline_score": 1.0,
+          "current_score": 1.5,
+          "basis": "baseline用真实ACN会话输入但无同步计量；current新增EPFL表内P字段和站级/共享约束实测字段的有限外部参照。"
+        },
+        {
+          "id": "BR-11-value_evaluation",
+          "maximum": 1.5,
+          "baseline_score": 0.5,
+          "current_score": 0.5,
+          "basis": "有离线模型误差与合成约束可行性，不含实际越限、安全、服务或经济效益评价。"
+        },
+        {
+          "id": "BR-11-usable_outputs",
+          "maximum": 1,
+          "baseline_score": 1.0,
+          "current_score": 1.0,
+          "basis": "提供模型筛选、误差分层和采集/影子回放的具体后续决策建议。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "§2.1.2；§5.4.1–5.4.5；§5.5；结论"
+        ],
+        "current": [
+          "§2.1.2行252–254；§5.4.1–5.4.5行1615；§5.5；结论"
+        ]
+      },
+      "evidence_ids": [
+        "EPFL22.md",
+        "DELIVERY22.md",
+        "DATASEARCH22.md",
+        "DATA_AVAIL.md",
+        "PASSPORT.md"
+      ],
+      "reason": "当前稿新增EPFL Level-3的功率形态和能量闭合核查，证明外部数据含真实功率轨迹/运行字段，可作为有限形态参照，因此real_inputs组件由1.0升至1.5。用途只支撑采数/模型筛选准备；现有ACN任务仍是会话代理。",
+      "remaining_limitation": "EPFL只有两个直流端口，分箱锚点和均匀分配口径不同，P列计量边界未明，节点与ACN不兼容。它不是ACN目标校准、预测精度验证、业务约束合同或现场收益评估。",
+      "change": "current较baseline +0.5；唯一依据是已限界的外部实测形态/约束字段。应用效益评分不变。"
+    },
+    {
+      "id": "BR-12",
+      "name": "结构、表达与学术规范",
+      "maximum": 10,
+      "baseline_score": 8.5,
+      "current_score": 8.5,
+      "components": [
+        {
+          "id": "BR-12-structure",
+          "maximum": 3,
+          "baseline_score": 3.0,
+          "current_score": 3.0,
+          "basis": "五章递进、章末小结和摘要/结论一致。"
+        },
+        {
+          "id": "BR-12-writing",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "basis": "内容可读且限定严谨，但篇幅长、技术密集，部分边界反复出现。"
+        },
+        {
+          "id": "BR-12-scholarly_content",
+          "maximum": 3,
+          "baseline_score": 2.0,
+          "current_score": 2.0,
+          "basis": "近邻来源审计、表格/数值说明较完整；可见材料中少数引文仅有摘要/索引层证据。"
+        },
+        {
+          "id": "BR-12-terminology",
+          "maximum": 1,
+          "baseline_score": 1.0,
+          "current_score": 1.0,
+          "basis": "代理负荷、功率、事件标签/规则触发及预测时间口径总体统一。"
+        }
+      ],
+      "locations": {
+        "baseline": [
+          "全文；尤其§2.1、§3.2–3.6、§4.1、§5.3；表图说明"
+        ],
+        "current": [
+          "全文；尤其§2.1、§3.2–3.6、§4.1、§5.3；表图说明"
+        ]
+      },
+      "evidence_ids": [
+        "LANGUAGE_REVIEW.md",
+        "LANGUAGE_AUDIT.json",
+        "NEAR.md",
+        "NEAR76.md"
+      ],
+      "reason": "组织层级清楚，中文术语和时间起点口径说明较细；图注与表注解释了单位、数据键、统计口径与不确定性。当前报告把图范围限定为caption-only；本评阅未查看图像内容。",
+      "remaining_limitation": "文字密度和跨章重复会拖慢阅读；少数文献只可核对摘要/索引，图像内容与版面呈现不在本次内容评阅核验范围内。封面、签字、目录分页等属于交付门槛，不在本项扣分。",
+      "change": "无分数变化；参考文献[84]新增并引起后续编号顺延，正文技术主张没有因此变动。"
+    }
+  ],
+  "scope_and_checks": {
+    "materials_read": [
+      "reviewer_instructions.md",
+      "rubric.json",
+      "anchors.json",
+      "manifest.json",
+      "manuscripts/baseline.md",
+      "manuscripts/current.md",
+      "all packet/evidence entries relevant to methods and paired changes"
+    ],
+    "no_web": true,
+    "no_files_outside_frozen_packet_read": true,
+    "no_project_history_or_scorecards_read": true,
+    "other_reviewer_reports_read": false,
+    "figure_scope": "captions_only; image content and full-page visual acceptance were not checked by this reviewer",
+    "replay_interpretation": "Replay recomputes metrics from archived saved-prediction arrays only; it is not checkpoint forward validation, retraining, or a new performance result.",
+    "epfl_interpretation": "EPFL is exploratory proxy-shape/measurement-field comparison only; not ACN calibration, model validation, or field-benefit evidence.",
+    "new_training_or_performance_result_in_current_revision": false,
+    "outputs_written": [
+      "docs/thesis/content-review-20261022-paired-review/reviewers/technical.md",
+      "docs/thesis/content-review-20261022-paired-review/reviewers/panel-record-technical.json"
+    ]
+  }
+}

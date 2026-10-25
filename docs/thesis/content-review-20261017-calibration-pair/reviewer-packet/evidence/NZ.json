@@ -1,0 +1,27 @@
+{
+  "scope": "Review-time exploratory decomposition; not an existing manuscript result; no comparison with TCN",
+  "rows": [
+    {
+      "seed": 2024,
+      "global_difference": 0.0013739419516350998,
+      "nonzero_difference": 0.005891506800602101,
+      "zero_difference": -0.0003182259195430475,
+      "nonzero_weighted_difference": 0.001605450503282435
+    },
+    {
+      "seed": 2025,
+      "global_difference": 0.0012930544171420979,
+      "nonzero_difference": 0.0025785209635724206,
+      "zero_difference": 0.0008115504958777212,
+      "nonzero_weighted_difference": 0.0007026534838708128
+    },
+    {
+      "seed": 2026,
+      "global_difference": 0.0018356931147048452,
+      "nonzero_difference": 0.006209370098648334,
+      "zero_difference": 0.0001974220729880129,
+      "nonzero_weighted_difference": 0.0016920690559031647
+    }
+  ],
+  "nonzero_share_of_global_difference": 0.8883963812585579
+}

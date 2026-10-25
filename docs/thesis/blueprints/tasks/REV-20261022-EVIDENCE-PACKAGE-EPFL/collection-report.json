@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261022-EVIDENCE-PACKAGE-EPFL",
+  "status": "awaiting_codex_review",
+  "collected_at": "2026-10-22T02:36:30+00:00",
+  "baseline_head": "f861d3a10832726bcb35c8d06ec12ca6337f317b",
+  "current_head": "f861d3a10832726bcb35c8d06ec12ca6337f317b",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-protocol.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 7103,
+        "mtime_ns": 1792599694811439192,
+        "sha256": "7295655ddb23d8602a40ddf277a94e09087f75009b57e46ca8143d9e4fe76075"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 4085,
+        "mtime_ns": 1792636485750068187,
+        "sha256": "c0e83a578c8b47fca89511c7a5b070833efe420d69066ab283ecec298b7b1f76"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/reproducibility-package.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 121767,
+        "mtime_ns": 1792636515886133792,
+        "sha256": "a746f18f876afea38c6f2c8f8a3c20b4d5d4654e6898f6f8aa27b0055a7d6185"
+      }
+    },
+    {
+      "path": "scripts/audit_epfl_proxy_shape_v2.py",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 12689,
+        "mtime_ns": 1792636449648602140,
+        "sha256": "3bceb22a52354b98aba33c3fb3520660947bbc947310d8bf39eabb21128ee4b3"
+      }
+    },
+    {
+      "path": "scripts/replay_sgexp031_032_evidence.py",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 19395,
+        "mtime_ns": 1792636507100244100,
+        "sha256": "d549573d6c462f6bbf4591253b62bf229fdf9f938ec48164acda04d1321397bf"
+      }
+    }
+  ],
+  "out_of_scope_changes": [],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [],
+  "executor_report": {
+    "task_id": "REV-20261022-EVIDENCE-PACKAGE-EPFL",
+    "executor": "Claude Code; Codex recovery and independent review",
+    "model": "deepseek-flash[1m]",
+    "user_reported_model": "DeepSeek",
+    "summary": "Claude generated the V2 protocol and two audit scripts. Interactive run was interrupted before its report and documentation were completed. Codex corrected archive-relative checksum resolution, enforced all manifest gates, validated both EPFL sheets/fields, added protocol-required per-CCS summaries, and reran the two scoped commands.",
+    "changed_paths": [
+      "scripts/replay_sgexp031_032_evidence.py",
+      "scripts/audit_epfl_proxy_shape_v2.py",
+      "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-protocol.md",
+      "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2.json",
+      "docs/thesis/revision-20261022-evidence/reproducibility-package.json"
+    ],
+    "evidence_used": [
+      "SG-EXP-031/032 frozen source and result archives and run manifests",
+      "EPFL local workbooks, README and LICENSE; hashes in V2 protocol"
+    ],
+    "claim_or_number_changes": [
+      "No manuscript changes in this evidence phase. EPFL: 1878 matched, 1620 eligible, 258 below 15 min; equal-session TV median 0.07360134856713525; exploratory only."
+    ],
+    "checks": [
+      {
+        "command": "python3 scripts/replay_sgexp031_032_evidence.py --out docs/thesis/revision-20261022-evidence/reproducibility-package.json",
+        "status": "PASS",
+        "performed_by": "Codex final review"
+      },
+      {
+        "command": "python3 scripts/audit_epfl_proxy_shape_v2.py --session data/external/epfl-l3-20261021/Session_data.xlsx --measurements data/external/epfl-l3-20261021/Measurement_data.xlsx --out docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2.json",
+        "status": "SHAPE_COMPUTED_EXPLORATORY",
+        "performed_by": "Codex final review"
+      }
+    ],
+    "unresolved": [
+      "Documentation and manuscript consolidation move to a bounded recovery task.",
+      "P meter boundary and naive timestamp semantics unresolved.",
+      "Saved-prediction metric replay is not checkpoint forward replay or retraining.",
+      "031 entrypoint was untracked; 032 lacks verified historical Git identity."
+    ],
+    "blockers": [],
+    "report_written_by": "Codex after interrupted Claude process; not represented as a completed Claude report"
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

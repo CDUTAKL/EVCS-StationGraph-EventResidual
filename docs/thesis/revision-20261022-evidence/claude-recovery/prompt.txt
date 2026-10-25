@@ -1,0 +1,373 @@
+# Claude Code执行任务包
+
+任务编号：REV-20261022-EVIDENCE-CONSOLIDATION
+任务类型：content_revision；对应12流程阶段：Stage 11: bounded evidence consolidation; Stage 12 delivery follows Codex review
+目标：Draft concise evidence documentation and three bounded manuscript additions/replacements using verified replay and EPFL facts. Claude returns proposals only, Codex reviews and applies. Preserve numeric/model claims and all important evidence limits. No training, network or scoring.
+
+## 开始前
+只依据本任务包的冻结摘录和蓝图列出的材料工作。不要从聊天历史、归档计划或整份实验登记表重建当前状态。正文源稿为`docs/thesis/thesis-manuscript.md`。
+
+## 可写范围
+- `docs/thesis/thesis-manuscript.md`
+- `docs/thesis/data-availability.md`
+- `docs/thesis/claim-evidence-map.md`
+- `docs/thesis/revision-20261021-evidence/data-source-compatibility.md`
+- `docs/thesis/revision-20261022-evidence/reproducibility-package.md`
+- `docs/thesis/revision-20261022-evidence/targeted-data-search.md`
+- `docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-report.md`
+- `docs/thesis/revision-20261022-evidence/claude-recovery/prompt.txt`
+- `docs/thesis/revision-20261022-evidence/claude-recovery/stream.jsonl`
+- `docs/thesis/revision-20261022-evidence/claude-recovery/stderr.txt`
+- `docs/thesis/revision-20261022-evidence/claude-recovery/run.json`
+- `docs/thesis/revision-20261022-evidence/claude-recovery/proposals.json`
+- `docs/thesis/revision-20261022-evidence/claude-recovery/manuscript-before.md`
+- 以上路径是任务约束和事后审计范围，不是操作系统级文件隔离；不要写入未列路径，也不要把Git忽略路径当作可审计输出。
+
+## 锁定主张与口径
+- This is saved-prediction metric recomputation, not checkpoint forward inference or retraining.
+- 031 source uses a frozen hashed bundle plus Git baseline; entrypoint was untracked and zero-byte patch. 032 lacks historical Git commit identity.
+- EPFL is exploratory after V1 stop; Session IDs were repaired using CCS/Arrival/Departure only.
+- EPFL bins are session-arrival-anchored and energy-overlap-proportional; thesis Eq2-1 uses fixed clock bins with equal shares. Do not call this exact ACN target-rule calibration.
+- P integral/session-E median 1.1492 and cumulative-E difference/session-E median 0.9943; meter boundary unresolved.
+- No directly compatible unseen checkpoint test period found; no new training.
+
+## 执行步骤
+1. Return proposed Markdown and replacement paragraphs only in strict JSON; no tools.
+2. Draft minimal replay README with exact local archive and source identities, command, dependencies and limits; large artifact files remain local sidecars, not a self-contained training reproduction.
+3. Draft bounded EPFL report and targeted search decision with fixed stopping criteria.
+4. Propose EPFL addition to section2.1.2, source provenance paragraph in section3.8.3, and replace section5.4.5 paragraph to acknowledge partial EPFL constraints while preserving missing ACN-aligned material. Do not alter abstract, scores or model metrics.
+5. Codex verifies all proposed numbers, applies a single consolidated manuscript edit and synchronizes evidence-console current-state notes.
+
+## 指定Claude Code Skills
+- 本任务未指定Claude Code专用skill；如需技能支持，先在报告中说明阻塞，不要假定Codex全局skill已自动安装到Claude Code。
+
+## 验收条件
+- All numbers trace to verified-review-facts.json.
+- EPFL no-Energy key, 1878 matched/1620 eligible/258 excluded, per-CCS totals and shape/amplitude boundaries exact.
+- New text is concise Chinese academic prose, no repeated defensive lists.
+- Existing model rankings and condition boundaries retained; future unseen data remains unverified.
+
+## 操作权限
+- 训练：False；远程执行：False；联网：False；Git提交/暂存：False。
+- 除非明确列入允许范围，不得启动训练、远程作业、联网采集、Git暂存/提交或覆盖正式Word。不得使用绕过权限的启动方式。
+- 不得修改`.git/`、`.claude/settings*.json`、凭据文件或交接控制文件；如需修改，停止并报告。
+- 只运行蓝图列出的检查：无。未列检查时不要新增或运行测试。
+- Bash网络主机白名单：无。空数组表示Bash无网络；WebSearch/WebFetch须单独取得工具权限。
+
+## 冻结的证据摘录
+
+### 证据控制台
+
+#### docs/thesis/revision-20261022-evidence/verified-review-facts.json — Only accepted numeric and provenance facts.
+定位：`{"kind": "whole_file"}`；来源SHA-256：`e34d2c7303f2c9879164e5597691d1f2aa889f257c0e3fc16b87bfee8f06abc0`
+```text
+{
+  "replay_status": "PASS",
+  "experiments": {
+    "SG-EXP-031": {
+      "archives": {
+        "result": {
+          "path": "outputs/experiments/SG-EXP-031/SG-EXP-031-results.tar.gz",
+          "bytes": 122402069,
+          "sha256": "4eb436fbf30823d4df9b3e1be9f34652f849bdf7a130ce1c4229d9b2964f8c5f",
+          "expected_sha256": "4eb436fbf30823d4df9b3e1be9f34652f849bdf7a130ce1c4229d9b2964f8c5f",
+          "hash_match": true
+        },
+        "bundle": {
+          "path": "outputs/experiments/SG-EXP-031/SG-EXP-031-bundle.tar.gz",
+          "bytes": 2201588,
+          "sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+          "expected_sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+          "hash_match": true
+        }
+      },
+      "bundle_manifest": {
+        "archive_path": "outputs/experiments/SG-EXP-031/SG-EXP-031-bundle.tar.gz",
+        "archive_sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+        "manifest_member": "SG-EXP-031/BUNDLE_MANIFEST.json",
+        "manifest_sha256": "3ba32eee77da8bea6895804f5c4f1bf4924d3ff394b4aabce84c394fc482ee8b",
+        "entries": 67,
+        "verified": 67,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "disk_manifest": {
+        "manifest_path": "outputs/experiments/SG-EXP-031/bundle/BUNDLE_MANIFEST.json",
+        "manifest_sha256": "3ba32eee77da8bea6895804f5c4f1bf4924d3ff394b4aabce84c394fc482ee8b",
+        "entries": 67,
+        "verified": 67,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "source_identity": {
+        "entrypoint": {
+          "path": "scripts/jpl_relation_controls.py",
+          "sha256": "ac5f7a998ad198af30f07971f929b7abc43300e7aecb9e65e645d633920b9cba",
+          "expected_sha256": "ac5f7a998ad198af30f07971f929b7abc43300e7aecb9e65e645d633920b9cba",
+          "matches_frozen_bundle": true,
+          "git_tracked": false
+        },
+        "data_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+        "git_identity": {
+          "recorded_commit": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+          "working_tree_patch_bytes": 0,
+          "limit": "Git commit identifies only the recorded baseline; the entrypoint was untracked and the working-tree patch was empty. Source identity is the frozen bundle manifest, not the commit alone."
+        }
+      },
+      "status": "PASS",
+      "run_count": 12,
+      "run_files_verified": 156,
+      "archive_checksums_verified": 173,
+      "saved_prediction_replay": {
+        "status": "POST_HOC_DIAGNOSTIC",
+        "source_checksum_entries_verified": 173,
+        "verified_result_manifest_entries": null,
+        "run_count": 12,
+        "test_keys_per_run": 632640,
+        "primary_difference": null
+      }
+    },
+    "SG-EXP-032": {
+      "archives": {
+        "result": {
+          "path": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+          "bytes": 73841118,
+          "sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+          "expected_sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+          "hash_match": true
+        },
+        "bundle": {
+          "path": "outputs/experiments/SG-EXP-032/upload/SG-EXP-032-bundle.tar.gz",
+          "bytes": 2612518,
+          "sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+          "expected_sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+          "hash_match": true
+        }
+      },
+      "bundle_manifest": {
+        "archive_path": "outputs/experiments/SG-EXP-032/upload/SG-EXP-032-bundle.tar.gz",
+        "archive_sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+        "manifest_member": "workspace/BUNDLE_MANIFEST.json",
+        "manifest_sha256": "893ca0586a7a2e79b4f5ca5ef35d2d1e2f46d84d3538d90829f5b757c9d01cc2",
+        "entries": 91,
+        "verified": 91,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "disk_manifest": {
+        "manifest_path": "outputs/experiments/SG-EXP-032/frozen-contract/manifest.json",
+        "manifest_sha256": "e8f5b8498cc03f9c483a1a54991914ffb926d369595f3a553912298c6c1ea566",
+        "entries": 3,
+        "verified": 3,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "source_identity": {
+        "entrypoint": {
+          "path": "scripts/completion_target_sensitivity.py",
+          "sha256": "6bb968944a4db08cb3458cf0dbdd4b07c192ce5c31cbcdefad44b9cb945ad753",
+          "expected_sha256": "6bb968944a4db08cb3458cf0dbdd4b07c192ce5c31cbcdefad44b9cb945ad753",
+          "matches_frozen_bundle": true,
+          "git_tracked": false
+        },
+        "data_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+        "git_identity": {
+          "recorded_commit": null,
+          "limit": "No verified historical Git commit is present in the frozen SG-EXP-032 bundle; source identity is the file-hash manifest only."
+        }
+      },
+      "status": "PASS",
+      "run_count": 6,
+      "run_files_verified": 75,
+      "archive_checksums_verified": 99,
+      "saved_prediction_replay": {
+        "status": "PASS",
+        "source_checksum_entries_verified": null,
+        "verified_result_manifest_entries": 75,
+        "run_count": 6,
+        "test_keys_per_run": 708560,
+        "primary_difference": 0.008302002680088615
+      }
+    }
+  },
+  "epfl": {
+    "audit_id": "EPFL-PROXY-SHAPE-V2-20261022",
+    "evidence_level": "EXPLORATORY",
+    "protocol": {
+      "path": "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-protocol.md",
+      "preserved_v1": "docs/thesis/revision-20261021-evidence/epfl-proxy-audit-protocol.md",
+      "sha256": "7295655ddb23d8602a40ddf277a94e09087f75009b57e46ca8143d9e4fe76075"
+    },
+    "sources": {
+      "session": {
+        "path": "data/external/epfl-l3-20261021/Session_data.xlsx",
+        "bytes": 204514,
+        "sha256": "b886943bf86520f24f5a53870886c4c43709d265cbebdd65e1345321e22cc192",
+        "expected_sha256": "b886943bf86520f24f5a53870886c4c43709d265cbebdd65e1345321e22cc192",
+        "hash_match": true
+      },
+      "measurement": {
+        "path": "data/external/epfl-l3-20261021/Measurement_data.xlsx",
+        "bytes": 23558382,
+        "sha256": "a0a489e2897ec79235ed914376ab7751ab21c68418543234a60042eaee73a89c",
+        "expected_sha256": "a0a489e2897ec79235ed914376ab7751ab21c68418543234a60042eaee73a89c",
+        "hash_match": true
+      }
+    },
+    "structure": {
+      "session_sheets": [
+        {
+          "sheet": "Session_data",
+          "rows": 1878
+        }
+      ],
+      "session_rows": 1878,
+      "measurement_sheets": [
+        {
+          "sheet": "CCS1",
+          "rows": 646680
+        },
+        {
+          "sheet": "CCS2",
+          "rows": 646680
+        }
+      ],
+      "measurement_rows": 1293360,
+      "session_columns": {
+        "session": 0,
+        "ccs": 1,
+        "arrival": 2,
+        "departure": 3,
+        "energy": 5
+      },
+      "measurement_columns": {
+        "timestamp": 0,
+        "ccs": 1,
+        "session": 2,
+        "power": 3,
+        "energy": 9
+      }
+    },
+    "join": {
+      "key": [
+        "CCS",
+        "Arrival",
+        "Departure"
+      ],
+      "energy_in_key": false,
+      "session_id_used_as_cross_table_key": false,
+      "session_rows_parsed": 1878,
+      "measurement_groups_parsed": 1878,
+      "one_to_one_matched_pairs": 1878,
+      "matched_pairs_by_ccs": {
+        "CCS1": 1129,
+        "CCS2": 749
+      }
+    },
+    "exclusions": {
+      "measurement_rows_without_session": 1231544,
+      "matched_duration_below_15min": 258
+    },
+    "coverage": {
+      "rule": "start at Arrival, 60 s steps, end at Departure",
+      "eligible_sessions": 1620,
+      "excluded_after_matching": 258
+    },
+    "energy_diagnostics": {
+      "note": "Closure/amplitude only; not calibration or a shape gate.",
+      "p_integral_over_session_energy": {
+        "n": 1620,
+        "median": 1.1492459456886288,
+        "q1": 1.1373339070418182,
+        "q3": 1.1627002367065913,
+        "iqr": 0.025366329664773035,
+        "mean": 1.1534078205356193
+      },
+      "cumulative_energy_delta_over_session_energy": {
+        "n": 1620,
+        "median": 0.9943458271394544,
+        "q1": 0.9851445246260627,
+        "q3": 0.9997569817054004,
+        "iqr": 0.01461245707933767,
+        "mean": 0.9906471870010676
+      },
+      "sessions_with_cumulative_energy_delta": 1620
+    },
+    "shape": {
+      "metric": "total_variation_distance",
+      "evidence_level": "EXPLORATORY",
+      "status": "COMPUTED",
+      "equal_session": {
+        "n": 1620,
+        "median": 0.07360134856713525,
+        "q1": 0.030848033751203173,
+        "q3": 0.12762192780367082,
+        "iqr": 0.09677389405246764,
+        "mean": 0.08867250208225883
+      },
+      "by_ccs": {
+        "CCS1": {
+          "n": 973,
+          "median": 0.0741133553924361,
+          "q1": 0.03159679216737703,
+          "q3": 0.12829038091607037,
+          "iqr": 0.09669358874869334,
+          "mean": 0.0897455342777673
+        },
+        "CCS2": {
+          "n": 647,
+          "median": 0.07204271622416172,
+          "q1": 0.030108983114664596,
+          "q3": 0.12609439662031358,
+          "iqr": 0.09598541350564899,
+          "mean": 0.08705880760586047
+        }
+      }
+    },
+    "interpretation_limits": [
+      "Exploratory only; not calibration, ACN target error, model validation, or operational benefit.",
+      "Naive wall-clock timestamps; not asserted UTC or confirmed DST.",
+      "P meter boundary and timestamp semantics are unresolved in the source.",
+      "Only two CCS ports; no ACN ten-node mapping, station graph, or 96x10x7 contract."
+    ],
+    "status": "SHAPE_COMPUTED_EXPLORATORY"
+  },
+  "constraints": [
+    "This is saved-prediction metric recomputation, not checkpoint forward inference or retraining.",
+    "031 source uses a frozen hashed bundle plus Git baseline; entrypoint was untracked and zero-byte patch. 032 lacks historical Git commit identity.",
+    "EPFL is exploratory after V1 stop; Session IDs were repaired using CCS/Arrival/Departure only.",
+    "EPFL bins are session-arrival-anchored and energy-overlap-proportional; thesis Eq2-1 uses fixed clock bins with equal shares. Do not call this exact ACN target-rule calibration.",
+    "P integral/session-E median 1.1492 and cumulative-E difference/session-E median 0.9943; meter boundary unresolved.",
+    "No directly compatible unseen checkpoint test period found; no new training."
+  ]
+}
+
+```
+
+### 直接证据
+
+#### docs/thesis/revision-20261021-evidence/data-source-compatibility.md — Existing official-source candidate checks; stop broad search.
+定位：`{"kind": "markdown_heading", "value": "数据源筛选"}`；来源SHA-256：`1e665a2dfec1657f085998f8b08a13822a25816a23b5d1610a8282f9673935bf`
+```text
+## 数据源筛选
+
+| 候选 | 日期/站点 | 可核实字段与标签 | 节点映射/既有查看范围 | 当前判定 |
+|---|---|---|---|---|
+| ACN-Data Caltech、JPL、Office 1元数据API | 2026-10-19检查三站；接入时间最晚分别为2021-09-14、2021-09-14、2021-09-13 | 通过6次HTTP 200严格边界外查询，区间外计数均为0条。该轮只审计`connectionTime`边界，没有保存完整会话快照，也未核完整字段、标签成熟性与全部节点映射 | Caltech/JPL模型用10个冻结节点；Office 1官方站点为8个EVSE，且其历史使用史未核 | 对已查接口没有晚于论文时期的ACN记录；Office 1不是新时期，也不满足现成10节点映射。不能据此断言其他来源不可得 |
+| KIT低频单车充电测量，DOI `10.5281/zenodo.17866847` | 2025-10-28至2025-12-02；KIT校园测量点；18组测量、16辆车、12个品牌 | `charging_uuid`、时间戳、三相实测电压/电流、由电压电流计算的三相有功功率、SoC、设定电流。元数据表含日期、品牌/车型及可用时的电池容量；无ACN式接入、充电完成、断开时间和总交付电量标签 | 每组为单一测量点，不含ACN的10个EVSE节点ID、相同节点顺序、站内关系图或可重建的同口径输入张量；数据期与论文测试期不重叠 | 可作有限的实测曲线形态审计；不兼容既有冻结检查点，不是新时期模型验证、代理标签校准或现场运行证据 |
+| ChargePlace Scotland会话数据，DOI `10.15129/1f431af7-5caa-4840-a9ab-c1f3b521e033` | 2022-10-01至2024-03-31；苏格兰公共ChargePlace Scotland网络 | 官方说明含会话开始、充电点ID、会话时长、消耗电量、地方行政区、邮编、充电速度和支付金额；不包含按时间采样的实测功率曲线 | 与ACN站点/节点ID不同；记录介绍未提供与论文10节点的交叉表、三类站内关系图或相同张量；会话耗能可重新构造成另一代理目标，但不是本文的完成时刻/断开规则数据 | 日期上属于论文未查看时期，但字段和节点语义不支持现有冻结检查点直接推理。若要验证须另行定义站点/节点、关系图、标签和训练流程；目前未下载数据文件或训练 |
+| 悉尼路侧充电候选 | 2025-09至2026-02；独立公共网络 | 当前页面显示受限访问；字段字典、功率时序和数据许可尚未取得 | 无法核站点节点、标签和论文历史使用关系 | 可得性与兼容性均未知，不能计为可用未查看期段 |
+| EPFL-DESL Level-3充电数据（本地筛选，未入仓） | 2022-04-12至2023-07-04；瑞士Level-3站点；仅CCS1、CCS2两个被测直流快充端口 | 工作簿结构抽查：1,878条会话行、1,878个测量组。冻结V1严格`CCS + Session`连接为CCS1 1,129/1,129、CCS2 0/749；未进入形态比较 | 无ACN固定十节点映射、站内三类关系图或96×10×7输入契约；只有两个被测端口 | V1停止，未产生形态差异、代理标签校准、ACN模型评价或目标效度结果；不是冻结检查点可用的兼容未查看期段 |
+
+```
+
+## 完成报告
+在`docs/thesis/blueprints/tasks/REV-20261022-EVIDENCE-CONSOLIDATION/execution-report.json`填写Claude Code工作报告。changed_paths使用项目根目录相对路径，仅列实际工作区改动，不必列报告自身；列出证据来源、检查、未解决事项，以及所有数字或主张变化。报告只供Codex复检，不代表验收。
+在`model`字段填写当前Claude Code会话实际报告的模型标识；`user_reported_model`只是操作者标签。若provider返回`unrecognized_model`，把原始模型名和诊断写入`unresolved`，不要猜测或自动替换模型。
+如证据不足、需要扩大修改范围或发生未授权操作，停止继续并在报告中说明。
+
+
+你是本任务Claude Code执行者。当前采用项目既有无工具恢复方式：只输出JSON，Codex复核应用，禁止请求工具。只根据冻结事实生成以下JSON：{ "summary": "...", "epfl_addition": "插入2.1.2末尾的两段文字，总计不超过320汉字；新数据引用先用[EPFL]占位，Codex统一顺序编号", "provenance_addition": "插入3.8.3末尾的一段，不超过170汉字", "application_replacement": "替换5.4.5现有段落，不超过180汉字", "replay_readme": "详细但精简的最小复算说明Markdown", "epfl_report": "完整有限范围EPFL核验报告Markdown，列范围/步骤/结果/源哈希/关键边界，不超过1500汉字", "targeted_search": "定向数据核查报告Markdown，五个候选的日期/节点输入兼容性/可用用途与停止条件，引用现有核查来源，不增加未核实事实" }。不要新增模型性能结论，不写新评分，勿将1620会话形态距离称为误差率。EPFL按会话Arrival锚定分箱，不是论文固定时钟等片目标的逐片实测校准；这个差异必须保留。P的计量边界未清楚，报告表内P字段轨迹而不要升级为枪口计量。使用凝练学术中文。
+
+指定旧正文：
+{"### 2.1.2": "### 2.1.2 分摊支持范围与电流形态核查\n\n为检验均摊终点的影响，先核对10节点的充电完成时刻。11,085条会话中，10,399条的完成时刻位于接入与断开之间，420条缺失，266条不满足这一顺序条件。合法记录从完成充电到断开的停留时间中位数为62.67 min。6,967条会话在完成之后仍包含完整15 min时间片，原分摊规则向这些片分配了28,403.239 kWh，占10节点总交付电量的30.66%。\n\n该比例描述单会话分摊超出记录充电完成时刻的范围，不代表节点实测误差、模型MAE偏差或预测输入可见性风险；多个会话的重叠也使它不能直接说明节点在相应片内没有充电。\n\n仅当`connectionTime <= doneChargingTime <= disconnectTime`时，才以充电完成时刻替代断开时刻作为分摊终点；完成时刻缺失或不满足该区间条件时，回退至`disconnectTime`。替代重构与原重构的总电量均为92,650.017 kWh，最大逐节点守恒差为$4.91\\times10^{-10}$ kWh，但对应节点时间片的平均绝对差为0.0477816 kWh/15 min。该值只表示同一批会话在两种标签分配规则下的逐节点时间片平均绝对差，不是模型误差、真实负荷不确定度上限，也不与模型MAE作大小比较。\n\nSG-EXP-032随后在Caltech事件时刻协议的固定测试键上使用这一替代目标重新训练预测模型；预测输入、原图、切分和起点键保持不变，仅依替代目标的新训练前缀重算目标标准化参数。该敏感性结果见3.8.4节。\n\n完成时刻也不是连续功率测量，不能将替代序列认定为真实负荷。\n\n此外，利用ACN-Data公开历史静态快照[82-83]核查同一节点会话的电流形态。固定主10节点各一个2018年5月正电量会话的匹配清单，其中8条通过电流非负、时间递增、首末覆盖误差和采样间隔门禁，CA-315与CA-327的两条记录因零积分或长采样间隙未通过。CA-303试探样本在固定完整清单前已查看，因此该组属于探索性便利样本，不能代表全站或独立确认数据。\n\n对通过门禁的8条记录，以分段左常数积分计算各15 min片的电流积分，再除以该会话积分总量，得到无量纲片份额，与原等片份额比较。两种份额分布的总变差距离为0.0645～0.5957，实际电流积分的最大片份额为均匀份额的1.10～4.38倍。这些读数表明部分会话的过程集中程度会被均摊压低。\n\n由于所匹配记录的电压、功率列均缺失，电流积分未换算为kWh，也不用于估计场站功率峰值或模型实测误差。完成时刻核查与电流形态检查共同说明：代理负荷保留能量总量，但对充电过程作了近似。原始归档仍缺事件接收时间戳，采样间隔门禁不能代替实际通信延迟验证。\n\n", "### 5.4.5": "### 5.4.5 证据边界与应用验证要求\n\n下一步需同步采集节点及全站电表、输入到达时间戳、设备限额、车辆请求和电价；先校准代理—实测映射并核验预测时可见性，再预先固定事件定义、告警阈值和调度基线开展影子回放，评价覆盖、误报漏报、约束越限、需求满足及成本。在这些材料取得前，本章证据仅支持运行接口定义与合成约束可行性核验。\n\n"}

@@ -1,5 +1,7 @@
 # 论文全部正式图件评分与修订优先级
 
+> 说明：本评分记录形成于2026-10-06的旧图号顺序。2026-10-07第3章重排只改变正文位置和图号，图像内容及评分判断未变；此处链接已指向现用文件。现行图号以[主文配图编号表](figure-renumbering-2026-08-10.md)为准：原图3-9至3-14现为图3-11至3-16，原JPL图3-15、3-16现为图3-9、3-10。
+
 审阅日期：2026年10月6日。范围：当前正式论文 **46幅图**，其中16幅结构、流程或模型图，30幅结果图。旧版归档及同图的PNG/SVG重复格式不另计。
 
 ## 1. 总体判断
@@ -74,14 +76,14 @@
 | [图3-6：节点门控与残差更新细节](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_6_gate_residual_detail.png) | 8.0 | 8.3 | P2精修 | 消息M采用粉色，偏离当前蓝灰/暖灰专属配色；两个加和符号显示形态略杂，阶段标题偏重。 |
 | [图3-7：跨层表示路径](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_7_cross_layer_detail.png) | 7.3 | 7.9 | P2精修 | 跨层融合小模块文字紧凑，H(2)支路横跨半幅图，绿色拼接张量与近期专属配色不一致。 |
 | [图3-8：训练—预测—评价流程](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_8_train_predict_pipeline.png) | 8.7 | 6.8 | P1必改 | 早停判断的“否”回接训练集归一化，错误表示循环重做预处理与三种子训练；图示另未列出60轮上限，属于流程表达不完整。 |
-| [图3-9：不同模型的全局MAE](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_model_mae_comparison.png) | 8.8 | 8.6 | P2精修 | 六类模型家族图例占较多空间，四档灰色区分较弱，EventResidual探索记录在图内未标明。 |
-| [图3-10：不同模型的逐步长MAE](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_mae_by_horizon.png) | 8.5 | 8.5 | P2精修 | MRG-GCN与AdaptiveGraph几乎覆盖，MLP与AGCRN也接近，单靠浅色阴影难以读取局部差异。 |
-| [图3-11：模型误差差的点级Bootstrap](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_bootstrap_difference.png) | 8.3 | 8.3 | P2精修 | 多行比较对象方向变化需反复核对，近零差值的区间几乎被圆点遮挡，图内未提示“点级描述”。 |
-| [图3-12：不同评价窗口的MAE](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_window.png) | 8.2 | 8.0 | P2精修 | 24根相近灰色柱需要频繁查图例，主模型又标为StaticGraph，与邻近图的MRG-GCN命名不统一；对数柱的长度阅读也不直观。 |
-| [图3-13：不同模型的逐节点MAE](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_mae_by_node.png) | 8.7 | 8.6 | P2精修 | TCN大值把其余模型色差压得很浅，主模型仍标为StaticGraph且未形成清楚的主模型行层级。 |
-| [图3-14：结构消融结果](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mechanism_ablation.png) | 8.7 | 8.1 | P2精修 | 图内“完整模型（基线）”容易被误读为正式MRG-GCN，“门控关闭”也未标明它属于复合重训练变体。 |
-| [图3-15：JPL整体MAE与七日时间块配对比较](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_jpl_mae_primary.png) | 8.8 | 9.0 | P3可保留 | 右侧长方法注释悬在较大的底部留白，两个面板的视觉密度略不均衡；A面板AGCRN名称未直接写完整。 |
-| [图3-16：JPL分层MAE比较](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_jpl_stratified_mae.png) | 8.8 | 8.8 | P2精修 | 四面板缺A–D编号和就地符号图例，标题只写“事件”而未直接写“标签事件”，独立纵轴尺度需要读者仔细辨认。 |
+| [图3-9：不同模型的全局MAE](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_model_mae_comparison.png) | 8.8 | 8.6 | P2精修 | 六类模型家族图例占较多空间，四档灰色区分较弱，EventResidual探索记录在图内未标明。 |
+| [图3-10：不同模型的逐步长MAE](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_horizon.png) | 8.5 | 8.5 | P2精修 | MRG-GCN与AdaptiveGraph几乎覆盖，MLP与AGCRN也接近，单靠浅色阴影难以读取局部差异。 |
+| [图3-11：模型误差差的点级Bootstrap](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_bootstrap_difference.png) | 8.3 | 8.3 | P2精修 | 多行比较对象方向变化需反复核对，近零差值的区间几乎被圆点遮挡，图内未提示“点级描述”。 |
+| [图3-12：不同评价窗口的MAE](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mae_by_window.png) | 8.2 | 8.0 | P2精修 | 24根相近灰色柱需要频繁查图例，主模型又标为StaticGraph，与邻近图的MRG-GCN命名不统一；对数柱的长度阅读也不直观。 |
+| [图3-13：不同模型的逐节点MAE](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_mae_by_node.png) | 8.7 | 8.6 | P2精修 | TCN大值把其余模型色差压得很浅，主模型仍标为StaticGraph且未形成清楚的主模型行层级。 |
+| [图3-14：结构消融结果](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_mechanism_ablation.png) | 8.7 | 8.1 | P2精修 | 图内“完整模型（基线）”容易被误读为正式MRG-GCN，“门控关闭”也未标明它属于复合重训练变体。 |
+| [图3-15：JPL整体MAE与七日时间块配对比较](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_jpl_mae_primary.png) | 8.8 | 9.0 | P3可保留 | 右侧长方法注释悬在较大的底部留白，两个面板的视觉密度略不均衡；A面板AGCRN名称未直接写完整。 |
+| [图3-16：JPL分层MAE比较](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_jpl_stratified_mae.png) | 8.8 | 8.8 | P2精修 | 四面板缺A–D编号和就地符号图例，标题只写“事件”而未直接写“标签事件”，独立纵轴尺度需要读者仔细辨认。 |
 | [图4-1：三层机制诊断协议](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_1_three_layer_framework.png) | 8.0 | 7.3 | P1必改 | 左下L3的“贡献还原”折线绕到下方“关系使用”框底且无箭头，使误差溯源证据接到L1职责；扩展区未直接标L1/L2/L3，证据汇合用菱形也容易被当作决策。 |
 | [图4-2：两层关系级β门控权重画像](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_2_beta_profile.png) | 7.3 | 7.8 | P1必改 | 按正式14.2 cm宽度缩放，实际SVG字号约4.46–5.46 pt；第二层0.322、0.325标签压在误差棒范围内，种子连接线与主曲线交叉也增加辨读负担。 |
 | [图4-3：关系级门控参数干预结果](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig4_3_intervention.png) | 9.0 | 8.7 | P2精修 | 图内“模式关系/事件关系”与正文“轮廓相似/行为共现”名称不统一；“GCN1=负荷关系”“GCN2=模式关系”未在图内注明另层保持学习值，读者需借助正文识别配置。 |
@@ -393,7 +395,7 @@
 
 #### 图3-9：不同模型的全局MAE
 
-[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_model_mae_comparison.png) · 审美 **8.8/10** · 综合 **8.6/10** · **P2精修**
+[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_model_mae_comparison.png) · 审美 **8.8/10** · 综合 **8.6/10** · **P2精修**
 
 - 分项：布局2.2/2.5；可读性1.8/2；配色1.3/1.5；规范1.5/2；对应1.8/2。
 - 优点：横向排序和五位数标签支持精确读取，主模型突出且确定性基线没有虚构误差棒。
@@ -404,7 +406,7 @@
 
 #### 图3-10：不同模型的逐步长MAE
 
-[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_mae_by_horizon.png) · 审美 **8.5/10** · 综合 **8.5/10** · **P2精修**
+[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_horizon.png) · 审美 **8.5/10** · 综合 **8.5/10** · **P2精修**
 
 - 分项：布局2.2/2.5；可读性1.6/2；配色1.3/1.5；规范1.5/2；对应1.9/2。
 - 优点：提前量用分钟直接标注，多模型同时用线型和标记区分，主模型容易定位。
@@ -415,7 +417,7 @@
 
 #### 图3-11：模型误差差的点级Bootstrap
 
-[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_11_bootstrap_difference.png) · 审美 **8.3/10** · 综合 **8.3/10** · **P2精修**
+[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_bootstrap_difference.png) · 审美 **8.3/10** · 综合 **8.3/10** · **P2精修**
 
 - 分项：布局1.9/2.5；可读性1.8/2；配色1.3/1.5；规范1.4/2；对应1.9/2。
 - 优点：森林图零线与差值公式明确，图注正确限制点级Bootstrap的统计解释。
@@ -427,7 +429,7 @@
 
 #### 图3-12：不同评价窗口的MAE
 
-[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_12_mae_by_window.png) · 审美 **8.2/10** · 综合 **8.0/10** · **P2精修**
+[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mae_by_window.png) · 审美 **8.2/10** · 综合 **8.0/10** · **P2精修**
 
 - 分项：布局2.0/2.5；可读性1.7/2；配色1.2/1.5；规范1.5/2；对应1.6/2。
 - 优点：对数轴同时展示事件和稳定量级，主模型数值标注在柱内避免悬浮。
@@ -438,7 +440,7 @@
 
 #### 图3-13：不同模型的逐节点MAE
 
-[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_13_mae_by_node.png) · 审美 **8.7/10** · 综合 **8.6/10** · **P2精修**
+[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_mae_by_node.png) · 审美 **8.7/10** · 综合 **8.6/10** · **P2精修**
 
 - 分项：布局2.2/2.5；可读性1.8/2；配色1.2/1.5；规范1.6/2；对应1.8/2。
 - 优点：颜色与三位小数共同编码，节点顺序和数值映射一致，深浅底色采用不同文字色。
@@ -449,7 +451,7 @@
 
 #### 图3-14：结构消融结果
 
-[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_14_mechanism_ablation.png) · 审美 **8.7/10** · 综合 **8.1/10** · **P2精修**
+[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_mechanism_ablation.png) · 审美 **8.7/10** · 综合 **8.1/10** · **P2精修**
 
 - 分项：布局2.1/2.5；可读性1.8/2；配色1.3/1.5；规范1.5/2；对应1.4/2。
 - 优点：柱高、离散度和相对内部基线百分比同时呈现，完整读数与正文表3-7一致。
@@ -461,7 +463,7 @@
 
 #### 图3-15：JPL整体MAE与七日时间块配对比较
 
-[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_15_jpl_mae_primary.png) · 审美 **8.8/10** · 综合 **9.0/10** · **P3可保留**
+[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_9_jpl_mae_primary.png) · 审美 **8.8/10** · 综合 **9.0/10** · **P3可保留**
 
 - 分项：布局2.2/2.5；可读性1.7/2；配色1.4/1.5；规范1.8/2；对应1.9/2。
 - 优点：种子均值±SD与七日块校正区间分为两个面板，差值方向、零线和三类对照均明确。
@@ -473,7 +475,7 @@
 
 #### 图3-16：JPL分层MAE比较
 
-[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_16_jpl_stratified_mae.png) · 审美 **8.8/10** · 综合 **8.8/10** · **P2精修**
+[当前评分图件](/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/fig3_10_jpl_stratified_mae.png) · 审美 **8.8/10** · 综合 **8.8/10** · **P2精修**
 
 - 分项：布局2.2/2.5；可读性1.7/2；配色1.4/1.5；规范1.6/2；对应1.9/2。
 - 优点：四种分层在相同模型顺序下展示三个种子及离散度，未掩盖事件和非零目标层的对照优势。

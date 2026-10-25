@@ -1,0 +1,23 @@
+test_changed_component_sum_is_detected (test_thesis_scoring_protocol.ScoringPublicationTests.test_changed_component_sum_is_detected) ... ok
+test_changed_evidence_hash_is_detected (test_thesis_scoring_protocol.ScoringPublicationTests.test_changed_evidence_hash_is_detected) ... ok
+test_changed_snapshot_hash_is_detected (test_thesis_scoring_protocol.ScoringPublicationTests.test_changed_snapshot_hash_is_detected) ... ok
+test_complete_pair_passes_and_effects_are_separate (test_thesis_scoring_protocol.ScoringPublicationTests.test_complete_pair_passes_and_effects_are_separate) ... ok
+test_cross_criterion_deduction_requires_distinct_basis (test_thesis_scoring_protocol.ScoringPublicationTests.test_cross_criterion_deduction_requires_distinct_basis) ... ok
+test_daily_update_accepts_fixed_protocol_v2_baseline (test_thesis_scoring_protocol.ScoringPublicationTests.test_daily_update_accepts_fixed_protocol_v2_baseline) ... ok
+test_daily_update_cannot_inherit_legacy_baseline_directly (test_thesis_scoring_protocol.ScoringPublicationTests.test_daily_update_cannot_inherit_legacy_baseline_directly) ... ok
+test_documented_new_error_can_reduce_current_score (test_thesis_scoring_protocol.ScoringPublicationTests.test_documented_new_error_can_reduce_current_score) ... ok
+test_fixed_weights_cannot_silently_change (test_thesis_scoring_protocol.ScoringPublicationTests.test_fixed_weights_cannot_silently_change) ... ok
+test_historical_score_exposure_is_not_blind_baseline (test_thesis_scoring_protocol.ScoringPublicationTests.test_historical_score_exposure_is_not_blind_baseline) ... ok
+test_inherited_issue_can_calibrate_both_but_is_not_regression (test_thesis_scoring_protocol.ScoringPublicationTests.test_inherited_issue_can_calibrate_both_but_is_not_regression) ... ok
+test_legacy_record_cannot_create_new_publication_baseline (test_thesis_scoring_protocol.ScoringPublicationTests.test_legacy_record_cannot_create_new_publication_baseline) ... ok
+test_report_total_error_is_detected_before_publication (test_thesis_scoring_protocol.ScoringPublicationTests.test_report_total_error_is_detected_before_publication) ... ok
+test_resetting_all_rows_to_baseline_is_rejected (test_thesis_scoring_protocol.ScoringPublicationTests.test_resetting_all_rows_to_baseline_is_rejected) ... ok
+test_scope_limit_does_not_automatically_recommend_major_repair (test_thesis_scoring_protocol.ScoringPublicationTests.test_scope_limit_does_not_automatically_recommend_major_repair) ... ok
+test_supported_writing_improvement_can_gain_without_new_training (test_thesis_scoring_protocol.ScoringPublicationTests.test_supported_writing_improvement_can_gain_without_new_training) ... ok
+test_unchanged_basis_cannot_be_reported_as_regression (test_thesis_scoring_protocol.ScoringPublicationTests.test_unchanged_basis_cannot_be_reported_as_regression) ... ok
+test_unverified_concern_cannot_change_score (test_thesis_scoring_protocol.ScoringPublicationTests.test_unverified_concern_cannot_change_score) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.114s
+
+OK

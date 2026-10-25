@@ -1,0 +1,1691 @@
+{
+  "schema_version": 2,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "FORMAL-20261020-PAIRED-REVIEW",
+  "assessment_kind": "formal",
+  "review_date": "2026-10-20",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "df6c1680331963797b6e15a60484f13ff85384a71676443169c2f25e92295724",
+    "manuscript_path": "docs/thesis/thesis-manuscript.md",
+    "manuscript_sha256": "3d883156d9264c9f94c3f7150d7a7647773e1c546d4689b1b283a8eb0b0ed9f3",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "evidence": [
+      {
+        "id": "BASELINE",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/manuscripts/baseline.md",
+        "locator": "冻结同量表配对评阅包中的manuscripts/baseline.md",
+        "sha256": "451642e15e0fc51343acabf84e727b5079d8a1f2243c0ab8d8542adeed8b9b42",
+        "reviewed": true
+      },
+      {
+        "id": "CURRENT",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/manuscripts/current.md",
+        "locator": "冻结同量表配对评阅包中的manuscripts/current.md",
+        "sha256": "3d883156d9264c9f94c3f7150d7a7647773e1c546d4689b1b283a8eb0b0ed9f3",
+        "reviewed": true
+      },
+      {
+        "id": "ACN_BOUNDS",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/ACN_BOUNDS.json",
+        "locator": "冻结同量表配对评阅包中的evidence/ACN_BOUNDS.json",
+        "sha256": "430bb7fffbbf62dd5ef92f4099a6ff455dda3362de195d273d36df02fa260b05",
+        "reviewed": true
+      },
+      {
+        "id": "ACN_DECISION",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/ACN_DECISION.md",
+        "locator": "冻结同量表配对评阅包中的evidence/ACN_DECISION.md",
+        "sha256": "1e8910c16fad0fc8de1b1a87ec7604cfef55b2384cc01f68183d57acb552edd5",
+        "reviewed": true
+      },
+      {
+        "id": "ACN_RANGE",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/ACN_RANGE.json",
+        "locator": "冻结同量表配对评阅包中的evidence/ACN_RANGE.json",
+        "sha256": "84ec68aaf9c9d8b35acb928821a289464a5f66fbb4f946cdb754044b59055ae6",
+        "reviewed": true
+      },
+      {
+        "id": "ADAPT",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/ADAPT.md",
+        "locator": "冻结同量表配对评阅包中的evidence/ADAPT.md",
+        "sha256": "380427dbca21f32cdf80eb261587e1800ee9182f062adb6535cab5ba719b3774",
+        "reviewed": true
+      },
+      {
+        "id": "ADAPTAUDIT",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/ADAPTAUDIT.json",
+        "locator": "冻结同量表配对评阅包中的evidence/ADAPTAUDIT.json",
+        "sha256": "76499e6f387d971e33df08acb75479109aabb70d7b407f1b9520b6bb53891e84",
+        "reviewed": true
+      },
+      {
+        "id": "CAL",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/CAL.md",
+        "locator": "冻结同量表配对评阅包中的evidence/CAL.md",
+        "sha256": "da74215ccdc23de4aa0901efa6eec09693ca03233be5befb29eae620c702352a",
+        "reviewed": true
+      },
+      {
+        "id": "DATA_AVAIL",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/DATA_AVAIL.md",
+        "locator": "冻结同量表配对评阅包中的evidence/DATA_AVAIL.md",
+        "sha256": "103d7f4c39dd3d9dcace742ce4ce026486dbffb20fe1d083b6cc2c3c380726f8",
+        "reviewed": true
+      },
+      {
+        "id": "MAP",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/MAP.md",
+        "locator": "冻结同量表配对评阅包中的evidence/MAP.md",
+        "sha256": "abf6a2860e925ea4d60724b7547c1957315b7fa17a0c4948263059bfcc63eeae",
+        "reviewed": true
+      },
+      {
+        "id": "MDP",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/MDP.md",
+        "locator": "冻结同量表配对评阅包中的evidence/MDP.md",
+        "sha256": "f65ce5d985d71fc61bdc9d76c92be53d634c70bb2c66a91f584e22033739d371",
+        "reviewed": true
+      },
+      {
+        "id": "MRECOMP",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/MRECOMP.json",
+        "locator": "冻结同量表配对评阅包中的evidence/MRECOMP.json",
+        "sha256": "deb2356b5c32d3b054cd8bd2eeb3e50e946adb43a38523a041e08c939ae40bde",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/NEAR.md",
+        "locator": "冻结同量表配对评阅包中的evidence/NEAR.md",
+        "sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR2",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/NEAR2.md",
+        "locator": "冻结同量表配对评阅包中的evidence/NEAR2.md",
+        "sha256": "2ca238e2e2214e2d526f2782c46fbd437db35a74f0f05113f1b5f7672f4a9048",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR76",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/NEAR76.md",
+        "locator": "冻结同量表配对评阅包中的evidence/NEAR76.md",
+        "sha256": "90db0f34343faef3d78dd1ca41dbe4799deb7d6cf0e61430330fd13e59e72704",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR_20261016",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/NEAR_20261016.md",
+        "locator": "冻结同量表配对评阅包中的evidence/NEAR_20261016.md",
+        "sha256": "b30cc55d0ab712e727f3e05f2ef1c28720f669eb15dd710aab1bd88cfb931875",
+        "reviewed": true
+      },
+      {
+        "id": "NZ",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/NZ.json",
+        "locator": "冻结同量表配对评阅包中的evidence/NZ.json",
+        "sha256": "4f566d54cc6284679dd642bfce52d2251a9deea8fe97e319ebc2804995421345",
+        "reviewed": true
+      },
+      {
+        "id": "PASSPORT",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/PASSPORT.md",
+        "locator": "冻结同量表配对评阅包中的evidence/PASSPORT.md",
+        "sha256": "33ecc45c11775788fc9e6979949ef78fef5900a1583d8b01df5feb030681c2ea",
+        "reviewed": true
+      },
+      {
+        "id": "QUALITY",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/QUALITY.md",
+        "locator": "冻结同量表配对评阅包中的evidence/QUALITY.md",
+        "sha256": "06a6b9a43fc675e7527646aaa81a92d13aa4c91802b72ae8f4f07314fde5862b",
+        "reviewed": true
+      },
+      {
+        "id": "RECOMP",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/RECOMP.json",
+        "locator": "冻结同量表配对评阅包中的evidence/RECOMP.json",
+        "sha256": "388d838f54ae9e8f35ec8f049d226977956327d30cb5d80f42d8974e5c007294",
+        "reviewed": true
+      },
+      {
+        "id": "S31",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/S31.md",
+        "locator": "冻结同量表配对评阅包中的evidence/S31.md",
+        "sha256": "d93dd099dbc4a55385fa4e3122323ca1c8ee5f4ddc205562ebc4fd69d57519d9",
+        "reviewed": true
+      },
+      {
+        "id": "S31AUDIT",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/S31AUDIT.json",
+        "locator": "冻结同量表配对评阅包中的evidence/S31AUDIT.json",
+        "sha256": "8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475",
+        "reviewed": true
+      },
+      {
+        "id": "S32",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/S32.md",
+        "locator": "冻结同量表配对评阅包中的evidence/S32.md",
+        "sha256": "9585428a9501321944ba38efcfacaa3978d8c2514149c6eedfe0a46fd25b0f8a",
+        "reviewed": true
+      },
+      {
+        "id": "S32AUDIT",
+        "source": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/evidence/S32AUDIT.json",
+        "locator": "冻结同量表配对评阅包中的evidence/S32AUDIT.json",
+        "sha256": "11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a",
+        "reviewed": true
+      }
+    ],
+    "frozen_manuscript_path": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/manuscripts/current.md"
+  },
+  "reviewer_reports": [
+    "docs/thesis/revision-20261020-delivery/reviewer-reports/technical/technical-review-technical-20261020-df6c1680.md",
+    "docs/thesis/revision-20261020-delivery/reviewer-reports/readability/readability_review.md",
+    "docs/thesis/revision-20261020-delivery/reviewer-reports/originality/originality-review-ORIG-20261020-001.md"
+  ],
+  "forensic_report": "docs/thesis/revision-20261020-delivery/forensic-review.md",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": 4.5,
+      "manuscript_location": "摘要、§1.1、§1.3、§2.1",
+      "evidence_ids": [
+        "CURRENT",
+        "QUALITY",
+        "DATA_AVAIL"
+      ],
+      "rationale": "任务、目标、粒度和研究动机清楚；实际功率与现场效益不在本任务证据范围内，作为BR-11边界，不在此重复扣分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-01-problem",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "DATA_AVAIL"
+          ],
+          "rationale": "两稿研究对象与动机未改变。"
+        },
+        {
+          "id": "BR-01-significance",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "DATA_AVAIL"
+          ],
+          "rationale": "未新增现场需求量化。"
+        },
+        {
+          "id": "BR-01-need",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "DATA_AVAIL"
+          ],
+          "rationale": "任务与数据仍相匹配。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-01-problem",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "DATA_AVAIL"
+          ],
+          "rationale": "两稿研究对象与动机未改变。"
+        },
+        {
+          "id": "BR-01-significance",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "DATA_AVAIL"
+          ],
+          "rationale": "未新增现场需求量化。"
+        },
+        {
+          "id": "BR-01-need",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "DATA_AVAIL"
+          ],
+          "rationale": "任务与数据仍相匹配。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 4.5,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "保留最新正式评分中该项的既有组分；同稿修订没有改变此项评价依据。"
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-02",
+      "score": 4.5,
+      "manuscript_location": "题目、摘要、§1.3–1.6、§3–§5及结论",
+      "evidence_ids": [
+        "CURRENT",
+        "MAP",
+        "MDP",
+        "S31",
+        "S32"
+      ],
+      "rationale": "全文研究对象一致，章节与结论能对应研究问题；补充分析的篇幅主次仍可继续收束。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-02-alignment",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "MAP",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "研究范围和题目未改变。"
+        },
+        {
+          "id": "BR-02-progression",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "MAP",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "本轮点名两项贡献但未重构章节主次。"
+        },
+        {
+          "id": "BR-02-closure",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "MAP",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "当前稿仍回答原研究问题。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-02-alignment",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "MAP",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "研究范围和题目未改变。"
+        },
+        {
+          "id": "BR-02-progression",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "MAP",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "本轮点名两项贡献但未重构章节主次。"
+        },
+        {
+          "id": "BR-02-closure",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "MAP",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "当前稿仍回答原研究问题。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 4.5,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "保留最新正式评分中该项的既有组分；同稿修订没有改变此项评价依据。"
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-03",
+      "score": 4.5,
+      "manuscript_location": "§1.2.2表1-1及表后段、§1.2.3–1.3",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "NEAR",
+        "NEAR76",
+        "NEAR2",
+        "NEAR_20261016"
+      ],
+      "rationale": "本项只因表后引用范围更准确而提高0.5；没有将既有[76]比较重复算作本轮新增文献证据。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-03-coverage",
+          "score": 1,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "关键先例和差异内容未扩张。"
+        },
+        {
+          "id": "BR-03-sources",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "表1-1后的概括性引用已排除未列入表格的[74][75]，范围与表格一致。"
+        },
+        {
+          "id": "BR-03-gap",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "近邻比较的维度与证据边界未变，MDP诊断类近邻仍可更系统比较。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-03-coverage",
+          "score": 1,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "关键先例和差异内容未扩张。"
+        },
+        {
+          "id": "BR-03-sources",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "表1-1后的概括性引用已排除未列入表格的[74][75]，范围与表格一致。"
+        },
+        {
+          "id": "BR-03-gap",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "近邻比较的维度与证据边界未变，MDP诊断类近邻仍可更系统比较。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 4.5,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "保留最新正式评分中该项的既有组分；同稿修订没有改变此项评价依据。"
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-04",
+      "score": 5,
+      "manuscript_location": "§2.1–2.5、§3.2–3.5、§4.2–4.6、§5.2–5.4",
+      "evidence_ids": [
+        "CURRENT",
+        "QUALITY",
+        "MDP",
+        "S31",
+        "S32"
+      ],
+      "rationale": "基本概念和公式定义准确，关键假设已声明；没有把行为关系解释成物理因果。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-04-concepts",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "理论内容和公式未改变。"
+        },
+        {
+          "id": "BR-04-formulas",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "τ与h定义改善第五章时间索引说明，但未涉及理论公式重写。"
+        },
+        {
+          "id": "BR-04-knowledge",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "专业知识判断和实验结论未改变。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-04-concepts",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "理论内容和公式未改变。"
+        },
+        {
+          "id": "BR-04-formulas",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "τ与h定义改善第五章时间索引说明，但未涉及理论公式重写。"
+        },
+        {
+          "id": "BR-04-knowledge",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "MDP",
+            "S31",
+            "S32"
+          ],
+          "rationale": "专业知识判断和实验结论未改变。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 5,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "保留最新正式评分中该项的既有组分；同稿修订没有改变此项评价依据。"
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-05",
+      "score": 8.0,
+      "manuscript_location": "§2.1–2.2、§3.6–3.8、§4.3、§5.3",
+      "evidence_ids": [
+        "CURRENT",
+        "QUALITY",
+        "S31",
+        "S32",
+        "MAP"
+      ],
+      "rationale": "已查看测试期补充不能作为独立确认；门控预算补验仍是后续针对性实验，不将未运行结果计为完成。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-05-information_split",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MAP"
+          ],
+          "rationale": "实验设计和训练预算未改变。"
+        },
+        {
+          "id": "BR-05-comparators",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MAP"
+          ],
+          "rationale": "本轮未补容量匹配模型。"
+        },
+        {
+          "id": "BR-05-controls",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MAP"
+          ],
+          "rationale": "本轮没有新对照或训练结果。"
+        },
+        {
+          "id": "BR-05-selection_budget",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MAP"
+          ],
+          "rationale": "门控预算合同仍未就绪、未启动。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-05-information_split",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MAP"
+          ],
+          "rationale": "实验设计和训练预算未改变。"
+        },
+        {
+          "id": "BR-05-comparators",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MAP"
+          ],
+          "rationale": "本轮未补容量匹配模型。"
+        },
+        {
+          "id": "BR-05-controls",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MAP"
+          ],
+          "rationale": "本轮没有新对照或训练结果。"
+        },
+        {
+          "id": "BR-05-selection_budget",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MAP"
+          ],
+          "rationale": "门控预算合同仍未就绪、未启动。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 8.0,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "保留最新正式评分中该项的既有组分；同稿修订没有改变此项评价依据。"
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-06",
+      "score": 4.5,
+      "manuscript_location": "§2.1–2.2、§3.6.1、§3.6.4、§3.7、§4.6.1",
+      "evidence_ids": [
+        "CURRENT",
+        "PASSPORT",
+        "QUALITY",
+        "ADAPT",
+        "ADAPTAUDIT",
+        "RECOMP"
+      ],
+      "rationale": "该分覆盖现有冻结预测和检查点复算，不将其扩大为第三方从头重训复现。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-06-data_split",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "QUALITY",
+            "ADAPT",
+            "ADAPTAUDIT",
+            "RECOMP"
+          ],
+          "rationale": "复现证据未改变。"
+        },
+        {
+          "id": "BR-06-source_config",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "QUALITY",
+            "ADAPT",
+            "ADAPTAUDIT",
+            "RECOMP"
+          ],
+          "rationale": "本轮没有补齐历史训练Git身份。"
+        },
+        {
+          "id": "BR-06-keys_metrics",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "QUALITY",
+            "ADAPT",
+            "ADAPTAUDIT",
+            "RECOMP"
+          ],
+          "rationale": "关键键值与复算产物未改变。"
+        },
+        {
+          "id": "BR-06-environment_package",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "QUALITY",
+            "ADAPT",
+            "ADAPTAUDIT",
+            "RECOMP"
+          ],
+          "rationale": "没有从头重训或新增原生训练环境证据。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-06-data_split",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "QUALITY",
+            "ADAPT",
+            "ADAPTAUDIT",
+            "RECOMP"
+          ],
+          "rationale": "复现证据未改变。"
+        },
+        {
+          "id": "BR-06-source_config",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "QUALITY",
+            "ADAPT",
+            "ADAPTAUDIT",
+            "RECOMP"
+          ],
+          "rationale": "本轮没有补齐历史训练Git身份。"
+        },
+        {
+          "id": "BR-06-keys_metrics",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "QUALITY",
+            "ADAPT",
+            "ADAPTAUDIT",
+            "RECOMP"
+          ],
+          "rationale": "关键键值与复算产物未改变。"
+        },
+        {
+          "id": "BR-06-environment_package",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "QUALITY",
+            "ADAPT",
+            "ADAPTAUDIT",
+            "RECOMP"
+          ],
+          "rationale": "没有从头重训或新增原生训练环境证据。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 4.5,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "保留最新正式评分中该项的既有组分；同稿修订没有改变此项评价依据。"
+      },
+      "adjudication": "三份隔离视角对BR-06均自评4.0/5，而此前有效正式基线为4.5/5。按paired_revision不重新校准固定基线；本轮没有影响复现链的稿件变化，故旧稿与当前稿均沿用4.5。检查点前向、原训练身份与可携带材料边界未变。"
+    },
+    {
+      "id": "BR-07",
+      "score": 9,
+      "manuscript_location": "第2–5章，重点§3.6–3.8、§4、§5.2–5.4",
+      "evidence_ids": [
+        "CURRENT",
+        "PASSPORT",
+        "S31",
+        "S32",
+        "MDP",
+        "ADAPT",
+        "CAL"
+      ],
+      "rationale": "工作量和问题处理达到专业硕士研究要求；未以缺外部场景或部署在本项重复扣分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-07-technical_work",
+          "score": 4,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "S31",
+            "S32",
+            "MDP",
+            "ADAPT",
+            "CAL"
+          ],
+          "rationale": "本轮文字收束未改变已完成的技术工作。"
+        },
+        {
+          "id": "BR-07-problem_solving",
+          "score": 3,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "S31",
+            "S32",
+            "MDP",
+            "ADAPT",
+            "CAL"
+          ],
+          "rationale": "没有新增模型训练或现场数据问题。"
+        },
+        {
+          "id": "BR-07-integration",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "S31",
+            "S32",
+            "MDP",
+            "ADAPT",
+            "CAL"
+          ],
+          "rationale": "章节连接作局部澄清，未新增分析链。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-07-technical_work",
+          "score": 4,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "S31",
+            "S32",
+            "MDP",
+            "ADAPT",
+            "CAL"
+          ],
+          "rationale": "本轮文字收束未改变已完成的技术工作。"
+        },
+        {
+          "id": "BR-07-problem_solving",
+          "score": 3,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "S31",
+            "S32",
+            "MDP",
+            "ADAPT",
+            "CAL"
+          ],
+          "rationale": "没有新增模型训练或现场数据问题。"
+        },
+        {
+          "id": "BR-07-integration",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "PASSPORT",
+            "S31",
+            "S32",
+            "MDP",
+            "ADAPT",
+            "CAL"
+          ],
+          "rationale": "章节连接作局部澄清，未新增分析链。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 9,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "保留最新正式评分中该项的既有组分；同稿修订没有改变此项评价依据。"
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-08",
+      "score": 8.5,
+      "manuscript_location": "§3.6–3.8、§4.4–4.6、§5.3",
+      "evidence_ids": [
+        "CURRENT",
+        "S31",
+        "S32",
+        "S31AUDIT",
+        "S32AUDIT",
+        "CAL",
+        "RECOMP"
+      ],
+      "rationale": "相对原评分将同体系、已查看期内的交叉验证认作部分稳健性证据（校准+0.5），但不满分，仍保留新时期和外部数据限制。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-08-claim_support",
+          "score": 3.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT",
+            "CAL",
+            "RECOMP"
+          ],
+          "rationale": "本轮没有增加新结果。"
+        },
+        {
+          "id": "BR-08-alternatives",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT",
+            "CAL",
+            "RECOMP"
+          ],
+          "rationale": "替代解释的实验覆盖未变。"
+        },
+        {
+          "id": "BR-08-robustness_scope",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT",
+            "CAL",
+            "RECOMP"
+          ],
+          "rationale": "跨协议/目标材料仍是任务内补充，不作为独立时期复现。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-08-claim_support",
+          "score": 3.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT",
+            "CAL",
+            "RECOMP"
+          ],
+          "rationale": "本轮没有增加新结果。"
+        },
+        {
+          "id": "BR-08-alternatives",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT",
+            "CAL",
+            "RECOMP"
+          ],
+          "rationale": "替代解释的实验覆盖未变。"
+        },
+        {
+          "id": "BR-08-robustness_scope",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT",
+            "CAL",
+            "RECOMP"
+          ],
+          "rationale": "跨协议/目标材料仍是任务内补充，不作为独立时期复现。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 8.5,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "保留最新正式评分中该项的既有组分；同稿修订没有改变此项评价依据。"
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-09",
+      "score": 9.0,
+      "manuscript_location": "§3.7.2、§5.2.5–5.2.6、结论中的数据范围说明",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "DATA_AVAIL",
+        "ACN_DECISION",
+        "S32AUDIT"
+      ],
+      "rationale": "本轮在§5.2.6明确：复用已查看时期的结果仅作探索性，独立时期确认需兼容新数据且目前尚未取得。这使统计推断与数据条件的边界更直接。训练种子有限、次要分层未校正等限制保留。",
+      "na_reason": null,
+      "change": {
+        "type": "improvement",
+        "reason": "与旧稿相比，当前稿新增直接对应的探索/确认区分与新时期数据条件，不改变统计量或结果。主评只提高解释边界组件0.5；未增加检验或确认性证据。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "DATA_AVAIL",
+          "ACN_DECISION"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-09-uncertainty",
+          "score": 3.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31AUDIT",
+            "S32AUDIT",
+            "MDP",
+            "CAL"
+          ],
+          "rationale": "统计证据和解释未改变。"
+        },
+        {
+          "id": "BR-09-multiplicity",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31AUDIT",
+            "S32AUDIT",
+            "MDP",
+            "CAL"
+          ],
+          "rationale": "本轮未新增检验或调整多重性处理。"
+        },
+        {
+          "id": "BR-09-interpretation",
+          "score": 4.0,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "DATA_AVAIL",
+            "ACN_DECISION"
+          ],
+          "rationale": "§5.2.6明确将已查看时期上的方向性筛查定位为探索性，并把独立时期确认与兼容新数据取得条件相连；该表述与数据可得性记录一致。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-09-uncertainty",
+          "score": 3.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31AUDIT",
+            "S32AUDIT",
+            "MDP",
+            "CAL"
+          ],
+          "rationale": "统计证据和解释未改变。"
+        },
+        {
+          "id": "BR-09-multiplicity",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31AUDIT",
+            "S32AUDIT",
+            "MDP",
+            "CAL"
+          ],
+          "rationale": "本轮未新增检验或调整多重性处理。"
+        },
+        {
+          "id": "BR-09-interpretation",
+          "score": 3.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31AUDIT",
+            "S32AUDIT",
+            "MDP",
+            "CAL"
+          ],
+          "rationale": "结论不再拓展到未见时期或实测运行收益。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "changed",
+        "baseline_reassessed_score": 8.5,
+        "revision_delta": 0.5,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "DATA_AVAIL",
+          "ACN_DECISION"
+        ],
+        "rationale": "与旧稿相比，当前稿新增直接对应的探索/确认区分与新时期数据条件，不改变统计量或结果。主评只提高解释边界组件0.5；未增加检验或确认性证据。"
+      },
+      "adjudication": "技术视角给BR-09增加0.5，可读性与原创性视角未加分。主评核对§5.2.6与DATA_AVAIL/ACN_DECISION后认可该项改善：它明示已查看期分析的探索属性和独立确认的数据前提；这仅改善解释边界，不把结果升级为确认性证据。"
+    },
+    {
+      "id": "BR-10",
+      "score": 7.5,
+      "manuscript_location": "摘要、§1.2.2–1.4、§3.7–3.8、§4.5–4.6、结论",
+      "evidence_ids": [
+        "CURRENT",
+        "NEAR",
+        "NEAR76",
+        "NEAR2",
+        "NEAR_20261016",
+        "S31",
+        "S32",
+        "MDP"
+      ],
+      "rationale": "对最近工作的差异和经验贡献有根据；校准旧分时将“新算子/诊断后收益”从必要条件中剔除，仍不因文字清晰而重复加创新分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-10-prior_difference",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016",
+            "S31",
+            "S32",
+            "MDP"
+          ],
+          "rationale": "本轮把已有贡献在§1.6和摘要中表述得更明确，但没有新增知识或独立证据。"
+        },
+        {
+          "id": "BR-10-contribution",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016",
+            "S31",
+            "S32",
+            "MDP"
+          ],
+          "rationale": "结论仍区分组件价值与完整模型在非零组未胜TCN。"
+        },
+        {
+          "id": "BR-10-demonstration",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016",
+            "S31",
+            "S32",
+            "MDP"
+          ],
+          "rationale": "演示证据与边界未改变。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-10-prior_difference",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016",
+            "S31",
+            "S32",
+            "MDP"
+          ],
+          "rationale": "本轮把已有贡献在§1.6和摘要中表述得更明确，但没有新增知识或独立证据。"
+        },
+        {
+          "id": "BR-10-contribution",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016",
+            "S31",
+            "S32",
+            "MDP"
+          ],
+          "rationale": "结论仍区分组件价值与完整模型在非零组未胜TCN。"
+        },
+        {
+          "id": "BR-10-demonstration",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "NEAR_20261016",
+            "S31",
+            "S32",
+            "MDP"
+          ],
+          "rationale": "演示证据与边界未改变。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 7.5,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "保留最新正式评分中该项的既有组分；同稿修订没有改变此项评价依据。"
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-11",
+      "score": 3.0,
+      "manuscript_location": "§1.1、§5.4.1–5.4.5、结论",
+      "evidence_ids": [
+        "CURRENT",
+        "ACN_DECISION",
+        "ACN_BOUNDS",
+        "ACN_RANGE",
+        "DATA_AVAIL",
+        "CAL"
+      ],
+      "rationale": "本轮的ACN元数据边界核验有助于选择后续数据路线，但未改变现场实践效益或模型可用性证据，故不加分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "本轮没有足以改变此项分值的稿件修订或新增证据，沿用冻结正式分。",
+        "evidence_ids": []
+      },
+      "components": [
+        {
+          "id": "BR-11-use_case",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "ACN_DECISION",
+            "ACN_BOUNDS",
+            "ACN_RANGE",
+            "DATA_AVAIL",
+            "CAL"
+          ],
+          "rationale": "ACN范围核查没有发现更晚接入记录，Office 1兼容性仍未知。"
+        },
+        {
+          "id": "BR-11-real_inputs",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "ACN_DECISION",
+            "ACN_BOUNDS",
+            "ACN_RANGE",
+            "DATA_AVAIL",
+            "CAL"
+          ],
+          "rationale": "没有新增量测或真实约束材料。"
+        },
+        {
+          "id": "BR-11-value_evaluation",
+          "score": 0.5,
+          "evidence_ids": [
+            "CURRENT",
+            "ACN_DECISION",
+            "ACN_BOUNDS",
+            "ACN_RANGE",
+            "DATA_AVAIL",
+            "CAL"
+          ],
+          "rationale": "未执行新调度回放。"
+        },
+        {
+          "id": "BR-11-usable_outputs",
+          "score": 0.5,
+          "evidence_ids": [
+            "CURRENT",
+            "ACN_DECISION",
+            "ACN_BOUNDS",
+            "ACN_RANGE",
+            "DATA_AVAIL",
+            "CAL"
+          ],
+          "rationale": "正文把数据门槛写得更具体，但未新增可直接用于运营的工件。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-11-use_case",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "ACN_DECISION",
+            "ACN_BOUNDS",
+            "ACN_RANGE",
+            "DATA_AVAIL",
+            "CAL"
+          ],
+          "rationale": "ACN范围核查没有发现更晚接入记录，Office 1兼容性仍未知。"
+        },
+        {
+          "id": "BR-11-real_inputs",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "ACN_DECISION",
+            "ACN_BOUNDS",
+            "ACN_RANGE",
+            "DATA_AVAIL",
+            "CAL"
+          ],
+          "rationale": "没有新增量测或真实约束材料。"
+        },
+        {
+          "id": "BR-11-value_evaluation",
+          "score": 0.5,
+          "evidence_ids": [
+            "CURRENT",
+            "ACN_DECISION",
+            "ACN_BOUNDS",
+            "ACN_RANGE",
+            "DATA_AVAIL",
+            "CAL"
+          ],
+          "rationale": "未执行新调度回放。"
+        },
+        {
+          "id": "BR-11-usable_outputs",
+          "score": 0.5,
+          "evidence_ids": [
+            "CURRENT",
+            "ACN_DECISION",
+            "ACN_BOUNDS",
+            "ACN_RANGE",
+            "DATA_AVAIL",
+            "CAL"
+          ],
+          "rationale": "正文把数据门槛写得更具体，但未新增可直接用于运营的工件。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 3.0,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "保留最新正式评分中该项的既有组分；同稿修订没有改变此项评价依据。"
+      },
+      "adjudication": ""
+    },
+    {
+      "id": "BR-12",
+      "score": 8.5,
+      "manuscript_location": "摘要；§1.1.3、§1.2.1–1.2.2；§3.7.2；§4.2.3–4.2.4；§4.4.4；§5.2.5–5.2.6；结论",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT"
+      ],
+      "rationale": "相对旧稿，若干句子更紧凑，补清关系权重与等权设置的待验证关系、误差差值口径和探索性分析范围。主线事实未改变。尚有重复限制和中英文摘要术语不一致；故只提高写作组件0.5，不提高术语分，也不声称全篇已无冗余。",
+      "na_reason": null,
+      "change": {
+        "type": "improvement",
+        "reason": "三份盲评中的可读性和原创性视角均识别到表达清晰度改善。法证对照确认变化集中于精炼、指代和边界表达；分值只计BR-12-writing +0.5。未把待完成的WPS目录和版式作为内容得分。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-12-structure",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "MAP"
+          ],
+          "rationale": "摘要补全绝对MAE和关系增量，使中英文摘要信息对应；删除未定义缩写串，修复§3.5.4转引并定义τ/h。"
+        },
+        {
+          "id": "BR-12-writing",
+          "score": 3.0,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT"
+          ],
+          "rationale": "本轮压缩若干重复或信息冗余表述，改清关系权重假设、MAE差值口径及四格误差解释；整体顺序更易跟随。中英文摘要“代理负荷/proxy energy”仍未完全统一，因此不提高术语组件。"
+        },
+        {
+          "id": "BR-12-scholarly_content",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "MAP"
+          ],
+          "rationale": "交叉引用正确，表后引用范围已收窄；图像和Word页面未作为本项通过证据。"
+        },
+        {
+          "id": "BR-12-terminology",
+          "score": 1,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "MAP"
+          ],
+          "rationale": "时间片符号补足对应关系，术语口径未变化。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-12-structure",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "MAP"
+          ],
+          "rationale": "摘要补全绝对MAE和关系增量，使中英文摘要信息对应；删除未定义缩写串，修复§3.5.4转引并定义τ/h。"
+        },
+        {
+          "id": "BR-12-writing",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "MAP"
+          ],
+          "rationale": "局部写作更紧凑，结论数据边界更可操作；长段和重复限制仍在。"
+        },
+        {
+          "id": "BR-12-scholarly_content",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "MAP"
+          ],
+          "rationale": "交叉引用正确，表后引用范围已收窄；图像和Word页面未作为本项通过证据。"
+        },
+        {
+          "id": "BR-12-terminology",
+          "score": 1,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR",
+            "NEAR76",
+            "NEAR2",
+            "MAP"
+          ],
+          "rationale": "时间片符号补足对应关系，术语口径未变化。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "changed",
+        "baseline_reassessed_score": 8.0,
+        "revision_delta": 0.5,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "三份盲评中的可读性和原创性视角均识别到表达清晰度改善。法证对照确认变化集中于精炼、指代和边界表达；分值只计BR-12-writing +0.5。未把待完成的WPS目录和版式作为内容得分。"
+      },
+      "adjudication": "两位视角给BR-12相对各自旧稿加0.5，技术视角未加分。当前8.5高于本轮三位视角的最高绝对分8.0，但主评保留配对基线的正式BR-12=8.0，并仅将已核实的写作变化加0.5；三视角旧稿绝对分差异较大，不以其自评分重校准。中文摘要改“代理负荷”而英文仍为“proxy energy”，故术语组件不加分。"
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "三份报告均只按图题/图注审阅，未检查图片实体、整页分页或Word/WPS全页视觉。",
+    "本分为论文内容模拟评价，不是学校官方评分。",
+    "ACN边界核查不构成未查看时期；Office 1节点/字段/使用史尚未核查。",
+    "门控共同预算补验合同未就绪、未训练。"
+  ],
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "review_mode": "paired_revision",
+  "claim_scope": "对代理负荷预测、站内关系增量与诊断价值的限定主张，以及这些主张的实验、统计和实践证据；不评价为实测功率准确性、未见数据家族泛化或已实现的现场运行收益。",
+  "baseline": {
+    "scorecard_path": "docs/thesis/revision-20261019-nontraining/paired-calibration-scorecard.json",
+    "scorecard_sha256": "2e473427c8a278915e1bef884e7f1295913d7f430e1bbd15b74f256d43d1d13b",
+    "manuscript_path": "docs/thesis/revision-20261020-delivery/review-preparation/reviewer-packet/manuscripts/baseline.md",
+    "manuscript_sha256": "451642e15e0fc51343acabf84e727b5079d8a1f2243c0ab8d8542adeed8b9b42"
+  },
+  "anchors_sha256": "d31ffe74621b318fb63b8a7534b7abcb4e194733ff2ed6ee3d291030f512b575",
+  "issue_ledger": {
+    "path": "docs/thesis/revision-20261020-delivery/issue-ledger.json",
+    "sha256": "75d5adbbdc712d9d0f416aa06e031d0d6a9a47c71280f643b1a7eb7e20d2d63e"
+  },
+  "reviewer_records": [
+    {
+      "path": "docs/thesis/revision-20261020-delivery/reviewer-reports/panel-record-technical.json",
+      "sha256": "07cb02142d4c6bb9faf1f281150e6ad038ff3ccb9aad00ab12a47f484cde43a5"
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/reviewer-reports/panel-record-readability.json",
+      "sha256": "a02e5c20f7c84302557da7fd867ee12df3325becd9813ce7725afac1e4333fae"
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/reviewer-reports/panel-record-originality.json",
+      "sha256": "1b5ca474eaa2c046793289f13372508b48aeee455057b538185bbe64dfe6c5ba"
+    }
+  ],
+  "publication_note": "同一EVCS-THESIS-CONTENT-1.0/REVIEW-2.0范围配对；以FORMAL-20261019-NONTRAIN-CALIBRATION-PAIR为固定基线，不重定价历史基线，不平均三位评阅者总分。内容模拟评分；Word/WPS全页交付验收单列。"
+}

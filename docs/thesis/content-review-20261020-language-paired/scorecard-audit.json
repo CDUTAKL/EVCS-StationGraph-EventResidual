@@ -1,0 +1,141 @@
+{
+  "assessment_id": "FORMAL-20261020-LANGUAGE-PAIRED-REVIEW",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 78.0,
+  "raw_maximum": 90.0,
+  "normalized_score": 86.67,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "FORMAL-20261020-PAIRED-REVIEW",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 1.67,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与上轮正式评分相比，本轮没有新增足以改变该项锚点的内容或证据；按paired_revision保留固定分项。"
+      },
+      {
+        "id": "BR-02",
+        "old": 4.5,
+        "new": 5.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "现稿在§1.4先给出两类关系的条件性整体增量、行为关系不确定、完整模型非零组局限，再展开方法与工作包；§1.6按研究推进顺序压缩章节导读。题目—问题—证据—边界映射更直接，进步计入研究问题与全篇推进组件0.5分。事件计数实时可见性仍是协议假设。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与上轮正式评分相比，本轮没有新增足以改变该项锚点的内容或证据；按paired_revision保留固定分项。"
+      },
+      {
+        "id": "BR-04",
+        "old": 5,
+        "new": 5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与上轮正式评分相比，本轮没有新增足以改变该项锚点的内容或证据；按paired_revision保留固定分项。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与上轮正式评分相比，本轮没有新增足以改变该项锚点的内容或证据；按paired_revision保留固定分项。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与上轮正式评分相比，本轮没有新增足以改变该项锚点的内容或证据；按paired_revision保留固定分项。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9,
+        "new": 9,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与上轮正式评分相比，本轮没有新增足以改变该项锚点的内容或证据；按paired_revision保留固定分项。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与上轮正式评分相比，本轮没有新增足以改变该项锚点的内容或证据；按paired_revision保留固定分项。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与上轮正式评分相比，本轮没有新增足以改变该项锚点的内容或证据；按paired_revision保留固定分项。"
+      },
+      {
+        "id": "BR-10",
+        "old": 7.5,
+        "new": 8.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "现稿§1.4将新增知识具体化为负荷/轮廓关系有条件增量、行为关系不确定、完整模型非零组未胜过TCN，并明确诊断指导改模收益尚无证据。更准确呈现可辩护的经验贡献，但没有增加算法或独立验证，贡献表达组件上调0.5。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.0,
+        "new": 3.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "与上轮正式评分相比，本轮没有新增足以改变该项锚点的内容或证据；按paired_revision保留固定分项。"
+      },
+      {
+        "id": "BR-12",
+        "old": 8.5,
+        "new": 9.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "46处文本修订、中文字符净减451，精简引言和章节导读，拆解部分密集段落并前置主要发现；自动审计确认数字、公式、引文、标题和表格行保持。结构组织组件由2.5升至3.0；写作组件已达锚点上限，不重复加分。仍有密集方法段和中英文术语差异，图片与分页未审。"
+      }
+    ]
+  },
+  "publication_status": "publishable",
+  "publication_decision": {
+    "status": "publishable",
+    "date": "2026-10-20",
+    "reason": "完成同量表paired_revision；三个隔离视角、冻结证据、逐项差异和算术/哈希发布检查通过。",
+    "record": "docs/thesis/content-review-20261020-language-paired/scorecard.json",
+    "raw_score": 78.0,
+    "normalized_score": 86.67,
+    "baseline_assessment_id": "FORMAL-20261020-PAIRED-REVIEW",
+    "revision_delta_raw": 1.5,
+    "calibration_delta_raw": 0.0
+  },
+  "publication": {
+    "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+    "status": "publishable",
+    "problems": [],
+    "raw_score": 78.0,
+    "normalized_score": 86.67,
+    "revision_delta_raw": 1.5,
+    "calibration_delta_raw": 0.0,
+    "recommendation": "minor_revision",
+    "checked_file_count": 35,
+    "note": "发布条件核验不证明证据真实、学术判断正确或评分具有测量精度。"
+  },
+  "record_validation_status": "valid"
+}

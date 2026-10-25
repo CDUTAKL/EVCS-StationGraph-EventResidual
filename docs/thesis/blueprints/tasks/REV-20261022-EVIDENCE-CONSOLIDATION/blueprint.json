@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261022-EVIDENCE-CONSOLIDATION",
+  "title": "Consolidate verified replay and EPFL evidence into bounded manuscript revision",
+  "task_type": "content_revision",
+  "workflow_stage": "Stage 11: bounded evidence consolidation; Stage 12 delivery follows Codex review",
+  "objective": "Draft concise evidence documentation and three bounded manuscript additions/replacements using verified replay and EPFL facts. Claude returns proposals only, Codex reviews and applies. Preserve numeric/model claims and all important evidence limits. No training, network or scoring.",
+  "context_sources": [
+    {
+      "path": "docs/thesis/revision-20261022-evidence/verified-review-facts.json",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "Only accepted numeric and provenance facts."
+    }
+  ],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "数据源筛选"
+      },
+      "purpose": "Existing official-source candidate checks; stop broad search."
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": [
+    "docs/thesis/thesis-manuscript.md",
+    "docs/thesis/data-availability.md",
+    "docs/thesis/claim-evidence-map.md",
+    "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+    "docs/thesis/revision-20261022-evidence/reproducibility-package.md",
+    "docs/thesis/revision-20261022-evidence/targeted-data-search.md",
+    "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-report.md",
+    "docs/thesis/revision-20261022-evidence/claude-recovery/prompt.txt",
+    "docs/thesis/revision-20261022-evidence/claude-recovery/stream.jsonl",
+    "docs/thesis/revision-20261022-evidence/claude-recovery/stderr.txt",
+    "docs/thesis/revision-20261022-evidence/claude-recovery/run.json",
+    "docs/thesis/revision-20261022-evidence/claude-recovery/proposals.json",
+    "docs/thesis/revision-20261022-evidence/claude-recovery/manuscript-before.md"
+  ],
+  "locked_claims": [
+    "This is saved-prediction metric recomputation, not checkpoint forward inference or retraining.",
+    "031 source uses a frozen hashed bundle plus Git baseline; entrypoint was untracked and zero-byte patch. 032 lacks historical Git commit identity.",
+    "EPFL is exploratory after V1 stop; Session IDs were repaired using CCS/Arrival/Departure only.",
+    "EPFL bins are session-arrival-anchored and energy-overlap-proportional; thesis Eq2-1 uses fixed clock bins with equal shares. Do not call this exact ACN target-rule calibration.",
+    "P integral/session-E median 1.1492 and cumulative-E difference/session-E median 0.9943; meter boundary unresolved.",
+    "No directly compatible unseen checkpoint test period found; no new training."
+  ],
+  "steps": [
+    "Return proposed Markdown and replacement paragraphs only in strict JSON; no tools.",
+    "Draft minimal replay README with exact local archive and source identities, command, dependencies and limits; large artifact files remain local sidecars, not a self-contained training reproduction.",
+    "Draft bounded EPFL report and targeted search decision with fixed stopping criteria.",
+    "Propose EPFL addition to section2.1.2, source provenance paragraph in section3.8.3, and replace section5.4.5 paragraph to acknowledge partial EPFL constraints while preserving missing ACN-aligned material. Do not alter abstract, scores or model metrics.",
+    "Codex verifies all proposed numbers, applies a single consolidated manuscript edit and synchronizes evidence-console current-state notes."
+  ],
+  "acceptance_criteria": [
+    "All numbers trace to verified-review-facts.json.",
+    "EPFL no-Energy key, 1878 matched/1620 eligible/258 excluded, per-CCS totals and shape/amplitude boundaries exact.",
+    "New text is concise Chinese academic prose, no repeated defensive lists.",
+    "Existing model rankings and condition boundaries retained; future unseen data remains unverified."
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [],
+    "network_domains": []
+  },
+  "deliverables": [
+    "Claude JSON proposals; Codex-reviewed documentation and manuscript consolidation"
+  ]
+}

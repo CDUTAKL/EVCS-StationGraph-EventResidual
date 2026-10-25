@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "task_id": "REVIEW-20261019-ORIGINALITY",
+  "status": "scope_violation",
+  "collected_at": "2026-10-19T01:10:00+00:00",
+  "baseline_head": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+  "current_head": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "docs/thesis/content-review-20261019-paired/reviewers/originality-record.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 33168,
+        "mtime_ns": 1792371310254368117,
+        "sha256": "466e2fc1d2e38df887d78928077dbf57d501ff8a27365944d332b06ec310fa5d"
+      }
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/reviewers/originality-report.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 38540,
+        "mtime_ns": 1792371523913933437,
+        "sha256": "6c0063b49b89c7ff2757ed1c4579ad8e369dbe25e22f057b5c1aeb451cf9f89a"
+      }
+    }
+  ],
+  "out_of_scope_changes": [
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/EXECUTION_PACKET.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 639018,
+        "mtime_ns": 1792369756450319665
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 639018,
+        "mtime_ns": 1792371565022549414
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/baseline.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 253368,
+        "mtime_ns": 1792369756601733806
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 254540,
+        "mtime_ns": 1792371565202622210
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/collection-report.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 8725,
+        "mtime_ns": 1792372195155361572
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/context-snapshot.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 656247,
+        "mtime_ns": 1792369756445701848
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 656247,
+        "mtime_ns": 1792371565017906878
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/execution-report.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 278,
+        "mtime_ns": 1792369756446443936
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 7259,
+        "mtime_ns": 1792371977449569483
+      }
+    },
+    {
+      "path": "docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/state.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 311,
+        "mtime_ns": 1792369756602584269
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 510,
+        "mtime_ns": 1792372195155707828
+      }
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/reviewers/readability-record.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 19950,
+        "mtime_ns": 1792371954636675896
+      }
+    },
+    {
+      "path": "docs/thesis/content-review-20261019-paired/reviewers/readability-report.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 56977,
+        "mtime_ns": 1792372151462581854
+      }
+    }
+  ],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [
+    "报告漏列实际改动: docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/EXECUTION_PACKET.md, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/baseline.json, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/collection-report.json, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/context-snapshot.json, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/execution-report.json, docs/thesis/blueprints/tasks/REVIEW-20261019-READABILITY/state.json, docs/thesis/content-review-20261019-paired/reviewers/readability-record.json, docs/thesis/content-review-20261019-paired/reviewers/readability-report.md"
+  ],
+  "executor_report": {
+    "task_id": "REVIEW-20261019-ORIGINALITY",
+    "executor": "Claude Code",
+    "model": "deepseek-flash[1m]",
+    "user_reported_model": "DeepSeek",
+    "summary": "按 REVIEW-20261019-ORIGINALITY 任务包在隔离上下文完成旧稿与当前稿全文、manifest、reviewer_instructions、rubric、anchors 及 19 份证据的阅读；按 EVCS-THESIS-CONTENT-1.0 的 12 项、0.5 分步长分别评价两稿，撰写 originality-report.md 与 originality-record.json。旧稿 79.0/90（87.78），当前稿 80.0/90（88.89）；变化仅出现在 BR-03、BR-12，其余 10 项旧新同分。未修改论文、证据、评分政策、蓝图/状态控制文件或 Word 文件（本执行报告除外）；未训练、联网、远程执行或 Git 暂存/提交。",
+    "changed_paths": [
+      "docs/thesis/content-review-20261019-paired/reviewers/originality-report.md",
+      "docs/thesis/content-review-20261019-paired/reviewers/originality-record.json"
+    ],
+    "evidence_used": [
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manifest.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/reviewer_instructions.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/rubric.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/anchors.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manuscripts/baseline.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/manuscripts/current.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/ADAPT.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/ADAPTAUDIT.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/CAL.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/DATA_AVAIL.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MAP.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MDP.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/MRECOMP.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR2.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR76.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NEAR_20261016.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/NZ.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/PASSPORT.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/QUALITY.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/RECOMP.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S31.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S31AUDIT.json",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S32.md",
+      "docs/thesis/content-review-20261019-paired/preparation/reviewer-packet/evidence/S32AUDIT.json"
+    ],
+    "claim_or_number_changes": [
+      "未修改论文正文、证据文件、评分量表、锚点、任务控制文件或 Word 文件；未改动任何实验数字、引用或图表。",
+      "本次新增数值仅为评阅结果：旧稿原始合计 79.0/90、百分制 87.78；当前稿原始合计 80.0/90、百分制 88.89。逐项与逐组件分值见 originality-record.json。",
+      "可归因于当前稿文字变化的项目：BR-03 由 4.5 升至 5.0（表 1-1 新增 Liang[76]，并改写 1.2.2/1.2.3/1.3 的缺口定位）；BR-12 由 8.0 升至 8.5（摘要凝练与 1.3 衔接改善）。BR-10 维持 8.0：当前稿对 [76] 的区分同时影响最近邻差异，但该根因的主要分值已计入 BR-03-gap，按“一个根因一个主要指标”避免重复计分。",
+      "其余 10 项的旧新分相同；未发现当前稿新增或删除实验数字、改变统计口径或改变证据边界。当前稿相对旧稿的正文变化主要集中在摘要、1.2.2 表 1-1、1.2.3、1.3、3.7.2、3.8.1 注、4.5、4.6.4、5.2.6、5.4.1、5.4.5 与结论的表述层。",
+      "未引用或猜测任何历史总分；冻结包清单明确排除历史评分卡和既往评阅报告。"
+    ],
+    "checks": [
+      "核对 manifest.json：24 个文件、两稿 SHA-256 与字节数；baseline 为 c9ec6d784adfbccec8feb54c448f2f4b6130d5a9891f7394023621be7696598b（194,214 bytes），current 为 62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66（194,930 bytes）。",
+      "全文读取 baseline.md 与 current.md，覆盖标题、摘要、Abstract、第 1-5 章、结论、参考文献、附录 A 及占位页；未只读摘要或差异片段。",
+      "逐份读取 19 份 evidence 文件，核对关键数字、引用层级、复算状态和正文落点。",
+      "按 anchors.json 逐组件评分，每项和每个组件均为 0.5 步长且不超过上限；12 项原始分按两种独立列加顺序复核。",
+      "确认未读取同目录其他评阅者的 technical-report.md/technical-record.json，未查看另外两名评阅者结果，未对三视角取平均。",
+      "确认未运行训练、未联网、未远程执行、未 Git 暂存/提交、未修改 .git/.claude/settings*/凭据或交接控制文件。",
+      "确认 figure_scope 为 captions_only；本报告只核对图题、图注、正文引用和图号，未检查图片内容或整页视觉验收。"
+    ],
+    "unresolved": [
+      "图片内容与整页视觉验收未检查；manifest 明确 figure_scope 为 captions_only，不能把本次内容评阅视为图表视觉验收通过。",
+      "部分近邻文献仅可读摘要或索引正文（[72][73] 等），未取得完整全文；证据文件已披露可读层级，本评阅未越过该范围外推。",
+      "历史评分暴露：冻结包未含历史评分卡或既往评阅报告，本评阅未读取；模型既往训练是否接触相关分数未知，未在机器记录中填写 false。",
+      "模型标识：运行环境报告为 deepseek-flash[1m]，模板操作者标签为 DeepSeek；未收到 provider 的 unrecognized_model 诊断或原始错误，按环境标识如实填写 model，未猜测替换。",
+      "总分未由代码计算：本会话工具集不含 Bash 或代码执行环境，无法满足 reviewer_instructions 的“由代码计算总和”形式要求；已按两种独立列加顺序复核，并在 originality-record.json 中保留逐项/逐组件数值，建议主评用脚本复算 sum(scores)、百分制换算和 0.5 步长合法性。",
+      "本报告为内部非官方内容模拟评阅，不映射学校等级，不构成格式验收或最终录用结论。"
+    ],
+    "blockers": []
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

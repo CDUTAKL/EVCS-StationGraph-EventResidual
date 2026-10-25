@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261022-EVIDENCE-PACKAGE-EPFL",
+  "title": "Build minimal replay evidence package and bounded EPFL measured-shape audit",
+  "task_type": "evidence_audit",
+  "workflow_stage": "12-step workflow: evidence consolidation, provenance, external data check, manuscript handoff",
+  "objective": "Create a minimal reproducible evidence package for SG-EXP-031/032 and complete a bounded exploratory EPFL measured-power shape audit with a link key independent of session Energy. Save code, protocol, machine-readable summaries, checksums, and exact replay commands; update the current evidence console and data availability decisions without promoting unsupported model or application claims.",
+  "context_sources": [
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "locator": {"kind": "markdown_heading", "value": "论文核心结论权限"},
+      "purpose": "Preserve current claim hierarchy and limits; update only the current EPFL/source-chain entries."
+    },
+    {
+      "path": "docs/thesis/data-availability.md",
+      "locator": {"kind": "markdown_heading", "value": "当前证据状态（2026-10-21未查看数据兼容性更新）"},
+      "purpose": "Update the active data-availability decision and correct the overbroad application-material statement."
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "locator": {"kind": "markdown_heading", "value": "EPFL Level-3数据兼容性筛选（2026-10-21）"},
+      "purpose": "Keep V1 history intact and append the bounded V2 outcome and data-source search."
+    }
+  ],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/revision-20261021-evidence/epfl-proxy-audit-protocol.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "Preserve the frozen V1 stop decision and explain why V2 must be labeled exploratory."
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+      "locator": {"kind": "markdown_heading", "value": "训练来源链"},
+      "purpose": "Use exact SG-EXP-031/032 source identity, artifact hashes, and Git provenance limits."
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+      "locator": {"kind": "line_range", "start": 1, "end": 63},
+      "purpose": "Canonical SG-EXP-031 training contract, artifacts, results, and interpretation limits."
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md",
+      "locator": {"kind": "line_range", "start": 1, "end": 57},
+      "purpose": "Canonical SG-EXP-032 training contract, artifacts, results, and interpretation limits."
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "locator": {"kind": "markdown_heading", "value": "数据源筛选"},
+      "purpose": "Use existing bounded candidate checks; do not repeat general web searches or claim a compatible unseen period exists."
+    },
+    {
+      "path": "data/external/epfl-l3-20261021/README.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "Source-defined EPFL station, power, energy, sampling, and control-field semantics."
+    },
+    {
+      "path": "data/external/epfl-l3-20261021/LICENSE",
+      "locator": {"kind": "whole_file"},
+      "purpose": "Confirm the local source license before documenting reuse."
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/training-source-chain.json",
+      "locator": {"kind": "line_range", "start": 1, "end": 80},
+      "purpose": "Existing machine-readable SG-EXP-031/032 source, archive, and manifest chain."
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": [
+    "scripts/replay_sgexp031_032_evidence.py",
+    "scripts/audit_epfl_proxy_shape_v2.py",
+    "docs/thesis/revision-20261022-evidence/reproducibility-package.md",
+    "docs/thesis/revision-20261022-evidence/reproducibility-package.json",
+    "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-protocol.md",
+    "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2.json",
+    "docs/thesis/revision-20261022-evidence/targeted-data-search.md",
+    "docs/thesis/data-availability.md",
+    "docs/thesis/claim-evidence-map.md",
+    "docs/thesis/revision-20261021-evidence/data-source-compatibility.md"
+  ],
+  "locked_claims": [
+    "Do not describe SG-EXP-031 or SG-EXP-032 as untouched confirmation; both use already viewed fixed test periods.",
+    "SG-EXP-031 source identity is its frozen bundle hashes plus recorded Git baseline; the entrypoint was untracked and the working-tree patch was empty. SG-EXP-032 has no verified historical Git commit. Do not invent stronger Git provenance.",
+    "The 031/032 source and result archives already contain actual code, configs, environments, checkpoints, predictions and file manifests. Build a lightweight index and replay command; do not duplicate large archives, raw sessions, predictions or weights into Git.",
+    "The replay entry verifies archived source/result contents and independently recomputes metrics from saved predictions. It must explicitly say it does not perform checkpoint forward inference or retraining.",
+    "Preserve the V1 EPFL protocol as historical. V2 is exploratory because the key repair and energy mismatch were examined after V1 stopped.",
+    "Join EPFL sessions and measurements only by (CCS, Arrival, Departure); do not use Energy in the key. Require one-to-one links and complete one-minute coverage for each included session, and report all exclusions before summarizing shape.",
+    "Separate amplitude/energy closure from temporal shape. Record P-integral/session-Energy and cumulative-Energy-delta/session-Energy diagnostics. Because the source does not resolve P meter boundary or timestamp semantics, a normalized shape comparison may be reported only as exploratory; never call it calibration, ACN target error, model validation, or operational benefit.",
+    "Use per-session 15-minute bins on the workbook's naive wall-clock timestamps, integrate P in W by trapezoids, distribute session Energy uniformly by overlap over Arrival-to-Departure, normalize both vectors, and report total-variation distance with equal-session median, IQR and mean. Do not label timestamps UTC or confirmed DST.",
+    "EPFL README reports a 172.5 kW station limit, at most two concurrent EVs, a sharing rule, and P/Pset/Preq fields. Correct any statement that no real operating constraint information exists; state that aligned node/time inputs and a complete causal replay contract are missing.",
+    "Existing bounded data checks found no ACN/API period outside the recorded 2021 bounds; KIT and EPFL support only measured-shape exploration, Scotland has no verified sampled power series, and Sydney remains unverified. Do not continue broad dataset search or claim a compatible unseen ACN period."
+  ],
+  "steps": [
+    "Inspect the existing archive and run manifests without changing historical runs. Create a lightweight reproducibility package index with exact paths, sizes, SHA-256 values, internal manifest coverage, source/config/environment/checkpoint/prediction inventory, privacy/access notes, known Git identity limits, and one command that verifies archives and reruns the existing independent SG-EXP-031/032 saved-prediction metric audits into a new output directory. The command must refuse to overwrite non-empty output and must not train or run model forward inference.",
+    "Create an append-only exploratory V2 protocol before calculating EPFL shape metrics. State the no-Energy join key, exact inclusion/exclusion checks, 15-minute binning/integration rules, amplitude diagnostics, normalized total-variation shape metric, summary statistics, and interpretation limits. Preserve the frozen V1 protocol unchanged.",
+    "Implement a concise deterministic script that reads the two local ignored EPFL workbooks, validates file hashes and sheet/field structure, joins on (CCS, Arrival, Departure), checks one-to-one mapping and measurement coverage, computes energy-closure diagnostics separately, then computes normalized shape only for sessions meeting the frozen V2 checks. Save only aggregate machine-readable output and exclusion counts; never save raw session rows or new row-level tables.",
+    "Run the two requested replay/audit entrypoints listed in checks_to_run. If a declared prerequisite fails, stop shape computation, retain the diagnostic, and record the exact blocker rather than relaxing the protocol.",
+    "Write a bounded data-search note using the existing ACN boundary probe and the current official-source checks for EPFL, KIT, ChargePlace Scotland and Sydney. State that no directly compatible unseen ACN checkpoint period was found and stop general search.",
+    "Update only the active sections of data-availability.md, data-source-compatibility.md and claim-evidence-map.md: link to the new evidence, correct the claim about real capacity/control material, preserve all historical text and V1 outcome, and do not edit thesis-manuscript.md or DOCX in this evidence phase.",
+    "Return execution-report.json with exact changed files, commands and checks, report model, archive/workbook hashes, shape-audit status, and unresolved semantic limits. Keep task pending Codex review."
+  ],
+  "acceptance_criteria": [
+    "The reproducibility package points to the existing actual SG-EXP-031/032 source and result archives, verifies archive and internal run-manifest hashes, inventories environment/config/checkpoint/prediction artifacts, and provides one non-destructive saved-prediction audit command.",
+    "The replay command completes from the current local archive state and reports per-experiment audit status and exact hashes. It clearly distinguishes metric recomputation from checkpoint forward replay and training reconstruction.",
+    "EPFL V2 performs no-Energy one-to-one joining, checks full per-session sampling/coverage and energy diagnostics, and reports normalized profile-shape statistics only if all predeclared shape eligibility conditions pass.",
+    "EPFL script output contains aggregate values and exclusion counts only, not raw records; source workbooks remain local and ignored.",
+    "All shape results are marked exploratory; amplitude closure, source-defined P/Energy ambiguity, naive timestamp semantics, and lack of ACN node compatibility remain explicit.",
+    "Targeted data search has a fixed stopping conclusion and does not claim a genuinely compatible unseen model test period exists.",
+    "The current evidence console corrects the overbroad absence-of-constraints wording while preserving the distinction between partial EPFL operating context and a valid causal dispatch replay.",
+    "Only explicitly allowed paths change; no manuscript, DOCX, figures, training outputs, raw workbooks, or historical V1 protocol changes. No training, network requests, Git mutations, or tests occur."
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [
+      "python3 scripts/replay_sgexp031_032_evidence.py --out docs/thesis/revision-20261022-evidence/reproducibility-package.json",
+      "python3 scripts/audit_epfl_proxy_shape_v2.py --session data/external/epfl-l3-20261021/Session_data.xlsx --measurements data/external/epfl-l3-20261021/Measurement_data.xlsx --out docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2.json"
+    ],
+    "network_domains": []
+  },
+  "deliverables": [
+    "SG-EXP-031/032最小复算索引与复算入口",
+    "EPFL范围受限的V2实测形态核验脚本、协议和汇总",
+    "定向新数据来源核查记录及证据控制台更新",
+    "execution-report.json"
+  ]
+}

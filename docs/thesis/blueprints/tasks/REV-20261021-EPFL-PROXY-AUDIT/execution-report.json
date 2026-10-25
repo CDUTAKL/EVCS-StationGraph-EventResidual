@@ -1,0 +1,28 @@
+{
+  "task_id": "REV-20261021-EPFL-PROXY-AUDIT",
+  "executor": "Claude Code",
+  "model": "deepseek-flash[1m] (shown in CLI status; provider reported as DeepSeek)",
+  "user_reported_model": "DeepSeek",
+  "summary": "Execution was interrupted before the EPFL audit was completed. One evidence-entry correction was applied: the current SG-EXP-031 table reference in data-availability.md now points to Table 3-10. The EPFL script was not created, the specified audit command was not run, and the manuscript/DOCX were not changed.",
+  "changed_paths": [
+    "docs/thesis/data-availability.md"
+  ],
+  "evidence_used": [
+    "docs/thesis/blueprints/tasks/REV-20261021-EPFL-PROXY-AUDIT/EXECUTION_PACKET.md",
+    "docs/thesis/revision-20261021-evidence/epfl-proxy-audit-protocol.md",
+    "docs/thesis/data-availability.md"
+  ],
+  "claim_or_number_changes": [],
+  "checks": [
+    "No audit entrypoint command was run.",
+    "A proposed offset-based CCS2 mapping script was rejected because it departed from the frozen CCS+Session rule."
+  ],
+  "unresolved": [
+    "The original frozen join key leaves CCS2 unmatched; Codex independent read-only cross-check found an exact composite-field mapping for 1,878/1,878 sessions, but that exploratory key is outside the frozen protocol.",
+    "Power integration and cumulative-energy closure do not jointly support promoting an external proxy-shape result under the frozen protocol.",
+    "No source-shape audit result or manuscript revision is claimed."
+  ],
+  "blockers": [
+    "Create a separately versioned protocol/task before any analysis using the composite crosswalk or cumulative Energy trajectory."
+  ]
+}

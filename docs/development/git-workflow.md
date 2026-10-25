@@ -89,3 +89,77 @@ environment_snapshot
 
 远程训练结束后，将完整工件归档到指定存储位置，并把归档路径、状态和校验和写入
 实验登记表。不要把云端密码、SSH 私钥或临时访问令牌写入仓库。
+
+## 7. 正式论文稿件的版本发布
+
+论文以`docs/thesis/thesis-manuscript.md`为正文源稿；证据表、实验与数据登记、图件源文件、生成脚本和审计清单一并随内容修订提交。仓库已将正式 Word 固定在`outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx`，沿用这一稳定路径保存经核准的正式稿。候选 DOCX 保存在对应修订目录，并标为`candidate`；候选稿不得覆盖正式稿或打正式发布标签。
+
+PDF和重复候选DOCX体积较大。正式版本默认在 Git 中保留正式 Word、正文源稿及轻量发布清单；1200 PPI分页证明PDF单独归档。已提交的PDF审计JSON记录PDF本身的SHA-256、页数、图像数、有效PPI下限及文本一致性结果，发布manifest再锁定该审计JSON的哈希。当前仓库未配置Git LFS，因此不要把每轮大型PDF和候选Word全部提交进历史。只提交一个稳定正式Word版本；后续正式修订产生的Git版本由提交历史保留。
+
+### 候选稿清单
+
+在仓库根目录执行。候选清单记录源稿、证据表、Word/PDF及各项交付审计的哈希，同时标记当时的分支、HEAD和工作区状态；工作区脏时仍可生成，但状态只能是`candidate`：
+
+```bash
+python3 scripts/thesis_release.py create \
+  --version thesis-candidate-2026-10-17-rev3 \
+  --status candidate \
+  --artifact manuscript=docs/thesis/thesis-manuscript.md \
+  --artifact evidence-map=docs/thesis/claim-evidence-map.md \
+  --artifact docx=docs/thesis/revision-20261017-content-refinement/thesis-revision-candidate-rev3.docx \
+  --artifact pdf=docs/thesis/revision-20261017-content-refinement/wps-pagination-proof-1200dpi.pdf \
+  --artifact toc=docs/thesis/revision-20261017-content-refinement/toc-map-wps-verified-20261017-content-refinement.json \
+  --artifact docx-audit=docs/thesis/revision-20261017-content-refinement/docx-audit-rev3.json \
+  --artifact figure-audit=docs/thesis/revision-20261017-content-refinement/figure-sync-rev3.json \
+  --artifact pdf-audit=docs/thesis/revision-20261017-content-refinement/pdf-audit-rev3.json \
+  --artifact delivery-audit=docs/thesis/revision-20261017-content-refinement/delivery-audit.md \
+  --output docs/thesis/revision-20261017-content-refinement/git-release-manifest-candidate.json
+
+python3 scripts/thesis_release.py verify \
+  docs/thesis/revision-20261017-content-refinement/git-release-manifest-candidate.json
+```
+
+### 正式发布
+
+1. 在修订分支完成人工内容审读、WPS目录/分页验收和图件检查。确认正式Word由当前源稿生成，核对数字、图表与审计清单。
+2. 逐项检查 `git status --short` 和 `git diff --`；只暂存本轮批准的正文、证据、图件源文件/生成代码、正式Word及审计记录。使用明确路径执行`git add -- <路径...>`，不使用`git add .`。
+3. 提交内容版本。候选文件仍保存在修订目录；只有正式确认时，才把核准DOCX复制到上述稳定正式路径并与对应源稿一起提交。
+4. 在工作区干净、发布文件已提交后，用`--status release`生成正式manifest。该模式拒绝脏工作区和未跟踪/已修改的发布输入。以下示例假设 rev3 已正式核准、正式 Word 已写入稳定路径，且所列审计清单已纳入内容提交：
+
+```bash
+python3 scripts/thesis_release.py create \
+  --version thesis-2026-10-17 \
+  --status release \
+  --artifact manuscript=docs/thesis/thesis-manuscript.md \
+  --artifact evidence-map=docs/thesis/claim-evidence-map.md \
+  --artifact official-docx=outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx \
+  --artifact docx-audit=docs/thesis/revision-20261017-content-refinement/docx-audit-rev3.json \
+  --artifact figure-audit=docs/thesis/revision-20261017-content-refinement/figure-sync-rev3.json \
+  --artifact pdf-audit=docs/thesis/revision-20261017-content-refinement/pdf-audit-rev3.json \
+  --output docs/thesis/releases/thesis-2026-10-17.json
+
+git add -- docs/thesis/releases/thesis-2026-10-17.json
+git commit -m "docs: 登记论文交付版本 thesis-2026-10-17"
+git tag -a thesis-2026-10-17 -m "正式论文交付 2026-10-17"
+python3 scripts/thesis_release.py verify \
+  docs/thesis/releases/thesis-2026-10-17.json --require-clean
+```
+
+标签指向的提交包含发布manifest；manifest的`source_commit`记录生成清单时已提交的正文与交付物版本。正式标签不得移动或复用；后续修改应生成新提交和新标签。不要在当前大量未提交改动未完成逐项清点时批量暂存或创建正式标签。
+
+工具`scripts/thesis_release.py`只负责哈希清单生成与校验，不替代学术内容审核、Word/WPS全页验收或正式发布判断。它不自动暂存、提交、覆盖正式Word或创建标签。
+
+## 8. Codex蓝图与Claude Code执行
+
+论文修订通过[任务蓝图接口](../thesis/blueprints/README.md)交接。Codex按当前证据控制台为单项任务选取材料、范围和验收条件；`scripts/thesis_blueprint.py`冻结所选摘录与工作区基线，并可在交互终端启动Claude Code。Claude Code沿用本机已配置的模型（用户报告当前为DeepSeek），无需复制聊天记录。默认不给任务开放Shell/网络/远程工具；蓝图明确列出检查或授权操作后，启动参数才开放相应工具，并保留Claude Code的常规权限确认。文件范围核验是事后审计护栏，不是操作系统级隔离；如任务开放Shell，仍须检查实际差异。
+
+```bash
+python3 scripts/thesis_blueprint.py new --id REV-YYYYMMDD-topic \
+  --title "本次修订目标" --type content_revision --stage 11
+python3 scripts/thesis_blueprint.py validate REV-YYYYMMDD-topic
+python3 scripts/thesis_blueprint.py run REV-YYYYMMDD-topic
+```
+
+蓝图由Codex按任务补全；`run`依次准备证据包、启动Claude Code并回收报告。也可分别运行`prepare`、`execute`和`collect`。回收脚本对照任务开始时的工作区状态报告文件变化及越界修改，不把已有未提交差异误算为本次交付。每个任务使用唯一ID，已回收的包不覆盖。Claude Code不自动提交；Codex必须复核报告、差异、证据映射和受影响的12流程门槛后，才更新论文交付清单或评分材料。
+
+该接口是12流程各阶段共用的执行交接层，不新增评分量表或研究阶段。模型调用需要启动本机Claude Code并消耗其当前配置的额度；自动化覆盖蓝图校验、任务包生成、调用和差异回收，复检与最终接受仍由Codex负责。当前仓库存在较多未提交变更，因此接口记录任务前基线并禁止自动Git写操作；独立worktree模式待建立稳定提交基线后再启用。

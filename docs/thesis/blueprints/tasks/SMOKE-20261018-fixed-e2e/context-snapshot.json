@@ -1,0 +1,17 @@
+{
+  "task_id": "SMOKE-20261018-fixed-e2e",
+  "frozen_at": "2026-10-18T02:52:06+00:00",
+  "context_sources": [],
+  "evidence_sources": [
+    {
+      "path": "tmp/claude-code-fixed-e2e-20261018/fixture.md",
+      "purpose": "纯合成测试令牌",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "source_sha256": "8141aefaa1ca23892fdf69d67401d5eb1f32c101d275664bdcdaad3fc2934074",
+      "excerpt_sha256": "8141aefaa1ca23892fdf69d67401d5eb1f32c101d275664bdcdaad3fc2934074",
+      "excerpt": "# Synthetic fixture\n\nExpected output token: handoff-fixed-e2e-ok\nThis fixture contains no thesis or experimental content.\n"
+    }
+  ]
+}

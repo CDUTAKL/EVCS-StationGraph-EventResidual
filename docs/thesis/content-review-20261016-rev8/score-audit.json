@@ -1,0 +1,116 @@
+{
+  "assessment_id": "FORMAL-20261016-REV8",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 80.0,
+  "raw_maximum": 90.0,
+  "normalized_score": 88.89,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "FORMAL-20261015-REV7",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 0.56,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "内容表述更新没有改变问题意义所依据的实证材料。"
+      },
+      {
+        "id": "BR-02",
+        "old": 5.0,
+        "new": 5.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "主线压缩未改变研究对象和结果范围，已有范围边界保持一致。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "新增近邻段落改善了比较完整性，但可核实内容止于摘要，尚不足以跨越半分锚点；不因此把既有、已条件化的贡献再扣一次。"
+      },
+      {
+        "id": "BR-04",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "内容重组与已有敏感性结果均未解决代理目标的物理效度及部署时点问题。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮是正文与证据同步及交付整理，没有新增可改变实验设计评分的对照训练。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "新稿修复了报告与正文的状态同步，但不构成新的原始复算；该同步改进只计入BR-12，避免重复计分。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮完成稿件整编和交付，不增加研究工作量的实质性证据。"
+      },
+      {
+        "id": "BR-08",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "结果重排使主要比较更易读，但所依据的实验与证据等级已计入REV7。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.5,
+        "new": 9.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮未改变分析对应的不确定性层级，且未取得盲测或未见场站/时段证据。"
+      },
+      {
+        "id": "BR-10",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "新比较进一步限制一般结构首创主张，但本稿已明确采用任务化、条件增量定位；SG-031带来的核心实验价值已在REV7计分，本轮没有新增算法能力。文献评阅者提出下调0.5，主评认为摘要级住宅负荷近邻不足以改变既有条件性增量锚点，故维持。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.5,
+        "new": 3.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮未新增计量、真实约束或运行收益材料。"
+      },
+      {
+        "id": "BR-12",
+        "old": 9.0,
+        "new": 9.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "配对REV7，摘要和结论明显压缩，结果主次重排、完整配置移至附录，近邻文献入文，CUDA结论与正文同步，表3-13交叉引用修正；这些可直接核对的修订支持+0.5。封面与版式项另行验收，不并入本内容项。"
+      }
+    ]
+  }
+}

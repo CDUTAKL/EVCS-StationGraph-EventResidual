@@ -1,0 +1,280 @@
+{
+  "replay_status": "PASS",
+  "experiments": {
+    "SG-EXP-031": {
+      "archives": {
+        "result": {
+          "path": "outputs/experiments/SG-EXP-031/SG-EXP-031-results.tar.gz",
+          "bytes": 122402069,
+          "sha256": "4eb436fbf30823d4df9b3e1be9f34652f849bdf7a130ce1c4229d9b2964f8c5f",
+          "expected_sha256": "4eb436fbf30823d4df9b3e1be9f34652f849bdf7a130ce1c4229d9b2964f8c5f",
+          "hash_match": true
+        },
+        "bundle": {
+          "path": "outputs/experiments/SG-EXP-031/SG-EXP-031-bundle.tar.gz",
+          "bytes": 2201588,
+          "sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+          "expected_sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+          "hash_match": true
+        }
+      },
+      "bundle_manifest": {
+        "archive_path": "outputs/experiments/SG-EXP-031/SG-EXP-031-bundle.tar.gz",
+        "archive_sha256": "5361c41a147592d0ea6bb14cd2282637f4906015a0dc76f4563d2b0e388b4d8a",
+        "manifest_member": "SG-EXP-031/BUNDLE_MANIFEST.json",
+        "manifest_sha256": "3ba32eee77da8bea6895804f5c4f1bf4924d3ff394b4aabce84c394fc482ee8b",
+        "entries": 67,
+        "verified": 67,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "disk_manifest": {
+        "manifest_path": "outputs/experiments/SG-EXP-031/bundle/BUNDLE_MANIFEST.json",
+        "manifest_sha256": "3ba32eee77da8bea6895804f5c4f1bf4924d3ff394b4aabce84c394fc482ee8b",
+        "entries": 67,
+        "verified": 67,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "source_identity": {
+        "entrypoint": {
+          "path": "scripts/jpl_relation_controls.py",
+          "sha256": "ac5f7a998ad198af30f07971f929b7abc43300e7aecb9e65e645d633920b9cba",
+          "expected_sha256": "ac5f7a998ad198af30f07971f929b7abc43300e7aecb9e65e645d633920b9cba",
+          "matches_frozen_bundle": true,
+          "git_tracked": false
+        },
+        "data_sha256": "1bfc42fab6f127b2ec1735b3821bb272a444185f1861bfe95f489d15e78738af",
+        "git_identity": {
+          "recorded_commit": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+          "working_tree_patch_bytes": 0,
+          "limit": "Git commit identifies only the recorded baseline; the entrypoint was untracked and the working-tree patch was empty. Source identity is the frozen bundle manifest, not the commit alone."
+        }
+      },
+      "status": "PASS",
+      "run_count": 12,
+      "run_files_verified": 156,
+      "archive_checksums_verified": 173,
+      "saved_prediction_replay": {
+        "status": "POST_HOC_DIAGNOSTIC",
+        "source_checksum_entries_verified": 173,
+        "verified_result_manifest_entries": null,
+        "run_count": 12,
+        "test_keys_per_run": 632640,
+        "primary_difference": null
+      }
+    },
+    "SG-EXP-032": {
+      "archives": {
+        "result": {
+          "path": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+          "bytes": 73841118,
+          "sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+          "expected_sha256": "b6f73aeb350db65f1d25ee59c19bcf8b316270049f46aaeee59ff971947670b3",
+          "hash_match": true
+        },
+        "bundle": {
+          "path": "outputs/experiments/SG-EXP-032/upload/SG-EXP-032-bundle.tar.gz",
+          "bytes": 2612518,
+          "sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+          "expected_sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+          "hash_match": true
+        }
+      },
+      "bundle_manifest": {
+        "archive_path": "outputs/experiments/SG-EXP-032/upload/SG-EXP-032-bundle.tar.gz",
+        "archive_sha256": "d53015b7de8150ad00efaa631449df57360c2987094c102e3f175561dee001df",
+        "manifest_member": "workspace/BUNDLE_MANIFEST.json",
+        "manifest_sha256": "893ca0586a7a2e79b4f5ca5ef35d2d1e2f46d84d3538d90829f5b757c9d01cc2",
+        "entries": 91,
+        "verified": 91,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "disk_manifest": {
+        "manifest_path": "outputs/experiments/SG-EXP-032/frozen-contract/manifest.json",
+        "manifest_sha256": "e8f5b8498cc03f9c483a1a54991914ffb926d369595f3a553912298c6c1ea566",
+        "entries": 3,
+        "verified": 3,
+        "status": "PASS",
+        "mismatches": []
+      },
+      "source_identity": {
+        "entrypoint": {
+          "path": "scripts/completion_target_sensitivity.py",
+          "sha256": "6bb968944a4db08cb3458cf0dbdd4b07c192ce5c31cbcdefad44b9cb945ad753",
+          "expected_sha256": "6bb968944a4db08cb3458cf0dbdd4b07c192ce5c31cbcdefad44b9cb945ad753",
+          "matches_frozen_bundle": true,
+          "git_tracked": false
+        },
+        "data_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+        "git_identity": {
+          "recorded_commit": null,
+          "limit": "No verified historical Git commit is present in the frozen SG-EXP-032 bundle; source identity is the file-hash manifest only."
+        }
+      },
+      "status": "PASS",
+      "run_count": 6,
+      "run_files_verified": 75,
+      "archive_checksums_verified": 99,
+      "saved_prediction_replay": {
+        "status": "PASS",
+        "source_checksum_entries_verified": null,
+        "verified_result_manifest_entries": 75,
+        "run_count": 6,
+        "test_keys_per_run": 708560,
+        "primary_difference": 0.008302002680088615
+      }
+    }
+  },
+  "epfl": {
+    "audit_id": "EPFL-PROXY-SHAPE-V2-20261022",
+    "evidence_level": "EXPLORATORY",
+    "protocol": {
+      "path": "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-protocol.md",
+      "preserved_v1": "docs/thesis/revision-20261021-evidence/epfl-proxy-audit-protocol.md",
+      "sha256": "7295655ddb23d8602a40ddf277a94e09087f75009b57e46ca8143d9e4fe76075"
+    },
+    "sources": {
+      "session": {
+        "path": "data/external/epfl-l3-20261021/Session_data.xlsx",
+        "bytes": 204514,
+        "sha256": "b886943bf86520f24f5a53870886c4c43709d265cbebdd65e1345321e22cc192",
+        "expected_sha256": "b886943bf86520f24f5a53870886c4c43709d265cbebdd65e1345321e22cc192",
+        "hash_match": true
+      },
+      "measurement": {
+        "path": "data/external/epfl-l3-20261021/Measurement_data.xlsx",
+        "bytes": 23558382,
+        "sha256": "a0a489e2897ec79235ed914376ab7751ab21c68418543234a60042eaee73a89c",
+        "expected_sha256": "a0a489e2897ec79235ed914376ab7751ab21c68418543234a60042eaee73a89c",
+        "hash_match": true
+      }
+    },
+    "structure": {
+      "session_sheets": [
+        {
+          "sheet": "Session_data",
+          "rows": 1878
+        }
+      ],
+      "session_rows": 1878,
+      "measurement_sheets": [
+        {
+          "sheet": "CCS1",
+          "rows": 646680
+        },
+        {
+          "sheet": "CCS2",
+          "rows": 646680
+        }
+      ],
+      "measurement_rows": 1293360,
+      "session_columns": {
+        "session": 0,
+        "ccs": 1,
+        "arrival": 2,
+        "departure": 3,
+        "energy": 5
+      },
+      "measurement_columns": {
+        "timestamp": 0,
+        "ccs": 1,
+        "session": 2,
+        "power": 3,
+        "energy": 9
+      }
+    },
+    "join": {
+      "key": [
+        "CCS",
+        "Arrival",
+        "Departure"
+      ],
+      "energy_in_key": false,
+      "session_id_used_as_cross_table_key": false,
+      "session_rows_parsed": 1878,
+      "measurement_groups_parsed": 1878,
+      "one_to_one_matched_pairs": 1878,
+      "matched_pairs_by_ccs": {
+        "CCS1": 1129,
+        "CCS2": 749
+      }
+    },
+    "exclusions": {
+      "measurement_rows_without_session": 1231544,
+      "matched_duration_below_15min": 258
+    },
+    "coverage": {
+      "rule": "start at Arrival, 60 s steps, end at Departure",
+      "eligible_sessions": 1620,
+      "excluded_after_matching": 258
+    },
+    "energy_diagnostics": {
+      "note": "Closure/amplitude only; not calibration or a shape gate.",
+      "p_integral_over_session_energy": {
+        "n": 1620,
+        "median": 1.1492459456886288,
+        "q1": 1.1373339070418182,
+        "q3": 1.1627002367065913,
+        "iqr": 0.025366329664773035,
+        "mean": 1.1534078205356193
+      },
+      "cumulative_energy_delta_over_session_energy": {
+        "n": 1620,
+        "median": 0.9943458271394544,
+        "q1": 0.9851445246260627,
+        "q3": 0.9997569817054004,
+        "iqr": 0.01461245707933767,
+        "mean": 0.9906471870010676
+      },
+      "sessions_with_cumulative_energy_delta": 1620
+    },
+    "shape": {
+      "metric": "total_variation_distance",
+      "evidence_level": "EXPLORATORY",
+      "status": "COMPUTED",
+      "equal_session": {
+        "n": 1620,
+        "median": 0.07360134856713525,
+        "q1": 0.030848033751203173,
+        "q3": 0.12762192780367082,
+        "iqr": 0.09677389405246764,
+        "mean": 0.08867250208225883
+      },
+      "by_ccs": {
+        "CCS1": {
+          "n": 973,
+          "median": 0.0741133553924361,
+          "q1": 0.03159679216737703,
+          "q3": 0.12829038091607037,
+          "iqr": 0.09669358874869334,
+          "mean": 0.0897455342777673
+        },
+        "CCS2": {
+          "n": 647,
+          "median": 0.07204271622416172,
+          "q1": 0.030108983114664596,
+          "q3": 0.12609439662031358,
+          "iqr": 0.09598541350564899,
+          "mean": 0.08705880760586047
+        }
+      }
+    },
+    "interpretation_limits": [
+      "Exploratory only; not calibration, ACN target error, model validation, or operational benefit.",
+      "Naive wall-clock timestamps; not asserted UTC or confirmed DST.",
+      "P meter boundary and timestamp semantics are unresolved in the source.",
+      "Only two CCS ports; no ACN ten-node mapping, station graph, or 96x10x7 contract."
+    ],
+    "status": "SHAPE_COMPUTED_EXPLORATORY"
+  },
+  "constraints": [
+    "This is saved-prediction metric recomputation, not checkpoint forward inference or retraining.",
+    "031 source uses a frozen hashed bundle plus Git baseline; entrypoint was untracked and zero-byte patch. 032 lacks historical Git commit identity.",
+    "EPFL is exploratory after V1 stop; Session IDs were repaired using CCS/Arrival/Departure only.",
+    "EPFL bins are session-arrival-anchored and energy-overlap-proportional; thesis Eq2-1 uses fixed clock bins with equal shares. Do not call this exact ACN target-rule calibration.",
+    "P integral/session-E median 1.1492 and cumulative-E difference/session-E median 0.9943; meter boundary unresolved.",
+    "No directly compatible unseen checkpoint test period found; no new training."
+  ]
+}

@@ -1,0 +1,446 @@
+{
+  "audit_id": "SG-EXP-032-RESULTS-20261015",
+  "status": "PASS",
+  "posthoc_fixed_test_period": true,
+  "training_completed": true,
+  "source_results_root": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/recovered/closeout/closeout/results/formal",
+  "data_sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+  "run_count": 6,
+  "required_run_count": 6,
+  "verified_result_manifest_entries": 75,
+  "all_file_hashes_pass": true,
+  "all_predictions_finite": true,
+  "test_prediction_keys_per_run": 708560,
+  "common_keys_exact_across_all_runs": true,
+  "key_audit": [
+    {
+      "model": "mrg_full",
+      "seed": 2024,
+      "field": "origins",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2024,
+      "field": "node_ids",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2024,
+      "field": "y_true",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2024,
+      "field": "target_event",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2024,
+      "field": "rule_trigger",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2024,
+      "field": "target_timestamps_ns",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2024,
+      "field": "origin_cutoff_ns",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2025,
+      "field": "origins",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2025,
+      "field": "node_ids",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2025,
+      "field": "y_true",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2025,
+      "field": "target_event",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2025,
+      "field": "rule_trigger",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2025,
+      "field": "target_timestamps_ns",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2025,
+      "field": "origin_cutoff_ns",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2026,
+      "field": "origins",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2026,
+      "field": "node_ids",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2026,
+      "field": "y_true",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2026,
+      "field": "target_event",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2026,
+      "field": "rule_trigger",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2026,
+      "field": "target_timestamps_ns",
+      "exact": true
+    },
+    {
+      "model": "mrg_full",
+      "seed": 2026,
+      "field": "origin_cutoff_ns",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2024,
+      "field": "origins",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2024,
+      "field": "node_ids",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2024,
+      "field": "y_true",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2024,
+      "field": "target_event",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2024,
+      "field": "rule_trigger",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2024,
+      "field": "target_timestamps_ns",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2024,
+      "field": "origin_cutoff_ns",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2025,
+      "field": "origins",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2025,
+      "field": "node_ids",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2025,
+      "field": "y_true",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2025,
+      "field": "target_event",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2025,
+      "field": "rule_trigger",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2025,
+      "field": "target_timestamps_ns",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2025,
+      "field": "origin_cutoff_ns",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2026,
+      "field": "origins",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2026,
+      "field": "node_ids",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2026,
+      "field": "y_true",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2026,
+      "field": "target_event",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2026,
+      "field": "rule_trigger",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2026,
+      "field": "target_timestamps_ns",
+      "exact": true
+    },
+    {
+      "model": "tcn_wide",
+      "seed": 2026,
+      "field": "origin_cutoff_ns",
+      "exact": true
+    }
+  ],
+  "aggregate_by_model": {
+    "mrg_full": {
+      "mae": {
+        "per_seed": [
+          0.0433091665520962,
+          0.04374020334847536,
+          0.043154620803342675
+        ],
+        "mean": 0.043401330234638075,
+        "sample_sd": 0.00030347543158512505
+      },
+      "rmse": {
+        "per_seed": [
+          0.1940495628421409,
+          0.19261746999751062,
+          0.19356486487148084
+        ],
+        "mean": 0.19341063257037747,
+        "sample_sd": 0.0007283976804864531
+      },
+      "event_mae": {
+        "per_seed": [
+          0.47799870448417087,
+          0.48566233124483504,
+          0.4771843939782094
+        ],
+        "mean": 0.4802818099024051,
+        "sample_sd": 0.004677422670369647
+      },
+      "non_event_mae": {
+        "per_seed": [
+          0.036957718229093474,
+          0.037283076334381604,
+          0.03681281260598153
+        ],
+        "mean": 0.03701786905648553,
+        "sample_sd": 0.00024083310629800683
+      },
+      "zero_mae": {
+        "per_seed": [
+          0.008121485303820382,
+          0.010027928614443625,
+          0.007949886502597767
+        ],
+        "mean": 0.008699766806953925,
+        "sample_sd": 0.0011534174774560121
+      },
+      "nonzero_mae": {
+        "per_seed": [
+          0.6224060872866308,
+          0.5985558034923761,
+          0.6225321900439353
+        ],
+        "mean": 0.6144980269409808,
+        "sample_sd": 0.013806514471084996
+      },
+      "target_zero_fraction": {
+        "per_seed": [
+          0.9427176244778142,
+          0.9427176244778142,
+          0.9427176244778142
+        ],
+        "mean": 0.942717624477814,
+        "sample_sd": 1.3597399555105182e-16
+      }
+    },
+    "tcn_wide": {
+      "mae": {
+        "per_seed": [
+          0.051653791530389626,
+          0.05178900460665115,
+          0.051667202607139286
+        ],
+        "mean": 0.05170333291472668,
+        "sample_sd": 7.449626395193653e-05
+      },
+      "rmse": {
+        "per_seed": [
+          0.1932686620134936,
+          0.19369183982403973,
+          0.19299904218400318
+        ],
+        "mean": 0.19331984800717883,
+        "sample_sd": 0.0003492236346128521
+      },
+      "event_mae": {
+        "per_seed": [
+          0.48416930963327415,
+          0.4856606072856765,
+          0.48412270032220456
+        ],
+        "mean": 0.4846508724137184,
+        "sample_sd": 0.0008747665349713475
+      },
+      "non_event_mae": {
+        "per_seed": [
+          0.045334108808795154,
+          0.045449507510991104,
+          0.04534839687097531
+        ],
+        "mean": 0.045377337730253854,
+        "sample_sd": 6.290783034696692e-05
+      },
+      "zero_mae": {
+        "per_seed": [
+          0.01822461286118869,
+          0.018453602399491037,
+          0.018381222004710117
+        ],
+        "mean": 0.01835314575512995,
+        "sample_sd": 0.000117048105520108
+      },
+      "nonzero_mae": {
+        "per_seed": [
+          0.6018103731314415,
+          0.6004022716590105,
+          0.5994671197000193
+        ],
+        "mean": 0.6005599214968238,
+        "sample_sd": 0.0011795546890627198
+      },
+      "target_zero_fraction": {
+        "per_seed": [
+          0.9427176244778142,
+          0.9427176244778142,
+          0.9427176244778142
+        ],
+        "mean": 0.942717624477814,
+        "sample_sd": 1.3597399555105182e-16
+      }
+    }
+  },
+  "primary_contrast": "per-seed paired TCN absolute error minus MRG absolute error on exact common (origin,horizon,node) keys; positive favors MRG-GCN",
+  "paired_seed_differences_kwh_per_15min": {
+    "2024": {
+      "global": 0.008344624978293436,
+      "event": 0.00617060514910329,
+      "non_event": 0.008376390579701682,
+      "zero": 0.010103127557368304,
+      "nonzero": -0.020595714155189307
+    },
+    "2025": {
+      "global": 0.008048801258175801,
+      "event": -1.7239591585588984e-06,
+      "non_event": 0.008166431176609493,
+      "zero": 0.008425673785047412,
+      "nonzero": 0.001846468166634379
+    },
+    "2026": {
+      "global": 0.008512581803796607,
+      "event": 0.006938306343995203,
+      "non_event": 0.008535584264993781,
+      "zero": 0.010431335502112346,
+      "nonzero": -0.02306507034391604
+    }
+  },
+  "mean_paired_test_mae_difference_kwh_per_15min": 0.008302002680088615,
+  "time_block_bootstrap": {
+    "estimate": 0.008302002680088615,
+    "ci95": [
+      0.0077570223584829175,
+      0.008797254975353164
+    ],
+    "positive_blocks": 27,
+    "blocks": 27,
+    "draws": 10000,
+    "seed": 20261015,
+    "block_definition": "contiguous 7-day blocks by America/Los_Angeles origin-cutoff calendar date, anchored at first observed test date"
+  },
+  "event_zero_nonzero_strata": "Frozen original SG-DATA-006 target_event for event strata; zero/nonzero defined by completion-truncated target; all are evaluation-only.",
+  "scope_limits": [
+    "The Caltech fixed test period has previously been inspected; this is a post-hoc sensitivity experiment, not untouched confirmation.",
+    "The completion-truncated target is still session-derived proxy energy, not metered power.",
+    "The experiment freezes the original train-prefix graph to isolate target-label sensitivity; it does not test topology rebuilt from the alternative target.",
+    "Seven-day blocks describe within-period temporal variation and do not establish a new site, period, or full training-seed population.",
+    "Do not compare the 0.0477816 target-reconstruction difference numerically against model MAE as if they estimated the same quantity."
+  ]
+}

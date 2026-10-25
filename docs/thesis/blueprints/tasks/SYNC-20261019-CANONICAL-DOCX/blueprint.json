@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "task_id": "SYNC-20261019-CANONICAL-DOCX",
+  "title": "同步已验收候选稿至正式论文文件",
+  "task_type": "delivery_audit",
+  "workflow_stage": "第12步：正式交付文件同步与复核",
+  "objective": "将已完成全页视觉验收且与最新正文哈希对应的候选DOCX，同步为仓库正式论文文件；只解决正式交付文件仍为旧稿、学号未填与当前验收稿不一致的问题，不改论文正文或实验内容。",
+  "context_sources": [
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/wps-visual-acceptance.md",
+      "locator": {"kind": "markdown_heading", "value": "封面、声明与签署"},
+      "purpose": "查看已验收候选稿的封面与签署边界，避免把旧待确认信息当作当前状态。"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/status.md",
+      "locator": {"kind": "markdown_heading", "value": "Word/WPS 视觉验收结论"},
+      "purpose": "核对本轮DOCX/PDF交付对象、全页验收记录及尚待签署事项。"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/canonical-sync-inputs.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "作者确认的学号和留空字段、候选稿哈希与本任务边界。"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/wps-visual-acceptance.md",
+      "locator": {"kind": "markdown_heading", "value": "验收对象"},
+      "purpose": "确认将复用的候选DOCX与已验收PDF及其哈希。"
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/codex-review.md",
+      "locator": {"kind": "markdown_heading", "value": "DOCX候选与交付门槛"},
+      "purpose": "核实正式文件与已验收候选之间的交付状态差异。"
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": [
+    "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx"
+  ],
+  "locked_claims": [
+    "本任务只同步交付文件，不构成论文内容修订、实验新增或评分提升。",
+    "作者确认的学号为2024050524；未知官方字段必须保持空白。",
+    "不得修改已验收候选DOCX；只能将其原样复制到正式输出路径。",
+    "签名与签署日期必须真实线下完成，不得代签或生成。"
+  ],
+  "steps": [
+    "核对只读源候选DOCX的路径与SHA-256必须和canonical-sync-inputs.md记录一致；不对源候选进行编辑。",
+    "将候选DOCX按字节原样复制到唯一授权的正式论文路径，不进行格式转换、压缩、重写或内容编辑。",
+    "计算源文件与正式目标文件SHA-256并进行DOCX ZIP完整性检查；确认两者哈希完全相同。",
+    "在execution-report.json逐项记录源/目标路径、复制命令、两个SHA-256、ZIP检查结果；不得宣称新PDF已生成或验收。"
+  ],
+  "acceptance_criteria": [
+    "唯一变更路径为正式论文DOCX；候选源文件和正文稿件均未改变。",
+    "正式DOCX与已验收候选DOCX的SHA-256完全一致，ZIP完整性检查无损坏。",
+    "未知封面字段保持空白；未生成签名或签署日期。",
+    "执行报告明确本任务只同步文件，不代表行政签署完成、PDF重新导出、全页复验或论文评分。"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [
+      "cp -- docs/thesis/revision-20261019-nontraining/thesis-delivery-final-restored-noline.docx outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+      "shasum -a 256 docs/thesis/revision-20261019-nontraining/thesis-delivery-final-restored-noline.docx outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+      "unzip -t outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx"
+    ],
+    "network_domains": []
+  },
+  "deliverables": [
+    "与当前已验收候选内容一致的正式论文DOCX",
+    "execution-report.json"
+  ]
+}

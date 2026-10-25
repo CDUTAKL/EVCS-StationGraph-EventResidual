@@ -1,0 +1,17 @@
+{
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "issues": [],
+  "field_guide": {
+    "id": "稳定问题ID；同一根因沿用ID",
+    "status": "supported / partly_supported / unverified / refuted",
+    "kind": "defect / scope_limit / research_extension",
+    "severity": "blocker / major / minor / extension",
+    "primary_criterion": "唯一主要归属BR-xx",
+    "secondary_impacts": "每项必须有不同受影响要求、独立证据和distinct_reason，不能复制主要理由",
+    "present_in_baseline": "true/false",
+    "present_in_current": "true/false",
+    "used_for_score": "只有经过核实的问题可以为true",
+    "evidence_ids": "已读取的证据ID",
+    "impact_changed": "旧新均存在但影响不同，须有impact_change_evidence_ids和具体说明"
+  }
+}

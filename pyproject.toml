@@ -32,6 +32,5 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
-# scripts/ 为无 __init__.py 的 namespace 包（test_bootstrap.py 导入 scripts.*），
-# 需将项目根加入 pytest 的 sys.path 才能收集
-pythonpath = ["."]
+# 同时支持 scripts.*、独立脚本模块和 src 布局；测试收集不依赖调用者的 PYTHONPATH。
+pythonpath = [".", "src", "scripts"]

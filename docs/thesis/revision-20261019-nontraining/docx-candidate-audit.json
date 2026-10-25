@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/thesis-manuscript.md",
+  "source_sha256": "3d883156d9264c9f94c3f7150d7a7647773e1c546d4689b1b283a8eb0b0ed9f3",
+  "docx": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261019-nontraining/thesis-candidate.docx",
+  "docx_sha256": "83add737fe61cfa461b6cabf628455127b2202bb88678eda7ce381e627a1b0ce",
+  "docx_bytes": 117103378,
+  "checks": {
+    "zip_integrity": true,
+    "all_tagged_display_equations_native": true,
+    "equation_labels_in_chapter_order": true,
+    "all_manuscript_figures_embedded": true,
+    "figure_order_and_hashes_match_source": true,
+    "all_figures_effective_1200_ppi_or_higher": true
+  },
+  "display_equations": {
+    "expected": 27,
+    "native_numbered": 27,
+    "labels": [
+      "2-1",
+      "2-2",
+      "3-1",
+      "3-2",
+      "3-3",
+      "3-4",
+      "3-5",
+      "3-6",
+      "3-7",
+      "3-8",
+      "3-9",
+      "3-10",
+      "3-11",
+      "3-12",
+      "3-13",
+      "3-14",
+      "3-15",
+      "3-16",
+      "4-1",
+      "4-2",
+      "5-1",
+      "5-2",
+      "5-3",
+      "5-4",
+      "5-5",
+      "5-6",
+      "5-7"
+    ]
+  },
+  "figures": {
+    "expected": 46,
+    "embedded_source_matches": 46,
+    "min_effective_ppi": 1200.7,
+    "max_effective_ppi": 1872.2
+  },
+  "visual_page_acceptance": "NOT_PERFORMED"
+}

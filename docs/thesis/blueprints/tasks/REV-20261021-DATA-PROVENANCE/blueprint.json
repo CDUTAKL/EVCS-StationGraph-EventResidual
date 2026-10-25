@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261021-DATA-PROVENANCE",
+  "title": "近邻证据来源链与未查看数据兼容性更新",
+  "task_type": "evidence_audit",
+  "workflow_stage": "第8/10/11/12步：证据核查、受限修订与独立复核",
+  "objective": "据已核实材料更新近邻比较的来源指针、SG-EXP-031表号映射、训练源码身份边界和未查看数据兼容性；只在实测曲线审计输出最终复核通过后，才将其作为限定性形态证据写入正文。不得声称存在可直接冻结推理的新时期，不得扩大到模型效度或调度收益。",
+  "context_sources": [
+    {
+      "path": "docs/thesis/thesis-brief.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "研究问题"
+      },
+      "purpose": "确定本任务所服务的研究问题"
+    },
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "locator": {
+        "kind": "markdown_heading",
+        "value": "论文核心结论权限"
+      },
+      "purpose": "读取当前主张及其证据边界"
+    },
+    {
+      "path": "docs/thesis/terminology-ledger.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "保持代理负荷、实测功率、验证期和训练源码等术语一致"
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "本轮来源链、近邻证据与表号核查的冻结事实"
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "候选未查看时期的兼容性与应用材料边界"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/content-review-20261019-paired/sources/NEAR76-factual-extract.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "当前稿近邻[76]比较的可核查原文摘录；不得使用早期稿状态结论"
+    },
+    {
+      "path": "docs/thesis/content-review-20261015-rev7/packet/nearest-work-source-audit.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "[12][13][67][70]近邻原文比对记录"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "SG-EXP-031正式结果、事后固定测试期边界与表号定位"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "替代代理目标敏感性证据及固定测试期边界"
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "locator": {"kind": "whole_file"},
+      "purpose": "ACN边界、新数据站点/字段/标签/节点映射兼容性与运行材料审查"
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": [
+    "docs/thesis/thesis-manuscript.md",
+    "docs/thesis/claim-evidence-map.md",
+    "docs/thesis/experiment-registry.md",
+    "docs/thesis/material-passport.md",
+    "docs/thesis/data-availability.md",
+    "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+    "docs/thesis/revision-20261021-evidence/data-source-compatibility.md"
+  ],
+  "locked_claims": [
+    "文献比较只能依据列出的原文核验记录；出版社[76]本轮未重新开放，不得声称本轮重新阅读了全文。",
+    "SG-EXP-031结果在当前正文§3.7.2表3-10；表3-11是旧Caltech关系子集/敏感性结果。SG-EXP-031与032均使用已查看固定测试期，属于事后补充证据。",
+    "031的训练Git基线不是完整训练源码身份；入口源码由冻结包哈希识别。032冻结包无Git提交身份，只能按冻结包和文件SHA识别。不得补造提交身份。",
+    "ACN三站点严格范围外connectionTime查询为零只界定所审API边界，不能证明所有来源均无新数据。Office 1仅8 EVSE，未确认与模型10节点、输入图和标签兼容。",
+    "KIT仅为另一场景的单车同步实测电气曲线形态资料，不是ACN节点兼容的未查看模型测试期，不验证论文目标标签、预测性能、计量校准或运行收益。不得把未经最终复核的审计摘要或数值写入正文。",
+    "苏格兰数据为会话级起始/时长/总电量等记录，缺少当前模型的同步功率曲线、ACN节点对应和同构张量；悉尼候选访问受限，状态未知。不得把不可读写成不存在。",
+    "本轮不训练、不下载完整测量文件、不执行远程推理、不修改正式DOCX、不提交Git；现有数值、表格、公式、图号和科学结论权限不变。"
+  ],
+  "steps": [
+    "逐条核查本蓝图列出的证据，不搜索全库替代这些冻结来源。",
+    "只在claim-evidence-map、experiment-registry和material-passport的当前入口中，把SG-EXP-031表号从3-11纠正为3-10；勿改历史记录中与当时稿件相符的表号。",
+    "把claim-evidence-map中的NEAR76来源指针改为content-review-20261019-paired/sources/NEAR76-factual-extract.md；保留其明确的原文可读范围，删除对当前稿已过时的‘没有正面对照’描述。不要重写表1-1或近邻正文。",
+    "将ACN、KIT、苏格兰、悉尼的时期、字段、节点映射、标签和可用性边界更新到data-availability.md当前入口；保留所有日期化历史记录，不把connectionTime范围核验扩展为完整数据快照审计。",
+    "只更新source-chain-summary.md与data-source-compatibility.md的路径、可验证来源链摘要及事实性错误。不可改审计脚本、JSON/CSV结果、哈希或训练文件。",
+    "在KIT曲线形态审计尚无Codex最终确认前，不修改论文正文；可在正文执行报告中注明待Codex复核，绝不可引用当前旧summary中的时间覆盖率。",
+    "填写execution-report.json：列出实际改动文件、定位、证据范围、未改正文的原因和限制；状态pending_codex_review。不要评分。"
+  ],
+  "acceptance_criteria": [
+    "仅修改allowed_paths中的四份证据控制文档和两份本轮证据摘要；thesis-manuscript.md保持不变。",
+    "当前入口准确指向SG-EXP-031表3-10、[76]事实摘录，并区分Git基线与冻结源码SHA身份。",
+    "对候选新数据明确记录日期、来源场景、字段/标签、节点和输入兼容性、论文已查看期范围及冻结推理结论。",
+    "ACN的范围结论严格限于已查REST API的connectionTime边界和6个HTTP 200区间外计数为0；不扩展为所有数据源不可得。",
+    "没有改动训练数值、正文、图表、公式、引文编号、评分、实验工件或Git状态；未将未定稿KIT摘要值写入。"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [],
+    "network_domains": []
+  },
+  "deliverables": [
+    "修改后的授权文件",
+    "execution-report.json"
+  ]
+}

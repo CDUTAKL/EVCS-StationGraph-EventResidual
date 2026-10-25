@@ -1,0 +1,116 @@
+{
+  "assessment_id": "EVCS-CONTENT-20261009-REV2-FORMAL",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 76.5,
+  "raw_maximum": 90.0,
+  "normalized_score": 85.0,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "EVCS-CONTENT-20261009-REV1-FORMAL",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 0.56,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。"
+      },
+      {
+        "id": "BR-02",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "近邻核查和表述继续改善，但未完全补足最近直接EV工作精细方法比较，仍在原4.5强档；不因材料篇数机械加分。"
+      },
+      {
+        "id": "BR-04",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。"
+      },
+      {
+        "id": "BR-10",
+        "old": 7.0,
+        "new": 7.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.5,
+        "new": 3.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "原有评价事实与证据未变；本轮未发现对应的新退步或新增验证，按同一锚点保持分值。"
+      },
+      {
+        "id": "BR-12",
+        "old": 8.5,
+        "new": 9.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "REV1与REV2正文直接对照确认预测任务定义、3.8.2/3.9压缩和来源身份表述改善，BR-12由8.5到9.0；仅计真实内容改善，不计目录和数学字体渲染变化。"
+      }
+    ]
+  }
+}

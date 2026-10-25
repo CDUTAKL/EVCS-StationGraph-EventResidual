@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261019-NONTRAIN-CLOSEOUT",
+  "status": "awaiting_codex_review",
+  "collected_at": "2026-10-19T06:26:09+00:00",
+  "baseline_head": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+  "current_head": "fce67da891d95ae5021942e3e34fb088c1a9fc2a",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 11322,
+        "mtime_ns": 1792288109282898868,
+        "sha256": "3a1ae1eea4bd7eccba86c8b49e8a38dcf121810a78a614f40a4f8f72ab9fca42"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 12258,
+        "mtime_ns": 1792390795905054242,
+        "sha256": "08dd78234f049d8b6652918cf2f71bb457a44540cfa292d29d07b3943364d6f2"
+      }
+    },
+    {
+      "path": "docs/thesis/data-availability.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 16695,
+        "mtime_ns": 1792164514609185584,
+        "sha256": "b7fce9607247e2263976766092d05538667459dff497606d9b931dacf69dbcff"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 18459,
+        "mtime_ns": 1792390927147604394,
+        "sha256": "c393e177d3a1bb1b0d9c720f37b56f1aded71e9c82ad531317e86c8060b97c17"
+      }
+    },
+    {
+      "path": "docs/thesis/material-passport.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 9348,
+        "mtime_ns": 1792066457572808684,
+        "sha256": "33ecc45c11775788fc9e6979949ef78fef5900a1583d8b01df5feb030681c2ea"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 10503,
+        "mtime_ns": 1792390799222924147,
+        "sha256": "8f271140266df108f52e18723fecff36997cdf5a978cd9c643e6135bc3e9e184"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261018-claude-review/data-availability-check.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 4312,
+        "mtime_ns": 1792339797241307832,
+        "sha256": "e3c39f15f18b8d51ca45ec91666df5a556fd20ad9988f29f262f4e5c2180b54b"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 5161,
+        "mtime_ns": 1792390800336942451,
+        "sha256": "d75e09fef07e19ba2add415a311e8dc36e29c6b8526724df3cb9080bb250c159"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/change-report.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 13429,
+        "mtime_ns": 1792391090828826230,
+        "sha256": "b5f5cef782fe0b5941f757a70db13780c5169af18b19d37e78a3549cbb53877f"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261019-nontraining/data-decision.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 6240,
+        "mtime_ns": 1792391150991632212,
+        "sha256": "285e2b9fc10495ca89ba88bbf079889accfd1a75fedfe204b42225caaf5d68fa"
+      }
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 194930,
+        "mtime_ns": 1792339529901222357,
+        "sha256": "62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 195298,
+        "mtime_ns": 1792391049702081528,
+        "sha256": "e3724cb321763f78b4451f8d41e91fd1f0e64287a19a1a592add1fe3458db09b"
+      }
+    }
+  ],
+  "out_of_scope_changes": [],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [],
+  "executor_report": {
+    "task_id": "REV-20261019-NONTRAIN-CLOSEOUT",
+    "executor": "Claude Code",
+    "model": "deepseek-flash[1m]",
+    "user_reported_model": "DeepSeek",
+    "status": "pending_codex_review",
+    "score": null,
+    "summary": "完成NT-01/NT-02受限非训练修订：ACN三站点connectionTime边界与6个where计数归档；中文摘要补入0.03890 kWh/15 min、1.82%和1.52%；表1-1概括引用排除未列出的[74][75]；§1.5删除未定义缩写串并保留未重跑边界；§1.6第一贡献改为“站内关系与节点门控的受控增量证据”；§3.5.4转引改为3.7.2及附表A-1；§5.4.1补τ/h内联定义；结论以一句反映ACN范围核验及Office 1节点/字段待核查。同步更新数据可用性、证据映射、材料护照和旧10月18日报告文首说明，新建data-decision.md和change-report.md。未训练、未联网、未连远端、未改正式DOCX、未做Git操作、未评分。",
+    "changed_paths": [
+      "docs/thesis/thesis-manuscript.md",
+      "docs/thesis/data-availability.md",
+      "docs/thesis/claim-evidence-map.md",
+      "docs/thesis/material-passport.md",
+      "docs/thesis/revision-20261018-claude-review/data-availability-check.md",
+      "docs/thesis/revision-20261019-nontraining/data-decision.md",
+      "docs/thesis/revision-20261019-nontraining/change-report.md"
+    ],
+    "evidence_used": [
+      "docs/thesis/revision-20261019-nontraining/plan.md（whole_file，SHA-256 9b4c70555f4c5e415ec678cc493393a474229d7e02bdaf5ad19047272593e0c3）",
+      "docs/thesis/revision-20261019-nontraining/scope.json（whole_file，SHA-256 e0699f4dc35b6d63590d37fa54b2bdbe454e88fafc85e2427a45d4bd3eb6de51）",
+      "docs/thesis/revision-20261019-nontraining/writing-guidance.md（whole_file，SHA-256 206803197ddf1657b6b625451d28a50ae97666a9f6aba077980ddd9663f8c2b0）",
+      "docs/thesis/thesis-manuscript.md：摘要、Abstract、1.2.2、1.5、1.6、3.5.4、3.5.9、3.7.2、5.1、5.4.1、5.4.5、5.5、研究判断与使用条件、研究局限与后续工作",
+      "docs/thesis/revision-20261019-nontraining/evidence/acn/range_probe_reviewed.json（SHA-256 84ec68aaf9c9d8b35acb928821a289464a5f66fbb4f946cdb754044b59055ae6）",
+      "docs/thesis/revision-20261019-nontraining/evidence/acn/bounds_verification.json（SHA-256 430bb7fffbbf62dd5ef92f4099a6ff455dda3362de195d273d36df02fa260b05）",
+      "docs/thesis/revision-20261019-nontraining/evidence/acn/provenance.json（SHA-256 6089bdc07aee0ba0967606567bb4866f30f2517775791e912f967ad307bae431）",
+      "docs/thesis/data-availability.md、docs/thesis/claim-evidence-map.md、docs/thesis/material-passport.md（修订前当前入口与历史材料记录）",
+      "docs/thesis/revision-20261018-claude-review/data-availability-check.md（修订前失败记录）"
+    ],
+    "claim_or_number_changes": [
+      "中文摘要新增0.03890 kWh/15 min，与英文摘要和结论（1）一致；比较方向不变。",
+      "中文摘要新增1.82%（负荷耦合）和1.52%（轮廓相似），与表3-11和英文摘要一致；行为共现关系仍不确定。",
+      "表1-1概括引用由[12-13,67,70-76]改为[12-13,67,70-73,76]，排除未在表列出的[74][75]；§1.2.3继续保留[74][75-76]的事件文献定位。",
+      "§3.5.4交叉引用由3.6.2改为3.7.2并补附表A-1；固定门值结果的受限功能证据权限不变。",
+      "§5.4.1新增τ与h=1..4及四个15 min左端时刻的对应定义；显示公式未改。",
+      "§1.6第一贡献改为“站内关系与节点门控的受控增量证据”；第二贡献仍为区分组件价值、完整模型表现和参数敏感度的诊断判断。",
+      "结论新增一句ACN时间范围核验及Office 1节点/字段待核查；完整快照、其他来源不可得等边界保留在data-decision.md和证据控制台，未写入正文。",
+      "未改变任何科学结论方向、表格行、显示公式、参考文献条目、图片链接、图题或标题。"
+    ],
+    "checks": [
+      "人工逐句对照8处正文修改，均在scope.json allowed_headings内。",
+      "确认正文不再出现STMGCN、CADGN、旧引用[12-13,67,70-76]及§3.5.4的3.6.2转引。",
+      "抽查§3.5.4式(3-10)(3-11)、§5.4.1式(5-4)(5-5)、表3-11、表5-9及英文摘要，未发现被编辑。",
+      "确认§3.5.9未改，其3.7.1转引保持。",
+      "确认旧10月18日data-availability-check.md第1—5节原文保留，仅文首增加2026-10-19后续说明。",
+      "仅做人工文本对照与文件检索；未运行脚本、未复算哈希、未生成DOCX、未做Word/PDF视觉验收。"
+    ],
+    "unresolved": [
+      "未生成或覆盖正式DOCX；未做目录分页和全页视觉验收，不声称Word/PDF交付通过。",
+      "未运行确定性审计或哈希复算；修订前SHA-256按plan.md冻结记录引用，需Codex独立复核修改范围与文本不变性。",
+      "ACN核验只覆盖connectionTime极值；节点标识、字段完整性、标签成熟性及Office 1既有分析使用史未核查。",
+      "未核验Zenodo、路侧充电记录等其他数据来源；不能据此声称所有数据源不可得。",
+      "未下载会话时序；普通端点payload曾在内存处理但未保存或展示用户记录；凭据未保存。",
+      "scope.json的permitted_numeric_changes将5.4.1标为“节点集合需求与预测输出对应”，与正文实际标题“5.4.1 预测量与运行量的对应”不同；本轮按allowed_headings实际标题定位，未改标题。",
+      "正文结论只定性写ACN时间范围；精确三站点数量、UTC极值和6个where计数见data-decision.md和证据控制台。"
+    ],
+    "blockers": []
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

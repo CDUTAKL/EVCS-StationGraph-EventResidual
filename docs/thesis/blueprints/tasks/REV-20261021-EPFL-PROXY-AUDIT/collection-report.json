@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261021-EPFL-PROXY-AUDIT",
+  "status": "awaiting_codex_review",
+  "collected_at": "2026-10-21T05:28:37+00:00",
+  "baseline_head": "f861d3a10832726bcb35c8d06ec12ca6337f317b",
+  "current_head": "f861d3a10832726bcb35c8d06ec12ca6337f317b",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "docs/thesis/data-availability.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 21514,
+        "mtime_ns": 1792548974205538467,
+        "sha256": "71a5f14b466d54f02cfa91814c6bc1272e873716af57578a9edd8f4814e35c10"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 21514,
+        "mtime_ns": 1792551532730055717,
+        "sha256": "736761c1b518dec69ad4101710e3ec2a8cb1f600d9adc2d642727b4eab61489b"
+      }
+    }
+  ],
+  "out_of_scope_changes": [],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [],
+  "executor_report": {
+    "task_id": "REV-20261021-EPFL-PROXY-AUDIT",
+    "executor": "Claude Code",
+    "model": "deepseek-flash[1m] (shown in CLI status; provider reported as DeepSeek)",
+    "user_reported_model": "DeepSeek",
+    "summary": "Execution was interrupted before the EPFL audit was completed. One evidence-entry correction was applied: the current SG-EXP-031 table reference in data-availability.md now points to Table 3-10. The EPFL script was not created, the specified audit command was not run, and the manuscript/DOCX were not changed.",
+    "changed_paths": [
+      "docs/thesis/data-availability.md"
+    ],
+    "evidence_used": [
+      "docs/thesis/blueprints/tasks/REV-20261021-EPFL-PROXY-AUDIT/EXECUTION_PACKET.md",
+      "docs/thesis/revision-20261021-evidence/epfl-proxy-audit-protocol.md",
+      "docs/thesis/data-availability.md"
+    ],
+    "claim_or_number_changes": [],
+    "checks": [
+      "No audit entrypoint command was run.",
+      "A proposed offset-based CCS2 mapping script was rejected because it departed from the frozen CCS+Session rule."
+    ],
+    "unresolved": [
+      "The original frozen join key leaves CCS2 unmatched; Codex independent read-only cross-check found an exact composite-field mapping for 1,878/1,878 sessions, but that exploratory key is outside the frozen protocol.",
+      "Power integration and cumulative-energy closure do not jointly support promoting an external proxy-shape result under the frozen protocol.",
+      "No source-shape audit result or manuscript revision is claimed."
+    ],
+    "blockers": [
+      "Create a separately versioned protocol/task before any analysis using the composite crosswalk or cumulative Energy trajectory."
+    ]
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

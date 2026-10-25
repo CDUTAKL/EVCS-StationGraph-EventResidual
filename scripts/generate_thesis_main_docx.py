@@ -3,7 +3,7 @@
 
 The source template is never modified.  Cover pages and declarations are retained
 as supplied; the generated portion begins with the Chinese abstract and excludes
-acknowledgements, publications, and appendices by design.
+acknowledgements and publications by design. Appendices retain supporting data.
 """
 from __future__ import annotations
 
@@ -11,6 +11,7 @@ import argparse
 import base64
 import io
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -46,14 +47,33 @@ TITLE = "基于站内多关系图与机制诊断的充电节点短期负荷预�
 ENGLISH_TITLE = "Short-Term Load Forecasting of Charging Nodes Based on Within-Station Multi-Relation Graphs and Mechanism Diagnosis"
 NODE = "/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
 MATH_CONVERTER = ROOT / "scripts/latex_to_omml.js"
-MATH_NODE_PATH = __import__('os').environ.get('THESIS_MATH_NODE_PATH', '/private/tmp/codex-thesis-math-runtime/node_modules')
+MATH_NODE_PATH = os.environ.get(
+    'THESIS_MATH_NODE_PATH',
+    os.pathsep.join((str(Path(NODE).parent.parent / 'node_modules'),
+                     str(Path.home() / '.local/share/evcs-document-runtimes/math/node_modules'),
+                     '/private/tmp/codex-thesis-math-runtime/node_modules')),
+)
+
+
+def validate_math_runtime():
+    """Fail before assembling the document if the formula runtime is incomplete."""
+    env = os.environ.copy()
+    env['NODE_PATH'] = MATH_NODE_PATH
+    check = (
+        'const missing=["docx","temml","fast-xml-parser"].filter(n=>'
+        '{try{require.resolve(n);return false;}catch{return true;}});'
+        'if(missing.length){console.error("Missing math modules: "+missing.join(", "));process.exit(1);}'
+    )
+    result = subprocess.run([NODE, '-e', check], env=env, capture_output=True, text=True, timeout=10)
+    if result.returncode:
+        raise RuntimeError('Formula runtime preflight failed: ' + result.stderr.strip()[:500])
 
 
 def validate_final_figure_sequence(source_text: str) -> None:
     """Reject missing, duplicated, or out-of-order manuscript figure numbers."""
     captions = [(int(ch), int(num)) for ch, num in re.findall(r"\*\*图(\d+)-(\d+)\b", source_text)]
     image_paths = re.findall(r"!\[[^]]*\]\(([^)]+)\)", source_text)
-    chapter_counts = ((1, 2), (2, 13), (3, 16), (4, 6), (5, 9))
+    chapter_counts = ((1, 2), (2, 13), (3, 16), (4, 7), (5, 8))
     figure_count = sum(count for _, count in chapter_counts)
     if len(captions) != figure_count or len(image_paths) != figure_count:
         raise RuntimeError(
@@ -63,7 +83,7 @@ def validate_final_figure_sequence(source_text: str) -> None:
     for chapter, count in chapter_counts:
         expected.extend((chapter, number) for number in range(1, count + 1))
     if captions != expected:
-        raise RuntimeError("Figure captions are not in strict chapter order from 图1-1 to 图5-9")
+        raise RuntimeError("Figure captions are not in strict chapter order from 图1-1 to 图5-8")
     for (chapter, number), path in zip(captions, image_paths):
         if f"fig{chapter}_{number}_" not in Path(path).name:
             raise RuntimeError(f"Figure path does not match 图{chapter}-{number}: {path}")
@@ -385,9 +405,10 @@ def add_three_line_table(doc, rows):
             cell.text = ""
             p = cell.paragraphs[0]
             set_paragraph_format(p, WD_ALIGN_PARAGRAPH.CENTER, False, line=1.0)
-            # The current thesis tables all fit one page. Keep their rows
-            # together; leave the final row free of the following note.
-            p.paragraph_format.keep_with_next = ri < len(rows) - 1
+            # Long evidence tables may continue on another page. Keep the
+            # header with its first data row; avoid chaining every row into an
+            # oversized block. Each individual row remains intact.
+            p.paragraph_format.keep_with_next = (ri == 0 or (len(rows) <= 7 and ri < len(rows) - 1))
             cell_text = clean_inline(values[ci] if ci < len(values) else "")
             if cols >= 5 and ri > 0:
                 # Break at a semantic boundary, never in a decimal's digits.
@@ -395,8 +416,17 @@ def add_three_line_table(doc, rows):
                     cell_text = cell_text.replace("±", "\n±")
                 elif re.fullmatch(r"mrg_[a-z_]+", cell_text) and len(cell_text) >= 12:
                     cell_text = cell_text.replace("mrg_", "mrg_\n", 1)
-            r = p.add_run(cell_text)
-            set_font(r, EAST_ASIA, TABLE_FONT_SIZE, bold=(ri == 0))
+            # Numeric in-text references inside tables follow the same
+            # superscript convention as body citations. Split them into their
+            # own runs so the formatting survives DOCX generation.
+            parts = re.split(r"(\[(?:\d+(?:\s*[-,，]\s*\d+)*)\])", cell_text)
+            for part in parts:
+                if not part:
+                    continue
+                r = p.add_run(part)
+                set_font(r, EAST_ASIA, TABLE_FONT_SIZE, bold=(ri == 0))
+                if re.fullmatch(r"\[(?:\d+(?:\s*[-,，]\s*\d+)*)\]", part):
+                    r.font.superscript = True
             set_cell_border(cell, top=THICK if ri == 0 else NONE,
                             bottom=THIN if ri == 0 else (THICK if ri == len(rows) - 1 else NONE),
                             left=NONE, right=NONE)
@@ -582,7 +612,7 @@ def toc_entries(source, page_map=None):
         level, text = len(match.group(1)), clean_inline(match.group(2))
         if level == 1 and text in {"摘  要", "Abstract", "目  录", "致  谢", "在读期间发表的学术论文及研究成果", "附录"}:
             continue
-        if level == 1 and not text.startswith("第") and text != "结  论" and text != "参考文献":
+        if level == 1 and not text.startswith(("第", "附录")) and text != "结  论" and text != "参考文献":
             continue
         entries.append((level, text, str((page_map or {}).get(text, ""))))
     return entries
@@ -607,18 +637,35 @@ def add_figure(doc, path, alt, source_dir):
     if registry.exists():
         import hashlib
         import json
+        image_hash = hashlib.sha256(png.read_bytes()).hexdigest()
+        dpi_manifest_path = ROOT / 'docs/thesis/figure-1200dpi-20261007.json'
+        dpi_delivery_hash = None
+        if dpi_manifest_path.exists():
+            dpi_manifest = json.loads(dpi_manifest_path.read_text())
+            relative_path = png.relative_to(ROOT).as_posix()
+            dpi_delivery_hash = next(
+                (
+                    item.get('delivery_sha256')
+                    for item in dpi_manifest.get('figures', [])
+                    if item.get('path') == relative_path
+                ),
+                None,
+            )
         for entry in json.loads(registry.read_text())['entries']:
             # A later deterministic academic redraw is intentionally allowed
-            # to supersede the earlier ImageGen preview; its current hash is
-            # tracked by outputs/figures/manifest.json instead.
+            # to supersede the earlier ImageGen preview. The 1200-DPI delivery
+            # raster is also allowed when its exact hash is registered.
             if entry['stem'] == png.stem and entry.get('source_type', 'imagegen') == 'imagegen':
-                if hashlib.sha256(png.read_bytes()).hexdigest() != entry['sha256']:
+                if image_hash not in {entry['sha256'], dpi_delivery_hash}:
                     raise ValueError(f'Approved figure hash mismatch: {png}')
     p = doc.add_paragraph()
     set_paragraph_format(p, WD_ALIGN_PARAGRAPH.CENTER, False, before=3, after=3, line=1.0)
     r = p.add_run()
-    # Inner-page width is 14.66 cm under the template's 3.17 cm side margins.
-    r.add_picture(str(png), width=Cm(14.2))
+    p.paragraph_format.keep_with_next = True
+    # Keep the figure just inside 14.2 cm. This avoids a one-pixel rounding
+    # shortfall below 1200 effective PPI for 1200-DPI rasters such as fig5_3.
+    # The change is visually negligible and remains within the 14.66 cm body width.
+    r.add_picture(str(png), width=Cm(14.19))
 
 
 def add_heading(doc, level, text, outline=True):
@@ -640,8 +687,11 @@ def add_heading(doc, level, text, outline=True):
         set_paragraph_format(p, WD_ALIGN_PARAGRAPH.JUSTIFY, False, before=12, after=9, line=1.25)
     else:
         set_paragraph_format(p, WD_ALIGN_PARAGRAPH.JUSTIFY, False, before=12, after=6, line=1.25)
+    p.paragraph_format.keep_with_next = True
+    p.paragraph_format.keep_together = True
     r = p.add_run(text)
-    set_font(r, HEADING_FONT, {1: 18, 2: 15, 3: 14, 4: 12}[level], bold=(level != 3))
+    heading_font = "楷体" if level == 4 else HEADING_FONT
+    set_font(r, heading_font, {1: 18, 2: 15, 3: 14, 4: 12}[level], bold=(level != 3))
     return p
 
 
@@ -700,7 +750,7 @@ def add_body(doc, source):
                 i += 1
                 continue
             is_terminal_section = re.sub(r"\s+", "", text) in {"结论", "参考文献"}
-            if level == 1 and (text.startswith("第") or is_terminal_section):
+            if level == 1 and (text.startswith(("第", "附录")) or is_terminal_section):
                 doc.add_section(WD_SECTION.NEW_PAGE)
                 configure_section(doc.sections[-1], odd_header=clean_inline(text), start=1 if text.startswith("第1章") else None)
             add_heading(doc, level, clean_inline(text))
@@ -727,14 +777,15 @@ def add_body(doc, source):
             set_paragraph_format(p, WD_ALIGN_PARAGRAPH.CENTER, False, before=3, after=3, line=1.0)
             # Keep a table title with at least the first row; Word/WPS can then
             # move the table cleanly when a page ends immediately before it.
-            if title.startswith("表") or is_named_table_caption:
+            if title.startswith("表") or is_named_table_caption or (title.startswith("图") and note):
                 p.paragraph_format.keep_with_next = True
             r = p.add_run(title + ("：" if is_subfigure else ""))
             set_font(r, HEADING_FONT, 10.5, bold=False)
             if note:
                 # “注：”既符合学校图表注口径，也避免审计器将 9 pt 图注
                 # 误识别为 12 pt 正文。
-                paragraph(doc, "注：" + note, first_line=True, size=9)
+                note_paragraph = paragraph(doc, "注：" + note, first_line=True, size=9)
+                note_paragraph.paragraph_format.keep_together = True
             i += 1
             continue
         if re.match(r"^\[\d+\]", line):
@@ -854,6 +905,7 @@ def main():
     args = parser.parse_args()
     if not args.template.exists():
         raise FileNotFoundError(args.template)
+    validate_math_runtime()
     source_text = args.source.read_text(encoding="utf-8")
     han_characters = len(re.findall(r"[\u4e00-\u9fff]", source_text))
     if han_characters > MAX_HAN_CHARACTERS:
@@ -875,6 +927,9 @@ def main():
         sanitized_docx = Path(build_dir) / "sanitized.docx"
         shutil.copy2(args.template, base_docx)
         doc = Document(base_docx)
+        doc.core_properties.title = TITLE
+        doc.core_properties.author = ""
+        doc.core_properties.last_modified_by = ""
         remove_template_protection(doc)
         settings = doc.settings.element
         if settings.find(qn("w:evenAndOddHeaders")) is None:

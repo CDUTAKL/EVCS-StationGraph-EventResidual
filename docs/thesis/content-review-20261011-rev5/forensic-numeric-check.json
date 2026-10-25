@@ -1,0 +1,53 @@
+{
+  "checkpoint_runs": 12,
+  "all_pass": true,
+  "unique_keys": [
+    632640
+  ],
+  "max_prediction_difference": 2.6961244165013554e-06,
+  "max_mae_difference": 4.111147672292148e-09,
+  "replayed_model_mean_mae": {
+    "agcrn_full": 0.08326799038521561,
+    "mrg_full": 0.08106701000965179,
+    "mrg_shared_gate": 0.08332544142401664,
+    "tcn_wide": 0.08388842417514662
+  },
+  "relative_reductions_pct": {
+    "agcrn_full": 2.6432490629131475,
+    "mrg_shared_gate": 2.7103743775834497,
+    "tcn_wide": 3.3632937955827362
+  },
+  "pcmci_family_count": 360,
+  "pcmci_nominal_cells": 65,
+  "pcmci_holm_cells": 22,
+  "pcmci_holm_pairs": 21,
+  "budget_rows": 18,
+  "cap_rows": [
+    {
+      "site_experiment": "JPL SG-EXP-028",
+      "model": "mrg_shared_gate",
+      "seed": 2024,
+      "stopped_epoch": 60,
+      "best_epoch": 59,
+      "max_epochs": 60,
+      "patience": 8,
+      "hit_max_epoch": true,
+      "epochs_after_best_at_stop": 1,
+      "train_log_sha256": "8804b9e61b898e992aa33dab3d4b44cd1d6f9ebb5f7942699c875c3576cefc69",
+      "run_summary_sha256": "7a9101e28dc3f27a214684e5fb410ef30f5ff1a101d17059629a2415c4dfc419"
+    },
+    {
+      "site_experiment": "Caltech SG-EXP-027",
+      "model": "mrg_shared_gate",
+      "seed": 2024,
+      "stopped_epoch": 60,
+      "best_epoch": 52,
+      "max_epochs": 60,
+      "patience": 8,
+      "hit_max_epoch": true,
+      "epochs_after_best_at_stop": 8,
+      "train_log_sha256": "5cd1a2fcee99d4fd4852944e0ce5ac4ecd3d02f18ffc74e486ce418f27176d00",
+      "run_summary_sha256": "7ab49609874d0d9db4c947275d5f4adf62ae4c71286c5a518bcdb5064c824b70"
+    }
+  ]
+}

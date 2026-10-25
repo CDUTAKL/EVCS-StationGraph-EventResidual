@@ -1,4 +1,4 @@
-"""Rebuild fig4_6 and fig5_5 from existing evidence; no new experiments."""
+"""Rebuild fig4_7 and fig5_5 from existing evidence; no new experiments."""
 from pathlib import Path
 import json
 import hashlib
@@ -134,7 +134,7 @@ def intensity():
     b.set_title('B  样本量与误差贡献',loc='left',pad=10)
     b.legend(loc='upper center',bbox_to_anchor=(.45,1.04),ncol=2,fontsize=7.5,frameon=False)
     fig.text(.12,.055,'AdaptiveGraph · seed-2024   |   非零分数按50%与95%分位分箱，仅用于描述性分析。',fontsize=8,color='#66737C')
-    save(fig,'fig4_6_error_vs_event_intensity')
+    save(fig,'fig4_7_error_vs_event_intensity')
     plt.rcParams['font.family'] = _family
     return {'prediction_source':str(hits[0].relative_to(ROOT)),'sha256':hashlib.sha256(hits[0].read_bytes()).hexdigest(),'q50':float(q50),'q95':float(q95),'counts':n.tolist(),'mae':mae.tolist(),'sample_percent':pop.tolist(),'absolute_error_percent':contribution.tolist()}
 
@@ -155,14 +155,21 @@ def horizon():
                 ms=5.5,mfc='white' if label!='MRG-GCN' else color,mew=1,zorder=5 if label=='MRG-GCN' else 4)
         ax.fill_between(hs,mean-sd,mean+sd,color=color,alpha=.12,lw=0)
         records[label]={'paths':[str(p.relative_to(ROOT)) for p in paths],'mean':mean.tolist(),'sd':sd.tolist()}
-    ax.set(xlim=(.85,4.15),ylim=(0,.041),xlabel='预测提前量（min）',ylabel='MAE（kWh/15 min）')
-    ax.set_xticks(hs,['15','30','45','60'])
+    ax.set(xlim=(.85,4.15),ylim=(0,.041),xlabel='目标片区间（min）',ylabel='MAE（kWh/15 min）')
+    ax.set_xticks(hs,['[0,15)','[15,30)','[30,45)','[45,60)'])
+    ax.tick_params(axis='x',labelsize=8)
     ax.set_yticks([0,.01,.02,.03,.04]); ax.grid(axis='y',color='#E7EBEE',lw=.6)
     ax.legend(ncol=3,loc='upper center',bbox_to_anchor=(.5,1.29),frameon=False,fontsize=9,columnspacing=2.5)
-    save(fig,'fig3_10_mae_by_horizon')
-    (OUT/'fig3_10_revision_sources.json').write_text(json.dumps(records,indent=2)+'\n')
+    save(fig,'fig3_12_mae_by_horizon')
+    records['_time_axis']={
+        'reference':'forecast_release_time',
+        'tick_intervals_min':[[0,15],[15,30],[30,45],[45,60]],
+        'interval_convention':'left-closed, right-open',
+        'note':'No metric values or prediction keys changed; labels expose the existing target-bin mapping.'
+    }
+    (OUT/'fig3_12_revision_sources.json').write_text(json.dumps(records,indent=2)+'\n')
 
 if __name__=='__main__':
     horizon()
-    result={'fig5_5':pcmci(),'fig4_6':intensity()}
+    result={'fig5_5':pcmci(),'fig4_7':intensity()}
     (OUT/'revision_20260920_sources.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')

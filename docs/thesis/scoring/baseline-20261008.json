@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "EVCS-CONTENT-20261008-IMPORT",
+  "assessment_kind": "legacy_import",
+  "review_date": "2026-10-08",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "CONTENT-20261008",
+    "manuscript_path": "docs/thesis/thesis-manuscript.md",
+    "manuscript_sha256": "25fe77154070100c565dbf355fe2555cbdaf873a4398df9808f1277a043161e2",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "evidence": [
+      {
+        "id": "LEGACY-BR-01",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "代理目标定义、表2-2、JPL分层源CSV",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-02",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "三协议总表与019/027/028报告",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-03",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "当前五项近邻比较与最后审计的定向来源记录",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-04",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "模型公式、β重参数化、秩修正和运行约束定义",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-05",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "EXP-019/027/028报告、参数/轮次源表及冻结记录",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-06",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "实际读取JPL CSV、门控summary.json、四格CSV与滚动CSV",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-07",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "019/027/028正式报告及024—026补充材料",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-08",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "numeric-check.json及其源CSV/JSON",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-09",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "JPL校正周块区间、027条件区间、分层CSV及对应结论",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-10",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "两站同参数门控源汇总、等权证据、MDP判断修正表",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-11",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "实际滚动覆盖与宽度CSV、固定轨迹和合成LP报告",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      },
+      {
+        "id": "LEGACY-BR-12",
+        "source": "docs/thesis/content-review-20261008/blind-review-scorecard.md",
+        "locator": "当前完整性复评、91条引用映射记录、现稿及交付审计",
+        "reviewed": true,
+        "provenance": "2026-10-08原评分报告记载的已检查证据；本次仅导入记录，不宣称重新核验"
+      }
+    ]
+  },
+  "reviewer_reports": [
+    "docs/thesis/content-review-20261008/"
+  ],
+  "forensic_report": "docs/thesis/content-review-20261008/forensic-review.md",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": 4.5,
+      "manuscript_location": "§1.1、1.3；§2.1；§5.5.1",
+      "evidence_ids": [
+        "LEGACY-BR-01"
+      ],
+      "rationale": "节点异质性与稀疏预测问题明确；具体运营价值仍待真实需求与量测验证。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-02",
+      "score": 4.5,
+      "manuscript_location": "§1.4—1.6；§3.8.2；§4.6；结论",
+      "evidence_ids": [
+        "LEGACY-BR-02"
+      ],
+      "rationale": "题目、双贡献和结果基本闭合；机制诊断与负荷仍需读者依正文理解为受限内部诊断和代理能量。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-03",
+      "score": 4.0,
+      "manuscript_location": "§1.2.2—1.2.4；表1-1；§3.5.8",
+      "evidence_ids": [
+        "LEGACY-BR-03"
+      ],
+      "rationale": "已从模型罗列转为维度比较并承认组合创新；公式/模块层近邻及诊断流程文献分析仍不够深入，全表论据核验未完。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-04",
+      "score": 4.5,
+      "manuscript_location": "§3.3—3.5；§4.2.5；§5.3.6；式5-5—5-8",
+      "evidence_ids": [
+        "LEGACY-BR-04"
+      ],
+      "rationale": "图时序、统计与能量功率知识结合较准确；方向性方法假设与三协议方法即时标识尚可完善。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-05",
+      "score": 8.0,
+      "manuscript_location": "§2.1.1—2.1.3；§3.6.2—3.6.3；§3.7.1；§4.3.3",
+      "evidence_ids": [
+        "LEGACY-BR-05"
+      ],
+      "rationale": "同键、近似参数匹配与等参数门控对照有效；简单行为下界、完整AGCRN容量匹配、优化公平性及学生控制仍有缺口。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-06",
+      "score": 4.5,
+      "manuscript_location": "表3-1—3-3；§3.7.1；§4.4.3；§5.3.7",
+      "evidence_ids": [
+        "LEGACY-BR-06"
+      ],
+      "rationale": "数据、配置、预测键与源结果可追溯；多协议和历史材料需统一索引，尚未全量独立复算。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-07",
+      "score": 9.0,
+      "manuscript_location": "第2—5章；表3-2、3-3、3-9、5-6",
+      "evidence_ids": [
+        "LEGACY-BR-07"
+      ],
+      "rationale": "数据审计、模型控制、另一场站重拟合、诊断和校准体现充分硕士工作量；部分延伸仍为探索。不给字数、图片或运行次数直接加科研分。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-08",
+      "score": 8.0,
+      "manuscript_location": "表3-2、3-3、3-9、3-12；表4-4；表5-6",
+      "evidence_ids": [
+        "LEGACY-BR-08"
+      ],
+      "rationale": "狭义整体MAE、节点差异增量、四格和回放证据有支撑；零目标驱动、部分组件增益不足、MDP与区间未跨站等仍限制充分性。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-09",
+      "score": 9.0,
+      "manuscript_location": "§3.6.3、3.7.1—3.7.2；§4.2.5、4.3.3；§5.2.6、5.3.7；结论",
+      "evidence_ids": [
+        "LEGACY-BR-09"
+      ],
+      "rationale": "负结果、联合依赖与独立增量、种子与时间块区分清楚，未作全面性能或物理因果推断；未校正探索检验及更广不确定性仍未解决。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-10",
+      "score": 7.0,
+      "manuscript_location": "§1.4；§3.5.8；表3-12；表4-1；§4.5",
+      "evidence_ids": [
+        "LEGACY-BR-10"
+      ],
+      "rationale": "有可信任务组合和节点差异增量；基本算子既有，β及若干模块没有独立正增益，MDP相对常规诊断组合的新增能力尚未充分验证。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-11",
+      "score": 3.0,
+      "manuscript_location": "§2.1.2；表5-6；§5.5及结论",
+      "evidence_ids": [
+        "LEGACY-BR-11"
+      ],
+      "rationale": "为评价与运行接口提供具体材料；缺同步量测、接收延迟、现场请求和效益，事件覆盖26.71%不支持可靠防护。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    },
+    {
+      "id": "BR-12",
+      "score": 8.0,
+      "manuscript_location": "表2-2；§3.6—3.9；§4.5；第5章与结论",
+      "evidence_ids": [
+        "LEGACY-BR-12"
+      ],
+      "rationale": "主线和证据顺序明显改善，重大口径都有说明；架构与限制仍重复，章末/结论顺序未完全对齐，文献全量外部核验未完成。不按空封面扣分。",
+      "na_reason": "",
+      "change": {
+        "type": "baseline",
+        "reason": "从2026-10-08正式复评记录导入，未改变原分",
+        "evidence_ids": []
+      }
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "原评分是历史记录；本次没有重新评阅、训练、复算或核验文献。",
+    "原始评阅采用同一12项90分权重；导入统一版本用于保留来源，不改写历史评分尺度。"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-09",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "result": "passed",
+  "checks_passed": 11,
+  "scope": "记录结构、换算算术、拒绝及暂缓条件；未重新评分或核验论文证据",
+  "checks": [
+    "历史导入74/90=82.22",
+    "空模板暂缓",
+    "缺证据暂缓",
+    "非法步长拒绝",
+    "越界得分拒绝",
+    "重复指标拒绝",
+    "异版量表拒绝",
+    "估计不发布正式分",
+    "无变分依据暂缓比较",
+    "半分差值正确换算0.56",
+    "异范围暂缓比较"
+  ],
+  "sha256": {
+    "docs/thesis/scoring/rubric.json": "244fb698bd39b0e935e45116671c1954659a6720dc33faa42d9a7faf89433548",
+    "scripts/audit_thesis_content_score.py": "d57ba538310e89b0ab05858f588b27560fba166873d275c33cee04336a1b31a8"
+  }
+}

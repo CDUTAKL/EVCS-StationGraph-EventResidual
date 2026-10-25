@@ -116,7 +116,7 @@ def redraw_fig4_6() -> None:
         _clean(ax)
         if win_key == 0:
             ax.legend(fontsize=7.2, frameon=False, loc="upper right")
-    _final(fig, "fig4_5_residual_distribution", (8.6, 3.6))
+    _final(fig, "fig4_6_residual_distribution", (8.6, 3.6))
     return None
 
 
@@ -182,7 +182,7 @@ def redraw_fig4_7() -> None:
             transform=ax.transAxes, ha="right", va="top", fontsize=6.8,
             color=GRAY_M)
     _clean(ax)
-    _final(fig, "fig4_6_error_vs_event_intensity", (6.8, 3.8))
+    _final(fig, "fig4_7_error_vs_event_intensity", (6.8, 3.8))
     return None
 
 

@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "remote_manifest_files_verified": 13,
+  "local_package_files_verified": 64,
+  "remote_uri": "ssh://root@connect.westc.seetacloud.com:24376/root/autodl-tmp/AdaptiveGraph-CUDA-replay-20261014/replay-cuda-20261015",
+  "runs": [
+    {
+      "seed": 2024,
+      "prediction_keys": 712360,
+      "max_abs_difference": {
+        "native_cpu": 0.09123469102020265,
+        "native_cuda": 7.465148925689391e-07,
+        "cpu_with_cuda_adjacency": 9.266998290957673e-07
+      },
+      "global_mae": {
+        "native_cpu": 0.01593039956017889,
+        "native_cuda": 0.014130932448047256,
+        "cpu_with_cuda_adjacency": 0.014130926759506588
+      },
+      "archived_global_mae": 0.014130933091975247,
+      "changed_neighbor_rows_zero_based": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+      ],
+      "tie_explanation_confirmed": true
+    },
+    {
+      "seed": 2025,
+      "prediction_keys": 712360,
+      "max_abs_difference": {
+        "native_cpu": 0.05896301800994874,
+        "native_cuda": 6.160156249546134e-07,
+        "cpu_with_cuda_adjacency": 7.332305909102388e-07
+      },
+      "global_mae": {
+        "native_cpu": 0.015484235440921921,
+        "native_cuda": 0.013963644010890619,
+        "cpu_with_cuda_adjacency": 0.013963643955201619
+      },
+      "archived_global_mae": 0.013963644191128945,
+      "changed_neighbor_rows_zero_based": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "tie_explanation_confirmed": true
+    },
+    {
+      "seed": 2026,
+      "prediction_keys": 712360,
+      "max_abs_difference": {
+        "native_cpu": 0.015293040808105562,
+        "native_cuda": 5.600341796974107e-07,
+        "cpu_with_cuda_adjacency": 7.337982177446634e-07
+      },
+      "global_mae": {
+        "native_cpu": 0.01386692910486541,
+        "native_cuda": 0.013795250138821465,
+        "cpu_with_cuda_adjacency": 0.013795246269301413
+      },
+      "archived_global_mae": 0.013795250209715936,
+      "changed_neighbor_rows_zero_based": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "tie_explanation_confirmed": true
+    }
+  ],
+  "retraining_performed": false,
+  "environment": {
+    "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:46:43) [GCC 11.2.0]",
+    "torch": "2.4.1+cu121",
+    "cuda_build": "12.1",
+    "cuda_available": true,
+    "platform": "Linux-5.15.0-101-generic-x86_64-with-glibc2.35",
+    "gpu": "NVIDIA GeForce RTX 4090 D"
+  }
+}

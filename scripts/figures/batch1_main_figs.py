@@ -138,7 +138,7 @@ def fig_bootstrap() -> None:
     ax.tick_params(axis="x", labelsize=8)
     ax.spines[["top", "right"]].set_visible(False)
     ax.text(0.0045, len(names) - 0.35, "正向 = 提议模型更优", fontsize=7.5, color="0.3")
-    final(fig, "fig3_11_bootstrap_difference", (6.8, 3.2))
+    final(fig, "fig3_13_bootstrap_difference", (6.8, 3.2))
 
 
 # ========== ③ α 混合系数收敛曲线 ==========

@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "checks": {
+    "pdf_pages": 105,
+    "source_toc_entries": 121,
+    "cached_toc_entries": 121,
+    "body_printed_pages": 95,
+    "body_page_range": [
+      1,
+      95
+    ],
+    "english_abstract_single_page_with_keywords": true,
+    "abstracts_on_separate_pages": true,
+    "all_cached_toc_entries_match_source_and_mapped_body_page": true
+  },
+  "errors": [],
+  "docx_sha256": "7534bddacd60634e49c5cb4a652b73851d9f012b2dbf24a3df9e2ee1f48d6c60",
+  "manuscript_sha256": "4fe50a9e6631c95868531aa3c33767f1dd389589a4b015e3f7cc4b942787c70b",
+  "pdf_sha256": "3b54264c2cf6bd92b52210df5e824975e1dfc5348af99cfa5378efbf60883981",
+  "method": "WPS-exported A4 PDF, pdftotext -layout; compare all 121 cached TOC headings with source headings and verify each heading on its mapped Arabic-numbered body page."
+}

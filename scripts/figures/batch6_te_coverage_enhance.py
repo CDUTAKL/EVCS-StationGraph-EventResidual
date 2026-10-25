@@ -45,6 +45,12 @@ FIG_DIR = Path("outputs/figures")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
 
 setup_style(journal="general", lang="zh")
+plt.rcParams.update({
+    "font.family": "sans-serif",
+    "font.sans-serif": ["Hiragino Sans GB", "Arial", "DejaVu Sans", "sans-serif"],
+    "svg.fonttype": "none",
+    "pdf.fonttype": 42,
+})
 # 素雅配色
 BLUE = "#2C5F8A"      # 深蓝（j→i 主导 / 分层共形）
 ORANGE = "#D08A3C"    # 低饱和橙（i→j 主导）
@@ -60,7 +66,7 @@ def final(fig, name: str, size: tuple[float, float]) -> None:
 
     输入：fig（绘制完成的 Figure）、name（不含扩展名的文件名）、
           size=(宽, 高)/英寸，取论文版心宽 5.59 in，使 fontsize 即纸面字号。
-    输出：outputs/figures/<name>.svg 与 <name>.png（1200 DPI）。
+    输出：outputs/figures/<name>.svg、.pdf 与 .png（PNG为1200 DPI）。
     边界：bbox_inches="tight" 会把画布裁到内容外框，成品宽度随之小于 size；
           这里先铺一层覆盖整张画布的隐形矩形（figure 级 artist，计入 tight bbox），
           并令 pad_inches=0，导出尺寸才严格等于 size。SVG 中 matplotlib 会写出行尾
@@ -71,7 +77,7 @@ def final(fig, name: str, size: tuple[float, float]) -> None:
                              facecolor="none", edgecolor="none", linewidth=0.0))
     export_figure(
         fig, basename=str(FIG_DIR / name),
-        formats=["svg", "png"], dpi=1200, size_inches=size,
+        formats=["svg", "png", "pdf"], dpi=1200, size_inches=size,
         grayscale_preview=False, pad_inches=0.0,
     )
     svg_path = FIG_DIR / f"{name}.svg"
@@ -123,8 +129,9 @@ def fig5_3_asymmetry() -> None:
     # 轴上限留 15% 余量，使 45° 线端点与最外侧散点之间仍有余量
     axis_limit = float(max(xs.max(), ys.max())) * 1.15
     d = ys - xs                       # 符号化距离：正 = j→i 主导
-    asym = np.divide(np.abs(d), np.maximum(xs, ys),
-                     out=np.zeros_like(d), where=np.maximum(xs, ys) > 0)
+    denom = xs + ys
+    asym = np.divide(np.abs(d), denom + 1e-12,
+                     out=np.zeros_like(d), where=denom > 0)
     avg = (xs + ys) / 2.0              # 点面积编码：双向平均 TE（绝对强度）
     asym_threshold = 0.30              # 与正文 ASYM > 0.3 的判定阈值一致
     both_sig = np.array([(a, b) in sig_pairs and (b, a) in sig_pairs for a, b in pairs])
@@ -144,8 +151,8 @@ def fig5_3_asymmetry() -> None:
     # 对称带取 ASYM <= 阈值的比例边界而非固定绝对差带：y >= x 时 y <= x/(1-阈值)，
     # y < x 时 y >= (1-阈值)x，带内即 ASYM <= 0.30。
     line_x = np.linspace(0, axis_limit, 200)
-    lower = (1.0 - asym_threshold) * line_x
-    upper = line_x / (1.0 - asym_threshold)
+    lower = ((1.0 - asym_threshold) / (1.0 + asym_threshold)) * line_x
+    upper = ((1.0 + asym_threshold) / (1.0 - asym_threshold)) * line_x
     ax.fill_between(line_x, lower, upper, color="#DCE4EA", alpha=0.55, lw=0, zorder=1)
     ax.plot(line_x, lower, color=GRAY_L, lw=0.7, ls=(0, (1.5, 1.5)), zorder=2)
     ax.plot(line_x, upper, color=GRAY_L, lw=0.7, ls=(0, (1.5, 1.5)), zorder=2)
@@ -153,8 +160,8 @@ def fig5_3_asymmetry() -> None:
 
     # 类别 = (图例名, 颜色, 掩码)；空掩码直接 continue，既不画点也不进图例。
     categories = [
-        ("j→i 主导",  BLUE,   (asym > asym_threshold) & (d > 0)),
-        ("i→j 主导",  ORANGE, (asym > asym_threshold) & (d < 0)),
+        ("TE(j→i)较大",  BLUE,   (asym > asym_threshold) & (d > 0)),
+        ("TE(i→j)较大",  ORANGE, (asym > asym_threshold) & (d < 0)),
         ("近似对称（ASYM≤0.30）", GRAY_M, asym <= asym_threshold),
     ]
     sizes = 18.0 + 95.0 * avg / avg.max()
@@ -171,7 +178,7 @@ def fig5_3_asymmetry() -> None:
                    markeredgecolor=color, markersize=5, label=label))
     if drawn != xs.size:
         raise ValueError(f"分类未覆盖全部节点对：绘制 {drawn} / 共 {xs.size}")
-    # 图例按列优先填充（ncol=3）：与参考线交错后，上行是三类方向、下行是两条参考线
+    # 图例按列优先填充（ncol=3）：与参考线交错后，上行是三类描述性读数区间、下行是两条参考线
     ref_handles = [
         Line2D([0], [0], color=GRAY_D, lw=1.0, ls="--", label="双向相等"),
         Line2D([0], [0], color=GRAY_L, lw=0.9, ls=(0, (1.5, 1.5)), label="ASYM = 0.30 边界"),

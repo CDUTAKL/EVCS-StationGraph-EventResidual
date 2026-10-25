@@ -1,0 +1,385 @@
+{
+  "schema_version": 1,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "EVCS-CONTENT-20261009-FORMAL",
+  "assessment_kind": "formal",
+  "review_date": "2026-10-09",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "EVCS-CONTENT-20261009",
+    "manuscript_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/thesis-manuscript.md",
+    "manuscript_sha256": "25fe77154070100c565dbf355fe2555cbdaf873a4398df9808f1277a043161e2",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "evidence": [
+      {
+        "id": "E01",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/thesis-manuscript.md",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "25fe77154070100c565dbf355fe2555cbdaf873a4398df9808f1277a043161e2"
+      },
+      {
+        "id": "E04",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/SG-EXP-028-analysis/model_summary.csv",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "cc78a8802cec9e63a731cbf5b2c538dba44617308ba0419b24951eb70e7341bc"
+      },
+      {
+        "id": "E05",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/SG-EXP-028-analysis/paired_intervals.csv",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "8c0b44d1acd30cf5d6a61855f31dadf70369f7b9b35691f060509ff68f237682"
+      },
+      {
+        "id": "E06",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-027-time-block/summary.json",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "352630aed417d31b1caa51eb5ee523bfab4601486afd74859429539198a90023"
+      },
+      {
+        "id": "E07",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-025-rolling-calibration/summary.csv",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "3a326ec866b4f8ad792c84880dac407e37e39b9094bf72edec3975ea815877d0"
+      },
+      {
+        "id": "E08",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-020-legacy-evidence-v1/four_cell_summary.csv",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "31529ce47664302a89e9e394ab0475309aae759d22bbb5750389fd0d7891f210"
+      },
+      {
+        "id": "E09",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-024-026-no-training-supplement.md",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "d7eec350e2fbf366b5a21e5e8d44bfd4c9bd23ae8e38236c875c537543cd7f21"
+      },
+      {
+        "id": "E10",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-027-paired-gate-control-report.md",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "8d219e2b0a76a6adcaf153dc9a6e7f5dd35c98c6fecab57d9f07ea424fcb0511"
+      },
+      {
+        "id": "E11",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-023-independent-calibration.md",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "9dcacb950e49188e11ae6bf0d557e9ef81b5a11dc396789264be4dd18e43ccfe"
+      },
+      {
+        "id": "E12",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-019-eventtime-v1-phase2.md",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "74fed15df3e44b25c06eacdfc19b97473a4e0e2e96d9826b38268d17d308893b"
+      },
+      {
+        "id": "E13",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md",
+        "locator": "主稿：全文及下列分项章节；实验报告：全文；CSV/JSON：汇总行、对照差值与区间字段",
+        "reviewed": true,
+        "sha256": "edf3f29b5fd1675d7f139b15c431280fef8a0f691b9505985f3e4a1cb67ebc06"
+      },
+      {
+        "id": "E20",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009/integrity-review.md",
+        "locator": "全文：主线、旧稿比较与来源核查",
+        "reviewed": true
+      },
+      {
+        "id": "E21",
+        "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009/numeric-check.json",
+        "locator": "JPL、四格与滚动校准的汇总算术核对",
+        "reviewed": true
+      }
+    ]
+  },
+  "reviewer_reports": [
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009/reviewer-methods.md",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009/reviewer-application.md",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009/reviewer-structure.md"
+  ],
+  "forensic_report": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009/forensic-review.md",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": 4.5,
+      "manuscript_location": "1.1；2.1、2.3",
+      "evidence_ids": [
+        "E01"
+      ],
+      "rationale": "节点异质性与稀疏性有数据支撑，问题具体。实际业务损失及受益规模尚未量化，保留0.5分缺口。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。",
+        "evidence_ids": [
+          "E01"
+        ]
+      }
+    },
+    {
+      "id": "BR-02",
+      "score": 4.5,
+      "manuscript_location": "题目；1.4—1.6；3.8；4.1；结论",
+      "evidence_ids": [
+        "E01",
+        "E20"
+      ],
+      "rationale": "题目、两项贡献及结论基本一致，代理量与场站内重拟合边界清楚。机制诊断中受限蒸馏与结构可替代问题衔接仍不充分，得4.5分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。",
+        "evidence_ids": [
+          "E01",
+          "E20"
+        ]
+      }
+    },
+    {
+      "id": "BR-03",
+      "score": 4,
+      "manuscript_location": "1.2及表1-1；3.5.8",
+      "evidence_ids": [
+        "E01",
+        "E20"
+      ],
+      "rationale": "文献覆盖和五项近邻的多维比较已足以形成较清楚的定位；主要依赖摘要或页面，缺关系融合、节点更新及诊断流程的近邻原文论证，尚不能进入强档。综合定为4分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。",
+        "evidence_ids": [
+          "E01",
+          "E20"
+        ]
+      }
+    },
+    {
+      "id": "BR-04",
+      "score": 4.5,
+      "manuscript_location": "2.1；3.3—3.5；4.2.5；5.3.6—5.3.7；5.5",
+      "evidence_ids": [
+        "E01",
+        "E09",
+        "E11"
+      ],
+      "rationale": "代理能量、图算子、门控、重参数化、共形秩和计划单位基本正确。TE的分箱、零值与线性假设解释仍有局部缺口。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。",
+        "evidence_ids": [
+          "E01",
+          "E09",
+          "E11"
+        ]
+      }
+    },
+    {
+      "id": "BR-05",
+      "score": 8,
+      "manuscript_location": "表2-2；3.6.2—3.6.3；3.7.1；4.3.3",
+      "evidence_ids": [
+        "E01",
+        "E10",
+        "E12",
+        "E13"
+      ],
+      "rationale": "同参数门控、配对初始化、输入权限拆分和JPL预登记对照适合限定问题。行为输入下界、容量匹配比较、受控蒸馏及训练预算敏感性未齐，得8分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。",
+        "evidence_ids": [
+          "E01",
+          "E10",
+          "E12",
+          "E13"
+        ]
+      }
+    },
+    {
+      "id": "BR-06",
+      "score": 4.5,
+      "manuscript_location": "2.1—2.2；表3-1—3-3、3-9、3-10；五份实验报告",
+      "evidence_ids": [
+        "E01",
+        "E10",
+        "E12",
+        "E13",
+        "E21"
+      ],
+      "rationale": "核心数据划分、种子、预测键、配置及结果记录可追溯，报告与源表一致。旧套件协议索引和硬件记录仍需补清；本轮未重跑原始逐键预测，不将核看范围不足等同产物缺失。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。",
+        "evidence_ids": [
+          "E01",
+          "E10",
+          "E12",
+          "E13",
+          "E21"
+        ]
+      }
+    },
+    {
+      "id": "BR-07",
+      "score": 9,
+      "manuscript_location": "2.1.2；3.6—3.7；4.2—4.4；5.3",
+      "evidence_ids": [
+        "E01",
+        "E09",
+        "E10",
+        "E12",
+        "E13"
+      ],
+      "rationale": "数据审计、36次事件协议、6次配对门控、12次JPL训练及诊断校准体现充分研究工作和问题解决能力。给强档9分；支线未完成不自动成为核心工作无效的理由。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。",
+        "evidence_ids": [
+          "E01",
+          "E09",
+          "E10",
+          "E12",
+          "E13"
+        ]
+      }
+    },
+    {
+      "id": "BR-08",
+      "score": 8,
+      "manuscript_location": "表3-2、3-3、3-9、3-12；4.3.3；5.3",
+      "evidence_ids": [
+        "E01",
+        "E04",
+        "E05",
+        "E06",
+        "E07",
+        "E08",
+        "E21"
+      ],
+      "rationale": "两场站同参数门控及JPL整体MAE有直接一致证据。组件独立增量、诊断跨站复现、新确认时期和事件可靠性证据不足，整体MAE优势不能扩展至全指标领先。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。",
+        "evidence_ids": [
+          "E01",
+          "E04",
+          "E05",
+          "E06",
+          "E07",
+          "E08",
+          "E21"
+        ]
+      }
+    },
+    {
+      "id": "BR-09",
+      "score": 9,
+      "manuscript_location": "3.6.1—3.6.4；3.7.1；4.2.5；4.3.3；5.3；结论",
+      "evidence_ids": [
+        "E01",
+        "E05",
+        "E06",
+        "E11",
+        "E20"
+      ],
+      "rationale": "明确区分探索与确认、固定种子条件区间与训练不确定性，披露负结果和多重比较限制；未将参数干预写成因果、回放写成未见时期保证。缺进一步统计证据主要计入设计和结果，本项评价解释的准确性，定9分。",
+      "na_reason": null,
+      "change": {
+        "type": "unchanged",
+        "reason": "与已导入10月8日评分一致；现稿与该次评分稿件哈希相同。",
+        "evidence_ids": [
+          "E01",
+          "E05",
+          "E06",
+          "E11",
+          "E20"
+        ]
+      }
+    },
+    {
+      "id": "BR-10",
+      "score": 7.5,
+      "manuscript_location": "1.4；3.5.8；3.7；3.8；4.1—4.4",
+      "evidence_ids": [
+        "E01",
+        "E06",
+        "E13",
+        "E20"
+      ],
+      "rationale": "节点差异门控有受控可复查增量，MDP组织能纠正过度解释，属于可信硕士组合贡献。模块首创、所有组件必要性和诊断流程独立优势未获验证，定7.5分。",
+      "na_reason": null,
+      "change": {
+        "type": "recalibration",
+        "reason": "旧评阅对组合贡献的认可不足；本轮按可信增量锚点，将同参数门控与有边界的诊断组织计为7.5分。",
+        "evidence_ids": [
+          "E01",
+          "E06",
+          "E13",
+          "E20"
+        ]
+      }
+    },
+    {
+      "id": "BR-11",
+      "score": 3.5,
+      "manuscript_location": "2.1.2；5.5",
+      "evidence_ids": [
+        "E01",
+        "E09"
+      ],
+      "rationale": "代理量审计、负荷到容量接口及合成约束展示具有专业意义。真实电表、站级容量、请求、价格和效益评价仍缺，定3.5分；不认可现场收益已成立。",
+      "na_reason": null,
+      "change": {
+        "type": "recalibration",
+        "reason": "旧评阅仅按现场验证不足计3分；本轮同时计入代理量审计与条件性运行接口的已有专业成果，定3.5分。",
+        "evidence_ids": [
+          "E01",
+          "E09"
+        ]
+      }
+    },
+    {
+      "id": "BR-12",
+      "score": 8.5,
+      "manuscript_location": "摘要；1.2；3.5.9—3.5.10；3.6；3.9；5.4；结论",
+      "evidence_ids": [
+        "E01",
+        "E20"
+      ],
+      "rationale": "正文已优先组织行为输入和JPL证据，并以证据强度表约束贡献，第5章部分重复已压缩。模型路径与限制仍重复，摘要、章末及结论的证据优先级不完全一致，定8.5分；未评学校版式。",
+      "na_reason": null,
+      "change": {
+        "type": "recalibration",
+        "reason": "旧評阅对已完成证据重排与重复压缩的认可不足；本轮按可读性和剩余重复程度定8.5分。",
+        "evidence_ids": [
+          "E01",
+          "E20"
+        ]
+      }
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "非学校官方评分，不能映射官方评阅结论。",
+    "三份报告来自隔离的AI评阅视角，不等于三位真人或统计独立样本；最终不是机械平均。",
+    "实际完成全文阅读、指定实验材料核查及汇总算术复算；未重训、未重跑原始逐键预测或Bootstrap，未完成91条引文全文核验。",
+    "当前Markdown、DOCX及13项既有证据与10月8日相同；变化只能解释为评分校准。",
+    "学校版式、封面、目录、分页和逐图视觉验收不计入本次内容评分。"
+  ]
+}

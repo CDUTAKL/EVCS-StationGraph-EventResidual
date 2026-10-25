@@ -1,0 +1,241 @@
+{
+  "status": "PARTIAL",
+  "scope": "MAE mean and sample SD only; other metrics are checked per run separately",
+  "input_kind": "checkpoint-forward metrics",
+  "cells": [
+    {
+      "component": "sg019",
+      "model": "agcrn_full",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.03743,
+      "paper_sample_sd": 0.00022,
+      "decimal_places": 5,
+      "replay_mean": 0.037433964893065774,
+      "replay_sample_sd": 0.00022418866548012365,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "mrg_equal_beta",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.03862,
+      "paper_sample_sd": 0.00028,
+      "decimal_places": 5,
+      "replay_mean": 0.03862427846805671,
+      "replay_sample_sd": 0.00028364150187459505,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "mrg_full",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.0389,
+      "paper_sample_sd": 0.0001,
+      "decimal_places": 5,
+      "replay_mean": 0.038901025778073736,
+      "replay_sample_sd": 0.00010288513932660693,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "mrg_no_skip",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.039,
+      "paper_sample_sd": 0.00051,
+      "decimal_places": 5,
+      "replay_mean": 0.039002601950081206,
+      "replay_sample_sd": 0.0005130951878664008,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "mrg_no_refine",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.03931,
+      "paper_sample_sd": 0.00031,
+      "decimal_places": 5,
+      "replay_mean": 0.039314287441490035,
+      "replay_sample_sd": 0.0003087121644624769,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "mrg_pattern",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.03948,
+      "paper_sample_sd": 0.00031,
+      "decimal_places": 5,
+      "replay_mean": 0.039481446947133896,
+      "replay_sample_sd": 0.00030895912647460193,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "mrg_fixed_gate",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.04111,
+      "paper_sample_sd": 0.00147,
+      "decimal_places": 5,
+      "replay_mean": 0.041112532535073486,
+      "replay_sample_sd": 0.0014669365804076886,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "mrg_load",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.04315,
+      "paper_sample_sd": 0.00073,
+      "decimal_places": 5,
+      "replay_mean": 0.04314870501633552,
+      "replay_sample_sd": 0.000731416519252155,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "mrg_event",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.04559,
+      "paper_sample_sd": 0.00027,
+      "decimal_places": 5,
+      "replay_mean": 0.045586302190425886,
+      "replay_sample_sd": 0.00026565194575570134,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "mrg_self_loop",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.0461,
+      "paper_sample_sd": 0.00057,
+      "decimal_places": 5,
+      "replay_mean": 0.04610208322281124,
+      "replay_sample_sd": 0.000570900097938565,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "tcn",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.04629,
+      "paper_sample_sd": 0.00019,
+      "decimal_places": 5,
+      "replay_mean": 0.04628739021984918,
+      "replay_sample_sd": 0.00018917031776042779,
+      "status": "PASS"
+    },
+    {
+      "component": "sg019",
+      "model": "tcn_wide",
+      "paper_location": "表3-2 全局MAE",
+      "paper_mean": 0.04634,
+      "paper_sample_sd": 0.00029,
+      "decimal_places": 5,
+      "replay_mean": 0.046344578199727725,
+      "replay_sample_sd": 0.0002873401068477212,
+      "status": "PASS"
+    },
+    {
+      "component": "sg027",
+      "model": "mrg_full",
+      "paper_location": "表3-9 整体MAE",
+      "paper_mean": 0.038677,
+      "paper_sample_sd": 0.000289,
+      "decimal_places": 6,
+      "replay_mean": 0.038676933225543664,
+      "replay_sample_sd": 0.00028864231754586735,
+      "status": "PASS"
+    },
+    {
+      "component": "sg027",
+      "model": "mrg_shared_gate",
+      "paper_location": "表3-9 整体MAE",
+      "paper_mean": 0.039744,
+      "paper_sample_sd": 0.000142,
+      "decimal_places": 6,
+      "replay_mean": 0.039744165635410195,
+      "replay_sample_sd": 0.00014244071451552517,
+      "status": "PASS"
+    },
+    {
+      "component": "sg028",
+      "model": "mrg_full",
+      "paper_location": "表3-3 MAE",
+      "paper_mean": 0.081067,
+      "paper_sample_sd": 0.000304,
+      "decimal_places": 6,
+      "replay_mean": 0.08106701000965179,
+      "replay_sample_sd": 0.0003036242241333455,
+      "status": "PASS"
+    },
+    {
+      "component": "sg028",
+      "model": "tcn_wide",
+      "paper_location": "表3-3 MAE",
+      "paper_mean": 0.083888,
+      "paper_sample_sd": 0.00018,
+      "decimal_places": 6,
+      "replay_mean": 0.08388842417514664,
+      "replay_sample_sd": 0.00017951599351183085,
+      "status": "PASS"
+    },
+    {
+      "component": "sg028",
+      "model": "agcrn_full",
+      "paper_location": "表3-3 MAE",
+      "paper_mean": 0.083268,
+      "paper_sample_sd": 0.000552,
+      "decimal_places": 6,
+      "replay_mean": 0.08326799038521561,
+      "replay_sample_sd": 0.0005515460701160008,
+      "status": "PASS"
+    },
+    {
+      "component": "sg028",
+      "model": "mrg_shared_gate",
+      "paper_location": "表3-3 MAE",
+      "paper_mean": 0.083325,
+      "paper_sample_sd": 0.000713,
+      "decimal_places": 6,
+      "replay_mean": 0.08332544142401664,
+      "replay_sample_sd": 0.000712755728803137,
+      "status": "PASS"
+    },
+    {
+      "component": "legacy",
+      "model": "SG-EXP-003",
+      "paper_location": "表3-4 MAE（仅三模型行）",
+      "paper_mean": 0.01376,
+      "paper_sample_sd": 0.00023,
+      "decimal_places": 5,
+      "replay_mean": 0.01375959244595371,
+      "replay_sample_sd": 0.0002273317194761432,
+      "status": "PASS"
+    },
+    {
+      "component": "legacy",
+      "model": "SG-EXP-002",
+      "paper_location": "表3-4 MAE（仅三模型行）",
+      "paper_mean": 0.02952,
+      "paper_sample_sd": 0.00014,
+      "decimal_places": 5,
+      "replay_mean": 0.029522603684549786,
+      "replay_sample_sd": 0.0001356666667981097,
+      "status": "PASS"
+    },
+    {
+      "component": "legacy",
+      "model": "SG-EXP-004",
+      "paper_location": "表3-4 MAE（仅三模型行）",
+      "paper_mean": 0.01396,
+      "paper_sample_sd": 0.00017,
+      "decimal_places": 5,
+      "replay_mean": 0.014024590334651262,
+      "replay_sample_sd": 0.00020559116242930932,
+      "status": "FAIL"
+    }
+  ],
+  "passed_model_rows": 20,
+  "total_model_rows": 21,
+  "retraining_performed": false
+}

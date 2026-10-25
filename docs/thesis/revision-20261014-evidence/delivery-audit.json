@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "checks": {
+    "38_table_numbers_in_order": true,
+    "caption_3-12": true,
+    "caption_3-13": true,
+    "caption_4-6": true,
+    "caption_4-7": true,
+    "caption_4-8": true,
+    "numeric_632,640": true,
+    "numeric_0.081067±0.000304": true,
+    "numeric_0.088149±0.002406": true,
+    "numeric_1.9493": true,
+    "numeric_10.0810": true,
+    "numeric_80.5953": true,
+    "JPL尚未重做L2学生蒸馏": true,
+    "分析在JPL测试结果已查看后开展": true,
+    "回溯AdaptiveGraph的旧CPU前向差异仍未解决": true,
+    "46_figures_exact_bytes_and_order": true,
+    "native_formula_audit": true,
+    "template_logo_preserved": true,
+    "table_3-12_shape": true,
+    "table_3-13_shape": true,
+    "table_4-6_shape": true,
+    "table_4-7_shape": true,
+    "table_4-8_shape": true
+  },
+  "docx_sha256": "1182efb29a26e9e8f18f1b9ab8c545bcf2bd25eeebd00df5490289e0f6d42156",
+  "manuscript_sha256": "4495426788c75bd9c3fcbc6aa6f11942c08de7203a993e9e5662c98ec192b0b6",
+  "n_figures": 46,
+  "n_tables": 38,
+  "format_scope": "正文、原生公式、图片字节和新增表格内容同步；目录页码沿用旧缓存，WPS分页未重新验收",
+  "template_images": [
+    {
+      "target": "media/image1.wmf",
+      "sha256": "604388725eebada3da81dadc46241692057e8ba179fbde22885f4e204a922a00",
+      "matches_before": true
+    }
+  ]
+}

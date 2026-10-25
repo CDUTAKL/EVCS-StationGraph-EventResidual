@@ -1,0 +1,101 @@
+{
+  "assessment_id": "FORMAL-20261016-REV8",
+  "packet_id": "EVCS-THESIS-REV8-20261016",
+  "artifacts": [
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/README.md",
+      "sha256": "0cd0f190c8886ea3530757f1ad2e9f6d01f53de9b73c665d2b1d824af41c702d",
+      "bytes": 1158
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/evidence-manifest.json",
+      "sha256": "ee0f8d04dea7d4ee86228b1b1b9988270db8ffffca33bcf3a7ee0a00e4174c12",
+      "bytes": 8217
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/scorecard.json",
+      "sha256": "bbb8f16b7d0a155368a517b60fd3179c083c928107a4e6c5f0d5bc348a1a635c",
+      "bytes": 25191
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/scorecard.md",
+      "sha256": "5b9b472a5f8bc72cefd9919757464ac67ba37cad5c29f4b1a57a06f41b2305cd",
+      "bytes": 1887
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/forensic-review.md",
+      "sha256": "bfd18f2de5d7c349cf9b4d63cc0c8664f680c3fa6ec8c49e8dba2d60e3fd0f66",
+      "bytes": 5508
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/review-delta.md",
+      "sha256": "f8a2db5630165e9e6f4edad966a2a0f7767cf1ae85cd96031a483feef608006c",
+      "bytes": 1065
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/score-audit.json",
+      "sha256": "3b3e6aba502365b04bbb02a911110acbb59822c2394114284fa10e7f8dd30420",
+      "bytes": 3952
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/reviewer-integrity.md",
+      "sha256": "c58e0aee7d293babbf4ddafa19b299bf5988df3d24521b43e93c4389602d1a0a",
+      "bytes": 9281
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/reviewer-methods.md",
+      "sha256": "ed33411e4f2f6fa7ecf0bcb34c5c242e57b98a11c569b88de745ba0953a9d7f4",
+      "bytes": 14439
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/reviewer-literature-practice.md",
+      "sha256": "aa108df56451563357e71dd2c67b2f38fccc5362dd883838fddc9725369774c2",
+      "bytes": 14339
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/packet/manuscript-frozen.md",
+      "sha256": "f5ba2ddba9157fa18ea91c93214a375c2422916916125ba0f50a9d5ced228f6e",
+      "bytes": 216953
+    },
+    {
+      "path": "docs/thesis/content-review-20261016-rev8/packet/prior-manuscript-rev7.md",
+      "sha256": "99c5e22c64aa5d46333b727bd6f313a75f4958f1de4dbbf1133ae476f9643419",
+      "bytes": 223626
+    },
+    {
+      "path": "docs/thesis/word-wps-audit-20261016-final/README.md",
+      "sha256": "de19add5424000dd8eabe4f200713f27219ad10fc79822c627dc41048afd94d4",
+      "bytes": 2553
+    },
+    {
+      "path": "outputs/thesis/audits/revision-20261016/delivery-audit.json",
+      "sha256": "a5298947b27fdf7e3f419a1c01e419f736d7a59914859c5e2edf688be8c0f217",
+      "bytes": 4352
+    },
+    {
+      "path": "outputs/thesis/audits/revision-20261016/figure-restoration.json",
+      "sha256": "1fa1871d8f3a451e6fb206d7427cdea2800bca03f851ad2228e7bd79fbef398d",
+      "bytes": 17526
+    },
+    {
+      "path": "outputs/thesis/audits/revision-20261016/figure-sync-audit.json",
+      "sha256": "fadb4cb3cfb6b476f5365ac53e9e23369c707f54f16c787b0bb5e8479031c212",
+      "bytes": 10457
+    },
+    {
+      "path": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+      "sha256": "16d125f2b059a3f7d961ddd2b616832e2c11834e0a6430cabae6715342f1a76c",
+      "bytes": 116355374
+    },
+    {
+      "path": "outputs/thesis/audits/revision-20261016/docx-content-audit.json",
+      "sha256": "9b5185cca32fd714d5b6197f85a370e9ed04211e804e33467444c44a473ac26f",
+      "bytes": 1369
+    },
+    {
+      "path": "scripts/audit_checkpoint_docx_delivery.py",
+      "sha256": "dbd53edc2f606db774bdfbc564f9643f721c7fd2f1ca585824624af158c71c6d",
+      "bytes": 2910
+    }
+  ]
+}

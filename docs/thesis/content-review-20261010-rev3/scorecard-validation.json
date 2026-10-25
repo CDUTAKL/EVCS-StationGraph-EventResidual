@@ -1,0 +1,116 @@
+{
+  "assessment_id": "EVCS-CONTENT-20261010-REV3-FORMAL",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 77.0,
+  "raw_maximum": 90.0,
+  "normalized_score": 85.56,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "EVCS-CONTENT-20261009-REV2-FORMAL",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 0.56,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-02",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-04",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8.0,
+        "new": 8.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.5,
+        "new": 8.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.0,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-10",
+        "old": 7.0,
+        "new": 7.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.5,
+        "new": 3.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "REV2至REV3的正文差异未改变本项要求对应的科学问题、方法、结果、数值证据或应用证据；沿用同一基线评分锚点。"
+      },
+      {
+        "id": "BR-12",
+        "old": 9.0,
+        "new": 9.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "与REV2冻结稿逐项对照，三个已点名的图表口径、表号和局限重复问题均在当前稿得到可检查修正；无数值或实验变化，只将BR-12提高0.5。"
+      }
+    ]
+  }
+}

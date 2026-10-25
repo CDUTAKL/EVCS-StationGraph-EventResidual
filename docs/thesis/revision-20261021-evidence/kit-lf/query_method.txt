@@ -1,0 +1,7 @@
+Source fields: charging_uuid, timestamp_ns, p_l1_w, p_l2_w, p_l3_w.
+Computed power: p_l1_w + p_l2_w + p_l3_w; source power columns are calculated from measured voltage/current.
+Sampling intervals above 5x each session median were excluded from integration.
+Active-window threshold: total phase power > 100 W.
+Per-session energy integrated trapezoidally; binned relative to the first active sample in 900 s bins.
+Uniform reference preserves the integrated energy and spreads it over the observed active window.
+Comparison is a curve-shape diagnostic only. It does not recreate ACN connection-to-disconnect target labels.

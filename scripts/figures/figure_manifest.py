@@ -25,8 +25,8 @@ OUT = FIG_DIR / "manifest.json"
 SCRIPT_DIR = Path("scripts/figures")
 BUNDLE_PATH = Path("data/processed/SG-DATA-005-primary-tensor.npz")
 
-# 6 个对比模型的 seed-* metrics.json（审查 H2：004 与图 3-1 同口径用正式流水线
-# night_run；008/009/010 仅 experiments 存在；图 3-4/3-8/3-9 共享此输入集合）
+# 6 个对比模型的 seed-* metrics.json；全局MAE、逐步长、分层窗口和逐节点图
+# 使用同一组已登记模型产物，当前对应图3-11、3-12、3-14、3-15。
 MAE_5_MODELS_INPUTS = [
     ("glob", "outputs/night_run/20260730-171821/SG-EXP-002/*/seed-*/metrics.json"),
     ("glob", "outputs/night_run/20260730-171821/SG-EXP-003/*/seed-*/metrics.json"),
@@ -64,20 +64,20 @@ FINAL_SCRIPTS = {
     "fig3_6_gate_residual_detail": "imagegen_priority_registry.py",
     "fig3_7_cross_layer_detail": "imagegen_priority_registry.py",
     "fig3_8_train_predict_pipeline": "imagegen_priority_registry.py",
-    "fig3_9_model_mae_comparison": "batch4_redraw.py",
-    "fig3_10_mae_by_horizon": "refine_requested_20260920.py",
-    "fig3_11_bootstrap_difference": "batch_priority_results.py",
-    "fig3_12_mae_by_window": "batch12_chapter3_extra.py",
-    "fig3_13_mae_by_node": "batch12_chapter3_extra.py",
-    "fig3_14_mechanism_ablation": "batch12_chapter3_extra.py",
-    "fig3_15_jpl_mae_primary": "batch23_jpl_figs.py",
-    "fig3_16_jpl_stratified_mae": "batch23_jpl_figs.py",
+    "fig3_9_jpl_mae_primary": "batch23_jpl_figs.py",
+    "fig3_10_jpl_stratified_mae": "batch23_jpl_figs.py",
+    "fig3_11_model_mae_comparison": "batch4_redraw.py",
+    "fig3_12_mae_by_horizon": "refine_requested_20260920.py",
+    "fig3_13_bootstrap_difference": "batch_priority_results.py",
+    "fig3_14_mae_by_window": "batch12_chapter3_extra.py",
+    "fig3_15_mae_by_node": "batch12_chapter3_extra.py",
+    "fig3_16_mechanism_ablation": "batch12_chapter3_extra.py",
     "fig4_1_three_layer_framework": "imagegen_priority_registry.py",
     "fig4_2_beta_profile": "batch25_beta_te_results_20261006.py",
     "fig4_3_intervention": "batch5_restyle.py",
-    "fig4_4_four_cell": "redraw_fig4_4_result_style_20260911.py",
-    "fig4_5_residual_distribution": "batch_priority_results.py",
-    "fig4_6_error_vs_event_intensity": "refine_requested_20260920.py",
+    "fig4_5_four_cell": "redraw_fig4_4_result_style_20260911.py",
+    "fig4_6_residual_distribution": "batch_priority_results.py",
+    "fig4_7_error_vs_event_intensity": "refine_requested_20260920.py",
     "fig5_1_te_pcmci_flow": "imagegen_priority_registry.py",
     "fig5_2_transfer_entropy": "batch25_beta_te_results_20261006.py",
     "fig5_3_asymmetry": "batch6_te_coverage_enhance.py",
@@ -86,7 +86,7 @@ FINAL_SCRIPTS = {
     "fig5_6_conformal_method": "imagegen_priority_registry.py",
     "fig5_7_coverage": "batch6_te_coverage_enhance.py",
     "fig5_8_quantile_per_node": "batch9_advisor_redraw.py",
-    "fig5_9_parameter_intervention": "batch5_restyle.py",
+    "fig4_4_parameter_intervention": "batch5_restyle.py",
 }
 
 # 仅保留PNG的示意图：其余正式数据图登记SVG与PNG两种格式。
@@ -159,7 +159,16 @@ INPUTS_BY_FIGURE = {
         Path("docs/thesis/JPL-validation-freeze-20261005.json"),
         Path("docs/thesis/experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md"),
     ],
-    "fig3_9_model_mae_comparison": [
+    "fig3_9_jpl_mae_primary": [
+        Path("outputs/SG-EXP-028-analysis/per_seed.csv"),
+        Path("outputs/SG-EXP-028-analysis/paired_intervals.csv"),
+        Path("outputs/SG-EXP-028-analysis/model_summary.csv"),
+    ],
+    "fig3_10_jpl_stratified_mae": [
+        Path("outputs/SG-EXP-028-analysis/per_seed.csv"),
+        Path("outputs/SG-EXP-028-analysis/model_summary.csv"),
+    ],
+    "fig3_11_model_mae_comparison": [
         Path("outputs/analysis/traditional_baselines/formal_baselines_locked.json"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-002/*/seed-*/metrics.json"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-003/*/seed-*/metrics.json"),
@@ -184,22 +193,13 @@ INPUTS_BY_FIGURE = {
         Path("outputs/figures/fig3_5_lre_matrices_alignment_audit.json"),
         Path("outputs/figures/fig3_5_lre_matrices_source.json"),
         Path("outputs/figures/fig3_5_lre_matrices_source.csv")],
-    "fig3_10_mae_by_horizon": MAE_5_MODELS_INPUTS,
-    "fig3_11_bootstrap_difference": [Path("outputs/analysis/bootstrap_significance.json")],
-    "fig3_12_mae_by_window": MAE_5_MODELS_INPUTS,
-    "fig3_13_mae_by_node": MAE_5_MODELS_INPUTS,
-    "fig3_14_mechanism_ablation": [
+    "fig3_12_mae_by_horizon": MAE_5_MODELS_INPUTS,
+    "fig3_13_bootstrap_difference": [Path("outputs/analysis/bootstrap_significance.json")],
+    "fig3_14_mae_by_window": MAE_5_MODELS_INPUTS,
+    "fig3_15_mae_by_node": MAE_5_MODELS_INPUTS,
+    "fig3_16_mechanism_ablation": [
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-006/*/children/SG-EXP-006-ablation-*/*/seed-*/metrics.json"),
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/metrics.json"),
-    ],
-    "fig3_15_jpl_mae_primary": [
-        Path("outputs/SG-EXP-028-analysis/per_seed.csv"),
-        Path("outputs/SG-EXP-028-analysis/paired_intervals.csv"),
-        Path("outputs/SG-EXP-028-analysis/model_summary.csv"),
-    ],
-    "fig3_16_jpl_stratified_mae": [
-        Path("outputs/SG-EXP-028-analysis/per_seed.csv"),
-        Path("outputs/SG-EXP-028-analysis/model_summary.csv"),
     ],
     "fig3_6_gate_residual_detail": [],
     "fig3_7_cross_layer_detail": [
@@ -216,16 +216,16 @@ INPUTS_BY_FIGURE = {
         Path("outputs/figures/fig4_2_beta_profile_source.json"),
     ],
     "fig4_3_intervention": [Path("outputs/analysis/gate_intervention/intervention_summary.json")],
-    "fig4_4_four_cell": [
+    "fig4_5_four_cell": [
         Path("outputs/analysis/SG-EXP-020-legacy-evidence-v1/four_cell_summary.csv"),
         Path("outputs/analysis/SG-EXP-020-legacy-evidence-v1/four_cell_per_seed.csv"),
     ],
-    "fig4_5_residual_distribution": [
+    "fig4_6_residual_distribution": [
         ("glob", "outputs/experiments/SG-EXP-009/*/seed-2024/predictions.csv.gz"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-002/*/seed-2024/predictions.csv.gz"),
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-003/*/seed-2024/predictions.csv.gz"),
     ],
-    "fig4_6_error_vs_event_intensity": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/predictions.csv.gz")],
+    "fig4_7_error_vs_event_intensity": [Path("outputs/experiments/SG-EXP-004/20260731-102456/seed-2024/predictions.csv.gz")],
     "fig5_1_te_pcmci_flow": [
         Path("docs/thesis/seven-figure-refresh-20261006-imagegen.json"),
         Path("outputs/figures/fig5_1_te_pcmci_flow_source.json"),
@@ -245,7 +245,7 @@ INPUTS_BY_FIGURE = {
     "fig5_6_conformal_method": [],
     "fig5_7_coverage": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
     "fig5_8_quantile_per_node": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
-    "fig5_9_parameter_intervention": [
+    "fig4_4_parameter_intervention": [
         Path("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json"),
     ],
 }

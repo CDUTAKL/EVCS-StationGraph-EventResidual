@@ -1,0 +1,142 @@
+{
+  "audit_id": "EPFL-PROXY-SHAPE-V2-20261022",
+  "evidence_level": "EXPLORATORY",
+  "protocol": {
+    "path": "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-protocol.md",
+    "preserved_v1": "docs/thesis/revision-20261021-evidence/epfl-proxy-audit-protocol.md",
+    "sha256": "7295655ddb23d8602a40ddf277a94e09087f75009b57e46ca8143d9e4fe76075"
+  },
+  "sources": {
+    "session": {
+      "path": "data/external/epfl-l3-20261021/Session_data.xlsx",
+      "bytes": 204514,
+      "sha256": "b886943bf86520f24f5a53870886c4c43709d265cbebdd65e1345321e22cc192",
+      "expected_sha256": "b886943bf86520f24f5a53870886c4c43709d265cbebdd65e1345321e22cc192",
+      "hash_match": true
+    },
+    "measurement": {
+      "path": "data/external/epfl-l3-20261021/Measurement_data.xlsx",
+      "bytes": 23558382,
+      "sha256": "a0a489e2897ec79235ed914376ab7751ab21c68418543234a60042eaee73a89c",
+      "expected_sha256": "a0a489e2897ec79235ed914376ab7751ab21c68418543234a60042eaee73a89c",
+      "hash_match": true
+    }
+  },
+  "structure": {
+    "session_sheets": [
+      {
+        "sheet": "Session_data",
+        "rows": 1878
+      }
+    ],
+    "session_rows": 1878,
+    "measurement_sheets": [
+      {
+        "sheet": "CCS1",
+        "rows": 646680
+      },
+      {
+        "sheet": "CCS2",
+        "rows": 646680
+      }
+    ],
+    "measurement_rows": 1293360,
+    "session_columns": {
+      "session": 0,
+      "ccs": 1,
+      "arrival": 2,
+      "departure": 3,
+      "energy": 5
+    },
+    "measurement_columns": {
+      "timestamp": 0,
+      "ccs": 1,
+      "session": 2,
+      "power": 3,
+      "energy": 9
+    }
+  },
+  "join": {
+    "key": [
+      "CCS",
+      "Arrival",
+      "Departure"
+    ],
+    "energy_in_key": false,
+    "session_id_used_as_cross_table_key": false,
+    "session_rows_parsed": 1878,
+    "measurement_groups_parsed": 1878,
+    "one_to_one_matched_pairs": 1878,
+    "matched_pairs_by_ccs": {
+      "CCS1": 1129,
+      "CCS2": 749
+    }
+  },
+  "exclusions": {
+    "measurement_rows_without_session": 1231544,
+    "matched_duration_below_15min": 258
+  },
+  "coverage": {
+    "rule": "start at Arrival, 60 s steps, end at Departure",
+    "eligible_sessions": 1620,
+    "excluded_after_matching": 258
+  },
+  "energy_diagnostics": {
+    "note": "Closure/amplitude only; not calibration or a shape gate.",
+    "p_integral_over_session_energy": {
+      "n": 1620,
+      "median": 1.1492459456886288,
+      "q1": 1.1373339070418182,
+      "q3": 1.1627002367065913,
+      "iqr": 0.025366329664773035,
+      "mean": 1.1534078205356193
+    },
+    "cumulative_energy_delta_over_session_energy": {
+      "n": 1620,
+      "median": 0.9943458271394544,
+      "q1": 0.9851445246260627,
+      "q3": 0.9997569817054004,
+      "iqr": 0.01461245707933767,
+      "mean": 0.9906471870010676
+    },
+    "sessions_with_cumulative_energy_delta": 1620
+  },
+  "shape": {
+    "metric": "total_variation_distance",
+    "evidence_level": "EXPLORATORY",
+    "status": "COMPUTED",
+    "equal_session": {
+      "n": 1620,
+      "median": 0.07360134856713525,
+      "q1": 0.030848033751203173,
+      "q3": 0.12762192780367082,
+      "iqr": 0.09677389405246764,
+      "mean": 0.08867250208225883
+    },
+    "by_ccs": {
+      "CCS1": {
+        "n": 973,
+        "median": 0.0741133553924361,
+        "q1": 0.03159679216737703,
+        "q3": 0.12829038091607037,
+        "iqr": 0.09669358874869334,
+        "mean": 0.0897455342777673
+      },
+      "CCS2": {
+        "n": 647,
+        "median": 0.07204271622416172,
+        "q1": 0.030108983114664596,
+        "q3": 0.12609439662031358,
+        "iqr": 0.09598541350564899,
+        "mean": 0.08705880760586047
+      }
+    }
+  },
+  "interpretation_limits": [
+    "Exploratory only; not calibration, ACN target error, model validation, or operational benefit.",
+    "Naive wall-clock timestamps; not asserted UTC or confirmed DST.",
+    "P meter boundary and timestamp semantics are unresolved in the source.",
+    "Only two CCS ports; no ACN ten-node mapping, station graph, or 96x10x7 contract."
+  ],
+  "status": "SHAPE_COMPUTED_EXPLORATORY"
+}

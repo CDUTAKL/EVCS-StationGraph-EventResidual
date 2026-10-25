@@ -513,139 +513,7 @@
     },
     {
       "figure": "图3-9",
-      "path": "outputs/figures/fig3_9_model_mae_comparison.png",
-      "width_cm": 14.2,
-      "source_size_px": [
-        6727,
-        4999
-      ],
-      "delivery_size_px": [
-        6727,
-        4999
-      ],
-      "effective_dpi": 1203.2802816901408,
-      "metadata_dpi": [
-        1199.9976,
-        1199.9976
-      ],
-      "method": "native pixels; added 1200 dpi metadata",
-      "source_sha256": "6a11c04dc6caec115e93fff71f2cca0ad0613ea6cc68e0ef1c729269638c6928",
-      "delivery_sha256": "6a83d66a91700ead8bd9fecea999ec86e0a2acbdfab81ffc7d94da53f350a6ee",
-      "companion_svg": "outputs/figures/fig3_9_model_mae_comparison.svg"
-    },
-    {
-      "figure": "图3-10",
-      "path": "outputs/figures/fig3_10_mae_by_horizon.png",
-      "width_cm": 14.2,
-      "source_size_px": [
-        9000,
-        4920
-      ],
-      "delivery_size_px": [
-        9000,
-        4920
-      ],
-      "effective_dpi": 1609.8591549295777,
-      "metadata_dpi": [
-        1199.9976,
-        1199.9976
-      ],
-      "method": "native pixels; added 1200 dpi metadata",
-      "source_sha256": "7936eb2dd5dae16edbe85b6499f2b7c8a143bdfb4045ab8901273387923cffeb",
-      "delivery_sha256": "2c6ee50c584390cc2962caac995091a8053692c7b8ac9f34daa112627f922bbb",
-      "companion_svg": "outputs/figures/fig3_10_mae_by_horizon.svg"
-    },
-    {
-      "figure": "图3-11",
-      "path": "outputs/figures/fig3_11_bootstrap_difference.png",
-      "width_cm": 14.2,
-      "source_size_px": [
-        6847,
-        5778
-      ],
-      "delivery_size_px": [
-        6847,
-        5778
-      ],
-      "effective_dpi": 1224.7450704225353,
-      "metadata_dpi": [
-        1199.9976,
-        1199.9976
-      ],
-      "method": "native pixels; added 1200 dpi metadata",
-      "source_sha256": "5f2908c7d145bf6a3269754e614d8bd12a107b81399506f679271680bb9ba0f6",
-      "delivery_sha256": "2a131d89ed69cff53d18529636fd473c21473732051e8b88cea52cc9e0bedd87",
-      "companion_svg": "outputs/figures/fig3_11_bootstrap_difference.svg"
-    },
-    {
-      "figure": "图3-12",
-      "path": "outputs/figures/fig3_12_mae_by_window.png",
-      "width_cm": 14.2,
-      "source_size_px": [
-        6727,
-        3799
-      ],
-      "delivery_size_px": [
-        6727,
-        3799
-      ],
-      "effective_dpi": 1203.2802816901408,
-      "metadata_dpi": [
-        1199.9976,
-        1199.9976
-      ],
-      "method": "native pixels; added 1200 dpi metadata",
-      "source_sha256": "2d0484eaddec24eec480ab1a0f64ece39b6730fc656ae1758fa0e158d0f73d62",
-      "delivery_sha256": "e1aadffdfa84e3db6565dea8ba96bc86e83f3c03b47937f28a78b189d1305837",
-      "companion_svg": "outputs/figures/fig3_12_mae_by_window.svg"
-    },
-    {
-      "figure": "图3-13",
-      "path": "outputs/figures/fig3_13_mae_by_node.png",
-      "width_cm": 14.2,
-      "source_size_px": [
-        6695,
-        4410
-      ],
-      "delivery_size_px": [
-        6709,
-        4419
-      ],
-      "effective_dpi": 1200.0605633802818,
-      "metadata_dpi": [
-        1199.9976,
-        1199.9976
-      ],
-      "method": "rasterized from companion SVG at target dimensions",
-      "source_sha256": "a1670cde16a0bf6835378a24e268322b11938af509ea7912782c8ed13897b63e",
-      "delivery_sha256": "cc53753281938c43670b8f91dd65017997a70a93c50956848f198ba054b2658a",
-      "companion_svg": "outputs/figures/fig3_13_mae_by_node.svg"
-    },
-    {
-      "figure": "图3-14",
-      "path": "outputs/figures/fig3_14_mechanism_ablation.png",
-      "width_cm": 14.2,
-      "source_size_px": [
-        6727,
-        3799
-      ],
-      "delivery_size_px": [
-        6727,
-        3799
-      ],
-      "effective_dpi": 1203.2802816901408,
-      "metadata_dpi": [
-        1199.9976,
-        1199.9976
-      ],
-      "method": "native pixels; added 1200 dpi metadata",
-      "source_sha256": "5f2042e941db4dd123be39dffef7a74a8804f705984a2ecc469a81b4e37fbfd7",
-      "delivery_sha256": "86fe3a0ac48225b02a100b8f88f7f475a477b89fa272b2b4bad645c85a234ea4",
-      "companion_svg": "outputs/figures/fig3_14_mechanism_ablation.svg"
-    },
-    {
-      "figure": "图3-15",
-      "path": "outputs/figures/fig3_15_jpl_mae_primary.png",
+      "path": "outputs/figures/fig3_9_jpl_mae_primary.png",
       "width_cm": 14.2,
       "source_size_px": [
         7715,
@@ -663,11 +531,11 @@
       "method": "native pixels; added 1200 dpi metadata",
       "source_sha256": "c687893e281ba4b7ed86b7cec8fece32b85d073b9774151edba5666f8a0d330f",
       "delivery_sha256": "62e8acb39776d1b93fbf9576399d96fb4e2d8d8cad9c7072f67582949c8750e1",
-      "companion_svg": "outputs/figures/fig3_15_jpl_mae_primary.svg"
+      "companion_svg": "outputs/figures/fig3_9_jpl_mae_primary.svg"
     },
     {
-      "figure": "图3-16",
-      "path": "outputs/figures/fig3_16_jpl_stratified_mae.png",
+      "figure": "图3-10",
+      "path": "outputs/figures/fig3_10_jpl_stratified_mae.png",
       "width_cm": 14.2,
       "source_size_px": [
         6559,
@@ -685,7 +553,139 @@
       "method": "rasterized from companion SVG at target dimensions",
       "source_sha256": "42f7fd8c515094c80b699a5c64540484a1c308c900779c6b58abae8dd1c65b7a",
       "delivery_sha256": "6e870f24394b68cedd9c6b45972f2709460218df4d4f8ed33f56ec8977a05345",
-      "companion_svg": "outputs/figures/fig3_16_jpl_stratified_mae.svg"
+      "companion_svg": "outputs/figures/fig3_10_jpl_stratified_mae.svg"
+    },
+    {
+      "figure": "图3-11",
+      "path": "outputs/figures/fig3_11_model_mae_comparison.png",
+      "width_cm": 14.2,
+      "source_size_px": [
+        6727,
+        4999
+      ],
+      "delivery_size_px": [
+        6727,
+        4999
+      ],
+      "effective_dpi": 1203.2802816901408,
+      "metadata_dpi": [
+        1199.9976,
+        1199.9976
+      ],
+      "method": "native pixels; added 1200 dpi metadata",
+      "source_sha256": "6a11c04dc6caec115e93fff71f2cca0ad0613ea6cc68e0ef1c729269638c6928",
+      "delivery_sha256": "6a83d66a91700ead8bd9fecea999ec86e0a2acbdfab81ffc7d94da53f350a6ee",
+      "companion_svg": "outputs/figures/fig3_11_model_mae_comparison.svg"
+    },
+    {
+      "figure": "图3-12",
+      "path": "outputs/figures/fig3_12_mae_by_horizon.png",
+      "width_cm": 14.2,
+      "source_size_px": [
+        9000,
+        4920
+      ],
+      "delivery_size_px": [
+        9000,
+        4920
+      ],
+      "effective_dpi": 1609.8591549295777,
+      "metadata_dpi": [
+        1199.9976,
+        1199.9976
+      ],
+      "method": "native pixels; added 1200 dpi metadata",
+      "source_sha256": "7936eb2dd5dae16edbe85b6499f2b7c8a143bdfb4045ab8901273387923cffeb",
+      "delivery_sha256": "2c6ee50c584390cc2962caac995091a8053692c7b8ac9f34daa112627f922bbb",
+      "companion_svg": "outputs/figures/fig3_12_mae_by_horizon.svg"
+    },
+    {
+      "figure": "图3-13",
+      "path": "outputs/figures/fig3_13_bootstrap_difference.png",
+      "width_cm": 14.2,
+      "source_size_px": [
+        6847,
+        5778
+      ],
+      "delivery_size_px": [
+        6847,
+        5778
+      ],
+      "effective_dpi": 1224.7450704225353,
+      "metadata_dpi": [
+        1199.9976,
+        1199.9976
+      ],
+      "method": "native pixels; added 1200 dpi metadata",
+      "source_sha256": "5f2908c7d145bf6a3269754e614d8bd12a107b81399506f679271680bb9ba0f6",
+      "delivery_sha256": "2a131d89ed69cff53d18529636fd473c21473732051e8b88cea52cc9e0bedd87",
+      "companion_svg": "outputs/figures/fig3_13_bootstrap_difference.svg"
+    },
+    {
+      "figure": "图3-14",
+      "path": "outputs/figures/fig3_14_mae_by_window.png",
+      "width_cm": 14.2,
+      "source_size_px": [
+        6727,
+        3799
+      ],
+      "delivery_size_px": [
+        6727,
+        3799
+      ],
+      "effective_dpi": 1203.2802816901408,
+      "metadata_dpi": [
+        1199.9976,
+        1199.9976
+      ],
+      "method": "native pixels; added 1200 dpi metadata",
+      "source_sha256": "2d0484eaddec24eec480ab1a0f64ece39b6730fc656ae1758fa0e158d0f73d62",
+      "delivery_sha256": "e1aadffdfa84e3db6565dea8ba96bc86e83f3c03b47937f28a78b189d1305837",
+      "companion_svg": "outputs/figures/fig3_14_mae_by_window.svg"
+    },
+    {
+      "figure": "图3-15",
+      "path": "outputs/figures/fig3_15_mae_by_node.png",
+      "width_cm": 14.2,
+      "source_size_px": [
+        6695,
+        4410
+      ],
+      "delivery_size_px": [
+        6709,
+        4419
+      ],
+      "effective_dpi": 1200.0605633802818,
+      "metadata_dpi": [
+        1199.9976,
+        1199.9976
+      ],
+      "method": "rasterized from companion SVG at target dimensions",
+      "source_sha256": "a1670cde16a0bf6835378a24e268322b11938af509ea7912782c8ed13897b63e",
+      "delivery_sha256": "cc53753281938c43670b8f91dd65017997a70a93c50956848f198ba054b2658a",
+      "companion_svg": "outputs/figures/fig3_15_mae_by_node.svg"
+    },
+    {
+      "figure": "图3-16",
+      "path": "outputs/figures/fig3_16_mechanism_ablation.png",
+      "width_cm": 14.2,
+      "source_size_px": [
+        6727,
+        3799
+      ],
+      "delivery_size_px": [
+        6727,
+        3799
+      ],
+      "effective_dpi": 1203.2802816901408,
+      "metadata_dpi": [
+        1199.9976,
+        1199.9976
+      ],
+      "method": "native pixels; added 1200 dpi metadata",
+      "source_sha256": "5f2042e941db4dd123be39dffef7a74a8804f705984a2ecc469a81b4e37fbfd7",
+      "delivery_sha256": "86fe3a0ac48225b02a100b8f88f7f475a477b89fa272b2b4bad645c85a234ea4",
+      "companion_svg": "outputs/figures/fig3_16_mechanism_ablation.svg"
     },
     {
       "figure": "图4-1",

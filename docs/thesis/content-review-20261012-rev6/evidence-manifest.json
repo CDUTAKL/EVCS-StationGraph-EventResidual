@@ -1,0 +1,112 @@
+{
+  "packet_id": "EVCS-THESIS-REV6-20261012",
+  "frozen_at": "2026-10-12",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+  "source_manuscript_sha256": "21e54e81244e6dc07721dfb1395fe31ba7ba71f7e8d99de805d8ebf61e021350",
+  "files": [
+    {
+      "file": "manuscript-frozen.md",
+      "source": "docs/thesis/thesis-manuscript.md",
+      "sha256": "21e54e81244e6dc07721dfb1395fe31ba7ba71f7e8d99de805d8ebf61e021350",
+      "bytes": 198178
+    },
+    {
+      "file": "rubric.json",
+      "source": "docs/thesis/scoring/rubric.json",
+      "sha256": "244fb698bd39b0e935e45116671c1954659a6720dc33faa42d9a7faf89433548",
+      "bytes": 3929
+    },
+    {
+      "file": "score-rules.md",
+      "source": "docs/thesis/scoring/README.md",
+      "sha256": "45cedce765ec6fd4c221eb783d65a2672dd0197d07ffc3b6a5c91cff13d9b5d7",
+      "bytes": 11337
+    },
+    {
+      "file": "prior-rev5-scorecard.md",
+      "source": "docs/thesis/content-review-20261011-rev5/scorecard.md",
+      "sha256": "94c589c78bf1b9c37604eeace848b65011ba066f2daa3b3a4759e9dd7f0065a0",
+      "bytes": 8116
+    },
+    {
+      "file": "prior-rev5-forensic-review.md",
+      "source": "docs/thesis/content-review-20261011-rev5/forensic-review.md",
+      "sha256": "5d118c241bd60c0249219f1e3d546387cda952183fd8b9b3c77b8df700195ab4",
+      "bytes": 10132
+    },
+    {
+      "file": "checkpoint-replay-report.md",
+      "source": "docs/thesis/reproducibility-20261012/checkpoint-replay-report.md",
+      "sha256": "9908aeb1d50ee0a842895f6987f4210d8300678d7d23d2006951b7d6c08191ee",
+      "bytes": 2098
+    },
+    {
+      "file": "reproducibility-readme.md",
+      "source": "docs/thesis/reproducibility-20261012/README.md",
+      "sha256": "ca72af4ff1553c38a713484696de2c6ac169f6396f11ad1876ffa15af22a7734",
+      "bytes": 5766
+    },
+    {
+      "file": "data-availability.md",
+      "source": "docs/thesis/data-availability.md",
+      "sha256": "3fd3e798cb8e927977e39d14b3e4e00280b5669b83de41e5bd36a756681b6dca",
+      "bytes": 12638
+    },
+    {
+      "file": "material-passport.md",
+      "source": "docs/thesis/material-passport.md",
+      "sha256": "f00ced582e56d8f6e8d4282575af164e5b1fb7738421345db67fc4756be049a1",
+      "bytes": 5865
+    },
+    {
+      "file": "claim-evidence-map.md",
+      "source": "docs/thesis/claim-evidence-map.md",
+      "sha256": "b8dc5fa63f1e5c7df5094b54ad427b24adbab0865d71ac9e5243d751084d968d",
+      "bytes": 4397
+    },
+    {
+      "file": "local-repair-audit.json",
+      "source": "docs/thesis/reproducibility-20261012/local-repair-audit.json",
+      "sha256": "2185b9fb16e54b8cc52af8344ff42f4dc34b5461c3665e7720028386c74a0f5f",
+      "bytes": 900
+    },
+    {
+      "file": "original-bundle-audit.json",
+      "source": "docs/thesis/reproducibility-20261012/original-bundle-audit.json",
+      "sha256": "c4e402db7a7cf3c5c9cc9e95a410c0e6579b3799c026d60ef8d2c7c0c7a1bead",
+      "bytes": 581
+    },
+    {
+      "file": "archive-integrity-audit.json",
+      "source": "docs/thesis/reproducibility-20261012/archive-integrity-audit.json",
+      "sha256": "47923321d2c38c98c46e2548297268bdd4d3b27559d9cb0166ea3a824a7de313",
+      "bytes": 463
+    },
+    {
+      "file": "paper-mae-archived-audit.json",
+      "source": "docs/thesis/reproducibility-20261012/paper-mae-archived-audit.json",
+      "sha256": "9ba6f8342ac64b5095210ee7c614f37a00eface30a66bf5689b76371cc1153e5",
+      "bytes": 6986
+    },
+    {
+      "file": "paper-mae-forward-audit.json",
+      "source": "docs/thesis/reproducibility-20261012/paper-mae-forward-audit.json",
+      "sha256": "2de24031553ed9cd5bd784627ad1c682c66b8e1fd3b498b763425ca00eaa1dae",
+      "bytes": 6996
+    },
+    {
+      "file": "adaptive-topk-diagnostic.json",
+      "source": "docs/thesis/reproducibility-20261012/adaptive-topk-diagnostic.json",
+      "sha256": "47df842bf333e35783a5ea501d2a6ee15be5865e9db526a12ddfb087d69d0e8d",
+      "bytes": 8318
+    }
+  ],
+  "boundaries": [
+    "60/63 checkpoint test forward passes; 3 archived AdaptiveGraph CPU forward replays fail.",
+    "63/63 archived prediction-to-metric arithmetic checks pass.",
+    "No retraining; portability checked only in an external temp directory using the existing local Python environment.",
+    "WPS pagination and visual final-layout inspection were not performed in this review."
+  ],
+  "scope_note": "致谢/在读成果占位按用户既有指示暂不纳入内容评分；WPS分页、目录刷新和图像视觉验收另审。"
+}

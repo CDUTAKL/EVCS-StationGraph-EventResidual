@@ -1,0 +1,842 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261020-LANGUAGE-005",
+  "status": "scope_violation",
+  "collected_at": "2026-10-20T10:58:06+00:00",
+  "baseline_head": "1a708ff62f694de6391e7296209d03997b8f72d4",
+  "current_head": "1a708ff62f694de6391e7296209d03997b8f72d4",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 195472,
+        "mtime_ns": 1792433642445215897,
+        "sha256": "0d8ff715c3071b0858a9d76b8109936a266b3662034540ce3a82f29c3ad1fcb9"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 195550,
+        "mtime_ns": 1792435676261958691,
+        "sha256": "17d17c73bc066d22e4da67f0ed5d7ef5fa4069ca197944082373b45c909a0045"
+      }
+    }
+  ],
+  "out_of_scope_changes": [
+    {
+      "path": "docs/thesis/revision-20261020-delivery/dashboard-review/claude-interface-review.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 12747,
+        "mtime_ns": 1792432910871029076
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 15170,
+        "mtime_ns": 1792493653232951783
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/delivery-closeout.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 3569,
+        "mtime_ns": 1792492810145890444
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/docx-candidate-audit.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 1404,
+        "mtime_ns": 1792432511163981156
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 1404,
+        "mtime_ns": 1792492589286557596
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/language-recovery/manuscript-before.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 195550,
+        "mtime_ns": 1792493884905709375
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/language-recovery/stalled-run-evidence.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 20238,
+        "mtime_ns": 1792493884916980163
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/thesis-candidate.docx",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 116352006,
+        "mtime_ns": 1792432493808629793
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 121897844,
+        "mtime_ns": 1792456664368805766
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/thesis-wps-accepted.docx",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 14490526,
+        "mtime_ns": 1792456688625598381
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/figure-resolution-final.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 19934,
+        "mtime_ns": 1792492685938557822
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/figure-resolution-restoration.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 19938,
+        "mtime_ns": 1792455378236053288
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/thesis-candidate-wps-1200ppi.pdf",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 203324896,
+        "mtime_ns": 1792455377309307001
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/thesis-candidate.pdf",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 21221976,
+        "mtime_ns": 1792455241476423107
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/thesis-final-wps-1200ppi.pdf",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 203324896,
+        "mtime_ns": 1792492685173024937
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/toc-verification-final.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 43594,
+        "mtime_ns": 1792492722887557986
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/toc-verification.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 43598,
+        "mtime_ns": 1792455385254081172
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-001-004.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 123801,
+        "mtime_ns": 1792492737565112134
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-005-008.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 370969,
+        "mtime_ns": 1792492737577325928
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-009-012.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 353045,
+        "mtime_ns": 1792492737588265922
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-013-016.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 301028,
+        "mtime_ns": 1792492737599517126
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-017-020.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 322744,
+        "mtime_ns": 1792492737610019533
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-021-024.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 388248,
+        "mtime_ns": 1792492737622379995
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-025-028.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 368785,
+        "mtime_ns": 1792492737634517289
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-029-032.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 262303,
+        "mtime_ns": 1792492737649360310
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-033-036.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 262219,
+        "mtime_ns": 1792492737666241762
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-037-040.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 252707,
+        "mtime_ns": 1792492737677548716
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-041-044.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 296446,
+        "mtime_ns": 1792492737687731663
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-045-048.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 290772,
+        "mtime_ns": 1792492737697910151
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-049-052.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 328986,
+        "mtime_ns": 1792492737708411808
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-053-056.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 220731,
+        "mtime_ns": 1792492737717496914
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-057-060.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 315330,
+        "mtime_ns": 1792492737728053697
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-061-064.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 335908,
+        "mtime_ns": 1792492737738764605
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-065-068.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 314946,
+        "mtime_ns": 1792492737749242512
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-069-072.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 288765,
+        "mtime_ns": 1792492737758910039
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-073-076.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 274058,
+        "mtime_ns": 1792492737768542190
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-077-080.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 305817,
+        "mtime_ns": 1792492737778712886
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-081-084.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 220426,
+        "mtime_ns": 1792492737787450823
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-085-088.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 304888,
+        "mtime_ns": 1792492737797469227
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-089-092.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 272885,
+        "mtime_ns": 1792492737806773042
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-093-096.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 319401,
+        "mtime_ns": 1792492737816808237
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-097-100.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 337219,
+        "mtime_ns": 1792492737827354103
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-101-104.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 361904,
+        "mtime_ns": 1792492737837873427
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/manual-review.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 59848,
+        "mtime_ns": 1792492781551979342
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/visual-qa.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 60936,
+        "mtime_ns": 1792492781551675715
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-001-004.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 123801,
+        "mtime_ns": 1792455420136461102
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-005-008.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 370969,
+        "mtime_ns": 1792455420150002493
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-009-012.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 353045,
+        "mtime_ns": 1792455420163456717
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-013-016.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 301028,
+        "mtime_ns": 1792455420176890066
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-017-020.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 322744,
+        "mtime_ns": 1792455420191458465
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-021-024.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 388248,
+        "mtime_ns": 1792455420206427159
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-025-028.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 368785,
+        "mtime_ns": 1792455420221555562
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-029-032.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 262303,
+        "mtime_ns": 1792455420234976578
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-033-036.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 262219,
+        "mtime_ns": 1792455420249661603
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-037-040.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 252707,
+        "mtime_ns": 1792455420264146084
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-041-044.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 296446,
+        "mtime_ns": 1792455420279148070
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-045-048.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 290772,
+        "mtime_ns": 1792455420292584502
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-049-052.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 328986,
+        "mtime_ns": 1792455420306774273
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-053-056.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 220731,
+        "mtime_ns": 1792455420318162149
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-057-060.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 315330,
+        "mtime_ns": 1792455420331903167
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-061-064.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 335908,
+        "mtime_ns": 1792455420345368933
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-065-068.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 314946,
+        "mtime_ns": 1792455420359285660
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-069-072.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 288765,
+        "mtime_ns": 1792455420371679710
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-073-076.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 274058,
+        "mtime_ns": 1792455420384646097
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-077-080.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 305817,
+        "mtime_ns": 1792455420397616401
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-081-084.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 220426,
+        "mtime_ns": 1792455420409786158
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-085-088.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 304888,
+        "mtime_ns": 1792455420423223715
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-089-092.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 272885,
+        "mtime_ns": 1792455420434993385
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-093-096.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 319401,
+        "mtime_ns": 1792455420448930404
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-097-100.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 337219,
+        "mtime_ns": 1792455420462698214
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-101-104.jpg",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 361904,
+        "mtime_ns": 1792455420477279780
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-104.png",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 394689,
+        "mtime_ns": 1792455672370152148
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-2.png",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 173820,
+        "mtime_ns": 1792455672018162888
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-6.png",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 414276,
+        "mtime_ns": 1792455672132810441
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-69.png",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 474285,
+        "mtime_ns": 1792455486483495483
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-70.png",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 430755,
+        "mtime_ns": 1792455486768880086
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-79.png",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 634604,
+        "mtime_ns": 1792455672253913208
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/manual-review.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 46323,
+        "mtime_ns": 1792455420671473378
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261020-delivery/wps-final/visual-qa/visual-qa.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 47510,
+        "mtime_ns": 1792455420671087458
+      }
+    },
+    {
+      "path": "scripts/thesis_blueprint_dashboard.py",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 35404,
+        "mtime_ns": 1792431218664519101
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 38659,
+        "mtime_ns": 1792493356739575346
+      }
+    }
+  ],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [
+    "execution-report.summary尚未填写",
+    "报告漏列实际改动: docs/thesis/revision-20261020-delivery/dashboard-review/claude-interface-review.md, docs/thesis/revision-20261020-delivery/delivery-closeout.md, docs/thesis/revision-20261020-delivery/docx-candidate-audit.json, docs/thesis/revision-20261020-delivery/language-recovery/manuscript-before.md, docs/thesis/revision-20261020-delivery/language-recovery/stalled-run-evidence.json, docs/thesis/revision-20261020-delivery/thesis-candidate.docx, docs/thesis/revision-20261020-delivery/thesis-wps-accepted.docx, docs/thesis/revision-20261020-delivery/wps-final/figure-resolution-final.json, docs/thesis/revision-20261020-delivery/wps-final/figure-resolution-restoration.json, docs/thesis/revision-20261020-delivery/wps-final/thesis-candidate-wps-1200ppi.pdf, docs/thesis/revision-20261020-delivery/wps-final/thesis-candidate.pdf, docs/thesis/revision-20261020-delivery/wps-final/thesis-final-wps-1200ppi.pdf, docs/thesis/revision-20261020-delivery/wps-final/toc-verification-final.json, docs/thesis/revision-20261020-delivery/wps-final/toc-verification.json, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-001-004.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-005-008.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-009-012.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-013-016.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-017-020.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-021-024.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-025-028.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-029-032.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-033-036.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-037-040.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-041-044.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-045-048.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-049-052.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-053-056.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-057-060.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-061-064.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-065-068.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-069-072.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-073-076.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-077-080.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-081-084.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-085-088.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-089-092.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-093-096.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-097-100.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/contact-sheets/pages-101-104.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/manual-review.json, docs/thesis/revision-20261020-delivery/wps-final/visual-qa-final/visual-qa.json, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-001-004.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-005-008.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-009-012.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-013-016.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-017-020.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-021-024.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-025-028.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-029-032.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-033-036.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-037-040.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-041-044.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-045-048.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-049-052.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-053-056.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-057-060.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-061-064.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-065-068.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-069-072.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-073-076.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-077-080.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-081-084.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-085-088.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-089-092.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-093-096.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-097-100.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/contact-sheets/pages-101-104.jpg, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-104.png, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-2.png, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-6.png, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-69.png, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-70.png, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/detail-page-79.png, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/manual-review.json, docs/thesis/revision-20261020-delivery/wps-final/visual-qa/visual-qa.json, docs/thesis/thesis-manuscript.md, scripts/thesis_blueprint_dashboard.py",
+    "execution-report.model未记录"
+  ],
+  "executor_report": {
+    "task_id": "REV-20261020-LANGUAGE-005",
+    "executor": "Claude Code",
+    "model": "",
+    "user_reported_model": "DeepSeek",
+    "summary": "",
+    "changed_paths": [],
+    "evidence_used": [],
+    "claim_or_number_changes": [],
+    "checks": [],
+    "unresolved": [],
+    "blockers": []
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "reviewer_id": "REVIEWER-ORIG-20261020",
+  "context_id": "EVCS-ORIG-20261020-PAIR-V2-9f3829e5-c841-4b11-94cd-6a2cb62e51dc",
+  "emphasis": "originality",
+  "historical_scores_exposed": false,
+  "before_manuscript_sha256": "3d883156d9264c9f94c3f7150d7a7647773e1c546d4689b1b283a8eb0b0ed9f3",
+  "manuscript_sha256": "7ddffbb0657af8c26d222408b8466aaacb3510e95a2eec782e7eeb46a2d74bc1",
+  "raw_report_path": "docs/thesis/content-review-20261020-language-paired/reviewers/originality.md",
+  "raw_report_sha256": "6def449271297afaa0e68d0e65b0ca356e1d79b77f3bcac85c995f3f3710f548",
+  "declared_before_total": 74.5,
+  "declared_total": 75.5,
+  "criteria": [
+    {
+      "id": "BR-01",
+      "before_score": 4.5,
+      "score": 4.5,
+      "findings": [
+        "问题、使用对象和代理目标边界与旧稿相同。语言改写没有新增动机量化或现场证据，故沿用同一锚点。"
+      ]
+    },
+    {
+      "id": "BR-02",
+      "before_score": 5,
+      "score": 5,
+      "findings": [
+        "与旧稿一样，摘要和结论对核心问题及代理范围形成闭合，章节导航更简洁但不改变一致性判断。"
+      ]
+    },
+    {
+      "id": "BR-03",
+      "before_score": 4,
+      "score": 4,
+      "findings": [
+        "近邻事实和表1-1没有新增；现稿把事件节的比较压回表格，并缩短研究问题陈述。呈现更紧凑，但仍受摘要级来源限制，因此维持原分。"
+      ]
+    },
+    {
+      "id": "BR-04",
+      "before_score": 5,
+      "score": 5,
+      "findings": [
+        "数学定义和使用条件没有改变；语言精修删去重复解释但保留公式、单位与β/关系变换的联合解释。"
+      ]
+    },
+    {
+      "id": "BR-05",
+      "before_score": 8.5,
+      "score": 8.5,
+      "findings": [
+        "实验矩阵和限制均未改变，当前稿把JPL同参数自环替换提到关系增量段首，提升阅读顺序但不新增设计控制。"
+      ]
+    },
+    {
+      "id": "BR-06",
+      "before_score": 4,
+      "score": 4,
+      "findings": [
+        "稿件哈希变化来自语言修订，图表/数字/公式等确定性核对通过。来源身份的既有限制仍在，故同分。"
+      ]
+    },
+    {
+      "id": "BR-07",
+      "before_score": 9,
+      "score": 9,
+      "findings": [
+        "研究工作与分析链没有因精修改变，故沿用相同工作量锚点。"
+      ]
+    },
+    {
+      "id": "BR-08",
+      "before_score": 8.5,
+      "score": 8.5,
+      "findings": [
+        "新稿把关系增量与完整模型对TCN的非零组排名拆成相邻而不同的判断，减少混淆；结果本身及范围没有新增，分数不变。"
+      ]
+    },
+    {
+      "id": "BR-09",
+      "before_score": 8.5,
+      "score": 8.5,
+      "findings": [
+        "精修保留统计模态和范围限制，没有把表达压缩成更强主张；统计证据及未校正分层仍相同。"
+      ]
+    },
+    {
+      "id": "BR-10",
+      "before_score": 6.5,
+      "score": 7,
+      "findings": [
+        "现稿在§1.4将条件增量和不确定关系直接列为研究发现，较旧稿“提供任务内受控比较”的泛化陈述更准确地呈现贡献边界。分数只小幅增加，因数据和方法本身未变，且独立确认及改模收益仍缺。"
+      ]
+    },
+    {
+      "id": "BR-11",
+      "before_score": 3.5,
+      "score": 3.5,
+      "findings": [
+        "使用边界更紧凑地表述，但代理输入、现场价值和实用工件的状态没有变化。"
+      ]
+    },
+    {
+      "id": "BR-12",
+      "before_score": 7.5,
+      "score": 8,
+      "findings": [
+        "相较旧稿，结构导航更精简，近邻与贡献总结更聚焦，并保留了科学模态与数字。提升仅给表达组织，未把caption-only的图片审查状态视作通过。"
+      ]
+    }
+  ]
+}

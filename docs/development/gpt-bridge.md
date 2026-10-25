@@ -1,6 +1,10 @@
 # GPT 沟通桥
 
 > Claude Code ↔ GPT 异步对话。每次一方完全覆盖写入。
+>
+> **历史文档，不再作为当前任务交接入口。** 逐项论文修订请使用
+> [`docs/thesis/blueprints/README.md`](../thesis/blueprints/README.md) 和
+> `scripts/thesis_blueprint.py`；当前状态按蓝图从证据控制台选取，不读取本文件的旧对话作为现状。
 
 > **⚠️ 2026-08-04：项目全景状态已更新至
 > [gpt-project-status-2026-08-04.md](gpt-project-status-2026-08-04.md)

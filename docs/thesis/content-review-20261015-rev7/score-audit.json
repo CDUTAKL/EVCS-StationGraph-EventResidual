@@ -1,0 +1,116 @@
+{
+  "assessment_id": "FORMAL-20261015-REV7",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 79.5,
+  "raw_maximum": 90.0,
+  "normalized_score": 88.33,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "comparison": {
+    "baseline_id": "FORMAL-20261012-REV6",
+    "status": "valid",
+    "errors": [],
+    "normalized_delta": 0.56,
+    "criteria": [
+      {
+        "id": "BR-01",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮新增实验没有提供现场需求或计量收益证据，问题定义评价依据与REV6相同。"
+      },
+      {
+        "id": "BR-02",
+        "old": 5,
+        "new": 5.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "新增实验被限定在原有研究范围内，没有把固定期敏感性扩写为新域或盲测结论。"
+      },
+      {
+        "id": "BR-03",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮没有补充最近邻原文核验；维持已有比较强度判断，未将独立评阅对绝对锚点的较低判断直接当作稿件退步。"
+      },
+      {
+        "id": "BR-04",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "新目标敏感性结果的术语与边界基本准确，但未解决代理标签效度，理论/专业知识判断较REV6无足以改变半分的净变化。"
+      },
+      {
+        "id": "BR-05",
+        "old": 8,
+        "new": 8.5,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "同参数关系替换和新目标近似容量对照实质性补上了两类设计缺口，因此较REV6提高0.5；仍属已查看测试期的补充，不计作独立确认。"
+      },
+      {
+        "id": "BR-06",
+        "old": 4.5,
+        "new": 4.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "CUDA复核解决了已知检查点的匹配环境前向问题，但源代码身份限制仍在，且论文正文尚未完整更新证据状态；整体仍处于REV6已有的4.5锚点。"
+      },
+      {
+        "id": "BR-07",
+        "old": 9,
+        "new": 9.0,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "本轮工作强化了既有研究内容，但不单凭新增运行数提高工作量项；REV6已对研究难度和解决问题能力给出高档评价。"
+      },
+      {
+        "id": "BR-08",
+        "old": 8.5,
+        "new": 9.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "新增受控关系增量和替代代理目标结果补强了核心主张及其反证边界，较REV6提高0.5；固定测试期复用和高零值比例限制仍在。"
+      },
+      {
+        "id": "BR-09",
+        "old": 9.5,
+        "new": 9.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "新实验报告继续披露测试期复用、时间块区间条件和分层解释边界，没有改变统计结论权限；主要缺口仍与REV6相同。"
+      },
+      {
+        "id": "BR-10",
+        "old": 7.5,
+        "new": 8.0,
+        "raw_delta": 0.5,
+        "type": "improvement",
+        "reason": "两类关系有同参数重训练的直接支持，令“关系贡献均不清楚”的旧表述获得实质修正；创新仍是狭义、协议条件性增量，故仅加0.5。"
+      },
+      {
+        "id": "BR-11",
+        "old": 3.5,
+        "new": 3.5,
+        "raw_delta": 0.0,
+        "type": "unchanged",
+        "reason": "031/032和CUDA复算不涉及实际计量或运行收益证据，维持REV6评分。"
+      },
+      {
+        "id": "BR-12",
+        "old": 10,
+        "new": 9.0,
+        "raw_delta": -1.0,
+        "type": "recalibration",
+        "reason": "将REV6的10分校准为9分：更细的全文交叉核对发现未引用书目[72]/[73]、限制性表达重复以及CUDA复算状态滞后；其中书目与重复问题在前稿已存在，属于对旧评分漏项的校准，证据状态未同步也需修订。"
+      }
+    ]
+  }
+}

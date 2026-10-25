@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261022-EVIDENCE-CONSOLIDATION",
+  "status": "scope_violation",
+  "collected_at": "2026-10-22T02:42:22+00:00",
+  "baseline_head": "f861d3a10832726bcb35c8d06ec12ca6337f317b",
+  "current_head": "f861d3a10832726bcb35c8d06ec12ca6337f317b",
+  "committed_changes_since_baseline": [],
+  "allowed_changes": [
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 13253,
+        "mtime_ns": 1792561204484980319,
+        "sha256": "f635b256baa8fd81269973abc72e5e592f4d25a4b96d38e3cf4b295151c6f85e"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 14578,
+        "mtime_ns": 1792636884168407037,
+        "sha256": "2230a004646e876acc9711aa98f96718049d2e0d48cc0eb5c71a8e63c678198e"
+      }
+    },
+    {
+      "path": "docs/thesis/data-availability.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 22991,
+        "mtime_ns": 1792561204487162400,
+        "sha256": "41d4172093b43b9c4843dcd0b246cbf6a34b1531e14f24e3ef74ab733729f468"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 24340,
+        "mtime_ns": 1792636884167625901,
+        "sha256": "41d3669929f8773457cd920cb24308f4a688dc79830ad4f6ef77025a62e7db49"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 8439,
+        "mtime_ns": 1792561204487691076,
+        "sha256": "1e665a2dfec1657f085998f8b08a13822a25816a23b5d1610a8282f9673935bf"
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 9373,
+        "mtime_ns": 1792636884169013920,
+        "sha256": "76e88ba3fd999fe7aac1e212cb92a74b29655aceb27813ef45288922aeba1110"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/claude-recovery/manuscript-before.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 194587,
+        "mtime_ns": 1792636658802176411,
+        "sha256": "2a72afd71fa9cc10caa6b982e68733560d9fb1b02f088feead818d01563718bf"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/claude-recovery/prompt.txt",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 24152,
+        "mtime_ns": 1792636658803606556,
+        "sha256": "aba0123c29be99fc9199f0ad019877212c32f147f55e6b2247a210fe696f19d4"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/claude-recovery/proposals.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 12209,
+        "mtime_ns": 1792636761657702069,
+        "sha256": "3aef1061412f23ba651c73acdcd0d8d2676e953fe2a48621ca7021706d4af190"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/claude-recovery/run.json",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 1844,
+        "mtime_ns": 1792636940937802081,
+        "sha256": "a5802ca5df9ec1dd6c3c78b6544d33b0adb8b34bc860d87a998da67b6cca64d2"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/claude-recovery/stderr.txt",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 85,
+        "mtime_ns": 1792636660332524737,
+        "sha256": "af2f4f95914df9c684b8c6d9f07bfa793cb3ed8a4c9f15c3022ee6363d84537e"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/claude-recovery/stream.jsonl",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 2646400,
+        "mtime_ns": 1792636728020581451,
+        "sha256": "1379a1c7ef8949d74908dd85266988677307e67c29a0fa3347044771895664c7"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-report.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 3977,
+        "mtime_ns": 1792636884162346658,
+        "sha256": "c2c6cbf85a2527b13753882bc331375220d218351b04c239dd0dc3304c61a531"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/reproducibility-package.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 4769,
+        "mtime_ns": 1792636884155467018,
+        "sha256": "155986c7f09eb64977d907b33029575bdd8db298fc304c31af2f27ed104b8c3f"
+      }
+    },
+    {
+      "path": "docs/thesis/revision-20261022-evidence/targeted-data-search.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 4265,
+        "mtime_ns": 1792636884162867582,
+        "sha256": "caefddc97714b245c2589a45c4ab733e0fc50ea10ae4d1cd1fa3a539989eb2a0"
+      }
+    },
+    {
+      "path": "docs/thesis/thesis-manuscript.md",
+      "before": null,
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 196053,
+        "mtime_ns": 1792636884166130837,
+        "sha256": "8367a14770d0a751b2a6a4cbc65ebc9505703810d97e0dc3e9537954e2107af8"
+      }
+    }
+  ],
+  "out_of_scope_changes": [
+    {
+      "path": "docs/thesis/revision-20261022-evidence/reproducibility-package.json",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 121767,
+        "mtime_ns": 1792636515886133792
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 121732,
+        "mtime_ns": 1792636818030263680
+      }
+    },
+    {
+      "path": "scripts/replay_sgexp031_032_evidence.py",
+      "before": {
+        "exists": true,
+        "kind": "file",
+        "size": 19395,
+        "mtime_ns": 1792636507100244100
+      },
+      "after": {
+        "exists": true,
+        "kind": "file",
+        "size": 19472,
+        "mtime_ns": 1792636812982645569
+      }
+    }
+  ],
+  "unexpected_package_files": [],
+  "protected_package_changes": [],
+  "executor_report_errors": [],
+  "executor_report": {
+    "task_id": "REV-20261022-EVIDENCE-CONSOLIDATION",
+    "executor": "Claude Code proposals; Codex factual review and application",
+    "model": "deepseek-flash",
+    "user_reported_model": "DeepSeek",
+    "summary": "Bounded no-tools Claude call completed in 69.8s, exit 0, zero tools. Codex reviewed and corrected sampling/bin definitions, missing replay commands, unsupported Office1 node count, and interpretation scope before one manuscript application. Current evidence console and source-chain notes synchronized.",
+    "changed_paths": [
+      "docs/thesis/claim-evidence-map.md",
+      "docs/thesis/data-availability.md",
+      "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "docs/thesis/revision-20261022-evidence/claude-recovery/manuscript-before.md",
+      "docs/thesis/revision-20261022-evidence/claude-recovery/prompt.txt",
+      "docs/thesis/revision-20261022-evidence/claude-recovery/proposals.json",
+      "docs/thesis/revision-20261022-evidence/claude-recovery/run.json",
+      "docs/thesis/revision-20261022-evidence/claude-recovery/stderr.txt",
+      "docs/thesis/revision-20261022-evidence/claude-recovery/stream.jsonl",
+      "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-report.md",
+      "docs/thesis/revision-20261022-evidence/reproducibility-package.json",
+      "docs/thesis/revision-20261022-evidence/reproducibility-package.md",
+      "docs/thesis/revision-20261022-evidence/targeted-data-search.md",
+      "docs/thesis/thesis-manuscript.md",
+      "scripts/replay_sgexp031_032_evidence.py"
+    ],
+    "evidence_used": [
+      "revision-20261022-evidence/verified-review-facts.json",
+      "EPFL V2 protocol and final double-sheet audit JSON",
+      "SG031/032 final replay package",
+      "revision-20261021-evidence/data-source-compatibility.md"
+    ],
+    "claim_or_number_changes": [
+      "Added exploratory EPFL result: 1878 matched,1620 included,258 excluded; TV median0.0736,Q1/Q3 0.0308/0.1276; energy ratios1.1492/0.9943.",
+      "Added source provenance and saved-prediction replay scope for031/032.",
+      "Added EPFL reference[84], shifted existing[84]-[92] to[85]-[93]. No model-performance number changed."
+    ],
+    "checks": [
+      {
+        "name": "no-tools Claude run",
+        "status": "PASS",
+        "seconds": 69.8,
+        "tool_calls": 0
+      },
+      {
+        "name": "table/figure/formula preservation",
+        "status": "PASS",
+        "notes": "Tables unchanged except reference label shifts; all image paths and all math sequences identical."
+      },
+      {
+        "name": "final saved-prediction audit with retained outputs",
+        "status": "PASS",
+        "command": "python3 scripts/replay_sgexp031_032_evidence.py --out docs/thesis/revision-20261022-evidence/reproducibility-package.json --audit-out outputs/analysis/SG-EXP-031-032-replay-20261022",
+        "performed_by": "Codex"
+      }
+    ],
+    "unresolved": [
+      "DOCX/PDF export and full-page visual audit follow collection.",
+      "Large checkpoints/predictions require local archive sidecars; no full training reproduction claimed.",
+      "EPFL P boundary and timestamp semantics unresolved; no compatible unseen checkpoint period found."
+    ],
+    "blockers": [],
+    "reviewer_changes": [
+      "scripts/replay_sgexp031_032_evidence.py: Codex allowed absolute audit-output paths after Claude proposals run.",
+      "docs/thesis/revision-20261022-evidence/reproducibility-package.json: Codex reran final wrapper with outputs retained. These two paths were outside the text blueprint and must be reported, not attributed to Claude."
+    ],
+    "proposal_corrections": [
+      "Rejected unsupported Office1=8EVSE",
+      "Corrected60s sampling versus15min binning",
+      "Inserted exact replay command omitted by Claude",
+      "Preserved partial EPFL real constraints",
+      "Limited provenance paragraph to031/032 supplemental audits"
+    ]
+  },
+  "acceptance": "pending_codex_review",
+  "note": "本报告记录差异和交接状态，不替代证据审阅、评分或最终验收。"
+}

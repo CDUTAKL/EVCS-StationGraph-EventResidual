@@ -1,0 +1,728 @@
+[
+  {
+    "heading": "第1章  绪论",
+    "printed_page": 1,
+    "physical_page": 11,
+    "found": true
+  },
+  {
+    "heading": "1.1 研究背景与意义",
+    "printed_page": 1,
+    "physical_page": 11,
+    "found": true
+  },
+  {
+    "heading": "1.1.1 电动汽车充电负荷增长与节点级预测需求",
+    "printed_page": 1,
+    "physical_page": 11,
+    "found": true
+  },
+  {
+    "heading": "1.1.2 离散会话记录与节点代理负荷预测问题",
+    "printed_page": 1,
+    "physical_page": 11,
+    "found": true
+  },
+  {
+    "heading": "1.1.3 站内节点关系建模与事件窗口预测意义",
+    "printed_page": 2,
+    "physical_page": 12,
+    "found": true
+  },
+  {
+    "heading": "1.2 国内外研究现状",
+    "printed_page": 2,
+    "physical_page": 12,
+    "found": true
+  },
+  {
+    "heading": "1.2.1 电动汽车充电负荷时间序列预测",
+    "printed_page": 2,
+    "physical_page": 12,
+    "found": true
+  },
+  {
+    "heading": "1.2.2 多节点负荷与时空图预测",
+    "printed_page": 3,
+    "physical_page": 13,
+    "found": true
+  },
+  {
+    "heading": "1.2.3 充电行为特征与事件建模",
+    "printed_page": 5,
+    "physical_page": 15,
+    "found": true
+  },
+  {
+    "heading": "1.2.4 模型可解释性与机制诊断",
+    "printed_page": 6,
+    "physical_page": 16,
+    "found": true
+  },
+  {
+    "heading": "1.3 现有研究不足",
+    "printed_page": 6,
+    "physical_page": 16,
+    "found": true
+  },
+  {
+    "heading": "1.4 研究目标与主要内容",
+    "printed_page": 7,
+    "physical_page": 17,
+    "found": true
+  },
+  {
+    "heading": "1.5 技术路线",
+    "printed_page": 8,
+    "physical_page": 18,
+    "found": true
+  },
+  {
+    "heading": "1.6 论文组织结构",
+    "printed_page": 9,
+    "physical_page": 19,
+    "found": true
+  },
+  {
+    "heading": "1.7 本章小结",
+    "printed_page": 9,
+    "physical_page": 19,
+    "found": true
+  },
+  {
+    "heading": "第2章  充电行为数据与特征分析",
+    "printed_page": 10,
+    "physical_page": 20,
+    "found": true
+  },
+  {
+    "heading": "2.1 数据来源与重构口径",
+    "printed_page": 10,
+    "physical_page": 20,
+    "found": true
+  },
+  {
+    "heading": "2.1.1 三套评估协议的任务边界",
+    "printed_page": 12,
+    "physical_page": 22,
+    "found": true
+  },
+  {
+    "heading": "2.1.2 分摊支持范围与电流形态核查",
+    "printed_page": 13,
+    "physical_page": 23,
+    "found": true
+  },
+  {
+    "heading": "2.1.3 JPL另一场站数据与验证口径",
+    "printed_page": 14,
+    "physical_page": 24,
+    "found": true
+  },
+  {
+    "heading": "2.2 节点可用性筛选与质量门禁",
+    "printed_page": 15,
+    "physical_page": 25,
+    "found": true
+  },
+  {
+    "heading": "2.3 节点负荷统计特征",
+    "printed_page": 16,
+    "physical_page": 26,
+    "found": true
+  },
+  {
+    "heading": "2.4 事件分数构成与事件窗口统计",
+    "printed_page": 19,
+    "physical_page": 29,
+    "found": true
+  },
+  {
+    "heading": "2.5 特征构成与协议输入",
+    "printed_page": 23,
+    "physical_page": 33,
+    "found": true
+  },
+  {
+    "heading": "2.6 数据特征对建模的启示",
+    "printed_page": 25,
+    "physical_page": 35,
+    "found": true
+  },
+  {
+    "heading": "2.7 本章小结",
+    "printed_page": 26,
+    "physical_page": 36,
+    "found": true
+  },
+  {
+    "heading": "第3章  基于多关系门控图卷积的节点短期负荷预测",
+    "printed_page": 27,
+    "physical_page": 37,
+    "found": true
+  },
+  {
+    "heading": "3.1 引言",
+    "printed_page": 27,
+    "physical_page": 37,
+    "found": true
+  },
+  {
+    "heading": "3.2 预测任务形式化定义",
+    "printed_page": 29,
+    "physical_page": 39,
+    "found": true
+  },
+  {
+    "heading": "3.3 场景驱动的LRE三关系图构建",
+    "printed_page": 30,
+    "physical_page": 40,
+    "found": true
+  },
+  {
+    "heading": "3.3.1 负荷耦合关系图",
+    "printed_page": 31,
+    "physical_page": 41,
+    "found": true
+  },
+  {
+    "heading": "3.3.2 行为共现关系图",
+    "printed_page": 31,
+    "physical_page": 41,
+    "found": true
+  },
+  {
+    "heading": "3.3.3 轮廓相似关系图",
+    "printed_page": 31,
+    "physical_page": 41,
+    "found": true
+  },
+  {
+    "heading": "3.3.4 top-k稀疏化与对称归一化",
+    "printed_page": 31,
+    "physical_page": 41,
+    "found": true
+  },
+  {
+    "heading": "3.4 时间基线：TCN",
+    "printed_page": 32,
+    "physical_page": 42,
+    "found": true
+  },
+  {
+    "heading": "3.5 双层多关系门控图卷积网络（MRG-GCN）",
+    "printed_page": 32,
+    "physical_page": 42,
+    "found": true
+  },
+  {
+    "heading": "3.5.1 总体架构",
+    "printed_page": 32,
+    "physical_page": 42,
+    "found": true
+  },
+  {
+    "heading": "3.5.2 单关系消息传递",
+    "printed_page": 33,
+    "physical_page": 43,
+    "found": true
+  },
+  {
+    "heading": "3.5.3 关系级门控",
+    "printed_page": 33,
+    "physical_page": 43,
+    "found": true
+  },
+  {
+    "heading": "3.5.4 节点级门控",
+    "printed_page": 33,
+    "physical_page": 43,
+    "found": true
+  },
+  {
+    "heading": "3.5.5 关系随机失活",
+    "printed_page": 33,
+    "physical_page": 43,
+    "found": true
+  },
+  {
+    "heading": "3.5.6 逐层关系选择与跨层融合",
+    "printed_page": 34,
+    "physical_page": 44,
+    "found": true
+  },
+  {
+    "heading": "3.5.7 目标函数与训练策略",
+    "printed_page": 34,
+    "physical_page": 44,
+    "found": true
+  },
+  {
+    "heading": "3.5.8 与现有方法的区别",
+    "printed_page": 34,
+    "physical_page": 44,
+    "found": true
+  },
+  {
+    "heading": "3.5.9 节点门控与残差更新的分工",
+    "printed_page": 34,
+    "physical_page": 44,
+    "found": true
+  },
+  {
+    "heading": "3.5.10 跨层表示的使用原则",
+    "printed_page": 35,
+    "physical_page": 45,
+    "found": true
+  },
+  {
+    "heading": "3.6 主要预测结果与回溯补充",
+    "printed_page": 36,
+    "physical_page": 46,
+    "found": true
+  },
+  {
+    "heading": "3.6.1 评价协议与指标",
+    "printed_page": 36,
+    "physical_page": 46,
+    "found": true
+  },
+  {
+    "heading": "3.6.2 Caltech事件时刻协议的预测结果",
+    "printed_page": 38,
+    "physical_page": 48,
+    "found": true
+  },
+  {
+    "heading": "3.6.3 JPL重拟合协议：另一场站的点预测比较",
+    "printed_page": 38,
+    "physical_page": 48,
+    "found": true
+  },
+  {
+    "heading": "3.6.4 回溯补充：完整配置与复算状态",
+    "printed_page": 41,
+    "physical_page": 51,
+    "found": true
+  },
+  {
+    "heading": "3.6.5 回溯补充：分层与节点误差",
+    "printed_page": 45,
+    "physical_page": 55,
+    "found": true
+  },
+  {
+    "heading": "3.6.6 回溯补充：模型规模与训练记录",
+    "printed_page": 47,
+    "physical_page": 57,
+    "found": true
+  },
+  {
+    "heading": "3.7 组件增量与协议敏感性",
+    "printed_page": 48,
+    "physical_page": 58,
+    "found": true
+  },
+  {
+    "heading": "3.7.1 同参数节点级门控配对对照",
+    "printed_page": 48,
+    "physical_page": 58,
+    "found": true
+  },
+  {
+    "heading": "3.7.2 关系路径、关系子集与敏感性",
+    "printed_page": 49,
+    "physical_page": 59,
+    "found": true
+  },
+  {
+    "heading": "3.7.3 关系级参数干预",
+    "printed_page": 51,
+    "physical_page": 61,
+    "found": true
+  },
+  {
+    "heading": "3.7.4 组合配置消融与事件残差探索",
+    "printed_page": 51,
+    "physical_page": 61,
+    "found": true
+  },
+  {
+    "heading": "3.7.5 四格评价的加权还原检查",
+    "printed_page": 52,
+    "physical_page": 62,
+    "found": true
+  },
+  {
+    "heading": "3.8 证据综合与适用范围",
+    "printed_page": 53,
+    "physical_page": 63,
+    "found": true
+  },
+  {
+    "heading": "3.8.1 方法组件与目标敏感性证据综合",
+    "printed_page": 53,
+    "physical_page": 63,
+    "found": true
+  },
+  {
+    "heading": "3.8.2 三套协议的回答范围与比较边界",
+    "printed_page": 54,
+    "physical_page": 64,
+    "found": true
+  },
+  {
+    "heading": "3.8.3 输入、容量与训练选模预算",
+    "printed_page": 54,
+    "physical_page": 64,
+    "found": true
+  },
+  {
+    "heading": "3.8.4 完成时刻截断目标敏感性（SG-EXP-032）",
+    "printed_page": 56,
+    "physical_page": 66,
+    "found": true
+  },
+  {
+    "heading": "3.9 本章小结",
+    "printed_page": 56,
+    "physical_page": 66,
+    "found": true
+  },
+  {
+    "heading": "第4章  三层机制诊断协议（MDP）与模型可解释性分析",
+    "printed_page": 58,
+    "physical_page": 68,
+    "found": true
+  },
+  {
+    "heading": "4.1 引言：MDP协议的定义与设计原则",
+    "printed_page": 58,
+    "physical_page": 68,
+    "found": true
+  },
+  {
+    "heading": "4.2 L1干预归因层（IA）：关系分配的功能依赖",
+    "printed_page": 59,
+    "physical_page": 69,
+    "found": true
+  },
+  {
+    "heading": "4.2.1 观察操作",
+    "printed_page": 59,
+    "physical_page": 69,
+    "found": true
+  },
+  {
+    "heading": "4.2.2 干预操作",
+    "printed_page": 59,
+    "physical_page": 69,
+    "found": true
+  },
+  {
+    "heading": "4.2.3 观察证据",
+    "printed_page": 59,
+    "physical_page": 69,
+    "found": true
+  },
+  {
+    "heading": "4.2.4 干预证据",
+    "printed_page": 60,
+    "physical_page": 70,
+    "found": true
+  },
+  {
+    "heading": "4.2.5 L1判定结论",
+    "printed_page": 61,
+    "physical_page": 71,
+    "found": true
+  },
+  {
+    "heading": "4.2.6 分层敏感度：关系分配干预的样本响应",
+    "printed_page": 62,
+    "physical_page": 72,
+    "found": true
+  },
+  {
+    "heading": "4.3 L2蒸馏验证层（DV）：受检时序学生的替代性分析",
+    "printed_page": 63,
+    "physical_page": 73,
+    "found": true
+  },
+  {
+    "heading": "4.3.1 协议操作",
+    "printed_page": 63,
+    "physical_page": 73,
+    "found": true
+  },
+  {
+    "heading": "4.3.2 诊断实验",
+    "printed_page": 64,
+    "physical_page": 74,
+    "found": true
+  },
+  {
+    "heading": "4.3.3 L2判定结论",
+    "printed_page": 64,
+    "physical_page": 74,
+    "found": true
+  },
+  {
+    "heading": "4.4 L3四格溯源层（FET）：全局误差构成",
+    "printed_page": 65,
+    "physical_page": 75,
+    "found": true
+  },
+  {
+    "heading": "4.4.1 协议操作",
+    "printed_page": 65,
+    "physical_page": 75,
+    "found": true
+  },
+  {
+    "heading": "4.4.2 诊断实验",
+    "printed_page": 65,
+    "physical_page": 75,
+    "found": true
+  },
+  {
+    "heading": "4.4.3 还原校验",
+    "printed_page": 67,
+    "physical_page": 77,
+    "found": true
+  },
+  {
+    "heading": "4.4.4 L3判定结论",
+    "printed_page": 67,
+    "physical_page": 77,
+    "found": true
+  },
+  {
+    "heading": "4.5 MDP诊断结果与适用边界",
+    "printed_page": 68,
+    "physical_page": 78,
+    "found": true
+  },
+  {
+    "heading": "4.6 JPL的L1/L3复核与适用范围",
+    "printed_page": 69,
+    "physical_page": 79,
+    "found": true
+  },
+  {
+    "heading": "4.6.1 复核材料与计算口径",
+    "printed_page": 69,
+    "physical_page": 79,
+    "found": true
+  },
+  {
+    "heading": "4.6.2 L1：整体配置敏感度及样本层面差异",
+    "printed_page": 69,
+    "physical_page": 79,
+    "found": true
+  },
+  {
+    "heading": "4.6.3 L3：困难样本与总误差组成",
+    "printed_page": 70,
+    "physical_page": 80,
+    "found": true
+  },
+  {
+    "heading": "4.6.4 复核结论与剩余验证范围",
+    "printed_page": 70,
+    "physical_page": 80,
+    "found": true
+  },
+  {
+    "heading": "第5章  模型结构与可靠性边界分析",
+    "printed_page": 72,
+    "physical_page": 82,
+    "found": true
+  },
+  {
+    "heading": "5.1 引言",
+    "printed_page": 72,
+    "physical_page": 82,
+    "found": true
+  },
+  {
+    "heading": "5.2 方向性统计候选与结构对照",
+    "printed_page": 72,
+    "physical_page": 82,
+    "found": true
+  },
+  {
+    "heading": "5.2.1 问题与动机",
+    "printed_page": 72,
+    "physical_page": 82,
+    "found": true
+  },
+  {
+    "heading": "5.2.2 传递熵方向性检验",
+    "printed_page": 73,
+    "physical_page": 83,
+    "found": true
+  },
+  {
+    "heading": "5.2.3 传递熵名义候选与双向读数不对称",
+    "printed_page": 73,
+    "physical_page": 83,
+    "found": true
+  },
+  {
+    "heading": "5.2.4 有向候选边与统计关系图的互补性",
+    "printed_page": 75,
+    "physical_page": 85,
+    "found": true
+  },
+  {
+    "heading": "5.2.5 PCMCI+条件独立检验与版本敏感性",
+    "printed_page": 76,
+    "physical_page": 86,
+    "found": true
+  },
+  {
+    "heading": "5.2.6 方向性证据的解释边界与复核路径",
+    "printed_page": 77,
+    "physical_page": 87,
+    "found": true
+  },
+  {
+    "heading": "5.3 事件感知的区间预测：分层共形预测",
+    "printed_page": 78,
+    "physical_page": 88,
+    "found": true
+  },
+  {
+    "heading": "5.3.1 问题与动机",
+    "printed_page": 78,
+    "physical_page": 88,
+    "found": true
+  },
+  {
+    "heading": "5.3.2 分层共形方法",
+    "printed_page": 78,
+    "physical_page": 88,
+    "found": true
+  },
+  {
+    "heading": "5.3.3 事件时刻输入协议下的独立校准补充",
+    "printed_page": 79,
+    "physical_page": 89,
+    "found": true
+  },
+  {
+    "heading": "5.3.4 成熟标签约束下的滚动校准回放",
+    "printed_page": 80,
+    "physical_page": 90,
+    "found": true
+  },
+  {
+    "heading": "5.3.5 JPL既有预测的独立校准补充",
+    "printed_page": 80,
+    "physical_page": 90,
+    "found": true
+  },
+  {
+    "heading": "5.3.6 回溯补充：覆盖与路由错位",
+    "printed_page": 81,
+    "physical_page": 91,
+    "found": true
+  },
+  {
+    "heading": "5.3.7 回溯补充：残差失配诊断",
+    "printed_page": 83,
+    "physical_page": 93,
+    "found": true
+  },
+  {
+    "heading": "5.3.8 回溯分析的使用边界",
+    "printed_page": 84,
+    "physical_page": 94,
+    "found": true
+  },
+  {
+    "heading": "5.4 节点负荷预测的决策接口与验证条件",
+    "printed_page": 85,
+    "physical_page": 95,
+    "found": true
+  },
+  {
+    "heading": "5.4.1 预测量与运行量的对应",
+    "printed_page": 85,
+    "physical_page": 95,
+    "found": true
+  },
+  {
+    "heading": "5.4.2 从预测曲线到运行核查",
+    "printed_page": 85,
+    "physical_page": 95,
+    "found": true
+  },
+  {
+    "heading": "5.4.3 固定发布时刻的四目标片算例",
+    "printed_page": 85,
+    "physical_page": 95,
+    "found": true
+  },
+  {
+    "heading": "5.4.4 有限时域充电分配与合成决策算例",
+    "printed_page": 86,
+    "physical_page": 96,
+    "found": true
+  },
+  {
+    "heading": "5.4.5 证据边界与应用验证要求",
+    "printed_page": 87,
+    "physical_page": 97,
+    "found": true
+  },
+  {
+    "heading": "5.5 本章小结",
+    "printed_page": 87,
+    "physical_page": 97,
+    "found": true
+  },
+  {
+    "heading": "结  论",
+    "printed_page": 89,
+    "physical_page": 99,
+    "found": true
+  },
+  {
+    "heading": "研究工作总结",
+    "printed_page": 89,
+    "physical_page": 99,
+    "found": true
+  },
+  {
+    "heading": "主要研究结论",
+    "printed_page": 89,
+    "physical_page": 99,
+    "found": true
+  },
+  {
+    "heading": "研究判断与使用条件",
+    "printed_page": 90,
+    "physical_page": 100,
+    "found": true
+  },
+  {
+    "heading": "研究局限与后续工作",
+    "printed_page": 90,
+    "physical_page": 100,
+    "found": true
+  },
+  {
+    "heading": "参考文献",
+    "printed_page": 91,
+    "physical_page": 101,
+    "found": true
+  },
+  {
+    "heading": "附录A  Caltech事件时刻协议完整组件结果",
+    "printed_page": 96,
+    "physical_page": 106,
+    "found": true
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "task_id": "REV-20261021-EPFL-STOP-AND-PROVENANCE",
+  "executor": "Claude Code",
+  "model": "deepseek-flash[1m]",
+  "user_reported_model": "DeepSeek",
+  "status": "pending_codex_review",
+  "summary": "仅更新四个允许的证据控制台文件：在data-availability.md与data-source-compatibility.md记录EPFL Level-3兼容性筛选、严格CCS+Session连接失败、V1停止、事后复合键的诊断边界、无时区时间戳与文件级跳变，以及来源提交、MIT许可和四个SHA-256；在source-chain-summary.md加入简明EPFL来源链说明；在claim-evidence-map.md补充CLM-031-RELATION的精确证据路径与本地Git忽略状态，并注明EPFL筛选不新增模型或应用主张。未修改论文正文、DOCX、图件、评分、训练产物、实验结果或历史日期记录；未运行训练、远程作业、联网、Git暂存/提交或测试。任务待Codex复核。",
+  "changed_paths": [
+    "docs/thesis/data-availability.md",
+    "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+    "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+    "docs/thesis/claim-evidence-map.md"
+  ],
+  "evidence_used": [
+    "docs/thesis/blueprints/tasks/REV-20261021-EPFL-STOP-AND-PROVENANCE/EXECUTION_PACKET.md",
+    "docs/thesis/blueprints/tasks/REV-20261021-EPFL-STOP-AND-PROVENANCE/blueprint.json",
+    "docs/thesis/revision-20261021-evidence/epfl-proxy-audit-protocol.md",
+    "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+    "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+    "docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+    "outputs/analysis/SG-EXP-031-audit-20261015/README.md",
+    "outputs/analysis/SG-EXP-031-audit-20261015/audit.json",
+    "outputs/analysis/SG-EXP-031-audit-20261015/run-metrics.csv",
+    "outputs/analysis/SG-EXP-031-audit-20261015/paired-time-blocks.csv",
+    "docs/thesis/content-review-20261016-paired-reaudit/load-nonzero-crosscheck.json",
+    ".gitignore"
+  ],
+  "claim_or_number_changes": [
+    "新增EPFL筛选记录：数据期2022-04-12至2023-07-04；两个被测CCS端口；1,878条会话行/1,878个测量组；严格CCS+Session连接CCS1 1,129/1,129、CCS2 0/749；冻结V1在形态比较前停止。",
+    "记录事后复合键（CCS、Arrival、Departure、会话Energy）唯一匹配1,878/1,878，仅为探索性映射诊断；Energy属于键的一部分，不构成独立能量闭合，未用于产生形态结果。",
+    "记录工作簿时间戳无时区；文件级序列含2022-10-30回拨样跳变与2023-03-26前跳样跳变；逐会话轨迹一分钟规则且无会话跨越；不断言UTC或确认时区。",
+    "记录来源仓库提交680bc3bb751f86a47db32a5641f09dcfa079caae、MIT License及Session_data.xlsx、Measurement_data.xlsx、README.md、LICENSE四个SHA-256。",
+    "CLM-031-RELATION仅补充精确证据路径及outputs/analysis/SG-EXP-031-audit-20261015/为本地Git忽略输出的可携带性限制；未改变其权限表述。",
+    "未改变任何既有数值、指标、主张范围、表号或证据等级；未新增模型、目标效度或应用主张。"
+  ],
+  "checks": [],
+  "unresolved": [
+    "EPFL V1在CCS+Session严格连接阶段停止，未产生代理—实测15 min形态差异、代理标签校准、ACN模型评价、目标效度、部署或调度收益结论。",
+    "outputs/analysis/SG-EXP-031-audit-20261015/（audit.json、run-metrics.csv、paired-time-blocks.csv）为本机Git忽略输出，不随仓库携带；CLM-031相关路径的可移植性限于该本地工作区。",
+    "EPFL四个SHA-256及筛选数值按任务包与冻结协议转记，本轮未重新下载、重算或读取原始工作簿；不得据此声称已完成独立复核。",
+    "蓝图checks_to_run为空，未运行测试或审计脚本；未执行训练、远程作业、联网或Git暂存/提交。",
+    "现有Git身份限制、近邻比较[12]/[13]/[67]/[70]/[76]状态、ACN connectionTime接口边界及KIT证据待复核状态均原样保留。"
+  ],
+  "blockers": []
+}

@@ -1,0 +1,159 @@
+--- baseline
++++ current
+@@ -2,27 +2,27 @@
+ 
+ # 摘  要
+ 
+-场站内充电节点负荷稀疏且差异明显，全局误差可能掩盖非零目标与事件片段的表现。本文以公开会话记录重构的15 min节点代理负荷为对象，检验站内统计关系、节点级门控的预测增量，并分析模型依赖、误差构成及应用边界。
+-
+-本文构建负荷耦合、行为共现和轮廓相似三类关系图，以多关系门控图卷积网络（MRG-GCN）融合时间表示与节点关系。三层机制诊断协议（MDP）分别检验冻结参数敏感度、受检时序学生的替代表现及事件—规则四格误差构成。主要比较采用行为计数片末可见假设下的Caltech事件时刻协议和JPL重新拟合协议；回溯结果作为补充。
+-
+-Caltech事件时刻协议下，MRG-GCN全局MAE为0.03890 kWh/15 min，较容量近似TCN低16.1%，但完整AGCRN更低；误差优势来自零目标键，非零目标和标签事件组均未优于TCN。JPL中MRG-GCN整体MAE较三项预登记基线低2.64%—3.36%，但TCN的RMSE及事件、非零目标误差较低。
+-
+-节点级门控相对同参数共享门控的整体MAE在Caltech和JPL分别低2.69%和2.71%；每站一个共享门控种子触及共同60轮上限，故增量限于该预算。JPL关系替换支持负荷耦合和轮廓相似关系相对自环的条件性整体MAE增量（1.82%和1.52%），行为共现关系仍不确定。事后非零组差异不代表完整MRG-GCN胜过TCN；完成时刻截断保持全局排序，非零组仍未改善。这些补充均复用已查看测试期。
+-
+-MDP将联合参数敏感度、特定学生的替代结果和误差构成分开解释，并据此修正关系取舍、模型比较和分层报告。JPL独立校准的整体覆盖为90.08%，标签事件窗口覆盖为46.43%；Caltech 14天滚动校准的事件覆盖为26.71%，区间宽度为冻结方案的4.47倍。现有证据可用于站内节点代理负荷模型筛选和后续采数安排；实测功率效度、输入到达时延及运行收益仍待同步量测和现场评价。
++场站内充电节点负荷稀疏且异质，全局误差未必反映活跃片段表现。本文以公开会话记录重构的15 min节点代理能量为对象，检验站内关系与节点级门控的预测增量，并分析这些证据如何影响模型选择和误差报告。主要比较采用Caltech事件时刻协议与JPL另一场站重新拟合协议，均假定行为计数在时间片末可见。
++
++本文构建负荷耦合、行为共现和轮廓相似关系图，以多关系门控图卷积网络（MRG-GCN）融合时间表示与节点关系；并用三层机制诊断协议（MDP）分别检验冻结参数敏感度、受检时序学生的替代表现和事件—规则四格误差构成。本文的主要贡献是对站内关系增量及其解释范围进行受控检验，不主张基础图卷积、门控或时序网络组合为算法首创。
++
++Caltech事件时刻协议下，MRG-GCN整体MAE较容量近似TCN低16.1%，但完整AGCRN更低，且MRG-GCN在非零目标和标签事件组均未优于TCN。JPL中MRG-GCN整体MAE较三项预登记基线低2.64%—3.36%，但TCN的RMSE、事件及非零目标误差更低。节点级门控在两场站相对同参数共享门控的整体MAE分别低2.69%和2.71%；共享门控各有一个种子触及60轮上限，结论限于该预算。
++
++JPL关系替换重训支持负荷耦合和轮廓相似关系相对自环的条件性整体MAE增量，行为共现关系仍不确定。负荷关系相对自环的非零组正向差异属于未校正事后分层；完整MRG-GCN非零组仍未胜过TCN。完成时刻截断保持全局排序，但非零组未改善。以上补充分析复用已查看测试期。
++
++MDP将参数敏感度、特定学生的替代表现和误差构成分开解释，修正了关系取舍、替代性判断与分层报告重点。现有结果可支持节点代理负荷模型筛选和后续采数安排；实测功率效度、输入到达时延和运行收益仍需同步量测及现场评价。
+ 
+ 关键词：充电节点短期负荷预测；LRE；MRG-GCN；MDP；节点代理负荷
+ 
+ # Abstract
+ 
+-Charging-node loads are sparse and heterogeneous, so overall error can conceal performance on active and event targets. This study predicts 15-minute node proxy energy reconstructed from public charging sessions. It evaluates within-station relations and node-specific gates, then uses a three-layer mechanism diagnosis protocol (MDP) to examine parameter sensitivity, a tested temporal student's replacement performance, and event–rule error composition. Main analyses use Caltech's event-time protocol and a separately refitted JPL site, assuming behavioral counts are available at bin end; retrospective results are supplementary.
+-
+-MRG-GCN encodes load coupling, behavioral co-occurrence, and profile similarity. At Caltech, its MAE is 0.03890 kWh/15 min, 16.1% below a near-capacity TCN, but full AGCRN performs better. The advantage comes from zero-target keys; nonzero and event errors do not beat TCN. At JPL, MRG-GCN's overall MAE is 2.64%–3.36% below three preregistered baselines, while TCN has lower RMSE and lower error on nonzero and event targets.
+-
+-Against shared gates matched for parameter count, node-specific gates reduce overall MAE by 2.69% at Caltech and 2.71% at JPL within the common 60-epoch budget; one shared-gate seed per site reaches the limit. JPL relation-replacement retraining supports conditional overall-MAE gains over self-loop replacements for load coupling (1.82%) and profile similarity (1.52%); behavioral co-occurrence remains uncertain. Completion-time target truncation preserves global ranking but does not improve nonzero errors. These supplements reuse inspected test periods.
+-
+-MDP separates parameter sensitivity, a tested student's replacement performance, and error composition; these distinctions changed how relation choices, model comparisons, and subgroup reporting are interpreted. JPL independent calibration achieves 90.08% overall coverage but 46.43% coverage on labeled event windows. Caltech 14-day rolling calibration covers 26.71% of event windows with intervals 4.47 times wider than the frozen method. The findings can guide node-proxy-load model screening and data collection; meter validity, reporting delays, and operational benefits require synchronized measurements and field evaluation.
++Charging-node proxy energy is sparse and heterogeneous, so aggregate error can conceal performance on active intervals. This thesis studies 15-minute node-level energy reconstructed from public charging sessions. It tests whether within-station relations and node-specific gates add predictive value, and what decisions those comparisons support. Main analyses use Caltech's event-time protocol and a separately refitted JPL site, assuming behavioral counts are available at interval end.
++
++MRG-GCN combines temporal representations with load-coupling, behavioral co-occurrence, and profile-similarity relations. At Caltech, its overall MAE is 0.03890 kWh/15 min, 16.1% below a capacity-near TCN, but full AGCRN performs better and MRG-GCN does not lead on nonzero or event targets. At JPL, its overall MAE is 2.64%–3.36% below three preregistered baselines, while TCN has lower RMSE and lower nonzero- and event-target errors. Node-specific gates reduce overall MAE by 2.69% and 2.71% at Caltech and JPL, respectively; one shared-gate seed per site reaches the 60-epoch limit, so this result is budget-bound.
++
++JPL relation-replacement retraining supports conditional overall-MAE gains over self-loop replacements for load coupling (1.82%) and profile similarity (1.52%); the behavioral relation remains uncertain. A post-hoc nonzero-target difference for load coupling is exploratory and does not imply that the complete model beats TCN on nonzero targets. Completion-time target truncation preserves global ranking but not nonzero-target performance. These supplements reuse inspected test periods.
++
++MDP separates parameter sensitivity, a tested student's replacement performance, and error composition. The distinctions refine relation choice, model replacement claims, and subgroup reporting, but do not show that diagnosis-guided model changes improve prediction. The findings can guide node-proxy-load model screening and data collection; meter validity, reporting delays, and operational benefits require synchronized measurements and field evaluation.
+ 
+ Keywords: short-term charging-node load forecasting; LRE; MRG-GCN; MDP; proxy load
+ 
+@@ -72,7 +72,7 @@
+ 
+ 图神经网络为多节点时序预测提供了统一的关系建模框架。GCN[47]通过邻接矩阵上的特征传播聚合邻居信息，GAT[48]进一步以注意力机制学习邻居贡献，RGCN[49]则将消息传递扩展至多关系场景。在时空预测领域，STGCN[50]将图卷积与时间卷积结合，Graph WaveNet[51]通过自适应邻接和扩张卷积联合学习空间与时间依赖，AGCRN[52]使用节点自适应参数和可学习图结构刻画节点异质性。这些方法最初主要用于交通流预测[53-55]，随后被引入居民负荷、区域负荷和多节点短期负荷预测[56-63]。
+ 
+-EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接EV近邻[12,13,67,70]及站间图[10]、住宅图方法[71]，并标明证据来源和字段核验边界。
++EV预测亦见站群多图、区域负荷与概率建模[6,8,64-70]。表1-1比较直接EV近邻[12,13,67,70,76]及站间图[10]、住宅图方法[71]，并标明证据来源和字段核验边界。
+ 
+ **表1-1 充电负荷预测及方法近邻研究比较**
+ 
+@@ -82,18 +82,19 @@
+ | 张延宇等[12] | 可读摘要确认充电站负荷时空相关与自适应关联图；摘要未说明节点粒度及建边字段 | 多头注意力与自适应关联图提取表征，再以Chebyshev图卷积和多尺度时间卷积建模时空耦合 | 国家科技期刊平台可读摘要报告两个真实数据集及Palo Alto四种波动条件的结果；未据摘要外推输入可见性、数据划分或门控细节 |
+ | 黄南天等[10] | 13座公共充电站为节点；Rapid-MIC特征与自适应动态图 | AST-GCN差异化空间聚合、节点自适应参数学习与GRU | 公开正文报告13站小时负荷和随机抽取32天，并含动态图及节点参数模块消融；研究对象为站间负荷，模块删除消融不等同于冻结β参数干预 |
+ | Xie等[70] | 城市充电站群；距离、交通网络与交通密度图 | 出版社全文索引说明采用MGAT-MIC-LSTM，融合多图、ResNet/GAT/LSTM及天气、典型日、价格等因素 | 出版社页面的图构建与数据处理段报告西安10站、30 min采样、2021年7—9月；其节点是站群站点。全文可读范围未明确精确切分和预测时外生变量到达权限 |
++| Liang[76] | 主要实验使用加工后的配电负荷代理；Boulder扩展以公开交易记录重构EV负荷序列 | PARC以持续性预测为锚，使用预测时可用的滞后、滚动、爬坡和周期特征学习残差；在相同特征边界下比较直接预测与残差校正 | 出版社全文报告滚动起点、日块重采样及配对检验；Boulder序列上持续性/季节混合在sMAPE、正负荷MAPE较优，HistGBR在MAE、WAPE较优，PARC-ExtraTrees在RMSE、R²较优。该文覆盖会话重构EV负荷预测，但未报告本文式站内关系替换重训或MDP；两者不作数值排名 |
+ | Feng等[71] | 住宅个体及聚合负荷为预测对象；自适应邻居与时间相似邻居构图 | STGNet以节点特定GCN提取空间表示，经自适应图门控融合后接BiGRU | 原文§4.1.1、§4.1.3及§5.5（表3—5）报告节点特定参数化、图分支消融；含三套真实数据及15户设置。该研究可证明图门控和节点特异参数化已有先例，不能作为EV充电任务的同键对照 |
+ | Huang等[67] | Palo Alto、Boulder、韩国等站群数据；构造站间因果感知关系与关键站动态关系 | 作者稿§III（PDF第4—6页）描述CAGLM、CRGLM及时间表示融合 | 作者稿§IV（第7—8页、表II起）报告27/40/14站、逐小时数据、72 h输入、3/6/12 h预测、7∶1∶2切分及5次随机初始化；数据说明将会话起止与总电量按分钟分配后聚合为小时负荷，表明会话重构代理已有先例。其“因果感知”是模型构造术语，不等于外部因果识别；节点仍是站点 |
+ | Wang等[72] | 住宅用户为节点；Pearson同步图与传递熵方向信息图 | RLF-MGNN逐时刻以多图GCN提取关系表征，再送入LSTM学习时间特征 | 出版社摘要可读，未据此核实完整建图细节、切分、容量或消融；住宅用户节点不同于场站内充电节点，传递熵图不等同物理因果拓扑 |
+ | Zhang等[73] | 住宅用户为节点；构造时空融合图 | STFAG-GCN报告自适应门控图卷积（AFG-Conv）、门控TCN及多层STFGCN组合 | PubMed收录的原文摘要可读，未取得全文核实图构造、参数共享、切分和消融细节；因此仅作为方法结构先例，不作数值比较 |
+ 
+-表1-1表明，充电负荷预测已使用站间地理图、动态自适应图和交通多图融合[12-13,67,70]；住宅负荷研究也已有节点特定图门控[71]、Pearson/传递熵双图与GCN-LSTM[72]，以及自适应门控图卷积与Gated TCN[73]。因此，图卷积、多关系融合、门控和时序网络组合均有方法先例，本文不将其单独主张为算法首创。本文贡献聚焦于单场站会话重构代理任务中的三类关系操作化、同参数节点门控和单关系替换重训，以及MDP对联合配置敏感度、受检学生替代表现和误差构成的区分。现有结果仅支持所检协议下的条件性增量；它们未证明三类关系均有效，也未证明诊断指导改模可以提升预测。各研究在节点粒度、目标和评价协议上的差异不支持跨文数值排名。
++表1-1显示，已有研究覆盖站间图预测、住宅用户图门控，也包括会话交易重构EV负荷后的直接与残差预测[12-13,67,70-76]。因此，本文不把一般EV代理负荷预测、图卷积、多关系融合或门控时序模型组合视为研究空白或算法首创。与近邻[76]相比，本文关注的问题更窄：在单场站会话重构代理任务中，站内统计关系相对自环替换是否具有条件增量，以及参数干预、受检学生和误差分层分别能改变哪些研究判断。当前结果支持两类关系的条件性整体增量，第三类仍不确定；尚未证明诊断指导改模可提升预测。节点粒度、目标和评价协议不同，不作跨文数值排名。
+ 
+ ### 1.2.3 充电行为特征与事件建模
+ 
+ 用户接入、离站、停留和充电需求是形成充电负荷波动的直接行为来源。现有研究通常将相关信息作为一般输入特征，与历史负荷、日期、气象和价格等变量共同送入时序模型[5,7,9,11,26,31]。对于可提前获知的特殊日期，已有研究通过节假日增长率修正、春节影响期划分、日期映射和特殊事件组合模型等方式改善预测[14-17]。这类方法能够利用已知日历信息，但其研究对象与运行过程中临时出现的接入、离站和负荷跳变并不相同。
+ 
+-在非日历事件方面，已有研究开始关注事件数据对极端预测误差的影响[74]，也出现了“基线预测—风险时段识别—选择性残差修正”等事件感知路径[75-76]。这些工作为行为变化时段的专门处理提供了可借鉴的路径，但不同研究对事件定义、可见信息范围、阈值确定和修正路径的处理差异较大。如果事件判定使用预测时刻之后的信息，或在测试集上重新选择阈值，可能造成信息泄漏；如果事件样本与稳定样本混合评价，又难以判断修正收益究竟来自何种样本。
++在非日历事件方面，已有研究关注事件数据与极端误差[74]，并提出风险时段识别及选择性残差修正[75-76]。Liang[76]以持续性预测为锚，比较公开Boulder交易记录重构EV负荷序列的直接预测与残差校正，结果呈指标依赖（表1-1）。因此，会话重构EV负荷预测和残差路径均已有先例。本文进一步检验单场站内节点统计关系的条件增量，并以参数干预、受检学生和事件分层界定诊断证据。对事件感知方法仍须核对事件定义、信息可见时点和阈值确定，避免测试期信息进入判定，或总体指标掩盖事件与常态样本的差异。
+ 
+ 本文据此区分目标侧标签事件与冻结规则触发：前者用于事后分层评价，后者用于回溯规则路由和诊断。冻结阈值不等于输入实时可见，旧规则所含代理负荷差分仍依赖会话最终字段。事件窗口既是评价单元，也是误差溯源单元；本文不预设事件机制必然改善点预测，而是检验双口径分层的差异，并评估事件窗口的区间表现。
+ 
+@@ -108,7 +109,7 @@
+ 
+ ## 1.3 现有研究不足
+ 
+-现有研究为充电负荷时序建模、图关系学习和预测解释提供了方法基础。针对本文的站内节点任务，还需回答三个相互关联的问题。
++现有研究已包括会话重构EV负荷的残差预测[76]、站间关系建模和住宅用户图门控。由此，本文研究缺口进一步限定为：在会话重构的站内节点代理负荷任务中，哪些统计关系相对自环具有可复核的条件增量，以及参数干预、替代学生和误差分层能够支持何种机制判断。围绕这一范围，还需回答三个相互关联的问题。
+ 
+ （1）如何表示并检验站内节点差异。多类统计关系可以刻画负荷同步、行为共现和轮廓相似，但关系图本身不保证带来预测增益；关系融合和节点差异门控的作用需要在明确协议下比较。
+ 
+@@ -124,7 +125,7 @@
+ 
+ ## 1.4 研究目标与主要内容
+ 
+-本文研究站内关系和节点差异门控对代理负荷预测的增量，并以MDP区分参数敏感度、模型替代与误差构成。本文提供任务内的受控比较与诊断证据，不主张基础算子或一般诊断方法首创。
++本文关注站内关系和节点差异门控对代理负荷预测的增量，并以MDP区分参数敏感度、受检模型替代与误差构成。贡献在于提供任务内的受控比较及其证据边界，不主张基础算子或通用诊断工具首创。
+ 
+ （1）数据与协议。审计会话字段和节点标识，重构15 min节点代理能量，明确输入可见时点、标签成熟条件和时间切分；分析稀疏性与节点异质性，为关系构建和分层评价提供依据。
+ 
+@@ -919,11 +920,9 @@
+ 
+ 注：每个替换配置均保留三个关系分支和32,714个可训练参数，仅将指定邻接矩阵替换为单位自环，再按同一规则从头训练；每配置三个种子，共12次运行，同一种子各配置的非图参数初始值一致。差值定义为“替换配置MAE−完整模型MAE”，正值表示完整模型误差较低。区间对三项比较作Bonferroni校正，基于固定JPL测试期24个当地七日块及10,000次配对重采样；测试期已查看，本结果为事后补充分析。
+ 
+-负荷耦合与轮廓相似关系的替换差三种子均为正，校正区间下限高于零，支持它们相对自环替代的条件性整体MAE增量；行为关系区间跨零，增量未确认，亦不能据此判为无效。事件组中，行为或轮廓关系替换后的MAE反而分别低0.005142、0.003677，说明整体改善不代表事件组改善。
+-
+-负荷邻接替换检验的是当前MRG-GCN内的关系增量：保留负荷邻接与将其换为自环相比，其余两关系分支、参数量及同种子非图初值相同。替换后仍保留该关系的变换权重，故该对照未检验删除分支、随机图或其他建图方法。事后分层复算显示，替换配置减完整模型的非零组MAE差均值为0.004893 kWh/15 min，三个种子方向均为正；零组差为0.000230。按组样本量还原，非零组约占0.001501整体差的88.84%。该分层在测试期已查看后增加，未经多重校正，只作探索性描述。
+-
+-完整模型的非零组表现则由模型间比较判断。Caltech事件时刻、JPL和完成时刻截断目标下，MRG-GCN的非零组MAE均高于容量近似TCN（表3-2、图3-10、表3-15）。因此，负荷邻接对当前图模型有增量价值，与完整模型在该组尚未胜过TCN可以同时成立：前者支持在所检架构中保留并复核负荷关系，后者要求按分层表现选择模型。
++负荷耦合和轮廓相似关系对应的整体MAE差三种子均为正，Bonferroni校正区间下限均高于零；行为共现关系的区间跨零。因此，前两类关系在本架构、协议和预算下具有相对自环替代的条件性整体增量证据，第三类仍不确定。事件组中，行为或轮廓关系替换后的MAE反而分别低0.005142和0.003677，表明整体改善不必然延伸至事件样本。
++
++负荷邻接的事后分层显示，替换为自环后的配置非零组MAE较完整模型高0.004893 kWh/15 min，三个种子方向均为正；该结果来自已查看测试期，未作多重校正。它比较的是当前图模型内的关系组件，而非不同模型。JPL完整MRG-GCN非零组MAE为0.277839，高于TCN的0.275718 kWh/15 min；Caltech事件时刻和完成时刻截断目标也呈相同方向。因此，“负荷关系相对自环改善非零组”与“完整模型非零组尚未胜过TCN”可以同时成立：前者支持在所检架构内保留并复核该关系，后者要求按分层表现选择模型。
+ 
+ SG-EXP-031四种配置的最佳与停止轮次均低于60轮上限，降低了触顶对这组关系比较的影响，但不能据此证明充分收敛。027及028共享门控的触顶限制属于另一项对照；各组结果均按各自架构、预算和测试期解释。
+ 
+@@ -1302,7 +1301,7 @@
+ 
+ ### 4.6.4 复核结论与剩余验证范围
+ 
+-JPL检查点可复算L1/L3，未复做L2，也未检验诊断指导改模的收益。SG-EXP-031以邻接替换重训估计关系相对自环的条件增量；本节冻结关系级门控权重，仅测联合配置敏感度，两者不能合并解释。MDP结论限于已检协议，不能外推至未来时期、其他数据源、实测功率或运行收益。
++JPL复核表明，L1整体配置敏感度与L3四格误差结构可在另一ACN场站的既有检查点上复算，且样本格响应与Caltech不同。该复核未覆盖L2，也未检验诊断指导改模的预测收益。SG-EXP-031是邻接替换后重训，本节则冻结门控权重进行前向干预，两者回答不同问题，不能合并解释。
+ 
+ 
+ # 第5章  模型结构与可靠性边界分析
+@@ -1389,7 +1388,7 @@
+ 
+ ### 5.2.6 方向性证据的解释边界与复核路径
+ 
+-方向性统计仅用于筛选候选，不作为预测关系或物理因果边。若后续纳入模型，需预先固定建图规则，并在同容量、种子和预测键下检验增量；本研究未开展该训练。
++本研究将TE与PCMCI+结果保留为训练段候选筛查，未回灌MRG-GCN；若后续纳入有向关系，须预先固定构图规则，并在共同容量、种子和预测键下检验增量。
+ 
+ ## 5.3 事件感知的区间预测：分层共形预测
+ 
+@@ -1528,7 +1527,7 @@
+ 
+ ### 5.4.1 预测量与运行量的对应
+ 
+-计量映射和发布时可见性核验后，预测可作为容量核查、充电协调及滚动计划的需求输入。当前结果支持定义节点集合未来四片的预测接口，尚不支持实际容量或控制判断。设$t$为发布时刻，$\tau_{t,h}$为第$h$个目标片起点，$h\in\{1,2,3,4\}$且$\tau_{t,h}=t+(h-1)\Delta t$，其中$\Delta t=15$ min；$\mathcal N$为10个研究节点。四个目标片起点分别为发布后0、15、30和45 min，覆盖后续1 h。集合代理需求及预测值为
++计量映射和发布时可见性核验后，预测可作为容量核查、充电协调及滚动计划的需求输入。当前结果只支持定义节点集合的预测接口，尚不支持实际容量或控制判断。设$t$为发布时刻，预测对象为$[t,t+60\mathrm{\,min})$内的4个连续15 min目标片，其左端时刻分别为$t$、$t+15$、$t+30$和$t+45$ min；$\mathcal N$为10个研究节点。首片虽以发布时刻为左端，预测量仍是该片完整区间的能量。集合代理需求及预测值为
+ 
+ $$
+ D_{\tau}=\sum_{n\in\mathcal N}y_{\tau,n},\qquad
+@@ -1596,7 +1595,7 @@
+ 
+ ### 5.4.5 证据边界与应用验证要求
+ 
+-固定代理轨迹和人工设定的线性规划只核验接口示例与约束可行性。实际评价需同步电表以校准代理负荷，并取得设备限额、车辆请求和电价，记录越限、预警时效、误报漏报、需求满足及成本；当前材料不能支持实际安全或经济收益结论。
++下一步需同步采集节点及全站电表、输入到达时间戳、设备限额、车辆请求和电价；先校准代理—实测映射并核验预测时可见性，再预先固定事件定义、告警阈值和调度基线开展影子回放，评价覆盖、误报漏报、约束越限、需求满足及成本。在这些材料取得前，本章证据仅支持运行接口定义与合成约束可行性核验。
+ 
+ ## 5.5 本章小结
+ 
+@@ -1623,9 +1622,9 @@
+ 
+ （1）整体误差优势未延伸至困难样本。Caltech事件时刻协议下，MRG-GCN整体MAE为0.03890 kWh/15 min，较容量近似TCN低16.1%，但完整AGCRN更低，且MRG-GCN非零目标与标签事件误差均未优于TCN。JPL重新拟合后，其整体MAE为0.081067 kWh/15 min，较三项预登记对照低2.64%—3.36%，校正时间块区间为正；TCN的RMSE及困难样本误差更低。因此，模型选择应并列考察整体与分层指标。
+ 
+-（2）组件增量具有明确边界。节点级门控相对同参数共享门控在Caltech、JPL的整体MAE分别低2.69%和2.71%；每站一个共享门控种子触及60轮上限，结果限于该训练预算。JPL同参数自环替换重训中，负荷耦合和轮廓相似关系对应的整体MAE分别低1.82%和1.52%，经Bonferroni校正的区间下限为正；行为共现关系仍不确定。事后未校正分层显示负荷关系非零组有正向差异，但完整MRG-GCN非零组误差仍高于TCN。
+-
+-（3）目标敏感性与MDP改变了证据解释。完成时刻截断后，MRG-GCN相对容量近似TCN的全局排序保持（MAE分别为0.043401和0.051703 kWh/15 min），但零值占比升至94.27%，非零组仍未改善；该实验固定关系图且复用已查看测试期。MDP区分联合参数敏感度、当前学生替代表现和误差组成：$\beta$未显示独立增益，受检学生未弥合差距，四格结果要求同时报告稀有困难格误差与常态格总量。它支持修订研究判断和评价重点，尚未证明诊断指导改模能提升预测。
++（2）组件增量具有明确边界。节点级门控相对同参数共享门控在Caltech、JPL的整体MAE分别低2.69%和2.71%；每站一个共享门控种子触及60轮上限，结果限于该训练预算。JPL同参数自环替换显示，负荷耦合和轮廓相似关系的整体MAE增量分别为1.82%和1.52%，Bonferroni校正区间下限均为正；行为共现关系的区间跨零。事后分层中，负荷邻接换为自环后非零组MAE较完整模型高0.004893 kWh/15 min，三种子同向，但该结果未经多重校正。它是组件内差异，不是模型间排名：完整MRG-GCN在Caltech、JPL及完成时刻截断目标下的非零组均未胜过容量近似TCN。
++
++（3）目标敏感性与MDP改变了证据解释。完成时刻截断下MRG-GCN全局MAE低于容量近似TCN（0.043401对0.051703 kWh/15 min），但新目标零值占比为94.27%，MRG-GCN非零组MAE高0.013938 kWh/15 min，优势仍由零目标组驱动；该实验固定关系图并复用已查看测试期。MDP区分联合参数敏感度、受检学生替代表现和误差组成：$\beta$未显示独立增益，当前学生未弥合差距，四格结果要求并列报告稀有困难格误差与常态格总误差。它支持修订研究判断和评价重点，尚未证明诊断指导改模可提升预测。
+ 
+ （4）可靠性与应用证据仍有限。Caltech 14天成熟标签滚动分层覆盖为89.01%，事件覆盖为26.71%，区间宽度达到冻结方案的4.47倍；JPL标准独立校准整体覆盖为90.08%，事件覆盖仅46.43%。TE候选经270项家族校正后均未保留。固定轨迹和合成线性规划只核验了代理接口与约束求解；缺少计量映射及实际运行资料，尚不能评价现场风险或经济收益。
+ 

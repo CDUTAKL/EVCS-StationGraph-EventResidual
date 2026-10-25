@@ -1,0 +1,457 @@
+{
+  "schema_version": 1,
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "reviewer_id": "codex_readability_review_2026-10-19",
+  "context_id": "9932a34c-fb11-4131-8661-4f687ca16252",
+  "review_mode": "calibration_pair",
+  "emphasis": "readability",
+  "historical_scores_exposed": false,
+  "packet_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet",
+  "packet_fingerprint": "1fa7aba697bb3663f5c2beb7298bf12d6f3ca11ffd46495a9dc4741a6a84f080",
+  "before_manuscript_sha256": "62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66",
+  "current_manuscript_sha256": "451642e15e0fc51343acabf84e727b5079d8a1f2243c0ab8d8542adeed8b9b42",
+  "raw_report_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261019-nontraining/paired-review-reports/readability/readability-paired-review.md",
+  "raw_report_sha256": "08ce8b6b5846e1b58c94ddac2e366cf670074e38ba96a6ccd2a04d032c4d1e6f",
+  "declared_before_total": 74.5,
+  "declared_total": 75.5,
+  "maximum_total": 90,
+  "criteria": [
+    {
+      "id": "BR-01",
+      "name": "选题意义与问题定义",
+      "maximum": 5,
+      "before_score": 4.5,
+      "score": 4.5,
+      "components": {
+        "problem": {
+          "maximum": 2,
+          "before": 2,
+          "current": 2
+        },
+        "significance": {
+          "maximum": 2,
+          "before": 1.5,
+          "current": 1.5
+        },
+        "need": {
+          "maximum": 1,
+          "before": 1,
+          "current": 1
+        }
+      },
+      "locator": "摘要；§1.1.1–1.1.3、§1.3–1.4；§2.1.1–2.1.3",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/DATA_AVAIL.md",
+        "evidence/QUALITY.md"
+      ],
+      "rationale": "两稿均明确站内代理负荷问题与切分粒度，且动机由稀疏性和数据现象支撑；实际功率和业务效益尚未量测，属于已声明边界，主要限制实践评价而非问题定义。文本无足以改变此项的修订。",
+      "uncertainty": "数据证据可支持研究动机，但不能外推到真实功率或业务收益；这不是当前任务定义的内在缺陷。"
+    },
+    {
+      "id": "BR-02",
+      "name": "研究问题、范围与题目一致性",
+      "maximum": 5,
+      "before_score": 4.5,
+      "score": 4.5,
+      "components": {
+        "alignment": {
+          "maximum": 2,
+          "before": 2,
+          "current": 2
+        },
+        "progression": {
+          "maximum": 2,
+          "before": 1.5,
+          "current": 1.5
+        },
+        "closure": {
+          "maximum": 1,
+          "before": 1,
+          "current": 1
+        }
+      },
+      "locator": "摘要；§1.3–1.6；§3.9；§4.5；§5.5及结论",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/CAL.md",
+        "evidence/MAP.md"
+      ],
+      "rationale": "研究问题、代理目标、受控比较和受限结论整体闭合。章节推进包含多个诊断分支，读者需自行整合三层MDP各自回答的问题；新版1.6贡献句更具体但不改变整体进展评分。",
+      "uncertainty": "三层诊断是否足够紧凑属组织判断；题目与范围并无明显越界。"
+    },
+    {
+      "id": "BR-03",
+      "name": "文献综述与缺口定位",
+      "maximum": 5,
+      "before_score": 4.0,
+      "score": 4.5,
+      "components": {
+        "coverage": {
+          "maximum": 1,
+          "before": 1,
+          "current": 1
+        },
+        "sources": {
+          "maximum": 2,
+          "before": 1.5,
+          "current": 2
+        },
+        "gap": {
+          "maximum": 2,
+          "before": 1.5,
+          "current": 1.5
+        }
+      },
+      "locator": "§1.2.2、表1-1及表后段；§1.2.3–1.2.4；§1.3",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/NEAR76.md",
+        "evidence/NEAR.md",
+        "evidence/NEAR2.md"
+      ],
+      "rationale": "唯一评分变化：表后引文从[12-13,67,70-76]调整为[12-13,67-73,76]，与表1-1实际列出的比较项相符，读者更易核对引用覆盖且减少未列条目的含混。近邻[76]的目标、粒度和验证差异已有说明，但差异维度仍可更紧凑地并列。",
+      "uncertainty": "近邻原文核读范围受材料包所列可读部分限制；稿件已披露未核实全文细节。"
+    },
+    {
+      "id": "BR-04",
+      "name": "理论基础与专业知识",
+      "maximum": 5,
+      "before_score": 4.5,
+      "score": 4.5,
+      "components": {
+        "concepts": {
+          "maximum": 2,
+          "before": 2,
+          "current": 2
+        },
+        "formulas": {
+          "maximum": 2,
+          "before": 1.5,
+          "current": 1.5
+        },
+        "knowledge": {
+          "maximum": 1,
+          "before": 1,
+          "current": 1
+        }
+      },
+      "locator": "§2.1–2.5（式2-1、2-2）；§3.2–3.5（式3-1–3-16）；§4.2.5、§4.4；§5.2–5.4",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/MDP.md",
+        "evidence/ADAPT.md",
+        "evidence/S31.md",
+        "evidence/S32.md"
+      ],
+      "rationale": "概念、符号与代理量基本连贯，模型和诊断方法被用于具体问题。公式与代码实现的逐项独立核对不在本次材料范围；文中已说明关键尺度和解释限制，因此保留部分缺口分，两稿无理论说明的实质改变。",
+      "uncertainty": "未作源码级公式—实现核验；不把已声明建模假设视为理论错误。"
+    },
+    {
+      "id": "BR-05",
+      "name": "方法与实验设计",
+      "maximum": 10,
+      "before_score": 8,
+      "score": 8,
+      "components": {
+        "information_split": {
+          "maximum": 3,
+          "before": 2.5,
+          "current": 2.5
+        },
+        "comparators": {
+          "maximum": 2,
+          "before": 1.5,
+          "current": 1.5
+        },
+        "controls": {
+          "maximum": 3,
+          "before": 2.5,
+          "current": 2.5
+        },
+        "selection_budget": {
+          "maximum": 2,
+          "before": 1.5,
+          "current": 1.5
+        }
+      },
+      "locator": "§2.1.1表2-2；§3.6.1–3.6.3表3-1–3-3；§3.7.1–3.7.2表3-9、3-11；§3.8.3表3-14；§4.3",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/S31.md",
+        "evidence/S32.md",
+        "evidence/CAL.md",
+        "evidence/MDP.md",
+        "evidence/ADAPTAUDIT.json"
+      ],
+      "rationale": "主要信息权限、时间划分、基线和干预结构清楚；关系替换及门控对照能回答限定问题。对照容量/训练预算并非处处完全匹配，门控预算解释仍保留。当前稿未改变设计，因此分数不变。",
+      "uncertainty": "审阅材料支持受检期间和固定预算结论，不足以证明未见时期的外部稳健性；稿件将其列为后续验证。"
+    },
+    {
+      "id": "BR-06",
+      "name": "可复现性与方法严谨性",
+      "maximum": 5,
+      "before_score": 4,
+      "score": 4,
+      "components": {
+        "data_split": {
+          "maximum": 1,
+          "before": 1,
+          "current": 1
+        },
+        "source_config": {
+          "maximum": 1.5,
+          "before": 1,
+          "current": 1
+        },
+        "keys_metrics": {
+          "maximum": 1.5,
+          "before": 1.5,
+          "current": 1.5
+        },
+        "environment_package": {
+          "maximum": 1,
+          "before": 0.5,
+          "current": 0.5
+        }
+      },
+      "locator": "§2.1–2.2；§3.6.1、§3.6.4、§3.8.3表3-14；§4.6.1",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/DATA_AVAIL.md",
+        "evidence/QUALITY.md",
+        "evidence/ADAPTAUDIT.json"
+      ],
+      "rationale": "数据切分、预测键和指标定义可追溯，主要结果有审计/重算支撑；环境封装及部分旧基线源码身份仍不齐。当前修订未补入新的复现工件，故保持原分。",
+      "uncertainty": "未从材料包独立复跑全部模型；有限复现记录是已证实的覆盖缺口，不推断结果错误。"
+    },
+    {
+      "id": "BR-07",
+      "name": "工作量与解决问题能力",
+      "maximum": 10,
+      "before_score": 9,
+      "score": 9,
+      "components": {
+        "technical_work": {
+          "maximum": 4,
+          "before": 4,
+          "current": 4
+        },
+        "problem_solving": {
+          "maximum": 4,
+          "before": 3.5,
+          "current": 3.5
+        },
+        "integration": {
+          "maximum": 2,
+          "before": 1.5,
+          "current": 1.5
+        }
+      },
+      "locator": "§2–5，重点§3.7–3.8、§4.2–4.6、§5.2–5.4",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/S31.md",
+        "evidence/S32.md",
+        "evidence/MDP.md",
+        "evidence/MAP.md"
+      ],
+      "rationale": "研究包含数据审计、建图、训练比较、多层诊断和误差解释，体现实质问题处理；各分析链已整合，但章节材料量大、综合主线仍需读者自行提炼。文字修订没有改变已完成工作。",
+      "uncertainty": "该项以论文中可见工作量和分析链判断，不据未开展的外站/现场试验重复扣分。"
+    },
+    {
+      "id": "BR-08",
+      "name": "结果与证据充分性",
+      "maximum": 10,
+      "before_score": 8,
+      "score": 8,
+      "components": {
+        "claim_support": {
+          "maximum": 4,
+          "before": 3.5,
+          "current": 3.5
+        },
+        "alternatives": {
+          "maximum": 3,
+          "before": 2.5,
+          "current": 2.5
+        },
+        "robustness_scope": {
+          "maximum": 3,
+          "before": 2,
+          "current": 2
+        }
+      },
+      "locator": "§3.6.2–3.6.5；§3.7.1–3.7.5表3-9–3-15；§4.4–4.6表4-5、4-8；§5.3",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/S31.md",
+        "evidence/S32.md",
+        "evidence/CAL.md",
+        "evidence/ADAPTAUDIT.json"
+      ],
+      "rationale": "核心关系增量和负结果均有对应对照，主张已限于整体MAE等指定协议。独立外部时期、非零/事件子组表现和组件替代仍有限；稿件本次没有新增结果，分数不变。",
+      "uncertainty": "测试期复用和子组的探索性限制已披露；它们限制外推强度，不构成主结果失效的证据。"
+    },
+    {
+      "id": "BR-09",
+      "name": "统计解释与结论边界",
+      "maximum": 10,
+      "before_score": 8.5,
+      "score": 8.5,
+      "components": {
+        "uncertainty": {
+          "maximum": 4,
+          "before": 3.5,
+          "current": 3.5
+        },
+        "multiplicity": {
+          "maximum": 2,
+          "before": 1.5,
+          "current": 1.5
+        },
+        "interpretation": {
+          "maximum": 4,
+          "before": 3.5,
+          "current": 3.5
+        }
+      },
+      "locator": "§3.6.1–3.6.4；§3.7.1–3.7.2；§3.8.4；§4.2.5、§4.4；§5.3.3–5.3.7及结论",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/S31.md",
+        "evidence/S32.md",
+        "evidence/CAL.md",
+        "evidence/MDP.md"
+      ],
+      "rationale": "稿件区分受检模型、方向性结果、未校正事后分层与重复查看时期，并保留不确定和负结果。多重分析仍属探索性，统计确认范围有限；本轮修改未改变统计处理。",
+      "uncertainty": "没有将已披露的三种子/已查看时期自动转作扣分；更广泛数据上的重复性仍待检验。"
+    },
+    {
+      "id": "BR-10",
+      "name": "贡献与创新",
+      "maximum": 10,
+      "before_score": 8,
+      "score": 8,
+      "components": {
+        "prior_difference": {
+          "maximum": 3,
+          "before": 2.5,
+          "current": 2.5
+        },
+        "contribution": {
+          "maximum": 3,
+          "before": 3,
+          "current": 3
+        },
+        "demonstration": {
+          "maximum": 4,
+          "before": 2.5,
+          "current": 2.5
+        }
+      },
+      "locator": "§1.2.2表1-1；§1.2.3、§1.3–1.4；§3.8.1表3-13；§4.5表4-6；结论",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/NEAR76.md",
+        "evidence/NEAR2.md",
+        "evidence/S31.md",
+        "evidence/S32.md",
+        "evidence/MDP.md"
+      ],
+      "rationale": "相对近邻的差异和受控经验/诊断贡献已经说明。当前稿将两项贡献具体重述于1.6，增强可读性，但没有改变已有差异证据或新增价值验证，故贡献清晰度已满、总分不变。",
+      "uncertainty": "不要求新算子；受控增量与诊断判断可作为贡献，但诊断指导改模的预测收益未被证明。"
+    },
+    {
+      "id": "BR-11",
+      "name": "专业实践价值",
+      "maximum": 5,
+      "before_score": 3.5,
+      "score": 3.5,
+      "components": {
+        "use_case": {
+          "maximum": 1,
+          "before": 1,
+          "current": 1
+        },
+        "real_inputs": {
+          "maximum": 1.5,
+          "before": 1,
+          "current": 1
+        },
+        "value_evaluation": {
+          "maximum": 1.5,
+          "before": 0.5,
+          "current": 0.5
+        },
+        "usable_outputs": {
+          "maximum": 1,
+          "before": 1,
+          "current": 1
+        }
+      },
+      "locator": "§1.1.1；§5.4.1–5.4.5表5-7、5-8；结论",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/DATA_AVAIL.md",
+        "evidence/ACN_BOUNDS.json",
+        "evidence/ACN_DECISION.md",
+        "evidence/CAL.md"
+      ],
+      "rationale": "用途被表述为节点代理需求输入/后续采数安排，且给出接口和条件；实测功率映射、现场收益和运行约束评价尚未完成。该部分属于公开说明的后续工作；当前修订加强了验证次序，但未增加实践价值证据。",
+      "uncertainty": "ACN边界材料未找到更晚记录，不足以证明存在兼容新数据；Office 1节点/字段/使用史待核查，不把未证实可能性算作缺陷。"
+    },
+    {
+      "id": "BR-12",
+      "name": "结构、表达与学术规范",
+      "maximum": 10,
+      "before_score": 8,
+      "score": 8.5,
+      "components": {
+        "structure": {
+          "maximum": 3,
+          "before": 2.5,
+          "current": 2.5
+        },
+        "writing": {
+          "maximum": 3,
+          "before": 2,
+          "current": 2.5
+        },
+        "scholarly_content": {
+          "maximum": 3,
+          "before": 2.5,
+          "current": 2.5
+        },
+        "terminology": {
+          "maximum": 1,
+          "before": 1,
+          "current": 1
+        }
+      },
+      "locator": "摘要；§1.5–1.6；§3.5.4、§3.8.3；§5.4.1；局限与后续工作；表1-1及图表注释",
+      "evidence": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/NEAR76.md",
+        "evidence/NEAR.md",
+        "evidence/NEAR2.md"
+      ],
+      "rationale": "唯一写作分变化：摘要增加Caltech绝对MAE及JPL关系替换的精确相对差值；§5.4.1删除较泛的应用断言并明确以目标片左端τ和步长h索引；局限段落优先安排代理量测与ACN核查。以上改善读者定位数据、接口与下一步的能力。篇幅与重复仍高，故仅加0.5。",
+      "uncertainty": "材料包只检查图表标题/说明文字，未检视图像内容、版面和PPI；不据此判为通过或扣分。"
+    }
+  ],
+  "figure_scope": "captions_only; image content and full-page visual acceptance remain unchecked"
+}

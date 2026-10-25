@@ -393,7 +393,7 @@ def fig_transfer_entropy() -> None:
     final(fig, "fig5_2_transfer_entropy", (5.59, 3.40))
 
 
-# ========== ⑧ fig5_8 分层参数干预敏感度 ==========
+# ========== fig4_4 L1 分层参数干预敏感度 ==========
 def fig_parameter_intervention() -> None:
     cat = json.load(open("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json"))
     iv = cat["interventions"]
@@ -476,7 +476,7 @@ def fig_parameter_intervention() -> None:
     ax2.text(0.0, 1.05, "(b) 逐节点干预敏感度（7 种干预 × 10 节点）",
              transform=ax2.transAxes, ha="left", va="bottom", fontsize=8.6,
              fontweight="bold", color=GRAY_D)
-    final(fig, "fig5_9_parameter_intervention", (5.72, 6.52))
+    final(fig, "fig4_4_parameter_intervention", (5.72, 6.52))
 
 
 if __name__ == "__main__":

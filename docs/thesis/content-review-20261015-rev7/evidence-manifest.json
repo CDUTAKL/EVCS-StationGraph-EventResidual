@@ -1,0 +1,142 @@
+{
+  "packet_id": "EVCS-THESIS-REV7-20261015",
+  "review_date": "2026-10-15",
+  "manuscript_path": "docs/thesis/thesis-manuscript.md",
+  "manuscript_sha256": "99c5e22c64aa5d46333b727bd6f313a75f4958f1de4dbbf1133ae476f9643419",
+  "scope": "五章全文、双语摘要、结论、图表与公式的论文内容；按清单核验相关结果、复算与数据材料。DOCX版式、WPS目录分页和逐图视觉验收另审。致谢/在读成果按既有用户指示暂缓。",
+  "evidence": [
+    {
+      "id": "manuscript-frozen.md",
+      "path": "packet/manuscript-frozen.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/thesis-manuscript.md",
+      "sha256": "99c5e22c64aa5d46333b727bd6f313a75f4958f1de4dbbf1133ae476f9643419",
+      "bytes": 223626
+    },
+    {
+      "id": "rubric.json",
+      "path": "packet/rubric.json",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/scoring/rubric.json",
+      "sha256": "244fb698bd39b0e935e45116671c1954659a6720dc33faa42d9a7faf89433548",
+      "bytes": 3929
+    },
+    {
+      "id": "experiment-registry.md",
+      "path": "packet/experiment-registry.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-registry.md",
+      "sha256": "c2458f0f7accc608de4b90cf48e2932d1a5af32165f99b4c4e625a8045112491",
+      "bytes": 16659
+    },
+    {
+      "id": "sgexp031-report.md",
+      "path": "packet/sgexp031-report.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-031-jpl-relation-controls.md",
+      "sha256": "6e0f93c43f706f00108b6175df4cf7a446760af3b7157ca06318d1d9bec77443",
+      "bytes": 6312
+    },
+    {
+      "id": "sgexp031-audit-readme.md",
+      "path": "packet/sgexp031-audit-readme.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-031-audit-20261015/README.md",
+      "sha256": "63dd87c07025b962e50c7e83d39e6014c1acbe65ca73e3ac97effc7eb58945aa",
+      "bytes": 3594
+    },
+    {
+      "id": "sgexp031-audit.json",
+      "path": "packet/sgexp031-audit.json",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-031-audit-20261015/audit.json",
+      "sha256": "8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475",
+      "bytes": 31770
+    },
+    {
+      "id": "sgexp032-report.md",
+      "path": "packet/sgexp032-report.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md",
+      "sha256": "833500ae3bf882a044a4b00db11f051a9bdea3206577f9d6149d373efefe23f9",
+      "bytes": 9259
+    },
+    {
+      "id": "sgexp032-audit-readme.md",
+      "path": "packet/sgexp032-audit-readme.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-032-target-audit/README.md",
+      "sha256": "9f465de6d08b4a83f302bc394ae012fff8e799687cef077e0763d44b9d98c7eb",
+      "bytes": 1529
+    },
+    {
+      "id": "sgexp032-audit.json",
+      "path": "packet/sgexp032-audit.json",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-032-target-audit/audit.json",
+      "sha256": "11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a",
+      "bytes": 10819
+    },
+    {
+      "id": "sgexp032-recovery.json",
+      "path": "packet/sgexp032-recovery.json",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/recovery-verification.json",
+      "sha256": "96f4a25b16f5216badae4dfd4fa120758365240c95ce60785431e9a34d82f046",
+      "bytes": 734
+    },
+    {
+      "id": "sgexp032-shutdown.json",
+      "path": "packet/sgexp032-shutdown.json",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/shutdown-evidence.json",
+      "sha256": "155730777eb3c9967025a05bfa29201717024cd81e4d9622051474b2eb4512e4",
+      "bytes": 843
+    },
+    {
+      "id": "adaptivegraph-cuda-report.md",
+      "path": "packet/adaptivegraph-cuda-report.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-AdaptiveGraph-CUDA-20261015-no-training.md",
+      "sha256": "073adef1d956baa82602acb81e164af4aab2f4a47628a2e1e9d01718e1c9ed25",
+      "bytes": 3220
+    },
+    {
+      "id": "adaptivegraph-cuda-verification.json",
+      "path": "packet/adaptivegraph-cuda-verification.json",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/AdaptiveGraph-CUDA-20261015/independent-verification.json",
+      "sha256": "76499e6f387d971e33df08acb75479109aabb70d7b407f1b9520b6bb53891e84",
+      "bytes": 2569
+    },
+    {
+      "id": "jpl-mdp-report.md",
+      "path": "packet/jpl-mdp-report.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-JPL-MDP-20261014-no-training.md",
+      "sha256": "0f02c9372e30fbe9e8a97a7f298ba31fa23bfb8b9418a4954e90a49a47aa89f8",
+      "bytes": 1161
+    },
+    {
+      "id": "data-availability.md",
+      "path": "packet/data-availability.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/data-availability.md",
+      "sha256": "3fd3e798cb8e927977e39d14b3e4e00280b5669b83de41e5bd36a756681b6dca",
+      "bytes": 12638
+    },
+    {
+      "id": "material-passport.md",
+      "path": "packet/material-passport.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/material-passport.md",
+      "sha256": "f00ced582e56d8f6e8d4282575af164e5b1fb7738421345db67fc4756be049a1",
+      "bytes": 5865
+    },
+    {
+      "id": "claim-evidence-map.md",
+      "path": "packet/claim-evidence-map.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261012-rev6/packet/claim-evidence-map.md",
+      "sha256": "b8dc5fa63f1e5c7df5094b54ad427b24adbab0865d71ac9e5243d751084d968d",
+      "bytes": 4397
+    },
+    {
+      "id": "nearest-work-source-audit.md",
+      "path": "packet/nearest-work-source-audit.md",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev2/nearest-work-source-audit.md",
+      "sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125",
+      "bytes": 6852
+    },
+    {
+      "id": "figure-manifest.json",
+      "path": "packet/figure-manifest.json",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/figures/manifest.json",
+      "sha256": "14bb2e5eaddd7a19f927f60bfd058e63faae37f049bab07d85973e689d4f1e08",
+      "bytes": 72966
+    }
+  ]
+}

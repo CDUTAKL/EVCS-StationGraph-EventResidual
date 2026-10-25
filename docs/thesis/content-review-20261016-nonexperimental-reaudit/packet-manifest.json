@@ -1,0 +1,79 @@
+{
+  "assessment_id": "FORMAL-20261016-NONEXPERIMENTAL",
+  "packet_id": "PACKET-20261016-NONEXPERIMENTAL-REAUDIT",
+  "manuscript_sha256": "0b30acf65c7a5c5841ab5b6126dab5f39c4b0ec45e71a3cc69a6acfa985324f2",
+  "evidence": {
+    "CURRENT": {
+      "path": "docs/thesis/content-review-20261016-nonexperimental-reaudit/packet/manuscript.md",
+      "sha256": "0b30acf65c7a5c5841ab5b6126dab5f39c4b0ec45e71a3cc69a6acfa985324f2"
+    },
+    "BASE": {
+      "path": "docs/thesis/revision-20261016-nonexperimental/manuscript-before.md",
+      "sha256": "76cc39ad351c7e6bf9a86014b320b80076b4d23a1b795d29ccc2dbe231a8df96"
+    },
+    "BASE-SCORE": {
+      "path": "docs/thesis/content-review-20261016-final-reaudit/scorecard.md",
+      "sha256": "31e399aba540a40d35abe7bcba30c852cfb5d918b6256dc6e1d781ceb2f6d52f"
+    },
+    "BASE-FORENSIC": {
+      "path": "docs/thesis/content-review-20261016-final-reaudit/forensic-review.md",
+      "sha256": "2f4725d004744eadf81918556323c8b0d1442e38a0bc2b2609c71739805270c5"
+    },
+    "DELTA": {
+      "path": "docs/thesis/revision-20261016-nonexperimental/revision-completion-audit.md",
+      "sha256": "2923ef501e1ea60c940fd4070a01d9111faca3c377ce22d2587328e86c2cefe7"
+    },
+    "NEAR": {
+      "path": "docs/thesis/revision-20261016-nonexperimental/nearest-work-source-audit.md",
+      "sha256": "b30cc55d0ab712e727f3e05f2ef1c28720f669eb15dd710aab1bd88cfb931875"
+    },
+    "PRIOR-NEAR": {
+      "path": "docs/thesis/content-review-20261016-final-reaudit/packet/NEAR2.md",
+      "sha256": "2ca238e2e2214e2d526f2782c46fbd437db35a74f0f05113f1b5f7672f4a9048"
+    },
+    "RELATION-CODE": {
+      "path": "src/evcs_station_graph/graphs/relations.py",
+      "sha256": "f1d00a941bc8003ecb88586e9a712bfc0402c018a7cd26a37ab818262999d90f"
+    },
+    "EVENTTIME-RUNNER": {
+      "path": "src/evcs_station_graph/eventtime/runner.py",
+      "sha256": "cc4692209a5eb4fc0e662fe71150685c99e3a5f38a35fc2dc94f3307122025a7"
+    },
+    "JPL-CONFIG": {
+      "path": "scripts/jpl_experiment.py",
+      "sha256": "ce6948196b1db248ed4e2c5b9d4730c6c13b368372a47796372cf4abe23c8157"
+    },
+    "TARGET-CONFIG": {
+      "path": "scripts/completion_target_sensitivity.py",
+      "sha256": "6bb968944a4db08cb3458cf0dbdd4b07c192ce5c31cbcdefad44b9cb945ad753"
+    },
+    "DATA-AVAIL": {
+      "path": "docs/thesis/revision-20261016-nonexperimental/data-availability-decision.md",
+      "sha256": "eee96b5582c46965aa4b6ade26439edd59a429c3b3f2905e6bafae884c4c36ab"
+    },
+    "S31-AUDIT": {
+      "path": "docs/thesis/content-review-20261016-final-reaudit/packet/S31AUDIT.json",
+      "sha256": "8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475"
+    },
+    "S32-AUDIT": {
+      "path": "docs/thesis/content-review-20261016-final-reaudit/packet/S32AUDIT.json",
+      "sha256": "11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a"
+    },
+    "RECOMP": {
+      "path": "docs/thesis/content-review-20261016-final-reaudit/packet/RECOMP.json",
+      "sha256": "388d838f54ae9e8f35ec8f049d226977956327d30cb5d80f42d8974e5c007294"
+    },
+    "DECISION": {
+      "path": "docs/thesis/content-review-20261016-final-reaudit/packet/DECISION.json",
+      "sha256": "483716413395c390480f4651d9678fa6592bdf6d965252ead93771dc60e4b352"
+    }
+  },
+  "reports": {
+    "reviewer-integrity.md": "2ab095155fd10603d0bc0f607806524c73e9149d0a6c4ca15991699ade962155",
+    "reviewer-methods.md": "c759d4509c9f0dd835437eeb699227018495d316b9f363a6fc81d0c67354774a",
+    "reviewer-originality.md": "e4a71277f84cf8dc08dbb59cc88a6b50724a5cba5c7836d86c869b77d3e4ddd2"
+  },
+  "forensic_report_sha256": "9c0df57a64ae4a76d358b6ceae8cb54efa4bfe3bc6a6f0f2ab59ea6fbc62a66d",
+  "scorecard_json_sha256": "d0ad360fe1265c8686ffd8914c3f636cd0876989a6a7665d7b44d5a6a263361f",
+  "scorecard_md_sha256": "8c957bb40b3e1b56699af6a886d8c7064ee6b48a58de4f1dae77894aa8ec4335"
+}

@@ -1,0 +1,69 @@
+{
+  "task_id": "REV-20261022-EVIDENCE-CONSOLIDATION",
+  "mode": "no-tools proposals; Codex reviews and applies",
+  "started_utc": "2026-10-22T02:37:38.803708+00:00",
+  "command": [
+    "claude",
+    "--safe-mode",
+    "--print",
+    "--tools",
+    "",
+    "--permission-mode",
+    "manual",
+    "--permission-prompts",
+    "none",
+    "--disable-slash-commands",
+    "--strict-mcp-config",
+    "--no-session-persistence",
+    "--output-format",
+    "stream-json",
+    "--verbose"
+  ],
+  "timeout_seconds": 240,
+  "pid": 79032,
+  "returncode": 0,
+  "elapsed_seconds": 69.8,
+  "finished_utc": "2026-10-22T02:38:48.600009+00:00",
+  "actual_model": "deepseek-flash",
+  "model_usage": {
+    "deepseek-flash[1m]": {
+      "inputTokens": 9132,
+      "outputTokens": 17026,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.47130999999999995,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "deepseek-flash[1m]",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "usage": {
+    "input_tokens": 9132,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 17026,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "tool_calls": 0,
+  "cli_estimated_cost_usd": 0.47130999999999995,
+  "billing_note": "CLI cost estimate has unknown provider costBasis; not an actual DeepSeek charge or remaining quota."
+}

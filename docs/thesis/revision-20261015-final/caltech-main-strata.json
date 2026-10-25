@@ -1,0 +1,116 @@
+{
+  "metrics": [
+    "mae",
+    "zero_mae",
+    "nonzero_mae",
+    "event_mae"
+  ],
+  "rows": {
+    "agcrn_full": {
+      "mean": [
+        0.03743396502875985,
+        0.003846641110565267,
+        0.2672340667986874,
+        0.37743042970192336
+      ],
+      "sd": [
+        0.00022418877384162414,
+        0.00015693134004945004,
+        0.0007644731862012429,
+        0.0007809297354284135
+      ]
+    },
+    "mrg_full": {
+      "mean": [
+        0.03890102473962639,
+        0.004026351330277323,
+        0.27750900429110303,
+        0.3810145921295783
+      ],
+      "sd": [
+        0.00010288779793471007,
+        0.00023942464893939787,
+        0.002440098781864304,
+        0.0009026618026453561
+      ]
+    },
+    "tcn_wide": {
+      "mean": [
+        0.04634457831417115,
+        0.013121452698293533,
+        0.2736528826684809,
+        0.37463326609446557
+      ],
+      "sd": [
+        0.00028734004946562514,
+        7.324947054816826e-05,
+        0.0026738923874540105,
+        0.001882652902877506
+      ]
+    },
+    "tcn": {
+      "mean": [
+        0.0462873899284138,
+        0.01311709741692786,
+        0.2732342170541238,
+        0.3750608971854594
+      ],
+      "sd": [
+        0.00018917056243993602,
+        0.0001487204276776595,
+        0.0018890087215309322,
+        0.0006915212052937221
+      ]
+    }
+  },
+  "sources": [
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2024/predictions_test.npz",
+      "sha256": "0a394d9476583e12e24a23dcfa536b7a621dca13bf59d855036810e681e25d7d"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2025/predictions_test.npz",
+      "sha256": "1e1818a2f3445d4d0d22fa1dd87470a708ac50aa6a1c40a480bb68f0d3f6cc60"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/agcrn_full/seed-2026/predictions_test.npz",
+      "sha256": "c946e9b268d398a1dbd3724d542795dbd9d7f43e45ce18cb4e014504796d40e1"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2024/predictions_test.npz",
+      "sha256": "e7fcfb85f4562e0540634264585c2c15ec70edf6020868242a75c9fff4d6f2b0"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2025/predictions_test.npz",
+      "sha256": "31e656f47cf09a5a002cbcde2ac84d460b495f9a0dccd53b463df2eaad25a481"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/mrg_full/seed-2026/predictions_test.npz",
+      "sha256": "879b0df5250f241893d03ab7ea9c2ee6eba3ce0c8b47fb2f3e846bc10d928006"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2024/predictions_test.npz",
+      "sha256": "c97f0a54cb3e1c11d1492bee8c6240a4fccaff6ad1086ef4de0880e9ce09b3d6"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2025/predictions_test.npz",
+      "sha256": "f60e5cf9c17e9180acb36f1873f9273e1bb790424b684917111312d8a7046c0d"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn_wide/seed-2026/predictions_test.npz",
+      "sha256": "adf6b5b1f1fecc871558b60bcbdc64092502585b865d491f6ed947802b82a4ba"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn/seed-2024/predictions_test.npz",
+      "sha256": "0fde668af119231ac47296315f140c9d9cd46bb61580ccb9fc79e74ba9cb31dd"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn/seed-2025/predictions_test.npz",
+      "sha256": "70c8a12e9d09ed4b698bdfdf8c92951c1a685d17cb6d00781a5185d1e483761d"
+    },
+    {
+      "path": "outputs/evidence/checkpoint-replay-20261012/components/sg019/results/formal/tcn/seed-2026/predictions_test.npz",
+      "sha256": "01ebe13879ae41c56db855e2405612f9466831b9d63e5f529afa589460890ee1"
+    }
+  ]
+}

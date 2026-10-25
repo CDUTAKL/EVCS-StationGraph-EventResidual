@@ -1,0 +1,45 @@
+{
+  "figure": "图3-10",
+  "data_files": {
+    "per_seed.csv": "28bd950173dd42288371e27301813f24c3570ab2abe637244f32b004fa99feca",
+    "paired_intervals.csv": "8c0b44d1acd30cf5d6a61855f31dadf70369f7b9b35691f060509ff68f237682",
+    "model_summary.csv": "cc78a8802cec9e63a731cbf5b2c538dba44617308ba0419b24951eb70e7341bc"
+  },
+  "python": "3.12.14",
+  "matplotlib": "3.11.0",
+  "pandas": "2.2.3",
+  "numpy": "2.3.5",
+  "panels": {
+    "event_mae": "per_seed.csv::event_mae；三种子点 + 均值 ± 样本 SD",
+    "stable_mae": "per_seed.csv::stable_mae；三种子点 + 均值 ± 样本 SD",
+    "zero_mae": "per_seed.csv::zero_mae；三种子点 + 均值 ± 样本 SD",
+    "nonzero_mae": "per_seed.csv::nonzero_mae；三种子点 + 均值 ± 样本 SD"
+  },
+  "strata_definition": "冻结事件/稳定掩码与零/非零目标分层，定义以 SG-DATA-007 协议与测试导出为准",
+  "y_axis": "四面板独立量程（数据范围 ±15% 留白），非零起点，刻度显式；理由：同分层模型差异占全量程 2–5%，零起点下不可辨",
+  "model_order": [
+    "mrg_full",
+    "tcn_wide",
+    "agcrn_full",
+    "mrg_shared_gate"
+  ],
+  "seeds": [
+    2024,
+    2025,
+    2026
+  ],
+  "pre_1200dpi_sha256": "79cd5ff559643024296438e102ba4183baef1af94b1f7ae84a054e6c014ba330",
+  "outputs": {},
+  "delivery": {
+    "size_px": [
+      6709,
+      4121
+    ],
+    "metadata_dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "effective_dpi_at_word_size": 1200.0605633802818,
+    "method": "rasterized from companion SVG at target dimensions"
+  }
+}

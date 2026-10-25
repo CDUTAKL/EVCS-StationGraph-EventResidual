@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "reviewer_id": "codex-technical-reviewer",
+  "context_id": "calibration-pair-technical-20261019-8c4f72d1-45aa-4b73-a54a-ccf8b04a1e6c",
+  "emphasis": "technical",
+  "historical_scores_exposed": false,
+  "before_manuscript_sha256": "62fe9dd1dbc44187f18992394051e2f31a705ef1b25dc06337bade4d6e5c9a66",
+  "current_manuscript_sha256": "451642e15e0fc51343acabf84e727b5079d8a1f2243c0ab8d8542adeed8b9b42",
+  "packet_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet",
+  "raw_report_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/revision-20261019-nontraining/paired-review-reports/technical/technical-calibration-pair-20261019.md",
+  "raw_report_sha256": "afa92223253044b4e6b58703905bf6de4a9df5a51eeab9f12ca956053d4c773a",
+  "declared_before_total": 74.0,
+  "declared_total": 74.5,
+  "criteria": [
+    {
+      "id": "BR-01",
+      "name": "选题意义与问题定义",
+      "maximum": 5,
+      "before_score": 4.5,
+      "score": 4.5,
+      "component_scores_before": {
+        "problem": 2,
+        "significance": 1.5,
+        "need": 1
+      },
+      "component_scores": {
+        "problem": 2,
+        "significance": 1.5,
+        "need": 1
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "§1.1.1–1.1.3, §1.3, §2.1, Tables 2-1–2-2",
+            "current": "§1.1.1–1.1.3, §1.3, §2.1, Tables 2-1–2-2"
+          },
+          "evidence": [
+            "DATA_AVAIL.md",
+            "PASSPORT.md",
+            "NEAR.md",
+            "NEAR76.md"
+          ],
+          "rationale": "Both versions specify node, proxy-energy target, 15-minute granularity, and use context; infrastructure context, prior work, and observed sparsity support the motivation. Full points for task fit; 0.5 is withheld because operational need and decision cost are not quantified. This is an absence of field-value measurement, not a problem-definition defect.",
+          "uncertainty": "Operational benefit for a specific site is not measured; the manuscripts do not claim it is established."
+        }
+      ]
+    },
+    {
+      "id": "BR-02",
+      "name": "研究问题、范围与题目一致性",
+      "maximum": 5,
+      "before_score": 5,
+      "score": 5,
+      "component_scores_before": {
+        "alignment": 2,
+        "progression": 2,
+        "closure": 1
+      },
+      "component_scores": {
+        "alignment": 2,
+        "progression": 2,
+        "closure": 1
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "Title, Abstract, §§1.3–1.6, 3.8, 4.5–4.6, 5.4–5.5, Conclusion",
+            "current": "Title, Abstract, §§1.3–1.6, 3.8, 4.5–4.6, 5.4–5.5, Conclusion"
+          },
+          "evidence": [
+            "MAP.md",
+            "S31.md",
+            "S32.md",
+            "MDP.md"
+          ],
+          "rationale": "Both versions align title, problem, protocol, results, and conclusion. Chapter progression is coherent and the abstract/conclusion answer the stated questions. Current names the two core contributions more explicitly in §1.6, but baseline already closes the same research line; the change does not warrant a half-point change in alignment.",
+          "uncertainty": "The explicitly scoped station-proxy task does not establish broader station or measured-power performance; this is a declared scope limit rather than scope drift."
+        }
+      ]
+    },
+    {
+      "id": "BR-03",
+      "name": "文献综述与缺口定位",
+      "maximum": 5,
+      "before_score": 4.5,
+      "score": 4.5,
+      "component_scores_before": {
+        "coverage": 1,
+        "sources": 1.5,
+        "gap": 2
+      },
+      "component_scores": {
+        "coverage": 1,
+        "sources": 1.5,
+        "gap": 2
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "§§1.2.1–1.2.4, Table 1-1, §1.3",
+            "current": "§§1.2.1–1.2.4, Table 1-1, §1.3"
+          },
+          "evidence": [
+            "NEAR.md",
+            "NEAR2.md",
+            "NEAR76.md",
+            "NEAR_20261016.md"
+          ],
+          "rationale": "Both cover time-series, EV station-graph, residential graph-gating, session-reconstructed proxy, and residual-correction precedents. The nearest-work comparison distinguishes node granularity, proxy target, method, and validation. Current narrows one summary citation set to discussed sources; this improves precision but does not change the half-step assessment.",
+          "uncertainty": "Some near-work comparisons rely on abstracts, indexed excerpts, or limited publisher pages; the packet records the unread details and the manuscript does not infer them."
+        }
+      ]
+    },
+    {
+      "id": "BR-04",
+      "name": "理论基础与专业知识",
+      "maximum": 5,
+      "before_score": 5,
+      "score": 5,
+      "component_scores_before": {
+        "concepts": 2,
+        "formulas": 2,
+        "knowledge": 1
+      },
+      "component_scores": {
+        "concepts": 2,
+        "formulas": 2,
+        "knowledge": 1
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "§§2.1.1–2.1.2, Eqs. (2-1)–(2-2), §§3.2–3.5, Eqs. (3-3)–(3-16), §§4.2–4.4, Eqs. (4-1)–(4-2), §§5.2–5.4, Eqs. (5-1)–(5-7)",
+            "current": "Same sections and equations"
+          },
+          "evidence": [
+            "S31.md",
+            "S32.md",
+            "S31AUDIT.json",
+            "S32AUDIT.json",
+            "MDP.md",
+            "RECOMP.json"
+          ],
+          "rationale": "Symbols, units, target-bin timing, proxy-energy distinction, graph normalization, gated messages, TCN receptive field, loss, and interval calculations are defined consistently. Empirical relations are not misrepresented as physical topology or causal effects. No explicit formula or dimensional error was found, and assumptions are stated and bounded; full component credit is warranted. The two manuscripts retain the same technical definitions.",
+          "uncertainty": "This was a packet-based review, not a fresh run from raw session time series or a visual inspection of figures; disclosed measurement limits are not treated as theory errors."
+        }
+      ]
+    },
+    {
+      "id": "BR-05",
+      "name": "方法与实验设计",
+      "maximum": 10,
+      "before_score": 8,
+      "score": 8,
+      "component_scores_before": {
+        "information_split": 2.5,
+        "comparators": 1.5,
+        "controls": 2.5,
+        "selection_budget": 1.5
+      },
+      "component_scores": {
+        "information_split": 2.5,
+        "comparators": 1.5,
+        "controls": 2.5,
+        "selection_budget": 1.5
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "§§2.1.1–2.2, §§3.6.1–3.8.4, Tables 3-1–3-15, Table 3-14, §4.3, §5.3",
+            "current": "Same sections and tables"
+          },
+          "evidence": [
+            "S31.md",
+            "S32.md",
+            "S31AUDIT.json",
+            "S32AUDIT.json",
+            "MAP.md",
+            "QUALITY.md"
+          ],
+          "rationale": "Full-window splits and label maturity are addressed for the main behavior-input protocols, but the old Caltech backtest retains cross-boundary windows and full-period upstream statistics, and event counts assume end-of-bin availability (2.5/3). Capacity-near TCN and same-parameter gate/self-loop controls are useful, while full AGCRN is unmatched and some historical graph baselines are simplified (1.5/2). Relation replacement, gate pairing, and target sensitivity are targeted controls, but some supplements reuse an inspected test set (2.5/3). Configurations and selection budgets are traceable; one shared-gate seed per site hits the epoch cap (1.5/2). Text and evidence scope are unchanged between versions.",
+          "uncertainty": "Input arrival delay, a new data family, and an unseen future period remain unmeasured. These do not invalidate the narrower offline comparisons."
+        }
+      ]
+    },
+    {
+      "id": "BR-06",
+      "name": "可复现性与方法严谨性",
+      "maximum": 5,
+      "before_score": 4,
+      "score": 4,
+      "component_scores_before": {
+        "data_split": 1,
+        "source_config": 1,
+        "keys_metrics": 1.5,
+        "environment_package": 0.5
+      },
+      "component_scores": {
+        "data_split": 1,
+        "source_config": 1,
+        "keys_metrics": 1.5,
+        "environment_package": 0.5
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "§§2.1–2.2, §§3.6.1–3.6.4, §§3.8.3–3.8.4, §4.6, §§5.3.3–5.3.7",
+            "current": "Same sections"
+          },
+          "evidence": [
+            "PASSPORT.md",
+            "QUALITY.md",
+            "ADAPT.md",
+            "ADAPTAUDIT.json",
+            "MRECOMP.json",
+            "RECOMP.json",
+            "S31AUDIT.json",
+            "S32AUDIT.json",
+            "CAL.md"
+          ],
+          "rationale": "Data, node, split, common keys, metrics, and independent arithmetic rechecks are extensively traceable. New experiment packages, manifests, checkpoints, and selection records are strong. Some legacy training lacks a Git commit identity, and some original hardware/software provenance is incomplete, limiting full source/environment identification. Frozen prediction checks are supported; third-party retraining is not required by the rubric. Both versions share this evidence and limitation.",
+          "uncertainty": "AdaptiveGraph reproduces under the matched CUDA environment, but the original training source identity remains incomplete; this limitation is disclosed."
+        }
+      ]
+    },
+    {
+      "id": "BR-07",
+      "name": "工作量与解决问题能力",
+      "maximum": 10,
+      "before_score": 8.5,
+      "score": 8.5,
+      "component_scores_before": {
+        "technical_work": 3.5,
+        "problem_solving": 3.5,
+        "integration": 1.5
+      },
+      "component_scores": {
+        "technical_work": 3.5,
+        "problem_solving": 3.5,
+        "integration": 1.5
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "Chapters 2–5, especially §§2.1–2.6, §§3.3–3.8, §§4.2–4.6, §§5.2–5.4, Appendix A",
+            "current": "Same sections"
+          },
+          "evidence": [
+            "MAP.md",
+            "PASSPORT.md",
+            "QUALITY.md",
+            "S31.md",
+            "S32.md",
+            "MDP.md",
+            "MRECOMP.json"
+          ],
+          "rationale": "The completed work covers session reconstruction, data audits, two station protocols, model/baseline retraining, gate and adjacency controls, target sensitivity, calibration/mature-label replay, diagnostics, and a synthetic solver check. It identifies and handles proxy-endpoint, timing, old-protocol, parameter-identifiability, test-reuse, and recomputation problems in a coherent analysis chain. The scoring reflects the documented level of work and problem solving; absence of a new data family or deployment is not counted against this criterion. No work-content change affects the paired scores.",
+          "uncertainty": "Assessment uses frozen reports and audit records rather than rerunning the original training repository."
+        }
+      ]
+    },
+    {
+      "id": "BR-08",
+      "name": "结果与证据充分性",
+      "maximum": 10,
+      "before_score": 8.5,
+      "score": 8.5,
+      "component_scores_before": {
+        "claim_support": 3.5,
+        "alternatives": 2.5,
+        "robustness_scope": 2.5
+      },
+      "component_scores": {
+        "claim_support": 3.5,
+        "alternatives": 2.5,
+        "robustness_scope": 2.5
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "§§3.6.2–3.8.4, Tables 3-2–3-15, §§4.2–4.6, Tables 4-1–4-8, §5.3, Tables 5-2–5-6, Conclusion",
+            "current": "Same sections and tables"
+          },
+          "evidence": [
+            "S31.md",
+            "S32.md",
+            "S31AUDIT.json",
+            "S32AUDIT.json",
+            "MRECOMP.json",
+            "RECOMP.json",
+            "CAL.md",
+            "MAP.md"
+          ],
+          "rationale": "The main model comparisons have common-key metrics and independent arithmetic checks. The text distinguishes whole-model results from component increments across load, profile, and behavioral relations. Capacity-near, same-parameter, self-loop, and alternative-target comparisons address key within-task alternatives. Robustness evidence is broader than a single run but several supplements reuse inspected periods and the second station is in the same ACN family. Results and evidence are unchanged; the current abstract adds some figures but not new validation.",
+          "uncertainty": "There is no unseen-period, independent data-family, or synchronized meter-power validation. The claimed conclusions remain bounded to the inspected proxy protocols."
+        }
+      ]
+    },
+    {
+      "id": "BR-09",
+      "name": "统计解释与结论边界",
+      "maximum": 10,
+      "before_score": 8,
+      "score": 8,
+      "component_scores_before": {
+        "uncertainty": 3,
+        "multiplicity": 1.5,
+        "interpretation": 3.5
+      },
+      "component_scores": {
+        "uncertainty": 3,
+        "multiplicity": 1.5,
+        "interpretation": 3.5
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "§§3.6–3.7.2, §3.8.4, §§4.2–4.6, §§5.2.2–5.2.5, §5.3, Tables 3-5, 3-9, 3-11, 4-3, 4-7–4-8, 5-2–5-6",
+            "current": "Same sections and tables"
+          },
+          "evidence": [
+            "S31.md",
+            "S32.md",
+            "S31AUDIT.json",
+            "S32AUDIT.json",
+            "MRECOMP.json",
+            "RECOMP.json",
+            "CAL.md",
+            "MDP.md"
+          ],
+          "rationale": "The thesis separates seed, prediction-key, and time-block uncertainty; corrects the three primary relation comparisons and the TE family; labels post-hoc/uncorrected subgroup work as exploratory; and interprets negative results and coverage failures. Some small seed counts, inspected-period analyses, and uncorrected secondary endpoints leave uncertainty, so full credit is not warranted. Neither manuscript changed this statistical treatment.",
+          "uncertainty": "Time-block intervals describe variation within a fixed period and do not estimate station sampling or all training randomness; the manuscript says so."
+        }
+      ]
+    },
+    {
+      "id": "BR-10",
+      "name": "贡献与创新",
+      "maximum": 10,
+      "before_score": 7.5,
+      "score": 7.5,
+      "component_scores_before": {
+        "prior_difference": 2.5,
+        "contribution": 2.5,
+        "demonstration": 2.5
+      },
+      "component_scores": {
+        "prior_difference": 2.5,
+        "contribution": 2.5,
+        "demonstration": 2.5
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "Abstract, §§1.2.2–1.4, §§3.7–3.8, §4.5–4.6, Conclusion",
+            "current": "Same sections"
+          },
+          "evidence": [
+            "NEAR.md",
+            "NEAR2.md",
+            "NEAR76.md",
+            "NEAR_20261016.md",
+            "MAP.md",
+            "S31.md",
+            "MDP.md"
+          ],
+          "rationale": "Prior work and readable source scope substantiate the distinction from proxy-load/residual work [76] and graph-gating precedents. The contribution is framed as a task-specific controlled empirical finding plus a diagnostic protocol, not a new general graph-time-series operator. Direct gate, relation-replacement, and MDP evidence demonstrates some added value, but it remains conditional and within one data family; diagnosis-guided improvement is untested. Both versions use this same contribution class and evidence, so the score is unchanged.",
+          "uncertainty": "Readability of prior sources varies; no cross-paper metric ranking or unsupported source details are used."
+        }
+      ]
+    },
+    {
+      "id": "BR-11",
+      "name": "专业实践价值",
+      "maximum": 5,
+      "before_score": 3,
+      "score": 3,
+      "component_scores_before": {
+        "use_case": 1,
+        "real_inputs": 1,
+        "value_evaluation": 0.5,
+        "usable_outputs": 0.5
+      },
+      "component_scores": {
+        "use_case": 1,
+        "real_inputs": 1,
+        "value_evaluation": 0.5,
+        "usable_outputs": 0.5
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "§1.1, §§2.1, 5.4.1–5.4.5, Tables 5-7–5-8, Judgment and Limitations",
+            "current": "Same sections; §5.4.1 and limitations rephrased"
+          },
+          "evidence": [
+            "PASSPORT.md",
+            "DATA_AVAIL.md",
+            "MAP.md",
+            "S32.md"
+          ],
+          "rationale": "The capacity/coordination use context is stated, and real session records supply input; however, target energy is uniformly allocated proxy data and reporting delay/meter mapping are unverified. Accuracy tables and a synthetic feasible plan do not measure actual cost, benefit, or operating performance. The work gives screening/data-collection and shadow-run steps but no deployable calibrated product or verified decision change. Current clarifies the interface but adds no real-use evidence, so the score remains.",
+          "uncertainty": "This score does not require field deployment; the shortfall is lack of evaluation against real operating constraints or quantified practical value."
+        }
+      ]
+    },
+    {
+      "id": "BR-12",
+      "name": "结构、表达与学术规范",
+      "maximum": 10,
+      "before_score": 7.5,
+      "score": 8,
+      "component_scores_before": {
+        "structure": 2.5,
+        "writing": 2,
+        "scholarly_content": 2,
+        "terminology": 1
+      },
+      "component_scores": {
+        "structure": 2.5,
+        "writing": 2.5,
+        "scholarly_content": 2,
+        "terminology": 1
+      },
+      "findings": [
+        {
+          "locator": {
+            "baseline": "Abstract, §§1.2.2–1.6, §3.5.4, §5.4.1, Limitations, Conclusion",
+            "current": "Same sections; revised abstract/citation scope/contribution summary/cross-reference/time-bin notation"
+          },
+          "evidence": [
+            "NEAR.md",
+            "NEAR2.md",
+            "NEAR76.md",
+            "NEAR_20261016.md",
+            "PASSPORT.md",
+            "QUALITY.md"
+          ],
+          "rationale": "Both texts are organized and technically readable, with some repetition, abbreviation density, and highly packed table captions. Baseline summarizes contributions and sources less precisely and retains a stale gate-evidence cross-reference. Current quantifies key summary results, narrows the citation range to sources discussed, names the contributions, corrects the cross-reference, and clarifies time-bin notation. This modest precision gain supports +0.5 in writing; layout and image content are unchanged and not scored as verified.",
+          "uncertainty": "Packet manifest limits figure review to captions. Image content, rendered layout, pagination, and final cross-reference rendering were not checked; no automatic pass/fail is inferred."
+        }
+      ]
+    }
+  ],
+  "manuscript_sha256": "451642e15e0fc51343acabf84e727b5079d8a1f2243c0ab8d8542adeed8b9b42"
+}

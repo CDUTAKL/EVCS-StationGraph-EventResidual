@@ -1,0 +1,216 @@
+{
+  "packet_id": "EVCS-CONTENT-20261009-REV1",
+  "review_date": "2026-10-09",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "EVCS-CONTENT-20261009-REV1-FORMAL",
+  "assessment_kind": "formal",
+  "manuscript": {
+    "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/thesis-manuscript.md",
+    "sha256": "6402f06a4deff473f09d75824bbab08023c34d9246408dca7a31fac71bf22ca0",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审"
+  },
+  "rubric_sha256": "244fb698bd39b0e935e45116671c1954659a6720dc33faa42d9a7faf89433548",
+  "historical_comparison": {
+    "prior_assessment_id": "EVCS-CONTENT-20261009-FORMAL",
+    "prior_raw_score": 75.5,
+    "prior_raw_maximum": 90,
+    "prior_normalized_score": 83.89,
+    "prior_manuscript_sha256": "25fe77154070100c565dbf355fe2555cbdaf873a4398df9808f1277a043161e2",
+    "comparison_status": "not_paired_source_manuscript_not_recovered"
+  },
+  "evidence": [
+    {
+      "id": "E01",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/thesis-manuscript.md",
+      "locator": "冻结主稿全文：摘要、五章、图表与结论",
+      "reviewed": true,
+      "sha256": "6402f06a4deff473f09d75824bbab08023c34d9246408dca7a31fac71bf22ca0"
+    },
+    {
+      "id": "E02",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009/nearest-literature-review.md",
+      "locator": "近邻文献来源核查；全文/摘要层级和比较边界",
+      "reviewed": true,
+      "sha256": "c6a2c77a9ec3f36a428ee4b959eda533aa44a42cceb7018395efaa3b259c4f18"
+    },
+    {
+      "id": "E03",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/core-key-audit.md",
+      "locator": "旧Caltech、事件时刻、门控、JPL逐键审计范围与结论",
+      "reviewed": true,
+      "sha256": "a1b9c19cc4d2d7c9709508b3cbfbad4b4ee18a5d09371be632e7c237f088eeb0"
+    },
+    {
+      "id": "E04",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/EXP-019-eventtime-v1-phase2.md",
+      "locator": "Caltech事件时刻协议与36次运行",
+      "reviewed": true,
+      "sha256": "74fed15df3e44b25c06eacdfc19b97473a4e0e2e96d9826b38268d17d308893b"
+    },
+    {
+      "id": "E05",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-027-paired-gate-control-report.md",
+      "locator": "Caltech同参数门控对照及时间块结果",
+      "reviewed": true,
+      "sha256": "8d219e2b0a76a6adcaf153dc9a6e7f5dd35c98c6fecab57d9f07ea424fcb0511"
+    },
+    {
+      "id": "E06",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md",
+      "locator": "JPL预登记重拟合协议和运行结果",
+      "reviewed": true,
+      "sha256": "edf3f29b5fd1675d7f139b15c431280fef8a0f691b9505985f3e4a1cb67ebc06"
+    },
+    {
+      "id": "E07",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/experiment-reports/SG-EXP-029-node-composition-sensitivity.md",
+      "locator": "事后节点组成留一敏感性设计和边界",
+      "reviewed": true,
+      "sha256": "c420caf2482d0274e5e93e2b8eb93b0711079e893e01488a6d36a79874052c2c"
+    },
+    {
+      "id": "E08",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/gate-node-composition-audit/sensitivity.json",
+      "locator": "SG-EXP-027与JPL全部节点和20次留一结果",
+      "reviewed": true,
+      "sha256": "c254640b7e438b5399cf4614df0b83b3c2bb9a8e7f3389964faa08b22b74092d"
+    },
+    {
+      "id": "E09",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/gate-node-composition-audit/leave_one_node_out.csv",
+      "locator": "逐协议、逐节点留一数值",
+      "reviewed": true,
+      "sha256": "d07bb323b9c30449eee4e13ce8ca2b1cd985eace9b20357cba7d5f3e6eeb6043"
+    },
+    {
+      "id": "E10",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/citation-closure.json",
+      "locator": "正文数值引文闭合与编号连续性",
+      "reviewed": true,
+      "sha256": "789593d3b3c3580e797d2fe39df6ad5060ffd4c07f394297e0ca13923cea2b12"
+    },
+    {
+      "id": "E11",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/reviewer-methods.md",
+      "locator": "隔离的12项方法/实验视角原始报告",
+      "reviewed": true,
+      "sha256": "9e668616abc4397968c47aca2f099fccb1f18b4fb9d0714322d4a3658804b4f8"
+    },
+    {
+      "id": "E12",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/reviewer-neighborhood.md",
+      "locator": "隔离的12项近邻文献视角原始报告",
+      "reviewed": true,
+      "sha256": "28bd6071cdcad45b3754af4fac4bceb859b3ef5ea86c96b9247bb7d06702e241"
+    },
+    {
+      "id": "E13",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/reviewer-structure.md",
+      "locator": "隔离的12项结构/表达视角原始报告",
+      "reviewed": true,
+      "sha256": "d775be97902cd33af77824e572da655d0ea8f2a880350362b87e30ef61899248"
+    },
+    {
+      "id": "E14",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/forensic-review.md",
+      "locator": "主评独立证据核验与意见处置",
+      "reviewed": true,
+      "sha256": "81cac8a3e63b4754c07e22239b7ae26bd642ecf741dc940aef99f4df3b64c0e5"
+    },
+    {
+      "id": "E15",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-021-demand-warning/final/report.md",
+      "locator": "容量预警误差、触发结果和应用边界",
+      "reviewed": true,
+      "sha256": "95be0da00c6122107bdfb894766b38e9d03261e6b6b487a2396d56a7b52df91e"
+    },
+    {
+      "id": "E16",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-022-forecast-operation-interface/audit.json",
+      "locator": "固定起点预测接口和时间映射审计",
+      "reviewed": true,
+      "sha256": "bd0f8c823c34512194bf9578ac72708fa2277093a776c5863eb1b7ac3ef81ab7"
+    },
+    {
+      "id": "E17",
+      "source": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/analysis/SG-EXP-026-charging-decision/actual_thesis_case_status.json",
+      "locator": "实际论文案例/合成决策可用性状态",
+      "reviewed": true,
+      "sha256": "d60eab766bfbc1542ccfb072a692a8895cd3d0573cb2780e99d04fa82f8ab031"
+    }
+  ],
+  "review_outputs": [
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/reviewer-methods.md",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/reviewer-neighborhood.md",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/reviewer-structure.md",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/forensic-review.md",
+    "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/scorecard-reconciliation.md"
+  ],
+  "scoring_outputs": [
+    {
+      "id": "R01",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/scorecard.json",
+      "role": "formal scorecard JSON",
+      "sha256": "5c3fbbcde9b19c2b883fb288fc1177193ffd88fa591d1bc8d81362df55f091de"
+    },
+    {
+      "id": "R02",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/scorecard.md",
+      "role": "human-readable formal scorecard",
+      "sha256": "2654db9fcc443c9a3ac488c31d79c4022fb940ceb7e95c97ead569a1e75da496"
+    },
+    {
+      "id": "R03",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/scorecard-validation.json",
+      "role": "scorecard schema/arithmetical validation",
+      "sha256": "78cc3579375b9375ef143b81e2b75a4a61cbec0c811c4a9e9753ad4e6de95579"
+    },
+    {
+      "id": "R04",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/citation-closure.json",
+      "role": "citation closure audit output",
+      "sha256": "789593d3b3c3580e797d2fe39df6ad5060ffd4c07f394297e0ca13923cea2b12"
+    },
+    {
+      "id": "R05",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/SG-EXP-028-analysis/model_summary.csv",
+      "role": "JPL seed-summary metrics",
+      "sha256": "cc78a8802cec9e63a731cbf5b2c538dba44617308ba0419b24951eb70e7341bc"
+    },
+    {
+      "id": "R06",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/SG-EXP-028-analysis/paired_intervals.csv",
+      "role": "JPL multiplicity-adjusted paired block intervals",
+      "sha256": "8c0b44d1acd30cf5d6a61855f31dadf70369f7b9b35691f060509ff68f237682"
+    },
+    {
+      "id": "R07",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_内容修订稿_20261009.docx",
+      "role": "content-revision DOCX preview; not scored as an institutional-format deliverable",
+      "sha256": "0af17e633d159d843595148024c1947a9cc023b89d0d12e06bcf6211ce3ed640"
+    },
+    {
+      "id": "R08",
+      "path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/docs/thesis/content-review-20261009-rev1/scorecard-reconciliation.md",
+      "role": "score correction and item-level adjudication",
+      "sha256": "70fabfca9aac9c734815f2d30c32503bd0b9e168af8e784d0242b240d1dc04e3"
+    }
+  ],
+  "validation": {
+    "assessment_id": "EVCS-CONTENT-20261009-REV1-FORMAL",
+    "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+    "status": "valid",
+    "errors": [],
+    "missing": [],
+    "raw_score": 76.0,
+    "raw_maximum": 90.0,
+    "normalized_score": 84.44,
+    "blockers": [],
+    "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。"
+  },
+  "limitations": [
+    "Citation audit checks numeric closure, not all source metadata/support.",
+    "The earlier frozen manuscript corresponding to the 75.5/90 score is unrecovered; no paired delta is asserted.",
+    "WPS formatting review remains separate; the DOCX preview contains placeholders/font warning noted in the audit."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "task_id": "REV-20261020-LANGUAGE-006",
+  "executor": "Claude Code draft + Codex review/application",
+  "model": "deepseek-flash",
+  "user_reported_model": "DeepSeek",
+  "summary": "Claude正常退出，生成24条建议；Codex拒绝2条无改动建议，修正语气、公式转义与适用边界，并补充章节收束。共46处记录（含6处原句分段和1处关键词）。正文汉字净减451；数值、引文序列、数学表达、标题、图表与参考文献核对通过。",
+  "changed_paths": [
+    "docs/thesis/thesis-manuscript.md",
+    "docs/thesis/revision-20261020-delivery/language-recovery/claude-stream.jsonl",
+    "docs/thesis/revision-20261020-delivery/language-recovery/claude-stderr.txt",
+    "docs/thesis/revision-20261020-delivery/language-recovery/claude-proposals.json",
+    "docs/thesis/revision-20261020-delivery/language-recovery/revision-audit.json",
+    "docs/thesis/revision-20261020-delivery/language-recovery/revision-review.md",
+    "docs/thesis/revision-20261020-delivery/language-recovery/failure-analysis.md"
+  ],
+  "evidence_used": [
+    "冻结段落 paragraphs.json 与任务包锁定主张"
+  ],
+  "claim_or_number_changes": [
+    {
+      "type": "organization_only",
+      "locations": [
+        "1.4",
+        "3.7.2",
+        "5.1"
+      ],
+      "change": "以正文已有结果前置贡献和章节判断；未增加证据、数值或结论强度。"
+    }
+  ],
+  "checks": [
+    {
+      "name": "real Claude execution",
+      "result": "exit=0, duration=102.4s, tool_calls=0, model=deepseek-flash"
+    },
+    {
+      "name": "immutable-content audit",
+      "result": "numeric tokens, citation sequence, inline/display math, headings, table rows, captions, image links, references/appendix identical"
+    },
+    {
+      "name": "Codex semantic review",
+      "result": "comparison types, subgroup ranking, retrospective fields, post-hoc status, multiplicity and budget caveats preserved"
+    }
+  ],
+  "unresolved": [
+    "本次正文修改后，既有Word/PDF仍对应修订前文本；需重新同步与视觉验收。",
+    "正式同量表复评尚未执行，不沿用旧分数。"
+  ],
+  "blockers": [],
+  "usage": {
+    "input_tokens": 11744,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 25126,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "task_id": "REV-20261021-EPFL-PROXY-AUDIT",
+  "title": "EPFL同步实测功率与会话均摊代理目标审计",
+  "task_type": "evidence_audit",
+  "workflow_stage": "第8/10/11/12步：实测目标核验、来源链和受限修订",
+  "objective": "使用已下载并按Git提交与SHA-256冻结的EPFL-DESL Level-3同步实测数据，审计“Arrival至Departure均匀分配会话Energy”与同会话15 min实测功率/能量曲线的差异；生成可复算脚本、逐会话派生表、汇总和来源清单，并同步更新数据兼容性/来源链证据。不得将此外站审计写成ACN冻结检查点验证或应用收益；本轮不改论文主稿，待Codex独立复算后再决定正文措辞。",
+  "context_sources": [
+    {
+      "path": "docs/thesis/revision-20261021-evidence/epfl-proxy-audit-protocol.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "预先冻结数据来源、连接键、能量闭合、形态指标与结论权限"
+    },
+    {
+      "path": "docs/thesis/claim-evidence-map.md",
+      "locator": {
+        "kind": "line_range",
+        "start": 18,
+        "end": 24
+      },
+      "purpose": "核对论文当前核心主张、代理负荷边界和SG-EXP-031证据定位"
+    },
+    {
+      "path": "docs/thesis/data-availability.md",
+      "locator": {
+        "kind": "line_range",
+        "start": 1,
+        "end": 22
+      },
+      "purpose": "当前ACN已查看范围及候选新数据的已核实兼容性"
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "站点、字段、标签、节点映射和现有应用材料缺口"
+    }
+  ],
+  "evidence_sources": [
+    {
+      "path": "docs/thesis/revision-20261021-evidence/source-chain-summary.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "近邻[12][13][67][70][76]证据来源与训练源码链的既有核查结论"
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/training-source-chain.json",
+      "locator": {
+        "kind": "line_range",
+        "start": 1,
+        "end": 25
+      },
+      "purpose": "SG-EXP-031/032冻结源码、配置、数据与输出哈希的机器记录"
+    },
+    {
+      "path": "docs/thesis/experiment-reports/SG-EXP-032-completion-target-sensitivity.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "论文代理目标的已知定义、完成时刻敏感性结果及边界"
+    },
+    {
+      "path": "docs/thesis/revision-20261021-evidence/epfl-proxy-audit-protocol.md",
+      "locator": {
+        "kind": "whole_file"
+      },
+      "purpose": "冻结本次外部实测功率审计流程和解释权限"
+    }
+  ],
+  "claude_skills": [],
+  "allowed_paths": [
+    "scripts/audit_epfl_proxy_shape.py",
+    "docs/thesis/revision-20261021-evidence/epfl-proxy-audit/",
+    "docs/thesis/revision-20261021-evidence/data-source-compatibility.md",
+    "docs/thesis/data-availability.md",
+    "docs/thesis/claim-evidence-map.md",
+    "docs/thesis/revision-20261021-evidence/source-chain-summary.md"
+  ],
+  "locked_claims": [
+    "此数据期未进入论文既有ACN训练/验证/测试与既有实验，但本轮已读取数据工作簿结构和少量样例；因此本次分析是探索性外部核验，不得称为盲态、预注册或确认性未查看测试。",
+    "EPFL数据是瑞士Level-3商业站，只包含两个被测CCS端口、1 min功率测量和会话字段；不含ACN十节点映射、相同站内关系图及96×10×7输入张量。不得对论文冻结检查点做直接推理，不得训练。",
+    "审计只对比会话Arrival–Departure均摊能量与该外站实测功率/能量时间形态；不得将外站结果与论文ACN主目标的MAE直接比较，也不得推断模型精度、真实部署收益或调度收益。",
+    "先报告数据连接、覆盖率、功率积分/累计能量/会话电量闭合和纳排流程；若核心能量链未通过，不报告形态差异为有效证据。不得根据结果修改预设门槛。",
+    "原始工作簿位于Git忽略目录data/external/epfl-l3-20261021/，只读且不得移动、重写、提交或复制到生成目录；来源提交、文件SHA和MIT许可须保留。",
+    "源链训练核验不得补造Git提交。SG-EXP-031/032的事后测试期边界、[76]原文可读范围、ACN范围检查限度均按既有来源摘要保持不变。",
+    "本轮不得修改thesis-manuscript.md、DOCX、图表、评分、Git状态；如审计有效，先输出待Codex复核的建议措辞，不直接进正文。"
+  ],
+  "steps": [
+    "阅读协议与源README，先检查输入文件存在、SHA-256吻合、工作簿sheet/字段/行数和仓库提交引用；不要联网或尝试重新下载。",
+    "编写scripts/audit_epfl_proxy_shape.py，固定列映射、匹配键、时序积分、异常/缺失/重复筛选和预定纳排标准；保留每个排除原因，运行入口使用显式路径参数。",
+    "检查Session_data与Measurement_data按CCS+Session连接的唯一性和覆盖；按源字段对P(W)梯形积分，按Energy(Wh)累计读数和会话Energy独立闭合。确认DST/时区限制、采样间隔与相邻记录关系，不把naive本地时刻冒充UTC。",
+    "对通过预先固定质量门槛的会话，将会话Energy按Arrival至Departure的15 min片段重叠比例均匀分配；把同窗口测量功率积分成15 min实测电量。分离总量误差与归一化形态误差，并按协议计算TVD及描述统计。",
+    "输出去标识逐会话指标CSV、summary.json、源文件/脚本/结果哈希清单和审计报告；报告包含输入覆盖、连接数、排除表、异常解释、单位、时间口径和全部局限。不得仅保留拟合较好的会话。",
+    "运行蓝图指定的本地分析命令并检查输出完整性；随后只在授权证据文档中更新EPFL数据兼容性、探索性审计结果、ACN冻结模型不兼容边界及正确的SG-EXP-031表号/CSV路径。更新当前入口，不覆盖日期化历史记录。",
+    "保持主稿不变。在审计报告末尾给出“是否具备进入后续正文修改”的有限建议，不作分数判断；填写execution-report.json并标记pending_codex_review。"
+  ],
+  "acceptance_criteria": [
+    "数据文件SHA-256与协议一致；分析脚本可在本地重跑，输出清楚记录工作簿sheet、字段、纳排、时间口径和所有文件哈希。",
+    "全部输入会话按CCS+Session可复核匹配；功率积分、累计能量和会话Energy闭合统计完整，并明确阈值、失败数量与未匹配数量。",
+    "均摊目标与实测数据比较只在质量门槛内会话开展；幅值与形状分别量化，结果与结论不超出单站双CCS外部形态审计。",
+    "明确该数据不兼容现有冻结检查点、非ACN新时期模型验证、非目标kWh校准证据、非真实调度回放。",
+    "正文与DOCX保持不变；不训练、不访问网络、不改原始数据、不提交Git；输出须待Codex独立复核而非宣称验收通过。",
+    "修复data-availability.md当前入口中SG-EXP-031表3-11的旧引用（应为表3-10；历史日期段不改），并在CLM-031-RELATION中补充已经存在的逐种子/块级CSV证据目录。"
+  ],
+  "execution_policy": {
+    "model_selection": "configured_default",
+    "user_reported_model": "DeepSeek",
+    "training_allowed": false,
+    "remote_execution_allowed": false,
+    "network_access_allowed": false,
+    "git_mutations_allowed": false,
+    "checks_to_run": [
+      "python3 scripts/audit_epfl_proxy_shape.py --input-dir data/external/epfl-l3-20261021 --output-dir docs/thesis/revision-20261021-evidence/epfl-proxy-audit"
+    ],
+    "network_domains": []
+  },
+  "deliverables": [
+    "scripts/audit_epfl_proxy_shape.py",
+    "docs/thesis/revision-20261021-evidence/epfl-proxy-audit/report.md",
+    "docs/thesis/revision-20261021-evidence/epfl-proxy-audit/summary.json",
+    "docs/thesis/revision-20261021-evidence/epfl-proxy-audit/session_metrics.csv",
+    "docs/thesis/revision-20261021-evidence/epfl-proxy-audit/manifest.json",
+    "更新后的兼容性、数据可得性和证据来源链文档",
+    "execution-report.json"
+  ]
+}

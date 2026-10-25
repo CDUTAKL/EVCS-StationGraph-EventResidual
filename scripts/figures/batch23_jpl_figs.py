@@ -15,8 +15,8 @@
   与右图时间块 bootstrap 区间是两种不同的不确定性表达；
 - 逐种子均值/SD 与 model_summary.csv 逐项断言核对（rtol=1e-9）。
 
-输出：outputs/figures/fig3_15_jpl_mae_primary.{svg,png}、
-      outputs/figures/fig3_16_jpl_stratified_mae.{svg,png}
+输出：outputs/figures/fig3_9_jpl_mae_primary.{svg,png}、
+      outputs/figures/fig3_10_jpl_stratified_mae.{svg,png}
       （SVG + 1200 DPI PNG），各附 *_source.json 记录数据路径、SHA-256
       与运行环境版本。
 
@@ -251,10 +251,10 @@ def fig3_15() -> None:
               fontsize=9, fontweight="bold", color="#2B2B2B")
     # 区间语义（7 日块、24 块、10,000 次重采样、Bonferroni 98.33%）由论文
     # 图 3-15 图注承载，图内不再置底注（底注会拖出大面积空白）；机器可核对的
-    # 同口径信息仍写入 fig3_15_jpl_mae_primary_source.json。
+    # 同口径信息仍写入 fig3_9_jpl_mae_primary_source.json。
 
-    _final(fig, "fig3_15_jpl_mae_primary", (FIG_W, FIG_H))
-    _write_source("fig3_15_jpl_mae_primary", {
+    _final(fig, "fig3_9_jpl_mae_primary", (FIG_W, FIG_H))
+    _write_source("fig3_9_jpl_mae_primary", {
         "left_panel": "整体 MAE：三种子点 + 均值 ± 样本 SD（per_seed.csv::mae）",
         "right_panel": "paired_intervals.csv block_days=7；区间列 ci98_333333_*；"
                        "差值方向 baseline − MRG；24 个 7 日块；10,000 次重采样",
@@ -297,8 +297,8 @@ def fig3_16() -> None:
     axes[2].set_ylabel("MAE（kWh/15 min）", fontsize=8.0)
 
     # 各面板已带模型名 x 刻度，不再另设图例
-    _final(fig, "fig3_16_jpl_stratified_mae", (FIG_W, FIG_H))
-    _write_source("fig3_16_jpl_stratified_mae", {
+    _final(fig, "fig3_10_jpl_stratified_mae", (FIG_W, FIG_H))
+    _write_source("fig3_10_jpl_stratified_mae", {
         "panels": {col: f"per_seed.csv::{col}；三种子点 + 均值 ± 样本 SD"
                    for col, _t, _f in STRATA},
         "strata_definition": "冻结事件/稳定掩码与零/非零目标分层，"

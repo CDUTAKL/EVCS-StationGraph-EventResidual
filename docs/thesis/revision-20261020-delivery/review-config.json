@@ -1,0 +1,543 @@
+{
+  "schema_version": 1,
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "review_mode": "paired_revision",
+  "baseline_scorecard": "docs/thesis/revision-20261019-nontraining/paired-calibration-scorecard.json",
+  "baseline_scorecard_sha256": "2e473427c8a278915e1bef884e7f1295913d7f430e1bbd15b74f256d43d1d13b",
+  "manuscript": "docs/thesis/thesis-manuscript.md",
+  "rubric": "docs/thesis/scoring/rubric.json",
+  "anchors": "docs/thesis/scoring/criterion-anchors-v2.json",
+  "protocol": "docs/thesis/scoring/protocol-v2.json",
+  "reviewer_instructions": "docs/thesis/scoring/reviewer-instructions-v2.md",
+  "evidence_inventory_confirmed": true,
+  "evidence_inventory_scope": "Frozen 2026-10-19 authoritative paired-calibration evidence plus current local evidence files registered in the same evidence inventory; reviewers inspect the same evidence packet for the 2026-10-19 scored manuscript and the 2026-10-20 current manuscript. No raw ACN sessions or time-series payloads; Word/PDF visuals are a separate delivery audit.",
+  "baseline_evidence_exclusions": {
+    "PACKET_README": "Packet governance is replaced by clean reviewer instructions.",
+    "ANCHORS": "Canonical current anchors are supplied separately.",
+    "BASELINE": "Paired baseline manuscript is included as manuscripts/baseline.md.",
+    "CURRENT": "Paired current manuscript is included as manuscripts/current.md.",
+    "REVIEWER_INSTRUCTIONS": "Canonical current instructions are supplied separately.",
+    "RUBRIC": "Canonical current rubric is supplied separately."
+  },
+  "required_citations": [
+    12,
+    13,
+    67,
+    70,
+    71,
+    72,
+    73,
+    76
+  ],
+  "evidence": [
+    {
+      "id": "ADAPT",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/ADAPT.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "ADAPTAUDIT",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/ADAPTAUDIT.json",
+      "reviewer_safe": true
+    },
+    {
+      "id": "CAL",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/CAL.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "DATA_AVAIL",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/DATA-AVAIL-20261017.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "MAP",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/MAP.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "MDP",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/MDP.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "MRECOMP",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/MRECOMP.json",
+      "reviewer_safe": true
+    },
+    {
+      "id": "NEAR_20261016",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/NEAR-20261016.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "NEAR",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/NEAR.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "NEAR2",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/NEAR2.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "NEAR76",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/NEAR76-primary.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "NZ",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/NZ.json",
+      "reviewer_safe": true
+    },
+    {
+      "id": "PASSPORT",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/PASSPORT.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "QUALITY",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/QUALITY.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "RECOMP",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/RECOMP.json",
+      "reviewer_safe": true
+    },
+    {
+      "id": "S31",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/S31.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "S31AUDIT",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/S31AUDIT.json",
+      "reviewer_safe": true
+    },
+    {
+      "id": "S32",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/S32.md",
+      "reviewer_safe": true
+    },
+    {
+      "id": "S32AUDIT",
+      "path": "docs/thesis/content-review-20261017-calibration-pair/reviewer-packet/evidence/S32AUDIT.json",
+      "reviewer_safe": true
+    },
+    {
+      "id": "ACN_RANGE",
+      "path": "docs/thesis/revision-20261019-nontraining/evidence/acn/range_probe_reviewed.json",
+      "reviewer_safe": true
+    },
+    {
+      "id": "ACN_BOUNDS",
+      "path": "docs/thesis/revision-20261019-nontraining/evidence/acn/bounds_verification.json",
+      "reviewer_safe": true
+    },
+    {
+      "id": "ACN_DECISION",
+      "path": "docs/thesis/revision-20261019-nontraining/data-decision.md",
+      "reviewer_safe": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "SRC12",
+      "evidence_id": "NEAR",
+      "citations": [
+        12
+      ],
+      "reading_status": "verified_abstract",
+      "locator": "NEAR.md §“近邻结论”及[12]条目：官方书目/摘要可读；下载全文未取得。",
+      "comparison_status": "compared",
+      "reviewed_sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125"
+    },
+    {
+      "id": "SRC13",
+      "evidence_id": "NEAR",
+      "citations": [
+        13
+      ],
+      "reading_status": "verified_excerpt",
+      "locator": "NEAR.md [13]条目：官方期刊记录及正文片段，PDF抓取未成功；已标明可读范围。",
+      "comparison_status": "compared",
+      "reviewed_sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125"
+    },
+    {
+      "id": "SRC67",
+      "evidence_id": "NEAR",
+      "citations": [
+        67
+      ],
+      "reading_status": "verified_fulltext",
+      "locator": "NEAR.md [67]条目：DTU书目记录与作者接受稿全文（16页）。",
+      "comparison_status": "compared",
+      "reviewed_sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125"
+    },
+    {
+      "id": "SRC70",
+      "evidence_id": "NEAR",
+      "citations": [
+        70
+      ],
+      "reading_status": "verified_excerpt",
+      "locator": "NEAR.md [70]条目：出版社摘要及可索引正文片段；完整正文受限。",
+      "comparison_status": "compared",
+      "reviewed_sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125"
+    },
+    {
+      "id": "SRC71",
+      "evidence_id": "NEAR_20261016",
+      "citations": [
+        71
+      ],
+      "reading_status": "verified_fulltext",
+      "locator": "NEAR-20261016.md [71]条目：Wiley全文页，已核对指定方法和实验章节。",
+      "comparison_status": "compared",
+      "reviewed_sha256": "b30cc55d0ab712e727f3e05f2ef1c28720f669eb15dd710aab1bd88cfb931875"
+    },
+    {
+      "id": "SRC72",
+      "evidence_id": "NEAR_20261016",
+      "citations": [
+        72
+      ],
+      "reading_status": "verified_abstract",
+      "locator": "NEAR-20261016.md [72]条目：出版社摘要；完整方法和实验章节未核实。",
+      "comparison_status": "compared",
+      "reviewed_sha256": "b30cc55d0ab712e727f3e05f2ef1c28720f669eb15dd710aab1bd88cfb931875"
+    },
+    {
+      "id": "SRC73",
+      "evidence_id": "NEAR_20261016",
+      "citations": [
+        73
+      ],
+      "reading_status": "verified_abstract",
+      "locator": "NEAR-20261016.md [73]条目：PubMed/出版社摘要范围；未取得完整论文。",
+      "comparison_status": "compared",
+      "reviewed_sha256": "b30cc55d0ab712e727f3e05f2ef1c28720f669eb15dd710aab1bd88cfb931875"
+    },
+    {
+      "id": "SRC76",
+      "evidence_id": "NEAR76",
+      "citations": [
+        76
+      ],
+      "reading_status": "verified_fulltext",
+      "locator": "NEAR76-primary.md：出版社原文核验记录；正文§1.2表1-1、§1.2.3和§1.3已对照目标、残差框架、Boulder验证及本文站内节点关系/MDP范围。",
+      "comparison_status": "compared",
+      "reviewed_sha256": "90db0f34343faef3d78dd1ca41dbe4799deb7d6cf0e61430330fd13e59e72704"
+    }
+  ],
+  "checks": [
+    {
+      "id": "latest-baseline-publication-contract",
+      "script": "scripts/audit_thesis_content_score.py",
+      "args": [
+        "docs/thesis/revision-20261019-nontraining/paired-calibration-scorecard.json",
+        "--publish"
+      ],
+      "inputs": [
+        "docs/thesis/content-review-20261019-paired/scorecard.json",
+        "docs/thesis/revision-20261019-nontraining/adjudicated-reviewer-records/originality.json",
+        "docs/thesis/revision-20261019-nontraining/adjudicated-reviewer-records/readability.json",
+        "docs/thesis/revision-20261019-nontraining/adjudicated-reviewer-records/technical.json",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/ACN_BOUNDS.json",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/ACN_DECISION.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/ACN_RANGE.json",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/ADAPT.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/ADAPTAUDIT.json",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/CAL.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/DATA_AVAIL.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/MAP.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/MDP.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/MRECOMP.json",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/NEAR.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/NEAR2.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/NEAR76.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/NEAR_20261016.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/NZ.json",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/PASSPORT.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/QUALITY.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/RECOMP.json",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/S31.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/S31AUDIT.json",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/S32.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/evidence/S32AUDIT.json",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/manuscripts/baseline.md",
+        "docs/thesis/revision-20261019-nontraining/calibration-review-preparation/reviewer-packet/manuscripts/current.md",
+        "docs/thesis/revision-20261019-nontraining/paired-adjudication-issues.json",
+        "docs/thesis/revision-20261019-nontraining/paired-adjudication.md",
+        "docs/thesis/revision-20261019-nontraining/paired-calibration-scorecard.json",
+        "docs/thesis/revision-20261019-nontraining/paired-review-reports/originality/originality-review.md",
+        "docs/thesis/revision-20261019-nontraining/paired-review-reports/readability/readability-paired-review.md",
+        "docs/thesis/revision-20261019-nontraining/paired-review-reports/technical/technical-calibration-pair-20261019.md",
+        "docs/thesis/scoring/criterion-anchors-v2.json",
+        "docs/thesis/scoring/protocol-v2.json",
+        "docs/thesis/scoring/publication-status.json",
+        "docs/thesis/scoring/rubric.json",
+        "scripts/audit_thesis_content_score.py",
+        "scripts/thesis_scoring_protocol.py"
+      ],
+      "outputs": [],
+      "evidence_ids": [
+        "ACN_BOUNDS",
+        "ACN_DECISION",
+        "ACN_RANGE",
+        "ADAPT",
+        "ADAPTAUDIT",
+        "CAL",
+        "DATA_AVAIL",
+        "MAP",
+        "MDP",
+        "MRECOMP",
+        "NEAR",
+        "NEAR2",
+        "NEAR76",
+        "NEAR_20261016",
+        "NZ",
+        "PASSPORT",
+        "QUALITY",
+        "RECOMP",
+        "S31",
+        "S31AUDIT",
+        "S32",
+        "S32AUDIT"
+      ],
+      "scope": "Validate the exact prior scorecard, its source closure, hashes, arithmetic, pairing and publication contract; this does not assign points or replace the new blind review.",
+      "dependency_scope_confirmed": true,
+      "timeout_seconds": 60,
+      "environment_keys": []
+    }
+  ],
+  "claims": [
+    {
+      "id": "problem_protocol",
+      "summary": "研究对象、预测协议、代理目标与范围边界",
+      "sections": [
+        "第1章",
+        "2.1",
+        "3.2"
+      ],
+      "evidence_ids": [
+        "QUALITY",
+        "S31",
+        "S32",
+        "S31AUDIT",
+        "S32AUDIT"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-01",
+        "BR-02",
+        "BR-04",
+        "BR-05",
+        "BR-08",
+        "BR-09"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "literature_novelty",
+      "summary": "最接近工作比较与创新边界",
+      "sections": [
+        "1.2",
+        "1.3",
+        "1.4",
+        "3.5.8"
+      ],
+      "evidence_ids": [
+        "NEAR",
+        "NEAR2",
+        "NEAR_20261016",
+        "NEAR76"
+      ],
+      "source_ids": [
+        "SRC12",
+        "SRC13",
+        "SRC67",
+        "SRC70",
+        "SRC71",
+        "SRC72",
+        "SRC73",
+        "SRC76"
+      ],
+      "criteria": [
+        "BR-03",
+        "BR-10",
+        "BR-12"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "prediction_findings",
+      "summary": "整体、非零与事件组结果及主张边界",
+      "sections": [
+        "3.6.2",
+        "3.6.3",
+        "3.8.1"
+      ],
+      "evidence_ids": [
+        "S31",
+        "S32",
+        "S31AUDIT",
+        "S32AUDIT",
+        "RECOMP",
+        "QUALITY"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-05",
+        "BR-08",
+        "BR-09",
+        "BR-10"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "relation_increment_budget",
+      "summary": "关系增量、门控效应、训练预算与替代解释",
+      "sections": [
+        "3.7.1",
+        "3.7.2",
+        "3.7.3",
+        "3.8.1",
+        "3.8.3"
+      ],
+      "evidence_ids": [
+        "S31",
+        "S31AUDIT",
+        "MRECOMP",
+        "NZ",
+        "RECOMP"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-05",
+        "BR-06",
+        "BR-08",
+        "BR-09",
+        "BR-10"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "target_sensitivity",
+      "summary": "完成时刻截断目标敏感性",
+      "sections": [
+        "2.1.2",
+        "3.8.4"
+      ],
+      "evidence_ids": [
+        "S32",
+        "S32AUDIT",
+        "QUALITY"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-01",
+        "BR-04",
+        "BR-05",
+        "BR-08",
+        "BR-09"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "mdp_diagnostics",
+      "summary": "MDP三层诊断、结果与判断变化",
+      "sections": [
+        "4.1",
+        "4.2",
+        "4.3",
+        "4.4",
+        "4.5",
+        "4.6"
+      ],
+      "evidence_ids": [
+        "MDP",
+        "MRECOMP",
+        "RECOMP",
+        "S31",
+        "S32"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-02",
+        "BR-04",
+        "BR-05",
+        "BR-06",
+        "BR-08",
+        "BR-09",
+        "BR-10",
+        "BR-12"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "reliability_practice",
+      "summary": "可靠性、方向性分析、校准与决策接口",
+      "sections": [
+        "5.2",
+        "5.3",
+        "5.4"
+      ],
+      "evidence_ids": [
+        "CAL",
+        "MAP",
+        "DATA_AVAIL",
+        "PASSPORT",
+        "QUALITY",
+        "NZ"
+      ],
+      "source_ids": [],
+      "criteria": [
+        "BR-05",
+        "BR-06",
+        "BR-08",
+        "BR-09",
+        "BR-11",
+        "BR-12"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "summary_claims",
+      "summary": "中英文摘要及结论对核心贡献和限制的概括",
+      "sections": [
+        "摘",
+        "Abstract",
+        "结"
+      ],
+      "evidence_ids": [
+        "S31",
+        "S32",
+        "NEAR76",
+        "MDP",
+        "MAP"
+      ],
+      "source_ids": [
+        "SRC76"
+      ],
+      "criteria": [
+        "BR-01",
+        "BR-02",
+        "BR-08",
+        "BR-09",
+        "BR-10",
+        "BR-12"
+      ],
+      "depends_on": [
+        "problem_protocol",
+        "literature_novelty",
+        "prediction_findings",
+        "relation_increment_budget",
+        "target_sensitivity",
+        "mdp_diagnostics",
+        "reliability_practice"
+      ]
+    }
+  ]
+}

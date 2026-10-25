@@ -1,6 +1,6 @@
 """SG-EXP-017：PCMCI+ 因果发现（探索性，5.2 章决策依据）。
 
-以训练集 10 节点负荷序列（与 TE 分析同口径，83,103 步）运行 PCMCI+
+以训练段 10 节点原始负荷序列（83,198 个观测点；窗口化预测口径为 83,103 个预测起点）运行 PCMCI+
 （tigramite，parcorr 条件独立性检验），输出显著滞后依赖边；
 与传递熵候选边（transfer_entropy_summary.json）对比，统计 PCMCI+
 确认的 TE 候选占比，为 5.2 章"方向性探索 vs 正式验证"提供决策证据。
@@ -41,9 +41,12 @@ MAX_LAG = 4  # 与 TE 分析最大滞后一致（lags=[1,2,4] 的上界）
 def main() -> None:
     """运行 PCMCI+ 并输出显著边与 TE 候选对比。"""
     bundle = load_tensor_bundle("data/processed/SG-DATA-005-primary-tensor.npz")
-    # 训练集口径（与 TE 分析一致）：train origins 覆盖 [0, train_end]
+    # 原始时间点口径：切至训练集最后一个预测起点，含起点对应的观测行。
+    # 因输入历史窗口先占用若干时间点，预测起点数会少于原始观测行数。
     train_end = int(bundle.split_origins["train"][-1])
     targets = bundle.targets[: train_end + 1]  # [T, N]，原始物理量纲
+    n_raw_observations = int(targets.shape[0])
+    n_forecast_origins = int(len(bundle.split_origins["train"]))
     node_ids = list(bundle.node_ids)
 
     frame = pp.DataFrame(targets, var_names=node_ids)
@@ -76,7 +79,13 @@ def main() -> None:
     pcmci_only = sorted(pcmci_set - te_set)
 
     summary = {
-        "analysis": "PCMCI+ 因果发现（探索性，训练集 83,103 步，parcorr，lag 1-4，α=0.05）",
+        "analysis": (
+            "PCMCI+ 条件滞后依赖探索（训练段 "
+            f"{n_raw_observations:,} 个原始观测点；对应 {n_forecast_origins:,} 个预测起点，"
+            "ParCorr，lag 1-4，α=0.05）"
+        ),
+        "n_train_raw_observations": n_raw_observations,
+        "n_train_forecast_origins": n_forecast_origins,
         "max_lag": MAX_LAG,
         "n_edges_pcmci": len(edges),
         "n_te_candidates": len(te_set),
@@ -95,6 +104,7 @@ def main() -> None:
     (OUT / "pcmci_summary.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2))
     print(f"✅ 已写入 {OUT / 'pcmci_summary.json'}")
+    print(f"  训练原始观测 {n_raw_observations:,} 个 | 预测起点 {n_forecast_origins:,} 个")
     print(f"  PCMCI+ 显著边 {len(edges)} 条 | TE 候选 {len(te_set)} 条 | "
           f"确认 {len(confirmed)} 条（{summary['confirmation_rate']:.1%}）")
     return None

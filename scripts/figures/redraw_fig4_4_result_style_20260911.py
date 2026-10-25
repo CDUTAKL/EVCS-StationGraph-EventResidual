@@ -186,7 +186,7 @@ def main() -> None:
              fontsize=FS_NOTE, color=GRAY)
 
     FIG_DIR.mkdir(parents=True, exist_ok=True)
-    base = FIG_DIR / "fig4_4_four_cell"
+    base = FIG_DIR / "fig4_5_four_cell"
     svg_path = base.with_suffix(".svg")
     fig.savefig(svg_path, format="svg", dpi=1200,
                 bbox_inches="tight", pad_inches=FIG_H_PAD_IN)
@@ -199,7 +199,7 @@ def main() -> None:
         encoding="utf-8",
     )
     plt.close(fig)
-    print("redrawn: fig4_4_four_cell (paper-size canvas, matrix + composition + contribution)")
+    print("redrawn: fig4_5_four_cell (paper-size canvas, matrix + composition + contribution)")
 
 
 if __name__ == "__main__":

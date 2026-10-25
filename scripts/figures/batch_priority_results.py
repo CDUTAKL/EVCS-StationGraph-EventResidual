@@ -261,7 +261,7 @@ def forest():
     axes[1].set_xlabel('MAE（后者）− MAE（前者）（kWh/15 min）',fontsize=9)
     # min_pt=6：数值标注按 7.4 pt 设计（与图 3-15 同级），不套用历史 9 pt
     # 下限，否则标注会被整体抬高、与图 3-15 并排版式不一致。
-    export(fig,'fig3_11_bootstrap_difference',(5.59,4.70),min_pt=6)
+    export(fig,'fig3_13_bootstrap_difference',(5.59,4.70),min_pt=6)
 
 def main():
     global PREVIEW

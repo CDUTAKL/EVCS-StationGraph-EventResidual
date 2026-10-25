@@ -1,0 +1,134 @@
+{
+  "status": "PASS",
+  "retraining_performed": false,
+  "audit_sha256": "12301e0ddca32dedfd30278cd2d1f02ce3f5da472e7cb28e18ec924036433760",
+  "output_manifest_verified_files": 31,
+  "n_metric_variants": 24,
+  "n_reparameterization_pairs": 3,
+  "max_metric_abs_diff": 0.0,
+  "max_four_cell_closure_gap": 1.3877787807814457e-17,
+  "prediction_keys_per_variant": 632640,
+  "verification_method": "saved predictions independently summed; source/output hashes checked; no model re-execution",
+  "pairs": [
+    {
+      "seed": 2024,
+      "variant": "learned",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2024,
+      "variant": "g1_load_g2_learn",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2024,
+      "variant": "g1_learn_g2_pattern",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2024,
+      "variant": "both_load",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2024,
+      "variant": "both_event",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2024,
+      "variant": "both_pattern",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2024,
+      "variant": "equal",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2024,
+      "variant": "swapped",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2025,
+      "variant": "learned",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2025,
+      "variant": "g1_load_g2_learn",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2025,
+      "variant": "g1_learn_g2_pattern",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2025,
+      "variant": "both_load",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2025,
+      "variant": "both_event",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2025,
+      "variant": "both_pattern",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2025,
+      "variant": "equal",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2025,
+      "variant": "swapped",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2026,
+      "variant": "learned",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2026,
+      "variant": "g1_load_g2_learn",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2026,
+      "variant": "g1_learn_g2_pattern",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2026,
+      "variant": "both_load",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2026,
+      "variant": "both_event",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2026,
+      "variant": "both_pattern",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2026,
+      "variant": "equal",
+      "n_keys": 632640
+    },
+    {
+      "seed": 2026,
+      "variant": "swapped",
+      "n_keys": 632640
+    }
+  ]
+}

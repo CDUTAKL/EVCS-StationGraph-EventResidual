@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "checks": {
+    "citation_number_set_unchanged": true,
+    "all_92_reference_numbers_cited": true,
+    "all_existing_sections_retained": true,
+    "posthoc_disclosure_retained": true,
+    "key_nonzero_distinction_retained": true
+  },
+  "reference_count": 92,
+  "new_or_removed_evidence": false,
+  "manuscript_sha256": "76cc39ad351c7e6bf9a86014b320b80076b4d23a1b795d29ccc2dbe231a8df96"
+}
