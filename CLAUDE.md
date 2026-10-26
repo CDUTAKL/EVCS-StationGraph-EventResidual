@@ -23,6 +23,7 @@
 - Local Bash tasks require Claude Code 2.1.219+ for `sandbox.network.strictAllowlist`; older or unknown versions fail closed. `network_access_allowed=false` keeps `allowedDomains: []` plus `deniedDomains: ["*"]`; true puts only `network_domains` in `allowedDomains`.
 - `WebFetch(domain:...)` allow rules and user/project `sandbox.network.allowedDomains` can widen the Bash sandbox allowlist. Declare every such host literally in `network_domains` or the launch fails closed. `strictAllowlist` does not gate WebSearch/WebFetch. Remote tasks do not use the local sandbox; `network_domains` is an authorization list, not a remote network ACL.
 - Do not bypass permission prompts or use `--dangerously-skip-permissions`.
+- Reuse the blueprint's single candidate output path. Do not create extra dated/numbered DOCX or PDF copies unless the task explicitly requests an archived deliverable. Official Word/PDF history is managed by Git LFS; Codex owns final acceptance and replacement.
 
 ## Skill resources
 

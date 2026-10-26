@@ -8,9 +8,9 @@
 
 ## Word/PDF
 
-- 校正版Word：`candidate-final-20261026-v5.docx`，SHA-256 `cf5783e81af5153d0ffb946f49a26f7168f6d3c7eee4da2935a25ca7e7c58327`。
+- 正式Word稳定入口：`outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx`，SHA-256 `cf5783e81af5153d0ffb946f49a26f7168f6d3c7eee4da2935a25ca7e7c58327`。验收来源为`candidate-final-20261026-v5.docx`，内容字节一致。
 - WPS导出PDF：111页，A4；目录页码核验117/117匹配，报告为`toc-verification-20261026-v5-1200ppi.json`。
-- 最终图像PDF：`candidate-final-20261026-v5-1200ppi.pdf`，SHA-256 `b6d495fd6e3854ac5bd26b3540c584ca8e0d2fe9ffd6a134da5dda9af31a1bf8`。48幅嵌入图的有效分辨率为1201–1872 PPI，报告为`figure-resolution-20261026-v5.json`。
+- 正式PDF稳定入口：`outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.pdf`，SHA-256 `b6d495fd6e3854ac5bd26b3540c584ca8e0d2fe9ffd6a134da5dda9af31a1bf8`。验收来源为`candidate-final-20261026-v5-1200ppi.pdf`，内容字节一致。48幅嵌入图的有效分辨率为1201–1872 PPI，报告为`figure-resolution-20261026-v5.json`。
 - PDF字体检查：9种字体均已嵌入。该项验证PDF可携带字体，不等同于WPS源文档的缺失字体提示已消失；本轮未能独立确认该提示状态，故仍列为待确认项。
 
 ## 全页视觉核验
@@ -19,4 +19,4 @@
 
 ## 交付边界
 
-本次未改动或合并未知日期、分类号、密级及答辩信息；这些字段仍按作者指示留空。原创性声明和授权页仍需作者、导师线下签署。Word与高分辨率PDF在本机保留，未纳入Git：分别约112 MB和195 MB；仓库记录保存正文源文件、图件源文件、分析代码及轻量复核证据。
+本次未改动或合并未知日期、分类号、密级及答辩信息；这些字段仍按作者指示留空。原创性声明和授权页仍需作者、导师线下签署。正式Word与PDF使用上述两个固定路径，由Git LFS管理；Git对象保存内容指针，二进制由LFS保存。原始会话、预测与数据集输入仍留在Git之外。候选稿只用于本轮验收，不再为日常迭代长期堆叠完整副本。历史迁移及原提交SHA映射见`docs/thesis/git-lfs-migration-20261026/`。

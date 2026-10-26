@@ -6,7 +6,6 @@
 *.json text eol=lf
 # Markdown允许显式换行及段尾空行；保留冻结评阅材料的原始内容。
 *.md text eol=lf whitespace=-blank-at-eol,-blank-at-eof
-
 # 若未来确需登记二进制证据，只记录其清单与校验和，不直接合并二进制内容。
 *.png binary
 *.pdf binary
@@ -32,3 +31,4 @@ docs/thesis/revision-20261020-delivery/scorecard-audit.json whitespace=-blank-at
 /outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx filter=lfs diff=lfs merge=lfs -text
 /docs/thesis/revision-20261023-layout/thesis-layout-final-1200dpi.docx filter=lfs diff=lfs merge=lfs -text
 /docs/thesis/revision-20261023-layout/thesis-layout-final-1200ppi.pdf filter=lfs diff=lfs merge=lfs -text
+outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.pdf filter=lfs diff=lfs merge=lfs -text

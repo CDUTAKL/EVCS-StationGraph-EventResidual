@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "old_main": "2b0d9edb6e1d11b7c331eb305ce092915b576c7c",
+  "migrated_main": "4ab5f89cbff2e9df4f0e7974cb7d5d952e5666f0",
+  "published_ancestor": "6b2df008cd051bc7a7f0d05a2a746c62be215cc7",
+  "head_file_count": 2237,
+  "head_changed_binary_paths": [
+    {
+      "path": "docs/thesis/revision-20261023-layout/thesis-layout-final-1200dpi.docx",
+      "original_git_blob": "7fa4dcd8d36c899284a48063bf4861db50d32752",
+      "lfs_oid_sha256": "ba030b448906bb4f403b33c3ecb110b886c4082442012839f923d28604c7f10d",
+      "bytes": 116353189,
+      "content_identical": true
+    },
+    {
+      "path": "docs/thesis/revision-20261023-layout/thesis-layout-final-1200ppi.pdf",
+      "original_git_blob": "6d015d6c18629b19b0580a2cb199af10fcc59634",
+      "lfs_oid_sha256": "4ff939d81868e3ba11e3db4bb625716d6997900cf6cff2a55dc84ff52885f4e0",
+      "bytes": 203326321,
+      "content_identical": true
+    },
+    {
+      "path": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+      "original_git_blob": "7fa4dcd8d36c899284a48063bf4861db50d32752",
+      "lfs_oid_sha256": "ba030b448906bb4f403b33c3ecb110b886c4082442012839f923d28604c7f10d",
+      "bytes": 116353189,
+      "content_identical": true
+    }
+  ],
+  "allowed_metadata_change": ".gitattributes",
+  "all_other_head_git_blobs_unchanged": true,
+  "oversize_git_blobs_before": [
+    {
+      "git_blob": "7fa4dcd8d36c899284a48063bf4861db50d32752",
+      "bytes": 116353189,
+      "path": "docs/thesis/revision-20261023-layout/thesis-layout-final-1200dpi.docx",
+      "sha256": "ba030b448906bb4f403b33c3ecb110b886c4082442012839f923d28604c7f10d"
+    },
+    {
+      "git_blob": "6d015d6c18629b19b0580a2cb199af10fcc59634",
+      "bytes": 203326321,
+      "path": "docs/thesis/revision-20261023-layout/thesis-layout-final-1200ppi.pdf",
+      "sha256": "4ff939d81868e3ba11e3db4bb625716d6997900cf6cff2a55dc84ff52885f4e0"
+    },
+    {
+      "git_blob": "68c9862a5d7c292df07bbb70f205c9331700eacb",
+      "bytes": 117030225,
+      "path": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+      "sha256": "f1c1b9dbdb033ed3e8a5f3c2f4ece0e54198321811cee900d15e8c14b26576a6"
+    }
+  ],
+  "oversize_git_blobs_after": [],
+  "verification_script_sha256": "7f9d7c1330489ab42f2caa9c86ab49b2886c7432a53de3a53473e78f319e03ba"
+}
