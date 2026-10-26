@@ -1,0 +1,110 @@
+{
+  "status": "PASS",
+  "scope": "CLI adapter regression plus LFS lookup integrity; full artifact scan stored separately",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/thesis_release.py",
+        "inventory",
+        "--project",
+        "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual",
+        "--scope",
+        "docs/thesis/git-lfs-migration-20261026",
+        "--output",
+        "/Users/xushuyuan/EVCS_git_maintenance_20261026/inventory-entry-smoke",
+        "--dry-run"
+      ],
+      "exit_code": 0,
+      "status": "READ_ONLY_DRY_RUN",
+      "details": {
+        "summary": {
+          "file_count": 0,
+          "logical_bytes": 0,
+          "roles": {},
+          "duplicate_content_groups": 0,
+          "eligible_duplicate_count": 0,
+          "eligible_duplicate_logical_bytes": 0,
+          "lfs_unique_object_count": 5
+        }
+      }
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/thesis_release.py",
+        "resolve",
+        "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.pdf"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "details": {
+        "status": "PASS",
+        "requested_ref": "HEAD",
+        "resolved_ref": "HEAD",
+        "artifact": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.pdf",
+        "sha256": "b6d495fd6e3854ac5bd26b3540c584ca8e0d2fe9ffd6a134da5dda9af31a1bf8",
+        "bytes": 204893885,
+        "read_only_object_path": "/Users/xushuyuan/EVCS_git_maintenance_20261026/migration/.git/lfs/objects/b6/d4/b6d495fd6e3854ac5bd26b3540c584ca8e0d2fe9ffd6a134da5dda9af31a1bf8",
+        "new_document_copies": 0,
+        "use": "Read only. Editing this content-addressed object would corrupt the LFS cache."
+      }
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/thesis_release.py",
+        "resolve",
+        "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+        "--ref",
+        "07c5869",
+        "--commit-map",
+        "docs/thesis/git-lfs-migration-20261026/commit-map.csv"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "details": {
+        "status": "PASS",
+        "requested_ref": "07c5869",
+        "resolved_ref": "2387435cf6b6f2e6c7b5fc09552ab67e1fdca0f5",
+        "artifact": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+        "sha256": "ba030b448906bb4f403b33c3ecb110b886c4082442012839f923d28604c7f10d",
+        "bytes": 116353189,
+        "read_only_object_path": "/Users/xushuyuan/EVCS_git_maintenance_20261026/migration/.git/lfs/objects/ba/03/ba030b448906bb4f403b33c3ecb110b886c4082442012839f923d28604c7f10d",
+        "new_document_copies": 0,
+        "use": "Read only. Editing this content-addressed object would corrupt the LFS cache."
+      }
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/thesis_release.py",
+        "create",
+        "--version",
+        "adapter-smoke",
+        "--status",
+        "candidate",
+        "--artifact",
+        "source=docs/thesis/thesis-manuscript.md",
+        "--output",
+        ".cache/release-entry-smoke/manifest.json"
+      ],
+      "exit_code": 0,
+      "status": "candidate",
+      "details": {}
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/thesis_release.py",
+        "verify",
+        ".cache/release-entry-smoke/manifest.json"
+      ],
+      "exit_code": 0,
+      "status": "PASS",
+      "details": {
+        "artifacts_checked": 1
+      }
+    }
+  ]
+}

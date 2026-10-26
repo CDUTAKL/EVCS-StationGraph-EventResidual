@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "scope": "current canonical Word/PDF and frozen manuscript; fresh remote shallow partial Git clone plus fresh remote LFS downloads; not a full-history/all-blob recovery claim",
+  "remote_main_at_clone": "95ee238bbb7c043b973d8bbea2a80a1788de8aec",
+  "remote_url": "https://github.com/CDUTAKL/EVCS-StationGraph-EventResidual.git",
+  "git_clone_options": [
+    "--depth=1",
+    "--filter=blob:none",
+    "--no-checkout",
+    "--single-branch",
+    "--branch=main"
+  ],
+  "manuscript_sha256": "648bd582de2f03afac78486f26e85b2a91a6593b33d9a619d2090744c6caf506",
+  "files": [
+    {
+      "path": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx",
+      "sha256": "cf5783e81af5153d0ffb946f49a26f7168f6d3c7eee4da2935a25ca7e7c58327",
+      "bytes": 117872393,
+      "source_candidate": "candidate-final-20261026-v5.docx",
+      "remote_pointer_and_object_match": true
+    },
+    {
+      "path": "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.pdf",
+      "sha256": "b6d495fd6e3854ac5bd26b3540c584ca8e0d2fe9ffd6a134da5dda9af31a1bf8",
+      "bytes": 204893885,
+      "source_candidate": "candidate-final-20261026-v5-1200ppi.pdf",
+      "remote_pointer_and_object_match": true
+    }
+  ],
+  "git_fsck_for_partial_clone": "passed",
+  "local_full_lfs_fsck": "passed in source and migration repository",
+  "temporary_clone": "/Users/xushuyuan/EVCS_git_maintenance_20261026/remote-recovery",
+  "temporary_storage_removed_after_verification": true
+}

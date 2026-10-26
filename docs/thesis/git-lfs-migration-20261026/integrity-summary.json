@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "source_commit": "95ee238bbb7c043b973d8bbea2a80a1788de8aec",
+  "checks": [
+    {
+      "command": [
+        "git",
+        "fsck",
+        "--full",
+        "--no-reflogs"
+      ],
+      "exit_code": 0,
+      "output_sha256": "1a5d7f1c6cf266394e6e891b0545d212f2d820ca05ef6ffb8a2ab41f2fc65cd4",
+      "note": "dangling objects are retained; no prune was run"
+    },
+    {
+      "command": [
+        "git",
+        "lfs",
+        "fsck"
+      ],
+      "exit_code": 0,
+      "output_sha256": "81f6819612dfaf9af7854c05c501e2a69e3852e47f0bfb0a82dfce8f3f6c5db9",
+      "note": "HEAD LFS pointers and objects verified"
+    }
+  ],
+  "historical_lfs_identity_check": "migration-audit.json verifies all three original oversize blob identities"
+}
