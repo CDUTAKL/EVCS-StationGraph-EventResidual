@@ -1,6 +1,6 @@
 {
-  "generated_at_utc": "2026-10-26T04:01:12.277303+00:00",
-  "source_commit": "07c5869",
+  "generated_at_utc": "2026-10-26T13:14:19.809361+00:00",
+  "source_commit": "95ee238",
   "dataset": {
     "path": "data/processed/SG-DATA-005-primary-tensor.npz",
     "sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4"
@@ -122,7 +122,7 @@
     "fig2_3_load_heatmap": {
       "script": {
         "path": "batch_priority_results.py",
-        "sha256": "bf3a0294fdb7ea2b5f43243169e69aae744aab251e58b3d6440da32d8b3ac371"
+        "sha256": "93a7c6728aa1676345dace3d8d8aedc97f2d03d4db98fd296b4124a28f2b2dde"
       },
       "inputs": [
         {
@@ -143,7 +143,7 @@
         },
         {
           "path": "scripts/figures/batch12_chapter3_extra.py",
-          "sha256": "f888a70783639195c951244d5f1d4082937f964c160d199cdf137b091b72b406"
+          "sha256": "ed724de48ea9e95fabe9a25005636297b97db00f0161070106ae0464df007df3"
         },
         {
           "path": "scripts/figures/batch13_chapter4_5_extra.py",
@@ -285,7 +285,7 @@
     "fig2_8_event_hourly": {
       "script": {
         "path": "batch_priority_results.py",
-        "sha256": "bf3a0294fdb7ea2b5f43243169e69aae744aab251e58b3d6440da32d8b3ac371"
+        "sha256": "93a7c6728aa1676345dace3d8d8aedc97f2d03d4db98fd296b4124a28f2b2dde"
       },
       "inputs": [
         {
@@ -306,7 +306,7 @@
         },
         {
           "path": "scripts/figures/batch12_chapter3_extra.py",
-          "sha256": "f888a70783639195c951244d5f1d4082937f964c160d199cdf137b091b72b406"
+          "sha256": "ed724de48ea9e95fabe9a25005636297b97db00f0161070106ae0464df007df3"
         },
         {
           "path": "scripts/figures/batch13_chapter4_5_extra.py",
@@ -416,7 +416,7 @@
     "fig2_12_weekday_hour_heatmap": {
       "script": {
         "path": "batch_priority_results.py",
-        "sha256": "bf3a0294fdb7ea2b5f43243169e69aae744aab251e58b3d6440da32d8b3ac371"
+        "sha256": "93a7c6728aa1676345dace3d8d8aedc97f2d03d4db98fd296b4124a28f2b2dde"
       },
       "inputs": [
         {
@@ -437,7 +437,7 @@
         },
         {
           "path": "scripts/figures/batch12_chapter3_extra.py",
-          "sha256": "f888a70783639195c951244d5f1d4082937f964c160d199cdf137b091b72b406"
+          "sha256": "ed724de48ea9e95fabe9a25005636297b97db00f0161070106ae0464df007df3"
         },
         {
           "path": "scripts/figures/batch13_chapter4_5_extra.py",
@@ -932,7 +932,7 @@
     "fig3_12_mae_by_horizon": {
       "script": {
         "path": "refine_requested_20260920.py",
-        "sha256": "4d19011d8fe33e971fba408610efd5a54093e369dc53a365a84ba4295f697176"
+        "sha256": "3acbd5b3847c411f4dd830196b0aabb1b18948fd3745536fabbc57ff17a9288e"
       },
       "inputs": [
         {
@@ -1010,21 +1010,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "a7d14891d907b03728ebfa034619d7a70ce8418ea689c3d6b98632fba7e7ab00",
-          "size_bytes": 20323,
-          "mtime_utc": "2026-10-25T13:27:55.800534+00:00"
+          "sha256": "868c313d1f40d83b36b3d428924a13b263990252d19c472d25671ed565c730ca",
+          "size_bytes": 20526,
+          "mtime_utc": "2026-10-26T12:07:06.323901+00:00"
         },
         "png": {
-          "sha256": "43ec712829e45c2f457b3913bdef72b0acb6a8958c05573e8b65d822f2862114",
-          "size_bytes": 946221,
-          "mtime_utc": "2026-10-25T13:27:55.800051+00:00"
+          "sha256": "dbdb5474b6de3db4f440352fa699f328b1fd94d708123626297268430860bf04",
+          "size_bytes": 957092,
+          "mtime_utc": "2026-10-26T12:07:06.322032+00:00"
         }
       }
     },
     "fig3_13_bootstrap_difference": {
       "script": {
         "path": "batch_priority_results.py",
-        "sha256": "bf3a0294fdb7ea2b5f43243169e69aae744aab251e58b3d6440da32d8b3ac371"
+        "sha256": "93a7c6728aa1676345dace3d8d8aedc97f2d03d4db98fd296b4124a28f2b2dde"
       },
       "inputs": [
         {
@@ -1045,7 +1045,7 @@
         },
         {
           "path": "scripts/figures/batch12_chapter3_extra.py",
-          "sha256": "f888a70783639195c951244d5f1d4082937f964c160d199cdf137b091b72b406"
+          "sha256": "ed724de48ea9e95fabe9a25005636297b97db00f0161070106ae0464df007df3"
         },
         {
           "path": "scripts/figures/batch13_chapter4_5_extra.py",
@@ -1062,21 +1062,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "2d682b75068ef8ab98152037b9305b151955ed6285b8abdafab0564d3165b90a",
-          "size_bytes": 29600,
-          "mtime_utc": "2026-10-25T13:27:55.806296+00:00"
+          "sha256": "260a61acda0d2341289ae00ef55ecbc7c09283f821726bf933f50b557b5f2e71",
+          "size_bytes": 32914,
+          "mtime_utc": "2026-10-26T11:50:48.839214+00:00"
         },
         "png": {
-          "sha256": "2a131d89ed69cff53d18529636fd473c21473732051e8b88cea52cc9e0bedd87",
-          "size_bytes": 696452,
-          "mtime_utc": "2026-10-25T13:27:55.805663+00:00"
+          "sha256": "8391719ca3f327b877fda2c78acc20de3384b2fbe4b25b1b04e2399899990d9e",
+          "size_bytes": 814410,
+          "mtime_utc": "2026-10-26T11:50:48.845915+00:00"
         }
       }
     },
     "fig3_14_mae_by_window": {
       "script": {
         "path": "batch12_chapter3_extra.py",
-        "sha256": "f888a70783639195c951244d5f1d4082937f964c160d199cdf137b091b72b406"
+        "sha256": "ed724de48ea9e95fabe9a25005636297b97db00f0161070106ae0464df007df3"
       },
       "inputs": [
         {
@@ -1168,7 +1168,7 @@
     "fig3_15_mae_by_node": {
       "script": {
         "path": "batch12_chapter3_extra.py",
-        "sha256": "f888a70783639195c951244d5f1d4082937f964c160d199cdf137b091b72b406"
+        "sha256": "ed724de48ea9e95fabe9a25005636297b97db00f0161070106ae0464df007df3"
       },
       "inputs": [
         {
@@ -1260,7 +1260,7 @@
     "fig3_16_mechanism_ablation": {
       "script": {
         "path": "batch12_chapter3_extra.py",
-        "sha256": "f888a70783639195c951244d5f1d4082937f964c160d199cdf137b091b72b406"
+        "sha256": "ed724de48ea9e95fabe9a25005636297b97db00f0161070106ae0464df007df3"
       },
       "inputs": [
         {
@@ -1326,21 +1326,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "8ac222c1b4f27b543005c7926b6e5abcb3aad13dcf6eb28b22fd6e331accc992",
-          "size_bytes": 16408,
-          "mtime_utc": "2026-10-25T13:27:55.820042+00:00"
+          "sha256": "42d4e8a7330c10716877b1f06ef786ac8a7abb70053b40bc5843f18737d47e1c",
+          "size_bytes": 16634,
+          "mtime_utc": "2026-10-26T11:47:54.873074+00:00"
         },
         "png": {
-          "sha256": "86fe3a0ac48225b02a100b8f88f7f475a477b89fa272b2b4bad645c85a234ea4",
-          "size_bytes": 401770,
-          "mtime_utc": "2026-10-25T13:27:55.819118+00:00"
+          "sha256": "4e0de16367b21c30172cc2db51976494d369186397085479c72101073462698a",
+          "size_bytes": 402422,
+          "mtime_utc": "2026-10-26T11:47:54.870461+00:00"
         }
       }
     },
     "fig3_17_proxy_label_stability": {
       "script": {
         "path": "fig3_17_proxy_label_stability.py",
-        "sha256": "309da9923592bfeab9aef89829e85b9ca7c0db6c841519e45fcc338c6c32be29"
+        "sha256": "016efa66e45e478dc9ea72e79c1591b45fb19da60c3396b7d459fd52d6859aa8"
       },
       "inputs": [
         {
@@ -1354,14 +1354,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "039cebb15bc82cdf9de98189bb5f7aed1b520bcf734dd4627d8bf31ce3fcb8bf",
-          "size_bytes": 40618,
-          "mtime_utc": "2026-10-26T03:11:20.170983+00:00"
+          "sha256": "1d360e8f4941b1257bc48e4ae5f52e9a0ef1fc51ab43c906d85a1cd4828cb981",
+          "size_bytes": 40300,
+          "mtime_utc": "2026-10-26T11:20:19.679977+00:00"
         },
         "png": {
-          "sha256": "aaa96088e38efd2ad4bbf3f8eced7d96beece94012997b7c803a4630838b920b",
-          "size_bytes": 1149546,
-          "mtime_utc": "2026-10-26T03:11:21.737041+00:00"
+          "sha256": "c328ee7f90d3ee75b0a8a0419cf002139f8b31860d374b42efd7dde977ec807e",
+          "size_bytes": 1064576,
+          "mtime_utc": "2026-10-26T11:20:22.446360+00:00"
         }
       }
     },
@@ -1491,7 +1491,7 @@
     "fig4_6_residual_distribution": {
       "script": {
         "path": "batch_priority_results.py",
-        "sha256": "bf3a0294fdb7ea2b5f43243169e69aae744aab251e58b3d6440da32d8b3ac371"
+        "sha256": "93a7c6728aa1676345dace3d8d8aedc97f2d03d4db98fd296b4124a28f2b2dde"
       },
       "inputs": [
         {
@@ -1520,7 +1520,7 @@
         },
         {
           "path": "scripts/figures/batch12_chapter3_extra.py",
-          "sha256": "f888a70783639195c951244d5f1d4082937f964c160d199cdf137b091b72b406"
+          "sha256": "ed724de48ea9e95fabe9a25005636297b97db00f0161070106ae0464df007df3"
         },
         {
           "path": "scripts/figures/batch13_chapter4_5_extra.py",
@@ -1551,7 +1551,7 @@
     "fig4_7_error_vs_event_intensity": {
       "script": {
         "path": "refine_requested_20260920.py",
-        "sha256": "4d19011d8fe33e971fba408610efd5a54093e369dc53a365a84ba4295f697176"
+        "sha256": "3acbd5b3847c411f4dd830196b0aabb1b18948fd3745536fabbc57ff17a9288e"
       },
       "inputs": [
         {
@@ -1646,7 +1646,7 @@
     "fig5_3_asymmetry": {
       "script": {
         "path": "batch6_te_coverage_enhance.py",
-        "sha256": "7b1e4cc9d54fe87af463f3704ed77cb07e374a9ff1f9a8e3407f36d3be1a1fe3"
+        "sha256": "e709e342e2fee6637053858374089dcda5a53bd98d0cfd5828ae71a8002d83e7"
       },
       "inputs": [
         {
@@ -1656,14 +1656,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "6b5a9d1e93bf618d3d1d3aa8289e013b051a4a14415e77cf39e6fb28ea20f52f",
+          "sha256": "af9ec6be8f58f6f20b5699fa2a4de42073d65ac8e6c32496ecbd10318a876b48",
           "size_bytes": 74251,
-          "mtime_utc": "2026-10-25T13:27:56.360679+00:00"
+          "mtime_utc": "2026-10-26T12:07:10.921381+00:00"
         },
         "png": {
-          "sha256": "ee8668c7b7fb55148316c1bccb623e7dac4e968277b4d82e3f23eea12493bfd5",
-          "size_bytes": 1173601,
-          "mtime_utc": "2026-10-25T13:27:56.360046+00:00"
+          "sha256": "2ab9311e721d1d6957a0fc54b963d8a7ad5feb0c5405736ee5a0b1e31b2300e1",
+          "size_bytes": 1173330,
+          "mtime_utc": "2026-10-26T12:07:09.990844+00:00"
         }
       }
     },
@@ -1698,7 +1698,7 @@
     "fig5_5_pcmci_validation_network": {
       "script": {
         "path": "refine_requested_20260920.py",
-        "sha256": "4d19011d8fe33e971fba408610efd5a54093e369dc53a365a84ba4295f697176"
+        "sha256": "3acbd5b3847c411f4dd830196b0aabb1b18948fd3745536fabbc57ff17a9288e"
       },
       "inputs": [
         {
@@ -1708,14 +1708,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "94b1bd3d6f2c2c3f35387ed042d3ab32b934c1e9810405852b0fe3b4ab7840f8",
-          "size_bytes": 50590,
-          "mtime_utc": "2026-10-25T13:27:56.375651+00:00"
+          "sha256": "943871faba866bd1136ab3e0994f9fd08b3d78c0734c4cdd38d0fea3edda5ea2",
+          "size_bytes": 49048,
+          "mtime_utc": "2026-10-26T12:07:05.245785+00:00"
         },
         "png": {
-          "sha256": "a670a9646a44feceebfb60893f45fbb3100b2c351d463ac103e1bea6c610c218",
-          "size_bytes": 724774,
-          "mtime_utc": "2026-10-25T13:27:56.375226+00:00"
+          "sha256": "09bd79c01a79c64218c8e5d11e05a567d27ade3c4c6ae52ffa684c0aa8f5d866",
+          "size_bytes": 664717,
+          "mtime_utc": "2026-10-26T12:07:05.242523+00:00"
         }
       }
     },
@@ -1745,7 +1745,7 @@
     "fig5_7_coverage": {
       "script": {
         "path": "batch6_te_coverage_enhance.py",
-        "sha256": "7b1e4cc9d54fe87af463f3704ed77cb07e374a9ff1f9a8e3407f36d3be1a1fe3"
+        "sha256": "e709e342e2fee6637053858374089dcda5a53bd98d0cfd5828ae71a8002d83e7"
       },
       "inputs": [
         {
@@ -1755,21 +1755,21 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "eeeffe9f8dd33924dc4478677b2cddcdb96f025bdcb6febec94f6bd024113b05",
-          "size_bytes": 43907,
-          "mtime_utc": "2026-10-25T13:27:56.432658+00:00"
+          "sha256": "b0ef522b31ecf41c224475638923f1edf4f02c9dcb2bd770507b3e60528bb861",
+          "size_bytes": 36365,
+          "mtime_utc": "2026-10-26T13:09:43.245025+00:00"
         },
         "png": {
-          "sha256": "3c10046eb2706b35b8714c0ca50ab001990aebdd82b466bc2e7e21601b96d501",
-          "size_bytes": 1029803,
-          "mtime_utc": "2026-10-25T13:27:56.431764+00:00"
+          "sha256": "11798b25d8af48003b2e1d85dca989937ae6e3056763687b462fdee690462ef1",
+          "size_bytes": 911546,
+          "mtime_utc": "2026-10-26T13:09:42.325203+00:00"
         }
       }
     },
     "fig5_8_quantile_per_node": {
       "script": {
         "path": "batch9_advisor_redraw.py",
-        "sha256": "6ee925b705ad9ab4e73bf86edc10e23c22cbba7b6e18e46498b8fc28a8e67f4d"
+        "sha256": "a1cfce744775db14a1f82da3d4879427b04360b568f8b1bcefa40ec2339ff6a1"
       },
       "inputs": [
         {
@@ -1779,14 +1779,14 @@
       ],
       "formats": {
         "svg": {
-          "sha256": "ac2b2f5b5fc8438ac9d9b0d887e00b168760e319df18ea5e2d76b082a9dfbbd2",
-          "size_bytes": 52477,
-          "mtime_utc": "2026-10-25T13:27:56.440227+00:00"
+          "sha256": "b4eab8c1fb8fa6ec16615aa740dfc0907e82b83c16a0e3c1b1944529219e1155",
+          "size_bytes": 33264,
+          "mtime_utc": "2026-10-26T13:07:05.500963+00:00"
         },
         "png": {
-          "sha256": "699b09422b127fb3f1c81a1d2d7301bf08ca4e073a6ce8fa3e51ef7f27166bfd",
-          "size_bytes": 842799,
-          "mtime_utc": "2026-10-25T13:27:56.439220+00:00"
+          "sha256": "7f3d7f95458c0153b1dc3d95bb7d6aa7583f979471e422ae4bd373988c144be8",
+          "size_bytes": 564583,
+          "mtime_utc": "2026-10-26T13:07:05.499910+00:00"
         }
       }
     },
@@ -1809,12 +1809,12 @@
         "svg": {
           "sha256": "046f4d4804b27bc9883d586253cbcb0fe84a8afea7621066a1af7b35e5f58089",
           "size_bytes": 26735,
-          "mtime_utc": "2026-10-26T04:01:10.726425+00:00"
+          "mtime_utc": "2026-10-26T06:45:49.764911+00:00"
         },
         "png": {
           "sha256": "052f0477d0dd2c3b039e633e8e2260fa19f4fd00f236e92e5915b8166c4a91d7",
           "size_bytes": 704743,
-          "mtime_utc": "2026-10-26T04:01:11.962444+00:00"
+          "mtime_utc": "2026-10-26T06:45:49.764537+00:00"
         }
       }
     },

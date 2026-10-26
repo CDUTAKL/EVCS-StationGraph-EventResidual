@@ -66,12 +66,13 @@ def build_figure() -> plt.Figure:
     })
 
     fig = plt.figure(figsize=(6.45, 4.40), constrained_layout=False)
+    # 不设通栏大标题：全篇图件只有 A/B 面板标号，标题语义由论文图注承载；
+    # gridspec top 相应上移，收回原大标题占用的空白带。
     grid = fig.add_gridspec(1, 2, width_ratios=(1.02, 1.30), wspace=0.30,
-                            left=0.12, right=0.985, top=0.79, bottom=0.23)
+                            left=0.12, right=0.985, top=0.87, bottom=0.23)
     ax_a = fig.add_subplot(grid[0, 0])
     ax_b = fig.add_subplot(grid[0, 1])
 
-    fig.suptitle("代理标签定义下的模型排序敏感性", fontsize=11.2, fontweight="semibold", y=0.97)
     ax_a.set_title("A  不同评价口径的排序相关", loc="left", fontweight="semibold", pad=8)
     ax_b.set_title("B  12种配置的全局MAE排名", loc="left", fontweight="semibold", pad=8)
 

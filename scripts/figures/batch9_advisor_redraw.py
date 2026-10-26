@@ -107,80 +107,50 @@ def redraw_fig5_5() -> None:
 
     # 画布取论文显示尺寸：版心宽 14.66 cm = 5.77 in，图按 5.59 in 排版，
     # 故 figsize 直接等于纸面尺寸，fontsize 参数即为纸面字号。
-    # 高度按 10 行节点所需的行高确定（每行约 0.30 in），不按原大画布等比缩放。
-    fig = plt.figure(figsize=(5.769, 4.440), constrained_layout=False)
-    # 用 add_axes 而非 GridSpec：节点标签位于 axes 之外，需显式预留宽度，
-    # 否则缩放后 B 面板的标签会侵入 A 面板的数据区。
-    ax_a = fig.add_axes([0.115, 0.135, 0.355, 0.700])
-    ax_b = fig.add_axes([0.610, 0.135, 0.370, 0.700])
+    # 2026-10-26 重构（方案 8-甲）：双面板合并为单面板。原 A 中"全局"与
+    # "规则未触发层"逐节点几乎重合（冗余双列），只保留全局（它也是倍数口径
+    # 的分母，与正文倍数一致）；原 B 的倍数森林改为逐节点的点→统一值引导线
+    # + 几何中点倍数标注，原 A 中蓝线与点云之间的三个数量级空旷区由此
+    # 变成信息通道。
+    fig = plt.figure(figsize=(5.59, 3.55), constrained_layout=False)
+    ax = fig.add_axes([0.150, 0.155, 0.810, 0.700])
 
-    # A：用 log-x 点图展示“全局/未触发”与统一事件层分位数的量级差。
-    ax = ax_a
     y = np.arange(len(labels))
-    ax.axvspan(max(qe.mean() - qe_sd.mean(), 1e-5), qe.mean() + qe_sd.mean(),
+    qe_mean = qe.mean()
+    # 统一事件层：蓝色竖线 + 跨种子 SD 淡色带
+    ax.axvspan(max(qe_mean - qe_sd.mean(), 1e-5), qe_mean + qe_sd.mean(),
                color=BLUE, alpha=0.10, zorder=0)
-    ax.axvline(qe.mean(), color=BLUE, lw=1.6, ls="-", zorder=1)
-    for values, sds, color, marker, label in [
-        (qg, qg_sd, GRAY_D, "o", "全局"),
-        (qs, qs_sd, GRAY_M, "s", "规则未触发层"),
-    ]:
-        ax.errorbar(values, y, xerr=sds, fmt=marker, ms=5.2, mfc="white",
-                    mec=color, ecolor=color, capsize=2.0, lw=0.8, label=label,
-                    zorder=4)
-    # 事件层是所有节点共享的统一值：画一条蓝色竖线（含跨种子 SD 淡色带）
-    # 即可完整表达；旧版另在每个节点行上叠一颗蓝色菱形，既冗余又让图例
-    # 写着“蓝线”而图上是一列菱形，图文不符，故删去。
+    ax.axvline(qe_mean, color=BLUE, lw=1.6, ls="-", zorder=1)
+    for yi, idx in zip(y, order):
+        # 引导线跨越点与统一值之间的量级差；倍数标在几何中点（对数轴中点），
+        # 自然形成一列，且不与点/线重叠
+        ax.plot([qg[idx], qe_mean], [yi, yi], color=GRAY_L, lw=0.8,
+                ls=(0, (1, 2)), zorder=2)
+        ax.text(float(np.sqrt(qg[idx] * qe_mean)), yi, f"×{ratio[idx]:,.0f}",
+                ha="center", va="center", fontsize=7.3, color=GRAY_D,
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.85,
+                          pad=0.4), zorder=3)
+    ax.errorbar(qg[order], y, xerr=qg_sd[order], fmt="o", ms=5.2, mfc="white",
+                mec=GRAY_D, ecolor=GRAY_D, capsize=2.0, lw=0.8, zorder=4)
     ax.set_xscale("log")
     ax.set_xlim(8e-5, 1.05)
     ax.xaxis.set_major_formatter(LogFormatterSciNotation())
     ax.set_yticks(y)
-    ax.set_yticklabels(labels, fontsize=7.8)
+    ax.set_yticklabels([labels[i] for i in order], fontsize=7.8)
     ax.invert_yaxis()
     ax.set_xlabel("90% 残差分位数（kWh/15 min，对数轴）", fontsize=8.5)
     clean_ax(ax, "x")
-    # 面板标题直接贴 axes 顶边，不用 panel_label 的负 x 偏移（该偏移为大画布设计，
-    # 在小画布上会越出画布边界）。
-    ax.text(0.0, 1.045, "A 节点分位数：事件层是统一值", transform=ax.transAxes,
-            ha="left", va="bottom", fontsize=8.6, fontweight="bold", color=GRAY_D)
-
-    # 三类符号的图例放入独立顶部区域：事件层样张改为蓝线，与图面一致。
-    fig.legend(handles=[Line2D([0], [0], marker="o", color="none", markerfacecolor="white",
-                               markeredgecolor=GRAY_D, markersize=5.3, label="全局"),
-                        Line2D([0], [0], marker="s", color="none", markerfacecolor="white",
-                               markeredgecolor=GRAY_M, markersize=5.3, label="规则未触发层"),
+    # 图例放顶部独立区域；统一值数值并入样张文字，不再另设面板标题
+    fig.legend(handles=[Line2D([0], [0], marker="o", color="none",
+                               markerfacecolor="white", markeredgecolor=GRAY_D,
+                               markersize=5.3,
+                               label="全局分位数（逐节点）"),
                         Line2D([0], [0], color=BLUE, lw=1.6,
-                               label="规则触发层（统一值；蓝线）")],
-               fontsize=7.3, frameon=False, ncol=3, loc="upper center",
-               bbox_to_anchor=(0.50, 0.985), columnspacing=1.2, handletextpad=0.35)
-    # 统一事件层的含义已由顶部图例和蓝色竖线共同表达；不再在最后一个节点行附近放说明文字。
-
-    # B：排序后的膨胀倍数森林图；误差棒和均值线独立表达跨种子变化。
-    ax = ax_b
-    yy = np.arange(len(order))
-    ax.errorbar(ratio[order], yy, xerr=ratio_sd[order], fmt="o", ms=5.4,
-                mfc=BLUE, mec=BLUE, ecolor=GRAY_D, capsize=2.5, lw=0.9,
-                zorder=4)
-    mean_ratio = ratio.mean()
-    ax.axvline(mean_ratio, color=ORANGE, lw=1.2, ls="--", zorder=2)
-    for yi, idx in zip(yy, order):
-        ax.annotate(f"{ratio[idx]:.0f}×", xy=(ratio[idx] + ratio_sd[idx], yi),
-                    xytext=(6, 0), textcoords="offset points", va="center",
-                    fontsize=7.5, color=GRAY_D,
-                    bbox=dict(facecolor="white", edgecolor="none", alpha=0.82, pad=0.4))
-    ax.annotate(f"均值 {mean_ratio:.0f}×", xy=(mean_ratio, len(order) - 0.55),
-                xytext=(6, 0), textcoords="offset points", fontsize=7.5,
-                color=ORANGE,
-                bbox=dict(facecolor="white", edgecolor="none", alpha=0.84, pad=0.4))
-    ax.set_yticks(yy)
-    ax.set_yticklabels([labels[i] for i in order], fontsize=7.8)
-    ax.invert_yaxis()
-    ax.set_xlim(0, max(ratio + ratio_sd) * 1.25)
-    ax.set_xlabel("规则触发层 / 全局分位数（倍数）", fontsize=8.5)
-    clean_ax(ax, "x")
-    ax.text(0.0, 1.045, "B 区间膨胀：事件层相对全局", transform=ax.transAxes,
-            ha="left", va="bottom", fontsize=8.6, fontweight="bold", color=GRAY_D)
-    # 误差棒口径已由图注说明；底部不再放脚注，避免侵入坐标轴刻度区域。
-    final(fig, "fig5_8_quantile_per_node", (5.769, 4.440))
+                               label=f"规则触发层（统一值 ≈ {qe_mean:.2f}）")],
+               fontsize=7.3, frameon=False, ncol=2, loc="upper center",
+               bbox_to_anchor=(0.50, 0.985), columnspacing=1.2,
+               handletextpad=0.35)
+    final(fig, "fig5_8_quantile_per_node", (5.59, 3.55))
 
 
 def redraw_fig5_6() -> None:

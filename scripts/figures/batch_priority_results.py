@@ -221,37 +221,49 @@ def forest():
     data=json.loads(Path('outputs/analysis/bootstrap_significance.json').read_text())
     # 比较名用中文短名：export() 的字号下限为 9 pt，而"EventResidual vs
     # AdaptiveGraph"这类英文全名在 9 pt 下宽约 3.6 in，会把 5.59 in 画布
-    # 的数据区挤到 2 in 以内。中文名与图 3-14 的行文风格一致。
+    # 的数据区挤到 2 in 以内。中文名与图 3-16 的行文风格一致。
     labels={'TCN - StaticGraph':'MRG-GCN vs TCN',
             'StaticGraph - AdaptiveGraph':'自适应图 vs MRG-GCN',
             'AdaptiveGraph - EventResidual':'事件残差 vs 自适应图',
             'StaticGraph - MLP':'MLP vs MRG-GCN','TCN - MLP':'MLP vs TCN',
             'AdaptiveGraph - no_event_gate':'门控关闭 vs 自适应图'}
-    # 与图 3-15 森林图同一视觉语言：主蓝表正向差值、暖灰表负向差值，
+    # 与图 3-9（JPL 配对区间）同一视觉语言：主蓝表正向差值、暖灰表负向差值，
     # 白描边圆点 + 带端帽误差棒；零线统一用 #929DA6。
     BLUE='#2C5F8A';WARM='#A89A88'
     # 画布取论文显示尺寸（版心宽 14.66 cm = 5.77 in，图按 5.59 in 排版）。
     # layout='none' 必须在创建时给定：setup_style 默认开 constrained_layout，
     # 事后 set_layout_engine('none') 在 matplotlib 3.11 下仍会让
     # subplots_adjust 被静默忽略，导致两面板标题与刻度标签叠合。
-    fig,axes=plt.subplots(2,1,figsize=(5.59,4.70),layout='none')
-    fig.subplots_adjust(left=.245,right=.975,top=.93,bottom=.15,hspace=.42)
+    # 抗"空洞"设计（2026-10-26 反馈）：逐行标 [CI 下界, 上界]（森林图标准
+    # 的信息列，两行错位排在差值下方）、斑马纹行带、面板高度按行数 4:5 分配、
+    # 标记与误差棒加粗。
+    fig,axes=plt.subplots(2,1,figsize=(5.59,4.35),layout='none',
+                          gridspec_kw={'height_ratios':[4,5]})
+    fig.subplots_adjust(left=.245,right=.975,top=.93,bottom=.15,hspace=.40)
     for ax,key,title in zip(axes,['global','event_window'],['A  全局预测键','B  标签事件预测键']):
         rows=[(labels[c['name']],c['pooled'][key]) for c in data['comparisons'] if key in c['pooled']]
+        for i in range(len(rows)):
+            if i%2==0:
+                ax.axhspan(i-.5,i+.5,color='#F3F6F8',zorder=0)
         for i,(label,p) in enumerate(rows):
             d,lo,hi=p['observed_diff'],p['ci_lower'],p['ci_upper']
             color=BLUE if d>0 else WARM
-            ax.errorbar(d,i,xerr=[[d-lo],[hi-d]],fmt='o',ms=5.0,color=color,
-                        mec='white',mew=0.7,ecolor=color,elinewidth=1.2,
-                        capsize=3.0,capthick=1.2,zorder=3)
-            ax.annotate(f'{d:+.4f}',(hi,i),xytext=(6,0),textcoords='offset points',
+            ax.errorbar(d,i,xerr=[[d-lo],[hi-d]],fmt='o',ms=6.2,color=color,
+                        mec='white',mew=0.8,ecolor=color,elinewidth=1.5,
+                        capsize=3.5,capthick=1.5,zorder=3)
+            ax.annotate(f'{d:+.4f}',(hi,i),xytext=(7,5),textcoords='offset points',
                         va='center',fontsize=7.4,color='#404040')
+            ax.annotate(f'[{lo:+.4f}, {hi:+.4f}]',(hi,i),xytext=(7,-7),
+                        textcoords='offset points',va='center',fontsize=6.2,
+                        color='#8A9299')
         ax.set_yticks(range(len(rows)),[r[0] for r in rows]);ax.invert_yaxis()
         # 显式 9 pt：默认 10 pt 下"门控关闭 vs 自适应图"宽约 1.39 in，
         # 会超出 left 预留的标签区并把成品宽度撑过版心。
         ax.tick_params(axis='y',labelsize=9)
         ax.set_ylim(len(rows)-.5,-.7)
-        ax.set_xlim((-.012,.022) if key=='global' else (-.043,.045))
+        # 面板 A 右界放宽到 0.024：CI 区间文字排在最长正向差值（+0.0158）右侧，
+        # 旧界 0.022 会把 "[lo, hi]" 第二行顶出数据区。
+        ax.set_xlim((-.012,.024) if key=='global' else (-.043,.045))
         ax.axvline(0,color='#929DA6',lw=.9);ax.grid(axis='x',color='#E8EDF0',lw=.6)
         ax.set_axisbelow(True)
         ax.spines[['top','right']].set_visible(False)
@@ -261,7 +273,7 @@ def forest():
     axes[1].set_xlabel('MAE（后者）− MAE（前者）（kWh/15 min）',fontsize=9)
     # min_pt=6：数值标注按 7.4 pt 设计（与图 3-15 同级），不套用历史 9 pt
     # 下限，否则标注会被整体抬高、与图 3-15 并排版式不一致。
-    export(fig,'fig3_13_bootstrap_difference',(5.59,4.70),min_pt=6)
+    export(fig,'fig3_13_bootstrap_difference',(5.59,4.35),min_pt=6)
 
 def main():
     global PREVIEW

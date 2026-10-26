@@ -324,11 +324,14 @@ def redraw_fig3_10() -> None:
     """
     # 退化程度三级色（语义见 docstring；不使用其它章节的橙/绿/红点缀色）
     C_BASE, C_MILD, C_SEVERE = BLUE, "#AEB6BC", "#55606A"
+    # 柱序按退化程度排列（基线 → 持平变体 → 致命消融）：旧版把两根深蓝灰
+    # 高柱插在第 2、5 位，颜色与柱高都呈交错跳变；重排后柱高单调分组、
+    # 颜色成块，退化叙事从左到右一目了然。
     variants = [
         ("baseline", "完整模型\n（基线）", C_BASE),
-        ("SG-EXP-006-ablation-no_graph", "无图\n（TCN 结构）", C_SEVERE),
         ("SG-EXP-006-ablation-static_graph_only", "仅固定图", C_MILD),
         ("SG-EXP-006-ablation-adaptive_graph_only", "仅自适应图", C_MILD),
+        ("SG-EXP-006-ablation-no_graph", "无图\n（TCN 结构）", C_SEVERE),
         ("SG-EXP-006-ablation-no_event_gate", "门控关闭\n（全样本修正）", C_SEVERE),
     ]
     # 画布直接取论文显示尺寸（版心宽 14.66 cm = 5.59 in），fontsize 参数即为
@@ -365,6 +368,8 @@ def redraw_fig3_10() -> None:
     # ylim 数据定界（审查 C1：固定 0.017 会剪断 no_graph≈0.030 的柱子）；
     # 1.22 倍留白容纳误差棒之上的两段标注文字。
     ymax = max(m + s for m, s in zip(means, sds)) * 1.22
+    # 基线参考虚线：锚定"未消融"位置，持平变体与致命消融的高差直接可读
+    ax.axhline(base, color=GRAY_M, lw=0.8, ls=":", zorder=2)
     ax.set_xticks(x)
     # 标签分两行书写，避免 15° 斜排（斜排在小版心下既占高又难读）；
     # 字号交由 _clean() 统一设为 8 pt（须在 _clean 之后不再覆盖）
