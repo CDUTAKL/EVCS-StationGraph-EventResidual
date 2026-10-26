@@ -101,10 +101,13 @@
       "normalized_score": 81.11,
       "baseline_assessment_id": "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW",
       "revision_delta_raw": 1.5,
-      "calibration_delta_raw": -8.0
+      "calibration_delta_raw": -8.0,
+      "post_review_correction": "docs/thesis/revision-20261026-proxy-stability/fig3_17-range-correction.md"
     }
   },
   "latest_assessment_id": "FORMAL-20261026-PROXY-STABILITY-CALIBRATION-PAIR",
   "latest_authoritative_assessment_id": "FORMAL-20261026-PROXY-STABILITY-CALIBRATION-PAIR",
-  "current_score_status": "authoritative_v2_paired_calibration"
+  "current_score_status": "authoritative_v2_paired_calibration",
+  "current_score_scope": "last_frozen_manuscript_only; working figure revision is not scored",
+  "unscored_working_revision": true
 }
