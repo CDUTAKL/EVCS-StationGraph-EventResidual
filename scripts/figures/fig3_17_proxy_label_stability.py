@@ -30,12 +30,17 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 
 
 def parse_range(value: str) -> tuple[float, float]:
-    # CSV uses both ASCII hyphens and en dashes; the first endpoint can be
-    # negative, so splitting on a hyphen is ambiguous (e.g. -0.112-0.098).
-    values = re.findall(r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)", value.replace("−", "-"))
-    if len(values) != 2:
+    # Consume the separator explicitly: findall would read the separator in
+    # 0.972-0.979 as a negative sign on the second endpoint.
+    number = r"[-+]?(?:\d+(?:\.\d*)?|\.\d+)"
+    match = re.fullmatch(rf"\s*({number})\s*[-–—~～]\s*({number})\s*",
+                         value.replace("−", "-"))
+    if match is None:
         raise ValueError(f"expected two numeric endpoints in range {value!r}")
-    return float(values[0]), float(values[1])
+    lower, upper = map(float, match.groups())
+    if not -1 <= lower <= upper <= 1:
+        raise ValueError(f"invalid ordered Spearman range {value!r}")
+    return lower, upper
 
 
 def build_figure() -> plt.Figure:
