@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "assessment_id": "FORMAL-20261026-PROXY-STABILITY-CALIBRATION-PAIR",
+  "issues": [
+    {
+      "id": "CAL-BR01-NEED",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "上次评分把实际需求组件给满分；本稿虽有明确的代理节点模型筛选动机，但没有量化运维需求或收益。",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-01",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "MAP"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR02-PROGRESSION",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "上次评分把章节推进评为满分，未充分反映第5章方向筛查、区间预测和决策接口并列造成的主次分散。",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-02",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "MAP",
+        "PROXY_REPORT"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR03-SOURCE-GAP",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "上次评分对近邻比较与来源完整度略高估；表1-1已比较[76]，但[75]差异未展开且若干来源只可读摘要/索引片段。",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-03",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "NEAR76",
+        "NEAR",
+        "NEAR2",
+        "NEAR_20261016"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR04-FORMALIZATION",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "上次评分将理论/公式项给满分；核心定义正确，但行为输入可见时点和部分代理构造细节仍以协议假设为主。",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-04",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "QUALITY",
+        "S32",
+        "EPFL22"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR06-TRACEABILITY",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "上次评分把复现性给满分，但031/032的历史Git身份与部分环境证据不完整，算术复算不等于重跑模型。",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-06",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "REPLAY22",
+        "S31AUDIT",
+        "S32AUDIT",
+        "PROVENANCE_GUARD",
+        "CLAIMMAP",
+        "ANALYSIS_LOCK",
+        "ANALYSIS_MANIFEST",
+        "GUARD_CODE"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR07-WORK-INTEGRATION",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "上次评分略把实验与审计数量当成工作量/整合质量的充分代理；若干补充分析共用时期且不构成独立验证。",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-07",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "QUALITY",
+        "S31",
+        "S32",
+        "MDP",
+        "EPFL22"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR08-EVIDENCE-SCOPE",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "上次基线对证据稳健性略高估；部分增量和敏感性分析复用已查看测试期，不能当作独立确认。",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-08",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "PROXY_REPORT",
+        "PROXY_RESULTS",
+        "PROXY_TABLE",
+        "S32AUDIT"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR09-STATISTICAL-SCOPE",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "上次基线对统计解释略高估；训练种子仅3个，事后子组和同测试期分析不产生新的抽样推断。",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-09",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "PROXY_REPORT",
+        "PROXY_RESULTS",
+        "PROXY_TABLE",
+        "S31AUDIT",
+        "S32AUDIT"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR10-NOVELTY-SCOPE",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "上次基线对创新层级略高估；方法构件均有先例，贡献主要是限定任务内的受控经验发现与诊断判断。",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-10",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "PROXY_REPORT",
+        "PROXY_RESULTS",
+        "NEAR76",
+        "MDP",
+        "S31"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CAL-BR12-REDUNDANCY",
+      "kind": "scope_limit",
+      "status": "partly_supported",
+      "severity": "minor",
+      "summary": "上次基线对结构与表达给分偏满；正文仍较长，多个章节重复报告边界和结论。",
+      "present_in_baseline": true,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-12",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "LANGUAGE_REVIEW",
+        "LANGUAGE_AUDIT",
+        "MAP"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CLM032-BR08-SENSITIVITY",
+      "kind": "research_extension",
+      "status": "supported",
+      "severity": "minor",
+      "summary": "当前稿新增同一批冻结预测在两套代理标签下的总体及分层排序复评；只增加测试期内的目标敏感性证据。",
+      "present_in_baseline": false,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-08",
+      "evidence_ids": [
+        "CURRENT",
+        "PROXY_REPORT",
+        "PROXY_RESULTS",
+        "PROXY_TABLE"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CLM032-BR09-STATISTICS",
+      "kind": "research_extension",
+      "status": "supported",
+      "severity": "minor",
+      "summary": "当前稿区分先平均三种子MAE后排序的相关与逐种子相关均值/范围，减少统计量混称；仍属描述性分析。",
+      "present_in_baseline": false,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-09",
+      "evidence_ids": [
+        "CURRENT",
+        "PROXY_REPORT",
+        "PROXY_RESULTS",
+        "PROXY_TABLE"
+      ],
+      "secondary_impacts": []
+    },
+    {
+      "id": "CLM032-BR10-EMPIRICAL-CONTRIBUTION",
+      "kind": "research_extension",
+      "status": "supported",
+      "severity": "minor",
+      "summary": "当前稿新增“全局排序保持但评价标签非零组排序更敏感”的限定经验判断；未形成算法或未见时期贡献。",
+      "present_in_baseline": false,
+      "present_in_current": true,
+      "used_for_score": true,
+      "primary_criterion": "BR-10",
+      "evidence_ids": [
+        "CURRENT",
+        "PROXY_REPORT",
+        "PROXY_RESULTS",
+        "PROXY_TABLE"
+      ],
+      "secondary_impacts": []
+    }
+  ],
+  "note": "本轮采用同一对冻结稿进行校准配对。既有缺口只用于纠正上一正式评分的过度给分；新增排序分析只在BR-08/09/10分别计一次，并保留其已查看时期、固定预测和有限配置边界。"
+}

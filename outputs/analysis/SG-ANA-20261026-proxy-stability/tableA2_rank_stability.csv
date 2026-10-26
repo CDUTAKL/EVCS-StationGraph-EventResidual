@@ -1,0 +1,13 @@
+config,uniform_mae,alternative_mae,uniform_rank,alternative_rank,rank_delta
+agcrn_full,0.037434,0.056762,1,1,+0
+mrg_equal_beta,0.038624,0.056793,2,2,+0
+mrg_full,0.038901,0.057317,3,3,+0
+mrg_no_skip,0.039003,0.057409,4,4,+0
+mrg_no_refine,0.039314,0.057866,5,5,+0
+mrg_pattern,0.039481,0.058374,6,6,+0
+mrg_fixed_gate,0.041113,0.059473,7,7,+0
+mrg_load,0.043149,0.061809,8,8,+0
+mrg_event,0.045586,0.063125,9,9,+0
+mrg_self_loop,0.046102,0.064599,10,11,+1
+tcn,0.046287,0.064276,11,10,-1
+tcn_wide,0.046345,0.064723,12,12,+0

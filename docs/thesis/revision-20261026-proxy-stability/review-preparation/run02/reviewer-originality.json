@@ -1,0 +1,706 @@
+{
+  "schema_version": 1,
+  "report_type": "paired_blind_content_review",
+  "review_context_id": "37e2a76f-41f2-486b-8939-e5f0815c44e7",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "raw_maximum": 90,
+  "score_step": 0.5,
+  "historical_scores_exposed": false,
+  "official_grade_mapping": "none",
+  "baseline_total": 71.5,
+  "current_total": 73,
+  "paired_change": 1.5,
+  "criteria": [
+    {
+      "id": "BR-01",
+      "name": "选题意义与问题定义",
+      "maximum": 5,
+      "baseline_score": 4,
+      "current_score": 4,
+      "components": [
+        {
+          "id": "problem",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2,
+          "met": "对象为单场站10个充电节点、15分钟代理能量、未来四片预测及所要检验的站内关系问题均明确。",
+          "gap": "—"
+        },
+        {
+          "id": "significance",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "met": "以充电设施增长、节点异质性、稀疏性和会话数据形态说明问题动机。",
+          "gap": "现场运维或容量问题的量化需求和收益基线尚未建立。"
+        },
+        {
+          "id": "need",
+          "maximum": 1,
+          "baseline_score": 0.5,
+          "current_score": 0.5,
+          "met": "节点级预测与场内细粒度筛选、采数安排有合理联系。",
+          "gap": "任务需求仍由代理目标推及运行接口，未由实际调度方需求或真实效益量测闭合。"
+        }
+      ],
+      "locations": [
+        "§1.1.1–1.1.3",
+        "§1.3",
+        "§2.1.1–2.1.3"
+      ],
+      "evidence_read": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md"
+      ],
+      "rationale": "已满足：研究对象、预测粒度、数据口径及问题目的具体；重要性由公开充电会话和节点差异现象支撑。未满足：实际业务需求量化较弱，运行价值仍是待验证动机。两稿在该项的判断依据未变。",
+      "gaps": [
+        "缺同步电表和实际运行需求的量化证据；不因此重复扣减题目范围或方法。"
+      ],
+      "paired_change": "两稿同分；当前稿没有改变问题定义或需求证据。",
+      "change_type": "未变化"
+    },
+    {
+      "id": "BR-02",
+      "name": "研究问题、范围与题目一致性",
+      "maximum": 5,
+      "baseline_score": 4.5,
+      "current_score": 4.5,
+      "components": [
+        {
+          "id": "alignment",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2,
+          "met": "题目、节点代理目标、关系建模、受控比较和结论使用条件保持一致。",
+          "gap": "—"
+        },
+        {
+          "id": "progression",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "met": "由数据定义到预测、诊断、可靠性和应用条件形成主线。",
+          "gap": "第5章同时含方向统计、共形区间和运行接口，侧线较多，部分内容与主问题联系偏弱。"
+        },
+        {
+          "id": "closure",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "met": "摘要、研究问题和结论均回答关系增量、分层表现及适用边界。",
+          "gap": "—"
+        }
+      ],
+      "locations": [
+        "标题及摘要",
+        "§1.3–1.6",
+        "§3.8",
+        "§4.5–4.6",
+        "§5.2–5.5",
+        "结论"
+      ],
+      "evidence_read": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md",
+        "evidence/MDP.md",
+        "evidence/MAP.md"
+      ],
+      "rationale": "已满足：研究始终限定于单场站会话重构的节点代理负荷，并明确非现场和非零样本迁移结论。当前新增标签排序分析仍回答代理标签敏感性，与题目范围相合。未满足：第5章的探索性方向筛查、共形区间和运行接口把论文扩成多个并列主题，章节主次略显分散。",
+      "gaps": [
+        "第5章可更明确地以主问题组织或压缩探索性支线。"
+      ],
+      "paired_change": "两稿同分；当前新增分析没有造成新的题目或结论漂移。",
+      "change_type": "未变化"
+    },
+    {
+      "id": "BR-03",
+      "name": "文献综述与缺口定位",
+      "maximum": 5,
+      "baseline_score": 4,
+      "current_score": 4,
+      "components": [
+        {
+          "id": "coverage",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "met": "覆盖任务和方法关键先例，包括EV站间多图、住宅图门控、代理负荷及事件/诊断相关工作。",
+          "gap": "—"
+        },
+        {
+          "id": "sources",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "met": "表1-1按来源可读范围报告任务、节点粒度、图/模型和验证范围，并标出未知项。",
+          "gap": "部分近邻只读摘要、索引片段或出版商检索片段；对参考文献[75]未提供与本研究的具体方法差异比较。"
+        },
+        {
+          "id": "gap",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "met": "将差异落在单场站内节点、代理目标、相对自环条件增量和MDP诊断问题，而非一般图卷积首创。",
+          "gap": "“尚无站内关系替换与MDP”的缺口仍主要由有限近邻表支撑，缺一段针对[75]等最相近事件/残差工作的正面比较。"
+        }
+      ],
+      "locations": [
+        "§1.2.2 表1-1",
+        "§1.2.3–1.2.4",
+        "§1.3",
+        "§3.5.8"
+      ],
+      "evidence_read": [
+        "evidence/NEAR.md",
+        "evidence/NEAR2.md",
+        "evidence/NEAR76.md",
+        "evidence/NEAR_20261016.md"
+      ],
+      "rationale": "已满足：近邻覆盖图卷积、多图融合、门控时序、EV站群及会话重构残差预测；对摘要和原文可读范围有边界说明，缺口定位与本文较窄的贡献相符。未满足：文献[75]虽在事件/残差段引用，却没有在表1-1或正文说明其目标、输入、结构与本文的差异；有些来源细节受摘要可读性限制。NEAR76.md为10月17日的历史核查记录，其“正文缺正面比较”状态与冻结两稿中已出现的[76]表格比较不一致；本项以两稿实际文本为准。",
+      "gaps": [
+        "补充对[75]的原文核查和近邻定位，或明确其与本文贡献范围无重叠的理由。",
+        "对摘要级先例继续保留未知项，不作更强比较。"
+      ],
+      "paired_change": "两稿同分；表1-1及[76]比较在baseline和current均已存在。",
+      "change_type": "文字沿用，无新近邻定位"
+    },
+    {
+      "id": "BR-04",
+      "name": "理论基础与专业知识",
+      "maximum": 5,
+      "baseline_score": 4.5,
+      "current_score": 4.5,
+      "components": [
+        {
+          "id": "concepts",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "met": "代理能量、事件标签/回溯规则、统计关系/物理拓扑、MAE分层等概念大多区分明确。",
+          "gap": "行为计数片末可见和会话代理标签的成熟时点仍是协议假设，不是已量测事实。"
+        },
+        {
+          "id": "formulas",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2,
+          "met": "重构、事件分数、三类邻接、门控、目标函数、校准及决策算式均给出定义和单位/条件。",
+          "gap": "—"
+        },
+        {
+          "id": "knowledge",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "met": "图消息传递、时间卷积、共形校准和线性规划用于解释具体任务及限制。",
+          "gap": "—"
+        }
+      ],
+      "locations": [
+        "§2.1.1–2.1.2",
+        "§2.4",
+        "§3.2–3.5",
+        "§4.2–4.4",
+        "§5.3–5.4"
+      ],
+      "evidence_read": [
+        "manuscripts/baseline.md",
+        "manuscripts/current.md"
+      ],
+      "rationale": "已满足：核心概念、公式、量纲与所声称代理任务相配，关系权重不被误称因果效应，关键建模假设和旧协议限制已披露。未满足：预测时行为字段到达时间及代理能量对实测功率的映射未验证，限制主要落在实践有效性而非已证实理论错误。",
+      "gaps": [
+        "取得行为输入时间戳和同步计量数据后，验证协议时点及代理目标含义。"
+      ],
+      "paired_change": "两稿同分；理论与方法公式没有变化。",
+      "change_type": "未变化"
+    },
+    {
+      "id": "BR-05",
+      "name": "方法与实验设计",
+      "maximum": 10,
+      "baseline_score": 8,
+      "current_score": 8,
+      "components": [
+        {
+          "id": "information_split",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "met": "新协议分离行为输入与代理标签，使用时间留段和成熟标签检查；对回溯协议的全时期统计与跨界窗口明示。",
+          "gap": "行为字段片末可见仍是未量测假设；测试期已查看，后续补充均为事后。"
+        },
+        {
+          "id": "comparators",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "met": "含容量近似TCN、AGCRN及同参数共享门控，JPL另有重新拟合比较。",
+          "gap": "完整AGCRN未容量匹配；JPL分层基线有限；行为GRU等输入/家族对照未覆盖。"
+        },
+        {
+          "id": "controls",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "met": "同参数门控比较、JPL同参数逐关系自环替换重训和固定β干预分别对应不同问题。",
+          "gap": "额外对照和目标敏感性复用已查看期；关系重训覆盖一个JPL场站；部分关系/模型层面控制仍缺。"
+        },
+        {
+          "id": "selection_budget",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "met": "训练、调参、校准、测试、原单位选模、早停、参数量和实际轮次有报告。",
+          "gap": "共享门控各协议一组种子触及上限；同上限不代表等收敛；无更长预算检验。"
+        }
+      ],
+      "locations": [
+        "§2.1.1–2.2",
+        "§3.6.1–3.8.5",
+        "§4.2–4.6",
+        "表3-14"
+      ],
+      "evidence_read": [
+        "evidence/S31.md",
+        "evidence/S32.md",
+        "evidence/PROXY_REPORT.md",
+        "evidence/QUALITY.md",
+        "evidence/PASSPORT.md"
+      ],
+      "rationale": "已满足：时间切分、输入权限、共同预测键和选择集规则可见；节点级门控与自环替换是针对主张的控制，关系槽位、参数量和同种子初始化有证据。未满足：测试数据反复被查看后开展补充实验，跨站是同属ACN且年份重叠的重拟合；共享门控上限和基线容量等解释未完全排除。",
+      "gaps": [
+        "延长共享门控预算并固定未查看时期；需更强的未见场站/数据家族或实测目标验证。"
+      ],
+      "paired_change": "两稿同分；新增排序分析是固定预测的标签复评，不改变训练设计的证据级别。",
+      "change_type": "未变化"
+    },
+    {
+      "id": "BR-06",
+      "name": "可复现性与方法严谨性",
+      "maximum": 5,
+      "baseline_score": 4,
+      "current_score": 4,
+      "components": [
+        {
+          "id": "data_split",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "met": "数据来源、候选/主分析节点、时间边界和协议预测键均有描述。",
+          "gap": "原始会话及张量不随轻量包分发。"
+        },
+        {
+          "id": "source_config",
+          "maximum": 1.5,
+          "baseline_score": 1,
+          "current_score": 1,
+          "met": "关键新运行有配置、代码/环境快照及哈希清单；来源路径有保护说明。",
+          "gap": "部分历史运行缺原训练Git身份，031入口未被Git跟踪，冻结证据为大型sidecar且不是自包含复现包。"
+        },
+        {
+          "id": "keys_metrics",
+          "maximum": 1.5,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "met": "共同键、预测、标签、指标和复算状态有明确核验记录。",
+          "gap": "—"
+        },
+        {
+          "id": "environment_package",
+          "maximum": 1,
+          "baseline_score": 0.5,
+          "current_score": 0.5,
+          "met": "关键运行环境与包完整性被记录。",
+          "gap": "不提供可携带的一键训练复现包；复算依赖包外归档/数据。"
+        }
+      ],
+      "locations": [
+        "§2.1.1–2.1.3",
+        "§3.6.4",
+        "§3.8.3",
+        "附录A"
+      ],
+      "evidence_read": [
+        "evidence/PASSPORT.md",
+        "evidence/PROVENANCE_GUARD.md",
+        "evidence/QUALITY.md",
+        "evidence/REPLAY22.md",
+        "evidence/S31.md",
+        "evidence/S32.md"
+      ],
+      "rationale": "已满足：数据划分、预测键和指标独立复算有详细记录；031/032源文件和运行资产有清单。未满足：部分历史实验源身份不完整，训练证据和原始数据依赖本机sidecar，当前冻结材料不是可直接从头训练的自包含包。",
+      "gaps": [
+        "补齐历史源码身份并提供可携带的完整环境/数据使用复现路径；不要求本项自动扣除第三方重训。"
+      ],
+      "paired_change": "两稿同分；当前新增图表未增加训练复现能力。",
+      "change_type": "未变化"
+    },
+    {
+      "id": "BR-07",
+      "name": "工作量与解决问题能力",
+      "maximum": 10,
+      "baseline_score": 9,
+      "current_score": 9,
+      "components": [
+        {
+          "id": "technical_work",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 3.5,
+          "met": "完成代理序列与节点筛选、多个预测协议、模型对照、组件重训、目标敏感性、诊断和区间分析。",
+          "gap": "工作范围广但主要建立在两场ACN站点和既有时期。"
+        },
+        {
+          "id": "problem_solving",
+          "maximum": 4,
+          "baseline_score": 3.5,
+          "current_score": 3.5,
+          "met": "识别代理标签、时点、容量、关系替换、预算与误差分层问题，并调整解释及后续检验。",
+          "gap": "诊断是否能通过改变模型带来收益仍未验证。"
+        },
+        {
+          "id": "integration",
+          "maximum": 2,
+          "baseline_score": 2,
+          "current_score": 2,
+          "met": "数据、预测、诊断、区间和决策条件构成可追溯分析链。",
+          "gap": "—"
+        }
+      ],
+      "locations": [
+        "全篇；重点§2",
+        "§3.6–3.8",
+        "§4",
+        "§5"
+      ],
+      "evidence_read": [
+        "evidence/MAP.md",
+        "evidence/PASSPORT.md",
+        "evidence/S31.md",
+        "evidence/S32.md",
+        "evidence/MDP.md",
+        "evidence/CAL.md"
+      ],
+      "rationale": "已满足：完成难度较高的多协议预测、组件控制、诊断与独立核算；识别并收窄过度解释，包括β联合配置、学生替代范围和事件四格意义。未满足：工作产出的适用范围仍集中于ACN两站、固定时期，诊断改模收益和真实运行结果没有建立。",
+      "gaps": [
+        "后续应把已提出的预算、容量、未见数据与实测验证补验落地；这些不否定已完成工作量。"
+      ],
+      "paired_change": "两稿同分；本项主要基于已完成研究工件，写作增补不另算技术工作。",
+      "change_type": "未变化"
+    },
+    {
+      "id": "BR-08",
+      "name": "结果与证据充分性",
+      "maximum": 10,
+      "baseline_score": 7.5,
+      "current_score": 8,
+      "components": [
+        {
+          "id": "claim_support",
+          "maximum": 4,
+          "baseline_score": 3,
+          "current_score": 3.5,
+          "met": "Caltech和JPL主结论有对应模型表、共同键及复算；当前稿增加两种代理标签下12配置的总体/分层排序复评。",
+          "gap": "新增排序数据是同一已查看测试期的固定预测重评分，非独立确认；不能验证实测负荷。"
+        },
+        {
+          "id": "alternatives",
+          "maximum": 3,
+          "baseline_score": 2,
+          "current_score": 2,
+          "met": "容量基线、完整AGCRN、门控共享和关系自环替代覆盖若干主要替代解释，其他主张明确收窄。",
+          "gap": "仍缺实测功率、跨家族数据及更完整容量/训练预算控制。"
+        },
+        {
+          "id": "robustness_scope",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "met": "不同ACN场站重拟合、替代代理目标、测试期时间块和独立校准分别补充边界。",
+          "gap": "同源数据、时期重叠、已查看测试期；两套标签复评对12配置不重新训练。"
+        }
+      ],
+      "locations": [
+        "§3.6.2–3.8.5，尤其§3.8.5表3-16/图3-17",
+        "§4.2–4.6",
+        "§5.3–5.4",
+        "结论"
+      ],
+      "evidence_read": [
+        "evidence/S31.md",
+        "evidence/S32.md",
+        "evidence/PROXY_REPORT.md",
+        "evidence/MDP.md",
+        "evidence/CAL.md",
+        "evidence/MAP.md",
+        "evidence/FIG317.png",
+        "evidence/FIG59.png"
+      ],
+      "rationale": "已满足：主要主张有对应直接结果，数字与证据摘要相符，负结果和指标分层可见。当前真实新增是对同批12配置预测跨两个标签重评分，表明全局排序相关较高而标签非零组排序更敏感；这提升了结论证据范围的细致程度。未满足：它不增加独立样本或未查看期，也不验证模型对实测功率的性能。",
+      "gaps": [
+        "后续验证应使用未查看时期/场站和同步计量；对标签动态非零分组及重复目标键保持推断边界。"
+      ],
+      "paired_change": "当前稿+0.5：仅claim_support加0.5，依据§3.8.5/表3-16/图3-17新增的排序敏感性结果；其余新增表格与结论总结为已有数值重述。",
+      "change_type": "真实新增分析，非独立确认"
+    },
+    {
+      "id": "BR-09",
+      "name": "统计解释与结论边界",
+      "maximum": 10,
+      "baseline_score": 7.5,
+      "current_score": 8,
+      "components": [
+        {
+          "id": "uncertainty",
+          "maximum": 4,
+          "baseline_score": 3,
+          "current_score": 3.5,
+          "met": "时间块与种子波动分开报告；当前排序分析同时报告先均值后排序和逐种子相关系数及范围。",
+          "gap": "三个训练种子、单一固定测试时期，重叠预测键不独立；相关系数仅描述12个配置。"
+        },
+        {
+          "id": "multiplicity",
+          "maximum": 2,
+          "baseline_score": 1.5,
+          "current_score": 1.5,
+          "met": "三项预登记关系整体比较有Bonferroni校正，探索和确认性界限被标出。",
+          "gap": "多项事后分层和视角仍未校正；排序相关未作推断也无校正。"
+        },
+        {
+          "id": "interpretation",
+          "maximum": 4,
+          "baseline_score": 3,
+          "current_score": 3,
+          "met": "负结果、非零/事件组限制、固定期复用和代理目标效度边界说明充分。",
+          "gap": "研究结论仍依赖单个站点层级和观察期；经验排名可能受有限配置集/样本组成影响。"
+        }
+      ],
+      "locations": [
+        "§3.6.1",
+        "§3.7.1–3.7.2",
+        "§3.8.4–3.8.5",
+        "§4.2.5",
+        "§4.4",
+        "§5.3",
+        "结论"
+      ],
+      "evidence_read": [
+        "evidence/S31.md",
+        "evidence/S32.md",
+        "evidence/PROXY_REPORT.md",
+        "evidence/MDP.md",
+        "evidence/MAP.md"
+      ],
+      "rationale": "已满足：明确把种子、预测键和时间块视作不同层级；校正主要三项整体关系比较，未把事后分层写成确认性结果；限制和阴性结果解释谨慎。当前增加了平均排名相关与逐种子相关的区分、范围和非置信区间说明，减少把一个平均值误读为稳定性的风险。未满足：这仍是描述性、同测试集统计，不产生新抽样推断。",
+      "gaps": [
+        "保持未经校正的探索性分层标签，并以独立时间/站点重复检验排序变化。"
+      ],
+      "paired_change": "当前稿+0.5：§3.8.5增加逐种子相关均值/范围及统计口径区分；没有新检验独立性。",
+      "change_type": "真实新增统计解释"
+    },
+    {
+      "id": "BR-10",
+      "name": "贡献与创新",
+      "maximum": 10,
+      "baseline_score": 7,
+      "current_score": 7.5,
+      "components": [
+        {
+          "id": "prior_difference",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "met": "表1-1和引言明确区分既有EV站间多图、住宅图门控/时序融合及EV代理残差预测与本文单场站内节点任务。",
+          "gap": "对[75]的逐项定位不足；近邻来源层级不一。"
+        },
+        {
+          "id": "contribution",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "met": "贡献被界定为条件性关系增量证据、节点门控配对证据及MDP改变关系/替代/分层判断，而非新算子。",
+          "gap": "模型结构与大多数组件属于已知方法；MDP尚未证明可指导改模提升性能。"
+        },
+        {
+          "id": "demonstration",
+          "maximum": 4,
+          "baseline_score": 2,
+          "current_score": 2.5,
+          "met": "JPL同参数关系替换支持两种关系相对自环的条件性整体增量；Caltech/JPL门控比较和MDP提供受检证据。当前另有12配置标签排序敏感性结果。",
+          "gap": "同源两站与已查看固定测试期限制外推；两种关系的贡献不是普遍必要性，排序结果固定预测/标签重评分，MDP没有性能收益验证。"
+        }
+      ],
+      "locations": [
+        "§1.2.2表1-1",
+        "§1.3–1.5",
+        "§3.7.1–3.8.5",
+        "§4.1–4.6",
+        "结论"
+      ],
+      "evidence_read": [
+        "evidence/NEAR.md",
+        "evidence/NEAR2.md",
+        "evidence/NEAR76.md",
+        "evidence/NEAR_20261016.md",
+        "evidence/S31.md",
+        "evidence/MDP.md",
+        "evidence/PROXY_REPORT.md"
+      ],
+      "rationale": "已满足：论文没有把GCN、门控、TCN或三关系组合误报为算法首创；贡献层级可成立为受控的任务内经验发现与诊断框架：关系相对自环的两项条件增量、当前预算下门控差异，以及MDP区分参数依赖、指定学生和误差构成。当前排序敏感性分析增加了一条新的经验结论，支持整体选模与活跃片段选模分别评价。未满足：原创性主要是场景化实验与判断方法，算法/理论新颖性有限；新增排序结论是事后、固定预测、已查看测试期，不能上升为通用模型筛选规律。",
+      "gaps": [
+        "补齐与[75]的近邻比较；若要强化贡献层级，需独立场站/未查看时期或实测数据和诊断指导改模的前瞻性对照。"
+      ],
+      "paired_change": "当前稿+0.5：新增排序敏感性结果支持额外的经验知识贡献；没有新增算法、独立场站或MDP性能提升。",
+      "change_type": "有限真实新增发现"
+    },
+    {
+      "id": "BR-11",
+      "name": "专业实践价值",
+      "maximum": 5,
+      "baseline_score": 3.5,
+      "current_score": 3.5,
+      "components": [
+        {
+          "id": "use_case",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "met": "明确将输出定位于节点模型筛选、采数优先级和后续影子回放输入。",
+          "gap": "—"
+        },
+        {
+          "id": "real_inputs",
+          "maximum": 1.5,
+          "baseline_score": 1,
+          "current_score": 1,
+          "met": "使用真实会话与公开历史电流形态，并核对替代标签和外部形态边界。",
+          "gap": "缺同测试期节点级电表kW/kWh、请求到达时间、设备/全站负荷等真实运行输入。"
+        },
+        {
+          "id": "value_evaluation",
+          "maximum": 1.5,
+          "baseline_score": 0.5,
+          "current_score": 0.5,
+          "met": "代理误差比较、单例和合成约束核验可支持有限模型筛选/接口定义。",
+          "gap": "无实际业务收益、越限风险、服务质量或成本效果评价。"
+        },
+        {
+          "id": "usable_outputs",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "met": "给出使用条件和数据采集顺序，能改变后续验证与模型筛选安排。",
+          "gap": "尚无经过真实业务合同验证的可部署接口。"
+        }
+      ],
+      "locations": [
+        "§1.1.1",
+        "§2.1.2–2.1.3",
+        "§5.4.1–5.4.5",
+        "结论“研究判断与使用条件”"
+      ],
+      "evidence_read": [
+        "evidence/CURRENT_SHAPE_PROTOCOL.md",
+        "evidence/EPFL22.md",
+        "evidence/DATA_AVAIL.md",
+        "evidence/DATASEARCH22.md",
+        "evidence/PASSPORT.md"
+      ],
+      "rationale": "已满足：使用场景不是空泛的上线承诺，作者把现有产物限定在代理任务模型筛选和采数安排，并给出测量回放前置条件。未满足：没有同步计量下的预测效果或真实运行约束评价；合成计划只能验证约束求解。图5-9所用电流形态材料已在两稿第2章出现，当前第5章主要是重新呈现和决策接口解释，不作为新模型实践证据。",
+      "gaps": [
+        "同步、映射到研究节点的电表量测和输入更新时间；真实设备约束、负荷、电价与调度基线；真实收益/风险评估。"
+      ],
+      "paired_change": "两稿同分；当前对既有电流形态和既有模型结果的重排是阐释增强，不是新的现场验证。",
+      "change_type": "证据重述与边界强化"
+    },
+    {
+      "id": "BR-12",
+      "name": "结构、表达与学术规范",
+      "maximum": 10,
+      "baseline_score": 8,
+      "current_score": 8,
+      "components": [
+        {
+          "id": "structure",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "met": "五章按任务、预测、诊断、可靠性/应用递进，摘要、章节和结论对主问题闭合。",
+          "gap": "第5章多主题并列，少数材料在多个章节复述。"
+        },
+        {
+          "id": "writing",
+          "maximum": 3,
+          "baseline_score": 2,
+          "current_score": 2,
+          "met": "术语解释、表注和边界说明细致，可读性整体可接受。",
+          "gap": "长段和密集表格较多，图注/正文/结论重复披露限制，整体篇幅偏重。"
+        },
+        {
+          "id": "scholarly_content",
+          "maximum": 3,
+          "baseline_score": 2.5,
+          "current_score": 2.5,
+          "met": "文献表、表格、公式和交叉引用较充足；语言精修复检记录显示数字、引用、图表题注与链接逐项一致性核对。",
+          "gap": "本次未能在冻结包内逐项查看外部原文或论文全部原图；[75]比较缺口仍在。"
+        },
+        {
+          "id": "terminology",
+          "maximum": 1,
+          "baseline_score": 1,
+          "current_score": 1,
+          "met": "代理能量、片末可见、目标事件与规则触发等关键术语基本统一并有定义。",
+          "gap": "—"
+        }
+      ],
+      "locations": [
+        "全篇，重点§1.6",
+        "§3.8",
+        "§4",
+        "§5.5",
+        "结论"
+      ],
+      "evidence_read": [
+        "evidence/LANGUAGE_REVIEW.md",
+        "evidence/DELIVERY22.md",
+        "evidence/FIG317.png",
+        "evidence/FIG59.png"
+      ],
+      "rationale": "已满足：全文主线可识别，语言精修记录显示数值、引用序列、公式、标题、表格、图题与图链做过一致性复检；本轮直接查看了两张包内证据图。未满足：论文较长、反复说明边界，第5章支线多；没有在本包中检查全套原图及版式，因此不把形式交付门槛计入内容分，也不把未看图片自动视作可靠。",
+      "gaps": [
+        "压缩重复说明；终稿仍应独立核验全部图表、引用和排版。"
+      ],
+      "paired_change": "两稿同分；当前增加的排序表与摘要/结论复述已有新增结果，未改变整体表达质量锚点。",
+      "change_type": "总体不变"
+    }
+  ],
+  "uninspected_evidence_files": [
+    "ACN_BOUNDS.json",
+    "ACN_DECISION.md",
+    "ACN_RANGE.json",
+    "ADAPTAUDIT.json",
+    "CURRENT_SHAPE.json",
+    "LANGUAGE_AUDIT.json",
+    "MRECOMP.json",
+    "NZ.json",
+    "PROXY_RESULTS.json",
+    "PROXY_TABLE.csv",
+    "RECOMP.json",
+    "S31AUDIT.json",
+    "S32AUDIT.json"
+  ],
+  "uninspected_materials": [
+    "未逐项检查引用论文的包外原文；文献评价限于两稿及NEAR系列证据摘要。",
+    "未检查两稿引用的包外全套图件、Word/PDF分页和最终版式。",
+    "未读评分历史、scorecard或其他评阅意见；当前稿新增分析仅凭本冻结包所列材料复核。"
+  ],
+  "reading_scope": [
+    "reviewer_instructions.md",
+    "rubric.json",
+    "anchors.json",
+    "manuscripts/baseline.md",
+    "manuscripts/current.md",
+    "evidence子目录中与各项有关的文本材料及FIG317.png、FIG59.png"
+  ],
+  "paired_change_summary": "baseline到current的原始分增加1.5分，变化只分布在BR-08、BR-09和BR-10，各+0.5分；依据为§3.8.5固定预测的代理标签排序敏感性分析。它不是独立时期或新模型验证。其他新增表文和应用材料为已有证据的汇总/重述或边界强化。"
+}

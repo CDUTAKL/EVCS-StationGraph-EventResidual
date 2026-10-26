@@ -1,0 +1,700 @@
+{
+  "schema_version": 1,
+  "package": "SG-ANA-20261026-PROXY-STABILITY",
+  "source_of_truth": "Exact source_path/source_archive/source_member values copied from the SHA-256-verified frozen manifest.",
+  "frozen_package_root_name": "acn_proxy_stability_20261026",
+  "frozen_manifest_sha256": "32e16bf04267044e2f40cfeef4aba773131e7b4c97adcab825efc3145ac01565",
+  "frozen_manifest_created_at_utc": "2026-10-26T02:54:47.340959+00:00",
+  "input_count": 50,
+  "output_count": 27,
+  "inputs": [
+    {
+      "package_path": "inputs/datasets/alternative.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/datasets/alternative.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/frozen-contract/dataset.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/experiments/SG-EXP-032/frozen-contract/dataset.npz",
+      "lookup_archive_hint": null,
+      "sha256": "5802a65e2f7f0e045d54df3359eb52e9de73c5c6f4af06c67ada7db22747293f",
+      "bytes": 3125608
+    },
+    {
+      "package_path": "inputs/datasets/uniform.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/datasets/uniform.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/visibility/SG-DATA-006-eventtime-v1/dataset.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/visibility/SG-DATA-006-eventtime-v1/dataset.npz",
+      "lookup_archive_hint": null,
+      "sha256": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+      "bytes": 3229719
+    },
+    {
+      "package_path": "inputs/exp019/agcrn_full/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/agcrn_full/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/agcrn_full/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/agcrn_full/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "0a394d9476583e12e24a23dcfa536b7a621dca13bf59d855036810e681e25d7d",
+      "bytes": 5465265
+    },
+    {
+      "package_path": "inputs/exp019/agcrn_full/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/agcrn_full/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/agcrn_full/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/agcrn_full/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "1e1818a2f3445d4d0d22fa1dd87470a708ac50aa6a1c40a480bb68f0d3f6cc60",
+      "bytes": 5467265
+    },
+    {
+      "package_path": "inputs/exp019/agcrn_full/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/agcrn_full/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/agcrn_full/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/agcrn_full/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "c946e9b268d398a1dbd3724d542795dbd9d7f43e45ce18cb4e014504796d40e1",
+      "bytes": 5467372
+    },
+    {
+      "package_path": "inputs/exp019/mrg_equal_beta/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_equal_beta/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_equal_beta/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_equal_beta/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "8c165ead48c4f2b12ae104d309d670a45f7dd11127465eaf40e2c48776bb96ad",
+      "bytes": 5485933
+    },
+    {
+      "package_path": "inputs/exp019/mrg_equal_beta/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_equal_beta/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_equal_beta/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_equal_beta/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "4c70113431187b86dbbf8aea452d8d18132654fa38baf3b6eac99fb25ddcbad0",
+      "bytes": 5488141
+    },
+    {
+      "package_path": "inputs/exp019/mrg_equal_beta/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_equal_beta/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_equal_beta/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_equal_beta/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "19e9a5c9d2e8a82e41884abc6a79b799709397bc66e5ca9c1e7c22be0ccf420e",
+      "bytes": 5488399
+    },
+    {
+      "package_path": "inputs/exp019/mrg_event/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_event/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_event/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_event/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "44731089e298b08d3d74b480add23ba473da653783ebcfccc9d69bbd6a6e85be",
+      "bytes": 5596380
+    },
+    {
+      "package_path": "inputs/exp019/mrg_event/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_event/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_event/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_event/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "a77e8074de1fe58d90d9496e1075745fb959fe8188fb2a7e335e9675bb634b3b",
+      "bytes": 5589828
+    },
+    {
+      "package_path": "inputs/exp019/mrg_event/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_event/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_event/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_event/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "70dbf709ef9c711240277e690c909cf68800b7319ddf937f69d5fc0796ac6556",
+      "bytes": 5579337
+    },
+    {
+      "package_path": "inputs/exp019/mrg_fixed_gate/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_fixed_gate/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_fixed_gate/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_fixed_gate/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "bda193759eb17baf2a267cae0ff7e463933150038e2ad94966c5d15c81dd6b84",
+      "bytes": 5583667
+    },
+    {
+      "package_path": "inputs/exp019/mrg_fixed_gate/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_fixed_gate/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_fixed_gate/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_fixed_gate/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "bd1e5c1227e5a5e7c6428877c2543ae0eb73388039f936cc395f1554507824ca",
+      "bytes": 5552733
+    },
+    {
+      "package_path": "inputs/exp019/mrg_fixed_gate/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_fixed_gate/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_fixed_gate/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_fixed_gate/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "16af2b537a9eca8cff590115b063b6945c196a686e431a03235130d490b636e8",
+      "bytes": 5548654
+    },
+    {
+      "package_path": "inputs/exp019/mrg_full/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_full/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_full/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_full/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "e7fcfb85f4562e0540634264585c2c15ec70edf6020868242a75c9fff4d6f2b0",
+      "bytes": 5465568
+    },
+    {
+      "package_path": "inputs/exp019/mrg_full/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_full/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_full/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_full/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "31e656f47cf09a5a002cbcde2ac84d460b495f9a0dccd53b463df2eaad25a481",
+      "bytes": 5477622
+    },
+    {
+      "package_path": "inputs/exp019/mrg_full/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_full/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_full/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_full/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "879b0df5250f241893d03ab7ea9c2ee6eba3ce0c8b47fb2f3e846bc10d928006",
+      "bytes": 5475279
+    },
+    {
+      "package_path": "inputs/exp019/mrg_load/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_load/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_load/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_load/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "876cdc7757f6ddbdaaf07c3b2ede326ca1cbc092dd103ba7916a6b236039e618",
+      "bytes": 5590864
+    },
+    {
+      "package_path": "inputs/exp019/mrg_load/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_load/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_load/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_load/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "89fb11aa88f4746fd1f35373e72f31d87503464824a88bd3184dc0f92c441aaa",
+      "bytes": 5598684
+    },
+    {
+      "package_path": "inputs/exp019/mrg_load/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_load/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_load/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_load/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "81eb2818a82e558267077a6016c2e7703629c2c020fce729e75c63e88a96baa9",
+      "bytes": 5565182
+    },
+    {
+      "package_path": "inputs/exp019/mrg_no_refine/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_no_refine/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_refine/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_refine/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "560193d749c75fe91d64fe94dd552546057d99cadf0e18906090c57525f64e7f",
+      "bytes": 5509350
+    },
+    {
+      "package_path": "inputs/exp019/mrg_no_refine/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_no_refine/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_refine/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_refine/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "29ba9a73e73b38a9d21a2b1c96cdbed650d04580a736396987fbd13374e718f3",
+      "bytes": 5498673
+    },
+    {
+      "package_path": "inputs/exp019/mrg_no_refine/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_no_refine/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_refine/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_refine/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "9db49ef2f10bc58ec3b324efa30c835f3b4538fe4a76bd072e2653b2cd302b9d",
+      "bytes": 5476022
+    },
+    {
+      "package_path": "inputs/exp019/mrg_no_skip/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_no_skip/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_skip/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_skip/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "21218493876ff159f8eabeefdde9d210ea98faf2a3f0119b3e3f33b36f33bb63",
+      "bytes": 5429818
+    },
+    {
+      "package_path": "inputs/exp019/mrg_no_skip/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_no_skip/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_skip/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_skip/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "edddaf4e90fbb52e925dab047224725e8376023bf8d26b93b63cf5f0e2be3530",
+      "bytes": 5504951
+    },
+    {
+      "package_path": "inputs/exp019/mrg_no_skip/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_no_skip/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_skip/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_no_skip/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "3b20bf8959e1d8316e5441fba2fc6bde1f1fd20649b910e1b6788a02f24b320f",
+      "bytes": 5460022
+    },
+    {
+      "package_path": "inputs/exp019/mrg_pattern/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_pattern/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_pattern/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_pattern/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "75db176696bc053838ce007e7fd32fef4c73b261a79199c1fd91549f662c7f62",
+      "bytes": 5515390
+    },
+    {
+      "package_path": "inputs/exp019/mrg_pattern/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_pattern/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_pattern/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_pattern/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "943361c300d1a9868a814b1e2d358f15e7c8a4603165af1cb2a2c07b43874406",
+      "bytes": 5494391
+    },
+    {
+      "package_path": "inputs/exp019/mrg_pattern/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_pattern/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_pattern/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_pattern/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "47af70b9dacf400cdb7d4e8e38a7b72fe8a71ef0338661facda3e7e161e685c7",
+      "bytes": 5518176
+    },
+    {
+      "package_path": "inputs/exp019/mrg_self_loop/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_self_loop/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_self_loop/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_self_loop/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "71c44bc11e2fb240e06ed22091a8c7d2b095b45f7ebd9659af5120e0052b70b1",
+      "bytes": 5601367
+    },
+    {
+      "package_path": "inputs/exp019/mrg_self_loop/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_self_loop/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_self_loop/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_self_loop/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "888018de9f4d15a6a8188ce5bd915193cddeef4a6c5a986873176e2f2c9789cd",
+      "bytes": 5614225
+    },
+    {
+      "package_path": "inputs/exp019/mrg_self_loop/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/mrg_self_loop/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_self_loop/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/mrg_self_loop/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "7cfd4d2baecaa64544b2830fd6eb422290656054fbdca726e5ca577c787795b5",
+      "bytes": 5559626
+    },
+    {
+      "package_path": "inputs/exp019/tcn/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/tcn/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "0fde668af119231ac47296315f140c9d9cd46bb61580ccb9fc79e74ba9cb31dd",
+      "bytes": 5604375
+    },
+    {
+      "package_path": "inputs/exp019/tcn/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/tcn/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "70c8a12e9d09ed4b698bdfdf8c92951c1a685d17cb6d00781a5185d1e483761d",
+      "bytes": 5660930
+    },
+    {
+      "package_path": "inputs/exp019/tcn/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/tcn/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "01ebe13879ae41c56db855e2405612f9466831b9d63e5f529afa589460890ee1",
+      "bytes": 5595600
+    },
+    {
+      "package_path": "inputs/exp019/tcn_wide/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/tcn_wide/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn_wide/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn_wide/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "c97f0a54cb3e1c11d1492bee8c6240a4fccaff6ad1086ef4de0880e9ce09b3d6",
+      "bytes": 5581603
+    },
+    {
+      "package_path": "inputs/exp019/tcn_wide/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/tcn_wide/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn_wide/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn_wide/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "f60e5cf9c17e9180acb36f1873f9273e1bb790424b684917111312d8a7046c0d",
+      "bytes": 5615584
+    },
+    {
+      "package_path": "inputs/exp019/tcn_wide/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp019/tcn_wide/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn_wide/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/recovered/SG-EXP-019/unpacked/results/formal/tcn_wide/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "adf6b5b1f1fecc871558b60bcbdc64092502585b865d491f6ed947802b82a4ba",
+      "bytes": 5643317
+    },
+    {
+      "package_path": "inputs/exp027/mrg_full/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp027/mrg_full/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-027/recovered/formal/mrg_full/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/experiments/SG-EXP-027/recovered/formal/mrg_full/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "0f7c2f92d69b575d8f182f9ef8402e2e99990aad7cbca7f25263860e290c2e43",
+      "bytes": 5451209
+    },
+    {
+      "package_path": "inputs/exp027/mrg_full/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp027/mrg_full/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-027/recovered/formal/mrg_full/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/experiments/SG-EXP-027/recovered/formal/mrg_full/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "76a4e03f215a2ddd06d9919f5fce511bb1cfff12600b96c354337e3dac174a93",
+      "bytes": 5494217
+    },
+    {
+      "package_path": "inputs/exp027/mrg_full/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp027/mrg_full/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-027/recovered/formal/mrg_full/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/experiments/SG-EXP-027/recovered/formal/mrg_full/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "a36694e8ec0d59bcba72bd622a3e53650cbefa3bd930cedbcd0a922a231fbdcd",
+      "bytes": 5486305
+    },
+    {
+      "package_path": "inputs/exp027/mrg_shared_gate/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp027/mrg_shared_gate/seed-2024/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-027/recovered/formal/mrg_shared_gate/seed-2024/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/experiments/SG-EXP-027/recovered/formal/mrg_shared_gate/seed-2024/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "ca8a889e57245ad65454e36fb57edab45541f2fb4f80beda3697cf5b8d6f37ca",
+      "bytes": 5516573
+    },
+    {
+      "package_path": "inputs/exp027/mrg_shared_gate/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp027/mrg_shared_gate/seed-2025/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-027/recovered/formal/mrg_shared_gate/seed-2025/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/experiments/SG-EXP-027/recovered/formal/mrg_shared_gate/seed-2025/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "f1035de681d42b3579b43dddf0d8eeecf7d95e439e1c58788ffd3032aba266c6",
+      "bytes": 5540630
+    },
+    {
+      "package_path": "inputs/exp027/mrg_shared_gate/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp027/mrg_shared_gate/seed-2026/predictions_test.npz",
+      "source_path": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-027/recovered/formal/mrg_shared_gate/seed-2026/predictions_test.npz",
+      "source_archive": null,
+      "source_member": null,
+      "lookup_path_hint": "outputs/experiments/SG-EXP-027/recovered/formal/mrg_shared_gate/seed-2026/predictions_test.npz",
+      "lookup_archive_hint": null,
+      "sha256": "9e454698a95c4a26bdb86854031020b8c3aa49e59b4436b156c56c9fe82750e8",
+      "bytes": 5518343
+    },
+    {
+      "package_path": "inputs/exp032/mrg_full/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp032/mrg_full/seed-2024/predictions_test.npz",
+      "source_path": null,
+      "source_archive": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "source_member": "closeout/results/formal/mrg_full/seed-2024/predictions_test.npz",
+      "lookup_path_hint": null,
+      "lookup_archive_hint": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "sha256": "1e317f88b59dae5a7ee4db013bac9afd45b79eb1fe80159ed8f885d8151e65b8",
+      "bytes": 5439590
+    },
+    {
+      "package_path": "inputs/exp032/mrg_full/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp032/mrg_full/seed-2025/predictions_test.npz",
+      "source_path": null,
+      "source_archive": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "source_member": "closeout/results/formal/mrg_full/seed-2025/predictions_test.npz",
+      "lookup_path_hint": null,
+      "lookup_archive_hint": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "sha256": "844df5847b7a2ecd42e2330f097c3837d6b3258077c3bfb0035996ba93b14119",
+      "bytes": 5463114
+    },
+    {
+      "package_path": "inputs/exp032/mrg_full/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp032/mrg_full/seed-2026/predictions_test.npz",
+      "source_path": null,
+      "source_archive": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "source_member": "closeout/results/formal/mrg_full/seed-2026/predictions_test.npz",
+      "lookup_path_hint": null,
+      "lookup_archive_hint": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "sha256": "bd44801dbc7733ec761fb6fd593f837f26a28a3865444379682e77b543d659a6",
+      "bytes": 5465062
+    },
+    {
+      "package_path": "inputs/exp032/tcn_wide/seed-2024/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp032/tcn_wide/seed-2024/predictions_test.npz",
+      "source_path": null,
+      "source_archive": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "source_member": "closeout/results/formal/tcn_wide/seed-2024/predictions_test.npz",
+      "lookup_path_hint": null,
+      "lookup_archive_hint": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "sha256": "33f7d725c91d039f1ed4fd9c991dc7746edce944fbee6677d281428f07bfd676",
+      "bytes": 5606216
+    },
+    {
+      "package_path": "inputs/exp032/tcn_wide/seed-2025/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp032/tcn_wide/seed-2025/predictions_test.npz",
+      "source_path": null,
+      "source_archive": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "source_member": "closeout/results/formal/tcn_wide/seed-2025/predictions_test.npz",
+      "lookup_path_hint": null,
+      "lookup_archive_hint": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "sha256": "34bef9d3f1960a06739f0bdbc344b647e9cfef566919e8b1ac9e7fc896e2c8f0",
+      "bytes": 5601183
+    },
+    {
+      "package_path": "inputs/exp032/tcn_wide/seed-2026/predictions_test.npz",
+      "frozen_package_path": "/Users/xushuyuan/acn_proxy_stability_20261026/inputs/exp032/tcn_wide/seed-2026/predictions_test.npz",
+      "source_path": null,
+      "source_archive": "/Users/xushuyuan/Documents/Codex/EVCS-StationGraph-EventResidual/outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "source_member": "closeout/results/formal/tcn_wide/seed-2026/predictions_test.npz",
+      "lookup_path_hint": null,
+      "lookup_archive_hint": "outputs/experiments/SG-EXP-032/recovered/SG-EXP-032-results.tar.gz",
+      "sha256": "ccba9e6af47c843963d31c4cb8d77ce9e8d4698e9de3a73c21c6469bda7563d8",
+      "bytes": 5613667
+    }
+  ],
+  "outputs": [
+    {
+      "frozen_path": "report.md",
+      "sha256": "166180ab92d093784fe387c6cf6f98f24107a3ae9af30a273f6414a1f4c35a26",
+      "bytes": 8568
+    },
+    {
+      "frozen_path": "results.json",
+      "sha256": "dd198167ef3410332752d0b6661739d329c8519ede448720f649808c5a3c0135",
+      "bytes": 149698
+    },
+    {
+      "frozen_path": "manuscript_insert.md",
+      "sha256": "3d479f012d11d67a11167683ae41a11b2f3a6e3e830ebc95cc4e19a0fd5761d0",
+      "bytes": 9102
+    },
+    {
+      "frozen_path": "contribution_reframing.md",
+      "sha256": "b336a2c2f7bb1fd79c54c2f793192be202a13603209142ae16241349edaa796e",
+      "bytes": 6789
+    },
+    {
+      "frozen_path": "mdp_protocol_card.md",
+      "sha256": "7ce693fc4139fcb6b68948066b4969c30d41986b5dd34dc202e52da0b5724d76",
+      "bytes": 5362
+    },
+    {
+      "frozen_path": "minimum_reporting_checklist.md",
+      "sha256": "ff4ec47d8523bb4535f6db3b179a529d8000d8f4e078c923de3cb9591adba13d",
+      "bytes": 3638
+    },
+    {
+      "frozen_path": "integration_plan.md",
+      "sha256": "a72c83f641681b369c618dd5800adf8b32c16ab09819c65d211c990a835fe9e0",
+      "bytes": 11760
+    },
+    {
+      "frozen_path": "validation.md",
+      "sha256": "5ad68289a0a8967d25a36de899dcda26f0b501f644ae5ffd01894d6a54e0b053",
+      "bytes": 4145
+    },
+    {
+      "frozen_path": "defense_qa.md",
+      "sha256": "e830e67802ae1e017c20c4ce87da616ebf80329710f8b9b278fe4d47faca130d",
+      "bytes": 8546
+    },
+    {
+      "frozen_path": "README.md",
+      "sha256": "98fa18e908ad531b6848a02fb74d06bdb2f3efaed5edc711d82987653feec7ba",
+      "bytes": 11043
+    },
+    {
+      "frozen_path": "config.json",
+      "sha256": "2769458d87aa7868bff8010fb47e24ca7a483c8cb5458c11062a0f49abe8860c",
+      "bytes": 924
+    },
+    {
+      "frozen_path": "PORTABILITY.md",
+      "sha256": "5e985f1a5ab6ccfaf214c44e173e812dfccd1b0b23ab53b688f1fe208648e1ad",
+      "bytes": 3035
+    },
+    {
+      "frozen_path": "locate_inputs.py",
+      "sha256": "ff8367f1597e1eefbea27ccba39f13291613f8f67ea1e37d6c8280a51eb3e6d3",
+      "bytes": 6644
+    },
+    {
+      "frozen_path": "table3_16_spearman.csv",
+      "sha256": "489ecc614265d43a3104a669c21bb3fa955bc882068c884edfeb1b1a2d8c8c53",
+      "bytes": 363
+    },
+    {
+      "frozen_path": "tableA2_rank_stability.csv",
+      "sha256": "8fca5147be695934ed8efc4408a68ceff0d99203609c2ed4eed0a24076b3ce85",
+      "bytes": 529
+    },
+    {
+      "frozen_path": "table2x2.csv",
+      "sha256": "ec12536dc3f40ec6ca1a19a43ab76a08a6cae25296b6bcbd00db6c7e10f2e492",
+      "bytes": 540
+    },
+    {
+      "frozen_path": "table_gate_per_seed.csv",
+      "sha256": "0158175977de715eebbfcc7c35b0e3c8af262544469218b182bb48180c78fd7d",
+      "bytes": 326
+    },
+    {
+      "frozen_path": "fig_rank_stability_by_metric.png",
+      "sha256": "5d06c43ee2f91b2c0bd778fcf08ba0f18102c512ce30ac299d13cbe0069b361b",
+      "bytes": 84771
+    },
+    {
+      "frozen_path": "fig_rank_slope.png",
+      "sha256": "5cb07aa973047f22a4d3ab002f826e4f84de50fb2639f389521a99fe726c575b",
+      "bytes": 75089
+    },
+    {
+      "frozen_path": "fig_ranking_scatter.png",
+      "sha256": "a84bd034c07c7cad404f6751ba7a405e86ad259736a5a28e21e3c20a9a5d55e4",
+      "bytes": 80201
+    },
+    {
+      "frozen_path": "fig_gate_label_sensitivity.png",
+      "sha256": "c201351bb24e365d784b259aa85d6572b879cfc39757060390588e9a95a56cde",
+      "bytes": 43623
+    },
+    {
+      "frozen_path": "fig_label_diff_hist.png",
+      "sha256": "e6c3b41aa96450c8820542d9bb5029ff2f57e3a95bb7a3851d9875508e4639a6",
+      "bytes": 33671
+    },
+    {
+      "frozen_path": "fig3_17_proxy_rank_stability_candidate.png",
+      "sha256": "f5ef3d59050f03e01208c06bdc9d2abe6b3857dbf20d4ee790d9e342a40f6ced",
+      "bytes": 1141131
+    },
+    {
+      "frozen_path": "fig3_17_proxy_rank_stability_candidate.svg",
+      "sha256": "98dbd75f56df6e5e0b67f98f870b6d09d0c1f3c42391015de3ea77825969c848",
+      "bytes": 100666
+    },
+    {
+      "frozen_path": "analyze.py",
+      "sha256": "6b33a2df82bca560cfa3dd714ecd895c6c9125bed98da1744f253c2f123d0d0c",
+      "bytes": 35904
+    },
+    {
+      "frozen_path": "make_deliverables.py",
+      "sha256": "569cfc1bd1f4a7e1c1b902b3a4fc965d635fe654332cd13a2235d451db866d2c",
+      "bytes": 6686
+    },
+    {
+      "frozen_path": "make_manifest.py",
+      "sha256": "1ff18850d2fcf1e853a4dc0bee0ecf7066548c3ca653805340b370847bd890de",
+      "bytes": 5732
+    }
+  ],
+  "source_manifest_path": "/Users/xushuyuan/acn_proxy_stability_20261026/manifest.json"
+}

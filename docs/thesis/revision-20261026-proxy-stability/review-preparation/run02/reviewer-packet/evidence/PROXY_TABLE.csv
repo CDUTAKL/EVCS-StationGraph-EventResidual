@@ -1,0 +1,7 @@
+evaluation_definition,rho_of_seed_mean_mae_ranks,mean_of_seed_rhos,spearman_per_seed_range
+全局 MAE,0.993,0.974,0.972-0.979
+稳定窗口 MAE,0.993,0.974,0.965-0.986
+零目标 MAE,0.951,0.907,0.874-0.965
+固定均匀非零键 MAE,0.671,0.671,0.629-0.727
+标签事件 MAE,0.559,0.324,0.007-0.608
+非零目标 MAE（评价标签）,0.420,0.000,-0.112-0.098

@@ -1,0 +1,37 @@
+{
+  "assessment_id": "FORMAL-20261026-PROXY-STABILITY-CALIBRATION-PAIR",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "status": "valid",
+  "errors": [],
+  "missing": [],
+  "raw_score": 73.0,
+  "raw_maximum": 90.0,
+  "normalized_score": 81.11,
+  "blockers": [],
+  "note": "记录和算术校验不代表重新阅读、核验文件真实性或完成学术评审。",
+  "publication_status": "publishable",
+  "publication_decision": {
+    "status": "publishable",
+    "date": "2026-10-26",
+    "reason": "按EVCS-THESIS-REVIEW-2.0完成同稿配对校准；三隔离AI视角、主评法证核查、来源清单、交付核验与机器发布检查通过。旧稿71.5/90、当前稿73.0/90，校准效应−8.0、修订效应+1.5，净差−6.5/90；旧分校准不表示正文退步。",
+    "record": "docs/thesis/content-review-20261026-proxy-stability-calibration/scorecard.json",
+    "raw_score": 73.0,
+    "normalized_score": 81.11,
+    "baseline_assessment_id": "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW",
+    "revision_delta_raw": 1.5,
+    "calibration_delta_raw": -8.0
+  },
+  "publication": {
+    "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+    "status": "publishable",
+    "problems": [],
+    "raw_score": 73.0,
+    "normalized_score": 81.11,
+    "revision_delta_raw": 1.5,
+    "calibration_delta_raw": -8.0,
+    "recommendation": "advisor_review",
+    "checked_file_count": 38,
+    "note": "发布条件核验不证明证据真实、学术判断正确或评分具有测量精度。"
+  },
+  "record_validation_status": "valid"
+}

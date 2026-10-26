@@ -1,5 +1,10 @@
 # 新增补强证据映射
 
+## 2026-10-26 代理标签排序敏感性复评
+
+- **CLM-032-LABEL-RANK**：SG-EXP-019/027/032的48份冻结预测与两套标签数据，在相同708,560个Caltech测试键上交叉评价；未训练、未改变预测。总体MAE排名的Spearman为0.993（先平均三种子MAE再排序），逐种子相关均值为0.974；按评价标签定义的非零组分别为0.420与0.000。门控优势平均由2.69%降至1.65%，seed-2024由+1.73%反转为−0.91%。证据限于已查看时期与所检12配置，不能证明实测效度或未见时期泛化。产物：`outputs/analysis/SG-ANA-20261026-proxy-stability/`；正文§3.8.5、表3-16、图3-17、附表A-2。
+- **MAT-PROXY-STABILITY-PROVENANCE**：小型集成副本保存50项输入与27项冻结输出的来源哈希；输入大文件未复制进Git。`source-provenance.lock.json`锁定来源字段，`make_manifest.py`将当前查找位置写入单独的`lookup_*`字段，源缺失或哈希错误时失败关闭。外部原包未改写。
+
 ## 2026-10-22当前补充入口
 
 - **REPLAY-031/032**：`revision-20261022-evidence/reproducibility-package.json`及`.md`保存源码归档、配置/环境、检查点/预测清单与复算入口；031源清单67项、032为91项，18次运行清单及已有预测指标复算通过。范围为保存预测的算术/统计复算，不是权重前向或从头训练复现；原历史Git身份限制保留。大文件为本地外置归档，尚未发布公共仓库。
@@ -53,6 +58,7 @@ EPFL Level-3数据兼容性筛选（2026-10-21）只记录筛选失败和V1停�
 | CLM-024-CURRENT | 8个预定匹配会话的实测电流归一化形态不同于等片分摊 | DATA-024-CURRENT-PROBE；SG-EXP-024 | matched-current-probe/selection.json、sample_metadata.json、normalized_bin_shapes.csv | 便利样本、2质量失败；功率/电压缺失，不能推断实测kWh误差 |
 | CLM-025-ROLL | 成熟标签回放下滚动校准缓解全体覆盖失配，事件仍明显不足 | SG-DATA-006，SG-EXP-019冻结预测；SG-EXP-025 | rolling-calibration/summary.csv、daily_quantiles.csv、独立verification | 14/28天固定、历史探索；不是保证或未见确认 |
 | CLM-026-DECISION | 服务与容量约束的影子LP可执行合成可行性核验 | DATA-026-SYNTHETIC；SG-EXP-026 | charging-decision/shadow_plan.json、audit.json | 算法单元核验；真实案例MATERIALS_REQUIRED，无实际收益 |
+| CLM-024-CURRENT-REPLAY-20261025 | 预定的8条ACN-Caltech历史会话中，归一化实测电流份额与均匀分摊代理份额存在会话内形态差异 | DATA-024-CURRENT-PROBE；ACN-CURRENT-SHAPE-REPLAY-20261025 | `docs/thesis/revision-20261025-practice/acn-current-shape-protocol.md`、`acn-current-shape-replay.json`、图5-9源清单；程序`scripts/figures/fig5_9_acn_current_shape.py` | 8/10条便利样本通过既有质量门禁；无电压/功率且处于训练年代，不比较模型预测，不推断实测能量误差或运行价值。完整模型比较仍基于代理目标，见表5-8 |
 | CLM-027-GATE | 同参数节点级门控相对节点共享门控具有本测试期MAE增量 | SG-DATA-006；SG-EXP-027 | recovered六次来源、SG-EXP-027-time-block/summary.json与independent-verification.json | 三种子、七日及一日块方向一致；同上限与选模，实际轮次不同，不是旧协议消融或跨期保证 |
 | CLM-028-JPL | JPL固定协议测试期内MRG-GCN整体MAE低于预登记的三项基线；节点级门控对照方向与Caltech一致 | SG-DATA-007-JPL；SG-EXP-028 | `experiment-reports/SG-EXP-028-jpl-independent-site-validation-report.md`及回收归档、预测键复核、配对区间CSV；`experiment-reports/EXP-JPL-calibration-20261015-no-training.md`及独立核验 | 12次正式运行；24个七日块、三组校正区间均高于零。TCN的RMSE、事件MAE、非零目标MAE较低。JPL独立校准已完成：总体覆盖约90.1%，事件覆盖约46%；同硬件时延仍未完成。同属ACN家族、年份重叠、目标为会话代理，不代表跨家族、未来时期或零样本迁移 |
 | CLM-029-GATE-COMPOSITION | 两个既有测试期的节点级门控整体MAE点估计不由任一单节点单独决定 | SG-DATA-006/007；SG-EXP-027/028原始预测键；SG-EXP-029 | `experiment-reports/SG-EXP-029-node-composition-sensitivity.md`、逐键审计脚本、留一CSV/JSON | 两站各10次留一点估计均为正；事后同测试期分析，无留一区间/多重校正，不是独立验证，不证明每节点获益 |

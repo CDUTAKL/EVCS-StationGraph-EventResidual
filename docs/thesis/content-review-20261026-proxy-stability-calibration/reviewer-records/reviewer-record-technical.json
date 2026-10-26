@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "reviewer_id": "BLIND-TECHNICAL-20261026",
+  "context_id": "blind-tech-20261026-dc6107e0-271b-48f4-afd4-6b7eb494a276",
+  "emphasis": "technical",
+  "historical_scores_exposed": false,
+  "before_manuscript_sha256": "8ac58074c2a53835883c6635cdf7d6f0044e7971e67af6de36e3f4248e75d9d5",
+  "manuscript_sha256": "648bd582de2f03afac78486f26e85b2a91a6593b33d9a619d2090744c6caf506",
+  "raw_report_path": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-technical.md",
+  "raw_report_sha256": "b72f6d8bf9c3dc3549d381bd4276472cb0499fa45199f9ee5b6f9e93a07c8ed2",
+  "declared_before_total": 72.0,
+  "declared_total": 73.5,
+  "criteria": [
+    {
+      "id": "BR-01",
+      "before_score": 4.0,
+      "score": 4.0
+    },
+    {
+      "id": "BR-02",
+      "before_score": 4.5,
+      "score": 4.5
+    },
+    {
+      "id": "BR-03",
+      "before_score": 3.5,
+      "score": 3.5
+    },
+    {
+      "id": "BR-04",
+      "before_score": 4.5,
+      "score": 4.5
+    },
+    {
+      "id": "BR-05",
+      "before_score": 8.0,
+      "score": 8.0
+    },
+    {
+      "id": "BR-06",
+      "before_score": 4.0,
+      "score": 4.0
+    },
+    {
+      "id": "BR-07",
+      "before_score": 9.0,
+      "score": 9.0
+    },
+    {
+      "id": "BR-08",
+      "before_score": 8.0,
+      "score": 8.5
+    },
+    {
+      "id": "BR-09",
+      "before_score": 8.0,
+      "score": 8.5
+    },
+    {
+      "id": "BR-10",
+      "before_score": 7.5,
+      "score": 8.0
+    },
+    {
+      "id": "BR-11",
+      "before_score": 3.0,
+      "score": 3.0
+    },
+    {
+      "id": "BR-12",
+      "before_score": 8.0,
+      "score": 8.0
+    }
+  ]
+}

@@ -57,6 +57,14 @@ outputs/*
 !outputs/figures/
 !outputs/figures/*.svg
 !outputs/figures/*.png
+# Reviewed, lightweight analysis package for the 2026-10-26 proxy-label
+# stability evidence. Large frozen inputs remain external and are hash-locked.
+!outputs/analysis/
+!outputs/analysis/SG-ANA-20261026-proxy-stability/
+!outputs/analysis/SG-ANA-20261026-proxy-stability/**
+outputs/analysis/SG-ANA-20261026-proxy-stability/__pycache__/
+# Frozen predictions and datasets are hash-referenced, but stay outside Git.
+/outputs/analysis/SG-ANA-20261026-proxy-stability/inputs/
 # 正式论文只保留一个稳定文件名，历史版本由 Git 管理。
 !outputs/thesis/
 outputs/thesis/*

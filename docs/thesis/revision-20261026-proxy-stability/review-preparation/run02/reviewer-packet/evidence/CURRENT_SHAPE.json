@@ -1,0 +1,106 @@
+{
+  "record_id": "ACN-CURRENT-SHAPE-REPLAY-20261025",
+  "status": "PASS_REPLAY_OF_EXPLORATORY_CURRENT_SHAPE_ONLY",
+  "scope": "Recompute normalized-current versus equal-share proxy statistics from frozen derived observations; no raw session records are copied or saved.",
+  "sample": {
+    "selected": 10,
+    "eligible": 8,
+    "failed_quality_or_unavailable": 2,
+    "nodes": [
+      "CA-303",
+      "CA-304",
+      "CA-305",
+      "CA-307",
+      "CA-311",
+      "CA-317",
+      "CA-321",
+      "CA-489"
+    ],
+    "representative": false
+  },
+  "measure": "Normalized integral of charging current (A); not power or kWh.",
+  "statistics": {
+    "tv_distance_min": 0.06446249459200858,
+    "tv_distance_median": 0.408473769758977,
+    "tv_distance_max": 0.5956931823067395,
+    "peak_share_ratio_min": 1.0969122500506971,
+    "peak_share_ratio_median": 1.8435429847529439,
+    "peak_share_ratio_max": 4.376513131333797,
+    "per_node": {
+      "CA-303": {
+        "bins": 7,
+        "tv_distance": 0.18438473879289674,
+        "peak_share_ratio": 1.3186320780087026
+      },
+      "CA-304": {
+        "bins": 3,
+        "tv_distance": 0.5285644404200623,
+        "peak_share_ratio": 2.5856933212601874
+      },
+      "CA-305": {
+        "bins": 16,
+        "tv_distance": 0.09063995157850435,
+        "peak_share_ratio": 1.108375766193283
+      },
+      "CA-307": {
+        "bins": 2,
+        "tv_distance": 0.4761288467069313,
+        "peak_share_ratio": 1.9522576934138627
+      },
+      "CA-311": {
+        "bins": 7,
+        "tv_distance": 0.06446249459200858,
+        "peak_share_ratio": 1.0969122500506971
+      },
+      "CA-317": {
+        "bins": 21,
+        "tv_distance": 0.3408186928110226,
+        "peak_share_ratio": 1.734828276092025
+      },
+      "CA-321": {
+        "bins": 38,
+        "tv_distance": 0.5956931823067395,
+        "peak_share_ratio": 4.376513131333797
+      },
+      "CA-489": {
+        "bins": 13,
+        "tv_distance": 0.5550119067948452,
+        "peak_share_ratio": 2.839688979098368
+      }
+    },
+    "confidence_intervals_or_significance_tests": null
+  },
+  "input_sha256": {
+    "normalized_bin_shapes.csv": "f3b71ed0e70a203815d824c273667d8d57ce940697311f73700f5401c8048de5",
+    "sample_metadata.json": "1e69a6d4d92db35afcbab74e6cd0a716cf4074cc1641acfbd6de4c163cf58206",
+    "selection.json": "2f551a78140fb95dad97dc2af0f43be450feec7215b1658babc1d5ea372989e3",
+    "sources.json": "9afa3c585e2ff9c434ae3779b4f2776200b32b265d58f927819962e86d79513a",
+    "summary.json": "c858b32619fe26ebe3e120a8cbdaed3944d50ec6bd25ccfffbf08ef67cba8991"
+  },
+  "outputs": {
+    "fig5_9_acn_current_shape.svg": {
+      "sha256": "20ea5cbd64c8f34e0388f3b9ff99ba1f582c4b2f44880042d9edf31eacb3acb7",
+      "bytes": 26735
+    },
+    "fig5_9_acn_current_shape.pdf": {
+      "sha256": "9d951f7370e38515df88ffefe4ff803a828682ea216a8b044ebba670efa6a8cc",
+      "bytes": 23917
+    },
+    "fig5_9_acn_current_shape.png": {
+      "sha256": "052f0477d0dd2c3b039e633e8e2260fa19f4fd00f236e92e5915b8166c4a91d7",
+      "bytes": 704743
+    }
+  },
+  "plot": {
+    "backend": "Python/matplotlib",
+    "png_dpi": 1200,
+    "figure_role": "measured-current-shape versus equal-share proxy diagnostic",
+    "not_a_model_forecast_comparison": true
+  },
+  "limitations": [
+    "Convenience sample of one predetermined May 2018 session per frozen node; two of ten did not pass the existing availability/quality gate.",
+    "Voltage and power were absent in all matched sample rows; current was not converted to energy.",
+    "The period is within the existing training-era data range and is not an unseen-period confirmation set.",
+    "This audit does not evaluate MRG-GCN forecasts against measured values or estimate operating benefit."
+  ]
+}

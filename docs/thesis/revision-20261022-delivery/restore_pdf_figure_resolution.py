@@ -71,14 +71,24 @@ def main() -> None:
     parser.add_argument("--docx", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--report", type=Path, required=True)
+    parser.add_argument(
+        "--expected-figure-count",
+        type=int,
+        default=None,
+        help="optional figure count guard; defaults to the DOCX PNG inventory",
+    )
     parser.add_argument("--verify-only", action="store_true", help="verify an already-restored PDF without rewriting it")
     args = parser.parse_args()
 
     figures = docx_figures(args.docx)
     pdf = fitz.open(args.pdf)
     objects = pdf_xrefs(pdf)
-    if len(figures) != 46 or len(objects) != len(figures):
-        raise ValueError(f"Expected 46 source figures and matching PDF objects; got {len(figures)} and {len(objects)}")
+    expected_count = len(figures) if args.expected_figure_count is None else args.expected_figure_count
+    if expected_count < 1 or len(figures) != expected_count or len(objects) != len(figures):
+        raise ValueError(
+            f"Expected {expected_count} source figures and matching PDF objects; "
+            f"got {len(figures)} and {len(objects)}"
+        )
 
     source_thumbs = [thumbnail(Image.open(io.BytesIO(data))) for _, data, _ in figures]
     mapping_rows = []
@@ -117,16 +127,18 @@ def main() -> None:
 
     checked = fitz.open(args.output)
     final_objects = pdf_xrefs(checked)
-    if len(checked) != expected_pages or len(final_objects) != 46:
-        raise ValueError(f"Post-replacement structure mismatch: pages={len(checked)}, images={len(final_objects)}")
+    if len(checked) != expected_pages or len(final_objects) != expected_count:
+        raise ValueError(
+            f"Post-replacement structure mismatch: pages={len(checked)}, images={len(final_objects)}"
+        )
     image_list = subprocess.run(["pdfimages", "-list", str(args.output)], check=True, capture_output=True, text=True).stdout
     image_rows = []
     for line in image_list.splitlines():
         parts = line.split()
         if len(parts) >= 13 and parts[0].isdigit() and parts[1].isdigit() and parts[2] == "image":
             image_rows.append((int(parts[0]), int(parts[3]), int(parts[4]), float(parts[-4]), float(parts[-3])))
-    if len(image_rows) != 46:
-        raise ValueError(f"pdfimages reported {len(image_rows)} images, expected 46")
+    if len(image_rows) != expected_count:
+        raise ValueError(f"pdfimages reported {len(image_rows)} images, expected {expected_count}")
     final_ppi = [min(row[3], row[4]) for row in image_rows]
     if min(final_ppi) < 1200:
         raise ValueError(f"Resolution requirement failed: minimum effective ppi={min(final_ppi):.2f}")

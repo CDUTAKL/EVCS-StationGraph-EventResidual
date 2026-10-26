@@ -1,4 +1,4 @@
-"""论文图 provenance manifest 生成与校验（46 图方案，2026-10-06）。
+"""论文图 provenance manifest 生成与校验（新增图3-17、图5-9，2026-10-26）。
 
 为主文图建立唯一可追溯入口：图 → 生成脚本(SHA)（若为历史PNG示意图则明确标记缺失）
 → 输入工件(SHA) → 输出 SHA → git commit → 数据集 SHA。
@@ -72,6 +72,7 @@ FINAL_SCRIPTS = {
     "fig3_14_mae_by_window": "batch12_chapter3_extra.py",
     "fig3_15_mae_by_node": "batch12_chapter3_extra.py",
     "fig3_16_mechanism_ablation": "batch12_chapter3_extra.py",
+    "fig3_17_proxy_label_stability": "fig3_17_proxy_label_stability.py",
     "fig4_1_three_layer_framework": "imagegen_priority_registry.py",
     "fig4_2_beta_profile": "batch25_beta_te_results_20261006.py",
     "fig4_3_intervention": "batch5_restyle.py",
@@ -86,6 +87,7 @@ FINAL_SCRIPTS = {
     "fig5_6_conformal_method": "imagegen_priority_registry.py",
     "fig5_7_coverage": "batch6_te_coverage_enhance.py",
     "fig5_8_quantile_per_node": "batch9_advisor_redraw.py",
+    "fig5_9_acn_current_shape": "fig5_9_acn_current_shape.py",
     "fig4_4_parameter_intervention": "batch5_restyle.py",
 }
 
@@ -201,6 +203,10 @@ INPUTS_BY_FIGURE = {
         ("glob", "outputs/night_run/20260730-171821/SG-EXP-006/*/children/SG-EXP-006-ablation-*/*/seed-*/metrics.json"),
         ("glob", "outputs/experiments/SG-EXP-004/*/seed-*/metrics.json"),
     ],
+    "fig3_17_proxy_label_stability": [
+        Path("outputs/analysis/SG-ANA-20261026-proxy-stability/table3_16_spearman.csv"),
+        Path("outputs/analysis/SG-ANA-20261026-proxy-stability/tableA2_rank_stability.csv"),
+    ],
     "fig3_6_gate_residual_detail": [],
     "fig3_7_cross_layer_detail": [
         Path("docs/thesis/seven-figure-refresh-20261006-imagegen.json"),
@@ -245,6 +251,10 @@ INPUTS_BY_FIGURE = {
     "fig5_6_conformal_method": [],
     "fig5_7_coverage": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
     "fig5_8_quantile_per_node": [Path("outputs/analysis/conformal_prediction/conformal_summary.json")],
+    "fig5_9_acn_current_shape": [
+        Path("docs/thesis/revision-20261025-practice/acn-current-shape-replay.json"),
+        Path("outputs/figures/fig5_9_acn_current_shape_source.json"),
+    ],
     "fig4_4_parameter_intervention": [
         Path("outputs/analysis/counterfactual_cate/counterfactual_cate_summary.json"),
     ],

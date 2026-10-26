@@ -14,6 +14,15 @@
 *.pptx binary
 # Preserve hash-verified analysis CSV bytes across checkout (CSV writer uses CRLF).
 outputs/analysis/SG-EXP-027-time-block/*.csv -text whitespace=cr-at-eol
+# Frozen package hashes are byte identities; checkout must not normalize CRLF.
+outputs/analysis/SG-ANA-20261026-proxy-stability/** -text
+outputs/analysis/SG-ANA-20261026-proxy-stability/*.csv whitespace=cr-at-eol
+# Matplotlib serializes SVG path continuations with trailing spaces.
+outputs/analysis/SG-ANA-20261026-proxy-stability/*.svg -whitespace
+outputs/figures/fig3_17_proxy_label_stability.svg -whitespace
+outputs/figures/fig5_9_acn_current_shape.svg -whitespace
+# Keep the frozen reviewer output byte-for-byte, including its final blank line.
+docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-readability.json whitespace=-blank-at-eof
 docs/thesis/**/*.csv -text whitespace=cr-at-eol
 # 比较补丁中的空格是diff上下文，Word提取文本中的空格来自模板占位。
 # 这些材料与历史哈希绑定，不按代码空白规则重写。

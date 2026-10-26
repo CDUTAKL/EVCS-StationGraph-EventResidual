@@ -1,0 +1,52 @@
+{
+  "figure": "图5-9",
+  "figure_id": "fig5_9_acn_current_shape",
+  "evidence_id": "DATA-024-CURRENT-PROBE",
+  "inputs": {
+    "frozen_deidentified_replay": {
+      "path": "docs/thesis/revision-20261025-practice/acn-current-shape-replay.json",
+      "sha256": "257c6afacd3dd5bc399fb1b2ef13018d9b5ed643a8854e55ca6aafdab9fc9ecc"
+    }
+  },
+  "script": {
+    "path": "scripts/figures/fig5_9_acn_current_shape.py",
+    "sha256": "bb3fcb497a798c3ead74c314884e3b2f28c9e39ea26d4f50af23e4fd6c2963da"
+  },
+  "replay_record": {
+    "path": "docs/thesis/revision-20261025-practice/acn-current-shape-replay.json",
+    "sha256": "257c6afacd3dd5bc399fb1b2ef13018d9b5ed643a8854e55ca6aafdab9fc9ecc"
+  },
+  "source_statements": {
+    "core_conclusion": "Within the eight eligible convenience-sample sessions, measured-current shape differs from the equal-share proxy; this is not model validation.",
+    "archetype": "quantitative grid",
+    "panel_map": {
+      "A": "per-session total variation distance",
+      "B": "per-session peak-bin share ratio"
+    },
+    "statistics": "Eight individual sessions; descriptive medians and ranges; no inferential interval or significance test.",
+    "privacy": "The figure is rebuilt from a frozen de-identified per-node summary; no session-level rows or identifiers are needed."
+  },
+  "outputs": {
+    "fig5_9_acn_current_shape.svg": {
+      "sha256": "046f4d4804b27bc9883d586253cbcb0fe84a8afea7621066a1af7b35e5f58089",
+      "bytes": 26735,
+      "pixel_size": null,
+      "dpi": null
+    },
+    "fig5_9_acn_current_shape.pdf": {
+      "sha256": "74b23118d1ef9966b328a2b4f9c4f93d5d739f9f58d6bcccd6f9511c9de648f5",
+      "bytes": 23917,
+      "pixel_size": null,
+      "dpi": null
+    },
+    "fig5_9_acn_current_shape.png": {
+      "sha256": "052f0477d0dd2c3b039e633e8e2260fa19f4fd00f236e92e5915b8166c4a91d7",
+      "bytes": 704743,
+      "pixel_size": [
+        8839,
+        4021
+      ],
+      "dpi": 1200
+    }
+  }
+}

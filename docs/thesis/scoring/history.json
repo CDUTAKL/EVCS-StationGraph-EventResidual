@@ -266,16 +266,29 @@
       "raw_score": 79.5,
       "raw_maximum": 90,
       "normalized_score": 88.33,
-      "status": "formal_same_rubric_paired_revision",
+      "status": "formal_historical_score_superseded_by_calibration",
       "scorecard": "../content-review-20261022-paired-review/scorecard.json",
       "manuscript_sha256": "8ac58074c2a53835883c6635cdf7d6f0044e7971e67af6de36e3f4248e75d9d5",
       "baseline_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
-      "comparison_limit": "同量表同范围配对，78.0→79.5/90（+1.5/90，校准效应0）；分别认可来源/配置追溯、EPFL数据问题解决链与真实输入背景的小幅提升。未增加预测性能证据；盲评绝对分较低属校准差异，未发现旧稿错评依据，故保留固定正式基线。非官方内容模拟；新版PDF版式另列验收。"
+      "comparison_limit": "同量表同范围配对，78.0→79.5/90（+1.5/90，校准效应0）；分别认可来源/配置追溯、EPFL数据问题解决链与真实输入背景的小幅提升。未增加预测性能证据；盲评绝对分较低属校准差异，未发现旧稿错评依据，故保留固定正式基线。非官方内容模拟；新版PDF版式另列验收。 2026-10-26同稿配对校准将该历史分校准−8.0/90；旧记录保留，不代表论文发生退步。",
+      "superseded_by": "FORMAL-20261026-PROXY-STABILITY-CALIBRATION-PAIR"
+    },
+    {
+      "id": "FORMAL-20261026-PROXY-STABILITY-CALIBRATION-PAIR",
+      "date": "2026-10-26",
+      "raw_score": 73.0,
+      "raw_maximum": 90,
+      "normalized_score": 81.11,
+      "status": "formal_v2_calibration_pair",
+      "scorecard": "../content-review-20261026-proxy-stability-calibration/scorecard.json",
+      "manuscript_sha256": "648bd582de2f03afac78486f26e85b2a91a6593b33d9a619d2090744c6caf506",
+      "baseline_assessment_id": "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW",
+      "comparison_limit": "同一EVCS-THESIS-CONTENT-1.0/REVIEW-2.0配对校准：旧稿同标准71.5、当前稿73.0/90；对10/22历史79.5校准−8.0，真实修订效应+1.5，净差−6.5/90。当前稿较旧稿的新增证据限于同一已查看时期的标签敏感性分析；不构成新训练、未见时期或实测效度。前次高分订正，不表示论文修订退步。交付字体提示与封面签署仍按定稿记录待核。"
     }
   ],
   "policy": "不因对分数提出疑问就提高分数；不因缺少新实验就默认内容分不能上升；每项变化必须有可复查依据。",
-  "latest_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
+  "latest_assessment_id": "FORMAL-20261026-PROXY-STABILITY-CALIBRATION-PAIR",
   "active_protocol_id": "EVCS-THESIS-REVIEW-2.0",
-  "latest_authoritative_assessment_id": "FORMAL-20261021-FINAL-PATCH-PAIRED-REVIEW",
-  "current_score_status": "authoritative_v2_paired_revision"
+  "latest_authoritative_assessment_id": "FORMAL-20261026-PROXY-STABILITY-CALIBRATION-PAIR",
+  "current_score_status": "authoritative_v2_paired_calibration"
 }

@@ -1,12 +1,14 @@
 # 2026-10-04新增材料身份记录
 
-## 当前证据状态（2026-10-19更新）
+## 当前证据状态（2026-10-26更新）
 
 本节为当前入口；下方按日期保留的历史失败、预检和待办状态仅代表当时情况。正文表号以当前主稿为准。
 
 - AdaptiveGraph：SG-EXP-004三个冻结检查点在匹配PyTorch 2.4.1/CUDA 12.1环境逐键通过；原生CPU存在top-k并列选边差异，固定CUDA邻接后CPU通过。原训练Git标识缺失、历史Mac环境偏差仍保留。报告：`experiment-reports/EXP-AdaptiveGraph-CUDA-20261015-no-training.md`及`outputs/analysis/AdaptiveGraph-CUDA-20261015/independent-verification.json`。
 - SG-EXP-031：四配置×三种子同参数关系自环替换重训，支持负荷耦合和轮廓相似关系在当前JPL设置下的条件性整体MAE增量，行为共现关系区间跨零。正文§3.7.2、表3-10；输入/容量/预算见表3-14。
 - SG-EXP-032：完成时刻截断代理目标下全局MAE排序保持；新目标零值94.27%，非零组MRG-GCN较差。正文§3.8.4、表3-15；两种分层是边际评价，未作联合贡献分解。两项新训练均为已查看固定测试期上的补充。
+- SG-ANA-20261026-PROXY-STABILITY：以48份冻结预测、两套代理标签和相同708,560个测试键复评12种配置；总体排名Spearman为0.993（先平均三种子MAE再排序），按评价标签定义的非零组为0.420；逐种子相关均值分别为0.974与0.000。无新训练/新数据；报告和CSV、图源见`outputs/analysis/SG-ANA-20261026-proxy-stability/`，正文§3.8.5、表3-16、图3-17、附表A-2。
+- 来源保护：`source-provenance.lock.json`记录冻结分析包的50项原始来源字段、哈希和27项来源输出指纹；本仓库不含48份预测和数据集副本。`make_manifest.py`把`source_*`与`lookup_*`分开并在来源缺失/不符时失败关闭。
 - JPL可靠性：AUDIT-JPL-CAL-20261015复用313,120校准键与632,640测试键，标准/行为分层整体覆盖90.08%/90.11%，事件46.43%/45.88%，独立核验PASS。正文§5.3.5；报告`experiment-reports/EXP-JPL-calibration-20261015-no-training.md`。JPL尚缺L2与同硬件时延。
 - AutoDL当前关闭状态以SG-EXP-032的控制台关机证据为准。SG-EXP-031结束时在线为历史事实，不作为当前实例状态；材料已回收并核验。
 - ACN接口边界：三站点`connectionTime`范围已独立核验（Caltech 31,424条、JPL 33,638条、Office 1 1,683条），6次严格区间外`where`查询计数为0，未发现2021年9月之后的接入记录。该核验仅认证时间边界，节点/字段完整性、标签成熟性与Office 1使用史未核查；材料身份见MAT-ACN-BOUNDS-20261019。
@@ -60,6 +62,7 @@
 
 | 材料ID | 来源与完整性 | 使用范围 |
 |---|---|---|
+| MAT-ACN-CURRENT-SHAPE-20261025 | ACN官方数据说明及ACN-Data-Static历史Caltech会话；10条预定、8条通过既有质量门禁；冻结派生输入5件SHA256见`revision-20261025-practice/acn-current-shape-protocol.md`；复算与图表SHA见`acn-current-shape-replay.json`、`fig5_9_acn_current_shape_source.json` | 无量纲实测电流形态对等片代理形态；不是模型预测—实测功率比较。原始会话/时序不入Git，来源再分发权限待确认；请求字段全量覆盖率未取得，记为未知 |
 | MAT-031-RESULT | outputs/experiments/SG-EXP-031，173项内层校验；audit-20261015通过 | 同参数关系替换重训练，事后固定JPL测试期 |
 | MAT-032-RESULT | outputs/experiments/SG-EXP-032，99项内层校验；target-audit通过；shutdown-evidence.json控制台已关机 | 代理目标敏感性；不支持非零目标改善 |
 | MAT-JPL-CAL-20261015 | 6份原预测输入SHA及独立排序/端点复算；最大差2.22e-16 | 后验固定期可靠性，不训练、不调测试半宽 |

@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Generate a CDUT-template-based thesis main draft from the canonical Markdown.
 
-The source template is never modified.  Cover pages and declarations are retained
-as supplied; the generated portion begins with the Chinese abstract and excludes
-acknowledgements and publications by design. Appendices retain supporting data.
+The source template is never modified. The cover and declaration pages retain
+the approved front-matter text from the current formal DOCX, while the generated
+portion begins with the Chinese abstract and excludes acknowledgements and
+publications by design. Appendices retain supporting data.
 """
 from __future__ import annotations
 
@@ -38,6 +39,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "docs/thesis/thesis-manuscript.md"
 DEFAULT_TEMPLATE = Path("/Users/xushuyuan/Downloads/1.成都理工大学专业学位硕士学位论文模板20230905(1).docx")
 DEFAULT_OUTPUT = ROOT / "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx"
+DEFAULT_COVER_SOURCE = DEFAULT_OUTPUT
 MAX_HAN_CHARACTERS = 51_000
 
 EAST_ASIA = "宋体"
@@ -73,7 +75,7 @@ def validate_final_figure_sequence(source_text: str) -> None:
     """Reject missing, duplicated, or out-of-order manuscript figure numbers."""
     captions = [(int(ch), int(num)) for ch, num in re.findall(r"\*\*图(\d+)-(\d+)\b", source_text)]
     image_paths = re.findall(r"!\[[^]]*\]\(([^)]+)\)", source_text)
-    chapter_counts = ((1, 2), (2, 13), (3, 16), (4, 7), (5, 8))
+    chapter_counts = ((1, 2), (2, 13), (3, 17), (4, 7), (5, 9))
     figure_count = sum(count for _, count in chapter_counts)
     if len(captions) != figure_count or len(image_paths) != figure_count:
         raise RuntimeError(
@@ -83,7 +85,7 @@ def validate_final_figure_sequence(source_text: str) -> None:
     for chapter, count in chapter_counts:
         expected.extend((chapter, number) for number in range(1, count + 1))
     if captions != expected:
-        raise RuntimeError("Figure captions are not in strict chapter order from 图1-1 to 图5-8")
+        raise RuntimeError("Figure captions are not in strict chapter order from 图1-1 to 图5-9")
     for (chapter, number), path in zip(captions, image_paths):
         if f"fig{chapter}_{number}_" not in Path(path).name:
             raise RuntimeError(f"Figure path does not match 图{chapter}-{number}: {path}")
@@ -816,6 +818,71 @@ def remove_template_body_after_declarations(doc):
             body.remove(child)
 
 
+def copy_approved_cover_content(doc, source_path: Path):
+    """Copy only the approved cover/declaration paragraph content from the
+    current formal DOCX, preserving the CDUT template's paragraph properties.
+
+    The author, advisor, degree field, and student number are already confirmed
+    in the current formal document. Unknown cover fields remain blank, and the
+    signature/date lines remain unsigned. Copying run XML preserves the
+    template's underlining, fonts, and spacing without carrying over stale body
+    content or tables.
+    """
+    if not source_path.is_file():
+        raise FileNotFoundError(f"approved cover source not found: {source_path}")
+    cover_source = Document(source_path)
+    if len(doc.paragraphs) < 60 or len(cover_source.paragraphs) < 60:
+        raise RuntimeError("Template and approved cover source must contain at least 60 front-matter paragraphs")
+    source_text = "\n".join(p.text for p in cover_source.paragraphs[:60])
+    required = (
+        "基于站内多关系图与机制诊断的",
+        "充电节点短期负荷预测研究",
+        "胥舒元",
+        "杨小峰（副教授）",
+        "电气工程",
+        "2024050524",
+    )
+    missing = [value for value in required if value not in source_text]
+    if missing:
+        raise RuntimeError(f"approved cover source is missing confirmed fields: {missing}")
+
+    for index in range(60):
+        target_p = doc.paragraphs[index]._p
+        source_p = cover_source.paragraphs[index]._p
+        # The approved formal DOCX carries a manual page break before the
+        # copyright authorization page.  Preserve that one layout control;
+        # without it WPS can pull the page onto the declaration page and leave
+        # a spurious blank page before the abstract.
+        source_ppr = source_p.pPr
+        target_ppr = target_p.get_or_add_pPr()
+        target_page_break = target_ppr.find(qn("w:pageBreakBefore"))
+        if target_page_break is not None:
+            target_ppr.remove(target_page_break)
+        source_page_break = source_ppr.find(qn("w:pageBreakBefore")) if source_ppr is not None else None
+        if source_page_break is not None:
+            target_ppr.append(copy.deepcopy(source_page_break))
+
+        # The university logotype is an embedded drawing in the template.
+        # Keep the template's own relationship at paragraph 3: copying the
+        # source drawing XML here can point its rId at a different image and
+        # make the mark disappear in WPS/PDF.
+        preserved_template_logo_runs = []
+        if index == 3:
+            preserved_template_logo_runs = [
+                copy.deepcopy(child)
+                for child in target_p
+                if child.tag == qn("w:r") and child.xpath(".//w:drawing")
+            ]
+        for child in list(target_p):
+            if child.tag != qn("w:pPr"):
+                target_p.remove(child)
+        for child in list(source_p):
+            if child.tag != qn("w:pPr") and not (index == 3 and child.xpath(".//w:drawing")):
+                target_p.append(copy.deepcopy(child))
+        for logo_run in preserved_template_logo_runs:
+            target_p.append(logo_run)
+
+
 def remove_template_protection(doc):
     settings = doc.settings.element
     protection = settings.find(qn("w:documentProtection"))
@@ -901,6 +968,12 @@ def main():
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
     parser.add_argument("--template", type=Path, default=DEFAULT_TEMPLATE)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument(
+        "--cover-source",
+        type=Path,
+        default=DEFAULT_COVER_SOURCE,
+        help="current formal DOCX containing the confirmed cover fields; only its first 60 paragraph contents are copied",
+    )
     parser.add_argument("--toc-map", type=Path, help="JSON mapping of heading text to final Arabic page number")
     args = parser.parse_args()
     if not args.template.exists():
@@ -939,6 +1012,7 @@ def main():
             update_fields.set(qn("w:val"), "true")
             settings.append(update_fields)
         remove_template_body_after_declarations(doc)
+        copy_approved_cover_content(doc, args.cover_source)
         clear_front_matter_headers(doc)
         compact_outer_cover_spacing(doc)
         configure_toc_styles(doc)

@@ -1,0 +1,1813 @@
+{
+  "schema_version": 2,
+  "rubric_id": "EVCS-THESIS-CONTENT-1.0",
+  "assessment_id": "FORMAL-20261026-PROXY-STABILITY-CALIBRATION-PAIR",
+  "assessment_kind": "formal",
+  "review_date": "2026-10-26",
+  "confidence": "medium",
+  "packet": {
+    "packet_id": "a751bdbf8835a7947edbf2ca035d48646ba70e6dbb07d0c2b4bd741a7d9046f9",
+    "manuscript_path": "docs/thesis/thesis-manuscript.md",
+    "manuscript_sha256": "648bd582de2f03afac78486f26e85b2a91a6593b33d9a619d2090744c6caf506",
+    "scope": "五章全文、双语摘要、结论、表格与图注；内容与证据；学校版式另审",
+    "evidence": [
+      {
+        "id": "BASELINE",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/manuscripts/baseline.md",
+        "locator": "评阅包冻结旧稿，与10月22日正式当前稿SHA一致",
+        "sha256": "8ac58074c2a53835883c6635cdf7d6f0044e7971e67af6de36e3f4248e75d9d5",
+        "reviewed": true
+      },
+      {
+        "id": "CURRENT",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/manuscripts/current.md",
+        "locator": "评阅包冻结当前稿；与主稿SHA一致",
+        "sha256": "648bd582de2f03afac78486f26e85b2a91a6593b33d9a619d2090744c6caf506",
+        "reviewed": true
+      },
+      {
+        "id": "MAP",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/MAP.md",
+        "locator": "章节推进与主张—证据映射",
+        "sha256": "abf6a2860e925ea4d60724b7547c1957315b7fa17a0c4948263059bfcc63eeae",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR76",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/NEAR76.md",
+        "locator": "文献[76]原文可读范围记录；其中“正文缺比较”旧状态由主评按实际表1-1纠正",
+        "sha256": "90db0f34343faef3d78dd1ca41dbe4799deb7d6cf0e61430330fd13e59e72704",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/NEAR.md",
+        "locator": "近邻研究比较证据",
+        "sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR2",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/NEAR2.md",
+        "locator": "近邻研究补充比较证据",
+        "sha256": "2ca238e2e2214e2d526f2782c46fbd437db35a74f0f05113f1b5f7672f4a9048",
+        "reviewed": true
+      },
+      {
+        "id": "NEAR_20261016",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/NEAR_20261016.md",
+        "locator": "近邻原文比较记录",
+        "sha256": "b30cc55d0ab712e727f3e05f2ef1c28720f669eb15dd710aab1bd88cfb931875",
+        "reviewed": true
+      },
+      {
+        "id": "S31",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/S31.md",
+        "locator": "JPL关系替换实验口径与结果",
+        "sha256": "d93dd099dbc4a55385fa4e3122323ca1c8ee5f4ddc205562ebc4fd69d57519d9",
+        "reviewed": true
+      },
+      {
+        "id": "S32",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/S32.md",
+        "locator": "完成时刻目标敏感性实验口径与结果",
+        "sha256": "9585428a9501321944ba38efcfacaa3978d8c2514149c6eedfe0a46fd25b0f8a",
+        "reviewed": true
+      },
+      {
+        "id": "S31AUDIT",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/S31AUDIT.json",
+        "locator": "SG-EXP-031数值与运行审计",
+        "sha256": "8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475",
+        "reviewed": true
+      },
+      {
+        "id": "S32AUDIT",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/S32AUDIT.json",
+        "locator": "SG-EXP-032数值与运行审计",
+        "sha256": "11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a",
+        "reviewed": true
+      },
+      {
+        "id": "QUALITY",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/QUALITY.md",
+        "locator": "数据协议与质量门禁说明",
+        "sha256": "06a6b9a43fc675e7527646aaa81a92d13aa4c91802b72ae8f4f07314fde5862b",
+        "reviewed": true
+      },
+      {
+        "id": "REPLAY22",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/REPLAY22.md",
+        "locator": "既有预测的复算范围说明",
+        "sha256": "155986c7f09eb64977d907b33029575bdd8db298fc304c31af2f27ed104b8c3f",
+        "reviewed": true
+      },
+      {
+        "id": "MDP",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/MDP.md",
+        "locator": "MDP三层诊断定义与边界",
+        "sha256": "f65ce5d985d71fc61bdc9d76c92be53d634c70bb2c66a91f584e22033739d371",
+        "reviewed": true
+      },
+      {
+        "id": "PROXY_REPORT",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/PROXY_REPORT.md",
+        "locator": "标签敏感性报告",
+        "sha256": "166180ab92d093784fe387c6cf6f98f24107a3ae9af30a273f6414a1f4c35a26",
+        "reviewed": true
+      },
+      {
+        "id": "PROXY_RESULTS",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/PROXY_RESULTS.json",
+        "locator": "标签敏感性主要计算结果",
+        "sha256": "dd198167ef3410332752d0b6661739d329c8519ede448720f649808c5a3c0135",
+        "reviewed": true
+      },
+      {
+        "id": "PROXY_TABLE",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/PROXY_TABLE.csv",
+        "locator": "逐配置与逐种子排名结果表",
+        "sha256": "489ecc614265d43a3104a669c21bb3fa955bc882068c884edfeb1b1a2d8c8c53",
+        "reviewed": true
+      },
+      {
+        "id": "EPFL22",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/EPFL22.md",
+        "locator": "EPFL真实数据形态核查及不兼容边界",
+        "sha256": "c2c6cbf85a2527b13753882bc331375220d218351b04c239dd0dc3304c61a531",
+        "reviewed": true
+      },
+      {
+        "id": "DATA_AVAIL",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/DATA_AVAIL.md",
+        "locator": "ACN数据可得性与实测材料状态",
+        "sha256": "103d7f4c39dd3d9dcace742ce4ce026486dbffb20fe1d083b6cc2c3c380726f8",
+        "reviewed": true
+      },
+      {
+        "id": "CURRENT_SHAPE_PROTOCOL",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/CURRENT_SHAPE_PROTOCOL.md",
+        "locator": "ACN电流形态样本协议",
+        "sha256": "4223af2e492dbc030ba2cf237e944955952f6388fe4e932900941b6c6c479229",
+        "reviewed": true
+      },
+      {
+        "id": "ACN_DECISION",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/ACN_DECISION.md",
+        "locator": "ACN请求字段/量测材料的访问决策记录",
+        "sha256": "1e8910c16fad0fc8de1b1a87ec7604cfef55b2384cc01f68183d57acb552edd5",
+        "reviewed": true
+      },
+      {
+        "id": "LANGUAGE_REVIEW",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/LANGUAGE_REVIEW.md",
+        "locator": "正文凝练与表达核查记录",
+        "sha256": "45409f703a82dacaaf82e6aed8483f4bf9063f8ee19c56f0d198d958d53e17d8",
+        "reviewed": true
+      },
+      {
+        "id": "LANGUAGE_AUDIT",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/LANGUAGE_AUDIT.json",
+        "locator": "文字与数值交叉检查记录",
+        "sha256": "1bad24154da3d78ebb0ffe3acb950f2a2f16dfa9c3fd6808d5b82caf6fbeda6c",
+        "reviewed": true
+      },
+      {
+        "id": "PROVENANCE_GUARD",
+        "source": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/evidence/PROVENANCE_GUARD.md",
+        "locator": "来源字段不可被迁移路径覆盖的防护设计",
+        "sha256": "ab65312aea7c5bcfd8294a5e6ab805cfec4146b6ee19bc35f29788739da677ac",
+        "reviewed": true
+      },
+      {
+        "id": "CLAIMMAP",
+        "source": "docs/thesis/claim-evidence-map.md",
+        "locator": "主张—证据映射，含本轮标签敏感性与来源锁定登记",
+        "sha256": "d572398793b1b6a7cc363ef5e62a747b6744f8e92e7518c0c9e9eabe5f34cd62",
+        "reviewed": true
+      },
+      {
+        "id": "ANALYSIS_LOCK",
+        "source": "outputs/analysis/SG-ANA-20261026-proxy-stability/source-provenance.lock.json",
+        "locator": "50项冻结输入的不可变来源与内容哈希锁",
+        "sha256": "3422b3c5078246b653570144b64a5c9538f5bf567f39261b819871d7b90d05d1",
+        "reviewed": true
+      },
+      {
+        "id": "ANALYSIS_MANIFEST",
+        "source": "outputs/analysis/SG-ANA-20261026-proxy-stability/manifest.json",
+        "locator": "50项输入、27项输出的冻结清单",
+        "sha256": "c03a00ddbc71a91762285a2cfbef5e2881eaa36cc15d7dd51b7f814409b52dbf",
+        "reviewed": true
+      },
+      {
+        "id": "GUARD_CODE",
+        "source": "outputs/analysis/SG-ANA-20261026-proxy-stability/make_manifest.py",
+        "locator": "来源字段锁定、查找位置分离与失败关闭实现",
+        "sha256": "982365c1b8478a7e57cd812b8069cbac7011d1b7f5786f7be604dd3f3ecb059c",
+        "reviewed": true
+      },
+      {
+        "id": "FINAL_DELIVERY",
+        "source": "docs/thesis/revision-20261026-proxy-stability/final-delivery-20261026.md",
+        "locator": "Word/PDF、目录、字体、有效PPI与全页差异核验记录",
+        "sha256": "957ebd4a4bbe7bcc327cc065a12cffe4d48afd3794e188ac733baa1108a50d9e",
+        "reviewed": true
+      }
+    ],
+    "frozen_manuscript_path": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/manuscripts/current.md"
+  },
+  "reviewer_reports": [
+    "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-technical.md",
+    "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-originality.md",
+    "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-readability.md"
+  ],
+  "forensic_report": "docs/thesis/content-review-20261026-proxy-stability-calibration/forensic-review.md",
+  "criteria": [
+    {
+      "id": "BR-01",
+      "score": 4.0,
+      "manuscript_location": "摘要；§1.1.1–1.1.3；§1.3；§2.1；§5.4",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "MAP"
+      ],
+      "rationale": "对象、15分钟粒度、代理目标与预测用途明确，研究动机有节点零膨胀和异质性证据；未量化实际运维需求，因此需求组件只给0.5/1。",
+      "na_reason": "",
+      "change": {
+        "type": "recalibration",
+        "reason": "旧稿4.5分把未量化的实际需求给满分；按同一锚点重评旧稿和当前稿为4.0。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "MAP"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-01-problem",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP"
+          ],
+          "rationale": "研究对象、目标粒度和代理量定义清楚。"
+        },
+        {
+          "id": "BR-01-significance",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP"
+          ],
+          "rationale": "由零膨胀、节点异质性与站内信息需求支撑动机；未用实际运行需求量化。"
+        },
+        {
+          "id": "BR-01-need",
+          "score": 0.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP"
+          ],
+          "rationale": "研究用途可界定为模型筛选，但缺少运维收益和真实需求强度证据。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-01-problem",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP"
+          ],
+          "rationale": "研究对象、目标粒度和代理量定义清楚。"
+        },
+        {
+          "id": "BR-01-significance",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP"
+          ],
+          "rationale": "由零膨胀、节点异质性与站内信息需求支撑动机；未用实际运行需求量化。"
+        },
+        {
+          "id": "BR-01-need",
+          "score": 0.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP"
+          ],
+          "rationale": "研究用途可界定为模型筛选，但缺少运维收益和真实需求强度证据。"
+        }
+      ],
+      "issue_ids": [
+        "CAL-BR01-NEED"
+      ],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 4.0,
+        "revision_delta": 0.0,
+        "calibration_delta": -0.5,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "旧稿4.5分把未量化的实际需求给满分；按同一锚点重评旧稿和当前稿为4.0。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。本项在三视角间分差较小；主评分依据见本项理由。"
+    },
+    {
+      "id": "BR-02",
+      "score": 4.5,
+      "manuscript_location": "题目、摘要；§1.3–1.6；§3.8.5；§4；§5.4–5.5；结论",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "MAP",
+        "PROXY_REPORT"
+      ],
+      "rationale": "题目、问题和主结果一致，当前新增敏感性分析回到模型选择问题；第5章多条支线仍使章节推进略显分散。",
+      "na_reason": "",
+      "change": {
+        "type": "recalibration",
+        "reason": "旧稿5分将章节推进评为完全紧凑；第5章支线较宽，重评两稿为4.5。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "MAP",
+          "PROXY_REPORT"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-02-alignment",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP",
+            "PROXY_REPORT"
+          ],
+          "rationale": "题目、问题和数据口径一致。"
+        },
+        {
+          "id": "BR-02-progression",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP",
+            "PROXY_REPORT"
+          ],
+          "rationale": "章节主线闭合，但第5章多个可靠性与决策主题使递进并非完全紧凑。"
+        },
+        {
+          "id": "BR-02-closure",
+          "score": 1,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP",
+            "PROXY_REPORT"
+          ],
+          "rationale": "双语摘要与结论能回收主要结果和边界。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-02-alignment",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP",
+            "PROXY_REPORT"
+          ],
+          "rationale": "题目、问题和数据口径一致。"
+        },
+        {
+          "id": "BR-02-progression",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP",
+            "PROXY_REPORT"
+          ],
+          "rationale": "章节主线闭合，但第5章多个可靠性与决策主题使递进并非完全紧凑。"
+        },
+        {
+          "id": "BR-02-closure",
+          "score": 1,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "MAP",
+            "PROXY_REPORT"
+          ],
+          "rationale": "双语摘要与结论能回收主要结果和边界。"
+        }
+      ],
+      "issue_ids": [
+        "CAL-BR02-PROGRESSION"
+      ],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 4.5,
+        "revision_delta": 0.0,
+        "calibration_delta": -0.5,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "旧稿5分将章节推进评为完全紧凑；第5章支线较宽，重评两稿为4.5。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。本项在三视角间分差较小；主评分依据见本项理由。"
+    },
+    {
+      "id": "BR-03",
+      "score": 4.0,
+      "manuscript_location": "§1.2.1–1.2.4；表1-1；§1.3",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "NEAR76",
+        "NEAR",
+        "NEAR2",
+        "NEAR_20261016"
+      ],
+      "rationale": "表1-1已实质比较[76]的Boulder会话重构、持续性锚、直接/残差路径、指标依赖与验证边界；技术评阅所谓“未正面比较”与冻结稿文本不符。仍未充分比较[75]，且若干文献只能按摘要或索引片段核验，故评4/5。",
+      "na_reason": "",
+      "change": {
+        "type": "recalibration",
+        "reason": "旧稿4.5分对近邻覆盖/来源完整度略高估；[76]比较存在，但[75]差异及部分来源核验仍有限，重评两稿为4.0。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "NEAR76",
+          "NEAR",
+          "NEAR2",
+          "NEAR_20261016"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-03-coverage",
+          "score": 1,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR76",
+            "NEAR",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "覆盖EV负荷预测、站间图、住宅图门控、事件/残差与诊断先例。"
+        },
+        {
+          "id": "BR-03-sources",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR76",
+            "NEAR",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "主要来源按原文、摘要或索引可读范围披露；部分近邻原文可读范围有限。"
+        },
+        {
+          "id": "BR-03-gap",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR76",
+            "NEAR",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "表1-1已直接比较[76]的代理数据、残差路径、指标依赖与验证边界；[75]的目标/输入/方法差异仍未展开。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-03-coverage",
+          "score": 1,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR76",
+            "NEAR",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "覆盖EV负荷预测、站间图、住宅图门控、事件/残差与诊断先例。"
+        },
+        {
+          "id": "BR-03-sources",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR76",
+            "NEAR",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "主要来源按原文、摘要或索引可读范围披露；部分近邻原文可读范围有限。"
+        },
+        {
+          "id": "BR-03-gap",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "NEAR76",
+            "NEAR",
+            "NEAR2",
+            "NEAR_20261016"
+          ],
+          "rationale": "表1-1已直接比较[76]的代理数据、残差路径、指标依赖与验证边界；[75]的目标/输入/方法差异仍未展开。"
+        }
+      ],
+      "issue_ids": [
+        "CAL-BR03-SOURCE-GAP"
+      ],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 4.0,
+        "revision_delta": 0.0,
+        "calibration_delta": -0.5,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "旧稿4.5分对近邻覆盖/来源完整度略高估；[76]比较存在，但[75]差异及部分来源核验仍有限，重评两稿为4.0。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。技术视角关于[76]缺比较的判断与表1-1不符，主评按正文校正。"
+    },
+    {
+      "id": "BR-04",
+      "score": 4.5,
+      "manuscript_location": "§2.1–2.5；式(2-1)–(2-2)；§3.2–3.5；§5.2–5.4",
+      "evidence_ids": [
+        "CURRENT",
+        "QUALITY",
+        "S32",
+        "EPFL22"
+      ],
+      "rationale": "代理量、量纲、关系传播及诊断操作定义基本准确；对实际功率映射和输入到达时点没有超出证据，少量协议细则仍可更形式化。",
+      "na_reason": "",
+      "change": {
+        "type": "recalibration",
+        "reason": "旧稿5分未留出协议假设形式化的余量；重评两稿为4.5。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "QUALITY",
+          "S32",
+          "EPFL22"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-04-concepts",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S32",
+            "EPFL22"
+          ],
+          "rationale": "代理能量、功率、节点关系与事件信息的概念/量纲大体准确。"
+        },
+        {
+          "id": "BR-04-formulas",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S32",
+            "EPFL22"
+          ],
+          "rationale": "核心公式与模型操作相符；预测时行为可见性及部分目标细则仍是协议假设。"
+        },
+        {
+          "id": "BR-04-knowledge",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S32",
+            "EPFL22"
+          ],
+          "rationale": "专业知识用于解释关系增量、标签构造和误差分层。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-04-concepts",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S32",
+            "EPFL22"
+          ],
+          "rationale": "代理能量、功率、节点关系与事件信息的概念/量纲大体准确。"
+        },
+        {
+          "id": "BR-04-formulas",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S32",
+            "EPFL22"
+          ],
+          "rationale": "核心公式与模型操作相符；预测时行为可见性及部分目标细则仍是协议假设。"
+        },
+        {
+          "id": "BR-04-knowledge",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S32",
+            "EPFL22"
+          ],
+          "rationale": "专业知识用于解释关系增量、标签构造和误差分层。"
+        }
+      ],
+      "issue_ids": [
+        "CAL-BR04-FORMALIZATION"
+      ],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 4.5,
+        "revision_delta": 0.0,
+        "calibration_delta": -0.5,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "旧稿5分未留出协议假设形式化的余量；重评两稿为4.5。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。本项在三视角间分差较小；主评分依据见本项理由。"
+    },
+    {
+      "id": "BR-05",
+      "score": 8.0,
+      "manuscript_location": "§2.1；§3.6–3.8；表3-14；表3-16",
+      "evidence_ids": [
+        "CURRENT",
+        "S31",
+        "S32",
+        "S31AUDIT",
+        "S32AUDIT"
+      ],
+      "rationale": "时间切分、输入权限、共同键和受控比较总体适配研究问题；AGCRN容量不匹配、行为GRU缺失、共享门控触顶以及补充结果复用测试期仍是明确限制。",
+      "na_reason": "",
+      "change": {
+        "type": "unchanged",
+        "reason": "评估依据与上轮一致，按同一锚点维持该项分数；没有重复奖励同一证据。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-05-information_split",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "事件时刻协议、标签成熟与分割规则适配所问任务。"
+        },
+        {
+          "id": "BR-05-comparators",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "TCN与AGCRN对照覆盖不同问题，但AGCRN容量大，行为GRU缺失。"
+        },
+        {
+          "id": "BR-05-controls",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "同参数门控、关系自环替换提供有针对性的控制；预算触顶仍留替代解释。"
+        },
+        {
+          "id": "BR-05-selection_budget",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "输入、选模与停止轮次记录较清楚；更长预算与未查看时期尚未验证。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-05-information_split",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "事件时刻协议、标签成熟与分割规则适配所问任务。"
+        },
+        {
+          "id": "BR-05-comparators",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "TCN与AGCRN对照覆盖不同问题，但AGCRN容量大，行为GRU缺失。"
+        },
+        {
+          "id": "BR-05-controls",
+          "score": 2.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "同参数门控、关系自环替换提供有针对性的控制；预算触顶仍留替代解释。"
+        },
+        {
+          "id": "BR-05-selection_budget",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "S31",
+            "S32",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "输入、选模与停止轮次记录较清楚；更长预算与未查看时期尚未验证。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 8.0,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "S31",
+          "S32",
+          "S31AUDIT",
+          "S32AUDIT"
+        ],
+        "rationale": "本轮未发现改变该项既有评价依据的新证据；按同量表维持重评值。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。本项在三视角间分差较小；主评分依据见本项理由。"
+    },
+    {
+      "id": "BR-06",
+      "score": 4.0,
+      "manuscript_location": "§3.6.1；§3.8.3–3.8.5；复算与来源锁定材料",
+      "evidence_ids": [
+        "CURRENT",
+        "REPLAY22",
+        "S31AUDIT",
+        "S32AUDIT",
+        "PROVENANCE_GUARD",
+        "CLAIMMAP",
+        "ANALYSIS_LOCK",
+        "ANALYSIS_MANIFEST",
+        "GUARD_CODE"
+      ],
+      "rationale": "分割、预测键和指标复算有记录；来源保护新增了锁文件、独立查找字段及失败关闭校验。031历史Git身份、032可验证提交号和全套环境仍不完整，故不按完整重训包计满。",
+      "na_reason": "",
+      "change": {
+        "type": "recalibration",
+        "reason": "旧稿5分与已记录的历史源码身份缺口不相称；重评旧稿4.0，当前新增来源锁定与校验仍不弥补全部实验身份缺口。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "REPLAY22",
+          "S31AUDIT",
+          "S32AUDIT",
+          "PROVENANCE_GUARD",
+          "CLAIMMAP",
+          "ANALYSIS_LOCK",
+          "ANALYSIS_MANIFEST",
+          "GUARD_CODE"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-06-data_split",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "REPLAY22",
+            "S31AUDIT",
+            "S32AUDIT",
+            "PROVENANCE_GUARD",
+            "CLAIMMAP",
+            "ANALYSIS_LOCK",
+            "ANALYSIS_MANIFEST",
+            "GUARD_CODE"
+          ],
+          "rationale": "数据源、节点、时段和预测键可追溯。"
+        },
+        {
+          "id": "BR-06-source_config",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "REPLAY22",
+            "S31AUDIT",
+            "S32AUDIT",
+            "PROVENANCE_GUARD",
+            "CLAIMMAP",
+            "ANALYSIS_LOCK",
+            "ANALYSIS_MANIFEST",
+            "GUARD_CODE"
+          ],
+          "rationale": "多数材料有源码/配置清单，但031历史Git身份及032可验证提交号仍欠缺。"
+        },
+        {
+          "id": "BR-06-keys_metrics",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "REPLAY22",
+            "S31AUDIT",
+            "S32AUDIT",
+            "PROVENANCE_GUARD",
+            "CLAIMMAP",
+            "ANALYSIS_LOCK",
+            "ANALYSIS_MANIFEST",
+            "GUARD_CODE"
+          ],
+          "rationale": "保存预测的逐键指标能够重算；不等于从检查点重新前向或重训。"
+        },
+        {
+          "id": "BR-06-environment_package",
+          "score": 0.5,
+          "evidence_ids": [
+            "CURRENT",
+            "REPLAY22",
+            "S31AUDIT",
+            "S32AUDIT",
+            "PROVENANCE_GUARD",
+            "CLAIMMAP",
+            "ANALYSIS_LOCK",
+            "ANALYSIS_MANIFEST",
+            "GUARD_CODE"
+          ],
+          "rationale": "分析包的50项来源与27项输出哈希可核对；大输入留在仓库外，第三方从头训练材料尚不自足。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-06-data_split",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "REPLAY22",
+            "S31AUDIT",
+            "S32AUDIT",
+            "PROVENANCE_GUARD",
+            "CLAIMMAP",
+            "ANALYSIS_LOCK",
+            "ANALYSIS_MANIFEST",
+            "GUARD_CODE"
+          ],
+          "rationale": "数据源、节点、时段和预测键可追溯。"
+        },
+        {
+          "id": "BR-06-source_config",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "REPLAY22",
+            "S31AUDIT",
+            "S32AUDIT",
+            "PROVENANCE_GUARD",
+            "CLAIMMAP",
+            "ANALYSIS_LOCK",
+            "ANALYSIS_MANIFEST",
+            "GUARD_CODE"
+          ],
+          "rationale": "多数材料有源码/配置清单，但031历史Git身份及032可验证提交号仍欠缺。"
+        },
+        {
+          "id": "BR-06-keys_metrics",
+          "score": 1.5,
+          "evidence_ids": [
+            "CURRENT",
+            "REPLAY22",
+            "S31AUDIT",
+            "S32AUDIT",
+            "PROVENANCE_GUARD",
+            "CLAIMMAP",
+            "ANALYSIS_LOCK",
+            "ANALYSIS_MANIFEST",
+            "GUARD_CODE"
+          ],
+          "rationale": "保存预测的逐键指标能够重算；不等于从检查点重新前向或重训。"
+        },
+        {
+          "id": "BR-06-environment_package",
+          "score": 0.5,
+          "evidence_ids": [
+            "CURRENT",
+            "REPLAY22",
+            "S31AUDIT",
+            "S32AUDIT",
+            "PROVENANCE_GUARD",
+            "CLAIMMAP",
+            "ANALYSIS_LOCK",
+            "ANALYSIS_MANIFEST",
+            "GUARD_CODE"
+          ],
+          "rationale": "分析包的50项来源与27项输出哈希可核对；大输入留在仓库外，第三方从头训练材料尚不自足。"
+        }
+      ],
+      "issue_ids": [
+        "CAL-BR06-TRACEABILITY"
+      ],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 4.0,
+        "revision_delta": 0.0,
+        "calibration_delta": -1.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "旧稿5分与已记录的历史源码身份缺口不相称；重评旧稿4.0，当前新增来源锁定与校验仍不弥补全部实验身份缺口。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。本项按可核验来源锁定与仍缺历史实验身份平衡给分。"
+    },
+    {
+      "id": "BR-07",
+      "score": 9.0,
+      "manuscript_location": "第2–5章；§3.8.5；§5.4；结论",
+      "evidence_ids": [
+        "CURRENT",
+        "QUALITY",
+        "S31",
+        "S32",
+        "MDP",
+        "EPFL22"
+      ],
+      "rationale": "论文完成数据质量控制、关系模型实现、跨站实验、组件对照和多层诊断，并能收窄结论；分析数量不等于独立验证，部分支线与核心发现的距离仍在。",
+      "na_reason": "",
+      "change": {
+        "type": "recalibration",
+        "reason": "旧稿9.5分把高工作量和整合度评得过满；按独立证据范围重评两稿为9.0。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "QUALITY",
+          "S31",
+          "S32",
+          "MDP",
+          "EPFL22"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-07-technical_work",
+          "score": 3.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MDP",
+            "EPFL22"
+          ],
+          "rationale": "实现了多协议数据处理、三关系模型与多类对照。"
+        },
+        {
+          "id": "BR-07-problem_solving",
+          "score": 3.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MDP",
+            "EPFL22"
+          ],
+          "rationale": "能根据反例和失败结果调整判断，完成有限的外部数据诊断。"
+        },
+        {
+          "id": "BR-07-integration",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MDP",
+            "EPFL22"
+          ],
+          "rationale": "多章证据综合较完整；分析次数不等于独立验证次数。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-07-technical_work",
+          "score": 3.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MDP",
+            "EPFL22"
+          ],
+          "rationale": "实现了多协议数据处理、三关系模型与多类对照。"
+        },
+        {
+          "id": "BR-07-problem_solving",
+          "score": 3.5,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MDP",
+            "EPFL22"
+          ],
+          "rationale": "能根据反例和失败结果调整判断，完成有限的外部数据诊断。"
+        },
+        {
+          "id": "BR-07-integration",
+          "score": 2,
+          "evidence_ids": [
+            "CURRENT",
+            "QUALITY",
+            "S31",
+            "S32",
+            "MDP",
+            "EPFL22"
+          ],
+          "rationale": "多章证据综合较完整；分析次数不等于独立验证次数。"
+        }
+      ],
+      "issue_ids": [
+        "CAL-BR07-WORK-INTEGRATION"
+      ],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 9.0,
+        "revision_delta": 0.0,
+        "calibration_delta": -0.5,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "旧稿9.5分把高工作量和整合度评得过满；按独立证据范围重评两稿为9.0。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。本项在三视角间分差较小；主评分依据见本项理由。"
+    },
+    {
+      "id": "BR-08",
+      "score": 8.0,
+      "manuscript_location": "§3.6–3.8.5；表3-15、表3-16；图3-17；附表A-2",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "PROXY_REPORT",
+        "PROXY_RESULTS",
+        "PROXY_TABLE",
+        "S32AUDIT"
+      ],
+      "rationale": "新分析直接回答两套代理标签是否改变模型排序，补强了目标敏感性证据；总体0.993与评价标签非零0.420来自同一已查看测试期固定预测，不构成独立确认。",
+      "na_reason": "",
+      "change": {
+        "type": "improvement",
+        "reason": "当前稿新增SG-ANA-20261026对12种冻结预测进行的双标签总体与分层排名复评；新增证据限于已查看测试期。",
+        "evidence_ids": [
+          "CURRENT",
+          "PROXY_REPORT",
+          "PROXY_RESULTS",
+          "PROXY_TABLE"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-08-claim_support",
+          "score": 3.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S32AUDIT"
+          ],
+          "rationale": "主结果和新增标签排序敏感性均有可核对的数据表。"
+        },
+        {
+          "id": "BR-08-alternatives",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S32AUDIT"
+          ],
+          "rationale": "关系自环、门控与基线覆盖部分替代解释，尚未全部排除。"
+        },
+        {
+          "id": "BR-08-robustness_scope",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S32AUDIT"
+          ],
+          "rationale": "新分析表明总体排序0.993而评价标签非零排序相关0.420；同一已查看时期的固定预测重评分，不是独立确认。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-08-claim_support",
+          "score": 3,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S32AUDIT"
+          ],
+          "rationale": "主结果和新增标签排序敏感性均有可核对的数据表。"
+        },
+        {
+          "id": "BR-08-alternatives",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S32AUDIT"
+          ],
+          "rationale": "关系自环、门控与基线覆盖部分替代解释，尚未全部排除。"
+        },
+        {
+          "id": "BR-08-robustness_scope",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S32AUDIT"
+          ],
+          "rationale": "新分析表明总体排序0.993而评价标签非零排序相关0.420；同一已查看时期的固定预测重评分，不是独立确认。"
+        }
+      ],
+      "issue_ids": [
+        "CAL-BR08-EVIDENCE-SCOPE",
+        "CLM032-BR08-SENSITIVITY"
+      ],
+      "comparison": {
+        "basis": "changed",
+        "baseline_reassessed_score": 7.5,
+        "revision_delta": 0.5,
+        "calibration_delta": -1.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "本轮新分析改变了该项可评价的证据：新分析直接回答两套代理标签是否改变模型排序，补强了目标敏感性证据；总体0.993与评价标签非零0.420来自同一已查看测试期固定预测，不构成独立确认。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。本项在三视角间分差较小；主评分依据见本项理由。"
+    },
+    {
+      "id": "BR-09",
+      "score": 8.0,
+      "manuscript_location": "§3.6–3.8.5；表3-16注；§4.2–4.6；结论",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "PROXY_REPORT",
+        "PROXY_RESULTS",
+        "PROXY_TABLE",
+        "S31AUDIT",
+        "S32AUDIT"
+      ],
+      "rationale": "正文区分种子均值排名与逐种子相关，并说明范围不是置信区间；三种子、测试期复用及事后分层仍限制统计推断。",
+      "na_reason": "",
+      "change": {
+        "type": "improvement",
+        "reason": "当前稿区分先平均种子MAE后排序的相关与逐种子相关，并报告逐种子范围而非置信区间。",
+        "evidence_ids": [
+          "CURRENT",
+          "PROXY_REPORT",
+          "PROXY_RESULTS",
+          "PROXY_TABLE"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-09-uncertainty",
+          "score": 3.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "新增分析区分先平均种子MAE再排序与逐种子相关，避免混用。"
+        },
+        {
+          "id": "BR-09-multiplicity",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "多重比较、事后分层仍有限制。"
+        },
+        {
+          "id": "BR-09-interpretation",
+          "score": 3,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "仅三个种子、固定已查看测试期；逐种子范围不是置信区间。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-09-uncertainty",
+          "score": 3,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "新增分析区分先平均种子MAE再排序与逐种子相关，避免混用。"
+        },
+        {
+          "id": "BR-09-multiplicity",
+          "score": 1.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "多重比较、事后分层仍有限制。"
+        },
+        {
+          "id": "BR-09-interpretation",
+          "score": 3,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "PROXY_TABLE",
+            "S31AUDIT",
+            "S32AUDIT"
+          ],
+          "rationale": "仅三个种子、固定已查看测试期；逐种子范围不是置信区间。"
+        }
+      ],
+      "issue_ids": [
+        "CAL-BR09-STATISTICAL-SCOPE",
+        "CLM032-BR09-STATISTICS"
+      ],
+      "comparison": {
+        "basis": "changed",
+        "baseline_reassessed_score": 7.5,
+        "revision_delta": 0.5,
+        "calibration_delta": -1.5,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "本轮新分析改变了该项可评价的证据：正文区分种子均值排名与逐种子相关，并说明范围不是置信区间；三种子、测试期复用及事后分层仍限制统计推断。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。本项在三视角间分差较小；主评分依据见本项理由。"
+    },
+    {
+      "id": "BR-10",
+      "score": 7.5,
+      "manuscript_location": "§1.2–1.5；§3.7–3.8.5；§4；结论",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "PROXY_REPORT",
+        "PROXY_RESULTS",
+        "NEAR76",
+        "MDP",
+        "S31"
+      ],
+      "rationale": "本文贡献可定位为单站代理任务中的受控关系增量和MDP诊断判断，不是新图卷积或门控算法。新排序结果增加一项有限经验发现，但尚未建立未见时期规律或诊断指导改模收益。",
+      "na_reason": "",
+      "change": {
+        "type": "improvement",
+        "reason": "当前稿新增限定经验发现：全局排序近似保持，而评价标签非零组排序更敏感；不主张新算法或外部泛化。",
+        "evidence_ids": [
+          "CURRENT",
+          "PROXY_REPORT",
+          "PROXY_RESULTS",
+          "PROXY_TABLE"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-10-prior_difference",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "NEAR76",
+            "MDP",
+            "S31"
+          ],
+          "rationale": "明确已有图卷积、门控、TCN与相关代理预测先例。"
+        },
+        {
+          "id": "BR-10-contribution",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "NEAR76",
+            "MDP",
+            "S31"
+          ],
+          "rationale": "贡献收敛为受控关系证据和MDP诊断组织，非新算法/理论。"
+        },
+        {
+          "id": "BR-10-demonstration",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "NEAR76",
+            "MDP",
+            "S31"
+          ],
+          "rationale": "新增“总体模型选择与活跃片段选择可能不同”的数据发现，但固定测试期、固定预测且配置数有限。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-10-prior_difference",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "NEAR76",
+            "MDP",
+            "S31"
+          ],
+          "rationale": "明确已有图卷积、门控、TCN与相关代理预测先例。"
+        },
+        {
+          "id": "BR-10-contribution",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "NEAR76",
+            "MDP",
+            "S31"
+          ],
+          "rationale": "贡献收敛为受控关系证据和MDP诊断组织，非新算法/理论。"
+        },
+        {
+          "id": "BR-10-demonstration",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "PROXY_REPORT",
+            "PROXY_RESULTS",
+            "NEAR76",
+            "MDP",
+            "S31"
+          ],
+          "rationale": "新增“总体模型选择与活跃片段选择可能不同”的数据发现，但固定测试期、固定预测且配置数有限。"
+        }
+      ],
+      "issue_ids": [
+        "CAL-BR10-NOVELTY-SCOPE",
+        "CLM032-BR10-EMPIRICAL-CONTRIBUTION"
+      ],
+      "comparison": {
+        "basis": "changed",
+        "baseline_reassessed_score": 7.0,
+        "revision_delta": 0.5,
+        "calibration_delta": -1.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "本轮新分析改变了该项可评价的证据：本文贡献可定位为单站代理任务中的受控关系增量和MDP诊断判断，不是新图卷积或门控算法。新排序结果增加一项有限经验发现，但尚未建立未见时期规律或诊断指导改模收益。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。本项在三视角间分差较小；主评分依据见本项理由。"
+    },
+    {
+      "id": "BR-11",
+      "score": 3.5,
+      "manuscript_location": "§1.1；§2.1.2；§5.4.1–5.4.5；结论",
+      "evidence_ids": [
+        "CURRENT",
+        "EPFL22",
+        "DATA_AVAIL",
+        "CURRENT_SHAPE_PROTOCOL",
+        "ACN_DECISION"
+      ],
+      "rationale": "论文给出模型筛选与测量回放用途，并用会话、电流及不兼容的EPFL资料说明应用输入边界；无同步ACN功率/电量、真实限额和运行业绩，应用价值仍有限。",
+      "na_reason": "",
+      "change": {
+        "type": "unchanged",
+        "reason": "评估依据与上轮一致，按同一锚点维持该项分数；没有重复奖励同一证据。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-11-use_case",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "EPFL22",
+            "DATA_AVAIL",
+            "CURRENT_SHAPE_PROTOCOL",
+            "ACN_DECISION"
+          ],
+          "rationale": "给出模型筛选和测量回放等具体使用问题。"
+        },
+        {
+          "id": "BR-11-real_inputs",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "EPFL22",
+            "DATA_AVAIL",
+            "CURRENT_SHAPE_PROTOCOL",
+            "ACN_DECISION"
+          ],
+          "rationale": "包含会话、电流及EPFL外部测量背景，但不与ACN十节点映射。"
+        },
+        {
+          "id": "BR-11-value_evaluation",
+          "score": 0.5,
+          "evidence_ids": [
+            "CURRENT",
+            "EPFL22",
+            "DATA_AVAIL",
+            "CURRENT_SHAPE_PROTOCOL",
+            "ACN_DECISION"
+          ],
+          "rationale": "没有同步ACN电表功率/电量或真实限额回放。"
+        },
+        {
+          "id": "BR-11-usable_outputs",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "EPFL22",
+            "DATA_AVAIL",
+            "CURRENT_SHAPE_PROTOCOL",
+            "ACN_DECISION"
+          ],
+          "rationale": "论文给出验证前置条件，但尚无可直接支持运行决策的工具输出。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-11-use_case",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "EPFL22",
+            "DATA_AVAIL",
+            "CURRENT_SHAPE_PROTOCOL",
+            "ACN_DECISION"
+          ],
+          "rationale": "给出模型筛选和测量回放等具体使用问题。"
+        },
+        {
+          "id": "BR-11-real_inputs",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "EPFL22",
+            "DATA_AVAIL",
+            "CURRENT_SHAPE_PROTOCOL",
+            "ACN_DECISION"
+          ],
+          "rationale": "包含会话、电流及EPFL外部测量背景，但不与ACN十节点映射。"
+        },
+        {
+          "id": "BR-11-value_evaluation",
+          "score": 0.5,
+          "evidence_ids": [
+            "CURRENT",
+            "EPFL22",
+            "DATA_AVAIL",
+            "CURRENT_SHAPE_PROTOCOL",
+            "ACN_DECISION"
+          ],
+          "rationale": "没有同步ACN电表功率/电量或真实限额回放。"
+        },
+        {
+          "id": "BR-11-usable_outputs",
+          "score": 1,
+          "evidence_ids": [
+            "CURRENT",
+            "EPFL22",
+            "DATA_AVAIL",
+            "CURRENT_SHAPE_PROTOCOL",
+            "ACN_DECISION"
+          ],
+          "rationale": "论文给出验证前置条件，但尚无可直接支持运行决策的工具输出。"
+        }
+      ],
+      "issue_ids": [],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 3.5,
+        "revision_delta": 0.0,
+        "calibration_delta": 0.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "EPFL22",
+          "DATA_AVAIL",
+          "CURRENT_SHAPE_PROTOCOL",
+          "ACN_DECISION"
+        ],
+        "rationale": "本轮未发现改变该项既有评价依据的新证据；按同量表维持重评值。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。接受真实输入背景的有限分值，但不把它计作ACN预测或运行收益验证。"
+    },
+    {
+      "id": "BR-12",
+      "score": 8.0,
+      "manuscript_location": "全文；重点摘要、§1.2、§3.8.5、§5.4、结论与表图注",
+      "evidence_ids": [
+        "BASELINE",
+        "CURRENT",
+        "LANGUAGE_REVIEW",
+        "LANGUAGE_AUDIT",
+        "MAP"
+      ],
+      "rationale": "全文结构可循、核心术语和数字较规范；仍有篇幅较长、限制语与结论反复出现的问题。版式与PDF验收单独记录，不重复计入内容分。",
+      "na_reason": "",
+      "change": {
+        "type": "recalibration",
+        "reason": "旧稿9分对全文凝练程度给分偏满；重复边界说明和长篇幅使两稿按同锚点为8.0。",
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT",
+          "LANGUAGE_REVIEW",
+          "LANGUAGE_AUDIT",
+          "MAP"
+        ]
+      },
+      "components": [
+        {
+          "id": "BR-12-structure",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "LANGUAGE_REVIEW",
+            "LANGUAGE_AUDIT",
+            "MAP"
+          ],
+          "rationale": "章节组织和核心主线清楚；第5章仍较宽。"
+        },
+        {
+          "id": "BR-12-writing",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "LANGUAGE_REVIEW",
+            "LANGUAGE_AUDIT",
+            "MAP"
+          ],
+          "rationale": "术语和边界较规范，若干限定和结论重复、篇幅仍长。"
+        },
+        {
+          "id": "BR-12-scholarly_content",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "LANGUAGE_REVIEW",
+            "LANGUAGE_AUDIT",
+            "MAP"
+          ],
+          "rationale": "表格、公式、引文衔接总体齐全；格式交付单独核验。"
+        },
+        {
+          "id": "BR-12-terminology",
+          "score": 1,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "LANGUAGE_REVIEW",
+            "LANGUAGE_AUDIT",
+            "MAP"
+          ],
+          "rationale": "主要术语口径统一。"
+        }
+      ],
+      "before_components": [
+        {
+          "id": "BR-12-structure",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "LANGUAGE_REVIEW",
+            "LANGUAGE_AUDIT",
+            "MAP"
+          ],
+          "rationale": "章节组织和核心主线清楚；第5章仍较宽。"
+        },
+        {
+          "id": "BR-12-writing",
+          "score": 2,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "LANGUAGE_REVIEW",
+            "LANGUAGE_AUDIT",
+            "MAP"
+          ],
+          "rationale": "术语和边界较规范，若干限定和结论重复、篇幅仍长。"
+        },
+        {
+          "id": "BR-12-scholarly_content",
+          "score": 2.5,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "LANGUAGE_REVIEW",
+            "LANGUAGE_AUDIT",
+            "MAP"
+          ],
+          "rationale": "表格、公式、引文衔接总体齐全；格式交付单独核验。"
+        },
+        {
+          "id": "BR-12-terminology",
+          "score": 1,
+          "evidence_ids": [
+            "BASELINE",
+            "CURRENT",
+            "LANGUAGE_REVIEW",
+            "LANGUAGE_AUDIT",
+            "MAP"
+          ],
+          "rationale": "主要术语口径统一。"
+        }
+      ],
+      "issue_ids": [
+        "CAL-BR12-REDUNDANCY"
+      ],
+      "comparison": {
+        "basis": "unchanged",
+        "baseline_reassessed_score": 8.0,
+        "revision_delta": 0.0,
+        "calibration_delta": -1.0,
+        "evidence_ids": [
+          "BASELINE",
+          "CURRENT"
+        ],
+        "rationale": "旧稿9分对全文凝练程度给分偏满；重复边界说明和长篇幅使两稿按同锚点为8.0。"
+      },
+      "adjudication": "主评在三份隔离视角范围内逐项裁定，不取总分均值。本项在三视角间分差较小；主评分依据见本项理由。"
+    }
+  ],
+  "blockers": [],
+  "limitations": [
+    "当前稿与上次正式评分基线由同一冻结稿对进行配对校准；三份AI视角为辅助意见，不代表现实专家，也不是统计置信区间。",
+    "代理标签敏感性结果来自12种既有冻结预测、同一已查看Caltech测试期；无新训练、未见时期确认或实测功率校准。",
+    "ACN请求字段源端覆盖仍未完成认证普查；同站实测电压/功率或电量记录尚未取得。",
+    "Word/PDF版式与内容分开；新版PDF逐页视觉比较通过，但WPS源文档缺失字体提示未确认解除，封面未知字段和签字页仍待按学校模板线下确认。"
+  ],
+  "protocol_id": "EVCS-THESIS-REVIEW-2.0",
+  "review_mode": "calibration_pair",
+  "claim_scope": "对会话分摊代理能量的短期预测、站内关系增量与诊断价值的限定主张，以及其实验、统计和实践证据；不评价为实测功率准确性、未见数据家族泛化或已实现的现场运行收益。",
+  "baseline": {
+    "scorecard_path": "docs/thesis/content-review-20261022-paired-review/scorecard.json",
+    "scorecard_sha256": "c1c117a44815750f55a0b081349bfb7502fd2b865b6a270ad24b141c6bf0cd8a",
+    "manuscript_path": "docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-packet/manuscripts/baseline.md",
+    "manuscript_sha256": "8ac58074c2a53835883c6635cdf7d6f0044e7971e67af6de36e3f4248e75d9d5",
+    "assessment_id": "FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW"
+  },
+  "anchors_sha256": "d31ffe74621b318fb63b8a7534b7abcb4e194733ff2ed6ee3d291030f512b575",
+  "issue_ledger": {
+    "path": "docs/thesis/content-review-20261026-proxy-stability-calibration/issue-ledger.json",
+    "sha256": "ac1c2c70bd151dadd369f5ae72450dfb1d45ffc556be343f95f42ddfcb1ca945"
+  },
+  "reviewer_records": [
+    {
+      "path": "docs/thesis/content-review-20261026-proxy-stability-calibration/reviewer-records/reviewer-record-technical.json",
+      "sha256": "76bacf49e195776c623d2a055a205891ebfc898c6258dd10c367689ae1353ac9"
+    },
+    {
+      "path": "docs/thesis/content-review-20261026-proxy-stability-calibration/reviewer-records/reviewer-record-originality.json",
+      "sha256": "c5b93b7bb0785aadb0d1bdb1a2d422f8c6b7b0666526baf573e70ee9d5552e30"
+    },
+    {
+      "path": "docs/thesis/content-review-20261026-proxy-stability-calibration/reviewer-records/reviewer-record-readability.json",
+      "sha256": "06c809d917c0b4af6da5974a740eff370e4db71a3806113fc7904dc025ac6d2f"
+    }
+  ],
+  "publication_note": "与FORMAL-20261022-EPFL-REPLAY-PAIRED-REVIEW正式稿作同量表配对校准。三份隔离视角的旧稿分为70–72/90、当前稿72–73.5/90；主评逐项裁定为旧稿71.5/90、当前稿73.0/90，不取均值。校准效应−8.0/90，新增分析的修订效应+1.5/90，净变化−6.5/90。下降表示对10月22日既有分项过度给分的校准，不表示本轮论文修订造成退步。"
+}

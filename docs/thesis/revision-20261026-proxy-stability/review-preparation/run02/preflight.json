@@ -1,0 +1,579 @@
+{
+  "schema_version": 1,
+  "tool_version": "1.0",
+  "tool_sha256": "ca4a79990e51f16532ffb22e7e6e304f9a893e78cdc70ee350ad85a228e16288",
+  "ready_for_dispatch": true,
+  "blockers": [],
+  "warnings": [
+    "Unmapped changes/material: full review fallback; no unaffected claim is certified."
+  ],
+  "config_sha256": "0c4887f540efa3d259d9494b26d5e48e4380b776fbe2fa9fd0b2827c7c1f8a0c",
+  "review_mode": "paired_revision",
+  "baseline_manuscript_sha256": "8ac58074c2a53835883c6635cdf7d6f0044e7971e67af6de36e3f4248e75d9d5",
+  "current_manuscript_sha256": "648bd582de2f03afac78486f26e85b2a91a6593b33d9a619d2090744c6caf506",
+  "policy_fingerprints": {
+    "rubric": "244fb698bd39b0e935e45116671c1954659a6720dc33faa42d9a7faf89433548",
+    "anchors": "d31ffe74621b318fb63b8a7534b7abcb4e194733ff2ed6ee3d291030f512b575",
+    "protocol": "a37eedbaf85ea5dda251a4cb15eee28be3d6a4d59007c8a817f5419b1e1de465",
+    "reviewer_instructions": "323c215e7948c4ff4102ee99f5a7bd70820b46044c969991e20e659bec09c31e"
+  },
+  "evidence": [
+    {
+      "id": "ADAPT",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/ADAPT.md",
+      "sha256": "380427dbca21f32cdf80eb261587e1800ee9182f062adb6535cab5ba719b3774",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "ADAPTAUDIT",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/ADAPTAUDIT.json",
+      "sha256": "76499e6f387d971e33df08acb75479109aabb70d7b407f1b9520b6bb53891e84",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "CAL",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/CAL.md",
+      "sha256": "da74215ccdc23de4aa0901efa6eec09693ca03233be5befb29eae620c702352a",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "DATA_AVAIL",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/DATA_AVAIL.md",
+      "sha256": "103d7f4c39dd3d9dcace742ce4ce026486dbffb20fe1d083b6cc2c3c380726f8",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "MAP",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/MAP.md",
+      "sha256": "abf6a2860e925ea4d60724b7547c1957315b7fa17a0c4948263059bfcc63eeae",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "MDP",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/MDP.md",
+      "sha256": "f65ce5d985d71fc61bdc9d76c92be53d634c70bb2c66a91f584e22033739d371",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "MRECOMP",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/MRECOMP.json",
+      "sha256": "deb2356b5c32d3b054cd8bd2eeb3e50e946adb43a38523a041e08c939ae40bde",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "NEAR_20261016",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/NEAR_20261016.md",
+      "sha256": "b30cc55d0ab712e727f3e05f2ef1c28720f669eb15dd710aab1bd88cfb931875",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "NEAR",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/NEAR.md",
+      "sha256": "a54c60bc95564e391e1833adfab3dbb41a371e279ccd0d399c30075eedceb125",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "NEAR2",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/NEAR2.md",
+      "sha256": "2ca238e2e2214e2d526f2782c46fbd437db35a74f0f05113f1b5f7672f4a9048",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "NEAR76",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/NEAR76.md",
+      "sha256": "90db0f34343faef3d78dd1ca41dbe4799deb7d6cf0e61430330fd13e59e72704",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "NZ",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/NZ.json",
+      "sha256": "4f566d54cc6284679dd642bfce52d2251a9deea8fe97e319ebc2804995421345",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "PASSPORT",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/PASSPORT.md",
+      "sha256": "33ecc45c11775788fc9e6979949ef78fef5900a1583d8b01df5feb030681c2ea",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "QUALITY",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/QUALITY.md",
+      "sha256": "06a6b9a43fc675e7527646aaa81a92d13aa4c91802b72ae8f4f07314fde5862b",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "RECOMP",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/RECOMP.json",
+      "sha256": "388d838f54ae9e8f35ec8f049d226977956327d30cb5d80f42d8974e5c007294",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "S31",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/S31.md",
+      "sha256": "d93dd099dbc4a55385fa4e3122323ca1c8ee5f4ddc205562ebc4fd69d57519d9",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "S31AUDIT",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/S31AUDIT.json",
+      "sha256": "8f98f6cbc9ec71e8433fb47985b3569a92aae01a92e46be5ff53fe55c7042475",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "S32",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/S32.md",
+      "sha256": "9585428a9501321944ba38efcfacaa3978d8c2514149c6eedfe0a46fd25b0f8a",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "S32AUDIT",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/S32AUDIT.json",
+      "sha256": "11f674ca069e357edcf5ebce102c3b296593e4f3eec1191aab010842f806a84a",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "ACN_RANGE",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/ACN_RANGE.json",
+      "sha256": "84ec68aaf9c9d8b35acb928821a289464a5f66fbb4f946cdb754044b59055ae6",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "ACN_BOUNDS",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/ACN_BOUNDS.json",
+      "sha256": "430bb7fffbbf62dd5ef92f4099a6ff455dda3362de195d273d36df02fa260b05",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "ACN_DECISION",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/ACN_DECISION.md",
+      "sha256": "1e8910c16fad0fc8de1b1a87ec7604cfef55b2384cc01f68183d57acb552edd5",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "LANGUAGE_AUDIT",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/LANGUAGE_AUDIT.json",
+      "sha256": "1bad24154da3d78ebb0ffe3acb950f2a2f16dfa9c3fd6808d5b82caf6fbeda6c",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "LANGUAGE_REVIEW",
+      "path": "docs/thesis/content-review-20261020-final-patch/preparation-run01/reviewer-packet/evidence/LANGUAGE_REVIEW.md",
+      "sha256": "45409f703a82dacaaf82e6aed8483f4bf9063f8ee19c56f0d198d958d53e17d8",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "REPLAY22",
+      "path": "docs/thesis/revision-20261022-evidence/reproducibility-package.md",
+      "sha256": "155986c7f09eb64977d907b33029575bdd8db298fc304c31af2f27ed104b8c3f",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "EPFL22",
+      "path": "docs/thesis/revision-20261022-evidence/epfl-proxy-audit-v2-report.md",
+      "sha256": "c2c6cbf85a2527b13753882bc331375220d218351b04c239dd0dc3304c61a531",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "DATASEARCH22",
+      "path": "docs/thesis/revision-20261022-evidence/targeted-data-search.md",
+      "sha256": "caefddc97714b245c2589a45c4ab733e0fc50ea10ae4d1cd1fa3a539989eb2a0",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "DELIVERY22",
+      "path": "docs/thesis/revision-20261022-delivery/DELIVERY.md",
+      "sha256": "71316c775436b12aa56a449f506a9bb75d6e3df044e848d911574a56c95c3476",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "unchanged",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": true,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "PROXY_REPORT",
+      "path": "outputs/analysis/SG-ANA-20261026-proxy-stability/report.md",
+      "sha256": "166180ab92d093784fe387c6cf6f98f24107a3ae9af30a273f6414a1f4c35a26",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "added",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": false,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "PROXY_RESULTS",
+      "path": "outputs/analysis/SG-ANA-20261026-proxy-stability/results.json",
+      "sha256": "dd198167ef3410332752d0b6661739d329c8519ede448720f649808c5a3c0135",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "added",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": false,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "PROXY_TABLE",
+      "path": "outputs/analysis/SG-ANA-20261026-proxy-stability/table3_16_spearman.csv",
+      "sha256": "489ecc614265d43a3104a669c21bb3fa955bc882068c884edfeb1b1a2d8c8c53",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "added",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": false,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "PROVENANCE_GUARD",
+      "path": "docs/thesis/revision-20261026-proxy-stability/provenance-regeneration-guard.md",
+      "sha256": "ab65312aea7c5bcfd8294a5e6ab805cfec4146b6ee19bc35f29788739da677ac",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "added",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": false,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "CURRENT_SHAPE",
+      "path": "docs/thesis/revision-20261025-practice/acn-current-shape-replay.json",
+      "sha256": "257c6afacd3dd5bc399fb1b2ef13018d9b5ed643a8854e55ca6aafdab9fc9ecc",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true,
+        "json_type": "dict"
+      },
+      "status": "added",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": false,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "CURRENT_SHAPE_PROTOCOL",
+      "path": "docs/thesis/revision-20261025-practice/acn-current-shape-protocol.md",
+      "sha256": "4223af2e492dbc030ba2cf237e944955952f6388fe4e932900941b6c6c479229",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "added",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": false,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "FIG317",
+      "path": "outputs/figures/fig3_17_proxy_label_stability.png",
+      "sha256": "aaa96088e38efd2ad4bbf3f8eced7d96beece94012997b7c803a4630838b920b",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "added",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": false,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    },
+    {
+      "id": "FIG59",
+      "path": "outputs/figures/fig5_9_acn_current_shape.png",
+      "sha256": "052f0477d0dd2c3b039e633e8e2260fa19f4fd00f236e92e5915b8166c4a91d7",
+      "syntax": {
+        "scope": "file readability / syntax only",
+        "valid": true
+      },
+      "status": "added",
+      "dependency_change_or_unbound": false,
+      "dependencies": {},
+      "prior_reviewed": false,
+      "reuse_scope": "prior recorded reading only; not new scientific verification"
+    }
+  ],
+  "removed_or_unmapped_evidence_ids": [],
+  "excluded_baseline_evidence": {
+    "PACKET_README": "Packet governance is replaced by clean reviewer instructions.",
+    "ANCHORS": "Canonical current anchors are supplied separately.",
+    "BASELINE": "Paired baseline manuscript is included as manuscripts/baseline.md.",
+    "CURRENT": "Paired current manuscript is included as manuscripts/current.md.",
+    "REVIEWER_INSTRUCTIONS": "Canonical current instructions are supplied separately.",
+    "RUBRIC": "Canonical current rubric is supplied separately."
+  },
+  "evidence_inventory_scope": "配对复评：基线为2026-10-22正式冻结稿；当前稿为入稿SG-ANA-20261026代理标签敏感性分析及有限ACN电流形态核验后的版本。沿用10-22冻结包中的已核验材料，并新增代理标签排序分析报告、核心输出、来源防覆盖设计、去标识ACN形态汇总和两张正文图。只按新增证据对受影响分项计修订效应；PDF/Word交付单列审核。",
+  "checks": [
+    {
+      "id": "prior-20261020-language-paired-publication-contract",
+      "status": "reused_success",
+      "cache_key": "ba403201948666f2fe2411d5f28c5c58e052964c81429add94b13d15b51c33a4",
+      "scope": "Validate the exact prior scorecard, its source closure, hashes, arithmetic, pairing and publication contract; this does not assign points or replace the new blind review.",
+      "duration_seconds": 0.04029341693967581,
+      "original_execution": {
+        "returncode": 0,
+        "stdout_sha256": "7a4ec3f121f35bc9d481056eb346056ae41b78bfdf35b3bcf964752227556a6b",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_bytes": 5554,
+        "stderr_bytes": 0,
+        "duration_seconds": 0.20428858301602304
+      }
+    }
+  ],
+  "cache_authenticated": true,
+  "cache_statistics": {
+    "structure_hits": 36,
+    "structure_misses": 0,
+    "check_hits": 1,
+    "check_executions": 0
+  },
+  "timings": {
+    "preflight_seconds": 0.07177566713653505,
+    "checks_seconds": 0.04031466692686081,
+    "impact_seconds": 0.001376542029902339,
+    "total_seconds": 0.11702120793052018
+  },
+  "figure_scope": "captions_only; image content and full-page visual acceptance remain unchecked",
+  "not_a_score_or_publication_approval": true
+}

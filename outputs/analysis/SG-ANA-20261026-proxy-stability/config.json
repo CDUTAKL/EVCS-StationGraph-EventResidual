@@ -1,0 +1,14 @@
+{
+  "project_root": "../../../",
+  "package_root": ".",
+  "package_root_note": "Informational only. analyze.py resolves its working directory from Path(__file__).resolve().parent.",
+  "input_mode": "project-relative; frozen predictions are referenced from the repository and not duplicated in this directory",
+  "input_layout": {
+    "datasets": "inputs/datasets/{uniform,alternative}.npz",
+    "exp019": "inputs/exp019/<config>/seed-<year>/predictions_test.npz",
+    "exp027": "inputs/exp027/<config>/seed-<year>/predictions_test.npz",
+    "exp032": "inputs/exp032/<config>/seed-<year>/predictions_test.npz"
+  },
+  "project_root_override": "EVCS_PROJECT_ROOT environment variable takes precedence over project_root",
+  "refresh": "Set EVCS_PROJECT_ROOT to the repository root, then run: PYTHONDONTWRITEBYTECODE=1 python3 analyze.py"
+}
