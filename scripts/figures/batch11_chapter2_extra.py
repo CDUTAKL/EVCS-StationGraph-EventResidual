@@ -122,7 +122,7 @@ def redraw_fig2_9() -> None:
     cbar.set_label("Spearman ρ", fontsize=8.6, labelpad=6)
     cbar.ax.tick_params(labelsize=7.6, length=3)
     fig.subplots_adjust(left=0.15, right=0.875, bottom=0.15, top=0.965)
-    _final(fig, "fig2_11_feature_correlation", (6.4, 5.35))
+    _final(fig, "fig2_10_feature_correlation", (6.4, 5.35))
     return None
 
 
@@ -164,72 +164,12 @@ def redraw_fig2_10() -> None:
     cbar.set_label("节点代理负荷均值（kWh/15 min）", fontsize=7.6)
     cbar.ax.tick_params(labelsize=7.5)
     _clean(ax, grid_axis=None)
-    _final(fig, "fig2_12_weekday_hour_heatmap", (7.6, 3.6))
+    _final(fig, "fig2_11_weekday_hour_heatmap", (7.6, 3.6))
     return None
 
 
-def redraw_fig2_7() -> None:
-    """图 2-7：测试集冻结规则事件窗口内四分量归一化平均贡献。
-
-    事件分数 = 4 分量 per-node std 归一化后求和（rules.py 定义）；
-    本图展示每个节点事件窗口时间片的平均归一化分量，堆叠柱观察构成。
-    """
-    feats = BUNDLE.features
-    rule = fit_frozen_event_rule(BUNDLE)
-    origins = BUNDLE.split_origins["test"]
-    previous = np.maximum(origins - 1, 0)
-    trig_test = apply_frozen_event_rule(BUNDLE, origins, rule)  # [O, N]
-    std_access = np.asarray(rule.score_stats["std_access"])
-    std_departure = np.asarray(rule.score_stats["std_departure"])
-    std_active_delta = np.asarray(rule.score_stats["std_active_delta"])
-    std_load_delta = np.asarray(rule.score_stats["std_load_delta"])
-    access = feats[origins, :, 1] / std_access[None, :]
-    departure = feats[origins, :, 2] / std_departure[None, :]
-    active_change = np.abs(feats[origins, :, 3] - feats[previous, :, 3])
-    active_change /= std_active_delta[None, :]
-    load_change = np.abs(feats[origins, :, 0] - feats[previous, :, 0])
-    load_change /= std_load_delta[None, :]
-    components = [access, departure, active_change, load_change]
-
-    # 逐节点平均；掩码和四分量均位于相同的测试预测起点轴上。
-    per_node = np.zeros((BUNDLE.node_ids.shape[0], len(components)))
-    for ci, values in enumerate(components):
-        for ni in range(BUNDLE.node_ids.shape[0]):
-            col_mask = trig_test[:, ni]
-            if col_mask.any():
-                per_node[ni, ci] = values[col_mask, ni].mean()
-
-    # 画布宽度取论文版心宽 5.59 in，figsize 即纸面尺寸，fontsize 即纸面字号。
-    fig, ax = plt.subplots(figsize=(5.59, 3.02))
-    # 四分量沿用事件分数定义的堆叠顺序；配色为低饱和四色——深蓝打底 + 暖橙薄
-    # 分量 + 中灰/浅灰两个主量，相对亮度约 0.11/0.32/0.21/0.58，隔位色差 >0.2，
-    # 灰度打印下四段仍可区分。整图不含任何纹理，避免密集 hatch 缩印后糊成一片。
-    colors = [BLUE, ORANGE, GRAY_M, GRAY_L]
-    labels = EVENT_COMPONENT_LABELS
-    x = np.arange(len(BUNDLE.node_ids))
-    bottom = np.zeros(len(BUNDLE.node_ids))
-    for ci, color in enumerate(colors):
-        # 白色描边仅用于切分相邻色块，0.45 pt 细线避免吃掉离站这类薄分量。
-        ax.bar(x, per_node[:, ci], bottom=bottom, color=color, width=0.64,
-               edgecolor="white", linewidth=0.45, label=labels[ci], zorder=3)
-        bottom += per_node[:, ci]
-    # 柱顶只标注四分量之和（= 事件窗口内归一化事件分数均值）；柱内不再逐段
-    # 标注 10×4 个数值——离站分量仅 0~1.7，标不下且必然与色块边界重叠。
-    for xi, total in zip(x, bottom):
-        ax.text(xi, total + 0.18, f"{total:.1f}", ha="center", va="bottom",
-                fontsize=6.2, color=GRAY_D)
-    ax.set_xticks(x)
-    ax.set_xticklabels(BUNDLE.node_ids, fontsize=6.6, rotation=45, ha="right")
-    ax.set_ylabel("归一化分量均值", fontsize=7.8, labelpad=4)
-    ax.set_ylim(0, bottom.max() * 1.07)
-    # 图例置于绘图区上方，避免与右侧偏高的柱（CA-317/327）互相遮挡。
-    ax.legend(fontsize=6.8, frameon=False, ncol=4, loc="lower center",
-              bbox_to_anchor=(0.5, 1.005), handlelength=1.05, handleheight=0.8,
-              handletextpad=0.45, columnspacing=1.15, borderaxespad=0.0)
-    _clean(ax)
-    ax.tick_params(axis="both", labelsize=6.6)
-    _final(fig, "fig2_9_event_component_composition", (5.59, 3.02))
-    return None
+# redraw_fig2_7（图2-9 事件分量构成）已于 2026-10-27 随该图撤出主文而删除；
+# 原图归档于 outputs/figures/archive/2026-10-27-fig2-9-withdrawn/。
 
 
 def redraw_fig2_8() -> None:
@@ -300,7 +240,6 @@ def redraw_fig2_8() -> None:
 
 if __name__ == "__main__":
     print("=== 批次 11：第 2 章主文 3 图 ===")
-    redraw_fig2_7()
     redraw_fig2_8()
     redraw_fig2_9()
     print("批次 11 完成")

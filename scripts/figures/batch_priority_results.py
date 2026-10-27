@@ -227,44 +227,49 @@ def forest():
             'AdaptiveGraph - EventResidual':'事件残差 vs 自适应图',
             'StaticGraph - MLP':'MLP vs MRG-GCN','TCN - MLP':'MLP vs TCN',
             'AdaptiveGraph - no_event_gate':'门控关闭 vs 自适应图'}
-    # 与图 3-9（JPL 配对区间）同一视觉语言：主蓝表正向差值、暖灰表负向差值，
-    # 白描边圆点 + 带端帽误差棒；零线统一用 #929DA6。
+    # 2026-10-27 重构：森林点图改发散条形图。逐键 bootstrap 的 CI 细到
+    # 肉眼难辨，点+须的表达让面板显得空；条形从零点填充到差值，方向与
+    # 量级直接可读，条端标差值、小字标 CI。正差值主蓝、负差值暖灰
+    # （与图 3-9 JPL 配对区间同一色彩语义）；零线统一用 #929DA6。
     BLUE='#2C5F8A';WARM='#A89A88'
     # 画布取论文显示尺寸（版心宽 14.66 cm = 5.77 in，图按 5.59 in 排版）。
     # layout='none' 必须在创建时给定：setup_style 默认开 constrained_layout，
     # 事后 set_layout_engine('none') 在 matplotlib 3.11 下仍会让
     # subplots_adjust 被静默忽略，导致两面板标题与刻度标签叠合。
-    # 抗"空洞"设计（2026-10-26 反馈）：逐行标 [CI 下界, 上界]（森林图标准
-    # 的信息列，两行错位排在差值下方）、斑马纹行带、面板高度按行数 4:5 分配、
-    # 标记与误差棒加粗。
     fig,axes=plt.subplots(2,1,figsize=(5.59,4.35),layout='none',
                           gridspec_kw={'height_ratios':[4,5]})
     fig.subplots_adjust(left=.245,right=.975,top=.93,bottom=.15,hspace=.40)
     for ax,key,title in zip(axes,['global','event_window'],['A  全局预测键','B  标签事件预测键']):
         rows=[(labels[c['name']],c['pooled'][key]) for c in data['comparisons'] if key in c['pooled']]
-        for i in range(len(rows)):
-            if i%2==0:
-                ax.axhspan(i-.5,i+.5,color='#F3F6F8',zorder=0)
         for i,(label,p) in enumerate(rows):
             d,lo,hi=p['observed_diff'],p['ci_lower'],p['ci_upper']
             color=BLUE if d>0 else WARM
-            ax.errorbar(d,i,xerr=[[d-lo],[hi-d]],fmt='o',ms=6.2,color=color,
-                        mec='white',mew=0.8,ecolor=color,elinewidth=1.5,
-                        capsize=3.5,capthick=1.5,zorder=3)
-            ax.annotate(f'{d:+.4f}',(hi,i),xytext=(7,5),textcoords='offset points',
-                        va='center',fontsize=7.4,color='#404040')
-            ax.annotate(f'[{lo:+.4f}, {hi:+.4f}]',(hi,i),xytext=(7,-7),
-                        textcoords='offset points',va='center',fontsize=6.2,
-                        color='#8A9299')
+            ax.barh(i,d,height=.52,color=color,edgecolor='white',lw=.5,zorder=3)
+            ax.errorbar(d,i,xerr=[[d-lo],[hi-d]],fmt='none',ecolor='#404040',
+                        elinewidth=1.0,capsize=2.6,capthick=1.0,zorder=4)
+            if d>0:
+                # 正值：标注在条端外侧
+                ax.annotate(f'{d:+.4f}',(hi,i),xytext=(6,4),textcoords='offset points',
+                            ha='left',va='center',fontsize=7.4,color='#404040')
+                ax.annotate(f'[{lo:+.4f}, {hi:+.4f}]',(hi,i),xytext=(6,-8),
+                            textcoords='offset points',ha='left',va='center',
+                            fontsize=6.2,color='#8A9299')
+            else:
+                # 负值与近零小条：标注一律放零线右侧（= 条的右端之外），
+                # 任何文字都不压在条形上（2026-10-27 反馈）
+                ax.annotate(f'{d:+.4f}',(0,i),xytext=(6,4),textcoords='offset points',
+                            ha='left',va='center',fontsize=7.4,color='#404040')
+                ax.annotate(f'[{lo:+.4f}, {hi:+.4f}]',(0,i),xytext=(6,-8),
+                            textcoords='offset points',ha='left',va='center',
+                            fontsize=6.2,color='#8A9299')
         ax.set_yticks(range(len(rows)),[r[0] for r in rows]);ax.invert_yaxis()
         # 显式 9 pt：默认 10 pt 下"门控关闭 vs 自适应图"宽约 1.39 in，
         # 会超出 left 预留的标签区并把成品宽度撑过版心。
         ax.tick_params(axis='y',labelsize=9)
         ax.set_ylim(len(rows)-.5,-.7)
-        # 面板 A 右界放宽到 0.024：CI 区间文字排在最长正向差值（+0.0158）右侧，
-        # 旧界 0.022 会把 "[lo, hi]" 第二行顶出数据区。
         ax.set_xlim((-.012,.024) if key=='global' else (-.043,.045))
-        ax.axvline(0,color='#929DA6',lw=.9);ax.grid(axis='x',color='#E8EDF0',lw=.6)
+        ax.axvline(0,color='#929DA6',lw=1.1,zorder=5)
+        ax.grid(axis='x',color='#E8EDF0',lw=.6)
         ax.set_axisbelow(True)
         ax.spines[['top','right']].set_visible(False)
         ax.text(0,1.06,title,transform=ax.transAxes,fontsize=9.5,

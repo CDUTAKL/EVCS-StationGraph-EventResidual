@@ -346,21 +346,24 @@ def fig5_7_coverage() -> None:
     axA = fig.add_subplot(gs[0, 0])
     groups_A = ["全局", "稳定窗口", "事件窗口"]
     dx = 0.13  # 两方法在每口径内的水平错位
-    jit = np.linspace(-0.035, 0.035, len(seeds))
+    # 种子点小而散开（s=13、jitter±0.05）、均值用菱形——与图 3-9/3-10 的
+    # "种子点 + 均值菱形 + 误差棒"成语一致；旧版大圆点与均值点叠成气泡团，
+    # 种子离散度不可辨（2026-10-27 反馈）。
+    jit = np.linspace(-0.05, 0.05, len(seeds))
     for xi, g in enumerate(groups_A):
         key = key_map[g]
         std_v = np.array([s["standard_conformal"][f"coverage_{key}"] for s in seeds])
         str_v = np.array([s["stratified_conformal"][f"coverage_{key}"] for s in seeds])
-        axA.scatter(xi - dx + jit, std_v, s=22, facecolor="white",
-                    edgecolor=GRAY_M, linewidth=0.7, alpha=0.85, zorder=3)
-        axA.scatter(xi + dx + jit, str_v, s=22, facecolor=BLUE,
+        axA.scatter(xi - dx + jit, std_v, s=13, facecolor="white",
+                    edgecolor=GRAY_M, linewidth=0.6, alpha=0.85, zorder=3)
+        axA.scatter(xi + dx + jit, str_v, s=13, facecolor=BLUE,
                     edgecolor=BLUE, linewidth=0.5, alpha=0.7, zorder=3)
         s_mean, s_sd = float(std_v.mean()), float(std_v.std(ddof=1))
         v_mean, v_sd = float(str_v.mean()), float(str_v.std(ddof=1))
-        axA.errorbar(xi - dx, s_mean, yerr=s_sd, fmt="o", ms=7.5, color=GRAY_D,
+        axA.errorbar(xi - dx, s_mean, yerr=s_sd, fmt="D", ms=5.5, color=GRAY_D,
                      markerfacecolor="white", markeredgecolor=GRAY_D,
                      capsize=3.0, lw=1.1, zorder=4)
-        axA.errorbar(xi + dx, v_mean, yerr=v_sd, fmt="o", ms=7.5, color=BLUE,
+        axA.errorbar(xi + dx, v_mean, yerr=v_sd, fmt="D", ms=5.5, color=BLUE,
                      markerfacecolor=BLUE, markeredgecolor=GRAY_D,
                      capsize=3.0, lw=1.1, zorder=4)
         axA.text(xi - dx, s_mean + s_sd + 0.025, f"{s_mean:.1%}", ha="center",
@@ -386,12 +389,12 @@ def fig5_7_coverage() -> None:
     axA.set_yticklabels(["0%", "20%", "40%", "60%", "80%", "100%"], fontsize=7.8)
     axA.set_xlim(-0.45, len(groups_A) - 1 + 0.55)
     _clean_ax(axA)
-    axA.legend(handles=[Line2D([0], [0], marker="o", color="none",
+    axA.legend(handles=[Line2D([0], [0], marker="D", color="none",
                                markerfacecolor="white", markeredgecolor=GRAY_D,
-                               markersize=6, label="标准共形"),
-                        Line2D([0], [0], marker="o", color="none",
+                               markersize=5, label="标准共形"),
+                        Line2D([0], [0], marker="D", color="none",
                                markerfacecolor=BLUE, markeredgecolor=GRAY_D,
-                               markersize=6, label="规则路由分层"),
+                               markersize=5, label="规则路由分层"),
                         Line2D([0], [0], marker="*", color="none",
                                markerfacecolor=RED_S, markeredgecolor="white",
                                markersize=9, label="oracle（事后诊断，不可部署）")],

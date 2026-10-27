@@ -10,8 +10,8 @@ FIG=ROOT/'outputs/figures'
 SPECS=[('2-3','fig2_3_load_heatmap','连续四周节点负荷'),
 ('2-5','fig2_5_weekly_curves','典型周负荷曲线'),
 ('2-8','fig2_8_event_hourly','标签事件日内分布'),
-('2-10','fig2_10_dual_window_definition','双事件口径'),
-('2-12','fig2_12_weekday_hour_heatmap','星期—小时负荷'),
+('2-9','fig2_9_dual_window_definition','双事件口径'),
+('2-11','fig2_11_weekday_hour_heatmap','星期—小时负荷'),
 ('3-1','fig3_1_mrggcn_architecture','MRG-GCN整体架构'),
 ('3-2','fig3_2_relation_propagation_unit','多关系门控传播'),
 ('3-3','fig3_3_temporal_skip_fusion','时间编码与跨层融合'),
@@ -23,7 +23,7 @@ SPECS=[('2-3','fig2_3_load_heatmap','连续四周节点负荷'),
 ('5-3','fig5_3_asymmetry','双向TE不对称性'),
 ('5-5','fig5_5_pcmci_validation_network','PCMCI+核验结果'),
 ('5-6','fig5_6_conformal_method','分层共形方法')]
-GEN={'2-10','3-1','3-2','3-3','3-4','5-6'}
+GEN={'2-9','3-1','3-2','3-3','3-4','5-6'}
 
 def main():
     rows=[]

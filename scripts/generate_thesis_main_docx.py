@@ -75,7 +75,9 @@ def validate_final_figure_sequence(source_text: str) -> None:
     """Reject missing, duplicated, or out-of-order manuscript figure numbers."""
     captions = [(int(ch), int(num)) for ch, num in re.findall(r"\*\*图(\d+)-(\d+)\b", source_text)]
     image_paths = re.findall(r"!\[[^]]*\]\(([^)]+)\)", source_text)
-    chapter_counts = ((1, 2), (2, 13), (3, 17), (4, 7), (5, 9))
+    # Chapter 2 was reduced to 12 figures after removing the redundant
+    # event-component composition panel; the remaining figures are renumbered.
+    chapter_counts = ((1, 2), (2, 12), (3, 17), (4, 7), (5, 9))
     figure_count = sum(count for _, count in chapter_counts)
     if len(captions) != figure_count or len(image_paths) != figure_count:
         raise RuntimeError(
@@ -664,10 +666,10 @@ def add_figure(doc, path, alt, source_dir):
     set_paragraph_format(p, WD_ALIGN_PARAGRAPH.CENTER, False, before=3, after=3, line=1.0)
     r = p.add_run()
     p.paragraph_format.keep_with_next = True
-    # Keep the figure just inside 14.2 cm. This avoids a one-pixel rounding
-    # shortfall below 1200 effective PPI for 1200-DPI rasters such as fig5_3.
-    # The change is visually negligible and remains within the 14.66 cm body width.
-    r.add_picture(str(png), width=Cm(14.19))
+    # Keep the figure at 14.0 cm. WPS slightly enlarges some 1200-DPI rasters
+    # when laying them out; 14.0 cm preserves the body-width balance while
+    # leaving enough margin for >=1200 effective PPI in the exported PDF.
+    r.add_picture(str(png), width=Cm(14.0))
 
 
 def add_heading(doc, level, text, outline=True):
@@ -933,7 +935,7 @@ def add_front_matter(doc, source, toc_map=None):
     set_paragraph_format(en_title, WD_ALIGN_PARAGRAPH.CENTER, False, before=0, after=0, line=1.0)
     set_font(en_title.runs[0], ENGLISH, 15, bold=True)
     en_heading = add_heading(doc, 1, "Abstract", outline=False)
-    set_paragraph_format(en_heading, WD_ALIGN_PARAGRAPH.CENTER, False, before=18, after=18, line=1.0)
+    set_paragraph_format(en_heading, WD_ALIGN_PARAGRAPH.CENTER, False, before=9, after=9, line=1.0)
     set_font(en_heading.runs[0], ENGLISH, 15, bold=True)
     en = source_text.split("# Abstract", 1)[1].split("# 目  录", 1)[0]
     for x in [x.strip() for x in en.split("\n\n") if x.strip()]:

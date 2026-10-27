@@ -10,21 +10,21 @@
       1199.9976,
       1199.9976
     ],
-    "sha256": "69857c2941965f182727c22c3438a4e6d1b3a85eacb712053d8733fa72928403",
+    "sha256": "5756387c6f5b1c9df1f8fa93e7910cb0ce22ebb3caf0a6a5155d072ed393c37f",
     "method": "Matplotlib"
   },
   {
     "figure": "2-5",
     "stem": "fig2_5_weekly_curves",
     "size": [
-      8539,
-      3979
+      8239,
+      3878
     ],
     "dpi": [
       1199.9976,
       1199.9976
     ],
-    "sha256": "14555ef99bcdfcbccc56a222d6c1efe6aebc4107d1152b1ad46d2d5258999561",
+    "sha256": "54c61655c97ff8a3078bca0b5868ec5aba8640974550646569a6a6082d91d5f9",
     "method": "Matplotlib"
   },
   {
@@ -38,23 +38,26 @@
       1199.9976,
       1199.9976
     ],
-    "sha256": "e902d1bb78607ae350dbf68b619d6723ebae9d029fbc09551f5d0d7192e116cc",
+    "sha256": "0411b05dc46727a4f71bc90719a21362d95583faa3a72cb22981033aa114944b",
     "method": "Matplotlib"
   },
   {
-    "figure": "2-10",
-    "stem": "fig2_10_dual_window_definition",
+    "figure": "2-9",
+    "stem": "fig2_9_dual_window_definition",
     "size": [
-      1672,
-      941
+      6709,
+      3776
     ],
-    "dpi": null,
-    "sha256": "78be8db2709670d17aafb90cc4621074fb5f305eec5f24c5a35b45e7f30dbc63",
+    "dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "sha256": "5d9c7042cff534ad182718ee51de107629c51e73d491379725d9eed491828c58",
     "method": "ImageGen"
   },
   {
-    "figure": "2-12",
-    "stem": "fig2_12_weekday_hour_heatmap",
+    "figure": "2-11",
+    "stem": "fig2_11_weekday_hour_heatmap",
     "size": [
       9253,
       4459
@@ -63,84 +66,96 @@
       1199.9976,
       1199.9976
     ],
-    "sha256": "a03752b171286bbf544a8f35af7fada28556fe9f9e1d289d5148ea75c56cbd8e",
+    "sha256": "d23ad8701fae38019f3196528710ff4b15921fbf4dfde3093dc0cd7cc52a29ed",
     "method": "Matplotlib"
   },
   {
     "figure": "3-1",
     "stem": "fig3_1_mrggcn_architecture",
     "size": [
-      1086,
-      1448
+      6709,
+      8945
     ],
-    "dpi": null,
-    "sha256": "d44f39ba9535ab6b4e872ff570d8cf192169995700991fb1fceddc13b63aa80c",
+    "dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "sha256": "9173a206b62ead4fb19d49c1ef3cea27c7caaa1d966dd295b4d7bee63cbac8ba",
     "method": "ImageGen"
   },
   {
     "figure": "3-2",
     "stem": "fig3_2_relation_propagation_unit",
     "size": [
-      1672,
-      941
+      6709,
+      3776
     ],
-    "dpi": null,
-    "sha256": "9095e87c72115d7365da633a18c21321fd0ed8982669af7275eab6dfe130cbf4",
+    "dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "sha256": "cecf94a68e11d2e3272556eddd04f0563bbf891a96beb6974d07459151968e9d",
     "method": "ImageGen"
   },
   {
     "figure": "3-3",
     "stem": "fig3_3_temporal_skip_fusion",
     "size": [
-      1672,
-      941
+      6709,
+      3776
     ],
-    "dpi": null,
-    "sha256": "a032dbbc41290cb422285d40e0847722bfa45533ee7322abc88af2238faa0908",
+    "dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "sha256": "99881015cd469351fa5bfc77c631d0d00398f7ffb2db25bd9bd36a3f0c54029e",
     "method": "ImageGen"
   },
   {
     "figure": "3-4",
     "stem": "fig3_4_lre_construction",
     "size": [
-      1536,
-      1024
+      6709,
+      3776
     ],
-    "dpi": null,
-    "sha256": "d9b8cd3469db53ceabc972dac4417e32e00ca4fdddf660d69effd91dce54b7fd",
+    "dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "sha256": "ededddcd10ea58b390c3e18d6a43f395a0a84c5a4b1ff3efe12c1ab7e6b4aa00",
     "method": "ImageGen"
   },
   {
-    "figure": "3-11",
-    "stem": "fig3_11_bootstrap_difference",
-    "size": [
-      8800,
-      6698
-    ],
-    "dpi": [
-      1199.9976,
-      1199.9976
-    ],
-    "sha256": "18c534450fb7cac095ff3bf413f894cd6438d379cb0221a1f88020ed090a9ebb",
-    "method": "Matplotlib"
-  },
-  {
     "figure": "3-13",
-    "stem": "fig3_13_mae_by_node",
+    "stem": "fig3_13_bootstrap_difference",
     "size": [
-      9733,
-      4219
+      6853,
+      5359
     ],
     "dpi": [
       1199.9976,
       1199.9976
     ],
-    "sha256": "73a4f39227f02a102134ad07ad5a101cddd62f8dac04bd97a3fb97742b27529f",
+    "sha256": "667896dd5348e958ba227f180c416883da7ee091f89f2c3b05b176e25480736b",
     "method": "Matplotlib"
   },
   {
-    "figure": "4-5",
-    "stem": "fig4_5_residual_distribution",
+    "figure": "3-15",
+    "stem": "fig3_15_mae_by_node",
+    "size": [
+      6709,
+      4419
+    ],
+    "dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "sha256": "cc53753281938c43670b8f91dd65017997a70a93c50956848f198ba054b2658a",
+    "method": "Matplotlib"
+  },
+  {
+    "figure": "4-6",
+    "stem": "fig4_6_residual_distribution",
     "size": [
       10459,
       4459
@@ -149,60 +164,63 @@
       1199.9976,
       1199.9976
     ],
-    "sha256": "f15c5a76f859b3f0a0b3ef7e9367291d3d351640f445fd2d1368b9a4112b01b3",
+    "sha256": "0eda6bfe760ac36ddb82f4658981e504ac6a1f4105996372b02cb3a3b0882bb5",
     "method": "Matplotlib"
   },
   {
-    "figure": "4-6",
-    "stem": "fig4_6_error_vs_event_intensity",
+    "figure": "4-7",
+    "stem": "fig4_7_error_vs_event_intensity",
     "size": [
-      8299,
-      4699
+      9000,
+      4380
     ],
     "dpi": [
       1199.9976,
       1199.9976
     ],
-    "sha256": "c622a0d04ed0c8b2ff22acbe167abee43756831d8c10aef43f804d94622604da",
+    "sha256": "980c39a360cc3c90320c76866230003495f80139fb85cf52c68b0a25d32ed038",
     "method": "Matplotlib"
   },
   {
     "figure": "5-3",
     "stem": "fig5_3_asymmetry",
     "size": [
-      6143,
-      5910
+      6708,
+      6864
     ],
     "dpi": [
       1199.9976,
       1199.9976
     ],
-    "sha256": "f64f90a83187cc13ac586a0b741668a5766515a7c37d68632a9851981e5fc411",
+    "sha256": "2ab9311e721d1d6957a0fc54b963d8a7ad5feb0c5405736ee5a0b1e31b2300e1",
     "method": "Matplotlib"
   },
   {
     "figure": "5-5",
     "stem": "fig5_5_pcmci_validation_network",
     "size": [
-      8740,
-      5610
+      9000,
+      5520
     ],
     "dpi": [
       1199.9976,
       1199.9976
     ],
-    "sha256": "f9d65994b9e3abbb34f270d5a32f51bda7587f20dae531757e81dfe2f82ebca8",
+    "sha256": "ed48b669eb01c5bd2d859c1d12fe4d632bb7030d548f0b4e56ac871a46702ac7",
     "method": "Matplotlib"
   },
   {
     "figure": "5-6",
     "stem": "fig5_6_conformal_method",
     "size": [
-      1672,
-      941
+      6709,
+      3776
     ],
-    "dpi": null,
-    "sha256": "62271f2939f0ee4cea7c04bda5878a507f281789c6a4d6b6f233024c254430ea",
+    "dpi": [
+      1199.9976,
+      1199.9976
+    ],
+    "sha256": "5d69edcca21dec2f572776defc04b383c25cc50ddc4f02fc4bb8c5d00da5bd5c",
     "method": "ImageGen"
   }
 ]

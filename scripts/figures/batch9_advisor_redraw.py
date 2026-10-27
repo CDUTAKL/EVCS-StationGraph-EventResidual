@@ -26,7 +26,6 @@ except ImportError:  # 无 skill 环境回退
     from _skill_compat import export_figure, setup_style  # noqa: E402
 
 sys.path.insert(0, "src")
-from evcs_station_graph.data import load_tensor_bundle  # noqa: E402
 
 FIG_DIR = Path("outputs/figures")
 FIG_DIR.mkdir(parents=True, exist_ok=True)
@@ -42,7 +41,11 @@ GRAY_L = "#C8C8C8"
 GRAY_XL = "#E6E9EC"
 RED = "#B05A4A"
 GREEN = "#597A62"
-BUNDLE = load_tensor_bundle("data/processed/SG-DATA-005-primary-tensor.npz")
+
+def load_node_ids() -> list[str]:
+    """Read the ordered node labels without importing the training stack."""
+    with np.load("data/processed/SG-DATA-005-primary-tensor.npz", allow_pickle=False) as data:
+        return [str(node_id) for node_id in data["node_ids"].tolist()]
 
 
 def final(fig, name: str, size: tuple[float, float]) -> None:
@@ -50,7 +53,10 @@ def final(fig, name: str, size: tuple[float, float]) -> None:
         fig,
         basename=str(FIG_DIR / name),
         formats=["svg", "png"],
-        dpi=1200,
+        # Tight cropping leaves fig5_8 narrower than its nominal canvas. At
+        # the thesis's 14.19 cm placement width, 1300 export DPI keeps its
+        # effective raster density above 1200 PPI without changing geometry.
+        dpi=1300 if name == "fig5_8_quantile_per_node" else 1200,
         size_inches=size,
         grayscale_preview=False,
     )
@@ -94,7 +100,7 @@ def _mean_std(values: list[np.ndarray]) -> tuple[np.ndarray, np.ndarray]:
 def redraw_fig5_5() -> None:
     c = json.load(open("outputs/analysis/conformal_prediction/conformal_summary.json"))
     seeds = c["per_seed"]
-    labels = list(BUNDLE.node_ids)
+    labels = load_node_ids()
     qg, qg_sd = _mean_std([np.asarray(s["q_global_per_node"]) for s in seeds])
     qs, qs_sd = _mean_std([np.asarray(s["q_stable_per_node"]) for s in seeds])
     qe, qe_sd = _mean_std([np.asarray(s["q_event_per_node"]) for s in seeds])

@@ -79,7 +79,7 @@ def build_figure() -> plt.Figure:
     ax_b = fig.add_subplot(grid[0, 1])
 
     ax_a.set_title("A  不同评价口径的排序相关", loc="left", fontweight="semibold", pad=8)
-    ax_b.set_title("B  12种配置的全局MAE排名", loc="left", fontweight="semibold", pad=8)
+    ax_b.set_title("B  两套标签的全局MAE对照", loc="left", fontweight="semibold", pad=8)
 
     # Panel A: distinguish correlations of mean-seed rankings from the mean of
     # per-seed correlations; per-seed ranges are shown as ranges, not intervals.
@@ -114,7 +114,10 @@ def build_figure() -> plt.Figure:
     ax_a.set_axisbelow(True)
     ax_a.tick_params(axis="y", length=0, pad=5)
 
-    # Panel B: all ranks are retained; only the self-loop and TCN ranks change.
+    # Panel B：两套标签下的全局 MAE 对照散点（2026-10-27 重构，替代排名
+    # bump 图——12 个配置双列排名中 11 个不变，信息密度过低）。点按"均匀
+    # 分摊名次"用浅灰折线依次相连：排序完全不变时折线严格单调上升，唯一的
+    # 名次互换（自环替换 ↔ TCN，第 10↔11 位）在折线上形成可见的局部回折。
     display = {
         "agcrn_full": "完整AGCRN", "mrg_equal_beta": "等权β",
         "mrg_full": "MRG-GCN", "mrg_no_skip": "无跳连",
@@ -123,43 +126,37 @@ def build_figure() -> plt.Figure:
         "mrg_event": "行为关系", "mrg_self_loop": "自环替换",
         "tcn": "TCN", "tcn_wide": "宽版TCN",
     }
-    ax_b.set_xlim(0, 1)
-    ax_b.set_ylim(12.65, 0.35)
-    ax_b.set_yticks([])
-    ax_b.set_xticks([0.44, 0.66], ["均匀分摊", "完成时刻\n截断"])
-    ax_b.tick_params(axis="x", length=0, pad=6)
-    ax_b.spines["left"].set_visible(False)
-    ax_b.spines["bottom"].set_visible(False)
-    ax_b.set_axisbelow(True)
-    for rank in range(1, 13):
-        ax_b.axhline(rank, color=COLORS["grid"], linewidth=0.55, zorder=0)
-    for row in ranks:
-        name = row["config"]
-        before = int(row["uniform_rank"])
-        after = int(row["alternative_rank"])
-        changed = before != after
+    ax_b.set_xlabel("均匀分摊标签  全局MAE（kWh/15 min）", fontsize=7.8)
+    ax_b.set_ylabel("完成时刻截断标签  全局MAE（kWh/15 min）", fontsize=7.8)
+    um = np.array([float(r["uniform_mae"]) for r in ranks])
+    am = np.array([float(r["alternative_mae"]) for r in ranks])
+    order_u = np.argsort(um)  # 按均匀分摊名次（= MAE 升序）连接
+    ax_b.plot(um[order_u], am[order_u], color=COLORS["grid"], lw=0.9,
+              zorder=1)
+    for r in ranks:
+        name = display[r["config"]]
+        u, a = float(r["uniform_mae"]), float(r["alternative_mae"])
+        changed = int(r["rank_delta"]) != 0
         color = COLORS["orange"] if changed else (
-            COLORS["blue"] if name.startswith("mrg_") else COLORS["gray"]
-        )
-        ax_b.plot([0.44, 0.66], [before, after], color=color,
-                  linewidth=1.6 if changed else 1.0,
-                  alpha=0.95 if changed else 0.72, zorder=2)
-        ax_b.scatter([0.44, 0.66], [before, after], s=18 if changed else 13,
-                     color=color, edgecolor="white", linewidth=0.45, zorder=3)
-        ax_b.text(0.39, before, display[name], ha="right", va="center",
-                  fontsize=7.0, color=color if changed else COLORS["text"])
-        ax_b.text(0.76, after, display[name], ha="left", va="center",
-                  fontsize=7.0, color=color if changed else COLORS["text"])
-        ax_b.text(0.425, before, str(before), ha="right", va="center",
-                  fontsize=6.5, color=COLORS["gray"])
-        ax_b.text(0.715, after, str(after), ha="left", va="center",
-                  fontsize=6.5, color=COLORS["gray"])
+            COLORS["blue"] if r["config"].startswith("mrg_") else COLORS["gray"])
+        ax_b.scatter(u, a, s=30 if changed else 22, facecolor=color,
+                     edgecolor="white", linewidth=0.6, zorder=3)
+        if changed:
+            ax_b.annotate(name, (u, a), xytext=(6, -8 if "TCN" in name else 7),
+                          textcoords="offset points", fontsize=7.0,
+                          color=COLORS["orange"], fontweight="bold")
+    ax_b.text(0.03, 0.97, "仅 自环替换 与 TCN 名次互换（第10、11位），\n"
+                          "其余 10 种配置名次不变", transform=ax_b.transAxes,
+              ha="left", va="top", fontsize=7.0, color=COLORS["gray"],
+              linespacing=1.4)
+    ax_b.grid(axis="both", color=COLORS["grid"], linewidth=0.6, alpha=0.75)
+    ax_b.set_axisbelow(True)
 
     fig.text(0.12, 0.105,
-             "A：圆点为先平均三种子MAE再排序；方点与横线为逐种子相关均值及范围。",
+             "A：圆点为先平均三种子MAE再排序；方点与横线为逐种子相关均值及范围（最小—最大值，不是置信区间）。",
              ha="left", va="center", fontsize=6.8, color=COLORS["gray"])
     fig.text(0.12, 0.065,
-             "B：橙色表示排名变化。逐种子范围为三次相关系数的最小值—最大值，不是置信区间。",
+             "B：灰线按均匀分摊名次连接各配置，单调上升即排序不变；橙色为唯一互换名次的配置（自环替换与TCN）。",
              ha="left", va="center", fontsize=6.8, color=COLORS["gray"])
     fig.align_ylabels([ax_a])
     return fig

@@ -7,6 +7,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
+from matplotlib.patches import Rectangle
 import numpy as np
 import pandas as pd
 
@@ -57,7 +58,14 @@ def pcmci():
     labels = [n.replace('CA-','') for n in nodes]
     ax.set_xticks(range(10),labels); ax.set_yticks(range(10),labels)
     ax.set_xticks(np.arange(11)-.5,minor=True); ax.set_yticks(np.arange(11)-.5,minor=True)
-    ax.grid(which='minor',color='#E8EDF0',lw=.6); ax.tick_params(which='both',length=0)
+    # 矩阵结构显性化（2026-10-27 反馈）：浅灰底 + 白色格线让格子可读，
+    # 空白格（两者均未达阈值）不再与画布背景融为一体；对角线浅蓝灰填充
+    # 保持"自回归对不检验"的区分（其上仍有 '_' 短横符号）。
+    ax.set_facecolor('#F2F4F6')
+    for i in range(10):
+        ax.add_patch(Rectangle((i - .5, i - .5), 1, 1, facecolor='#E2E8EC',
+                               edgecolor='none', zorder=1))
+    ax.grid(which='minor',color='white',lw=1.0); ax.tick_params(which='both',length=0)
     for k,(color,marker) in enumerate(zip([BLUE,GRAY,GOLD],['o','s','^']),1):
         rows,cols = np.where(matrix==k)
         ax.scatter(cols,rows,s=54,c=color,marker=marker,edgecolors='white',linewidths=.5,zorder=3)
@@ -137,9 +145,12 @@ def horizon():
     models=[('002','TCN','#AEB6BC','o','--'),('003','MRG-GCN','#2C5F8A','s','-'),
             ('004','AdaptiveGraph','#8EABC0','D','--'),('009','MLP','#8C979E','^','-.'),
             ('010','GWN','#6E7A81','P',':'),('008','AGCRN','#55606A','X','--')]
+    # 2026-10-27 重构：删顶部图例，改线端直接标注（direct labeling）。
+    # 末端值分两处密集（MLP/GWN/AGCRN 挤在 0.028–0.029，MRG/AdaptiveGraph
+    # 挤在 0.024 附近），标注在右侧标注槽内等距排开、细引线连回线端。
     fig,ax=plt.subplots(figsize=(7.5,4.1))
-    fig.subplots_adjust(left=.12,right=.96,bottom=.16,top=.80)
-    hs=np.arange(1,5); records={}
+    fig.subplots_adjust(left=.12,right=.79,bottom=.16,top=.94)
+    hs=np.arange(1,5); records={}; ends=[]
     for exp,label,color,marker,ls in models:
         base='outputs/night_run/20260730-171821' if exp in ['002','003','004'] else 'outputs/experiments'
         paths=sorted(ROOT.glob(f'{base}/SG-EXP-{exp}/*/seed-*/metrics.json'))
@@ -149,12 +160,19 @@ def horizon():
         ax.plot(hs,mean,label=label,color=color,marker=marker,ls=ls,lw=2 if label=='MRG-GCN' else 1.2,
                 ms=5.5,mfc='white' if label!='MRG-GCN' else color,mew=1,zorder=5 if label=='MRG-GCN' else 4)
         ax.fill_between(hs,mean-sd,mean+sd,color=color,alpha=.12,lw=0)
+        ends.append((label,color,float(mean[-1])))
         records[label]={'paths':[str(p.relative_to(ROOT)) for p in paths],'mean':mean.tolist(),'sd':sd.tolist()}
     ax.set(xlim=(.85,4.15),ylim=(0,.041),xlabel='目标片区间（min）',ylabel='MAE（kWh/15 min）')
     ax.set_xticks(hs,['[0,15)','[15,30)','[30,45)','[45,60)'])
     ax.tick_params(axis='x',labelsize=8)
     ax.set_yticks([0,.01,.02,.03,.04]); ax.grid(axis='y',color='#E7EBEE',lw=.6)
-    ax.legend(ncol=3,loc='upper center',bbox_to_anchor=(.5,1.29),frameon=False,fontsize=9,columnspacing=2.5)
+    order=np.argsort([e[2] for e in ends])
+    gutter=np.linspace(0.0248,0.0375,len(ends))
+    for r,idx in enumerate(order):
+        label,color,yv=ends[idx]
+        ax.plot([4.03,4.09],[yv,gutter[r]],color=color,lw=.55,alpha=.65,clip_on=False,zorder=3)
+        ax.text(4.12,gutter[r],f'{label}  {yv:.4f}',color=color,fontsize=8,
+                ha='left',va='center',clip_on=False)
     save(fig,'fig3_12_mae_by_horizon')
     records['_time_axis']={
         'reference':'forecast_release_time',

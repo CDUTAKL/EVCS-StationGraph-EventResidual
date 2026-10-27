@@ -16,13 +16,13 @@ MDP分别解释参数敏感度、受检学生的替代表现和误差构成，�
 
 # Abstract
 
-Charging-node proxy energy is sparse and heterogeneous, so aggregate error can conceal performance on active intervals. This thesis studies 15-minute node proxy energy reconstructed from public charging sessions. It tests whether within-station relations and node-specific gates add predictive value, and what model-selection and error-reporting decisions those comparisons support. Main analyses use Caltech's event-time protocol and a separately refitted JPL site, assuming behavioral counts are available at interval end.
+Charging-node proxy energy reconstructed from public sessions is sparse and heterogeneous; aggregate error can conceal active-interval performance. This thesis tests the predictive value of within-station relations and node-specific gates, and their implications for model selection and error reporting. Analyses use Caltech's event-time protocol and a separately refitted JPL site, with behavioral counts available at interval end.
 
-MRG-GCN combines temporal representations with load-coupling, behavioral co-occurrence, and profile-similarity relations. The contribution is a controlled test of within-station relation gains and their interpretive scope, not a claim of novelty for the underlying graph convolution, gating, or temporal-network components. At Caltech, its overall MAE is 0.03890 kWh/15 min, 16.1% below a capacity-near TCN, but full AGCRN performs better and MRG-GCN does not lead on nonzero or labeled-event targets. At JPL, its overall MAE is 2.64%–3.36% below three preregistered baselines, while TCN has lower RMSE and lower nonzero- and labeled-event-target errors. Node-specific gates reduce overall MAE by 2.69% and 2.71% relative to parameter-matched shared gates at Caltech and JPL, respectively; one shared-gate seed per site reaches the 60-epoch limit, so this result is budget-bound.
+MRG-GCN combines temporal representations with load-coupling, behavioral co-occurrence, and profile-similarity relations. This thesis tests their increments and interpretive scope, not novelty of these component families. At Caltech, overall MAE is 0.03890 kWh/15 min, 16.1% below a capacity-near TCN; full AGCRN performs better, and MRG-GCN does not lead on nonzero or labeled-event targets. At JPL, overall MAE is 2.64-3.36% below three preregistered baselines, while TCN has lower RMSE and lower nonzero- and labeled-event errors. Node-specific gates reduce MAE by 2.69% at Caltech and 2.71% at JPL versus parameter-matched shared gates; one shared-gate seed per site reaches the 60-epoch cap, bounding this result.
 
-JPL relation-replacement retraining supports conditional overall-MAE gains over self-loop replacements for load coupling (1.82%) and profile similarity (1.52%); the behavioral relation remains uncertain. An uncorrected post-hoc nonzero-target difference for load coupling is exploratory and does not imply that the complete model beats TCN on nonzero targets. With the completion-time-truncated target, MRG-GCN retains its overall-MAE ranking relative to the capacity-near TCN, while its nonzero-target MAE remains higher. Across 12 configurations, the Spearman correlation of rankings based on seed-averaged overall MAE is 0.993, but it is 0.420 for nonzero targets defined by each evaluation label; aggregate ranking therefore does not establish ranking on active intervals. These supplements reuse inspected test periods.
+JPL relation-replacement retraining supports conditional overall-MAE gains over self-loop replacements for load coupling (1.82%) and profile similarity (1.52%); the behavioral relation remains uncertain. The post-hoc, uncorrected nonzero-target difference for load coupling is exploratory and does not show that the complete model beats TCN on nonzero targets. With the completion-time-truncated target, MRG-GCN retains its overall-MAE ranking against the capacity-near TCN, while its nonzero-target MAE remains higher. Across 12 configurations, Spearman correlation of seed-averaged overall-MAE rankings is 0.993, versus 0.420 for nonzero-target rankings under each evaluation label. Aggregate ranking therefore does not establish active-interval ranking. These supplements reuse inspected test periods.
 
-MDP separates parameter sensitivity, a tested student's replacement performance, and error composition. The distinctions refine relation choice, model replacement claims, and subgroup reporting, but do not show that diagnosis-guided model changes improve prediction. The findings can guide node-proxy-load model screening and data collection; meter validity, reporting delays, and operational benefits require synchronized measurements and field evaluation.
+MDP separates parameter sensitivity, student replacement performance, and error composition. It guides relation choice, model screening, subgroup reporting, and data collection, but does not show that diagnosis-guided changes improve prediction. Meter validity, input latency, and operational benefits require synchronized measurements and field evaluation.
 
 Keywords: short-term charging-node load forecasting; LRE; MRG-GCN; MDP; node proxy load
 
@@ -259,7 +259,7 @@ P积分与会话电量之比中位数为1.1492，累计电量首末差与会话�
 
 JPL输入只含接入数、离站数、活跃数和当地日历编码，不含由未来最终电量构造的历史代理负荷。目标仍将会话总电量均匀分配至接入至断开所覆盖的时间片，单位为kWh/15 min；零会话时间格表示无已记录会话贡献，不证明设备在线或实际需求为零。完成时间缺失2,037条，另有3,211条完成时间落在接入—断开区间之外；标签成熟时刻保守取断开时间与非空完成时间的较晚者，输入事件时刻不随之改变。2020年9—10月没有会话记录，未据此删去时间段。JPL与Caltech会话键、设备和车位标识无交集，但同属ACN数据体系且年份重叠。因此，本节对应另一场站重新筛选、构图和训练的比较，不是零样本迁移、不同数据家族或未来时期验证；两站标签也都不是连续电表功率。
 
-JPL验证流程汇总见图2-13，点预测比较结果见3.6.3节。
+JPL验证流程汇总见图2-12，点预测比较结果见3.6.3节。
 
 ## 2.2 节点可用性筛选与质量门禁
 
@@ -280,11 +280,11 @@ JPL验证流程汇总见图2-13，点预测比较结果见3.6.3节。
 | 验证期活跃月份比例 | ≥0.50 | ≥0.25 | 42 |
 | 训练期月度能量变异系数 | ≤2.5 | ≤3.5 | 2 |
 
-六项条件联合筛选后，55个候选节点中有10个进入主分析集合，且均可在测试期评价；敏感性候选集合包含这10个节点及另外5个节点，共15个，其中14个在测试期可评价。图2-2展示各候选节点在训练、验证和测试阶段的活跃月份比例以及筛选归属。图中测试期覆盖仅描述冻结节点集合的后续可评价性，并未反向参与筛选，也不代表15节点预测实验已完成。
+六项条件联合筛选后，55个候选节点中有10个进入主分析集合，且均可在测试期评价；敏感性候选集合包含这10个节点及另外5个节点，共15个，其中14个在测试期可评价。图2-2展示各候选节点在训练与验证阶段的活跃月份比例、测试期可评价性以及筛选归属。图中测试期覆盖仅描述冻结节点集合的后续可评价性，并未反向参与筛选，也不代表15节点预测实验已完成。
 
 ![候选节点覆盖率与筛选结果](../../outputs/figures/fig2_2_node_coverage.svg)
 
-**图2-2 候选节点覆盖率与筛选结果**  （a）55个候选节点在训练、验证和测试阶段的活跃月份比例，横向参考线给出主分析门槛0.50和敏感性门槛0.25；（b）主分析节点、敏感性专属节点和未入选节点的筛选结果。按日历月份计，三个阶段分别涉及30、7和7个自然月，首尾月份可能不完整。节点清单只依据训练期与验证期统计量冻结，测试期覆盖率仅用于可评价性检查。该图为全量描述性统计，不含抽样误差棒。
+**图2-2 候选节点覆盖率与筛选结果**  （a）55个候选节点的训练期（横轴）与验证期（纵轴）活跃月份比例，虚线给出主分析门槛0.50和敏感性门槛0.25，两个阶段均达到门槛方可入选；空心标记表示该节点在测试期不可评价（仅作可评价性描述，不反向参与筛选）；顶部与右侧为两阶段比例的边际分布（三类节点堆叠计数）；（b）主分析节点、敏感性专属节点和未入选节点的筛选结果。按日历月份计，三个阶段分别涉及30、7和7个自然月，首尾月份可能不完整。节点清单只依据训练期与验证期统计量冻结。该图为全量描述性统计，不含抽样误差棒。
 
 除节点筛选外，本文还检查了时间片数量、时间戳间隔、标识映射、张量维度、时间划分连续性与互斥性、节点顺序以及测试边界等数据质量条件，9项门禁均通过。上述检查保证了进入后续实验的数据在时间轴和节点轴上一致，但并不把统计筛选结果解释为物理充电设施的完备清单。
 
@@ -357,21 +357,17 @@ q_{t,i}=\frac{a_{t,i}}{\max(\sigma_{a,i},\varepsilon)}+
 
 **图2-7 事件分数与冻结规则事件窗口生成流程**  接入、离站、活跃变化和负荷变化四个分量经逐节点标准差归一化后求和，采用验证集95%分位阈值触发，并仅向未来扩展2个时间片。标准差来自训练集，测试集不参与阈值估计。
 
-标签事件时间步的日内分布见图2-8，事件并非在一天内均匀出现。图2-9展示冻结规则窗口中四个标准化分量的节点平均贡献。该图描述旧回溯规则分数的构成，负荷变化分量仍依赖事后重构，不表示实时行为识别或分量对预测误差的因果贡献。
+标签事件时间步的日内分布见图2-8，事件并非在一天内均匀出现。
 
 ![标签事件的日内分布](../../outputs/figures/fig2_8_event_hourly.svg)
 
 **图2-8 标签事件时间步的日内分布**  在全部118,818个时间步中，将任一主分析节点具有目标侧事件标签的时间步按America/Los_Angeles当地小时汇总；柱高表示该小时事件时间步数占全部事件时间步数的比例，峰值标记由同一统计数组计算。该图不区分事件类型，柱高也不是分类准确率或条件事件概率；全量描述性统计不含误差棒。
 
-![规则事件分数的分量构成](../../outputs/figures/fig2_9_event_component_composition.svg)
+事件统计必须区分“目标侧标签事件”和“冻结规则触发”两种口径。内部字段`target_event`由未来4个目标片中的接入、离站或负荷突变标签定义，直接作用于形状为\([S,H,N]\)的预测评价键；它是按目标侧观测构造的事后评价标签，不是人工核验的现实事件真值。测试集中共有10,160个标签事件样本，占712,360个预测键的1.426%，约为1.43%。旧字段`rule_trigger`取每个预测原点对应的回溯规则状态，原始形状为\([S,N]\)，在四格诊断和规则路由时广播到4个目标片；测试集中共有3,060个触发预测键，占0.430%，约为0.43%。该状态依赖事后代理负荷差分，不能解释为发布时刻可用的触发信息。前者用于评价模型在标签事件窗口上的误差，后者用于第4章四格诊断和第5章冻结规则路由。两者定义和信息时点不同，但广播后的上述比例具有相同预测键分母；不得把原始节点—起点数与广播后预测键数直接混算，定义与用途对照见图2-9。
 
-**图2-9 冻结规则事件窗口的分量构成**  对测试集冻结规则事件窗口内的接入、离站、活跃变化和负荷变化四个标准化分量按节点取平均。事件窗口包含原始阈值触发点及其向未来扩展的两个时间片；阈值由验证集冻结，测试集仅执行规则。图中为完整窗口样本的描述性均值，不含误差棒。
+![双事件口径对比](../../outputs/figures/fig2_9_dual_window_definition.png)
 
-事件统计必须区分“目标侧标签事件”和“冻结规则触发”两种口径。内部字段`target_event`由未来4个目标片中的接入、离站或负荷突变标签定义，直接作用于形状为\([S,H,N]\)的预测评价键；它是按目标侧观测构造的事后评价标签，不是人工核验的现实事件真值。测试集中共有10,160个标签事件样本，占712,360个预测键的1.426%，约为1.43%。旧字段`rule_trigger`取每个预测原点对应的回溯规则状态，原始形状为\([S,N]\)，在四格诊断和规则路由时广播到4个目标片；测试集中共有3,060个触发预测键，占0.430%，约为0.43%。该状态依赖事后代理负荷差分，不能解释为发布时刻可用的触发信息。前者用于评价模型在标签事件窗口上的误差，后者用于第4章四格诊断和第5章冻结规则路由。两者定义和信息时点不同，但广播后的上述比例具有相同预测键分母；不得把原始节点—起点数与广播后预测键数直接混算，定义与用途对照见图2-10。
-
-![双事件口径对比](../../outputs/figures/fig2_10_dual_window_definition.png)
-
-**图2-10 标签事件与冻结规则触发的双口径对比**  `target_event`用于事后评价，旧`rule_trigger`用于回溯分层及规则路由；两者共同定义四格诊断，标签事件不进入规则路由。原始张量分别为[S,H,N]与[S,N]，后者广播到各目标片后，1.43%和0.43%均以712,360个测试预测键为分母。旧标签的负荷跳变阈值采用全时期统计，旧规则含事后重构负荷差分，均不能解释为实时事件识别效果。
+**图2-9 标签事件与冻结规则触发的双口径对比**  `target_event`用于事后评价，旧`rule_trigger`用于回溯分层及规则路由；两者共同定义四格诊断，标签事件不进入规则路由。原始张量分别为[S,H,N]与[S,N]，后者广播到各目标片后，1.43%和0.43%均以712,360个测试预测键为分母。旧标签的负荷跳变阈值采用全时期统计，旧规则含事后重构负荷差分，均不能解释为实时事件识别效果。
 
 逐节点验证统计见表2-6。验证集非零事件分数占比为0.20%～1.06%，冻结阈值为18.9～32.5；原始触发点占节点时间片的0.011%～0.056%，向未来扩展后占0.034%～0.168%。在测试集上，规则共产生254个连续窗口，其中253个长度为3个时间片，1个因相邻触发合并为6个时间片。
 
@@ -408,17 +404,17 @@ q_{t,i}=\frac{a_{t,i}}{\max(\sigma_{a,i},\varepsilon)}+
 | `demand_intensity` | 需求强度 | 21.589 | 0.0780 | 2.9671 |
 | `load_jump_flag` | 负荷突变标志 | 0.135 | 0.0014 | 1 |
 
-7项特征在全部时间步和节点上展平后的Spearman秩相关系数见图2-11。Spearman秩相关用于描述单调关联，不要求变量服从正态分布或满足线性关系；但本数据存在大量并列零值，因此系数仅作描述性比较。节点代理负荷、活跃会话数、占用率和需求强度之间相关程度较高，而三项稀疏事件特征与主体状态特征的相关程度相对较低。这一结果说明输入同时包含状态表征冗余和低频行为信号，后续需要通过模型对比和消融而非仅凭相关矩阵判断各特征的预测作用。
+7项特征在全部时间步和节点上展平后的Spearman秩相关系数见图2-10。Spearman秩相关用于描述单调关联，不要求变量服从正态分布或满足线性关系；但本数据存在大量并列零值，因此系数仅作描述性比较。节点代理负荷、活跃会话数、占用率和需求强度之间相关程度较高，而三项稀疏事件特征与主体状态特征的相关程度相对较低。这一结果说明输入同时包含状态表征冗余和低频行为信号，后续需要通过模型对比和消融而非仅凭相关矩阵判断各特征的预测作用。
 
-![输入特征Spearman相关矩阵](../../outputs/figures/fig2_11_feature_correlation.svg)
+![输入特征Spearman相关矩阵](../../outputs/figures/fig2_10_feature_correlation.svg)
 
-**图2-11 输入特征Spearman秩相关矩阵**  相关系数由118,818个时间步、10个主分析节点的7维特征展平计算，颜色和单元格数字共同表示相关方向与大小。该图为全量描述性统计，不含误差棒；大量零值造成并列秩，因而不将相关系数解释为独立贡献或因果关系。
+**图2-10 输入特征Spearman秩相关矩阵**  相关系数由118,818个时间步、10个主分析节点的7维特征展平计算，颜色和单元格数字共同表示相关方向与大小。该图为全量描述性统计，不含误差棒；大量零值造成并列秩，因而不将相关系数解释为独立贡献或因果关系。
 
-按星期和小时聚合10个节点代理负荷所得结果见图2-12。不同星期类别在白天和晚间呈现不同的负荷强度，周末与工作日的分布也有差异，与2.3节的自相关结果相互印证。后续模型据此选取连续96片、即完整24 h的历史信息作为基本输入窗口，并通过图结构补充同一时段节点之间的统计联系。
+按星期和小时聚合10个节点代理负荷所得结果见图2-11。不同星期类别在白天和晚间呈现不同的负荷强度，周末与工作日的分布也有差异，与2.3节的自相关结果相互印证。后续模型据此选取连续96片、即完整24 h的历史信息作为基本输入窗口，并通过图结构补充同一时段节点之间的统计联系。
 
-![全站星期与小时负荷热力图](../../outputs/figures/fig2_12_weekday_hour_heatmap.svg)
+![全站星期与小时负荷热力图](../../outputs/figures/fig2_11_weekday_hour_heatmap.svg)
 
-**图2-12 全站节点代理负荷的星期—小时聚合热力图**  每个单元格为10个主分析节点在对应当地星期和小时上的平均节点代理负荷，并非节点负荷之和；时区为America/Los_Angeles。色阶覆盖完整聚合值范围，周末以分隔线区分。该图由全时段样本直接聚合，不含误差棒，颜色不表示事件发生概率。
+**图2-11 全站节点代理负荷的星期—小时聚合热力图**  每个单元格为10个主分析节点在对应当地星期和小时上的平均节点代理负荷，并非节点负荷之和；时区为America/Los_Angeles。色阶覆盖完整聚合值范围，周末以分隔线区分。该图由全时段样本直接聚合，不含误差棒，颜色不表示事件发生概率。
 
 该回溯协议的模型输入形状为\(96\times10\times7\)，输出为\(4\times10\)。归一化参数仅由训练集估计，验证集和测试集沿用冻结参数。严格事件时刻协议虽然也是7通道，但语义完全不同：只含`access_count`、`departure_count`、`active_count`及当地小时、星期的正余弦编码，不含`load`、`demand_intensity`、`occupancy_rate`或`load_jump_flag`。它仍使用96片历史与4片代理目标，时间边界统一按2.1.1节定义；不得因张量形状相同而将旧输入、检查点或模型结果移入新协议。
 
@@ -426,11 +422,11 @@ q_{t,i}=\frac{a_{t,i}}{\max(\sigma_{a,i},\varepsilon)}+
 
 数据特征提出四项建模要求。其一，零值与长尾并存，宜使用MAE、RMSE和WAPE，并分别评价事件、稳定和非零样本。其二，节点异质性与多类统计联系为LRE构图提供动机，但其有效性须由消融检验。其三，标签事件与规则触发错位，需用四格诊断及区间覆盖分别分析。其四，状态特征相关、行为信号稀疏，故保留7维统一输入，不凭相关矩阵直接删除特征或主张预测贡献。
 
-JPL补充实验将这些建模要求落实为固定的数据与评价协议（图2-13）。行为输入和回顾性目标分别构造，节点筛选仅使用训练边界前已成熟的记录，标准化参数与LRE关系图仅由训练段拟合。调参集用于选择检查点，所有检查点锁定后，各运行才导出一次测试预测；整体与分层比较使用共同的预测键。
+JPL补充实验将这些建模要求落实为固定的数据与评价协议（图2-12）。行为输入和回顾性目标分别构造，节点筛选仅使用训练边界前已成熟的记录，标准化参数与LRE关系图仅由训练段拟合。调参集用于选择检查点，所有检查点锁定后，各运行才导出一次测试预测；整体与分层比较使用共同的预测键。
 
-![JPL固定协议重新拟合验证流程](../../outputs/figures/fig2_13_jpl_validation_protocol.png)
+![JPL固定协议重新拟合验证流程](../../outputs/figures/fig2_12_jpl_validation_protocol.png)
 
-**图2-13 JPL固定协议重新拟合验证流程**  输入为接入、离站、活跃计数及当地日历编码，假定行为计数在所属时间片结束时可见；实际接收延迟未核实。目标为会话电量在接入至断开区间内均匀分摊的代理能量。训练、调参、校准和测试按时间分段，96片历史窗与4片目标窗完整留段，目标片起点按2.1.1节统一口径解释。四种模型各运行三个种子，以调参集原单位MAE选择检查点；全部检查点锁定后，每次训练运行仅导出一次测试预测，在632,640个共同预测键上评价，整体MAE另按24个七日块进行配对比较。训练预算与早停规则见3.6.3节。校准段在预登记点预测比较时保留，后续独立区间评价见5.3.5节；该流程对应另一ACN场站的重新拟合验证。
+**图2-12 JPL固定协议重新拟合验证流程**  输入为接入、离站、活跃计数及当地日历编码，假定行为计数在所属时间片结束时可见；实际接收延迟未核实。目标为会话电量在接入至断开区间内均匀分摊的代理能量。训练、调参、校准和测试按时间分段，96片历史窗与4片目标窗完整留段，目标片起点按2.1.1节统一口径解释。四种模型各运行三个种子，以调参集原单位MAE选择检查点；全部检查点锁定后，每次训练运行仅导出一次测试预测，在632,640个共同预测键上评价，整体MAE另按24个七日块进行配对比较。训练预算与早停规则见3.6.3节。校准段在预登记点预测比较时保留，后续独立区间评价见5.3.5节；该流程对应另一ACN场站的重新拟合验证。
 
 ## 2.7 本章小结
 
@@ -789,7 +785,7 @@ MRG-GCN、EventResidual和AdaptiveGraph的MAE差仅为0.00014～0.00020，与三
 
 ![模型误差差的点级Bootstrap](../../outputs/figures/fig3_13_bootstrap_difference.svg)
 
-**图3-13 模型误差差的点级Bootstrap**  每行纵轴按“前者vs后者”列出比较模型，点为MAE(后者)−MAE(前者)，正值表示前者误差更低；并非所有行都以MRG-GCN为比较对象。误差棒为10,000次重采样的95%百分位区间。预测键存在时间、节点及种子内相关性，该区间仅作点级误差差描述，不作跨种子显著性判断。
+**图3-13 模型误差差的点级Bootstrap**  每行纵轴按“前者vs后者”列出比较模型，条形为MAE(后者)−MAE(前者)，正值表示前者误差更低；并非所有行都以MRG-GCN为比较对象。条端误差线为10,000次重采样的95%百分位区间。预测键存在时间、节点及种子内相关性，该区间仅作点级误差差描述，不作跨种子显著性判断。
 
 为避免将点级重采样误差棒误读为时间序列证据，本文进一步对同一批原始预测执行时间块复核。具体做法是：对每个共同预测键计算“基线绝对误差−MRG-GCN绝对误差”，按预测原点的UTC日聚合，并在相同键上先取三种子的逐键平均；随后分别以1日和7日为重采样单元进行10,000次有放回百分位Bootstrap。这里的种子平均是误差序列的算术平均，不是将三个模型输出组成集成预测。区间仅描述锁定测试期内的时间块稳定性，不替代跨场站或未见时期验证。
 
@@ -1014,26 +1010,26 @@ SG-EXP-032复用Caltech事件时刻协议的输入、图、切分及708,560个�
 
 | 协议/配置 | 输入 | 可训练参数 | 上限/耐心；选模指标 | 最佳轮次；停止轮次 |
 |---|---|---:|---|---|
-| Caltech回溯：AdaptiveGraph | A | 35,005 | 60/8；标准化MAE | 17/13/13；25/21/21 |
-| Caltech回溯：MRG-GCN | A | 32,714 | 60/8；标准化MAE | 22/29/25；30/37/33 |
-| Caltech回溯：TCN | A | 16,996 | 60/8；标准化MAE | 8/6/5；16/14/13 |
-| Caltech事件时刻（019）：mrg_full | B | 32,714 | 60/8；原单位MAE | 27/19/19；35/27/27 |
-| Caltech事件时刻（019）：tcn_wide | B | 32,674 | 60/8；原单位MAE | 11/4/3；19/12/11 |
-| Caltech事件时刻（019）：agcrn_full | B | 199,912 | 60/8；原单位MAE | 1/1/1；9/9/9 |
-| Caltech门控配对（027）：mrg_full | B | 32,714 | 60/8；原单位MAE | 30/14/14；38/22/22 |
-| Caltech门控配对（027）：mrg_shared_gate | B | 32,714 | 60/8；原单位MAE | 52/32/46；60/40/54 |
-| JPL（028）：mrg_full | B | 32,714 | 60/8；原单位MAE | 27/25/24；35/33/32 |
-| JPL（028）：tcn_wide | B | 32,674 | 60/8；原单位MAE | 11/10/15；19/18/23 |
-| JPL（028）：agcrn_full | B | 199,912 | 60/8；原单位MAE | 5/5/4；13/13/12 |
-| JPL（028）：mrg_shared_gate | B | 32,714 | 60/8；原单位MAE | 59/33/48；60/41/56 |
-| JPL关系替换（031）：完整模型 | B | 32,714 | 60/8；原单位MAE | 27/25/24；35/33/32 |
-| JPL关系替换（031）：负荷耦合→自环 | B | 32,714 | 60/8；原单位MAE | 42/41/28；50/49/36 |
-| JPL关系替换（031）：行为共现→自环 | B | 32,714 | 60/8；原单位MAE | 23/41/32；31/49/40 |
-| JPL关系替换（031）：轮廓相似→自环 | B | 32,714 | 60/8；原单位MAE | 34/41/22；42/49/30 |
-| Caltech目标敏感性（032）：mrg_full | B | 32,714 | 60/8；原单位MAE | 16/12/14；24/20/22 |
-| Caltech目标敏感性（032）：tcn_wide | B | 32,674 | 60/8；原单位MAE | 6/12/4；14/20/12 |
+| C回溯 AdaptiveGraph | A | 35,005 | 60/8；标准化MAE | 17/13/13；25/21/21 |
+| C回溯 MRG-GCN | A | 32,714 | 60/8；标准化MAE | 22/29/25；30/37/33 |
+| C回溯 TCN | A | 16,996 | 60/8；标准化MAE | 8/6/5；16/14/13 |
+| C019 MRG-GCN | B | 32,714 | 60/8；原单位MAE | 27/19/19；35/27/27 |
+| C019 TCN | B | 32,674 | 60/8；原单位MAE | 11/4/3；19/12/11 |
+| C019 AGCRN | B | 199,912 | 60/8；原单位MAE | 1/1/1；9/9/9 |
+| C027节点门控 | B | 32,714 | 60/8；原单位MAE | 30/14/14；38/22/22 |
+| C027共享门控 | B | 32,714 | 60/8；原单位MAE | 52/32/46；60/40/54 |
+| J028 MRG-GCN | B | 32,714 | 60/8；原单位MAE | 27/25/24；35/33/32 |
+| J028 TCN | B | 32,674 | 60/8；原单位MAE | 11/10/15；19/18/23 |
+| J028 AGCRN | B | 199,912 | 60/8；原单位MAE | 5/5/4；13/13/12 |
+| J028共享门控 | B | 32,714 | 60/8；原单位MAE | 59/33/48；60/41/56 |
+| J031完整模型 | B | 32,714 | 60/8；原单位MAE | 27/25/24；35/33/32 |
+| J031负荷→自环 | B | 32,714 | 60/8；原单位MAE | 42/41/28；50/49/36 |
+| J031行为→自环 | B | 32,714 | 60/8；原单位MAE | 23/41/32；31/49/40 |
+| J031轮廓→自环 | B | 32,714 | 60/8；原单位MAE | 34/41/22；42/49/30 |
+| C032 MRG-GCN | B | 32,714 | 60/8；原单位MAE | 16/12/14；24/20/22 |
+| C032 TCN | B | 32,674 | 60/8；原单位MAE | 6/12/4；14/20/12 |
 
-注：输入A为回溯七通道（代理负荷、接入数、离站数、活跃数、占用率、需求强度、负荷跳变标志）；输入B为事件时刻七通道（接入数、离站数、活跃数及当地小时、星期的正余弦编码），假定行为计数在片末可见。两类输入均按相应训练段统计量标准化。所有列示运行采用AdamW、学习率0.001、权重衰减0.0001、batch size 256和标准化L1训练损失，最多60轮、早停耐心8轮。回溯协议按验证集标准化MAE选模；019、027、028、031及032按调参集原单位MAE选模，校准和测试不参与选模。轮次依seed-2024/2025/2026列出；表内参数和日志已逐项复核。019与027分别保留自身正式运行，不以027的较低点估计替换019结果；031的四种配置均未达到60轮上限，且仅替换指定邻接、保留其余关系分支和模型参数。031未触及上限只说明训练在耐心规则下提前停止，未检验更长预算或不同收敛判据，不能单独证明优化已充分收敛。032使用替代目标重算目标标准化参数，但固定B输入、原训练前缀图、切分及预测起点键。完整AGCRN的199,912个参数未与MRG-GCN容量匹配。AdaptiveGraph匹配CUDA复算、原生CPU选边差异及来源限制见3.6.4节。
+注：C、J分别表示Caltech、JPL；其后数字为实验编号。“节点门控”和“共享门控”分别指mrg_full与mrg_shared_gate。输入A为回溯七通道（代理负荷、接入数、离站数、活跃数、占用率、需求强度、负荷跳变标志）；输入B为事件时刻七通道（接入数、离站数、活跃数及当地小时、星期的正余弦编码），假定行为计数在片末可见。两类输入均按相应训练段统计量标准化。所有列示运行采用AdamW、学习率0.001、权重衰减0.0001、batch size 256和标准化L1训练损失，最多60轮、早停耐心8轮。回溯协议按验证集标准化MAE选模；019、027、028、031及032按调参集原单位MAE选模，校准和测试不参与选模。轮次依seed-2024/2025/2026列出；表内参数和日志已逐项复核。019与027分别保留自身正式运行，不以027的较低点估计替换019结果；031的四种配置均未达到60轮上限，且仅替换指定邻接、保留其余关系分支和模型参数。031未触及上限只说明训练在耐心规则下提前停止，未检验更长预算或不同收敛判据，不能单独证明优化已充分收敛。032使用替代目标重算目标标准化参数，但固定B输入、原训练前缀图、切分及预测起点键。完整AGCRN的199,912个参数未与MRG-GCN容量匹配。AdaptiveGraph匹配CUDA复算、原生CPU选边差异及来源限制见3.6.4节。
 
 Caltech门控配对及JPL共享门控seed-2024触及60轮上限（JPL最佳59轮、停止60轮）；门控增量因此限于该预算。参数量相近不代表推理时延或能耗相同。
 
@@ -1082,7 +1078,7 @@ SG-EXP-032仅改变代理目标：有效完成时刻作为分摊终点，缺失�
 
 ![代理标签定义下的模型排序敏感性](../../outputs/figures/fig3_17_proxy_label_stability.svg)
 
-**图3-17 代理标签定义下的模型排序敏感性**  A比较均匀分摊标签与完成时刻截断标签下的排序相关：圆点为先平均三种子MAE再排序所得的Spearman，方点与横线为逐种子相关均值及范围；B显示12种配置的全局MAE排名，橙色表示名次变化。图中排序仅基于同一批预测和已查看测试期，不表示代理标签与实测负荷等价。
+**图3-17 代理标签定义下的模型排序敏感性**  A比较均匀分摊标签与完成时刻截断标签下的排序相关：圆点为先平均三种子MAE再排序所得的Spearman，方点与横线为逐种子相关均值及范围；B对照两套标签下12种配置的全局MAE：点按均匀分摊名次以灰线相连，单调上升即排序不变，橙色为唯一互换名次的配置（自环替换与TCN，第10、11位）。图中排序仅基于同一批预测和已查看测试期，不表示代理标签与实测负荷等价。
 
 对既有训练标签与评价标签的交叉复评显示，MRG-GCN相对容量近似TCN的全局MAE差在四种组合下均为正（11.44%–16.06%）；这是两组既有训练产物的交叉评价，不是四项独立确认。节点门控相对共享门控的三种子平均优势由均匀标签下的2.69%降至截断标签下的1.65%，其中seed-2024由+1.73%变为−0.91%。因此，截断目标下MRG-GCN全局排序保持、门控单种子方向反转和非零组排序敏感可以同时成立；这些结果不能替代不同目标上的重新训练或未查看时期验证。
 
