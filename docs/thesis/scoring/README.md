@@ -88,6 +88,7 @@
 
 - `review-preparation.md`、`review-preparation.json`：正式评分前的哈希预检、确定性检查缓存及章节—证据—主张影响索引；运行例见说明文档。
 - `scripts/prepare_thesis_review.py`：离线准备入口。每轮使用新的输出目录；未登记的材料或未映射变化要求全项复读。
+- 当前稿独立评阅使用`--review-mode independent_current`，并须显式确认历史材料文本检查；该准备包用于描述当前稿，不是可发布的配对评分。具体边界和命令见`review-preparation.md`。
 
 - `rubric.json`：权重、显示精度、计分版本、每项锚点。
 - `scorecard-template.json`：机器可读评分表；未填写时总分暂缓。

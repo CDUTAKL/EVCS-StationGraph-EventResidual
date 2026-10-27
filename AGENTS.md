@@ -15,3 +15,10 @@
 - Reuse the existing hash-bound incremental audit/cache for daily candidates. Final delivery still requires its full-page visual acceptance; an unreviewed page cannot inherit a pass merely because it was not selected by the impact index.
 - Only an authorized finalization task may replace official artifacts. After their hashes and remote LFS availability are verified, remove task-created scratch copies; retain lightweight audit records and only backups required for recovery or cited evidence. Inventory and check references before deleting pre-existing files.
 - Before publishing a new delivery, recheck the canonical source workspace against the frozen manuscript/figure inputs and confirm the active writing task has finished. A clean isolated checkout does not prove the shared source workspace is frozen.
+
+## Thesis workflow gates
+
+- For a blueprint task, use `python3 scripts/thesis_workflow.py` as the normal operator entry for `inspect`, `prepare`, `execute`, `collect`, or `run`. It calls the existing lifecycle and checks `thesis_task_gate.py` at state transitions. The gate is read-only and is not task acceptance; Codex still reviews every changed path and claim.
+- Use `python3 scripts/thesis_task_gate.py <task-id>` directly for a standalone read-only inspection. Follow its next-action result; a blocked historical package must not be refreshed over its existing evidence.
+- For a current-only thesis assessment, use `prepare_thesis_review.py --review-mode independent_current`. This mode describes the frozen current manuscript and cannot publish a paired score or revision gain. Before freezing, the operator must explicitly attest to screening all included text for historical scores and reports, with reviewer identity and timezone-aware timestamp. Record the actual reviewer context and history exposure before scoring.
+- Use `scripts/thesis_artifact_lifecycle.py plan` for candidate inventory. Every file defaults to retain. Never infer junk from Git ignore/untracked status or missing text references; cleanup is restricted to an explicitly reviewed exact-duplicate plan whose hash and file states are revalidated at execution.

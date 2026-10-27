@@ -63,18 +63,23 @@ python3 scripts/thesis_blueprint.py new \
 # add workflow_stage, the exact manuscript/evidence sections, allowed paths,
 # steps, and acceptance criteria. steps and acceptance_criteria must be non-empty.
 
-python3 scripts/thesis_blueprint.py validate REV-20261018-abstract
-python3 scripts/thesis_blueprint.py prepare REV-20261018-abstract
-python3 scripts/thesis_blueprint.py execute REV-20261018-abstract
-python3 scripts/thesis_blueprint.py collect REV-20261018-abstract
+# Use the single controller for ordinary task progression.
+python3 scripts/thesis_workflow.py inspect REV-20261018-abstract
+python3 scripts/thesis_workflow.py prepare REV-20261018-abstract
+python3 scripts/thesis_workflow.py execute REV-20261018-abstract
+python3 scripts/thesis_workflow.py collect REV-20261018-abstract
+# Or advance a valid task through prepare, execution, and collection:
+python3 scripts/thesis_workflow.py run REV-20261018-abstract
 
 # Offline launch-config check: no model call, no network.
 python3 scripts/thesis_blueprint.py self-check
 ```
 
-`run <task-id>` performs prepare, interactive execution, and collection in sequence. It requires a terminal and the local `claude` command. It uses Claude Code's configured model/provider unless `--model` is supplied; the launcher does not override provider configuration. The model invocation, packet creation, and collection are automatic after the user starts the command. Permission prompts for shell, Git, and Web tools may require user input; remote commands always require approval. Local Bash tasks also require Claude Code 2.1.219+ for `strictAllowlist`; older or unknown versions fail closed before launch. The launcher never enables `--dangerously-skip-permissions`. If Claude Code is unavailable or a run is interrupted, use `prepare`, launch Claude Code manually with the generated `EXECUTION_PACKET.md`, then run `collect`.
+`thesis_workflow.py run <task-id>` performs prepare, interactive execution, and collection in sequence, stopping at `AWAITING_CODEX_REVIEW`. It requires a terminal and the local `claude` command. It uses Claude Code's configured model/provider unless `--model` is supplied; the launcher does not override provider configuration. Claude starts only after the user explicitly starts `execute` or `run`; permission prompts for shell, Git, and Web tools may require user input; remote commands always require approval. Local Bash tasks also require Claude Code 2.1.219+ for `strictAllowlist`; older or unknown versions fail closed before launch. The launcher never enables `--dangerously-skip-permissions`. If Claude Code is unavailable or a run is interrupted, `thesis_workflow.py inspect <task-id>` shows whether manual recovery with the generated `EXECUTION_PACKET.md` and `thesis_workflow.py collect <task-id>` is allowed.
 
 `collect` writes `collection-report.json` with `awaiting_codex_review`, `scope_violation`, `baseline_changed`, or `report_incomplete` status. These are handoff states, not acceptance decisions. Codex reviews the task diff and report, updates only the relevant evidence/impact index, then uses the existing 12-step gates and, when requested, the existing cached scoring and release tools.
+
+The read-only `thesis_task_gate.py` checks the frozen package, source and skill hashes, observed workspace changes, allowed paths, and collection report. Run it before execution and after collection. A blocked result means stop and inspect the stated drift; do not refresh an old task baseline over its prior evidence. `AWAITING_CODEX_REVIEW` means the change set is ready for Codex review, not accepted.
 
 The launcher passes the task prompt as a positional argument before the variadic `--disallowedTools` option, so Claude receives the packet instruction automatically. In `execution-report.json`, `changed_paths` lists workspace edits relative to the project root; omit the report itself. For compatibility, collection tolerates the exact current task's report path if included. It does not exempt other task files, protected packet files, omitted workspace edits, or invented changes.
 

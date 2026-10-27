@@ -17,10 +17,17 @@ import subprocess
 import sys
 import tempfile
 import time
+from datetime import datetime
 from pathlib import Path
 
 VERSION = '1.0'
 FIGURE_SCOPE = 'captions_only; image content and full-page visual acceptance remain unchecked'
+INDEPENDENT_INSTRUCTIONS = 'docs/thesis/scoring/independent-current-review.md'
+REVIEW_MODES = {'paired_revision', 'calibration_pair', 'independent_current'}
+HISTORICAL_PATH_PARTS = {
+    'history.json', 'publication-status.json', 'scorecard.json',
+    'reviewer-reports', 'reviewer_report', 'reviewer-report',
+}
 
 
 def digest(path):
@@ -136,6 +143,7 @@ class Preparer:
     def __init__(self, root, config, cache, run_checks=False, rerun=False, cache_secret=None):
         self.root, self.config, self.cache = Path(root).resolve(), config, Path(cache).resolve()
         self.run_checks, self.rerun = run_checks, rerun
+        self.review_mode = config.get('_effective_review_mode', config.get('review_mode'))
         self.cache_secret = cache_auth_key() if cache_secret is None else cache_secret
         self.tool_hash = digest(Path(__file__))
         self.blockers, self.warnings, self.timings = [], [], {}
@@ -256,17 +264,23 @@ class Preparer:
         c = self.config
         if c.get('schema_version') != 1:
             raise ValueError('Unsupported configuration schema')
+        # Branch before touching baseline_scorecard, baseline evidence, or registered
+        # checks. Independent current-only review must not read historic score data.
+        if self.review_mode == 'independent_current':
+            return self.prepare_independent_current(started)
+        if self.review_mode not in {'paired_revision', 'calibration_pair'}:
+            raise ValueError('review_mode must be paired_revision, calibration_pair, or independent_current')
         baseline_path = self.input(c['baseline_scorecard'])
         baseline = load(baseline_path)
         baseline_sha = digest(baseline_path)
         if baseline_sha != c['baseline_scorecard_sha256']:
             self.blockers.append('Baseline scorecard fingerprint changed; choose and confirm baseline explicitly.')
         if baseline.get('rubric_id') != load(self.input(c['rubric']))['rubric_id']:
-            if c.get('review_mode') == 'calibration_pair':
+            if self.review_mode == 'calibration_pair':
                 self.warnings.append('Calibration pair uses a changed rubric; all criteria require explicit recalibration.')
             else:
                 self.blockers.append('Rubric differs from baseline; explicit recalibration is required.')
-        mode = c.get('review_mode')
+        mode = self.review_mode
         if mode not in {'paired_revision', 'calibration_pair'}:
             raise ValueError('review_mode must be paired_revision or calibration_pair')
         if mode == 'paired_revision' and baseline.get('protocol_id') != c['protocol_id']:
@@ -428,7 +442,7 @@ class Preparer:
         self.timings['total_seconds'] = time.perf_counter()-started
         self.report = {'schema_version': 1, 'tool_version': VERSION, 'tool_sha256': self.tool_hash,
                        'ready_for_dispatch': not self.blockers, 'blockers': self.blockers, 'warnings': self.warnings,
-                       'config_sha256': digest(local(self.root, c['_config_path'])), 'review_mode': c['review_mode'],
+                       'config_sha256': digest(local(self.root, c['_config_path'])), 'review_mode': self.review_mode,
                        'baseline_manuscript_sha256': digest(previous_path), 'current_manuscript_sha256': digest(current_path),
                        'policy_fingerprints': policy, 'evidence': evidence, 'removed_or_unmapped_evidence_ids': removed,
                        'excluded_baseline_evidence': exclusions,
@@ -441,6 +455,154 @@ class Preparer:
                        'claims': [{**cl, 'review_reasons': affected.get(cid, []),
                                   'status': 'reread_required' if cid in affected or fallback else 'no_change_detected_in_declared_scope'} for cid, cl in claims.items()],
                        'note': 'Routing only; formal independent reading, forensic adjudication and publication checks remain required.'}
+        return self.report, self.impact
+
+    def prepare_independent_current(self, started):
+        """Prepare a current-only packet without loading any baseline or score history."""
+        c = self.config
+        required = ('manuscript', 'rubric', 'anchors')
+        missing = [key for key in required if not isinstance(c.get(key), str) or not c[key].strip()]
+        if missing:
+            raise ValueError('independent_current missing required config fields: ' + ', '.join(missing))
+        if c.get('evidence_inventory_confirmed') is not True:
+            self.blockers.append('Evidence inventory completeness must be explicitly confirmed.')
+        if not isinstance(c.get('evidence_inventory_scope'), str) or not c['evidence_inventory_scope'].strip():
+            self.blockers.append('Evidence inventory scope must be stated.')
+        confirmation = c.get('_history_screen_confirmation')
+        confirmation_errors = c.get('_history_screen_confirmation_errors', [])
+        if confirmation_errors:
+            self.blockers.extend(confirmation_errors)
+        elif not isinstance(confirmation, dict) or confirmation.get('confirmed') is not True:
+            self.blockers.append('Text screen for historical scoring material requires explicit CLI confirmation.')
+        if self.run_checks and c.get('checks'):
+            self.warnings.append('独立当前稿模式跳过配置中的全部检查项；请勿将其结果视为复算或评分发布核验。')
+        evidence_specs = c.get('evidence')
+        if not isinstance(evidence_specs, list) or not evidence_specs:
+            raise ValueError('independent_current requires a non-empty registered evidence list')
+
+        current_path = self.input(c['manuscript'])
+        try:
+            current_text = current_path.read_text(encoding='utf-8')
+        except (OSError, UnicodeError) as exc:
+            raise ValueError(f'Cannot read current manuscript: {exc}') from exc
+        rubric_path, anchors_path = self.input(c['rubric']), self.input(c['anchors'])
+        instruction_path = self.input(INDEPENDENT_INSTRUCTIONS)
+        rubric_doc, anchors_doc = load(rubric_path), load(anchors_path)
+        if rubric_doc.get('rubric_id') != anchors_doc.get('rubric_id'):
+            self.blockers.append('Rubric and anchors IDs do not match.')
+        criterion_ids = {row.get('id') for row in rubric_doc.get('criteria', []) if isinstance(row, dict)}
+        anchor_ids = {row.get('id') for row in anchors_doc.get('criteria', []) if isinstance(row, dict)}
+        if not criterion_ids or criterion_ids != anchor_ids:
+            self.blockers.append('Rubric and anchors criterion IDs do not match.')
+
+        evidence, ids = [], set()
+        included_sources = []
+        seen_packet_names = set()
+        for item in evidence_specs:
+            if not isinstance(item, dict) or not isinstance(item.get('id'), str):
+                raise ValueError('Each independent evidence item requires an ID and path')
+            eid = item['id']
+            if eid in ids:
+                raise ValueError(f'Duplicate evidence ID: {eid}')
+            ids.add(eid)
+            path = self.input(item['path'])
+            parts = {part.lower() for part in path.parts}
+            if parts & HISTORICAL_PATH_PARTS or path.name.lower().startswith(('scorecard-', 'scorecard_')):
+                self.blockers.append(f'{eid}: historical scoring/governance paths cannot enter an independent packet')
+            file_sha, syntax = self.inspect(path)
+            if not syntax['valid']:
+                self.blockers.append(f'{eid}: unreadable/invalid file')
+            if item.get('reviewer_safe') is not True or self._looks_like_scorecard(path):
+                self.blockers.append(f'{eid}: not confirmed safe for isolated reviewers or scorecard-shaped')
+            packet_name = f'evidence/{eid}{path.suffix}'
+            if packet_name in seen_packet_names:
+                raise ValueError(f'Duplicate packet destination: {packet_name}')
+            seen_packet_names.add(packet_name)
+            evidence.append({'id': eid, 'path': item['path'], 'sha256': file_sha,
+                             'bytes': path.stat().st_size, 'syntax': syntax})
+            included_sources.append({'role': 'evidence', 'id': eid,
+                                     'source_path': item['path'], 'sha256': file_sha})
+
+        policy = {}
+        for role, path in (('rubric', rubric_path), ('anchors', anchors_path),
+                           ('reviewer_instructions', instruction_path)):
+            policy[role] = digest(path)
+        for role, path in (('manuscript', current_path), ('rubric', rubric_path),
+                           ('anchors', anchors_path), ('reviewer_instructions', instruction_path)):
+            included_sources.append({'role': role, 'source_path': str(path.relative_to(self.root)),
+                                     'sha256': digest(path)})
+
+        # Source declarations may support provenance, but baseline scorecards and
+        # registered deterministic score-publication checks are deliberately ignored.
+        source_ids, sources = set(), []
+        for source in c.get('sources', []):
+            if not isinstance(source, dict):
+                raise ValueError('sources entries must be objects')
+            sid = source.get('id')
+            if not isinstance(sid, str) or sid in source_ids or source.get('evidence_id') not in ids:
+                raise ValueError(f'Invalid/duplicate independent source: {sid}')
+            source_ids.add(sid)
+            evidence_sha = next(row['sha256'] for row in evidence if row['id'] == source['evidence_id'])
+            current_attestation = source.get('reviewed_sha256') == evidence_sha
+            if source.get('reading_status') not in {'verified_fulltext', 'verified_excerpt', 'verified_abstract', 'unavailable_declared'} or not source.get('locator'):
+                self.blockers.append(f'{sid}: source reading scope/disposition is missing')
+            if source.get('comparison_status') not in {'compared', 'not_required', 'known_gap'}:
+                self.blockers.append(f'{sid}: comparison disposition is missing')
+            if not current_attestation:
+                self.warnings.append(f'{sid}: evidence reading attestation is not bound to current file hash')
+            sources.append({'id': sid, 'evidence_id': source['evidence_id'],
+                            'current_evidence_sha256': evidence_sha,
+                            'attestation_current': current_attestation,
+                            'reading_status': source.get('reading_status'),
+                            'comparison_status': source.get('comparison_status')})
+        registered_citations = {str(number) for source in c.get('sources', [])
+                                for number in source.get('citations', [])}
+        for number in c.get('required_citations', []):
+            if str(number) not in registered_citations:
+                self.blockers.append(f'Critical citation [{number}] has no source-grounded reading record')
+
+        self.current_path, self.previous_path = current_path, None
+        self.diff = ''
+        self.timings['preflight_seconds'] = time.perf_counter() - started
+        self.timings['checks_seconds'] = 0.0
+        self.timings['impact_seconds'] = 0.0
+        self.timings['total_seconds'] = time.perf_counter() - started
+        self.stats.update({'check_hits': 0, 'check_executions': 0,
+                           'checks_skipped_for_isolation': len(c.get('checks', []))})
+        self.packet_sources = included_sources
+        self.report = {
+            'schema_version': 2, 'tool_version': VERSION, 'tool_sha256': self.tool_hash,
+            'review_mode': 'independent_current', 'ready_for_dispatch': not self.blockers,
+            'blockers': self.blockers, 'warnings': self.warnings,
+            'current_manuscript_sha256': digest(current_path),
+            'rubric_id': rubric_doc.get('rubric_id'), 'policy_fingerprints': policy,
+            'evidence': evidence, 'sources': sources,
+            'checks_executed': [], 'checks_skipped': 'all configured checks omitted; no baseline scorecard or publication audit loaded',
+            'cache_authenticated': self.cache_secret is not None,
+            'cache_statistics': self.stats, 'timings': self.timings,
+            'figure_scope': FIGURE_SCOPE, 'not_a_score_or_publication_approval': True,
+            'history_exposure': {
+                'preparer_loaded_historical_score_data': False,
+                'historical_scorecards_or_reviewer_reports_in_packet': False,
+                'reviewer_context_id': None,
+                'reviewer_runtime_history_exposure': 'must be recorded by coordinator before scoring',
+                'screen_scope': 'registered paths and scorecard-shaped JSON only',
+                'evidence_text_review_required': not bool(
+                    isinstance(confirmation, dict) and confirmation.get('confirmed') is True
+                    and confirmation.get('reviewer_id') and confirmation.get('reviewed_at')
+                ),
+                'historical_material_text_screen_complete': bool(
+                    isinstance(confirmation, dict) and confirmation.get('confirmed') is True
+                    and confirmation.get('reviewer_id') and confirmation.get('reviewed_at')
+                ),
+                'history_screen_confirmation': confirmation,
+            },
+        }
+        self.impact = {
+            'review_mode': 'independent_current', 'full_read_required': True,
+            'affected_criteria': sorted(criterion_ids),
+            'note': 'Current-only assessment: read the complete frozen manuscript and registered evidence; this routing report is not a score.',
+        }
         return self.report, self.impact
 
     @staticmethod
@@ -460,13 +622,24 @@ class Preparer:
     def freeze(self, out):
         if self.blockers or not self.stable():
             raise ValueError('Preparation blocked or inputs drifted; cannot freeze reviewer packet')
+        if self.review_mode == 'independent_current':
+            confirmation = self.report.get('history_exposure', {}).get('history_screen_confirmation')
+            if (not isinstance(confirmation, dict) or confirmation.get('confirmed') is not True
+                    or not confirmation.get('reviewer_id') or not confirmation.get('reviewed_at')):
+                raise ValueError('Independent packet freeze requires explicit, attributed history-screen confirmation')
         target = out / 'reviewer-packet'
         # Construct privately and promote atomically; never reuse or overwrite an old packet.
         with tempfile.TemporaryDirectory(prefix='.packet-', dir=out) as name:
             staging = Path(name)
-            copies = [(self.previous_path, 'manuscripts/baseline.md'), (self.current_path, 'manuscripts/current.md')]
-            copies += [(local(self.root, e['path']), f'evidence/{e["id"]}{Path(e["path"]).suffix}') for e in self.config['evidence']]
-            copies += [(local(self.root, self.config[k]), f'{k}{Path(self.config[k]).suffix}') for k in ('rubric', 'anchors', 'reviewer_instructions')]
+            if self.review_mode == 'independent_current':
+                copies = [(self.current_path, 'manuscripts/current.md')]
+                copies += [(local(self.root, e['path']), f'evidence/{e["id"]}{Path(e["path"]).suffix}') for e in self.config['evidence']]
+                copies += [(local(self.root, self.config[k]), f'{k}{Path(self.config[k]).suffix}') for k in ('rubric', 'anchors')]
+                copies += [(local(self.root, INDEPENDENT_INSTRUCTIONS), 'reviewer-instructions.md')]
+            else:
+                copies = [(self.previous_path, 'manuscripts/baseline.md'), (self.current_path, 'manuscripts/current.md')]
+                copies += [(local(self.root, e['path']), f'evidence/{e["id"]}{Path(e["path"]).suffix}') for e in self.config['evidence']]
+                copies += [(local(self.root, self.config[k]), f'{k}{Path(self.config[k]).suffix}') for k in ('rubric', 'anchors', 'reviewer_instructions')]
             names = [n for _, n in copies]
             if len(names) != len(set(names)) or any(not re.fullmatch(r'[A-Za-z0-9_.\-/]+', n) or '..' in Path(n).parts for n in names):
                 raise ValueError('Unsafe or duplicate packet file name')
@@ -480,9 +653,21 @@ class Preparer:
                 raise ValueError('Input drift during freezing; rerun preparation')
             inventory = [{'path': str(p.relative_to(staging)), 'sha256': digest(p), 'bytes': p.stat().st_size}
                          for p in sorted(staging.rglob('*')) if p.is_file()]
-            save(staging / 'manifest.json', {'schema_version': 1, 'files': inventory,
-                 'packet_fingerprint': signature(inventory), 'figure_scope': FIGURE_SCOPE,
-                 'historical_scorecards_and_reviewer_reports_excluded': True})
+            manifest = {'schema_version': 2 if self.review_mode == 'independent_current' else 1,
+                        'files': inventory, 'packet_fingerprint': signature(inventory),
+                        'figure_scope': FIGURE_SCOPE, 'review_mode': self.review_mode,
+                        'historical_scorecards_and_reviewer_reports_excluded': True}
+            if self.review_mode == 'independent_current':
+                manifest.update({
+                    'packet_context_id': secrets.token_hex(12),
+                    'source_inputs': self.packet_sources,
+                    'history_exposure': self.report['history_exposure'],
+                    'reviewer_context_id': None,
+                    'coordinator_attestation_required_before_score': True,
+                    'historical_material_text_screen_complete': self.report['history_exposure']['historical_material_text_screen_complete'],
+                    'history_screen_confirmation': self.report['history_exposure']['history_screen_confirmation'],
+                })
+            save(staging / 'manifest.json', manifest)
             if target.exists():
                 raise ValueError('Frozen packet already exists; choose a new output directory')
             os.rename(staging, target)
@@ -496,8 +681,36 @@ def run(args):
     out, cache = local(root, str(args.out)), local(root, str(args.cache_dir))
     if out == root or out.exists() or cache == root or out == cache or out in cache.parents or cache in out.parents:
         raise ValueError('Output must be a new project-local directory')
-    if config.get('review_mode') not in {'paired_revision', 'calibration_pair'}:
-        raise ValueError('review_mode must be paired_revision or calibration_pair')
+    review_mode = getattr(args, 'review_mode', None) or config.get('review_mode')
+    if review_mode not in REVIEW_MODES:
+        raise ValueError('review_mode must be paired_revision, calibration_pair, or independent_current')
+    config['_effective_review_mode'] = review_mode
+    confirmation_values = (getattr(args, 'confirm_history_screen', False),
+                           getattr(args, 'history_screen_reviewer_id', None),
+                           getattr(args, 'history_screen_reviewed_at', None))
+    if review_mode == 'independent_current':
+        confirmed, reviewer_id, reviewed_at = confirmation_values
+        parsed_time = None
+        if reviewed_at:
+            try:
+                parsed_time = datetime.fromisoformat(reviewed_at.replace('Z', '+00:00'))
+            except ValueError:
+                pass
+        confirmation_errors = []
+        if not confirmed:
+            confirmation_errors.append('Missing required --confirm-history-screen acknowledgement.')
+        if not isinstance(reviewer_id, str) or not reviewer_id.strip() or len(reviewer_id.strip()) > 120:
+            confirmation_errors.append('Provide a non-empty --history-screen-reviewer-id of at most 120 characters.')
+        if parsed_time is None or parsed_time.tzinfo is None:
+            confirmation_errors.append('--history-screen-reviewed-at must be a valid timezone-aware ISO 8601 timestamp.')
+        config['_history_screen_confirmation'] = {
+            'confirmed': bool(confirmed and not confirmation_errors),
+            'reviewer_id': reviewer_id.strip() if isinstance(reviewer_id, str) else None,
+            'reviewed_at': reviewed_at,
+        }
+        config['_history_screen_confirmation_errors'] = confirmation_errors
+    elif any((confirmation_values[0], confirmation_values[1], confirmation_values[2])):
+        raise ValueError('History-screen confirmation flags apply only to independent_current mode')
     config['_config_path'] = str(config_path.relative_to(root))
     for claim in config.get('claims', []):
         if not re.fullmatch(r'[A-Za-z0-9_-]+', claim['id']):
@@ -515,12 +728,16 @@ def run(args):
     save(out / 'preflight.json', report)
     save(out / 'impact-index.json', impact)
     (out / 'manuscript.diff').write_text(prep.diff, encoding='utf-8')
-    plan = ['# 论文评分准备与重读清单', '', f'准备状态：{report["ready_for_dispatch"]}；这不是评分或发布许可。', '',
+    plan = ['# 论文评分准备与重读清单', '', f'模式：{report["review_mode"]}；准备状态：{report["ready_for_dispatch"]}；这不是评分或发布许可。', '',
             f'缓存：{json.dumps(report["cache_statistics"], ensure_ascii=False)}',
             f'耗时：{json.dumps(report["timings"], ensure_ascii=False)}', '', '## 阻断项', '']
     plan += report['blockers'] or ['无']
-    plan += ['', '## 提醒', ''] + report['warnings'] + ['', '## 主张重读', '']
-    plan += [f'- {cl["id"]}：{cl["status"]}；原因={", ".join(cl["review_reasons"]) or "未检测到登记范围内变化"}；位置={", ".join(cl["sections"])}；证据={", ".join(cl.get("evidence_ids", []))}' for cl in impact['claims']]
+    plan += ['', '## 提醒', ''] + report['warnings']
+    if report['review_mode'] == 'independent_current':
+        plan += ['', '## 独立评阅范围', '', '完整阅读当前冻结稿及登记证据；不提供旧稿、历史分数、评分状态或既往评阅。']
+    else:
+        plan += ['', '## 主张重读', '']
+        plan += [f'- {cl["id"]}：{cl["status"]}；原因={", ".join(cl["review_reasons"]) or "未检测到登记范围内变化"}；位置={", ".join(cl["sections"])}；证据={", ".join(cl.get("evidence_ids", []))}' for cl in impact['claims']]
     plan += ['', '正式评分仍按现有协议完成独立评阅、证据裁定和发布核验。未登记的新材料需补入配置；图像及全页视觉验收另审。']
     (out / 'review-plan.md').write_text('\n'.join(plan)+'\n', encoding='utf-8')
     frozen = prep.freeze(out) if args.freeze and report['ready_for_dispatch'] else None
@@ -535,6 +752,14 @@ def main():
     parser.add_argument('--config', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
     parser.add_argument('--cache-dir', type=Path, default=Path('.cache/thesis-review'))
+    parser.add_argument('--review-mode', choices=sorted(REVIEW_MODES),
+                        help='可显式选择独立当前稿评阅；paired/calibration默认沿用配置')
+    parser.add_argument('--confirm-history-screen', action='store_true',
+                        help='已人工检查登记材料正文未混入历史评分/旧评阅信息（仅独立当前稿模式）')
+    parser.add_argument('--history-screen-reviewer-id',
+                        help='执行历史材料正文核查的人员/代理标识（需与确认标志同时提供）')
+    parser.add_argument('--history-screen-reviewed-at',
+                        help='核查时间，须为含时区的ISO 8601时间戳（如2026-10-27T14:30:00+08:00）')
     parser.add_argument('--run-checks', action='store_true', help='Execute registered local Python checks on cache misses')
     parser.add_argument('--rerun-checks', action='store_true', help='Ignore successful computation cache; requires --run-checks')
     parser.add_argument('--freeze', action='store_true', help='Freeze a new reviewer packet only if preparation has no blockers')

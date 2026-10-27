@@ -40,3 +40,23 @@ run07/08记录了修订前的评阅准备状态：配对评分发布合同检查
 在同一机器对同一配置进行的冷/热缓存对照中，完整准备由0.124秒降至0.031秒（约75%）；配对评分发布合同检查由0.097秒降至0.017秒（约83%）。此为单次本机测量，只反映文件哈希、JSON/文本结构检查和评分记录校验，不包括三位评阅者阅读和审理、法证复核、Word/PDF生成或全页视觉验收。缓存减少重复机械计算，不代表总体论文评审用时按同一比例缩短。
 
 此工具不改变`EVCS-THESIS-REVIEW-2.0`的三视角隔离、同量表配对、法证复核和发布门槛。日常迭代可以只处理已变更主张；正式总分仍须按完整协议完成。
+
+## 当前稿独立评阅
+
+若只需判断冻结当前稿的绝对水平，不要把它伪装成配对修订。可在同一准备器中显式选择`independent_current`：
+
+```bash
+python3 scripts/prepare_thesis_review.py \
+  --project . \
+  --config docs/thesis/scoring/review-preparation.json \
+  --out docs/thesis/review-preparation-日期/independent-run序号 \
+  --review-mode independent_current \
+  --confirm-history-screen \
+  --history-screen-reviewer-id '核查者标识' \
+  --history-screen-reviewed-at 2026-10-27T14:30:00+08:00 \
+  --freeze
+```
+
+先人工检查当前稿及每份拟纳入证据的全文，确认没有旧分数、历史评分结论或既往评阅意见，再提供上述确认。漏掉任一确认字段时只生成阻断的预检，不会冻结评阅包。独立模式在读取baseline scorecard之前分流，跳过基线稿、历史文件和原配置中的评分发布检查；包只含当前稿、登记证据、固定rubric、anchors及独立评阅说明。`manifest.json`记录准备端确认与材料哈希；负责人在实际发评后仍需补记评阅上下文ID和历史暴露情况。
+
+此模式的结果用于描述当前稿，不能与既有正式分数作差或声称修订效应，也不能单独通过`audit_thesis_content_score.py --publish`发布。若需要正式同量表修订比较，仍使用`paired_revision`或`calibration_pair`，按前文的基线、三视角、法证核验和发布合同执行。人工文本检查不能由`reviewer_safe`标签或哈希缓存代替。
