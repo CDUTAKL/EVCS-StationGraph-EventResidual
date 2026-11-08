@@ -18,7 +18,8 @@ from evcs_station_graph.models.tcn import TemporalConvNet
 PHASE1 = ('mrg_full', 'tcn', 'tcn_wide', 'mrg_self_loop', 'agcrn_full')
 PHASE2 = ('mrg_equal_beta', 'mrg_fixed_gate', 'mrg_no_refine', 'mrg_no_skip',
           'mrg_load', 'mrg_event', 'mrg_pattern')
-MODELS = PHASE1 + PHASE2
+EXTRA = ('gru_behavior', 'agcrn_matched')
+MODELS = PHASE1 + PHASE2 + EXTRA
 
 
 class FixedGate(nn.Module):
@@ -86,10 +87,10 @@ class NodeAdaptiveConv(nn.Module):
 
 
 class AdaptiveCell(nn.Module):
-    def __init__(self, input_dim, hidden_dim):
+    def __init__(self, input_dim, hidden_dim, embedding_dim=10):
         super().__init__()
-        self.gate = NodeAdaptiveConv(input_dim + hidden_dim, 2 * hidden_dim)
-        self.update = NodeAdaptiveConv(input_dim + hidden_dim, hidden_dim)
+        self.gate = NodeAdaptiveConv(input_dim + hidden_dim, 2 * hidden_dim, embedding_dim=embedding_dim)
+        self.update = NodeAdaptiveConv(input_dim + hidden_dim, hidden_dim, embedding_dim=embedding_dim)
 
     def forward(self, x, h, prepared):
         z, r = torch.sigmoid(self.gate.apply_prepared(torch.cat((x, h), -1), prepared[0])).chunk(2, -1)
@@ -98,12 +99,14 @@ class AdaptiveCell(nn.Module):
 
 
 class FullAGCRN(nn.Module):
-    def __init__(self):
+    def __init__(self, embedding_dim=10, hidden_dim=32, num_nodes=10):
         super().__init__()
-        self.node_embeddings = nn.Parameter(torch.empty(10, 10))
+        self.num_nodes = num_nodes
+        self.node_embeddings = nn.Parameter(torch.empty(num_nodes, embedding_dim))
         nn.init.xavier_uniform_(self.node_embeddings)
-        self.cells = nn.ModuleList([AdaptiveCell(7, 32), AdaptiveCell(32, 32)])
-        self.head = nn.Conv2d(1, 4, (1, 32))
+        self.cells = nn.ModuleList([AdaptiveCell(8, hidden_dim, embedding_dim),
+                                    AdaptiveCell(hidden_dim, hidden_dim, embedding_dim)])
+        self.head = nn.Conv2d(1, 4, (1, hidden_dim))
 
     def forward(self, x):
         # Cache within this forward only (not detached): exactly the same fixed
@@ -111,13 +114,14 @@ class FullAGCRN(nn.Module):
         sequence = x
         for cell in self.cells:
             prepared = (cell.gate.prepare(self.node_embeddings), cell.update.prepare(self.node_embeddings))
-            h = x.new_zeros(x.shape[0], 10, 32)
+            h = x.new_zeros(x.shape[0], self.num_nodes, self.head.weight.shape[-1])
             states = []
             for t in range(sequence.shape[1]):
                 h = cell(sequence[:, t], h, prepared)
                 states.append(h)
             sequence = torch.stack(states, dim=1)
-        return ForecastOutput(prediction=self.head(h[:, None]).squeeze(-1))
+        base = x[:, -1, :, -1].unsqueeze(1)
+        return ForecastOutput(prediction=base + self.head(h[:, None]).squeeze(-1))
 
 
 def count_parameters(model):
@@ -133,6 +137,41 @@ def matched_width():
             7, 4, hidden_dim=w, levels=6, history_steps=96)) - target))
 
 
+class GRUForecaster(nn.Module):
+    """Plain per-node GRU over the same 7-channel behavioral input."""
+
+    def __init__(self, hidden_dim=99):
+        super().__init__()
+        self.gru = nn.GRU(7, hidden_dim, batch_first=True)
+        self.head = nn.Linear(hidden_dim, 4)
+
+    def forward(self, x):
+        b, t, n, f = x.shape
+        sequence = x.permute(0, 2, 1, 3).reshape(b * n, t, f)
+        _, h = self.gru(sequence)
+        out = self.head(h[-1]).reshape(b, n, 4)
+        return ForecastOutput(prediction=out.permute(0, 2, 1))
+
+
+def _matched_agcrn_shape_cached(num_nodes):
+    with torch.random.fork_rng(devices=[]):
+        target = count_parameters(AblatedMRG('mrg_full', np.stack([np.eye(num_nodes)]*3)))
+        best = None
+        for e in range(2, 11):
+            for h in range(4, 33, 2):
+                params = count_parameters(FullAGCRN(embedding_dim=e, hidden_dim=h, num_nodes=num_nodes))
+                gap = abs(params - target)
+                if best is None or gap < best[0]:
+                    best = (gap, e, h, params)
+        return best[1], best[2]
+
+
+@lru_cache(maxsize=8)
+def matched_agcrn_shape(num_nodes=10):
+    """Match MRG-GCN's capacity by shrinking embedding and hidden width."""
+    return _matched_agcrn_shape_cached(num_nodes)
+
+
 def build_model(name, graphs):
     if name == 'mrg_shared_gate':
         from .gate_control import SharedNodeGate
@@ -143,9 +182,15 @@ def build_model(name, graphs):
     if name not in MODELS:
         raise ValueError(f'Unknown model: {name}')
     if name == 'agcrn_full':
-        return FullAGCRN()
+        return FullAGCRN(num_nodes=int(np.asarray(graphs).shape[-1]))
+    if name == 'agcrn_matched':
+        n = int(np.asarray(graphs).shape[-1])
+        e, h = matched_agcrn_shape(n)
+        return FullAGCRN(embedding_dim=e, hidden_dim=h, num_nodes=n)
+    if name == 'gru_behavior':
+        return GRUForecaster()
     if name in ('tcn', 'tcn_wide'):
-        return TemporalConvNet(7, 4, hidden_dim=32 if name == 'tcn' else matched_width(),
+        return ResidualTCN(8, 4, hidden_dim=32 if name == 'tcn' else matched_width(),
                                levels=6, dropout=.1, history_steps=96)
     if name == 'mrg_self_loop':
         graphs = np.stack([np.eye(10)]*3)
@@ -153,3 +198,20 @@ def build_model(name, graphs):
         i = ('mrg_load', 'mrg_event', 'mrg_pattern').index(name)
         graphs = graphs[i:i+1]
     return AblatedMRG(name, graphs)
+
+
+class ResidualTCN(nn.Module):
+    """残差化 TCN：预测 = 最后一片负荷 + TCN 输出。"""
+
+    def __init__(self, input_dim, horizon, **kw):
+        super().__init__()
+        self.net = TemporalConvNet(input_dim, horizon, **kw)
+        self.horizon = horizon
+
+    def forward(self, x):
+        base = x[:, -1, :, -1].unsqueeze(1)          # [B,1,N]
+        out = self.net(x)
+        pred = out.prediction if hasattr(out, 'prediction') else out
+        if pred.dim() == 4:
+            pred = pred.squeeze(-1)
+        return ForecastOutput(prediction=base + pred)

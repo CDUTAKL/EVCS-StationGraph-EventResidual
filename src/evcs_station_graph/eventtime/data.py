@@ -7,7 +7,7 @@ from torch.utils.data import Dataset
 
 DATA_SHA256 = 'f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f'
 FEATURES = ('access_count', 'departure_count', 'active_count', 'local_hour_sin',
-            'local_hour_cos', 'local_weekday_sin', 'local_weekday_cos')
+            'local_hour_cos', 'local_weekday_sin', 'local_weekday_cos', 'load_lag1')
 SEGMENTS = {'train': (0, 83198), 'tuning': (83198, 92101),
             'calibration': (92101, 101005), 'test': (101005, 118818)}
 
@@ -28,7 +28,7 @@ class FrozenData:
         a = self.arrays
         if str(a['schema']) != 'eventtime-v1-not-legacy-TensorBundle' or tuple(a['feature_names']) != FEATURES:
             raise ValueError('Feature/schema contract mismatch')
-        if a['features'].shape != (118818, 10, 7) or a['targets'].shape != (118818, 10):
+        if a['features'].shape != (118818, 10, 8) or a['targets'].shape != (118818, 10):
             raise ValueError('Frozen shape mismatch')
         if not np.isfinite(a['features']).all() or not np.isfinite(a['targets']).all():
             raise ValueError('Nonfinite data')
