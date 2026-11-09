@@ -1,6 +1,6 @@
 # ACN v3 扩展分析：复核归档
 
-本目录保存 Kimi 完成的五项扩展分析脚本、汇总结果和图件，并记录 Codex 对结果口径的复核。它是**训练期内的标签核验材料**，不是论文主测试集的独立功率预测评价，也尚未回填正文。
+本目录保存 Kimi 完成的五项扩展分析脚本、汇总结果和图件，并记录 Codex 对结果口径的复核。扩展脚本的输入默认路径已改为包内相对路径，计算逻辑未改。它是**训练期内的标签核验材料**，不是论文主测试集的独立功率预测评价，也尚未回填正文。
 
 ## 核心结论
 
@@ -22,7 +22,7 @@
 
 输入原始会话 JSON、2,341 个时序文件及完整 ZIP 不存入 Git。输入 ZIP SHA-256 为 `7cf0426040ce3f443304368cc8b09329d45af38182986d2f747e954b2778a079`；ACN-Data-Static 来源提交为 `abb7cf15cc7108913e965d4375cc7270d532b65f`。原包中的逐文件下载清单本身以 SHA-256 登记在 [`source_manifest.json`](source_manifest.json)，且整个 ZIP 哈希固定。54 MB 的 `extended_stores.pkl`、逐会话输出、倾向得分明细、运行日志和临时 PID 文件均不纳入 Git。
 
-完整原始包仍保存在用户提供的 Git 外目录 `/Users/xushuyuan/Downloads/acn_anchor-3/`。报告与复现代码来源文件的哈希见 [`source_manifest.json`](source_manifest.json)，本目录文件哈希见 [`SHA256SUMS`](SHA256SUMS)。
+完整原始包保存在用户提供的 Git 外位置。报告与复现代码来源文件的哈希见 [`source_manifest.json`](source_manifest.json)，本目录文件哈希见 [`SHA256SUMS`](SHA256SUMS)。
 
 ## 复算
 

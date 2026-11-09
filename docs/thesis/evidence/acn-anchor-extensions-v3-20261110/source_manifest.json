@@ -3,8 +3,8 @@
   "source_report_sha256": "ad3c63555baedc7cb8e7e8055165c1316b59672b3caf58c9b15bd4f7539a9a15",
   "source_archive_sha256": "7cf0426040ce3f443304368cc8b09329d45af38182986d2f747e954b2778a079",
   "source_archive_bytes": 88269267,
-  "source_report_path_outside_git": "/Users/xushuyuan/Downloads/acn_anchor-3/ACN设备功率锚定分析报告.md",
-  "source_archive_path_outside_git": "/Users/xushuyuan/Downloads/acn_anchor-3/ACN设备功率锚定.zip",
+  "source_report_path_outside_git": "external user-provided package; identity recorded by SHA-256",
+  "source_archive_path_outside_git": "external user-provided package; identity recorded by SHA-256",
   "acn_static_source": "https://github.com/tongxin-li/ACN-Data-Static",
   "acn_static_commit": "abb7cf15cc7108913e965d4375cc7270d532b65f",
   "session_json_sha256": "be32f0bbf953d31796ecbe5580475d7e8aed8870fd3f23740d483f668793f373",
@@ -17,5 +17,8 @@
   "raw_data_policy": "Raw session JSON, per-session outputs, time-series files, full ZIP, and 54 MB pickle checkpoint are intentionally not stored in Git.",
   "analysis_scope": "Exploratory label-construction audit, Caltech California Garage, 2018-05-01 through 2018-06-11; within the thesis model training period; not a held-out model-performance evaluation.",
   "metrics_caveat": "v3 extensions use fixed max_gap=60 s and their own sample cohorts; do not merge with v4 values, which use a different adaptive gap rule and corrected endpoint handling.",
-  "source_download_manifest_sha256": "f5a3237c26aa72a131a149b31a821db04b73166e613fc041379e6eca20bfbe62"
+  "source_download_manifest_sha256": "f5a3237c26aa72a131a149b31a821db04b73166e613fc041379e6eca20bfbe62",
+  "packaging_adjustments": [
+    "extended_analysis.py input defaults changed from machine-specific /mnt/agents paths to package-relative data paths; analysis logic unchanged."
+  ]
 }

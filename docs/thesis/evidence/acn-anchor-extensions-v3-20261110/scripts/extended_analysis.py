@@ -24,8 +24,8 @@ import pandas as pd
 warnings.filterwarnings("ignore", category=UserWarning)
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-SRC = os.environ.get("ACN_SESSIONS", "/mnt/agents/upload/acndata_sessions-2.json")
-RAW = os.environ.get("ACN_TS_DIR", "/mnt/agents/acn_static_cg1")
+SRC = os.environ.get("ACN_SESSIONS", os.path.join(BASE, "data", "acndata_sessions-2.json"))
+RAW = os.environ.get("ACN_TS_DIR", os.path.join(BASE, "data", "static"))
 OUT = os.environ.get("ACN_EXTENDED_OUT", os.path.join(BASE, "results_extended"))
 os.makedirs(OUT, exist_ok=True)
 
