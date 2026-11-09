@@ -1,0 +1,21 @@
+{
+  "n_raw": 2599,
+  "n_ok": 2335,
+  "n_power_subset": 1794,
+  "n_power_subset_unbridged": 1830,
+  "n_valid_done_strict": 2238,
+  "n_zero_duration_valid": 1,
+  "long_gap60_segments": 802,
+  "long_gap60_max_sec": 2456.0,
+  "ref_A_node_mae_uniform": 0.08227193769629794,
+  "ref_A_node_mae_cut": 0.042901215308271276,
+  "ref_B_node_mae_uniform": 0.0827824227512488,
+  "ref_B_node_mae_cut": 0.04258211758266784,
+  "ref_B_main10_mae_uniform": 0.14259549317558323,
+  "ref_B_main10_mae_cut": 0.07679032396238919,
+  "ref_B_main10_n": 548,
+  "power_after_done_weighted_maxgap60": 0.00018754168631395464,
+  "power_after_done_n_maxgap60": 1722,
+  "power_after_done_weighted_unbridged": 0.00022921540421639701,
+  "power_after_done_n_unbridged": 1757
+}

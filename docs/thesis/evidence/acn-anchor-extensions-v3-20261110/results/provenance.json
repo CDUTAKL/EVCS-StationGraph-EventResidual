@@ -1,0 +1,17 @@
+{
+  "analysis_version": "v3",
+  "source_repo": "https://github.com/tongxin-li/ACN-Data-Static",
+  "repository_default_branch": "main",
+  "resolved_main_commit": "abb7cf15cc7108913e965d4375cc7270d532b65f",
+  "commit_committer_date": "2026-05-02T07:29:09Z",
+  "actual_download_ref": "master（本次原始下载所用 jsDelivr URL 引用）",
+  "reproduction_ref": "abb7cf15cc7108913e965d4375cc7270d532b65f",
+  "directory": "time series data/caltech/California_Garage_01/",
+  "download_channel": "jsDelivr CDN",
+  "n_files": 2341,
+  "n_empty_files": 1,
+  "sessions_source_in_package": "data/acndata_sessions-2.json",
+  "sessions_sha256": "be32f0bbf953d31796ecbe5580475d7e8aed8870fd3f23740d483f668793f373",
+  "manifest": "results/download_manifest.csv（逐文件字节数与 SHA256）",
+  "note": "会话 JSON 为 ACN-Data Sessions API 导出的截断版，脚本按去尾逗号并补齐 ]} 的方式读取；Static 时序文件按 sessionID 精确匹配。原始时序和会话 JSON 已纳入 v3 复现包。"
+}
