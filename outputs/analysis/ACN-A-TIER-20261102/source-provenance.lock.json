@@ -6,19 +6,19 @@
   "source_root": ".cache/acn-a-tier",
   "archive_root": "outputs/analysis/ACN-A-TIER-20261102",
   "scripts_root": "scripts/acn_a_tier",
-  "tracking_policy": "Lightweight evidence is tracked in Git. inputs/bins.csv and inputs/static_paths.json are excluded by .gitignore and locked by SHA-256 here.",
+  "tracking_policy": "Lightweight evidence and inputs/bins.csv (2.2 MB, 15-min semi-metered labels) are tracked in Git. inputs/static_paths.json (7.8 MB) is excluded by .gitignore and locked by SHA-256 here.",
   "source_file_count": 21,
   "archived_file_count": 21,
-  "tracked_file_count": 20,
-  "external_input_count": 2,
+  "tracked_file_count": 21,
+  "external_input_count": 1,
   "files": [
     {
       "package_path": "outputs/analysis/ACN-A-TIER-20261102/README.md",
       "source_path": null,
       "role": "package_readme",
       "tracked": true,
-      "sha256": "2251ff6b9eef64e4e66d97189741058320c521f99979bb6b467364118fb0567e",
-      "bytes": 7514
+      "sha256": "09497c7601e2e46757708d300fa76b72c3236a2b8d2efceefd2a608bfd025388",
+      "bytes": 7701
     },
     {
       "package_path": "scripts/acn_a_tier/probe.py",
@@ -176,7 +176,7 @@
       "package_path": "outputs/analysis/ACN-A-TIER-20261102/inputs/bins.csv",
       "source_path": ".cache/acn-a-tier/bins.csv",
       "role": "semi_metered_bins",
-      "tracked": false,
+      "tracked": true,
       "sha256": "4557f1c7f7d0a433e5ac76809782d75724530ad78f62e0363d3307203829832f",
       "bytes": 2231919
     },

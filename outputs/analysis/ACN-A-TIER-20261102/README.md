@@ -1,6 +1,6 @@
 # ACN-A-TIER-20261102
 
-本目录归档 2026-11-02 ACN A 档取数可行性验证与测试期 15 min 半计量标签构造的轻量证据。原始工作缓存为 `.cache/acn-a-tier/`；本包是逐字节复制后的权威归档副本，原缓存保留为本地工作目录。
+本目录归档 2026-11-02 ACN A 档取数可行性验证与测试期 15 min 半计量标签构造的归档证据（含 15 min 分箱标签）。原始工作缓存为 `.cache/acn-a-tier/`；本包是逐字节复制后的权威归档副本，原缓存保留为本地工作目录。
 
 ## 1. 目的与来源
 
@@ -27,7 +27,7 @@
 | `_sample_sids.json` | 探测用 20 个会话 ID 样本 | 入仓 |
 | `_probe_count.txt` | API 探测预算计数器（本次 15） | 入仓 |
 | `fetch_bins.log`、`fetch_bins2.log` | 分箱取数进度日志；最终 `FINISHED 1241 of 1241` | 入仓 |
-| `inputs/bins.csv` | 22,105 行 15 min 分箱标签；列 `e208_kwh`（固定 208 V）、`eeff_kwh`（能量匹配电压）、`uniform_kwh`（电量均摊） | **不入仓**，哈希锁定 |
+| `inputs/bins.csv` | 22,105 行 15 min 分箱标签；列 `e208_kwh`（固定 208 V）、`eeff_kwh`（能量匹配电压）、`uniform_kwh`（电量均摊） | 入仓（2.2 MB；CRLF 由 `.gitattributes` 保留） |
 | `inputs/static_paths.json` | 56,680 条 Caltech 静态时序文件路径索引（ACN-Data-Static；三站合计 85,877 条） | **不入仓**，哈希锁定 |
 
 脚本不在本目录，位于 `scripts/acn_a_tier/`：
@@ -86,7 +86,7 @@ python3 -B scripts/acn_a_tier/fetch_bins.py
 
 ## 6. Git 策略与来源锁定
 
-- 仓库 `.gitignore` 规定原始、中间与正式数据不进入 Git；本包沿用 `outputs/analysis/SG-ANA-20261026-proxy-stability/` 的“轻量分析包入仓、冻结大输入哈希锁定”模式。
+- 仓库 `.gitignore` 默认规定原始、中间与正式数据不进入 Git。本包对 `inputs/bins.csv`（2.2 MB，15 min 半计量标签）做了一次显式、路径限定的例外，因为它是 A 档标签敏感度结论的核心证据；`inputs/static_paths.json`（7.8 MB）仍按默认规则留在仓外并哈希锁定。
 - 入仓文件与 `.cache/acn-a-tier/` 中的对应文件逐字节相同；全部文件（含 `inputs/`）的 SHA-256 与字节数见 `source-provenance.lock.json`。
-- `inputs/bins.csv` 与 `inputs/static_paths.json` 已在 `.gitignore` 中显式排除，不会进入版本库；需要复算时从原缓存或按锁文件哈希校验后恢复。
+- `inputs/static_paths.json` 仍在 `.gitignore` 中排除，不会进入版本库；`inputs/bins.csv` 已纳入 Git，并由 `.gitattributes` 的 `-text` 规则保持 CRLF 字节稳定。
 - `.cache/acn-a-tier/` 原目录保留，现有论文文档中的历史路径引用仍然可以解析；本包路径是后续引用的权威位置。
