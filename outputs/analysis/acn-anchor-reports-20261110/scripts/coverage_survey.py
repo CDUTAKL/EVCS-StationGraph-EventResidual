@@ -14,11 +14,15 @@
         - 长缺口(>60s)次数与最长缺口
       汇总: 各 车场 x 年份 的覆盖率中位数、覆盖率>=0.95 占比等。
 
-输入: /tmp/garage_files.json (由 GitHub API 抓取的各车场文件名清单)
+固定复算输入: results_survey/survey_files.csv（420 个样本文件清单）
+重新抽样输入: 由 GitHub API 抓取的全目录 JSON，经 ACN_SURVEY_INVENTORY 指定
 输出: results_survey/survey_files.csv, survey_summary.csv, survey_meta.json
 
-用法: python3 coverage_survey.py
+固定复算（归档根目录）: python3 scripts/coverage_survey.py
+重新抽样（归档根目录）: ACN_SURVEY_REPLAY=0 ACN_SURVEY_INVENTORY=/path/garage_files.json python3 scripts/coverage_survey.py
+数据源默认固定到 SOURCE_REF；更换版本须显式设置 ACN_STATIC_REF 并重新登记清单哈希。
 """
+import hashlib
 import io
 import json
 import os
@@ -33,12 +37,19 @@ import numpy as np
 import pandas as pd
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(BASE, "results_survey")
+ARCHIVE_ROOT = os.path.dirname(BASE) if os.path.basename(BASE) == "scripts" else BASE
+OUT = os.environ.get("ACN_SURVEY_OUT", os.path.join(ARCHIVE_ROOT, "results_survey"))
 os.makedirs(OUT, exist_ok=True)
+SAMPLE_FILE = os.environ.get("ACN_SURVEY_SAMPLE", os.path.join(OUT, "survey_files.csv"))
+INVENTORY = os.environ.get("ACN_SURVEY_INVENTORY", os.path.join(OUT, "garage_files.json"))
+REPLAY = os.environ.get("ACN_SURVEY_REPLAY", "1") != "0"
 
-# jsDelivr CDN 单文件下载（@main；整包超限但单文件可用）
-CDN = ("https://cdn.jsdelivr.net/gh/tongxin-li/ACN-Data-Static@main/"
+# jsDelivr CDN 单文件下载。默认锁定复核时的数据源提交，避免动态 @main 漂移。
+SOURCE_REPO = "tongxin-li/ACN-Data-Static"
+SOURCE_REF = os.environ.get("ACN_STATIC_REF", "abb7cf15cc7108913e965d4375cc7270d532b65f")
+CDN = (f"https://cdn.jsdelivr.net/gh/{SOURCE_REPO}@{SOURCE_REF}/"
        "time%20series%20data/{dir}/{fname}")
+RAW_ROOT = os.environ.get("ACN_SURVEY_RAW", os.path.join("/tmp/acn_survey_raw", SOURCE_REF))
 GARAGE_DIR = {
     "CG1": "caltech/California_Garage_01",
     "CG2": "caltech/California_Garage_02",
@@ -75,10 +86,19 @@ def sample_plan(garage_files):
     return plan
 
 
+def replay_plan(path):
+    """按归档的 420 行清单原顺序复算，不重新抽样、不依赖全目录清单。"""
+    df = pd.read_csv(path, dtype={"year": str})
+    required = {"garage", "year", "file"}
+    if not required.issubset(df.columns):
+        raise ValueError(f"固定清单缺少字段: {sorted(required - set(df.columns))}")
+    return [(r.garage, str(r.year), r.file) for r in df.itertuples(index=False)]
+
+
 def fetch_one(task):
     g, y, fname = task
     url = CDN.format(dir=GARAGE_DIR[g], fname=urllib.request.quote(fname))
-    dest = os.path.join("/tmp/acn_survey_raw", g)
+    dest = os.path.join(RAW_ROOT, g)
     os.makedirs(dest, exist_ok=True)
     path = os.path.join(dest, fname)
     if not (os.path.exists(path) and os.path.getsize(path) > 20):
@@ -165,8 +185,32 @@ def analyse_file(path):
 
 
 def main():
-    garage_files = json.load(open("/tmp/garage_files.json"))
-    plan = sample_plan(garage_files)
+    garage_files = None
+    inventory_sha256 = None
+    previous_meta = {}
+    meta_path = os.path.join(OUT, "survey_meta.json")
+    if REPLAY:
+        if not os.path.exists(SAMPLE_FILE):
+            raise FileNotFoundError(
+                f"固定复算清单不存在: {SAMPLE_FILE}；如需重新抽样，请设置 "
+                "ACN_SURVEY_REPLAY=0 并通过 ACN_SURVEY_INVENTORY 指定全目录清单")
+        plan = replay_plan(SAMPLE_FILE)
+        with open(SAMPLE_FILE, "rb") as f:
+            sample_sha256 = hashlib.sha256(f.read()).hexdigest()
+        sample_mode = "fixed_sample_replay"
+        # 全目录 inventory 未归档；仅沿用上次元数据中的总数作背景，不参与固定复算。
+        if os.path.exists(meta_path):
+            with open(meta_path, encoding="utf-8") as f:
+                previous_meta = json.load(f)
+    else:
+        with open(INVENTORY, "rb") as f:
+            inventory_bytes = f.read()
+        inventory_sha256 = hashlib.sha256(inventory_bytes).hexdigest()
+        garage_files = json.loads(inventory_bytes)
+        plan = sample_plan(garage_files)
+        sample_sha256 = None  # 新清单写出后再计算，不能与固定复算输入哈希混用。
+        sample_mode = "new_stratified_sample"
+    print(f"sample mode: {sample_mode}; source: {SOURCE_REPO}@{SOURCE_REF}", flush=True)
     print(f"sample plan: {len(plan)} files across {len(set((g,y) for g,y,_ in plan))} cells",
           flush=True)
 
@@ -186,7 +230,7 @@ def main():
         if status != "ok":
             rows.append({"garage": g, "year": y, "file": fname, "status": status})
             continue
-        path = os.path.join("/tmp/acn_survey_raw", g, fname)
+        path = os.path.join(RAW_ROOT, g, fname)
         m = analyse_file(path)
         if m is None:
             rows.append({"garage": g, "year": y, "file": fname, "status": "parse_fail"})
@@ -195,7 +239,11 @@ def main():
         row.update(m)
         rows.append(row)
     files_df = pd.DataFrame(rows)
-    files_df.to_csv(os.path.join(OUT, "survey_files.csv"), index=False)
+    output_sample = os.path.join(OUT, "survey_files.csv")
+    files_df.to_csv(output_sample, index=False)
+    if sample_sha256 is None:
+        with open(output_sample, "rb") as f:
+            sample_sha256 = hashlib.sha256(f.read()).hexdigest()
 
     ok = files_df[files_df.status == "ok"].copy()
     summ = (ok.groupby(["garage", "year"])
@@ -212,18 +260,34 @@ def main():
     summ.to_csv(os.path.join(OUT, "survey_summary.csv"), index=False)
     print(summ.to_string(index=False), flush=True)
 
+    garage_totals = (
+        previous_meta.get("garage_totals") if REPLAY
+        else {g: len(f) for g, f in garage_files.items() if g in GARAGE_DIR}
+    )
     meta = {
-        "source": "https://github.com/tongxin-li/ACN-Data-Static @ main (jsDelivr CDN)",
+        "source": f"https://github.com/{SOURCE_REPO} @ {SOURCE_REF} (jsDelivr CDN)",
+        "source_repo": SOURCE_REPO,
+        "source_ref": SOURCE_REF,
         "survey_date_utc": datetime.now(timezone.utc).isoformat(),
+        "sample_mode": sample_mode,
+        "sample_file": os.path.abspath(output_sample),
+        "sample_sha256": sample_sha256,
+        "inventory_file": os.path.abspath(INVENTORY) if not REPLAY else None,
+        "inventory_sha256": inventory_sha256,
+        "inventory_required": not REPLAY,
         "seed": SEED,
         "cell_cap": CELL_CAP,
         "n_planned": len(plan),
         "n_downloaded": int((files_df.status == "ok").sum()),
-        "garage_totals": {g: len(f) for g, f in garage_files.items() if g in GARAGE_DIR},
+        "garage_totals": garage_totals,
+        "garage_totals_note": (
+            "沿用上轮元数据的全目录背景总数；固定复算未读取全目录清单"
+            if REPLAY else "由本次 ACN_SURVEY_INVENTORY 全目录清单计算"
+        ),
         "coverage_rule": "sum(adjacent dt<=60s)/file span; energy trapezoid without gap bridging",
     }
-    json.dump(meta, open(os.path.join(OUT, "survey_meta.json"), "w"),
-              ensure_ascii=False, indent=1)
+    with open(meta_path, "w", encoding="utf-8") as f:
+        json.dump(meta, f, ensure_ascii=False, indent=1)
     print("done ->", OUT, flush=True)
 
 
