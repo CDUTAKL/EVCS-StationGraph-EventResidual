@@ -8,17 +8,20 @@
   "LIGO": 40,
   "NWG": 30,
   "SWG": 25,
-  "OFFICE_PL1": 25
+  "OFFICE_PL1": 25,
+  "JPL_AG1": 30
  },
- "n_planned": 350,
- "n_downloaded": 350,
+ "n_planned": 420,
+ "n_downloaded": 420,
  "garage_totals": {
   "NWG": 6299,
   "SWG": 2703,
   "OFFICE_PL1": 1474,
   "CG1": 31860,
   "CG2": 15589,
-  "LIGO": 229
+  "LIGO": 229,
+  "JPL_AG1": 27723
  },
- "coverage_rule": "sum(adjacent dt<=60s)/file span; energy trapezoid without gap bridging"
+ "coverage_rule": "sum(adjacent dt<=60s)/file span; energy trapezoid without gap bridging",
+ "note": "本元数据对应最终七车场 420 文件普查运行（含 JPL_AG1）。早期六车场 350 文件试点运行的元数据已被本文件取代；coverage_survey.py 中的 GARAGE_DIR/CELL_CAP 为试点版本，最终以本文件与 survey_summary.csv 为准。"
 }

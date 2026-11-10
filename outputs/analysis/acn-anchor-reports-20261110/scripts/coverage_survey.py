@@ -2,9 +2,10 @@
 """ACN-Data Static 跨车场/跨时期功率覆盖率普查。
 
 目的: 回答"CG1 2018年5—6月窗口的高功率覆盖率能否推广到其他车场与时期"。
-方法: 对 GitHub 仓库 tongxin-li/ACN-Data-Static 的六个车场目录
+方法: 对 GitHub 仓库 tongxin-li/ACN-Data-Static 的七个车场目录
       (caltech/{California_Garage_01, California_Garage_02, LIGO_01,
-       N_Wilson_Garage_01, S_Wilson_Garage_01}, office_01/Parking_Lot_01)
+       N_Wilson_Garage_01, S_Wilson_Garage_01}, office_01/Parking_Lot_01,
+       jpl/Arroyo_Garage_01)
       按 车场 x 年份 分层随机抽样，逐文件计算:
         - 是否有 Power (kW) 列、非空比例
         - 采样间隔中位数 / P95
@@ -45,10 +46,12 @@ GARAGE_DIR = {
     "NWG": "caltech/N_Wilson_Garage_01",
     "SWG": "caltech/S_Wilson_Garage_01",
     "OFFICE_PL1": "office_01/Parking_Lot_01",
+    "JPL_AG1": "jpl/Arroyo_Garage_01",
 }
 
 # 每层抽样数上限
-CELL_CAP = {"CG1": 30, "CG2": 20, "LIGO": 40, "NWG": 30, "SWG": 25, "OFFICE_PL1": 25}
+CELL_CAP = {"CG1": 30, "CG2": 20, "LIGO": 40, "NWG": 30, "SWG": 25,
+            "OFFICE_PL1": 25, "JPL_AG1": 30}
 SEED = 20261110
 
 YEAR_RE = re.compile(r"-(\d{4})-\d{2}-\d{2}T")
