@@ -15,8 +15,19 @@
 | `论文5.4节补充文字与审稿回复.md` | 可直接并入论文的 5 段补充文字 + 评审意见 1–10 逐条回复 | 独立测试期复核段（回应“训练期内核验”边界）；意见 9/10 为新增回复 |
 | `scripts/coverage_survey.py` | 附录 B 普查脚本（分层抽样、CDN 下载、逐文件指标、汇总一体；种子 20261110） | 依赖 `/tmp/garage_files.json` 清单（GitHub API 抓取） |
 | `scripts/label_artifact.py` | 附录 C 伪影诊断脚本（与 extended_analysis 同口径：严格完成时刻、60s 缺口、覆盖率 ≥0.95 子集 n=1,795） | 输出逐键明细、分层、节点与汇总 |
-| `results_survey/` | 普查结果：`survey_summary.csv`（分层汇总）、`survey_meta.json`（来源/种子/口径）、`survey_files.csv`（350 行逐文件指标） | — |
+| `results_survey/` | 普查结果：`survey_summary.csv`（分层汇总）、`survey_meta.json`（来源/种子/口径）、`survey_files.csv`（420 行逐文件指标） | 见下节“大文件分片说明” |
 | `results_artifact/` | 伪影诊断结果：`artifact_summary.json`、`artifact_idle_strata.csv`、`artifact_node.csv` | 逐键 `artifact_bins.csv`（7.7 MB）与会话级 `artifact_sessions.csv`（313 KB）因体积不入仓，可由脚本复现 |
+
+## 大文件分片说明（survey_files.csv）
+
+`results_survey/survey_files.csv` 为 97,162 字节（表头 + 420 数据行，纯 ASCII 无引号），因单次推送体积上限，以 13 个分片入仓：`survey_files.csv.01`–`.12` 各 7,900 字节，`.13` 为 2,362 字节末片。合并还原（顺序必须正确，已按 SHA-256 逐字节校验）：
+
+```bash
+cat survey_files.csv.0[1-9] survey_files.csv.1[0-3] > survey_files.csv
+# 校验：sha256sum 应为 71c2469a9c48a181f8973a4b990a09592dab6203636cc4af282d1562d37109a6
+```
+
+注意 `cat survey_files.csv.0*` 只会匹配到 01–09 九个分片（10–13 以 `1` 开头），请勿使用该简写。
 
 ## 与其他分支的关系（避免重复入仓）
 
