@@ -13,6 +13,9 @@
 *.pptx binary
 # Preserve hash-verified analysis CSV bytes across checkout (CSV writer uses CRLF).
 outputs/analysis/SG-EXP-027-time-block/*.csv -text whitespace=cr-at-eol
+# ACN A-tier evidence: preserve CRLF CSV bytes; SHA-256 is locked in
+# outputs/analysis/ACN-A-TIER-20261102/source-provenance.lock.json.
+outputs/analysis/ACN-A-TIER-20261102/**/*.csv -text whitespace=cr-at-eol
 # Frozen package hashes are byte identities; checkout must not normalize CRLF.
 outputs/analysis/SG-ANA-20261026-proxy-stability/** -text
 outputs/analysis/SG-ANA-20261026-proxy-stability/*.csv whitespace=cr-at-eol

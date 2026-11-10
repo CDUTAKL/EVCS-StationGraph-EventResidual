@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "package": "ACN-A-TIER-20261102",
+  "created_at_utc": "2026-11-10T08:08:16+00:00",
+  "source_of_truth": "Files copied byte-identically from .cache/acn-a-tier/ on 2026-11-10; source cache retained as a local working copy.",
+  "source_root": ".cache/acn-a-tier",
+  "archive_root": "outputs/analysis/ACN-A-TIER-20261102",
+  "scripts_root": "scripts/acn_a_tier",
+  "tracking_policy": "Lightweight evidence is tracked in Git. inputs/bins.csv and inputs/static_paths.json are excluded by .gitignore and locked by SHA-256 here.",
+  "source_file_count": 21,
+  "archived_file_count": 21,
+  "tracked_file_count": 20,
+  "external_input_count": 2,
+  "files": [
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/README.md",
+      "source_path": null,
+      "role": "package_readme",
+      "tracked": true,
+      "sha256": "2251ff6b9eef64e4e66d97189741058320c521f99979bb6b467364118fb0567e",
+      "bytes": 7514
+    },
+    {
+      "package_path": "scripts/acn_a_tier/probe.py",
+      "source_path": ".cache/acn-a-tier/probe.py",
+      "role": "probe_script",
+      "tracked": true,
+      "sha256": "747337ae8ac013cfe4b6695b82c888a556e576d13e4ef347720e0d43164dea82",
+      "bytes": 7865
+    },
+    {
+      "package_path": "scripts/acn_a_tier/assemble_feasibility.py",
+      "source_path": ".cache/acn-a-tier/assemble_feasibility.py",
+      "role": "aggregation_script",
+      "tracked": true,
+      "sha256": "796fb345d43ea12d6909dceb9dcbc3e7c7b64060105aa5b1051f214911926e99",
+      "bytes": 14400
+    },
+    {
+      "package_path": "scripts/acn_a_tier/build_manifest.py",
+      "source_path": ".cache/acn-a-tier/build_manifest.py",
+      "role": "manifest_script",
+      "tracked": true,
+      "sha256": "6f35cd84bee42aa025a174c0e2159d7a9804e0ad457e35a2c3b8125b685dfeed",
+      "bytes": 2122
+    },
+    {
+      "package_path": "scripts/acn_a_tier/fetch_bins.py",
+      "source_path": ".cache/acn-a-tier/fetch_bins.py",
+      "role": "fetch_script",
+      "tracked": true,
+      "sha256": "5a5139e07f1788fe02462e6f4c07b677e5fa8f271b324b0f5988ba953ca59b79",
+      "bytes": 8088
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/notes.md",
+      "source_path": ".cache/acn-a-tier/notes.md",
+      "role": "feasibility_notes",
+      "tracked": true,
+      "sha256": "04fc97bb4f0e9cd5271213bf3cd70dfb8f05fdcf45e8649c5f746d50c185e33b",
+      "bytes": 8238
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/feasibility.json",
+      "source_path": ".cache/acn-a-tier/feasibility.json",
+      "role": "feasibility_summary",
+      "tracked": true,
+      "sha256": "9011ab84ee82a073279d42ef634060dc1ab9901062ed21cb29551b956e3549bb",
+      "bytes": 25391
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/revaluation.json",
+      "source_path": ".cache/acn-a-tier/revaluation.json",
+      "role": "revaluation_metrics",
+      "tracked": true,
+      "sha256": "c62b1ed8d8698b33545db4ea334786ee7f1fd496b79cddabd65e646bee258ce6",
+      "bytes": 722
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/raw_item_sketch.json",
+      "source_path": ".cache/acn-a-tier/raw_item_sketch.json",
+      "role": "raw_item_sketch",
+      "tracked": true,
+      "sha256": "fa6ea75c07f0f9ce2da05ca202770a9ee4b25c1dba0f83aa1565fce38bc4125d",
+      "bytes": 1118
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/probe_results.jsonl",
+      "source_path": ".cache/acn-a-tier/probe_results.jsonl",
+      "role": "probe_records",
+      "tracked": true,
+      "sha256": "e85275a37cac5b9070688c9713b2da8a987d59b78afe9bda683fd524957a17a3",
+      "bytes": 15122
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/items_probe.jsonl",
+      "source_path": ".cache/acn-a-tier/items_probe.jsonl",
+      "role": "probe_item_metadata",
+      "tracked": true,
+      "sha256": "5780968a589699ca388ec4639b3034d8ed0e8b2134eb999d4f8dc4709bf4a2ee",
+      "bytes": 115747
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/test_window_manifest.csv",
+      "source_path": ".cache/acn-a-tier/test_window_manifest.csv",
+      "role": "test_window_manifest",
+      "tracked": true,
+      "sha256": "5be5a8eb8f5564fc83319fa6645a3bd2d113d648627a4ae1d5219ca6bd8b155c",
+      "bytes": 331569
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/no_current.csv",
+      "source_path": ".cache/acn-a-tier/no_current.csv",
+      "role": "missing_current_sessions",
+      "tracked": true,
+      "sha256": "9dfc2a106eb06ce1fff2f9601c90dec09971f88e14c1d281abd726743cd09510",
+      "bytes": 3238
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/session_stats.csv",
+      "source_path": ".cache/acn-a-tier/session_stats.csv",
+      "role": "session_statistics",
+      "tracked": true,
+      "sha256": "a5ec3528404371eb0993c6f66a00faf1f3cd852a532ad7a0a71211b383e1e734",
+      "bytes": 126617
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/_p5.json",
+      "source_path": ".cache/acn-a-tier/_p5.json",
+      "role": "probe_p5",
+      "tracked": true,
+      "sha256": "b2785c88ffd3f8fa4f3edbb05964c25be2855ee35ede5692bcae1bfe9aa6eb17",
+      "bytes": 1410
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/_p6.json",
+      "source_path": ".cache/acn-a-tier/_p6.json",
+      "role": "probe_p6",
+      "tracked": true,
+      "sha256": "f2a5ed7c6e804bda8491c6b5a4b6e05a7974ebce7404b42aff739670963eecd8",
+      "bytes": 1527
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/_sample_sids.json",
+      "source_path": ".cache/acn-a-tier/_sample_sids.json",
+      "role": "probe_sample_session_ids",
+      "tracked": true,
+      "sha256": "6bfce3bc9cac59ea867f6ba180d6ddb3125b38a4265b7e7092bbc940d134f936",
+      "bytes": 846
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/_probe_count.txt",
+      "source_path": ".cache/acn-a-tier/_probe_count.txt",
+      "role": "probe_budget_counter",
+      "tracked": true,
+      "sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb",
+      "bytes": 2
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/fetch_bins.log",
+      "source_path": ".cache/acn-a-tier/fetch_bins.log",
+      "role": "fetch_log_initial",
+      "tracked": true,
+      "sha256": "656121d81d48088365fefe73d2c07d39ce4af600546f84ec25fd901dec002947",
+      "bytes": 34
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/fetch_bins2.log",
+      "source_path": ".cache/acn-a-tier/fetch_bins2.log",
+      "role": "fetch_log_resume",
+      "tracked": true,
+      "sha256": "d9c31c36cee6670c46342ce85b07f82cf4b902c4d7f72260e4741a84d0974f54",
+      "bytes": 2429
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/inputs/bins.csv",
+      "source_path": ".cache/acn-a-tier/bins.csv",
+      "role": "semi_metered_bins",
+      "tracked": false,
+      "sha256": "4557f1c7f7d0a433e5ac76809782d75724530ad78f62e0363d3307203829832f",
+      "bytes": 2231919
+    },
+    {
+      "package_path": "outputs/analysis/ACN-A-TIER-20261102/inputs/static_paths.json",
+      "source_path": ".cache/acn-a-tier/static_paths.json",
+      "role": "static_path_index",
+      "tracked": false,
+      "sha256": "2b399d29dd1e686d5892ce2ea37d39500e12c6d17a634d0dc149505279b9b6ea",
+      "bytes": 7766573
+    }
+  ],
+  "external_dependencies": [
+    {
+      "path": ".cache/acn-audit-20261102/checkpoint_caltech_windowed.json",
+      "role": "external_checkpoint",
+      "tracked": false,
+      "sha256": "f6a63d838ee7bebe97395aff418902295acef0768885d934e97eecff0177e228",
+      "bytes": 3649672,
+      "note": "Used by build_manifest.py and assemble_feasibility.py; not copied into this package."
+    }
+  ],
+  "credentials": {
+    "api_token": "macOS Keychain service 'acn-api'; read at runtime by probe.py and fetch_bins.py; never written to disk or Git.",
+    "token_persisted": false
+  }
+}

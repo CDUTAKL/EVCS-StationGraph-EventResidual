@@ -1,0 +1,50 @@
+{
+ "label": "raw_CA325_2021-08-02_1718",
+ "n_items": 1,
+ "item": {
+  "_id": "611da6e3f9af8b20759dac74",
+  "userInputs": {
+   "__list_len__": 1,
+   "__head__": [
+    {
+     "userID": 9048,
+     "milesRequested": 30,
+     "WhPerMile": 450,
+     "minutesAvailable": 180,
+     "modifiedAt": "Mon, 02 Aug 2021 17:18:45 GMT",
+     "paymentRequired": true,
+     "requestedDeparture": "Mon, 02 Aug 2021 20:18:46 GMT",
+     "kWhRequested": 13.5
+    }
+   ]
+  },
+  "userID": "000009048",
+  "sessionID": "2_39_79_377_2021-08-02 17:18:36.679210",
+  "stationID": "2-39-79-377",
+  "spaceID": "CA-325",
+  "siteID": "0002",
+  "clusterID": "0039",
+  "connectionTime": "Mon, 02 Aug 2021 17:18:46 GMT",
+  "disconnectTime": "Tue, 03 Aug 2021 01:47:56 GMT",
+  "kWhDelivered": 6.335,
+  "pilotSignal": {
+   "timestamps": {
+    "__list_len__": 7882,
+    "__head__": [
+     "Mon, 02 Aug 2021 17:17:48 GMT",
+     "Mon, 02 Aug 2021 17:17:52 GMT"
+    ]
+   },
+   "pilot": {
+    "__list_len__": 7882,
+    "__head__": [
+     8.0,
+     8.0
+    ]
+   }
+  },
+  "chargingCurrent": null,
+  "doneChargingTime": null,
+  "timezone": "America/Los_Angeles"
+ }
+}
