@@ -1,0 +1,719 @@
+{
+ "task": "A-tier prerequisite: can the 2021 test-window /ts records be fetched precisely and cheaply?",
+ "generated_utc": "2026-11-02T08:45:57+00:00",
+ "api": {
+  "base": "https://ev.caltech.edu/api/v1/sessions/caltech",
+  "endpoint": "/ts",
+  "auth": "Bearer token from macOS keychain service 'acn-api' (never logged, never persisted)",
+  "network": "direct connection, urllib ProxyHandler({}); local proxy 127.0.0.1:7897 is dead",
+  "probe_requests_used": 15,
+  "probe_records_kept": 14
+ },
+ "conclusion": {
+  "verdict": "FEASIBLE_WITH_CONDITIONS",
+  "where_filter_supported": true,
+  "where_date_literal_format": "RFC1123 (e.g. 'Fri, 12 Mar 2021 00:00:00 GMT'); ISO-8601 is silently ignored -> _meta.total 0",
+  "indexed_field": "connectionTime (window queries 0.7-14.4 s)",
+  "non_indexed_fields": "sessionID and spaceID filters both return nginx 502 after ~31 s (unindexed scan)",
+  "test_window_manifest_rows": 2606,
+  "test_window_first": "Fri, 12 Mar 2021 16:37:39 GMT",
+  "test_window_last": "Tue, 14 Sep 2021 01:52:37 GMT",
+  "pages_needed_at_max_results_100": 29,
+  "est_total_MiB": 477.8,
+  "est_total_minutes": 6.5,
+  "measured_throughput_MB_per_s": 1.27,
+  "hard_blocker": "spaceID 11900388 (station 2-39-81-4550): chargingCurrent and pilotSignal are null on every sampled record; 833 of 2606 test-window sessions (32.0%) sit there"
+ },
+ "experiments": [
+  {
+   "label": "control_page1_default",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1",
+   "probe_index": 2,
+   "http_status": 200,
+   "elapsed_s": 15.56,
+   "response_bytes": 14764304,
+   "response_MiB": 14.08,
+   "meta": {
+    "total": 31424,
+    "max_results": 25,
+    "page": 1
+   },
+   "n_items": 25,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "where_connectionTime_ISO_2021-03_pg1_default",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%222021-03-01T00%3A00%3A00%22%2C+%22%24lt%22%3A+%222021-04-01T00%3A00%3A00%22%7D%7D",
+   "probe_index": 3,
+   "http_status": 200,
+   "elapsed_s": 0.68,
+   "response_bytes": 194,
+   "response_MiB": 0.0,
+   "meta": {
+    "total": 0,
+    "max_results": 25,
+    "page": 1
+   },
+   "n_items": 0,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "where_connectionTime_RFC1123_2021-03_pg1_default",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Mon%2C+01+Mar+2021+00%3A00%3A00+GMT%22%2C+%22%24lt%22%3A+%22Thu%2C+01+Apr+2021+00%3A00%3A00+GMT%22%7D%7D",
+   "probe_index": 4,
+   "http_status": 200,
+   "elapsed_s": 8.25,
+   "response_bytes": 9397894,
+   "response_MiB": 8.96,
+   "meta": {
+    "total": 253,
+    "max_results": 25,
+    "page": 1
+   },
+   "n_items": 25,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "where_RFC1123_2021-03-01_to_03-07_maxres100",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=100&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Mon%2C+01+Mar+2021+00%3A00%3A00+GMT%22%2C+%22%24lt%22%3A+%22Sun%2C+07+Mar+2021+00%3A00%3A00+GMT%22%7D%7D",
+   "probe_index": 5,
+   "http_status": 200,
+   "elapsed_s": 10.43,
+   "response_bytes": 12518000,
+   "response_MiB": 11.94,
+   "meta": {
+    "total": 33,
+    "max_results": 100,
+    "page": 1
+   },
+   "n_items": 33,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "fullpage_2021-03_12_to_04_01_pg1_maxres100",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=100&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Fri%2C+12+Mar+2021+00%3A00%3A00+GMT%22%2C+%22%24lt%22%3A+%22Thu%2C+01+Apr+2021+00%3A00%3A00+GMT%22%7D%7D",
+   "probe_index": 10,
+   "http_status": 200,
+   "elapsed_s": 14.1,
+   "response_bytes": 18774083,
+   "response_MiB": 17.9,
+   "meta": {
+    "total": 182,
+    "max_results": 100,
+    "page": 1
+   },
+   "n_items": 100,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "fullpage_2021-08_pg1_maxres100",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=100&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Sun%2C+01+Aug+2021+00%3A00%3A00+GMT%22%2C+%22%24lt%22%3A+%22Wed%2C+01+Sep+2021+00%3A00%3A00+GMT%22%7D%7D",
+   "probe_index": 11,
+   "http_status": 200,
+   "elapsed_s": 14.39,
+   "response_bytes": 19722329,
+   "response_MiB": 18.81,
+   "meta": {
+    "total": 600,
+    "max_results": 100,
+    "page": 1
+   },
+   "n_items": 100,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "raw_2021-03_12_to_04_01_pg2_maxres100",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=2&max_results=100&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Fri%2C+12+Mar+2021+00%3A00%3A00+GMT%22%2C+%22%24lt%22%3A+%22Thu%2C+01+Apr+2021+00%3A00%3A00+GMT%22%7D%7D",
+   "probe_index": 12,
+   "http_status": 200,
+   "elapsed_s": 11.91,
+   "response_bytes": 15315141,
+   "response_MiB": 14.61,
+   "meta": {
+    "total": 182,
+    "max_results": 100,
+    "page": 2
+   },
+   "n_items": 82,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "where_sessionID_in_20",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=100&where=%7B%22sessionID%22%3A+%7B%22%24in%22%3A+%5B%222_39_81_4550_2021-03-12+16%3A37%3A05.757541%22%2C+%222_39_91_437_2021-04-01+20%3A50%3A13.034576%22%2C+%222_39_131_30_2021-05-02+23%3A16%3A25.231570%22%2C+%222_39_79_379_2021-06-02+16%3A06%3A26.690149%22%2C+%222_39_78_360_2021-07-02+17%3A01%3A39.399820%22%2C+%222_39_131_30_2021-08-03+14%3A47%3A26.945895%22%2C+%222_39_128_18_2021-09-02+17%3A56%3A22.930483%22%2C+%222_39_79_381_2021-03-18+16%3A27%3A04.290566%22%2C+%222_39_79_379_2021-04-06+17%3A06%3A39.206373%22%2C+%222_39_129_17_2021-05-07+15%3A24%3A10.290232%22%2C+%222_39_139_28_2021-06-06+01%3A27%3A42.379056%22%2C+%222_39_138_29_2021-07-06+17%3A33%3A33.107759%22%2C+%222_39_81_4550_2021-08-05+03%3A34%3A53.553577%22%2C+%222_39_131_30_2021-09-05+22%3A39%3A01.457164%22%2C+%222_39_139_28_2021-03-23+20%3A16%3A10.980412%22%2C+%222_39_81_4550_2021-04-10+07%3A41%3A18.813080%22%2C+%222_39_79_380_2021-05-12+15%3A32%3A50.019390%22%2C+%222_39_79_380_2021-06-09+19%3A41%3A49.432128%22%2C+%222_39_79_380_2021-07-09+18%3A09%3A23.466405%22%2C+%222_39_81_4550_2021-08-08+15%3A30%3A34.991631%22%5D%7D%7D",
+   "probe_index": 6,
+   "http_status": 502,
+   "elapsed_s": 30.71,
+   "response_bytes": 157,
+   "response_MiB": 0.0,
+   "meta": null,
+   "n_items": null,
+   "error": null,
+   "body_head": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>ngin"
+  },
+  {
+   "label": "raw_space_11900388_maxres1",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=1&where=%7B%22spaceID%22%3A+%2211900388%22%7D",
+   "probe_index": 13,
+   "http_status": 502,
+   "elapsed_s": 31.4,
+   "response_bytes": 157,
+   "response_MiB": 0.0,
+   "meta": null,
+   "n_items": null,
+   "error": null,
+   "body_head": "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>ngin"
+  },
+  {
+   "label": "align_2021-03_12_to_04_01_maxres10",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=10&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Fri%2C+12+Mar+2021+00%3A00%3A00+GMT%22%2C+%22%24lt%22%3A+%22Thu%2C+01+Apr+2021+00%3A00%3A00+GMT%22%7D%7D",
+   "probe_index": 7,
+   "http_status": 200,
+   "elapsed_s": 7.1,
+   "response_bytes": 4245420,
+   "response_MiB": 4.05,
+   "meta": {
+    "total": 182,
+    "max_results": 10,
+    "page": 1
+   },
+   "n_items": 10,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "align_2021-06_maxres10",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=10&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Tue%2C+01+Jun+2021+00%3A00%3A00+GMT%22%2C+%22%24lt%22%3A+%22Thu%2C+01+Jul+2021+00%3A00%3A00+GMT%22%7D%7D",
+   "probe_index": 8,
+   "http_status": 200,
+   "elapsed_s": 3.83,
+   "response_bytes": 2141253,
+   "response_MiB": 2.04,
+   "meta": {
+    "total": 438,
+    "max_results": 10,
+    "page": 1
+   },
+   "n_items": 10,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "align_2021-08_maxres10",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=10&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Sun%2C+01+Aug+2021+00%3A00%3A00+GMT%22%2C+%22%24lt%22%3A+%22Wed%2C+01+Sep+2021+00%3A00%3A00+GMT%22%7D%7D",
+   "probe_index": 9,
+   "http_status": 200,
+   "elapsed_s": 2.4,
+   "response_bytes": 900870,
+   "response_MiB": 0.86,
+   "meta": {
+    "total": 600,
+    "max_results": 10,
+    "page": 1
+   },
+   "n_items": 10,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "raw_gap_station_2021-03-12_pg1_maxres1",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=1&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Fri%2C+12+Mar+2021+00%3A00%3A00+GMT%22%2C+%22%24lt%22%3A+%22Thu%2C+01+Apr+2021+00%3A00%3A00+GMT%22%7D%7D",
+   "probe_index": 14,
+   "http_status": 200,
+   "elapsed_s": 0.74,
+   "response_bytes": 1418,
+   "response_MiB": 0.0,
+   "meta": {
+    "total": 182,
+    "max_results": 1,
+    "page": 1
+   },
+   "n_items": 1,
+   "error": null,
+   "body_head": null
+  },
+  {
+   "label": "raw_CA325_2021-08-02_1718",
+   "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=2&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Mon%2C+02+Aug+2021+17%3A18%3A00+GMT%22%2C+%22%24lt%22%3A+%22Mon%2C+02+Aug+2021+17%3A19%3A00+GMT%22%7D%7D",
+   "probe_index": 15,
+   "http_status": 200,
+   "elapsed_s": 1.73,
+   "response_bytes": 302401,
+   "response_MiB": 0.29,
+   "meta": {
+    "total": 1,
+    "max_results": 2,
+    "page": 1
+   },
+   "n_items": 1,
+   "error": null,
+   "body_head": null
+  }
+ ],
+ "filter_semantics": {
+  "operator_support": "$gte / $lt on connectionTime work; boundaries behave as [start, end)",
+  "verification": [
+   "where 2021-03-01..2021-04-01 -> _meta.total 253 == checkpoint months['2021-03'].total 253",
+   "where 2021-03-12..2021-04-01 -> _meta.total 182 == manifest 2021-03 rows 182",
+   "where 2021-06-01..2021-07-01 -> _meta.total 438 == manifest 2021-06 rows 438",
+   "where 2021-08-01..2021-09-01 -> _meta.total 600 == manifest 2021-08 rows 600",
+   "page 1 (100) + page 2 (82) == 182 -> filtered pagination closes exactly, no skips/dupes"
+  ],
+  "max_results": "honoured (requested 100 -> _meta.max_results 100, 100 items returned); values >100 untested to stay inside the 60 s gateway budget",
+  "deep_pagination": "not needed: every monthly window is 2-6 pages, so skip offsets stay <=500 docs"
+ },
+ "volume_and_timing": {
+  "avg_bytes_per_session": 192263,
+  "control_page_25_items": {
+   "MiB": 14.08,
+   "seconds": 15.56
+  },
+  "full_page_100_items": [
+   {
+    "window": "2021-03-12..2021-04-01",
+    "MiB": 17.9,
+    "seconds": 14.1,
+    "items": 100
+   },
+   {
+    "window": "2021-08",
+    "MiB": 18.81,
+    "seconds": 14.39,
+    "items": 100
+   }
+  ],
+  "samples_per_session": {
+   "measured_on_200_sessions": true,
+   "median": 957,
+   "mean": 2516,
+   "p90": 7954,
+   "max": 25387,
+   "note": "brief's 10,447-point sample is typical, not the ceiling"
+  },
+  "est_test_window": {
+   "sessions": 2606,
+   "pages": 29,
+   "MiB": 477.8,
+   "minutes": 6.5
+  },
+  "fallback_full_scan_if_no_where": {
+   "pages": 1258,
+   "MiB": 17713.1,
+   "hours": 5.4,
+   "viability": "not viable: 18+ GB / 5.5 h plus the known 502/504 deep-page failures"
+  }
+ },
+ "fetch_plan": [
+  {
+   "month": "2021-03",
+   "where": {
+    "connectionTime": {
+     "$gte": "Fri, 12 Mar 2021 00:00:00 GMT",
+     "$lt": "Thu, 01 Apr 2021 00:00:00 GMT"
+    }
+   },
+   "sessions_in_manifest": 182,
+   "pages_at_max_results_100": 2,
+   "est_MiB": 33.4,
+   "est_minutes": 0.4
+  },
+  {
+   "month": "2021-04",
+   "where": {
+    "connectionTime": {
+     "$gte": "Thu, 01 Apr 2021 00:00:00 GMT",
+     "$lt": "Sat, 01 May 2021 00:00:00 GMT"
+    }
+   },
+   "sessions_in_manifest": 302,
+   "pages_at_max_results_100": 4,
+   "est_MiB": 55.4,
+   "est_minutes": 0.9
+  },
+  {
+   "month": "2021-05",
+   "where": {
+    "connectionTime": {
+     "$gte": "Sat, 01 May 2021 00:00:00 GMT",
+     "$lt": "Tue, 01 Jun 2021 00:00:00 GMT"
+    }
+   },
+   "sessions_in_manifest": 345,
+   "pages_at_max_results_100": 4,
+   "est_MiB": 63.3,
+   "est_minutes": 0.9
+  },
+  {
+   "month": "2021-06",
+   "where": {
+    "connectionTime": {
+     "$gte": "Tue, 01 Jun 2021 00:00:00 GMT",
+     "$lt": "Thu, 01 Jul 2021 00:00:00 GMT"
+    }
+   },
+   "sessions_in_manifest": 438,
+   "pages_at_max_results_100": 5,
+   "est_MiB": 80.3,
+   "est_minutes": 1.1
+  },
+  {
+   "month": "2021-07",
+   "where": {
+    "connectionTime": {
+     "$gte": "Thu, 01 Jul 2021 00:00:00 GMT",
+     "$lt": "Sun, 01 Aug 2021 00:00:00 GMT"
+    }
+   },
+   "sessions_in_manifest": 446,
+   "pages_at_max_results_100": 5,
+   "est_MiB": 81.8,
+   "est_minutes": 1.1
+  },
+  {
+   "month": "2021-08",
+   "where": {
+    "connectionTime": {
+     "$gte": "Sun, 01 Aug 2021 00:00:00 GMT",
+     "$lt": "Wed, 01 Sep 2021 00:00:00 GMT"
+    }
+   },
+   "sessions_in_manifest": 600,
+   "pages_at_max_results_100": 6,
+   "est_MiB": 110.0,
+   "est_minutes": 1.3
+  },
+  {
+   "month": "2021-09",
+   "where": {
+    "connectionTime": {
+     "$gte": "Wed, 01 Sep 2021 00:00:00 GMT",
+     "$lt": "Wed, 15 Sep 2021 00:00:00 GMT"
+    }
+   },
+   "sessions_in_manifest": 293,
+   "pages_at_max_results_100": 3,
+   "est_MiB": 53.7,
+   "est_minutes": 0.7
+  }
+ ],
+ "alignment": {
+  "sampled_records": 282,
+  "raw_records_including_repeats": 284,
+  "march_segment_fully_enumerated": true,
+  "march_segment_rows": 182,
+  "march_segment_matched": 182,
+  "records_whose_sessionID_is_in_manifest": 282,
+  "spaceID_equal": 282,
+  "connectionTime_string_equal": 282,
+  "join_key": "sessionID is exact (includes microseconds); spaceID and connectionTime are identical between the sessions endpoint and /ts",
+  "twenty_row_spot_check": [
+   {
+    "sessionID": "2_39_81_4550_2021-03-12 16:37:05.757541",
+    "manifest_spaceID": "11900388",
+    "ts_spaceID": "11900388",
+    "manifest_connectionTime": "Fri, 12 Mar 2021 16:37:39 GMT",
+    "ts_connectionTime": "Fri, 12 Mar 2021 16:37:39 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 0,
+    "ts_first_sample": null,
+    "ts_last_sample": null
+   },
+   {
+    "sessionID": "2_39_131_30_2021-08-06 00:07:30.533058",
+    "manifest_spaceID": "CA-305",
+    "ts_spaceID": "CA-305",
+    "manifest_connectionTime": "Fri, 06 Aug 2021 00:07:44 GMT",
+    "ts_connectionTime": "Fri, 06 Aug 2021 00:07:44 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 2700,
+    "ts_first_sample": "Fri, 06 Aug 2021 00:06:45 GMT",
+    "ts_last_sample": "Fri, 06 Aug 2021 03:03:42 GMT"
+   },
+   {
+    "sessionID": "2_39_139_28_2021-03-26 00:16:25.884225",
+    "manifest_spaceID": "CA-303",
+    "ts_spaceID": "CA-303",
+    "manifest_connectionTime": "Fri, 26 Mar 2021 00:16:37 GMT",
+    "ts_connectionTime": "Fri, 26 Mar 2021 00:16:37 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 2392,
+    "ts_first_sample": "Fri, 26 Mar 2021 00:15:37 GMT",
+    "ts_last_sample": "Fri, 26 Mar 2021 02:51:29 GMT"
+   },
+   {
+    "sessionID": "2_39_79_377_2021-08-02 17:18:36.679210",
+    "manifest_spaceID": "CA-325",
+    "ts_spaceID": "CA-325",
+    "manifest_connectionTime": "Mon, 02 Aug 2021 17:18:46 GMT",
+    "ts_connectionTime": "Mon, 02 Aug 2021 17:18:46 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 0,
+    "ts_first_sample": null,
+    "ts_last_sample": null
+   },
+   {
+    "sessionID": "2_39_81_4550_2021-03-12 16:37:05.757541",
+    "manifest_spaceID": "11900388",
+    "ts_spaceID": "11900388",
+    "manifest_connectionTime": "Fri, 12 Mar 2021 16:37:39 GMT",
+    "ts_connectionTime": "Fri, 12 Mar 2021 16:37:39 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 0,
+    "ts_first_sample": null,
+    "ts_last_sample": null
+   },
+   {
+    "sessionID": "2_39_79_379_2021-03-12 17:55:33.161661",
+    "manifest_spaceID": "CA-327",
+    "ts_spaceID": "CA-327",
+    "manifest_connectionTime": "Fri, 12 Mar 2021 17:55:47 GMT",
+    "ts_connectionTime": "Fri, 12 Mar 2021 17:55:47 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 8887,
+    "ts_first_sample": "Fri, 12 Mar 2021 17:54:47 GMT",
+    "ts_last_sample": "Sat, 13 Mar 2021 03:34:15 GMT"
+   },
+   {
+    "sessionID": "2_39_139_28_2021-08-06 01:54:33.373622",
+    "manifest_spaceID": "CA-303",
+    "ts_spaceID": "CA-303",
+    "manifest_connectionTime": "Fri, 06 Aug 2021 01:54:33 GMT",
+    "ts_connectionTime": "Fri, 06 Aug 2021 01:54:33 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 1632,
+    "ts_first_sample": "Fri, 06 Aug 2021 01:53:33 GMT",
+    "ts_last_sample": "Fri, 06 Aug 2021 03:39:46 GMT"
+   },
+   {
+    "sessionID": "2_39_81_4550_2021-03-26 01:02:03.127616",
+    "manifest_spaceID": "11900388",
+    "ts_spaceID": "11900388",
+    "manifest_connectionTime": "Fri, 26 Mar 2021 01:02:25 GMT",
+    "ts_connectionTime": "Fri, 26 Mar 2021 01:02:25 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 0,
+    "ts_first_sample": null,
+    "ts_last_sample": null
+   },
+   {
+    "sessionID": "2_39_131_30_2021-03-12 19:12:34.592157",
+    "manifest_spaceID": "CA-305",
+    "ts_spaceID": "CA-305",
+    "manifest_connectionTime": "Fri, 12 Mar 2021 19:12:35 GMT",
+    "ts_connectionTime": "Fri, 12 Mar 2021 19:12:35 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 7954,
+    "ts_first_sample": "Fri, 12 Mar 2021 19:11:35 GMT",
+    "ts_last_sample": "Sat, 13 Mar 2021 03:51:33 GMT"
+   },
+   {
+    "sessionID": "2_39_81_4550_2021-08-02 00:30:09.963636",
+    "manifest_spaceID": "11900388",
+    "ts_spaceID": "11900388",
+    "manifest_connectionTime": "Mon, 02 Aug 2021 00:30:31 GMT",
+    "ts_connectionTime": "Mon, 02 Aug 2021 00:30:31 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 0,
+    "ts_first_sample": null,
+    "ts_last_sample": null
+   },
+   {
+    "sessionID": "2_39_81_4550_2021-03-26 03:01:22.985669",
+    "manifest_spaceID": "11900388",
+    "ts_spaceID": "11900388",
+    "manifest_connectionTime": "Fri, 26 Mar 2021 03:01:27 GMT",
+    "ts_connectionTime": "Fri, 26 Mar 2021 03:01:27 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 0,
+    "ts_first_sample": null,
+    "ts_last_sample": null
+   },
+   {
+    "sessionID": "2_39_81_4550_2021-03-12 19:41:32.863148",
+    "manifest_spaceID": "11900388",
+    "ts_spaceID": "11900388",
+    "manifest_connectionTime": "Fri, 12 Mar 2021 19:41:38 GMT",
+    "ts_connectionTime": "Fri, 12 Mar 2021 19:41:38 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 0,
+    "ts_first_sample": null,
+    "ts_last_sample": null
+   },
+   {
+    "sessionID": "2_39_139_28_2021-08-02 14:55:02.370845",
+    "manifest_spaceID": "CA-303",
+    "ts_spaceID": "CA-303",
+    "manifest_connectionTime": "Mon, 02 Aug 2021 14:55:18 GMT",
+    "ts_connectionTime": "Mon, 02 Aug 2021 14:55:18 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 8414,
+    "ts_first_sample": "Mon, 02 Aug 2021 14:54:18 GMT",
+    "ts_last_sample": "Tue, 03 Aug 2021 00:04:02 GMT"
+   },
+   {
+    "sessionID": "2_39_79_378_2021-03-26 16:23:22.012247",
+    "manifest_spaceID": "CA-326",
+    "ts_spaceID": "CA-326",
+    "manifest_connectionTime": "Fri, 26 Mar 2021 16:23:44 GMT",
+    "ts_connectionTime": "Fri, 26 Mar 2021 16:23:44 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 7352,
+    "ts_first_sample": "Fri, 26 Mar 2021 16:22:44 GMT",
+    "ts_last_sample": "Sat, 27 Mar 2021 00:18:19 GMT"
+   },
+   {
+    "sessionID": "2_39_138_29_2021-03-12 21:45:05.172956",
+    "manifest_spaceID": "CA-304",
+    "ts_spaceID": "CA-304",
+    "manifest_connectionTime": "Fri, 12 Mar 2021 21:45:13 GMT",
+    "ts_connectionTime": "Fri, 12 Mar 2021 21:45:13 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 3224,
+    "ts_first_sample": "Fri, 12 Mar 2021 21:44:13 GMT",
+    "ts_last_sample": "Sat, 13 Mar 2021 01:13:52 GMT"
+   },
+   {
+    "sessionID": "2_39_129_17_2021-08-02 15:21:15.568492",
+    "manifest_spaceID": "CA-307",
+    "ts_spaceID": "CA-307",
+    "manifest_connectionTime": "Mon, 02 Aug 2021 15:21:16 GMT",
+    "ts_connectionTime": "Mon, 02 Aug 2021 15:21:16 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 3457,
+    "ts_first_sample": "Mon, 02 Aug 2021 15:20:16 GMT",
+    "ts_last_sample": "Mon, 02 Aug 2021 19:06:31 GMT"
+   },
+   {
+    "sessionID": "2_39_139_28_2021-03-26 17:01:11.578171",
+    "manifest_spaceID": "CA-303",
+    "ts_spaceID": "CA-303",
+    "manifest_connectionTime": "Fri, 26 Mar 2021 17:01:25 GMT",
+    "ts_connectionTime": "Fri, 26 Mar 2021 17:01:25 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 1298,
+    "ts_first_sample": "Fri, 26 Mar 2021 17:00:26 GMT",
+    "ts_last_sample": "Fri, 26 Mar 2021 18:24:46 GMT"
+   },
+   {
+    "sessionID": "2_39_78_365_2021-03-12 22:53:04.984836",
+    "manifest_spaceID": "CA-321",
+    "ts_spaceID": "CA-321",
+    "manifest_connectionTime": "Fri, 12 Mar 2021 22:53:25 GMT",
+    "ts_connectionTime": "Fri, 12 Mar 2021 22:53:25 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 8799,
+    "ts_first_sample": "Fri, 12 Mar 2021 22:52:26 GMT",
+    "ts_last_sample": "Sat, 13 Mar 2021 05:05:12 GMT"
+   },
+   {
+    "sessionID": "2_39_79_380_2021-08-02 15:24:44.034974",
+    "manifest_spaceID": "CA-489",
+    "ts_spaceID": "CA-489",
+    "manifest_connectionTime": "Mon, 02 Aug 2021 15:24:53 GMT",
+    "ts_connectionTime": "Mon, 02 Aug 2021 15:24:53 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 8246,
+    "ts_first_sample": "Mon, 02 Aug 2021 15:23:54 GMT",
+    "ts_last_sample": "Tue, 03 Aug 2021 00:19:01 GMT"
+   },
+   {
+    "sessionID": "2_39_81_4550_2021-03-26 17:20:19.988457",
+    "manifest_spaceID": "11900388",
+    "ts_spaceID": "11900388",
+    "manifest_connectionTime": "Fri, 26 Mar 2021 17:20:26 GMT",
+    "ts_connectionTime": "Fri, 26 Mar 2021 17:20:26 GMT",
+    "spaceID_match": true,
+    "connectionTime_match": true,
+    "n_current_samples": 0,
+    "ts_first_sample": null,
+    "ts_last_sample": null
+   }
+  ]
+ },
+ "telemetry_coverage": {
+  "sampled": 282,
+  "null_chargingCurrent": 115,
+  "null_rate": 0.408,
+  "by_space": [
+   {
+    "spaceID": "11900388",
+    "sampled": 107,
+    "null": 107
+   },
+   {
+    "spaceID": "CA-305",
+    "sampled": 15,
+    "null": 3
+   },
+   {
+    "spaceID": "CA-492",
+    "sampled": 9,
+    "null": 2
+   },
+   {
+    "spaceID": "CA-325",
+    "sampled": 4,
+    "null": 2
+   },
+   {
+    "spaceID": "CA-307",
+    "sampled": 13,
+    "null": 1
+   }
+  ],
+  "gap_station": {
+   "spaceID": "11900388",
+   "stationID": "2-39-81-4550",
+   "sessions_in_test_window": 833,
+   "share_of_test_window": 0.32,
+   "evidence": "107/107 unique sampled records (March + August 2021 pages) have chargingCurrent=null AND pilotSignal=null while kWhDelivered>0; a raw record dump confirms the two telemetry keys are literally null"
+  },
+  "sparse_ca_null": {
+   "sampled_ca_records": 177,
+   "null": 8,
+   "note": "on CA-* spaces chargingCurrent can be null while pilotSignal is present (verified raw dump: CA-325, 7,882 pilot samples, chargingCurrent null)"
+  },
+  "est_sessions_with_usable_current": 1773,
+  "est_usable_share": 0.68,
+  "est_usable_share_after_sparse_nulls": 0.65
+ },
+ "recommended_strategy": {
+  "shape": "7 connectionTime windows (one per calendar month, clipped to the test window) x max_results=100 x page 1..N, with a per-window total cross-check against the manifest",
+  "why": "connectionTime is the only indexed field; per-month windows keep offsets small (<=6 pages) so the 502/504 deep-skip failure never triggers",
+  "throughput": "~1.3 MB/s, 100-item page = ~18 MiB / ~12-14 s, comfortably inside the 60 s gateway limit",
+  "retry_unit": "a whole window page (sessionID/spaceID filters cannot be used to repair single sessions)",
+  "verification_hook": "_meta.total per window must equal the manifest month count; any mismatch aborts that window"
+ },
+ "risks": [
+  "42% of sampled records carry no current series at all (32% of them from one station) -> an 'A-tier semi-metered label' can only cover ~68% of test-window sessions without a fallback rule",
+  "pilotSignal is a commanded-current series, not measured; using it as a surrogate is a modelling choice that needs its own validation",
+  "/ts sample grids start ~60 s BEFORE connectionTime (e.g. 17:54:47 vs 17:55:47), so the integration window must be clipped to [connectionTime, disconnectTime]",
+  "max_results > 100 untested; 200-item pages would exceed the measured 30 s comfort zone",
+  "no per-session repair path: a failed page must be re-fetched as a window page"
+ ]
+}

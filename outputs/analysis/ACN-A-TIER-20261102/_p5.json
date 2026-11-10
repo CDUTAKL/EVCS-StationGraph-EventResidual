@@ -1,0 +1,55 @@
+[
+ {
+  "label": "where_RFC1123_2021-03-01_to_03-07_maxres100",
+  "url_no_token": "https://ev.caltech.edu/api/v1/sessions/caltech/ts?page=1&max_results=100&where=%7B%22connectionTime%22%3A+%7B%22%24gte%22%3A+%22Mon%2C+01+Mar+2021+00%3A00%3A00+GMT%22%2C+%22%24lt%22%3A+%22Sun%2C+07+Mar+2021+00%3A00%3A00+GMT%22%7D%7D",
+  "probe_index": 5,
+  "status": 200,
+  "content_length_header": "12518000",
+  "elapsed_s": 10.43,
+  "bytes": 12518000,
+  "content_type": null,
+  "meta": {
+   "total": 33,
+   "max_results": 100,
+   "page": 1
+  },
+  "n_items": 33,
+  "item_keys": [
+   "_id",
+   "chargingCurrent",
+   "clusterID",
+   "connectionTime",
+   "disconnectTime",
+   "doneChargingTime",
+   "kWhDelivered",
+   "pilotSignal",
+   "sessionID",
+   "siteID",
+   "spaceID",
+   "stationID",
+   "timezone",
+   "userID",
+   "userInputs"
+  ],
+  "first_ids": [
+   {
+    "_id": "60514d8bf9af8b57ce1df849",
+    "sessionID": "2_39_131_30_2021-03-01 00:26:43.891387",
+    "spaceID": "CA-305",
+    "connectionTime": "Mon, 01 Mar 2021 00:26:44 GMT"
+   },
+   {
+    "_id": "60514d8bf9af8b57ce1df84a",
+    "sessionID": "2_39_82_384_2021-03-01 01:23:54.631264",
+    "spaceID": "CA-213",
+    "connectionTime": "Mon, 01 Mar 2021 01:23:55 GMT"
+   },
+   {
+    "_id": "60529f0ff9af8b59c8c44c00",
+    "sessionID": "2_39_139_28_2021-03-01 15:58:58.231564",
+    "spaceID": "CA-303",
+    "connectionTime": "Mon, 01 Mar 2021 15:58:58 GMT"
+   }
+  ]
+ }
+]

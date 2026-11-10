@@ -65,6 +65,13 @@ outputs/*
 outputs/analysis/SG-ANA-20261026-proxy-stability/__pycache__/
 # Frozen predictions and datasets are hash-referenced, but stay outside Git.
 /outputs/analysis/SG-ANA-20261026-proxy-stability/inputs/
+# ACN A-tier feasibility and semi-metered-label evidence (2026-11-02).
+# The 15-min bins are tracked; the 7.8 MB static path index stays external
+# and is hash-locked in source-provenance.lock.json.
+!outputs/analysis/ACN-A-TIER-20261102/
+!outputs/analysis/ACN-A-TIER-20261102/**
+outputs/analysis/ACN-A-TIER-20261102/inputs/*
+!outputs/analysis/ACN-A-TIER-20261102/inputs/bins.csv
 # 正式论文只保留一个稳定文件名，历史版本由 Git 管理。
 !outputs/thesis/
 outputs/thesis/*
