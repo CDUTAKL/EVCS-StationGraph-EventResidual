@@ -1,0 +1,40 @@
+{
+ "source": "https://github.com/tongxin-li/ACN-Data-Static @ abb7cf15cc7108913e965d4375cc7270d532b65f (jsDelivr CDN; archived replay ref)",
+ "source_repo": "tongxin-li/ACN-Data-Static",
+ "source_ref": "abb7cf15cc7108913e965d4375cc7270d532b65f",
+ "original_run_source": "https://github.com/tongxin-li/ACN-Data-Static @ main (jsDelivr CDN); main 于 2026-11-10 复核时解析为上述固定提交",
+ "survey_date_utc": "2026-11-09T17:09:07.664890+00:00",
+ "sample_mode": "fixed_sample_replay",
+ "original_sample_mode": "new_stratified_sample",
+ "sample_file": "results_survey/survey_files.csv",
+ "sample_sha256": "71c2469a9c48a181f8973a4b990a09592dab6203636cc4af282d1562d37109a6",
+ "inventory_file": null,
+ "inventory_sha256": null,
+ "inventory_required": false,
+ "inventory_note": "全目录 garage_files.json 未归档；固定 420 行清单复算不需要它，仅重新抽样时须通过 ACN_SURVEY_INVENTORY 提供。",
+ "seed": 20261110,
+ "cell_cap": {
+  "CG1": 30,
+  "CG2": 20,
+  "LIGO": 40,
+  "NWG": 30,
+  "SWG": 25,
+  "OFFICE_PL1": 25,
+  "JPL_AG1": 30
+ },
+ "n_planned": 420,
+ "n_downloaded": 420,
+ "garage_totals": {
+  "NWG": 6299,
+  "SWG": 2703,
+  "OFFICE_PL1": 1474,
+  "CG1": 31860,
+  "CG2": 15589,
+  "LIGO": 229,
+  "JPL_AG1": 27723
+ },
+ "garage_totals_note": "原抽样运行登记的全目录背景总数，合计 85,877；固定复算不重新读取或验证全目录清单。",
+ "coverage_rule": "sum(adjacent dt<=60s)/file span; energy trapezoid without gap bridging",
+ "replay_command": "在归档根目录执行 python3 scripts/coverage_survey.py；先按 README 合并 survey_files.csv 分片。",
+ "note": "本元数据对应最终七车场 420 文件抽样运行（含 JPL_AG1）。coverage_survey.py 的 GARAGE_DIR/CELL_CAP 已与本次运行一致；默认按 survey_files.csv 固定清单原顺序复算，ACN_SURVEY_REPLAY=0 时才重新分层抽样。420 个文件是 85,877 个文件的分层样本，样本结论不得外推为全目录逐文件结论。"
+}

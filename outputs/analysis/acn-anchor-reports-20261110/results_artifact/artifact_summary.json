@@ -1,0 +1,46 @@
+{
+ "n_sessions_power_subset": 1795,
+ "n_sessions_valid_done": 1722,
+ "n_bins": 44833,
+ "n_post_bins": 19924,
+ "thresholds": {
+  "abs_eps_kwh": 0.01,
+  "rel_eps": 0.05,
+  "post_bin": "post_share>=0.5"
+ },
+ "A_false_nonzero": {
+  "u_kwh_nonzero_bins": 44833,
+  "u_kwh_false_abs_n": 22494,
+  "u_kwh_false_abs_rate": 0.5017286373876386,
+  "u_kwh_false_rel_n": 22588,
+  "u_kwh_false_rel_rate": 0.503825307251355,
+  "u_kwh_false_abs_kwh": 4741.109530784262,
+  "u_kwh_nonzero_kwh": 15259.465431105127,
+  "c_kwh_nonzero_bins": 25463,
+  "c_kwh_false_abs_n": 3152,
+  "c_kwh_false_abs_rate": 0.12378745630915446,
+  "c_kwh_false_rel_n": 3375,
+  "c_kwh_false_rel_rate": 0.13254526175234654,
+  "c_kwh_false_abs_kwh": 978.7694526077494,
+  "c_kwh_nonzero_kwh": 15259.465431105125
+ },
+ "B_error_location": {
+  "err_u_total_kwh": 11736.931013620851,
+  "err_u_post_kwh": 4037.4888579837793,
+  "err_u_pre_kwh": 7701.255547049973,
+  "err_c_total_kwh": 5749.36842495082,
+  "err_c_post_kwh": 309.08337875018555,
+  "err_c_pre_kwh": 5442.5165818640435,
+  "err_u_post_share": 0.3439986869905109,
+  "err_c_post_share": 0.05375953598813411
+ },
+ "C_event_boundary": {
+  "event_bins_n": 4465,
+  "event_u_false_abs_n": 1304,
+  "event_c_false_abs_n": 273,
+  "event_u_nonzero_n": 4465,
+  "event_c_nonzero_n": 3434,
+  "event_u_false_rate": 0.29204927211646137,
+  "event_c_false_rate": 0.07949912638322656
+ }
+}

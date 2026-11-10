@@ -1,0 +1,65 @@
+# ACN 设备功率锚定分析：报告与新增分析归档（2026-11-10）
+
+本目录收录 2026-11 上旬完成的 ACN-Data Static 设备功率锚定分析的全部**文字报告**，以及两项**新增分析**（跨车场功率覆盖率抽样普查、标签伪影诊断）的脚本与汇总结果，外加 2021 异时段标签口径核验报告与论文 5.4 节补充文字。所有数字可由所引脚本与结果 CSV 复算。
+
+**研究性质**：2018 窗口各报告为论文主模型**训练时期内**的探索性标签口径核验（设备上报通道）；2021 报告为**异时段的标签口径复核**（半计量标签，电流 × 推断电压），其中节点级重评估是冻结预测在半计量标签上的重新评价——两者都不是模型在实测功率上的独立预测效果验证。
+
+## 文件清单
+
+| 文件 | 内容 | 关键数字 |
+|---|---|---|
+| `ACN设备功率锚定分析报告.md` | v3 主报告：双通道锚定（累计电表差分 A / 功率积分 B）、同样本对照、外推三层判断、复现材料清单 | 2,599→2,335 会话；TVD 中位 0.398→0.179（−54.9%）；52 节点 MAE −46.5%（A）/ −48.6%（B）；论文 10 主节点核心口径 A 0.1442→0.0803（726 会话）、B 0.1446→0.0780（562 会话）；扩展 548 会话口径另列，不混用 |
+| `ACN功率覆盖率普查报告.md` | 附录 B：从七个车场 85,877 个文件的目录中按车场×年份分层抽取 420 个文件的功率覆盖率普查 | **样本中** 96.9% 文件内部覆盖率 ≥0.95（中位 1.0）；JPL 2018–2019 样本功率列全空，2020 样本 11 个非空、9 个全空；Caltech 所抽年份样本均有非空功率，均不作全目录逐文件外推 |
+| `标签伪影诊断报告.md` | 附录 C：解释第 4 章非零层排序相关 0.420 的逐键诊断 | 伪非零键率 50.2%→12.4%（4,741→979 kWh）；完成后主导键误差占比 34.4%→5.4%；事件边界键伪非零 29.2%→7.9%；按占桩比分层 18.7%→77.1% vs 截断 2.3%–17.6% |
+| `2021测试期核验报告.md` | 2021-03-12~09-14 异时段标签口径两项核验（标签总量标定/电压推断稳定性 + 完成后电量占比） | 总量最大偏差 0.85%（部分由 v_eff 归一化构造保证）；208V 节点推断电压中位 224.1V（r=−0.017）；CA-321 推断电压外推渐近 122.4V、与 120V 电压等级相符（推断值，非独立实测确证）；半计量完成后占比 1.45% vs 均分 37.2%（208V 中位 0.73%，CA-321 恒定 0.9A） |
+| `论文5.4节补充文字与审稿回复.md` | 可直接并入论文的 5 段补充文字 + 评审意见 1–10 逐条回复（§2 与主报告 §5 为两套口径，文中已分别标注，不得混用） | 异时段标签口径复核段（回应“训练期内核验”边界）；意见 9/10 为新增回复；缺失数拆分为 258/5/1 |
+| `scripts/coverage_survey.py` | 附录 B 普查脚本（固定清单复算或重新分层抽样、CDN 下载、逐文件指标、汇总一体；种子 20261110） | 默认读取固定 420 行 `survey_files.csv`，数据源锁定提交 `abb7cf15…`；仅重新抽样需要外部全目录 inventory |
+| `scripts/label_artifact.py` | 附录 C 伪影诊断脚本（与 extended_analysis 同口径：严格完成时刻、60s 缺口、覆盖率 ≥0.95 子集 n=1,795） | 输出逐键明细、分层、节点与汇总 |
+| `results_survey/` | 普查结果：`survey_summary.csv`（分层汇总）、`survey_meta.json`（来源/种子/口径，对应最终七车场 420 文件运行）、`survey_files.csv`（420 行逐文件指标） | 见下节“大文件分片说明” |
+| `results_artifact/` | 伪影诊断结果：`artifact_summary.json`、`artifact_idle_strata.csv`、`artifact_node.csv` | 逐键 `artifact_bins.csv`（7.7 MB）与会话级 `artifact_sessions.csv`（313 KB）因体积不入仓，可由脚本复现 |
+
+## 大文件分片说明（survey_files.csv）
+
+`results_survey/survey_files.csv` 为 97,162 字节（表头 + 420 数据行，纯 ASCII 无引号），因单次推送体积上限，以 13 个分片入仓：`survey_files.csv.01`–`.12` 各 7,900 字节，`.13` 为 2,362 字节末片。合并还原（顺序必须正确，已按 SHA-256 逐字节校验）：
+
+```bash
+cat survey_files.csv.0[1-9] survey_files.csv.1[0-3] > survey_files.csv
+# 校验：sha256sum 应为 71c2469a9c48a181f8973a4b990a09592dab6203636cc4af282d1562d37109a6
+```
+
+注意 `cat survey_files.csv.0*` 只会匹配到 01–09 九个分片（10–13 以 `1` 开头），请勿使用该简写。
+
+## 与其他分支的关系（避免重复入仓）
+
+- **核心脚本与基准结果**：`anchor_analysis.py`、`extended_analysis.py`、`download_static.py`、`make_figures.py` 及 `results/`（node_*、sensitivity_*、multiscale_*、mechanism_*、representativeness_*、uncertainty_*、after_done_exact_summary、extended_summary.json）、图件 `fig_E1`–`fig_E5` 已完整收录于分支 **`codex/acn-anchor-v3-extensions-20261110`** 的 `docs/thesis/evidence/acn-anchor-extensions-v3-20261110/`（含 SHA256SUMS 与 source_manifest.json 哈希锁定）。该处 `extended_analysis.py` 默认输入路径已改为包内相对路径，计算逻辑未改。本分支不重复收录，以该分支为这两个脚本的入仓版本。
+- **2021 测试期数据**：逐箱 `bins.csv`（22,105 行，SHA-256 4557f1c7…832f）、`session_stats.csv`、`no_current.csv`、`fetch_bins.py`、锁文件等已收录于 PR #2 分支 `archive/acn-a-tier-20261102`（`outputs/analysis/ACN-A-TIER-20261102/`）。本分支基于该分支提交 a2b2e84。
+
+## 未入仓内容（及原因）
+
+| 内容 | 原因 |
+|---|---|
+| 89 MB v3 复现 ZIP、2,341 个原始时序文件、会话 JSON | 原始数据不入 Git（哈希锁定于 source_manifest / 锁文件） |
+| `results_extended/extended_stores.pkl`（56 MB） | 脚本运行检查点，可复现 |
+| `results/session_anchor.csv`（769 KB）、`results/download_manifest.csv`（276 KB） | 运行输出/逐文件清单，可由脚本重新生成；清单哈希已锁定 |
+| `results_artifact/artifact_bins.csv`（7.7 MB）、`artifact_sessions.csv`（313 KB） | 体大且可由 `label_artifact.py` 复现 |
+| `results/fig1`–`fig7` PNG | 可由 `make_figures.py` 重新生成（fig_E1–E5 已在 codex 分支入仓） |
+| ACN API token | 仅存于用户本机 Keychain，绝不写入磁盘/Git/日志 |
+
+## 运行方式（新增的两个脚本）
+
+```bash
+# 附录 B：在归档根目录，先按上节合并固定清单分片，再原顺序复算 420 个样本
+python3 scripts/coverage_survey.py
+# 默认数据源：tongxin-li/ACN-Data-Static@abb7cf15cc7108913e965d4375cc7270d532b65f
+# 固定清单 SHA-256：71c2469a9c48a181f8973a4b990a09592dab6203636cc4af282d1562d37109a6
+
+# 仅在“重新抽样”时才需要 GitHub API 抓取的全目录 inventory；这不属于固定复算
+ACN_SURVEY_REPLAY=0 ACN_SURVEY_INVENTORY=/path/to/garage_files.json \
+  python3 scripts/coverage_survey.py
+
+# 附录 C 标签伪影诊断（需原始时序目录与会话 JSON，路径由环境变量指定）
+ACN_SESSIONS=/path/to/acndata_sessions-2.json ACN_TS_DIR=/path/to/static \
+  python3 scripts/label_artifact.py
+```
+
+固定复算与重新抽样是两种不同模式：前者不依赖 `/tmp/garage_files.json`，后者会生成新样本，不能与归档 420 行清单混称。`label_artifact.py` 复用 `extended_analysis` 的口径与函数，需与入仓于 codex 分支的 `extended_analysis.py`、`anchor_analysis.py` 同目录放置。
