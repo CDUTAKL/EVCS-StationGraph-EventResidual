@@ -99,7 +99,9 @@ plt.close(fig)
 
 # ---- 图4: 10 节点 MAE 对比 ----
 node = pd.read_csv(os.path.join(OUT, "node_anchor_summary.csv"))
-ten = ["CA-303", "CA-305", "CA-307", "CA-311", "CA-317", "CA-319", "CA-324", "CA-327", "CA-489", "CA-496"]
+# 与论文表 2-2 的冻结主分析集合一致；勿替换为窗口内高负荷候选节点。
+ten = ["CA-303", "CA-304", "CA-305", "CA-307", "CA-311",
+       "CA-315", "CA-317", "CA-321", "CA-327", "CA-489"]
 nn = node.set_index("spaceID").loc[ten]
 x = np.arange(len(ten)); w = 0.38
 fig, ax = plt.subplots(figsize=(8, 3.8))

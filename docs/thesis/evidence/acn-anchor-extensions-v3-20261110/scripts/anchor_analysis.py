@@ -343,17 +343,27 @@ def main():
           % (len(node_p), int(node_p["n_sessions_power"].sum()),
              node_p["mae_uniform"].mean(), node_p["mae_cut"].mean(), node_p["corr_uniform"].mean(),
              node_p["zero_rate_measured"].mean(), node_p["zero_rate_uniform"].mean(), node_p["zero_rate_cut"].mean()))
-    ten = ["CA-303", "CA-305", "CA-307", "CA-311", "CA-317", "CA-319", "CA-324", "CA-327", "CA-489", "CA-496"]
+    # 与论文表 2-2 的冻结主分析集合一致；勿替换为窗口内高负荷候选节点。
+    ten = ["CA-303", "CA-304", "CA-305", "CA-307", "CA-311",
+           "CA-315", "CA-317", "CA-321", "CA-327", "CA-489"]
+    node_by_space = node.set_index("spaceID")
+    node_p_by_space = node_p.set_index("spaceID")
     print("\n10 主节点 (基准A | 基准B):")
     for sp in ten:
-        ra = node.set_index("spaceID").loc[sp]
-        line = "%s: A 均分=%.4f 截断=%.4f" % (sp, ra["mae_uniform"], ra["mae_cut"])
-        if sp in set(node_p["spaceID"]):
-            rb = node_p.set_index("spaceID").loc[sp]
+        ra = node_by_space.loc[sp]
+        line = "%s: A(n=%d) 均分=%.4f 截断=%.4f" % (
+            sp, ra["n_sessions"], ra["mae_uniform"], ra["mae_cut"])
+        if sp in node_p_by_space.index:
+            rb = node_p_by_space.loc[sp]
             line += " | B(n=%d) 均分=%.4f 截断=%.4f" % (rb["n_sessions_power"], rb["mae_uniform"], rb["mae_cut"])
         else:
             line += " | B 无高覆盖会话"
         print(line)
+    main_a = node_by_space.loc[ten]
+    main_b = node_p_by_space.loc[ten]
+    print("10 主节点均值: A(n=%d) 均分=%.4f 截断=%.4f | B(n=%d) 均分=%.4f 截断=%.4f"
+          % (main_a["n_sessions"].sum(), main_a["mae_uniform"].mean(), main_a["mae_cut"].mean(),
+             main_b["n_sessions_power"].sum(), main_b["mae_uniform"].mean(), main_b["mae_cut"].mean()))
 
 
 if __name__ == "__main__":
