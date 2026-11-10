@@ -1,0 +1,24 @@
+{
+ "source": "https://github.com/tongxin-li/ACN-Data-Static @ main (jsDelivr CDN)",
+ "survey_date_utc": "2026-11-09T17:09:07.664890+00:00",
+ "seed": 20261110,
+ "cell_cap": {
+  "CG1": 30,
+  "CG2": 20,
+  "LIGO": 40,
+  "NWG": 30,
+  "SWG": 25,
+  "OFFICE_PL1": 25
+ },
+ "n_planned": 350,
+ "n_downloaded": 350,
+ "garage_totals": {
+  "NWG": 6299,
+  "SWG": 2703,
+  "OFFICE_PL1": 1474,
+  "CG1": 31860,
+  "CG2": 15589,
+  "LIGO": 229
+ },
+ "coverage_rule": "sum(adjacent dt<=60s)/file span; energy trapezoid without gap bridging"
+}
