@@ -1,0 +1,23 @@
+{
+  "dataset_artifact": "data/processed/SG-DATA-005-primary-tensor.npz",
+  "dataset_sha256": "082ce06d6be9fd9d97916cf25a729b48b446894505e9eb12faf912e4579d4df4",
+  "experiment_id": "SG-EXP-004",
+  "outputs": [
+    "config_resolved.yaml",
+    "environment.json",
+    "relation_matrices.npz",
+    "metrics_summary.json"
+  ],
+  "result_authority": "formal_candidate",
+  "run_tag": "20260731-102456",
+  "seed_directories": [
+    "seed-2024",
+    "seed-2025",
+    "seed-2026"
+  ],
+  "seeds": [
+    2024,
+    2025,
+    2026
+  ]
+}

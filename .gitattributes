@@ -20,6 +20,7 @@ outputs/analysis/SG-ANA-20261026-proxy-stability/*.csv whitespace=cr-at-eol
 outputs/analysis/SG-ANA-20261026-proxy-stability/*.svg -whitespace
 outputs/figures/fig3_17_proxy_label_stability.svg -whitespace
 outputs/figures/fig5_9_acn_current_shape.svg -whitespace
+outputs/figures/fig5_10_ca303_proxy_energy.svg -whitespace
 # Keep the frozen reviewer output byte-for-byte, including its final blank line.
 docs/thesis/revision-20261026-proxy-stability/review-preparation/run02/reviewer-readability.json whitespace=-blank-at-eof
 docs/thesis/**/*.csv -text whitespace=cr-at-eol
@@ -32,3 +33,7 @@ docs/thesis/revision-20261020-delivery/scorecard-audit.json whitespace=-blank-at
 /docs/thesis/revision-20261023-layout/thesis-layout-final-1200dpi.docx filter=lfs diff=lfs merge=lfs -text
 /docs/thesis/revision-20261023-layout/thesis-layout-final-1200ppi.pdf filter=lfs diff=lfs merge=lfs -text
 outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.pdf filter=lfs diff=lfs merge=lfs -text
+
+# Byte-preserving historical cache and current editable candidate snapshot.
+/outputs/archives/thesis-cache-20261111/history.zip filter=lfs diff=lfs merge=lfs -text
+/outputs/archives/thesis-cache-20261111/current-reordered-candidate.docx filter=lfs diff=lfs merge=lfs -text

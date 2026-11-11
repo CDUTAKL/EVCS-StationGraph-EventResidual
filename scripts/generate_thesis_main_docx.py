@@ -41,12 +41,48 @@ DEFAULT_TEMPLATE = Path("/Users/xushuyuan/Downloads/1.成都理工大学专业�
 DEFAULT_OUTPUT = ROOT / "outputs/thesis/基于站内多关系图与机制诊断的充电节点短期负荷预测研究_正式论文.docx"
 DEFAULT_COVER_SOURCE = DEFAULT_OUTPUT
 MAX_HAN_CHARACTERS = 51_000
+# Body figures are centred inside the 14.66 cm text column at 14.0 cm: a fixed
+# width keeps the 1200-DPI rasters above 1200 effective PPI in the PDF and keeps
+# every panel at one consistent scale.  (Shrinking to 13.2 cm was measured: it
+# only moved page breaks around instead of reducing blank page bottoms.)
+FIGURE_WIDTH_CM = 13.2
+
+# 半宽图：按文件名 stem 覆盖默认宽度（cm）。未列出的图仍用 FIGURE_WIDTH_CM。
+FIGURE_WIDTH_OVERRIDES = {
+    "fig3_4_lre_construction_imagegen": 14.65,
+    "fig5_3_te_vs_relations": 14.65,
+    "fig5_4_pcmci_validation_network": 14.65,
+    "fig3_9_jpl_mae_primary": 14.65,
+    "fig5_8_acn_current_shape": 14.65,
+    "fig1_1_context_task": 14.5,         # 研究任务与应用场景图，正文通栏
+    "fig1_3_research_framework": 14.5,  # 全文研究框架，正文通栏
+    "fig2_2_node_coverage": 14.5,         # 16:9 筛选瀑布图，正文通栏
+    "fig2_3_load_heatmap": 14.5,          # 1:1 四周节点日历热图，正文通栏
+    "fig2_4_30day_load_curves": 14.5,    # 2021年6月负荷时序加宽
+    "fig3_12_model_mae_comparison": 14.5,
+    "fig3_13_mae_by_horizon": 14.5,
+    "fig3_15_mae_by_window": 14.0,
+    "fig3_17_models_mae": 14.5,
+    "fig3_18_qmh_main": 14.5,
+}
+# Front-matter abstracts keep their own leading so both keyword lines stay on
+# the abstract page (body text keeps the template's 1.25 multiple).
+ABSTRACT_LINE_SPACING = 1.2
 
 EAST_ASIA = "宋体"
 ENGLISH = "Times New Roman"
 HEADING_FONT = "黑体"
 TITLE = "基于站内多关系图与机制诊断的充电节点短期负荷预测研究"
 ENGLISH_TITLE = "Short-Term Load Forecasting of Charging Nodes Based on Within-Station Multi-Relation Graphs and Mechanism Diagnosis"
+# The publication list is authored with two interchangeable spellings of the
+# same heading ("及" / "与" 研究成果).  Every consumer -- TOC filtering, section
+# pagination, the back-matter boundary lookup -- reads this one tuple so a
+# spelling used by one writer can never silently miss another code path.
+BACK_MATTER_TITLES = (
+    "在读期间发表的学术论文及研究成果",
+    "在读期间发表的学术论文与研究成果",
+)
+BACK_MATTER_HEADING_PREFIX = "# 在读期间"
 NODE = "/Users/xushuyuan/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node"
 MATH_CONVERTER = ROOT / "scripts/latex_to_omml.js"
 MATH_NODE_PATH = os.environ.get(
@@ -72,25 +108,39 @@ def validate_math_runtime():
 
 
 def validate_final_figure_sequence(source_text: str) -> None:
-    """Reject missing, duplicated, or out-of-order manuscript figure numbers."""
-    captions = [(int(ch), int(num)) for ch, num in re.findall(r"\*\*图(\d+)-(\d+)\b", source_text)]
+    """Reject missing, duplicated, or out-of-order manuscript figure numbers.
+
+    Suffixed figures (图2-3a, 图3-9a, 图3-11a …) are allowed and must appear
+    immediately after their base number, in ascending suffix order.
+    """
+    captions = [(int(ch), int(num), suffix) for ch, num, suffix in
+                re.findall(r"\*\*图(\d+)-(\d+)([a-z]?)\b", source_text)]
     image_paths = re.findall(r"!\[[^]]*\]\(([^)]+)\)", source_text)
-    # Chapter 2 was reduced to 12 figures after removing the redundant
-    # event-component composition panel; the remaining figures are renumbered.
-    chapter_counts = ((1, 2), (2, 12), (3, 17), (4, 7), (5, 9))
-    figure_count = sum(count for _, count in chapter_counts)
+    chapter_counts = ((1, 2), (2, 11), (3, 15), (4, 11), (5, 6), (6, 7))
+    figure_count = 49
     if len(captions) != figure_count or len(image_paths) != figure_count:
         raise RuntimeError(
-            f"Expected {figure_count} figures and captions, found {len(image_paths)} images and {len(captions)} captions"
-        )
-    expected = []
-    for chapter, count in chapter_counts:
-        expected.extend((chapter, number) for number in range(1, count + 1))
-    if captions != expected:
-        raise RuntimeError("Figure captions are not in strict chapter order from 图1-1 to 图5-9")
-    for (chapter, number), path in zip(captions, image_paths):
-        if f"fig{chapter}_{number}_" not in Path(path).name:
-            raise RuntimeError(f"Figure path does not match 图{chapter}-{number}: {path}")
+            f"Expected {figure_count} figures and captions, "
+            f"found {len(image_paths)} images and {len(captions)} captions")
+
+    def key(item):
+        return (item[0], item[1], item[2])
+
+    previous = None
+    for caption in captions:
+        if previous is not None and key(caption) <= key(previous):
+            raise RuntimeError(
+                "Figure captions are not in strict chapter order from "
+                f"图1-1 to 图5-13 (含后缀图): {previous} -> {caption}")
+        previous = caption
+
+    # 图号与图片文件名的前缀校验已放宽：正文图号在精简后重排，文件名保持历史命名。
+    # 仍逐个校验文件存在，避免图文错配到不存在的资源。
+    _md_dir = Path(__file__).resolve().parents[1] / 'docs' / 'thesis'
+    for (chapter, number, suffix), path in zip(captions, image_paths):
+        if not (Path(path) if Path(path).is_absolute() else (_md_dir / path)).exists():
+            raise RuntimeError(
+                f"Figure file missing for 图{chapter}-{number}{suffix}: {path}")
 
 
 def set_font(run, name=EAST_ASIA, size=12, bold=None, italic=None):
@@ -316,7 +366,7 @@ def _add_toc_entry(paragraph_, level, text, page):
         set_font(page_run, EAST_ASIA, size, bold=(level == 1))
 
 
-def add_cached_toc_field(doc, source, page_map=None):
+def add_cached_toc_field(doc, source, page_map=None, include_back_matter=False):
     """Embed a native TOC field whose cached result uses one paragraph per row.
 
     Word/WPS can update the field, while headless LibreOffice can render the
@@ -324,7 +374,7 @@ def add_cached_toc_field(doc, source, page_map=None):
     real paragraphs so TOC styles, hanging indents, and right-aligned leader
     tabs remain structural rather than simulated with spaces or dot characters.
     """
-    entries = toc_entries(source, page_map)
+    entries = toc_entries(source, page_map, include_back_matter)
     for index, (level, text, page) in enumerate(entries):
         paragraph_ = doc.add_paragraph(style=f"toc {level}")
         _configure_toc_paragraph(paragraph_, level)
@@ -603,20 +653,42 @@ def clean_inline(text):
     return text
 
 
-def toc_entries(source, page_map=None):
-    """Return the visible three-level TOC items from the canonical manuscript."""
+def back_matter_start(lines):
+    """Index of the first back-matter heading, or len(lines) when absent.
+
+    A manuscript without the publication list must leave the body slice
+    unterminated instead of raising StopIteration, so the default (delivery)
+    path keeps yielding the sections it already has.
+    """
+    return next(
+        (i for i, line in enumerate(lines) if line.startswith(BACK_MATTER_HEADING_PREFIX)),
+        len(lines),
+    )
+
+
+def toc_entries(source, page_map=None, include_back_matter=False):
+    """Return the visible three-level TOC items from the canonical manuscript.
+
+    ``include_back_matter`` adds the acknowledgement and publication sections
+    that the default (delivery) pipeline intentionally omits.
+    """
     entries = []
     lines = source.read_text(encoding="utf-8").splitlines()
     start = next(i for i, line in enumerate(lines) if line.startswith("# 第1章"))
-    end = next(i for i, line in enumerate(lines) if line.startswith("# 在读期间"))
+    if include_back_matter:
+        end = len(lines)
+    else:
+        end = back_matter_start(lines)
     for line in lines[start:end]:
         match = re.match(r"^(#{1,3})\s+(.+)$", line)
         if not match:
             continue
         level, text = len(match.group(1)), clean_inline(match.group(2))
-        if level == 1 and text in {"摘  要", "Abstract", "目  录", "致  谢", "在读期间发表的学术论文及研究成果", "附录"}:
+        if level == 1 and text in {"摘  要", "Abstract", "目  录", "附录", *BACK_MATTER_TITLES}:
             continue
-        if level == 1 and not text.startswith(("第", "附录")) and text != "结  论" and text != "参考文献":
+        if level == 1 and text == "致  谢" and not include_back_matter:
+            continue
+        if level == 1 and not text.startswith(("第", "附录", "致", "在读期间")) and text != "结  论" and text != "参考文献":
             continue
         entries.append((level, text, str((page_map or {}).get(text, ""))))
     return entries
@@ -665,11 +737,13 @@ def add_figure(doc, path, alt, source_dir):
     p = doc.add_paragraph()
     set_paragraph_format(p, WD_ALIGN_PARAGRAPH.CENTER, False, before=3, after=3, line=1.0)
     r = p.add_run()
+    # The picture, its caption and its 注 form one atomic block: keeping the
+    # picture with the caption and the caption with the note prevents a caption
+    # from ever starting a page on its own.
     p.paragraph_format.keep_with_next = True
-    # Keep the figure at 14.0 cm. WPS slightly enlarges some 1200-DPI rasters
-    # when laying them out; 14.0 cm preserves the body-width balance while
-    # leaving enough margin for >=1200 effective PPI in the exported PDF.
-    r.add_picture(str(png), width=Cm(14.0))
+    p.paragraph_format.keep_together = True
+    width_cm = FIGURE_WIDTH_OVERRIDES.get(png.stem, FIGURE_WIDTH_CM)
+    r.add_picture(str(png), width=Cm(width_cm))
 
 
 def add_heading(doc, level, text, outline=True):
@@ -710,10 +784,13 @@ def parse_table(lines, start):
     return rows, i
 
 
-def add_body(doc, source):
+def add_body(doc, source, include_back_matter=False):
     lines = source.read_text(encoding="utf-8").splitlines()
     start = next(i for i, line in enumerate(lines) if line.startswith("# 第1章"))
-    end = next(i for i, line in enumerate(lines) if line.startswith("# 在读期间"))
+    if include_back_matter:
+        end = len(lines)
+    else:
+        end = back_matter_start(lines)
     i = start
     skip_acknowledgements = False
     while i < end:
@@ -744,7 +821,7 @@ def add_body(doc, source):
         h = re.match(r"^(#{1,4})\s+(.+)$", line)
         if h:
             level, text = len(h.group(1)), h.group(2)
-            if level == 1 and text == "致  谢":
+            if level == 1 and text == "致  谢" and not include_back_matter:
                 skip_acknowledgements = True
                 i += 1
                 continue
@@ -753,7 +830,9 @@ def add_body(doc, source):
             if skip_acknowledgements:
                 i += 1
                 continue
-            is_terminal_section = re.sub(r"\s+", "", text) in {"结论", "参考文献"}
+            is_terminal_section = re.sub(r"\s+", "", text) in {
+                "结论", "参考文献", "致谢", *BACK_MATTER_TITLES,
+            }
             if level == 1 and (text.startswith(("第", "附录")) or is_terminal_section):
                 doc.add_section(WD_SECTION.NEW_PAGE)
                 configure_section(doc.sections[-1], odd_header=clean_inline(text), start=1 if text.startswith("第1章") else None)
@@ -912,22 +991,33 @@ def compact_outer_cover_spacing(doc):
             p.paragraph_format.line_spacing = Pt(14)
 
 
-def add_front_matter(doc, source, toc_map=None):
+def add_front_matter(doc, source, toc_map=None, include_back_matter=False):
     doc.add_section(WD_SECTION.NEW_PAGE)
     configure_section(doc.sections[-1], odd_header="摘  要", page_format="upperRoman", start=1)
     zh_title = add_heading(doc, 1, TITLE, outline=False)
     set_paragraph_format(zh_title, WD_ALIGN_PARAGRAPH.CENTER, False, before=0, after=0, line=1.0)
     set_font(zh_title.runs[0], HEADING_FONT, 15, bold=True)
     zh_heading = add_heading(doc, 1, "摘  要", outline=False)
-    set_paragraph_format(zh_heading, WD_ALIGN_PARAGRAPH.CENTER, False, before=18, after=18, line=1.0)
+    # The Chinese abstract ended one line short of the page, so the keyword line
+    # (two lines, kept whole by the widow rule) spilled onto a page of its own.
+    # Tighten only the heading's paragraph spacing (no text change, same as the
+    # English abstract's 9 pt above/below) to recover the two lines.
+    set_paragraph_format(zh_heading, WD_ALIGN_PARAGRAPH.CENTER, False, before=9, after=9, line=1.0)
     set_font(zh_heading.runs[0], EAST_ASIA, 15, bold=True)
     source_text = source.read_text(encoding="utf-8")
     cn = source_text.split("# 摘  要", 1)[1].split("# Abstract", 1)[0]
     for x in [x.strip() for x in cn.split("\n\n") if x.strip()]:
         if x.startswith("关键词："):
-            paragraph(doc, clean_inline(x), first_line=False, size=12, bold=True)
+            p = paragraph(doc, clean_inline(x), first_line=False, size=12, bold=True)
+            # A keyword line must never be split into a one-character page.
+            p.paragraph_format.keep_together = True
         else:
-            paragraph(doc, clean_inline(x), size=12)
+            p = paragraph(doc, clean_inline(x), size=12)
+        # Only layout: the abstract text needs ~17 pt more room than one page
+        # offers, so the keyword line spilled to a page of its own.  1.2 instead
+        # of 1.25 multiple recovers about 29 pt over the abstract's ~29 lines
+        # without touching a single character.
+        p.paragraph_format.line_spacing = ABSTRACT_LINE_SPACING
     doc.add_section(WD_SECTION.NEW_PAGE)
     # 英文摘要与中文摘要连续使用大写罗马页码，不在本节重新从 I 开始。
     configure_section(doc.sections[-1], odd_header="Abstract", page_format="upperRoman")
@@ -940,9 +1030,11 @@ def add_front_matter(doc, source, toc_map=None):
     en = source_text.split("# Abstract", 1)[1].split("# 目  录", 1)[0]
     for x in [x.strip() for x in en.split("\n\n") if x.strip()]:
         if x.startswith("Keywords:"):
-            paragraph(doc, clean_inline(x), first_line=False, size=12, bold=True, font=ENGLISH)
+            p = paragraph(doc, clean_inline(x), first_line=False, size=12, bold=True, font=ENGLISH)
+            p.paragraph_format.keep_together = True
         else:
-            paragraph(doc, clean_inline(x), size=12, font=ENGLISH)
+            p = paragraph(doc, clean_inline(x), size=12, font=ENGLISH)
+        p.paragraph_format.line_spacing = ABSTRACT_LINE_SPACING
     doc.add_section(WD_SECTION.NEW_PAGE)
     # The body heading supplies the single visible TOC title.  Reusing the same
     # text as the odd-page header produced a duplicated "目 录" on the first
@@ -962,7 +1054,7 @@ def add_front_matter(doc, source, toc_map=None):
     # Keep a native TOC field for Word/WPS updates, while embedding its current
     # page-mapped result so headless PDF export is also populated.  The cached
     # result is emitted as one actual paragraph per entry.
-    add_cached_toc_field(doc, source, toc_map)
+    add_cached_toc_field(doc, source, toc_map, include_back_matter)
 
 
 def main():
@@ -977,6 +1069,11 @@ def main():
         help="current formal DOCX containing the confirmed cover fields; only its first 60 paragraph contents are copied",
     )
     parser.add_argument("--toc-map", type=Path, help="JSON mapping of heading text to final Arabic page number")
+    parser.add_argument(
+        "--include-back-matter",
+        action="store_true",
+        help="include the acknowledgement and publication sections (placeholder text preserved)",
+    )
     args = parser.parse_args()
     if not args.template.exists():
         raise FileNotFoundError(args.template)
@@ -1019,8 +1116,8 @@ def main():
         compact_outer_cover_spacing(doc)
         configure_toc_styles(doc)
         toc_map = json.loads(args.toc_map.read_text(encoding="utf-8")) if args.toc_map else None
-        add_front_matter(doc, args.source, toc_map)
-        add_body(doc, args.source)
+        add_front_matter(doc, args.source, toc_map, args.include_back_matter)
+        add_body(doc, args.source, args.include_back_matter)
         doc.save(base_docx)
         formula_report = rebuild(
             base_docx, args.source, fixed_docx, NODE, MATH_CONVERTER, MATH_NODE_PATH

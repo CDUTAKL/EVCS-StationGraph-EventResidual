@@ -1,0 +1,49 @@
+{
+  "status": "draft_not_frozen_no_training",
+  "data_contract": "configs/data/SG-DATA-POWER-2019-v1.json",
+  "models": [
+    "MRG-GCN",
+    "parameter_matched_no_graph_TCN"
+  ],
+  "seeds": [
+    2024,
+    2025,
+    2026
+  ],
+  "optimizer": "AdamW",
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "batch_size": 256,
+  "max_epochs": 60,
+  "patience": 8,
+  "gradient_clip": 5,
+  "precision": "float32",
+  "selection": "validation q100 masked MAE in original kWh/15min",
+  "loss": "q100 masked MAE in original units; inverse scaling inside objective",
+  "inputs": "existing seven event-time/calendar channels; no lagged measured targets",
+  "primary_mask": "q100",
+  "sensitivity_masks": [
+    "q99",
+    "q95"
+  ],
+  "sensitivity_policy": "evaluate frozen predictions under masks; do not retrain or select with sensitivity masks",
+  "test_policy": "separate explicit export only after all checkpoints selected; immutable per-key files; later independent checks reuse saved predictions",
+  "smoke_policy": "train/validation only; two batches and one epoch; test loader disabled",
+  "required_artifacts": [
+    "config.json",
+    "source_manifest.json",
+    "environment.txt",
+    "train_log.json",
+    "metrics_validation.json",
+    "best.pt",
+    "predictions_test.npz",
+    "mask_counts.json",
+    "SHA256SUMS"
+  ],
+  "open_items": [
+    "verify architecture identities and parameter matching before freezing",
+    "implement mask-aware train/validation/export modes",
+    "review batch/loss/normalization semantics and CPU smoke checks",
+    "register frozen experiment and bind source/environment hashes before GPU launch"
+  ]
+}

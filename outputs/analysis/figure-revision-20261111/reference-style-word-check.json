@@ -1,0 +1,90 @@
+{
+  "docx_sha256": "5c2ef808256552362313497d65d43d159f76f15b866e9774516ebc508e6011b1",
+  "crc": "OK",
+  "target_images": {
+    "fig3_9_jpl_mae_primary": {
+      "sha256": "f2674b4fd48d504beaa5ae1ceb6a156019f4f2c21ddf3c3f5d86974b54529629",
+      "placements": [
+        {
+          "width_cm": 14.65,
+          "height_cm": 8.22653888888889
+        }
+      ],
+      "pixels": [
+        7800,
+        4380
+      ],
+      "dpi": [
+        1199.9976,
+        1199.9976
+      ]
+    },
+    "fig5_8_acn_current_shape": {
+      "sha256": "464ead585949999f16efc0c0e601dca8e4e5429477da9f58c8a784fc12e0c3b3",
+      "placements": [
+        {
+          "width_cm": 14.65,
+          "height_cm": 10.071875
+        }
+      ],
+      "pixels": [
+        7680,
+        5280
+      ],
+      "dpi": [
+        1199.9976,
+        1199.9976
+      ]
+    },
+    "fig5_4_pcmci_validation_network": {
+      "sha256": "e031c0f9e2e3aeb663f1341a6a9f29971cbff596931c978024bf7ca56ab061e3",
+      "placements": [
+        {
+          "width_cm": 14.65,
+          "height_cm": 10.367691666666667
+        }
+      ],
+      "pixels": [
+        7800,
+        5520
+      ],
+      "dpi": [
+        1199.9976,
+        1199.9976
+      ]
+    },
+    "fig5_3_te_vs_relations": {
+      "sha256": "d454e45f028b2ca3912f6298591353b3e4a388db9d029b723fcd0e51f9e07a10",
+      "placements": [
+        {
+          "width_cm": 14.65,
+          "height_cm": 14.770083333333334
+        }
+      ],
+      "pixels": [
+        7320,
+        7380
+      ],
+      "dpi": [
+        1199.9976,
+        1199.9976
+      ]
+    },
+    "fig3_4_lre_construction_imagegen": {
+      "sha256": "f1bd58e0bac324528d63314d480e2db61fcc39d053c369e1fc064c6ffa639e03",
+      "placements": [
+        {
+          "width_cm": 14.65,
+          "height_cm": 9.168958333333334
+        }
+      ],
+      "pixels": [
+        1585,
+        992
+      ],
+      "dpi": null
+    }
+  },
+  "all_five_current_images_embedded": true,
+  "full_pagination_reviewed": false
+}

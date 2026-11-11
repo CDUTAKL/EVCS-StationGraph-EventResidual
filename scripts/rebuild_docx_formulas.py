@@ -28,6 +28,34 @@ W = f"{{{W_NS}}}"
 M = f"{{{M_NS}}}"
 
 
+def has_top_level_line_break(latex: str) -> bool:
+    """Return True when ``\\\\`` appears outside every LaTeX environment.
+
+    A manuscript line break written outside ``aligned``/``cases`` cannot be laid
+    out by the converters: the rows collapse into one over-wide line, which WPS
+    wraps at the page edge and LibreOffice clips at the right margin. Such a
+    block is rendered as an ``aligned`` body so author-intended rows survive.
+    """
+    depth = 0
+    index = 0
+    while index < len(latex):
+        if latex.startswith("\\begin{", index):
+            depth += 1
+            index += len("\\begin{")
+            continue
+        if latex.startswith("\\end{", index):
+            depth = max(depth - 1, 0)
+            index += len("\\end{")
+            continue
+        if latex.startswith("\\\\", index):
+            if depth == 0:
+                return True
+            index += 2
+            continue
+        index += 1
+    return False
+
+
 def extract_tagged_formulas(markdown: str) -> dict[str, str]:
     """Extract all tagged display equations from the canonical manuscript."""
     formulas: dict[str, str] = {}
@@ -39,8 +67,32 @@ def extract_tagged_formulas(markdown: str) -> dict[str, str]:
             if not tag:
                 continue
             key = tag.group(1)
-            formulas[key] = re.sub(r"\\tag\{[^}]+\}", "", block).strip()
+            body = re.sub(r"\\tag\{[^}]+\}", "", block).strip()
+            if has_top_level_line_break(body) and "\\begin{aligned}" not in body:
+                body = "\\begin{aligned}\n" + body + "\n\\end{aligned}"
+            formulas[key] = body
     return formulas
+
+
+def tags_with_top_level_break(markdown: str) -> set[str]:
+    """Tags whose source needed an ``aligned`` wrapper.
+
+    Only these equations are as wide as the text column, so only their numbers
+    move to a right-aligned line of their own; equations that already used an
+    environment keep the inline right-tab number.
+    """
+    tags: set[str] = set()
+    patterns = (r"\$\$(.*?)\$\$", r"\\\[(.*?)\\\]")
+    for pattern in patterns:
+        for match in re.finditer(pattern, markdown, flags=re.S):
+            block = match.group(1).strip()
+            tag = re.search(r"\\tag\{([^}]+)\}", block)
+            if not tag:
+                continue
+            body = re.sub(r"\\tag\{[^}]+\}", "", block).strip()
+            if has_top_level_line_break(body) and "\\begin{aligned}" not in body:
+                tags.add(tag.group(1))
+    return tags
 
 
 def run_converter(latex: str, node: str, converter: str, node_path: str) -> etree._Element:
@@ -285,7 +337,7 @@ def replace_inline_math(root: etree._Element, converter, report: dict) -> None:
 
 def table_equation_tag(table: etree._Element) -> str | None:
     text = "".join(table.xpath(".//w:t/text()", namespaces=NS))
-    match = re.search(r"[（(]([2-5]-\d+)[）)]", text)
+    match = re.search(r"[（(](\d+-\d+)[）)]", text)
     return match.group(1) if match else None
 
 
@@ -295,6 +347,7 @@ def equation_paragraph(
     number_props: etree._Element | None,
     *,
     text_width_twips: int = 8312,
+    number_on_new_line: bool = False,
 ) -> etree._Element:
     """Build a clean paragraph with centered native math and a right number.
 
@@ -331,6 +384,12 @@ def equation_paragraph(
     etree.SubElement(tab_run, f"{W}tab")
     paragraph.append(math)
 
+    if number_on_new_line:
+        # A stacked (multi-row) equation is as wide as the text column, so an
+        # inline right tab would push the number past the margin and wrap it.
+        # The number then starts on its own right-aligned line.
+        break_run = etree.SubElement(paragraph, f"{W}r")
+        etree.SubElement(break_run, f"{W}br")
     number_tab_run = etree.SubElement(paragraph, f"{W}r")
     etree.SubElement(number_tab_run, f"{W}tab")
     number_run = etree.SubElement(paragraph, f"{W}r")
@@ -341,7 +400,13 @@ def equation_paragraph(
     return paragraph
 
 
-def replace_display_math(root: etree._Element, formulas: dict[str, str], converter, report: dict) -> None:
+def replace_display_math(
+    root: etree._Element,
+    formulas: dict[str, str],
+    converter,
+    report: dict,
+    wrapped_tags: set[str] | None = None,
+) -> None:
     for table in root.xpath(".//w:tbl", namespaces=NS):
         tag = table_equation_tag(table)
         if not tag or tag not in formulas:
@@ -357,7 +422,10 @@ def replace_display_math(root: etree._Element, formulas: dict[str, str], convert
             number_cell = cells[-1]
             number_props = first_run_properties(number_cell.xpath("./w:p", namespaces=NS)[0]) if number_cell.xpath("./w:p", namespaces=NS) else None
             number = "".join(number_cell.xpath(".//w:t/text()", namespaces=NS)).strip()
-            paragraph = equation_paragraph(number, math, number_props)
+            stacked = tag in (wrapped_tags or set())
+            paragraph = equation_paragraph(
+                number, math, number_props, number_on_new_line=stacked
+            )
             parent = table.getparent()
             if parent is None:
                 continue
@@ -386,7 +454,13 @@ def rebuild(source: Path, manuscript: Path, output: Path, node: str, converter: 
 
         # Numbered table equations first; inline formulas are then rebuilt in all
         # remaining paragraphs.  The two passes avoid touching equation numbers.
-        replace_display_math(document, formulas, converter_fn, report)
+        replace_display_math(
+            document,
+            formulas,
+            converter_fn,
+            report,
+            tags_with_top_level_break(manuscript.read_text(encoding="utf-8")),
+        )
         replace_inline_math(document, converter_fn, report)
 
         document_xml = etree.tostring(

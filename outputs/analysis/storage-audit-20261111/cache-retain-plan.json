@@ -1,0 +1,28 @@
+{
+  "keep": [
+    ".cache/thesis-delivery/backup/official-before-71448f57.docx",
+    ".cache/thesis-delivery/backup/official-before-b3622c2a.docx",
+    ".cache/thesis-delivery/backup/official-before-ea7b4cc6.docx",
+    ".cache/thesis-delivery/backup/official-before-9239c4f0.pdf",
+    ".cache/thesis-delivery/backup/official-before-1fa717da.pdf",
+    ".cache/thesis-delivery/backup/official-before-1f000ce2.pdf"
+  ],
+  "archive_then_remove": [
+    ".cache/thesis-delivery/blind-20261105d.docx",
+    ".cache/thesis-delivery/blind-20261106-cycle1.docx",
+    ".cache/thesis-delivery/blind-20261105e.docx",
+    ".cache/thesis-delivery/blind-20261105b.docx",
+    ".cache/thesis-delivery/candidate-a.pdf",
+    ".cache/thesis-delivery/blind-20261105f.docx",
+    ".cache/thesis-delivery/blind-20261106.docx",
+    ".cache/thesis-delivery/blind-20261106-cycle2.docx",
+    ".cache/thesis-delivery/blind-20261105g.docx",
+    ".cache/thesis-delivery/backup/before-school-cycle2.docx",
+    ".cache/thesis-delivery/backup/before-training-revision.pdf",
+    ".cache/thesis-delivery/backup/before-school-cycle2.pdf",
+    ".cache/thesis-delivery/backup/before-school-cycle1.pdf",
+    ".cache/thesis-delivery/backup/before-training-revision.docx",
+    ".cache/thesis-delivery/backup/before-school-cycle1.docx"
+  ],
+  "deletion_gate": "all original byte hashes reconstructed AND remote archive hash verified"
+}

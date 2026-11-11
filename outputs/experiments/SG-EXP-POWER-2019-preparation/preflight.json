@@ -1,0 +1,118 @@
+{
+  "grid": {
+    "features": [
+      "access_count",
+      "departure_count",
+      "active_count",
+      "local_hour_sin",
+      "local_hour_cos",
+      "local_weekday_sin",
+      "local_weekday_cos"
+    ],
+    "n_bins": 35040,
+    "n_nodes": 10,
+    "nodes": [
+      "CA-303",
+      "CA-304",
+      "CA-305",
+      "CA-307",
+      "CA-311",
+      "CA-315",
+      "CA-317",
+      "CA-321",
+      "CA-327",
+      "CA-489"
+    ]
+  },
+  "input_sha256": {
+    "event_features": "f663b510c75e203c8150f57c3765645f92b9a941e0745227c6ea078008a0dc8f",
+    "measured_panel": "ec8587612e5915a98d1ac5bdd6342330d9a877b4c349e6ae823f675daf541541"
+  },
+  "masks": {
+    "q100": {
+      "observed_unique_node_bins": 343629,
+      "positive_observed_node_bins": 32692
+    },
+    "q95": {
+      "observed_unique_node_bins": 347897,
+      "positive_observed_node_bins": 35386
+    },
+    "q99": {
+      "observed_unique_node_bins": 347090,
+      "positive_observed_node_bins": 34773
+    }
+  },
+  "protocol_id": "SG-DATA-POWER-2019-v1",
+  "splits": {
+    "test": {
+      "at_least_one_q100_target_origins": 1245,
+      "end_index_exclusive": 23040,
+      "possible_repeated_forecast_cells": 49800,
+      "q100_complete_origins_all_horizon_node_cells": 847,
+      "q100_observed_repeated_forecast_cells": 49141,
+      "q100_positive_repeated_forecast_cells": 4189,
+      "q95_observed_repeated_forecast_cells": 49712,
+      "q99_observed_repeated_forecast_cells": 49621,
+      "start_index": 21696,
+      "strict_segment_contained_origins": 1245,
+      "time_bins": 1344
+    },
+    "train": {
+      "at_least_one_q100_target_origins": 20253,
+      "end_index_exclusive": 20352,
+      "possible_repeated_forecast_cells": 810120,
+      "q100_complete_origins_all_horizon_node_cells": 12112,
+      "q100_observed_repeated_forecast_cells": 792987,
+      "q100_positive_repeated_forecast_cells": 84630,
+      "q95_observed_repeated_forecast_cells": 803476,
+      "q99_observed_repeated_forecast_cells": 801424,
+      "start_index": 0,
+      "strict_segment_contained_origins": 20253,
+      "time_bins": 20352
+    },
+    "validation": {
+      "at_least_one_q100_target_origins": 1245,
+      "end_index_exclusive": 21696,
+      "possible_repeated_forecast_cells": 49800,
+      "q100_complete_origins_all_horizon_node_cells": 713,
+      "q100_observed_repeated_forecast_cells": 47914,
+      "q100_positive_repeated_forecast_cells": 4075,
+      "q95_observed_repeated_forecast_cells": 48513,
+      "q99_observed_repeated_forecast_cells": 48429,
+      "start_index": 20352,
+      "strict_segment_contained_origins": 1245,
+      "time_bins": 1344
+    }
+  },
+  "status": "preflight_pass_no_training_no_performance_claim",
+  "train_only_graphs": {
+    "event": {
+      "finite": true,
+      "sha256": "876c97eb850b86d4db3c4dabbdc0bc6c43fb8f4ac1215c0c241b892258d24b8d",
+      "shape": [
+        10,
+        10
+      ],
+      "symmetric": true
+    },
+    "load": {
+      "finite": true,
+      "sha256": "9c9467394972b3115e88262677e5a8bbba92b20c9aad73fbf4bf73ca2256d61f",
+      "shape": [
+        10,
+        10
+      ],
+      "symmetric": true
+    },
+    "pattern": {
+      "finite": true,
+      "sha256": "fcf45414c9cfbaa36e2de749a8514bae7edd9176589a375fa61eb47a9c76e6fb",
+      "shape": [
+        10,
+        10
+      ],
+      "symmetric": true
+    }
+  },
+  "training_performed": false
+}
