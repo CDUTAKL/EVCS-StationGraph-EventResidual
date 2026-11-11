@@ -23,6 +23,8 @@ def sha(path):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--keep", type=int, default=3)
+    parser.add_argument("--reserve-docx", type=int, choices=[0, 1], default=0)
+    parser.add_argument("--reserve-pdf", type=int, choices=[0, 1], default=0)
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
     if args.keep < 1:
@@ -44,7 +46,8 @@ def main():
     for ext in ["docx", "pdf"]:
         files = sorted((ROOT/".cache/thesis-delivery/backup").glob("*."+ext),
                        key=lambda p: (p.stat().st_mtime, p.name), reverse=True)
-        for path in files[args.keep:]:
+        reserve = args.reserve_docx if ext == "docx" else args.reserve_pdf
+        for path in files[args.keep-reserve:]:
             digest = sha(path)
             rel = str(path.relative_to(ROOT))
             if proof.get((rel, digest)) != path.stat().st_size:
